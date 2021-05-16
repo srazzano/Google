@@ -11,7 +11,7 @@
 
 (function() {
 
-  const dateFormat = 1,
+  var dateFormat = 1,
         defaultDateTimeView = false,
         defaultSecondsView = false,
         defaultAMPM = true,

@@ -6,7 +6,7 @@
 // @author       Sonny Razzano a.k.a. srazzano
 // @match        https://www.google.com/*
 // @icon         https://raw.githubusercontent.com/srazzano/Images/master/googleicon64.png
-// @grant        GM_addStyle
+// @grant        none
 // ==/UserScript==
 
 (function() {

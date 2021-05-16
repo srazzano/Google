@@ -48,7 +48,8 @@
         monthno = MonthNo.split(','),
         daynum = DayNum.split(','),
         dayno = DayNo.split(','),
-        dayord = DayOrd.split(',');
+        dayord = DayOrd.split(','),
+        icon6 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAX0lEQVR42s2SwQoAIQhEx2t9X37k9n91NBGWTkE1sOxchHBeoyggJf8AGPB4KYfe6maVS/OEWAQgRlgCzJ9V/Y9KAF7lDLRGAKJTCEBKQO9f72BT/B1EWuYSmfgxAgsYuQErVcPEBlcAAAAASUVORK5CYII=';
 
   function $c(type, props) {
     let node = document.createElement(type);

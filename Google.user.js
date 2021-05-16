@@ -221,28 +221,6 @@
   addEventListener('unload', function() {clearInterval(timer)}, false);
 
   setTimeout(function() {
-    let lia = $q('#dEjpnf > li > a', true),
-        num = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd > div > .gBtn', true),
-        len = ($q('#gSearch').offsetWidth + $q('#Mses6b').offsetWidth) / 2,
-        screenWidth = window.screen.width / 2,
-        int = parseInt(buttonSpacer.match('\\d+') / 2),
-        spacerCount = (num.length - 1) * int,
-        os1 = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd').offsetHeight,
-        os2 = $q('body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ').offsetHeight,
-        os3 = $q('body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.RNNXgb').offsetHeight,
-        ost = (os1 + os2 + os3 + 30) + 'px',
-        arr = [];
-    div3.style.top = ost;
-    for (let i = 0; i < lia.length; i++) lia[i].setAttribute('target', '_blank');
-    for (let j = 0; j < num.length; j++) arr.push(num[j].offsetWidth);
-    let sum = arr.reduce(function(a, b) {return a + b}, 1),
-        buttonsWidth = sum / 2,
-        fromLeft1 = Math.round(screenWidth - buttonsWidth - spacerCount) + 'px',
-        fromLeft2 = Math.round(screenWidth - len - int) + 'px';
-    div1.style.marginLeft = fromLeft1;
-    div3.style.left = fromLeft2;
-    defaultDateTime();
-    span1.textContent = aDateTime(dateFormat);
   }, 100);
 
   

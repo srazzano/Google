@@ -288,7 +288,7 @@
     '  width: 100% !important;'+
     '}'+
     'body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ {'+
-    '  max-height: 230px !important;'+
+    '  max-height: 130px !important;'+
     '}'+
     'body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ > div {'+
     '  margin-top: 50px !important;'+
@@ -296,8 +296,8 @@
     '}'+
     'body > div.L3eUgb > div.o3j99.LLD4me.yr19Zb.LS8OJ > div > img, #hplogo {'+
     '  background: url('+ googleImage +') no-repeat !important;'+
-    '  height: 164px !important;'+
-    '  padding-left: 512px !important;'+
+    '  height: 58px !important;'+
+    '  padding-left: 168px !important;'+
     '  pointer-events: none !important;'+
     '  width: 0 !important;'+
     '}'+

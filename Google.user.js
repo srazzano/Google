@@ -318,14 +318,14 @@
     '  padding: 9px 16px !important;'+
     '  text-decoration: none !important;'+
     '}'+
-    '.gBtn, #dateTime, #gSearch, #Mses6b {'+
+    '.gBtn, #dateTime, #gSearch, #Mses6b, center > input {'+
     '  background-color: #303030 !important;'+
     '  border: 1px solid #666 !important;'+
     '  color: #FFF !important;'+
     '  cursor: pointer !important;'+
     '  text-shadow: 1px 1px 2px #000 !important;'+
     '}'+
-    '.gBtn:hover, #dateTime:hover, #gSearch:hover:hover, #Mses6b:hover {'+
+    '.gBtn:hover, #dateTime:hover, #gSearch:hover:hover, #Mses6b:hover, center > input:hover {'+
     '  background-color: #FFF !important;'+
     '  border-color: #FFF !important;'+
     '  color: #000 !important;'+

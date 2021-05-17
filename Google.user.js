@@ -375,6 +375,18 @@
     '#dEjpnf > li:last-of-type {'+
     '  border-radius: 0 0 4px 4px !important;'+
     '}'+
+    '.xtSCL {'+
+    '  border-top: 1px solid transparent !important;'+
+    '}'+
+    '.aajZCb {'+
+    '  background: #333 !important;'+
+    '}'+
+    '.aajZCb li span {'+
+    '  color: #FFF !important;'+
+    '}'+
+    '.aajZCb li:hover {'+
+    '  background: #222 !important;'+
+    '}'+
   '');
 
 })();

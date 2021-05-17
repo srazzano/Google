@@ -254,6 +254,7 @@
     '  color: #FFF !important;'+
     '}'+
     '.QCzoEc, .ExCKkf {'+
+    '  background: transparent !important;'+
     '  color: #CCC !important;'+
     '}'+
     'body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd a:hover, body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd a:hover > svg{'+

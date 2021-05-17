@@ -250,10 +250,13 @@
     'body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd {'+
     '  padding: 0 !important;'+
     '}'+
-    'body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd a, body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd a, .gb_qa svg {'+
+    'body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd a, body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd a, .gb_qa svg, .gLFyf {'+
     '  color: #FFF !important;'+
     '}'+
-    'body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd a:hover, body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd a:hover > svg {'+
+    '.QCzoEc, .ExCKkf {'+
+    '  color: #CCC !important;'+
+    '}'+
+    'body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd a:hover, body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd a:hover > svg{'+
     '  background-color: #FFF !important;'+
     '  color: #000 !important;'+
     '}'+
@@ -300,6 +303,11 @@
     '  padding-left: 250px !important;'+
     '  pointer-events: none !important;'+
     '  width: 0 !important;'+
+    '}'+
+    '.RNNXgb {'+
+    '  background: linear-gradient(#999, #222) !important;'+
+    '  border: 1px solid #222 !important;'+
+    '  box-shadow: 0 1px 12px #000 inset !important;'+
     '}'+
     'body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf {'+
     '  padding: 0 20px !important;'+

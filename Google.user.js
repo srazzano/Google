@@ -16,16 +16,14 @@
   'use strict';
 
   const dateFormat = 1,
-        defaultAMPM = true,
         timerLong = 15000,
         timerShort = 500,
         am = 'AM',
         pm = 'PM',
         buttonSpacer = '14px',
-        hideDateTime = 'Click to 𝐇𝐈𝐃𝐄 𝐃𝐚𝐭𝐞/𝐓𝐢𝐦𝐞',
-        showDateTime = 'Click to 𝐒𝐇𝐎𝐖 𝐃𝐚𝐭𝐞/𝐓𝐢𝐦𝐞',
-        addSeconds = '𝐃𝐚𝐭𝐞/𝐓𝐢𝐦𝐞\n\u2022 Click to 𝐀𝐃𝐃 :𝐬𝐞𝐜𝐨𝐧𝐝𝐬',
-        removeSeconds = '𝐃𝐚𝐭𝐞/𝐓𝐢𝐦𝐞\n\u2022 Click to 𝐑𝐄𝐌𝐎𝐕𝐄 :𝐬𝐞𝐜𝐨𝐧𝐝𝐬',
+        hideShowDateTime = 'Left-click to 𝐇𝐈𝐃𝐄/𝐒𝐇𝐎𝐖 𝐃𝐚𝐭𝐞/𝐓𝐢𝐦𝐞',
+        addRemoveSeconds = '𝐃𝐚𝐭𝐞/𝐓𝐢𝐦𝐞\n\u2022 Left-click to 𝐀𝐃𝐃/𝐑𝐄𝐌𝐎𝐕𝐄 :𝐬𝐞𝐜𝐨𝐧𝐝𝐬',
+        addRemoveAMPM = '\u2022 Middle-click to 𝐀𝐃𝐃/𝐑𝐄𝐌𝐎𝐕𝐄 AM/PM',
         DayNameAbbr = 'Sun.,Mon.,Tue.,Wed.,Thu.,Fri.,Sat.',
         DayName = 'Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday',
         MonthNameAbbr = 'Jan.,Feb.,Mar.,Apr.,May,Jun.,Jul.,Aug.,Sep.,Oct.,Nov.,Dec.',
@@ -67,8 +65,8 @@
         url7 = 'https://tv.youtube.com/library';
 
   function $c(type, props) {
-    let node = document.createElement(type);
-    if (props && typeof props == 'object') for (let prop in props) typeof node[prop] == 'undefined' ? node.setAttribute(prop, props[prop]) : node[prop] = props[prop];
+    var node = document.createElement(type);
+    if (props && typeof props == 'object') for (var prop in props) typeof node[prop] == 'undefined' ? node.setAttribute(prop, props[prop]) : node[prop] = props[prop];
     return node;
   }
 
@@ -78,7 +76,7 @@
   }
 
   function aDateTime(dateFormat) {
-    let date = new Date(),
+    var date = new Date(),
         dy = date.getDay(),
         mth = date.getMonth(),
         dt = date.getDate(),
@@ -112,7 +110,7 @@
     sec < 10 ? sec = ':0' + sec : sec = ':' + sec;
     hr < 12 ? ampm = am : ampm = pm;
     span1.hasAttribute('view-seconds') ? sec = sec : sec = '';
-    defaultAMPM ? ampm = ampm : ampm = '';
+    GM_getValue("defaultAMPM") ? ampm = ampm : ampm = '';
     switch (dateFormat) {
       // RETURN OPTIONS: (w_Sep / ww_Sep) + (m_Hyphen / m_Slash / mm_Hyphen / mm_Slash / mmm_Space / mmmm_Space) + (d_Comma / d_Hyphen / d_Slash / dd_Comma / dd_Hyphen / dd_Slash / ddd_Comma) +  (yy_Sep / yyyy_Sep) + (hr12 / hr24) + (min) + (sec) + (ampm)
       case 1: return ww_Sep + mmmm_Space + ddd_Comma + yyyy_Sep + hr12 + min + sec + space + ampm; // Sunday • March 1ˢᵗ, 2021 • 12:34 AM
@@ -134,21 +132,17 @@
 
   function defaultSeconds() {
     clearInterval(timer);
-    if (GM_getValue("defaultSecondsView")) {
-      span1.setAttribute('view-seconds', true);
-      span1.title = removeSeconds;
-    } else {
-      span1.removeAttribute('view-seconds');
-      span1.title = addSeconds;
-    }
+    if (GM_getValue("defaultSecondsView")) span1.setAttribute('view-seconds', true);
+    else span1.removeAttribute('view-seconds');
     span1.textContent = aDateTime(dateFormat);
+    span1.title = addRemoveSeconds + '\n' + addRemoveAMPM;
     setTimer();
   }
 
   function defaultDateTime() {
     clearInterval(timer);
     span1.hidden = !GM_getValue("defaultDateTimeView");
-    GM_getValue("defaultDateTimeView") ? button8.title = hideDateTime : button8.title = showDateTime;
+    button8.title = hideShowDateTime;
     defaultSeconds();
     span1.textContent = aDateTime(dateFormat);
   }
@@ -156,27 +150,30 @@
   function toggleDateTime() {
     span1.hidden = !span1.hidden;
     GM_setValue("defaultDateTimeView", span1.hidden);
-    if (span1.hidden) {
-      clearInterval(timer);
-      button8.title = showDateTime;
-    } else {
-      button8.title = hideDateTime;
-      span1.textContent = aDateTime(dateFormat);
-      setTimer();
-  } }
-
-  function toggleSeconds() {
-    clearInterval(timer);
-    if (span1.hasAttribute('view-seconds')) {
-      span1.removeAttribute('view-seconds');
-      span1.title = addSeconds;
-    } else {
-      span1.setAttribute('view-seconds', true);
-      span1.title = removeSeconds;
-    }
-    span1.textContent = aDateTime(dateFormat);
-    setTimer();
+    if (span1.hidden) clearInterval(timer);
+    else {span1.textContent = aDateTime(dateFormat); setTimer()}
+    button8.title = hideShowDateTime;
   }
+
+  function toggleSecondsAMPM(e) {
+    switch (e.button) {
+      case 0:
+        clearInterval(timer);
+        if (span1.hasAttribute('view-seconds')) span1.removeAttribute('view-seconds');
+        else span1.setAttribute('view-seconds', true);
+        span1.textContent = aDateTime(dateFormat);
+        span1.title = addRemoveSeconds + '\n' + addRemoveAMPM;
+        setTimer();
+        break;
+      case 1:
+        var bool = GM_getValue("defaultAMPM") !== true ? true : false;
+        GM_setValue("defaultAMPM", bool);
+        span1.textContent = aDateTime(dateFormat);
+        break;
+      case 2:
+        e.preventDefault();
+        break;
+  } }
 
   function onClose() {
     clearInterval(timer);
@@ -186,11 +183,12 @@
 
   if (!GM_getValue("defaultDateTimeView")) GM_setValue("defaultDateTimeView", false);
   if (!GM_getValue("defaultSecondsView")) GM_setValue("defaultSecondsView", false);
+  if (!GM_getValue("defaultAMPM")) GM_setValue("defaultAMPM", false);
 
   var div1 = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd > div'),
       div2 = $q('#gb > div'),
       div3 = $q('body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > div'),
-      span1 = $c('span', {id: 'dateTime', hidden: true, onclick: function() {toggleSeconds()}}),
+      span1 = $c('span', {id: 'dateTime', hidden: true, onmousedown: function(e) {toggleSecondsAMPM(e)}}),
       input1 = $q('body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.FPdoLc.lJ9FBc > center > input.gNO89b'),
       button1 = $c('button', {id: 'gCalendar', className: 'gBtn', textContent: 'Calendar', title: url1, style: 'background-image: url('+ icon1 +')', onclick: function() {window.open(url1, '_blank')}}),
       button2 = $c('button', {id: 'gMail', className: 'gBtn', textContent: 'Gmail', title: url2, style: 'background-image: url('+ icon2 +')', onclick: function() {window.open(url2, '_blank')}}),
@@ -214,10 +212,11 @@
   div3.insertBefore(input1, div3.firstChild);
   input1.id = 'gSearch';
 
+  span1.addEventListener('contextmenu', e => {e.preventDefault()});
   addEventListener('unload', function() {onClose()}, false);
 
   setTimeout(function() {
-    let lia = $q('#dEjpnf > li > a', true),
+    var lia = $q('#dEjpnf > li > a', true),
         num = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd > div > .gBtn', true),
         len = ($q('#gSearch').offsetWidth + $q('#Mses6b').offsetWidth) / 2,
         screenWidth = window.screen.width / 2,
@@ -229,9 +228,9 @@
         ost = (os1 + os2 + os3 + 30) + 'px',
         arr = [];
     div3.style.top = ost;
-    for (let i = 0; i < lia.length; i++) lia[i].setAttribute('target', '_blank');
-    for (let j = 0; j < num.length; j++) arr.push(num[j].offsetWidth);
-    let sum = arr.reduce(function(a, b) {return a + b}, 1),
+    for (var i = 0; i < lia.length; i++) lia[i].setAttribute('target', '_blank');
+    for (var j = 0; j < num.length; j++) arr.push(num[j].offsetWidth);
+    var sum = arr.reduce(function(a, b) {return a + b}, 1),
         buttonsWidth = sum / 2,
         fromLeft1 = Math.round(screenWidth - buttonsWidth - spacerCount) + 'px',
         fromLeft2 = Math.round(screenWidth - len - int) + 'px';

@@ -122,6 +122,7 @@
       case 7: return w_Sep + mm_Slash + dd_Slash + yyyy_Sep + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
       case 8: return;
       case 9: return;
+      default: return ww_Sep + mmmm_Space + ddd_Comma + yyyy_Sep + hr12 + min + sec + space + ampm; // Sunday • March 1ˢᵗ, 2021 • 12:34 AM
   } }
 
   function setTimer() {

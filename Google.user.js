@@ -134,15 +134,10 @@
   function onClose() {
     removeEventListener('unload', function() {onClose()}, false);
     clearInterval(timer);
-    GM_setValue('defaultDateTimeView', GM_getValue("defaultDateTimeView"));
-    GM_setValue('defaultSecondsView', GM_getValue("defaultSecondsView"));
-    GM_setValue('defaultAMPM', GM_getValue("defaultAMPM"));
   }
 
   function onOpen() {
-    clearInterval(timer);
-    if (GM_getValue('defaultDateTimeView')) defaultDateTime();
-    else span1.hidden = true;
+    GM_getValue('defaultDateTimeView') ? defaultDateTime() : span1.hidden = true;
   }
 
   function setTimer() {

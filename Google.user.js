@@ -127,7 +127,6 @@
 
   function defaultDateTime() {
     span1.hidden = false;
-    GM_getValue('defaultSecondsView') ? span1.setAttribute('view-seconds', true) : span1.removeAttribute('view-seconds');
     span1.textContent = aDateTime(dateFormat);
     setTimer();
   }
@@ -162,17 +161,17 @@
   }
 
   function toggleSecondsAMPM(e) {
+    let bool1, bool2;
     switch (e.button) {
       case 0:
-        if (GM_getValue('defaultSecondsView')) span1.removeAttribute('view-seconds');
-        else span1.setAttribute('view-seconds', true);
-        GM_setValue('defaultSecondsView', span1.hasAttribute('view-seconds'))
+        bool1 = GM_getValue('defaultSecondsView') !== true ? true : false;
+        GM_setValue('defaultSecondsView', bool1);
         span1.textContent = aDateTime(dateFormat);
         setTimer();
         break;
       case 1:
-        var bool = GM_getValue('defaultAMPM') !== true ? true : false;
-        GM_setValue('defaultAMPM', bool);
+        bool2 = GM_getValue('defaultAMPM') !== true ? true : false;
+        GM_setValue('defaultAMPM', bool2);
         span1.textContent = aDateTime(dateFormat);
   } }
 

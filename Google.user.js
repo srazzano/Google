@@ -140,7 +140,6 @@
   }
 
   function onOpen() {
-    removeEventListener('load', function() {onOpen()}, false);
     clearInterval(timer);
     if (GM_getValue('defaultDateTimeView')) defaultDateTime();
     else span1.hidden = true;
@@ -206,7 +205,6 @@
   div3.insertBefore(input1, div3.firstChild);
   input1.id = 'gSearch';
 
-  addEventListener('load', function() {onOpen()}, false);
   addEventListener('unload', function() {onClose()}, false);
 
   setTimeout(function() {
@@ -230,7 +228,8 @@
         fromLeft2 = Math.round(screenWidth - len - int) + 'px';
     div1.style.marginLeft = fromLeft1;
     div3.style.left = fromLeft2;
-    $q('#gb > div > div.gb_Se > a').click();
+    if ($q('#gb > div > div.gb_Se > a')) $q('#gb > div > div.gb_Se > a').click();
+    onOpen();
   }, 100);
 
   GM_addStyle(''+

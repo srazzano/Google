@@ -22,7 +22,7 @@
         pm = 'PM',
         buttonSpacer = '14px',
         hideShowDateTime = 'Left-click to 𝐇𝐈𝐃𝐄/𝐒𝐇𝐎𝐖 𝐃𝐚𝐭𝐞/𝐓𝐢𝐦𝐞',
-        addRemoveSecondsAMPM = '𝐃𝐚𝐭𝐞/𝐓𝐢𝐦𝐞\n\u2022 Left-click to 𝐀𝐃𝐃/𝐑𝐄𝐌𝐎𝐕𝐄 :𝐬𝐞𝐜𝐨𝐧𝐝𝐬\n\u2022 Middle-click to 𝐀𝐃𝐃/𝐑𝐄𝐌𝐎𝐕𝐄 AM/PM',
+        addRemoveSecondsAMPM = '𝐃𝐚𝐭𝐞/𝐓𝐢𝐦𝐞\n• Left-click to 𝐀𝐃𝐃/𝐑𝐄𝐌𝐎𝐕𝐄 :𝐬𝐞𝐜𝐨𝐧𝐝𝐬\n• Middle-click to 𝐀𝐃𝐃/𝐑𝐄𝐌𝐎𝐕𝐄 AM/PM',
         DayNameAbbr = 'Sun.,Mon.,Tue.,Wed.,Thu.,Fri.,Sat.',
         DayName = 'Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday',
         MonthNameAbbr = 'Jan.,Feb.,Mar.,Apr.,May,Jun.,Jul.,Aug.,Sep.,Oct.,Nov.,Dec.',
@@ -108,7 +108,7 @@
     min < 10 ? min = ':0' + min : min = ':' + min;
     sec < 10 ? sec = ':0' + sec : sec = ':' + sec;
     hr < 12 ? ampm = am : ampm = pm;
-    GM_getValue("defaultSecondsView") ? sec = sec : sec = '';
+    GM_getValue('defaultSecondsView') ? sec = sec : sec = '';
     GM_getValue('defaultAMPM') ? ampm = ampm : ampm = '';
     switch (dateFormat) {
       // RETURN OPTIONS: (w_Sep / ww_Sep) + (m_Hyphen / m_Slash / mm_Hyphen / mm_Slash / mmm_Space / mmmm_Space) + (d_Comma / d_Hyphen / d_Slash / dd_Comma / dd_Hyphen / dd_Slash / ddd_Comma) +  (yy_Sep / yyyy_Sep) + (hr12 / hr24) + (min) + (sec) + (ampm)
@@ -219,10 +219,11 @@
     let sum = arr.reduce(function(a, b) {return a + b}, 1),
         buttonsWidth = sum / 2,
         fromLeft1 = Math.round(screenWidth - buttonsWidth - spacerCount) + 'px',
-        fromLeft2 = Math.round(screenWidth - len - int) + 'px';
+        fromLeft2 = Math.round(screenWidth - len - int) + 'px',
+        signIn = $q('#gb > div > div.gb_Se > a');
     div1.style.marginLeft = fromLeft1;
     div3.style.left = fromLeft2;
-    if ($q('#gb > div > div.gb_Se > a')) $q('#gb > div > div.gb_Se > a').click();
+    if (signIn) signIn.click();
     onOpen();
   }, 100);
 

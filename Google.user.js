@@ -73,7 +73,7 @@
     return document.querySelector(el);
   }
 
-  function aDateTime(dateFormat) {
+  function aDateTime(int) {
     let date = new Date(),
         dy = date.getDay(),
         mth = date.getMonth(),
@@ -109,8 +109,8 @@
     hr < 12 ? ampm = am : ampm = pm;
     GM_getValue('defaultSecondsView') ? sec = sec : sec = '';
     GM_getValue('defaultAMPM') ? ampm = ampm : ampm = '';
-    switch (GM_getValue('dateFormat')) {
-      // RETURN OPTIONS: (w_Sep / ww_Sep) + (m_Hyphen / m_Slash / mm_Hyphen / mm_Slash / mmm_Space / mmmm_Space) + (d_Comma / d_Hyphen / d_Slash / dd_Comma / dd_Hyphen / dd_Slash / ddd_Comma) +  (yy_Sep / yyyy_Sep) + (hr12 / hr24) + (min) + (sec) + (ampm)
+    switch (int) {
+      // RETURN OPTIONS: (w_Bul / ww_Bul) + (m_Hyphen / m_Slash / mm_Hyphen / mm_Slash / mmm_Space / mmmm_Space) + (d_Comma / d_Hyphen / d_Slash / dd_Comma / dd_Hyphen / dd_Slash / ddd_Comma) +  (yy_Bul / yyyy_Bul) + (hr12 / hr24) + (min) + (sec) + (ampm)
       case 1: return ww_Bul + mmmm_Space + ddd_Comma + yyyy_Bul + hr12 + min + sec + space + ampm; // Sunday • March 1ˢᵗ, 2021 • 12:34 AM
       case 2: return w_Bul + mmm_Space + d_Comma + yyyy_Bul + hr12 + min + sec + space + ampm; // Sun. • Mar. 1, 2021 • 12:34 AM
       case 3: return w_Bul + mmm_Space + dd_Comma + yyyy_Bul + hr12 + min + sec + space + ampm; // Sun. • Mar. 01, 2021 • 12:34 AM
@@ -228,10 +228,11 @@
     let sum = arr.reduce(function(a, b) {return a + b}, 1),
         buttonsWidth = sum / 2,
         fromLeft1 = Math.round(screenWidth - buttonsWidth - spacerCount) + 'px',
-        fromLeft2 = Math.round(screenWidth - len - int) + 'px';
+        fromLeft2 = Math.round(screenWidth - len - int) + 'px',
+        signIn = $q('#gb > div > div.gb_Se > a');
     div1.style.marginLeft = fromLeft1;
     div3.style.left = fromLeft2;
-    if ($q('#gb > div > div.gb_Se > a')) $q('#gb > div > div.gb_Se > a').click();
+    if (signIn) signIn.click();
     onOpen();
   }, 100);
 

@@ -15,17 +15,16 @@
 
   'use strict';
 
-  const dateFormat = 1,
-        timerLong = 15000,
+  const timerLong = 15000,
         timerShort = 500,
         am = 'AM',
         pm = 'PM',
         buttonSpacer = '14px',
         hideShowDateTime = '• Left-click to 𝐇𝐈𝐃𝐄/𝐒𝐇𝐎𝐖 Date/Time\n• Middle-click to change Date/Time format',
         addRemoveSecondsAMPM = '𝐃𝐚𝐭𝐞/𝐓𝐢𝐦𝐞\n• Left-click to 𝐇𝐈𝐃𝐄/𝐒𝐇𝐎𝐖 :𝐬𝐞𝐜𝐨𝐧𝐝𝐬\n• Middle-click to 𝐇𝐈𝐃𝐄/𝐒𝐇𝐎𝐖 AM/PM',
+        bullet = '•',
         comma = ',',
         hyphen = '-',
-        separator = '•',
         slash = '/',
         space = ' ',
         DayNameAbbr = 'Sun.,Mon.,Tue.,Wed.,Thu.,Fri.,Sat.',
@@ -83,8 +82,8 @@
         hr = date.getHours(),
         min = date.getMinutes(),
         sec = date.getSeconds(),
-        w_Sep = daynameabbr[dy] + space + separator + space,
-        ww_Sep = dayname[dy] + space + separator + space,
+        w_Bul = daynameabbr[dy] + space + bullet + space,
+        ww_Bul = dayname[dy] + space + bullet + space,
         m_Hyphen = monthnum[mth] + hyphen,
         m_Slash = monthnum[mth] + slash,
         mm_Hyphen = monthno[mth] + hyphen,
@@ -98,8 +97,8 @@
         dd_Hyphen = dayno[dt] + hyphen,
         dd_Slash = dayno[dt] + slash,
         ddd_Comma = dayord[dt] + comma + space,
-        yy_Sep = yr - 2000 + space + separator + space,
-        yyyy_Sep = yr + space + separator + space,
+        yy_Bul = yr - 2000 + space + bullet + space,
+        yyyy_Bul = yr + space + bullet + space,
         hr12, hr24, ampm;
     if (hr > 12) {hr12 = hr - 12; hr24 = hr}
     else {hr12 = hr; hr24 = hr}
@@ -110,18 +109,18 @@
     hr < 12 ? ampm = am : ampm = pm;
     GM_getValue('defaultSecondsView') ? sec = sec : sec = '';
     GM_getValue('defaultAMPM') ? ampm = ampm : ampm = '';
-    switch (dateFormat) {
+    switch (GM_getValue('dateFormat')) {
       // RETURN OPTIONS: (w_Sep / ww_Sep) + (m_Hyphen / m_Slash / mm_Hyphen / mm_Slash / mmm_Space / mmmm_Space) + (d_Comma / d_Hyphen / d_Slash / dd_Comma / dd_Hyphen / dd_Slash / ddd_Comma) +  (yy_Sep / yyyy_Sep) + (hr12 / hr24) + (min) + (sec) + (ampm)
-      case 1: return ww_Sep + mmmm_Space + ddd_Comma + yyyy_Sep + hr12 + min + sec + space + ampm; // Sunday • March 1ˢᵗ, 2021 • 12:34 AM
-      case 2: return w_Sep + mmm_Space + d_Comma + yyyy_Sep + hr12 + min + sec + space + ampm; // Sun. • Mar. 1, 2021 • 12:34 AM
-      case 3: return w_Sep + mmm_Space + dd_Comma + yyyy_Sep + hr12 + min + sec + space + ampm; // Sun. • Mar. 01, 2021 • 12:34 AM
-      case 4: return w_Sep + m_Hyphen + d_Hyphen + yyyy_Sep + hr12 + min + sec + space + ampm; // Sun. • 3-1-2021 • 12:34 AM
-      case 5: return w_Sep + mm_Hyphen + dd_Hyphen + yyyy_Sep + hr12 + min + sec + space + ampm; // Sun. • 03-01-2021 • 12:34 AM
-      case 6: return w_Sep + m_Slash + d_Slash + yyyy_Sep + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
-      case 7: return w_Sep + mm_Slash + dd_Slash + yyyy_Sep + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
+      case 1: return ww_Bul + mmmm_Space + ddd_Comma + yyyy_Bul + hr12 + min + sec + space + ampm; // Sunday • March 1ˢᵗ, 2021 • 12:34 AM
+      case 2: return w_Bul + mmm_Space + d_Comma + yyyy_Bul + hr12 + min + sec + space + ampm; // Sun. • Mar. 1, 2021 • 12:34 AM
+      case 3: return w_Bul + mmm_Space + dd_Comma + yyyy_Bul + hr12 + min + sec + space + ampm; // Sun. • Mar. 01, 2021 • 12:34 AM
+      case 4: return w_Bul + m_Hyphen + d_Hyphen + yyyy_Bul + hr12 + min + sec + space + ampm; // Sun. • 3-1-2021 • 12:34 AM
+      case 5: return w_Bul + mm_Hyphen + dd_Hyphen + yyyy_Bul + hr12 + min + sec + space + ampm; // Sun. • 03-01-2021 • 12:34 AM
+      case 6: return w_Bul + m_Slash + d_Slash + yyyy_Bul + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
+      case 7: return w_Bul + mm_Slash + dd_Slash + yyyy_Bul + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
       case 8: return;
       case 9: return;
-      default: return ww_Sep + mmmm_Space + ddd_Comma + yyyy_Sep + hr12 + min + sec + space + ampm; // Sunday • March 1ˢᵗ, 2021 • 12:34 AM
+      default: return ww_Bul + mmmm_Space + ddd_Comma + yyyy_Bul + hr12 + min + sec + space + ampm; // Sunday • March 1ˢᵗ, 2021 • 12:34 AM
   } }
 
   function defaultDateTime() {
@@ -153,7 +152,7 @@
         span1.hidden = bool;
         GM_setValue('defaultDateTimeView', !bool);
         if (bool) clearInterval(timer);
-        else {span1.textContent = aDateTime(dateFormat); setTimer()}
+        else {span1.textContent = aDateTime(GM_getValue('dateFormat')); setTimer()}
         break;
       case 1:
         int = GM_getValue('dateFormat') + 1;

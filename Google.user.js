@@ -20,7 +20,7 @@
         am = 'AM',
         pm = 'PM',
         buttonSpacer = '14px',
-        hideShowDateTime = '• Left-click to 𝐇𝐈𝐃𝐄/𝐒𝐇𝐎𝐖 Date/Time\n• Middle-click to change Date/Time format',
+        hideShowDateTime = '𝐃𝐚𝐭𝐞/𝐓𝐢𝐦𝐞\n• Left-click to 𝐇𝐈𝐃𝐄/𝐒𝐇𝐎𝐖 Date/Time\n• Middle-click to change Date/Time format',
         addRemoveSecondsAMPM = '𝐃𝐚𝐭𝐞/𝐓𝐢𝐦𝐞\n• Left-click to 𝐇𝐈𝐃𝐄/𝐒𝐇𝐎𝐖 :𝐬𝐞𝐜𝐨𝐧𝐝𝐬\n• Middle-click to 𝐇𝐈𝐃𝐄/𝐒𝐇𝐎𝐖 AM/PM',
         bullet = '•',
         comma = ',',
@@ -130,7 +130,7 @@
   }
 
   function onClose() {
-    removeEventListener('unload', function() {onClose()}, false);
+    removeEventListener('unload', function() {onClose()});
     clearInterval(timer);
   }
 
@@ -208,7 +208,7 @@
   div3.insertBefore(input1, div3.firstChild);
   input1.id = 'gSearch';
 
-  addEventListener('unload', function() {onClose()}, false);
+  addEventListener('unload', function() {onClose()});
 
   setTimeout(function() {
     let lia = $q('#dEjpnf > li > a', true),

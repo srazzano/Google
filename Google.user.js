@@ -21,8 +21,13 @@
         am = 'AM',
         pm = 'PM',
         buttonSpacer = '14px',
-        hideShowDateTime = 'Left-click to 𝐇𝐈𝐃𝐄/𝐒𝐇𝐎𝐖 𝐃𝐚𝐭𝐞/𝐓𝐢𝐦𝐞',
-        addRemoveSecondsAMPM = '𝐃𝐚𝐭𝐞/𝐓𝐢𝐦𝐞\n• Left-click to 𝐀𝐃𝐃/𝐑𝐄𝐌𝐎𝐕𝐄 :𝐬𝐞𝐜𝐨𝐧𝐝𝐬\n• Middle-click to 𝐀𝐃𝐃/𝐑𝐄𝐌𝐎𝐕𝐄 AM/PM',
+        hideShowDateTime = '• Left-click to 𝐇𝐈𝐃𝐄/𝐒𝐇𝐎𝐖 Date/Time\n• Middle-click to change Date/Time format',
+        addRemoveSecondsAMPM = '𝐃𝐚𝐭𝐞/𝐓𝐢𝐦𝐞\n• Left-click to 𝐇𝐈𝐃𝐄/𝐒𝐇𝐎𝐖 :𝐬𝐞𝐜𝐨𝐧𝐝𝐬\n• Middle-click to 𝐇𝐈𝐃𝐄/𝐒𝐇𝐎𝐖 AM/PM',
+        comma = ',',
+        hyphen = '-',
+        separator = '•',
+        slash = '/',
+        space = ' ',
         DayNameAbbr = 'Sun.,Mon.,Tue.,Wed.,Thu.,Fri.,Sat.',
         DayName = 'Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday',
         MonthNameAbbr = 'Jan.,Feb.,Mar.,Apr.,May,Jun.,Jul.,Aug.,Sep.,Oct.,Nov.,Dec.',
@@ -32,11 +37,6 @@
 		    DayNum = '"",1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31',
         DayNo = '"",01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31',
         DayOrd = '"",1ˢᵗ,2ⁿᵈ,3ʳᵈ,4ᵗʰ,5ᵗʰ,6ᵗʰ,7ᵗʰ,8ᵗʰ,9ᵗʰ,10ᵗʰ,11ᵗʰ,12ᵗʰ,13ᵗʰ,14ᵗʰ,15ᵗʰ,16ᵗʰ,17ᵗʰ,18ᵗʰ,19ᵗʰ,20ᵗʰ,21ˢᵗ,22ⁿᵈ,23ʳᵈ,24ᵗʰ,25ᵗʰ,26ᵗʰ,27ᵗʰ,28ᵗʰ,29ᵗʰ,30ᵗʰ,31ˢᵗ',
-        comma = ',',
-        hyphen = '-',
-        separator = '•',
-        slash = '/',
-        space = ' ',
         daynameabbr = DayNameAbbr.split(','),
         dayname = DayName.split(','),
         monthnameabbr = MonthNameAbbr.split(','),
@@ -126,7 +126,7 @@
 
   function defaultDateTime() {
     span1.hidden = false;
-    span1.textContent = aDateTime(dateFormat);
+    span1.textContent = aDateTime(GM_getValue('dateFormat'));
     setTimer();
   }
 
@@ -141,17 +141,26 @@
 
   function setTimer() {
     clearInterval(timer);
-    if (GM_getValue('defaultSecondsView')) timer = setInterval(function() {span1.textContent = aDateTime(dateFormat)}, timerShort);
-    else timer = setInterval(function() {span1.textContent = aDateTime(dateFormat)}, timerLong);
+    if (GM_getValue('defaultSecondsView')) timer = setInterval(function() {span1.textContent = aDateTime(GM_getValue('dateFormat'))}, timerShort);
+    else timer = setInterval(function() {span1.textContent = aDateTime(GM_getValue('dateFormat'))}, timerLong);
   }
 
-  function toggleDateTime() {
-    let bool = span1.hidden !== true ? true : false;
-    span1.hidden = bool;
-    GM_setValue('defaultDateTimeView', !bool);
-    if (bool) clearInterval(timer);
-    else {span1.textContent = aDateTime(dateFormat); setTimer()}
-  }
+  function toggleDateTime(e) {
+    let bool, int;
+    switch (e.button) {
+      case 0:
+        bool = span1.hidden !== true ? true : false;
+        span1.hidden = bool;
+        GM_setValue('defaultDateTimeView', !bool);
+        if (bool) clearInterval(timer);
+        else {span1.textContent = aDateTime(dateFormat); setTimer()}
+        break;
+      case 1:
+        int = GM_getValue('dateFormat') + 1;
+        int < 8 ? GM_setValue('dateFormat', int) : GM_setValue('dateFormat', 1);
+        span1.textContent = aDateTime(GM_getValue('dateFormat'));
+        setTimer();
+  } }
 
   function toggleSecondsAMPM(e) {
     let bool1, bool2;
@@ -159,18 +168,19 @@
       case 0:
         bool1 = GM_getValue('defaultSecondsView') !== true ? true : false;
         GM_setValue('defaultSecondsView', bool1);
-        span1.textContent = aDateTime(dateFormat);
+        span1.textContent = aDateTime(GM_getValue('dateFormat'));
         setTimer();
         break;
       case 1:
         bool2 = GM_getValue('defaultAMPM') !== true ? true : false;
         GM_setValue('defaultAMPM', bool2);
-        span1.textContent = aDateTime(dateFormat);
+        span1.textContent = aDateTime(GM_getValue('dateFormat'));
   } }
 
   if (!GM_getValue('defaultDateTimeView')) GM_setValue('defaultDateTimeView', false);
   if (!GM_getValue('defaultSecondsView')) GM_setValue('defaultSecondsView', false);
   if (!GM_getValue('defaultAMPM')) GM_setValue('defaultAMPM', false);
+  if (!GM_getValue('dateFormat')) GM_setValue('dateFormat', 1);
 
   var div1 = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd > div'),
       div2 = $q('#gb > div'),
@@ -184,7 +194,7 @@
       button5 = $c('button', {id: 'gTranslate', className: 'gBtn', textContent: 'Translate', title: url5, style: 'background-image: url('+ icon5 +')', onclick: function() {window.open(url5, '_blank')}}),
       button6 = $c('button', {id: 'gYouTube', className: 'gBtn', textContent: 'YouTube', title: url6, style: 'background-image: url('+ icon6 +')', onclick: function() {window.open(url6, '_blank')}}),
       button7 = $c('button', {id: 'gYouTubeTV', className: 'gBtn', textContent: 'YouTube TV', title: url7, style: 'background-image: url('+ icon7 +')', onclick: function() {window.open(url7, '_blank')}}),
-      button8 = $c('button', {id: 'gClock', style: 'background-image: url('+ icon8 +')', title: hideShowDateTime, onclick: function() {toggleDateTime()}}),
+      button8 = $c('button', {id: 'gClock', style: 'background-image: url('+ icon8 +')', title: hideShowDateTime, onmousedown: function(e) {toggleDateTime(e)}}),
       timer;
 
   div1.appendChild(button1);
@@ -219,11 +229,10 @@
     let sum = arr.reduce(function(a, b) {return a + b}, 1),
         buttonsWidth = sum / 2,
         fromLeft1 = Math.round(screenWidth - buttonsWidth - spacerCount) + 'px',
-        fromLeft2 = Math.round(screenWidth - len - int) + 'px',
-        signIn = $q('#gb > div > div.gb_Se > a');
+        fromLeft2 = Math.round(screenWidth - len - int) + 'px';
     div1.style.marginLeft = fromLeft1;
     div3.style.left = fromLeft2;
-    if (signIn) signIn.click();
+    if ($q('#gb > div > div.gb_Se > a')) $q('#gb > div > div.gb_Se > a').click();
     onOpen();
   }, 100);
 
@@ -268,9 +277,6 @@
     '  border-radius: 50% !important;'+
     '  height: 40px !important;'+
     '  width: 40px !important;'+
-    '}'+
-    '#gClock:hover {'+
-    '  background-color: #FFF !important;'+
     '}'+
     '#dateTime:not(#f) {'+
     '  border-radius: 4px !important;'+

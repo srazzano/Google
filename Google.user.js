@@ -20,13 +20,14 @@
         am = 'AM',
         pm = 'PM',
         buttonSpacer = '14px',
-        hideShowDateTime = '𝐃𝐚𝐭𝐞/𝐓𝐢𝐦𝐞\n• Left-click to 𝐇𝐈𝐃𝐄/𝐒𝐇𝐎𝐖 Date/Time\n• Middle-click to change Date/Time format',
-        addRemoveSecondsAMPM = '𝐃𝐚𝐭𝐞/𝐓𝐢𝐦𝐞\n• Left-click to 𝐇𝐈𝐃𝐄/𝐒𝐇𝐎𝐖 :𝐬𝐞𝐜𝐨𝐧𝐝𝐬\n• Middle-click to 𝐇𝐈𝐃𝐄/𝐒𝐇𝐎𝐖 AM/PM',
+        hideShowDateTime = '𝐃𝐚𝐭𝐞/𝐓𝐢𝐦𝐞\n• Left-click to Hide/Show Date/Time',
+        addRemoveSecondsAMPM = '𝐃𝐚𝐭𝐞/𝐓𝐢𝐦𝐞\n• Left-click to Hide/Show :seconds\n• Shift + Left-click to Hide/Show AM/PM\n• Ctrl + Left-click to change Date format',
         bullet = '•',
         comma = ',',
         hyphen = '-',
         slash = '/',
         space = ' ',
+        star = '★',
         DayNameAbbr = 'Sun.,Mon.,Tue.,Wed.,Thu.,Fri.,Sat.',
         DayName = 'Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday',
         MonthNameAbbr = 'Jan.,Feb.,Mar.,Apr.,May,Jun.,Jul.,Aug.,Sep.,Oct.,Nov.,Dec.',
@@ -145,35 +146,31 @@
   }
 
   function toggleDateTime(e) {
-    let bool, int;
-    switch (e.button) {
-      case 0:
-        bool = span1.hidden !== true ? true : false;
-        span1.hidden = bool;
-        GM_setValue('defaultDateTimeView', !bool);
-        if (bool) clearInterval(timer);
-        else {span1.textContent = aDateTime(GM_getValue('dateFormat')); setTimer()}
-        break;
-      case 1:
-        int = GM_getValue('dateFormat') + 1;
-        int < 8 ? GM_setValue('dateFormat', int) : GM_setValue('dateFormat', 1);
-        span1.textContent = aDateTime(GM_getValue('dateFormat'));
-        setTimer();
+    let bool;
+    if (!e.shiftKey && !e.ctrlKey && !e.altKey && e.button === 0) {
+      bool = span1.hidden !== true ? true : false;
+      span1.hidden = bool;
+      GM_setValue('defaultDateTimeView', !bool);
+      if (bool) clearInterval(timer);
+      else {span1.textContent = aDateTime(GM_getValue('dateFormat')); setTimer()}
   } }
 
-  function toggleSecondsAMPM(e) {
-    let bool1, bool2;
-    switch (e.button) {
-      case 0:
-        bool1 = GM_getValue('defaultSecondsView') !== true ? true : false;
-        GM_setValue('defaultSecondsView', bool1);
-        span1.textContent = aDateTime(GM_getValue('dateFormat'));
-        setTimer();
-        break;
-      case 1:
-        bool2 = GM_getValue('defaultAMPM') !== true ? true : false;
-        GM_setValue('defaultAMPM', bool2);
-        span1.textContent = aDateTime(GM_getValue('dateFormat'));
+  function toggleSecondsAMPMFormat(e) {
+    let bool, bool1, bool2, int, formatCnt = 7; // Change formatCnt if adding or removing a date format
+    if (!e.shiftKey && !e.ctrlKey && !e.altKey && e.button === 0) {
+      bool1 = GM_getValue('defaultSecondsView') !== true ? true : false;
+      GM_setValue('defaultSecondsView', bool1);
+      span1.textContent = aDateTime(GM_getValue('dateFormat'));
+      setTimer();
+    } else if (e.shiftKey && !e.ctrlKey && !e.altKey && e.button === 0) {
+      bool2 = GM_getValue('defaultAMPM') !== true ? true : false;
+      GM_setValue('defaultAMPM', bool2);
+      span1.textContent = aDateTime(GM_getValue('dateFormat'));
+    } else if (!e.shiftKey && e.ctrlKey && !e.altKey && e.button === 0) {
+      int = GM_getValue('dateFormat') + 1;
+      int < formatCnt + 1 ? GM_setValue('dateFormat', int) : GM_setValue('dateFormat', 1);
+      span1.textContent = aDateTime(GM_getValue('dateFormat'));
+      setTimer();
   } }
 
   if (!GM_getValue('defaultDateTimeView')) GM_setValue('defaultDateTimeView', false);
@@ -184,7 +181,7 @@
   var div1 = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd > div'),
       div2 = $q('#gb > div'),
       div3 = $q('body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > div'),
-      span1 = $c('span', {id: 'dateTime', title: addRemoveSecondsAMPM, onmousedown: function(e) {toggleSecondsAMPM(e)}}),
+      span1 = $c('span', {id: 'dateTime', title: addRemoveSecondsAMPM, onmousedown: function(e) {toggleSecondsAMPMFormat(e)}}),
       input1 = $q('body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.FPdoLc.lJ9FBc > center > input.gNO89b'),
       button1 = $c('button', {id: 'gCalendar', className: 'gBtn', textContent: 'Calendar', title: url1, style: 'background-image: url('+ icon1 +')', onclick: function() {window.open(url1, '_blank')}}),
       button2 = $c('button', {id: 'gMail', className: 'gBtn', textContent: 'Gmail', title: url2, style: 'background-image: url('+ icon2 +')', onclick: function() {window.open(url2, '_blank')}}),
@@ -215,8 +212,8 @@
         num = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd > div > .gBtn', true),
         len = ($q('#gSearch').offsetWidth + $q('#Mses6b').offsetWidth) / 2,
         screenWidth = window.screen.width / 2,
-        int = parseInt(buttonSpacer.match('\\d+') / 2),
-        spacerCount = (num.length - 1) * int,
+        spacerWidth = parseInt(buttonSpacer.match('\\d+') / 2),
+        spacerCount = (num.length - 1) * spacerWidth,
         os1 = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd').offsetHeight,
         os2 = $q('body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ').offsetHeight,
         os3 = $q('body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.RNNXgb').offsetHeight,
@@ -228,7 +225,7 @@
     let sum = arr.reduce(function(a, b) {return a + b}, 1),
         buttonsWidth = sum / 2,
         fromLeft1 = Math.round(screenWidth - buttonsWidth - spacerCount) + 'px',
-        fromLeft2 = Math.round(screenWidth - len - int) + 'px',
+        fromLeft2 = Math.round(screenWidth - len - spacerWidth) + 'px',
         signIn = $q('#gb > div > div.gb_Se > a');
     div1.style.marginLeft = fromLeft1;
     div3.style.left = fromLeft2;
@@ -262,7 +259,7 @@
     '  background: transparent !important;'+
     '  color: #CCC !important;'+
     '}'+
-    'body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd a:hover, body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd a:hover > svg{'+
+    'body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd a:hover, body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd a:hover > svg {'+
     '  background-color: #FFF !important;'+
     '  color: #000 !important;'+
     '}'+
@@ -270,19 +267,41 @@
     '  font-size: 16px !important;'+
     '  padding-right: 20px !important;'+
 				'}'+
+    '#gbwa {'+
+    '  padding: 0 !important;'+
+    '  width: 32px !important;'+
+    '}'+
+    '#gbwa > div > a {'+
+    '  background-color: #303030 !important;'+
+    '  border: 1px solid #CCC !important;'+
+    '  border-radius: 50% !important;'+
+    '  box-shadow: 1px 0px 4px #000 inset !important;'+
+    '}'+
+    '#gbwa > div > a:hover {'+
+    '  background-color: #444 !important;'+
+    '  border: 1px solid #000 !important;'+
+    '}'+
+    '#gbwa > div > a:hover > svg {'+
+    '  background-color: #444 !important;'+
+    '}'+
+    '#gb > div > div.gb_Se > div.gb_Na.gb_bd.gb_mg.gb_h.gb_Af > div > a {'+
+    '  margin-left: '+ buttonSpacer +' !important;'+
+    '  width: 32px !important;'+
+    '}'+
     '#gClock {'+
     '  background-repeat: no-repeat !important;'+
     '  background-position: center !important;'+
     '  cursor: pointer !important;'+
     '  border-radius: 50% !important;'+
     '  height: 40px !important;'+
-    '  width: 40px !important;'+
+    '  margin-left: '+ buttonSpacer +' !important;'+
+    '  width: 32px !important;'+
     '}'+
     '#dateTime:not(#f) {'+
     '  border-radius: 4px !important;'+
     '  color: #FFF !important;'+
     '  font: 16px monospace !important;'+
-    '  margin: 0 10px !important;'+
+    '  margin-left: '+ buttonSpacer +' !important;'+
     '  padding: 5px 6px 6px 6px !important;'+
     '  min-width: 100px !important;'+
     '}'+
@@ -316,11 +335,6 @@
     'body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf {'+
     '  padding: 0 20px !important;'+
     '}'+
-    '#gSearch, #Mses6b {'+
-    '  border-radius: 4px !important;'+
-    '  padding: 9px 16px !important;'+
-    '  text-decoration: none !important;'+
-    '}'+
     '.gBtn, #dateTime, #gSearch, #Mses6b, center > input, #gb > div > div.gb_0a.gb_E.gb_k.gb_1a.gb_la .gb_Pe {'+
     '  background-color: #303030 !important;'+
     '  border: 1px solid #CCC !important;'+
@@ -347,6 +361,11 @@
     'body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > div {'+
     '  display: flex !important;'+
     '  position: absolute !important;'+
+    '}'+
+    '#gSearch, #Mses6b {'+
+    '  border-radius: 4px !important;'+
+    '  padding: 9px 16px !important;'+
+    '  text-decoration: none !important;'+
     '}'+
     '#gSearch {'+
     '  margin-right: '+ buttonSpacer +' !important;'+

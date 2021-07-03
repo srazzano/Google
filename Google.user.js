@@ -22,12 +22,6 @@
         buttonSpacer = '14px',
         hideShowDateTime = '𝐃𝐚𝐭𝐞/𝐓𝐢𝐦𝐞\n• Left-click to Hide/Show Date/Time',
         addRemoveSecondsAMPM = '𝐃𝐚𝐭𝐞/𝐓𝐢𝐦𝐞\n• Left-click to Hide/Show :seconds\n• Shift + Left-click to Hide/Show AM/PM\n• Ctrl + Left-click to change Date format',
-        bullet = '•',
-        comma = ',',
-        hyphen = '-',
-        slash = '/',
-        space = ' ',
-        star = '★',
         DayNameAbbr = 'Sun.,Mon.,Tue.,Wed.,Thu.,Fri.,Sat.',
         DayName = 'Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday',
         MonthNameAbbr = 'Jan.,Feb.,Mar.,Apr.,May,Jun.,Jul.,Aug.,Sep.,Oct.,Nov.,Dec.',
@@ -83,24 +77,20 @@
         hr = date.getHours(),
         min = date.getMinutes(),
         sec = date.getSeconds(),
-        w_Bul = daynameabbr[dy] + space + bullet + space,
-        ww_Bul = dayname[dy] + space + bullet + space,
-        m_Hyphen = monthnum[mth] + hyphen,
-        m_Slash = monthnum[mth] + slash,
-        mm_Hyphen = monthno[mth] + hyphen,
-        mm_Slash = monthno[mth] + slash,
-        mmm_Space = monthnameabbr[mth] + space,
-        mmmm_Space = monthname[mth] + space,
-        d_Comma = daynum[dt] + comma + space,
-        d_Hyphen = daynum[dt] + hyphen,
-        d_Slash = daynum[dt] + slash,
-        dd_Comma = dayno[dt] + comma + space,
-        dd_Hyphen = dayno[dt] + hyphen,
-        dd_Slash = dayno[dt] + slash,
-        ddd_Comma = dayord[dt] + comma + space,
-        yy_Bul = yr - 2000 + space + bullet + space,
-        yyyy_Bul = yr + space + bullet + space,
-        hr12, hr24, ampm;
+        w = daynameabbr[dy],
+        ww = dayname[dy],
+        m = monthnum[mth],
+        mm = monthno[mth],
+        mmm = monthnameabbr[mth],
+        mmmm = monthname[mth],
+        d = daynum[dt],
+        dd = dayno[dt],
+        ddd = dayord[dt],
+        yy = yr - 2000,
+        yyyy = yr,
+        hr12, hr24, ampm,
+        bullet = '•', comma = ',', hyphen = '-', slash = '/', space = ' ', star = '★',
+        customFormat = "Add custom format in script";
     if (hr > 12) {hr12 = hr - 12; hr24 = hr}
     else {hr12 = hr; hr24 = hr}
     if (hr < 10) {hr12 = hr; hr24 = '0' + hr}
@@ -111,17 +101,16 @@
     GM_getValue('defaultSecondsView') ? sec = sec : sec = '';
     GM_getValue('defaultAMPM') ? ampm = ampm : ampm = '';
     switch (int) {
-      // RETURN OPTIONS: (w_Bul / ww_Bul) + (m_Hyphen / m_Slash / mm_Hyphen / mm_Slash / mmm_Space / mmmm_Space) + (d_Comma / d_Hyphen / d_Slash / dd_Comma / dd_Hyphen / dd_Slash / ddd_Comma) +  (yy_Bul / yyyy_Bul) + (hr12 / hr24) + (min) + (sec) + (ampm)
-      case 1: return ww_Bul + mmmm_Space + ddd_Comma + yyyy_Bul + hr12 + min + sec + space + ampm; // Sunday • March 1ˢᵗ, 2021 • 12:34 AM
-      case 2: return w_Bul + mmm_Space + d_Comma + yyyy_Bul + hr12 + min + sec + space + ampm; // Sun. • Mar. 1, 2021 • 12:34 AM
-      case 3: return w_Bul + mmm_Space + dd_Comma + yyyy_Bul + hr12 + min + sec + space + ampm; // Sun. • Mar. 01, 2021 • 12:34 AM
-      case 4: return w_Bul + m_Hyphen + d_Hyphen + yyyy_Bul + hr12 + min + sec + space + ampm; // Sun. • 3-1-2021 • 12:34 AM
-      case 5: return w_Bul + mm_Hyphen + dd_Hyphen + yyyy_Bul + hr12 + min + sec + space + ampm; // Sun. • 03-01-2021 • 12:34 AM
-      case 6: return w_Bul + m_Slash + d_Slash + yyyy_Bul + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
-      case 7: return w_Bul + mm_Slash + dd_Slash + yyyy_Bul + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
-      case 8: return;
-      case 9: return;
-      default: return ww_Bul + mmmm_Space + ddd_Comma + yyyy_Bul + hr12 + min + sec + space + ampm; // Sunday • March 1ˢᵗ, 2021 • 12:34 AM
+      // RETURN OPTIONS: (w / ww) + (m / mm / mmm / mmmm) + (d / dd / ddd) +  (yy / yyyy) + (hr12 / hr24) + (min) + (sec) + (ampm)
+      case 1: return ww + space + bullet + space + mmmm + space + ddd + comma + space + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sunday • March 1ˢᵗ, 2021 • 12:34 AM
+      case 2: return w + space + bullet + space + mmm + space + d + comma + space + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • Mar. 1, 2021 • 12:34 AM
+      case 3: return w + space + bullet + space + mmm + space + dd + comma + space + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • Mar. 01, 2021 • 12:34 AM
+      case 4: return w + space + bullet + space + m + hyphen + d + hyphen + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3-1-2021 • 12:34 AM
+      case 5: return w + space + bullet + space + mm + hyphen + dd + hyphen + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03-01-2021 • 12:34 AM
+      case 6: return w + space + bullet + space + m + slash + d + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
+      case 7: return w + space + bullet + space + mm + slash + dd + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
+      case 8: return customFormat; // Add custom format here
+      default: return ww + space + bullet + space + mmmm + space + ddd + comma + space + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sunday • March 1ˢᵗ, 2021 • 12:34 AM
   } }
 
   function defaultDateTime() {
@@ -156,7 +145,7 @@
   } }
 
   function toggleSecondsAMPMFormat(e) {
-    let bool, bool1, bool2, int, formatCnt = 7; // Change formatCnt if adding or removing a date format
+    let bool, bool1, bool2, int, formatCnt = 8;
     if (!e.shiftKey && !e.ctrlKey && !e.altKey && e.button === 0) {
       bool1 = GM_getValue('defaultSecondsView') !== true ? true : false;
       GM_setValue('defaultSecondsView', bool1);

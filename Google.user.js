@@ -90,7 +90,7 @@
         yyyy = yr,
         hr12, hr24, ampm,
         bullet = '•', comma = ',', hyphen = '-', slash = '/', space = ' ', star = '★',
-        customFormat = "Add custom format in script";
+        customFormat = "Add a custom format in script";
     if (hr > 12) {hr12 = hr - 12; hr24 = hr}
     else {hr12 = hr; hr24 = hr}
     if (hr < 10) {hr12 = hr; hr24 = '0' + hr}
@@ -170,6 +170,7 @@
   var div1 = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd > div'),
       div2 = $q('#gb > div'),
       div3 = $q('body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > div'),
+      div4 = $c('div', {id: 'dateContainer'}),
       span1 = $c('span', {id: 'dateTime', title: addRemoveSecondsAMPM, onmousedown: function(e) {toggleSecondsAMPMFormat(e)}}),
       input1 = $q('body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.FPdoLc.lJ9FBc > center > input.gNO89b'),
       button1 = $c('button', {id: 'gCalendar', className: 'gBtn', textContent: 'Calendar', title: url1, style: 'background-image: url('+ icon1 +')', onclick: function() {window.open(url1, '_blank')}}),
@@ -189,8 +190,9 @@
   div1.appendChild(button5);
   div1.appendChild(button6);
   div1.appendChild(button7);
-  div2.appendChild(button8);
-  div2.appendChild(span1);
+  div4.appendChild(button8);
+  div4.appendChild(span1);
+  div2.appendChild(div4);
   div3.insertBefore(input1, div3.firstChild);
   input1.id = 'gSearch';
 
@@ -255,7 +257,7 @@
     'body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd > div > a {'+
     '  font-size: 16px !important;'+
     '  padding-right: 20px !important;'+
-				'}'+
+    '}'+
     '#gbwa {'+
     '  padding: 0 !important;'+
     '  width: 32px !important;'+
@@ -277,6 +279,13 @@
     '  margin-left: '+ buttonSpacer +' !important;'+
     '  width: 32px !important;'+
     '}'+
+    '#dateContainer {'+
+    '  vertical-align: middle !important;'+
+    '}'+
+    '#dateContainer:hover #gClock {'+
+    '  filter: none !important;'+
+    '  opacity: 1 !important;'+
+    '}'+
     '#gClock {'+
     '  background-repeat: no-repeat !important;'+
     '  background-position: center !important;'+
@@ -284,6 +293,7 @@
     '  border-radius: 50% !important;'+
     '  height: 40px !important;'+
     '  margin-left: '+ buttonSpacer +' !important;'+
+    '  filter: grayscale(1) brightness(.65) !important;'+
     '  width: 32px !important;'+
     '}'+
     '#dateTime:not(#f) {'+
@@ -291,8 +301,10 @@
     '  color: #FFF !important;'+
     '  font: 16px monospace !important;'+
     '  margin-left: '+ buttonSpacer +' !important;'+
-    '  padding: 5px 6px 6px 6px !important;'+
     '  min-width: 100px !important;'+
+    '  padding: 5px 6px 6px 6px !important;'+
+    '  position: relative !important;'+
+    '  top: -15px !important;'+
     '}'+
     '#gClock:hover + #dateTime {'+
     '  background: #900 !important;'+

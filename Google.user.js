@@ -128,12 +128,12 @@
   function onOpen() {
     if (GM_getValue('defaultDateTimeView')) {
       defaultDateTime();
-      GM_setValue('iframeOffsetRight', span1.offsetWidth + (buttonSpacer.match('\\d+') * 3) + 80);
+      offset = span1.offsetWidth + (buttonSpacer.match('\\d+') * 3) + 80;
     } else {
       span1.hidden = true;
-      GM_setValue('iframeOffsetRight', (buttonSpacer.match('\\d+') * 2) + 80);
+      offset = (buttonSpacer.match('\\d+') * 2) + 80;
     }
-    GM_addStyle('#gb > div > div:nth-child(5) {margin-right: '+ GM_getValue('iframeOffsetRight') +'px !important;');
+    GM_addStyle('#gb > div > div:nth-child(5) {margin-right: '+ offset +'px !important;');
   }
 
   function setTimer() {
@@ -150,13 +150,13 @@
       GM_setValue('defaultDateTimeView', !bool);
       if (bool) {
         clearInterval(timer);
-        GM_setValue('iframeOffsetRight', (buttonSpacer.match('\\d+') * 2) + 80);
+        offset = (buttonSpacer.match('\\d+') * 2) + 80;
       } else {
         span1.textContent = aDateTime(GM_getValue('dateFormat'));
-        GM_setValue('iframeOffsetRight', span1.offsetWidth + (buttonSpacer.match('\\d+') * 3) + 80);
+        offset = span1.offsetWidth + (buttonSpacer.match('\\d+') * 3) + 80;
         setTimer();
       }
-      GM_addStyle('#gb > div > div:nth-child(5) {margin-right: '+ GM_getValue('iframeOffsetRight') +'px !important;');
+      GM_addStyle('#gb > div > div:nth-child(5) {margin-right: '+ offset +'px !important;');
   } }
 
   function toggleSecondsAMPMFormat(e) {
@@ -173,15 +173,14 @@
       int < formatCnt + 1 ? GM_setValue('dateFormat', int) : GM_setValue('dateFormat', 1);
     }
     span1.textContent = aDateTime(GM_getValue('dateFormat'));
-    GM_setValue('iframeOffsetRight', span1.offsetWidth + (buttonSpacer.match('\\d+') * 3) + 80);
-    GM_addStyle('#gb > div > div:nth-child(5) {margin-right: '+ GM_getValue('iframeOffsetRight') +'px !important;');
+    offset = span1.offsetWidth + (buttonSpacer.match('\\d+') * 3) + 80;
+    GM_addStyle('#gb > div > div:nth-child(5) {margin-right: '+ offset +'px !important;');
   }
 
   if (!GM_getValue('defaultDateTimeView')) GM_setValue('defaultDateTimeView', false);
   if (!GM_getValue('defaultSecondsView')) GM_setValue('defaultSecondsView', false);
   if (!GM_getValue('defaultAMPM')) GM_setValue('defaultAMPM', false);
   if (!GM_getValue('dateFormat')) GM_setValue('dateFormat', 1);
-  if (!GM_getValue('iframeOffsetRight')) GM_setValue('iframeOffsetRight', (buttonSpacer.match('\\d+') * 2) + 80);
 
   var div1 = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd > div'),
       div2 = $q('#gb > div'),
@@ -197,7 +196,7 @@
       button6 = $c('button', {id: 'gYouTube', className: 'gBtn', textContent: 'YouTube', title: url6, style: 'background-image: url('+ icon6 +')', onclick: function() {window.open(url6, '_blank')}}),
       button7 = $c('button', {id: 'gYouTubeTV', className: 'gBtn', textContent: 'YouTube TV', title: url7, style: 'background-image: url('+ icon7 +')', onclick: function() {window.open(url7, '_blank')}}),
       button8 = $c('button', {id: 'gClock', style: 'background-image: url('+ icon8 +')', title: hideShowDateTime, onmousedown: function(e) {toggleDateTime(e)}}),
-      timer;
+      offset, timer;
 
   div1.appendChild(button1);
   div1.appendChild(button2);

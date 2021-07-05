@@ -126,7 +126,14 @@
   }
 
   function onOpen() {
-    GM_getValue('defaultDateTimeView') ? defaultDateTime() : span1.hidden = true;
+    if (GM_getValue('defaultDateTimeView')) {
+      defaultDateTime();
+      GM_setValue('iframeOffsetRight', span1.offsetWidth + (buttonSpacer.match('\\d+') * 3) + 80);
+    } else {
+      span1.hidden = true;
+      GM_setValue('iframeOffsetRight', (buttonSpacer.match('\\d+') * 2) + 80);
+    }
+    GM_addStyle('#gb > div > div:nth-child(5) {margin-right: '+ GM_getValue('iframeOffsetRight') +'px !important;');
   }
 
   function setTimer() {
@@ -141,8 +148,15 @@
       bool = span1.hidden !== true ? true : false;
       span1.hidden = bool;
       GM_setValue('defaultDateTimeView', !bool);
-      if (bool) clearInterval(timer);
-      else {span1.textContent = aDateTime(GM_getValue('dateFormat')); setTimer()}
+      if (bool) {
+        clearInterval(timer);
+        GM_setValue('iframeOffsetRight', (buttonSpacer.match('\\d+') * 2) + 80);
+      } else {
+        span1.textContent = aDateTime(GM_getValue('dateFormat'));
+        GM_setValue('iframeOffsetRight', span1.offsetWidth + (buttonSpacer.match('\\d+') * 3) + 80);
+        setTimer();
+      }
+      GM_addStyle('#gb > div > div:nth-child(5) {margin-right: '+ GM_getValue('iframeOffsetRight') +'px !important;');
   } }
 
   function toggleSecondsAMPMFormat(e) {
@@ -159,12 +173,15 @@
       int < formatCnt + 1 ? GM_setValue('dateFormat', int) : GM_setValue('dateFormat', 1);
     }
     span1.textContent = aDateTime(GM_getValue('dateFormat'));
+    GM_setValue('iframeOffsetRight', span1.offsetWidth + (buttonSpacer.match('\\d+') * 3) + 80);
+    GM_addStyle('#gb > div > div:nth-child(5) {margin-right: '+ GM_getValue('iframeOffsetRight') +'px !important;');
   }
 
   if (!GM_getValue('defaultDateTimeView')) GM_setValue('defaultDateTimeView', false);
   if (!GM_getValue('defaultSecondsView')) GM_setValue('defaultSecondsView', false);
   if (!GM_getValue('defaultAMPM')) GM_setValue('defaultAMPM', false);
   if (!GM_getValue('dateFormat')) GM_setValue('dateFormat', 1);
+  if (!GM_getValue('iframeOffsetRight')) GM_setValue('iframeOffsetRight', (buttonSpacer.match('\\d+') * 2) + 80);
 
   var div1 = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd > div'),
       div2 = $q('#gb > div'),
@@ -427,6 +444,9 @@
     '}'+
     '.aajZCb li:hover {'+
     '  background: #222 !important;'+
+    '}'+
+    '#gb > div > div:nth-child(5) {'+
+    '  height: calc(-155px + 100vh) !important;'+
     '}'+
   '');
 

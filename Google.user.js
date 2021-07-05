@@ -133,7 +133,7 @@
       span1.hidden = true;
       offset = (buttonSpacer.match('\\d+') * 2) + 80;
     }
-    GM_addStyle('#gb > div > div:nth-child(5) {margin-right: '+ offset +'px !important;');
+    GM_addStyle('#gb > div > div:nth-child(5) {margin-right: '+ offset +'px !important;}');
   }
 
   function setTimer() {
@@ -156,7 +156,7 @@
         offset = span1.offsetWidth + (buttonSpacer.match('\\d+') * 3) + 80;
         setTimer();
       }
-      GM_addStyle('#gb > div > div:nth-child(5) {margin-right: '+ offset +'px !important;');
+      GM_addStyle('#gb > div > div:nth-child(5) {margin-right: '+ offset +'px !important;}');
   } }
 
   function toggleSecondsAMPMFormat(e) {
@@ -174,7 +174,7 @@
     }
     span1.textContent = aDateTime(GM_getValue('dateFormat'));
     offset = span1.offsetWidth + (buttonSpacer.match('\\d+') * 3) + 80;
-    GM_addStyle('#gb > div > div:nth-child(5) {margin-right: '+ offset +'px !important;');
+    GM_addStyle('#gb > div > div:nth-child(5) {margin-right: '+ offset +'px !important;}');
   }
 
   if (!GM_getValue('defaultDateTimeView')) GM_setValue('defaultDateTimeView', false);
@@ -326,10 +326,9 @@
     '  border-radius: 4px !important;'+
     '  color: #FFF !important;'+
     '  font: 16px monospace !important;'+
-    '  height: 40px !important;'+
     '  margin-left: '+ buttonSpacer +' !important;'+
     '  min-width: 100px !important;'+
-    '  padding: 9px 10px 10px 10px !important;'+
+    '  padding: 5px 8px 6px 8px !important;'+
     '  position: relative !important;'+
     '  top: -9px !important;'+
     '}'+

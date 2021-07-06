@@ -20,7 +20,7 @@
         am = 'AM',
         pm = 'PM',
         buttonSpacer = '14px',
-        customFormat = 'Add a format in script line 113',
+        customFormat = 'Add a format in script line 114',
         hideShowDateTime = '𝐃𝐚𝐭𝐞/𝐓𝐢𝐦𝐞\n• Left-click to Hide/Show Date/Time',
         addRemoveSecondsAMPM = '• Left-click to Hide/Show :seconds\n• Shift + Left-click to Hide/Show AM/PM\n• Ctrl + Left-click to change Date format',
         DayNameAbbr = 'Sun.,Mon.,Tue.,Wed.,Thu.,Fri.,Sat.',
@@ -110,7 +110,8 @@
       case 5: return w + space + bullet + space + mm + hyphen + dd + hyphen + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03-01-2021 • 12:34 AM
       case 6: return w + space + bullet + space + m + slash + d + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
       case 7: return w + space + bullet + space + mm + slash + dd + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
-      case 8: return customFormat; // Add custom format here
+      // Delete "customFormat" text below and add return options here with (bullet, comma, hyphen, slash, space, star) characters.
+      case 8: return customFormat;
       default: return ww + space + bullet + space + mmmm + space + ddd + comma + space + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sunday • March 1ˢᵗ, 2021 • 12:34 AM
   } }
 

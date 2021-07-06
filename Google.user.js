@@ -133,7 +133,7 @@
         buttonsWidth = sum / 2,
         fromLeft1 = Math.round(screenWidth - buttonsWidth - spacerCount) + 'px',
         fromLeft2 = Math.round(screenWidth - len - spacerWidth) + 'px';
-    div1.style.marginLeft = fromLeft1;
+    div2.style.marginLeft = fromLeft1;
     div3.style.left = fromLeft2;
   }
 
@@ -205,8 +205,8 @@
   if (!GM_getValue('defaultAMPM')) GM_setValue('defaultAMPM', false);
   if (!GM_getValue('dateFormat')) GM_setValue('dateFormat', 1);
 
-  var div1 = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd > div'),
-      div2 = $q('#gb > div'),
+  var div1 = $q('#gb > div'),
+      div2 = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd > div'),
       div3 = $q('body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > div'),
       div4 = $c('div', {id: 'dateContainer'}),
       span1 = $c('span', {id: 'dateTime', title: addRemoveSecondsAMPM, onmousedown: function(e) {toggleSecondsAMPMFormat(e)}}),
@@ -223,14 +223,14 @@
 
   div4.appendChild(button8);
   div4.appendChild(span1);
-  div2.appendChild(div4);
-  div1.appendChild(button1);
-  div1.appendChild(button2);
-  div1.appendChild(button3);
-  div1.appendChild(button4);
-  div1.appendChild(button5);
-  div1.appendChild(button6);
-  div1.appendChild(button7);
+  div1.appendChild(div4);
+  div2.appendChild(button1);
+  div2.appendChild(button2);
+  div2.appendChild(button3);
+  div2.appendChild(button4);
+  div2.appendChild(button5);
+  div2.appendChild(button6);
+  div2.appendChild(button7);
   div3.insertBefore(input1, div3.firstChild);
   input1.id = 'gSearch';
 

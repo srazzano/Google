@@ -223,6 +223,7 @@
 
   div4.appendChild(button8);
   div4.appendChild(span1);
+  div2.appendChild(div4);
   div1.appendChild(button1);
   div1.appendChild(button2);
   div1.appendChild(button3);
@@ -230,7 +231,6 @@
   div1.appendChild(button5);
   div1.appendChild(button6);
   div1.appendChild(button7);
-  div2.appendChild(div4);
   div3.insertBefore(input1, div3.firstChild);
   input1.id = 'gSearch';
 

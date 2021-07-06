@@ -20,7 +20,7 @@
         am = 'AM',
         pm = 'PM',
         buttonSpacer = '14px',
-        customFormat = 'Add a custom format in script',
+        customFormat = 'Add a format in script line 113',
         hideShowDateTime = '𝐃𝐚𝐭𝐞/𝐓𝐢𝐦𝐞\n• Left-click to Hide/Show Date/Time',
         addRemoveSecondsAMPM = '• Left-click to Hide/Show :seconds\n• Shift + Left-click to Hide/Show AM/PM\n• Ctrl + Left-click to change Date format',
         DayNameAbbr = 'Sun.,Mon.,Tue.,Wed.,Thu.,Fri.,Sat.',

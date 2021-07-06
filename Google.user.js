@@ -22,7 +22,7 @@
         buttonSpacer = '14px',
         customFormat = 'Add a custom format in script',
         hideShowDateTime = '𝐃𝐚𝐭𝐞/𝐓𝐢𝐦𝐞\n• Left-click to Hide/Show Date/Time',
-        addRemoveSecondsAMPM = '𝐃𝐚𝐭𝐞/𝐓𝐢𝐦𝐞\n• Left-click to Hide/Show :seconds\n• Shift + Left-click to Hide/Show AM/PM\n• Ctrl + Left-click to change Date format',
+        addRemoveSecondsAMPM = '• Left-click to Hide/Show :seconds\n• Shift + Left-click to Hide/Show AM/PM\n• Ctrl + Left-click to change Date format',
         DayNameAbbr = 'Sun.,Mon.,Tue.,Wed.,Thu.,Fri.,Sat.',
         DayName = 'Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday',
         MonthNameAbbr = 'Jan.,Feb.,Mar.,Apr.,May,Jun.,Jul.,Aug.,Sep.,Oct.,Nov.,Dec.',
@@ -157,6 +157,7 @@
       offset = (buttonSpacer.match('\\d+') * 2) + 80;
     }
     GM_addStyle('#gb > div > div:nth-child(5) {margin-right: '+ offset +'px !important;}');
+    span1.title = addRemoveSecondsAMPM + ' (' + GM_getValue('dateFormat') + ')';
   }
 
   function setTimer() {
@@ -166,6 +167,7 @@
   }
 
   function toggleDateTime(e) {
+    if (e.button === 1 || e.button === 2) return;
     let bool;
     if (!e.shiftKey && !e.ctrlKey && !e.altKey && e.button === 0) {
       bool = span1.hidden !== true ? true : false;
@@ -183,6 +185,7 @@
   } }
 
   function toggleSecondsAMPMFormat(e) {
+    if (e.button === 1 || e.button === 2) return;
     let bool, bool1, bool2, int, formatCnt = 8;
     if (!e.shiftKey && !e.ctrlKey && !e.altKey && e.button === 0) {
       bool1 = GM_getValue('defaultSecondsView') !== true ? true : false;
@@ -194,6 +197,7 @@
     } else if (!e.shiftKey && e.ctrlKey && !e.altKey && e.button === 0) {
       int = GM_getValue('dateFormat') + 1;
       int < formatCnt + 1 ? GM_setValue('dateFormat', int) : GM_setValue('dateFormat', 1);
+      span1.title = addRemoveSecondsAMPM + ' (' + GM_getValue('dateFormat') + ')';
     }
     span1.textContent = aDateTime(GM_getValue('dateFormat'));
     offset = span1.offsetWidth + (buttonSpacer.match('\\d+') * 3) + 80;
@@ -208,9 +212,9 @@
   var div1 = $q('#gb > div'),
       div2 = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd > div'),
       div3 = $q('body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > div'),
-      div4 = $c('div', {id: 'dateContainer'}),
-      span1 = $c('span', {id: 'dateTime', title: addRemoveSecondsAMPM, onmousedown: function(e) {toggleSecondsAMPMFormat(e)}}),
       input1 = $q('body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.FPdoLc.lJ9FBc > center > input.gNO89b'),
+      div4 = $c('div', {id: 'dateContainer'}),
+      span1 = $c('span', {id: 'dateTime', onmousedown: function(e) {toggleSecondsAMPMFormat(e)}}),
       button1 = $c('button', {id: 'gCalendar', className: 'gBtn', textContent: 'Calendar', title: url1, style: 'background-image: url('+ icon1 +')', onclick: function() {window.open(url1, '_blank')}}),
       button2 = $c('button', {id: 'gMail', className: 'gBtn', textContent: 'Gmail', title: url2, style: 'background-image: url('+ icon2 +')', onclick: function() {window.open(url2, '_blank')}}),
       button3 = $c('button', {id: 'gMaps', className: 'gBtn', textContent: 'Maps', title: url3, style: 'background-image: url('+ icon3 +')', onclick: function() {window.open(url3, '_blank')}}),

@@ -20,6 +20,7 @@
         am = 'AM',
         pm = 'PM',
         buttonSpacer = '14px',
+        customFormat = 'Add a custom format in script',
         hideShowDateTime = '𝐃𝐚𝐭𝐞/𝐓𝐢𝐦𝐞\n• Left-click to Hide/Show Date/Time',
         addRemoveSecondsAMPM = '𝐃𝐚𝐭𝐞/𝐓𝐢𝐦𝐞\n• Left-click to Hide/Show :seconds\n• Shift + Left-click to Hide/Show AM/PM\n• Ctrl + Left-click to change Date format',
         DayNameAbbr = 'Sun.,Mon.,Tue.,Wed.,Thu.,Fri.,Sat.',
@@ -90,8 +91,7 @@
         yy = yr - 2000,
         yyyy = yr,
         hr12, hr24, ampm,
-        bullet = '•', comma = ',', hyphen = '-', slash = '/', space = ' ', star = '★',
-        customFormat = "Add a custom format in script";
+        bullet = '•', comma = ',', hyphen = '-', slash = '/', space = ' ', star = '★';
     if (hr > 12) {hr12 = hr - 12; hr24 = hr}
     else {hr12 = hr; hr24 = hr}
     if (hr < 10) {hr12 = hr; hr24 = '0' + hr}
@@ -113,6 +113,29 @@
       case 8: return customFormat; // Add custom format here
       default: return ww + space + bullet + space + mmmm + space + ddd + comma + space + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sunday • March 1ˢᵗ, 2021 • 12:34 AM
   } }
+
+  function centerElements() {
+    let lia = $q('#dEjpnf > li > a', true),
+        num = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd > div > .gBtn', true),
+        len = ($q('#gSearch').offsetWidth + $q('#Mses6b').offsetWidth) / 2,
+        screenWidth = window.screen.width / 2,
+        spacerWidth = parseInt(buttonSpacer.match('\\d+') / 2),
+        spacerCount = (num.length - 1) * spacerWidth,
+        os1 = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd').offsetHeight,
+        os2 = $q('body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ').offsetHeight,
+        os3 = $q('body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.RNNXgb').offsetHeight,
+        ost = (os1 + os2 + os3 + 30) + 'px',
+        arr = [];
+    div3.style.top = ost;
+    for (let i = 0; i < lia.length; i++) lia[i].setAttribute('target', '_blank');
+    for (let j = 0; j < num.length; j++) arr.push(num[j].offsetWidth);
+    let sum = arr.reduce(function(a, b) {return a + b}, 1),
+        buttonsWidth = sum / 2,
+        fromLeft1 = Math.round(screenWidth - buttonsWidth - spacerCount) + 'px',
+        fromLeft2 = Math.round(screenWidth - len - spacerWidth) + 'px';
+    div1.style.marginLeft = fromLeft1;
+    div3.style.left = fromLeft2;
+  }
 
   function defaultDateTime() {
     span1.hidden = false;
@@ -196,8 +219,10 @@
       button6 = $c('button', {id: 'gYouTube', className: 'gBtn', textContent: 'YouTube', title: url6, style: 'background-image: url('+ icon6 +')', onclick: function() {window.open(url6, '_blank')}}),
       button7 = $c('button', {id: 'gYouTubeTV', className: 'gBtn', textContent: 'YouTube TV', title: url7, style: 'background-image: url('+ icon7 +')', onclick: function() {window.open(url7, '_blank')}}),
       button8 = $c('button', {id: 'gClock', style: 'background-image: url('+ icon8 +')', title: hideShowDateTime, onmousedown: function(e) {toggleDateTime(e)}}),
-      offset, timer;
+      offset, signIn, timer;
 
+  div4.appendChild(button8);
+  div4.appendChild(span1);
   div1.appendChild(button1);
   div1.appendChild(button2);
   div1.appendChild(button3);
@@ -205,8 +230,6 @@
   div1.appendChild(button5);
   div1.appendChild(button6);
   div1.appendChild(button7);
-  div4.appendChild(button8);
-  div4.appendChild(span1);
   div2.appendChild(div4);
   div3.insertBefore(input1, div3.firstChild);
   input1.id = 'gSearch';
@@ -214,30 +237,11 @@
   addEventListener('unload', function() {onClose()});
 
   setTimeout(function() {
-    let lia = $q('#dEjpnf > li > a', true),
-        num = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd > div > .gBtn', true),
-        len = ($q('#gSearch').offsetWidth + $q('#Mses6b').offsetWidth) / 2,
-        screenWidth = window.screen.width / 2,
-        spacerWidth = parseInt(buttonSpacer.match('\\d+') / 2),
-        spacerCount = (num.length - 1) * spacerWidth,
-        os1 = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd').offsetHeight,
-        os2 = $q('body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ').offsetHeight,
-        os3 = $q('body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.RNNXgb').offsetHeight,
-        ost = (os1 + os2 + os3 + 30) + 'px',
-        arr = [];
-    div3.style.top = ost;
-    for (let i = 0; i < lia.length; i++) lia[i].setAttribute('target', '_blank');
-    for (let j = 0; j < num.length; j++) arr.push(num[j].offsetWidth);
-    let sum = arr.reduce(function(a, b) {return a + b}, 1),
-        buttonsWidth = sum / 2,
-        fromLeft1 = Math.round(screenWidth - buttonsWidth - spacerCount) + 'px',
-        fromLeft2 = Math.round(screenWidth - len - spacerWidth) + 'px',
-        signIn = $q('#gb > div > div.gb_Se > a');
-    div1.style.marginLeft = fromLeft1;
-    div3.style.left = fromLeft2;
+    signIn = $q('#gb > div > div.gb_Se > a');
     if (signIn) signIn.click();
+    centerElements();
     onOpen();
-  }, 100);
+  }, 200);
 
   GM_addStyle(''+
     '#hpcanvas, #hplogocta, a.MV3Tnb, #gb > div > div:nth-child(1) > div, #gbqfbb, body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.ssOUyb, body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.AghGtd, body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > a, body > div.L3eUgb > div.o3j99.qarstb > div, body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ > div > div.SuUcIb, body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ > div > div:nth-child(2), #yDmH0d, #gb > div > div.gb_0a.gb_E.gb_k.gb_1a.gb_la > div.gb_Qf.gb_sb {'+
@@ -306,9 +310,9 @@
     '  width: 40px !important;'+
     '  margin-right: '+ buttonSpacer +' !important;'+
     '}'+
-    '#dateContainer:hover #gClock {'+
+    '#dateContainer:hover > #gClock {'+
     '  filter: none !important;'+
-    '  opacity: 1 !important;'+
+    '  opacity: .7 !important;'+
     '}'+
     '#gClock {'+
     '  background-repeat: no-repeat !important;'+
@@ -321,6 +325,9 @@
     '  position: relative !important;'+
     '  top: 6px !important;'+
     '  width: 40px !important;'+
+    '}'+
+    '#dateContainer:hover > #gClock:hover {'+
+    '  opacity: 1 !important;'+
     '}'+
     '#dateTime:not(#f) {'+
     '  border-radius: 4px !important;'+

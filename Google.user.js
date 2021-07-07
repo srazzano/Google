@@ -17,9 +17,9 @@
 
   const timerLong = 15000,
         timerShort = 500,
+        buttonSpacer = '14px',
         am = 'AM',
         pm = 'PM',
-        buttonSpacer = '14px',
         customFormat = 'Add a format in script line 114',
         hideShowDateTime = '𝐃𝐚𝐭𝐞/𝐓𝐢𝐦𝐞\n• Left-click to Hide/Show Date/Time',
         addRemoveSecondsAMPM = '• Left-click to Hide/Show :seconds\n• Shift + Left-click to Hide/Show AM/PM\n• Ctrl + Left-click to change Date format',
@@ -174,7 +174,7 @@
 
   function toggleSecondsAMPMFormat(e) {
     if (e.button === 1 || e.button === 2) return;
-    let bool, bool1, bool2, int, formatCnt = 8;
+    let bool1, bool2, int, formatCnt = 8;
     if (!e.shiftKey && !e.ctrlKey && !e.altKey && e.button === 0) {
       bool1 = GM_getValue('defaultSecondsView') !== true ? true : false;
       GM_setValue('defaultSecondsView', bool1);
@@ -445,7 +445,6 @@
     '}'+
     '#gb > div > div:nth-child(4) {'+
     '  height: calc(-155px + 100vh) !important;'+
-    '  right: 40px !important;'+
     '}'+
   '');
 

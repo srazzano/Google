@@ -149,14 +149,7 @@
   }
 
   function onOpen() {
-    if (GM_getValue('defaultDateTimeView')) {
-      defaultDateTime();
-      offset = span1.offsetWidth + (buttonSpacer.match('\\d+') * 3) + 80;
-    } else {
-      span1.hidden = true;
-      offset = (buttonSpacer.match('\\d+') * 2) + 80;
-    }
-    GM_addStyle('#gb > div > div:nth-child(5) {margin-right: '+ offset +'px !important;}');
+    GM_getValue('defaultDateTimeView') ? defaultDateTime() : span1.hidden = true;
     span1.title = addRemoveSecondsAMPM + ' (' + GM_getValue('dateFormat') + ')';
   }
 
@@ -173,16 +166,11 @@
       bool = span1.hidden !== true ? true : false;
       span1.hidden = bool;
       GM_setValue('defaultDateTimeView', !bool);
-      if (bool) {
-        clearInterval(timer);
-        offset = (buttonSpacer.match('\\d+') * 2) + 80;
-      } else {
+      if (bool) clearInterval(timer);
+      else {
         span1.textContent = aDateTime(GM_getValue('dateFormat'));
-        offset = span1.offsetWidth + (buttonSpacer.match('\\d+') * 3) + 80;
         setTimer();
-      }
-      GM_addStyle('#gb > div > div:nth-child(5) {margin-right: '+ offset +'px !important;}');
-  } }
+  } } }
 
   function toggleSecondsAMPMFormat(e) {
     if (e.button === 1 || e.button === 2) return;
@@ -200,8 +188,6 @@
       span1.title = addRemoveSecondsAMPM + ' (' + GM_getValue('dateFormat') + ')';
     }
     span1.textContent = aDateTime(GM_getValue('dateFormat'));
-    offset = span1.offsetWidth + (buttonSpacer.match('\\d+') * 3) + 80;
-    GM_addStyle('#gb > div > div:nth-child(5) {margin-right: '+ offset +'px !important;}');
   }
 
   if (!GM_getValue('defaultDateTimeView')) GM_setValue('defaultDateTimeView', false);
@@ -223,7 +209,7 @@
       button6 = $c('button', {id: 'gYouTube', className: 'gBtn', textContent: 'YouTube', title: url6, style: 'background-image: url('+ icon6 +')', onclick: function() {window.open(url6, '_blank')}}),
       button7 = $c('button', {id: 'gYouTubeTV', className: 'gBtn', textContent: 'YouTube TV', title: url7, style: 'background-image: url('+ icon7 +')', onclick: function() {window.open(url7, '_blank')}}),
       button8 = $c('button', {id: 'gClock', style: 'background-image: url('+ icon8 +')', title: hideShowDateTime, onmousedown: function(e) {toggleDateTime(e)}}),
-      offset, signIn, timer;
+      signIn, timer;
 
   div4.appendChild(button8);
   div4.appendChild(span1);
@@ -280,6 +266,9 @@
     'body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd > div > a {'+
     '  font-size: 16px !important;'+
     '  padding-right: 20px !important;'+
+    '}'+
+    '.gb_Wd {'+
+    '  padding: 0 !important;'+
     '}'+
     '#gb > div > div.gb_Se {'+
     '  height: 40px !important;'+
@@ -454,8 +443,9 @@
     '.aajZCb li:hover {'+
     '  background: #222 !important;'+
     '}'+
-    '#gb > div > div:nth-child(5) {'+
+    '#gb > div > div:nth-child(4) {'+
     '  height: calc(-155px + 100vh) !important;'+
+    '  right: 40px !important;'+
     '}'+
   '');
 

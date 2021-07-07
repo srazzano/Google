@@ -210,7 +210,7 @@
       button6 = $c('button', {id: 'gYouTube', className: 'gBtn', textContent: 'YouTube', title: url6, style: 'background-image: url('+ icon6 +')', onclick: function() {window.open(url6, '_blank')}}),
       button7 = $c('button', {id: 'gYouTubeTV', className: 'gBtn', textContent: 'YouTube TV', title: url7, style: 'background-image: url('+ icon7 +')', onclick: function() {window.open(url7, '_blank')}}),
       button8 = $c('button', {id: 'gClock', style: 'background-image: url('+ icon8 +')', title: hideShowDateTime, onmousedown: function(e) {toggleDateTime(e)}}),
-      signIn, timer;
+      timer;
 
   div4.appendChild(button8);
   div4.appendChild(span1);
@@ -228,7 +228,7 @@
   addEventListener('unload', function() {onClose()});
 
   setTimeout(function() {
-    signIn = $q('#gb > div > div.gb_Se > a');
+    let signIn = $q('#gb > div > div.gb_Se > a');
     if (signIn) signIn.click();
     centerElements();
     onOpen();

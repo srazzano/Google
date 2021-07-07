@@ -175,6 +175,7 @@
   function toggleSecondsAMPMFormat(e) {
     if (e.button === 1 || e.button === 2) return;
     let bool1, bool2, int, formatCnt = 8;
+    e.preventDefault();
     if (!e.shiftKey && !e.ctrlKey && !e.altKey && e.button === 0) {
       bool1 = GM_getValue('defaultSecondsView') !== true ? true : false;
       GM_setValue('defaultSecondsView', bool1);

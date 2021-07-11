@@ -555,16 +555,16 @@
     '  height: calc(-155px + 100vh) !important;'+
     '}'+
     '#dEjpnf {'+
-    '  min-width: 150px !important;'+
+    '  min-width: 147px !important;'+
     '  position: relative !important;'+
     '  top: -284px !important;'+
     '}'+
     '#dEjpnf > li:last-of-type {'+
     '  border-bottom: 1px solid #000 !important;'+
     '}'+
-    '#buttonAll {'+
-    '  margin-left: 4px !important;'+
-    '  margin-right: 8px !important;'+
+    '#buttonAll, #buttonNone {'+
+    '  margin: 6px 4px 0 4px !important;'+
+    '  padding: 4px !important;'+
     '}'+
     '#dEjpnf input[type="checkbox"] {'+
     '  height: 18px !important;'+
@@ -573,10 +573,7 @@
     '  width: 18px !important;'+
     '}'+
     '#reload {'+
-    '  margin-left: 4px !important;'+
-    '}'+
-    '#buttonAll, #buttonNone, #reload {'+
-    '  margin-top: 6px !important;'+
+    '  margin: 8px 28px 6px 28px !important;'+
     '  padding: 4px !important;'+
     '}'+
   '');

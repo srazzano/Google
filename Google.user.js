@@ -15,19 +15,7 @@
 
   'use strict';
 
-  const buttonCalendar = true,
-        buttonClock = true,
-        buttonEarth = true,
-        buttonMail = true,
-        buttonMaps = true,
-        buttonNews = true,
-        buttonPhotos = true,
-        buttonPlay = true,
-        buttonPodcasts = true,
-        buttonTranslate = true,
-        buttonYouTube = true,
-        buttonYouTubeTV = true,
-        timerLong = 15000,
+  const timerLong = 15000,
         timerShort = 500,
         elementSpacing = '14px',
         am = 'AM',
@@ -90,7 +78,7 @@
   }
 
   function aDateTime(int) {
-    if (!GM_getValue('defaultDateTimeView') || !buttonClock) return;
+    if (!GM_getValue('defaultDateTimeView')) return;
     let date = new Date(),
         dy = date.getDay(),
         mth = date.getMonth(),
@@ -160,7 +148,14 @@
   function defaultDateTime() {
     span1.hidden = false;
     span1.textContent = aDateTime(GM_getValue('dateFormat'));
+    span1.title = addRemove + ' (' + GM_getValue('dateFormat') + ')';
     setTimer();
+  }
+
+  function onCheckbox(e) {
+    let bool = GM_getValue(e.target.id) !== true ? true : false;
+    GM_setValue(e.target.id, bool);
+    e.target.checked = bool;
   }
 
   function onClose() {
@@ -170,18 +165,16 @@
 
   function onOpen() {
     GM_getValue('defaultDateTimeView') ? defaultDateTime() : span1.hidden = true;
-    span1.title = addRemove + ' (' + GM_getValue('dateFormat') + ')';
   }
 
   function setTimer() {
     clearInterval(timer);
-    if (!buttonClock) return;
     if (GM_getValue('defaultSecondsView')) timer = setInterval(function() {span1.textContent = aDateTime(GM_getValue('dateFormat'))}, timerShort);
     else timer = setInterval(function() {span1.textContent = aDateTime(GM_getValue('dateFormat'))}, timerLong);
   }
 
   function toggleDateTime(e) {
-    if (!e.button === 0 || !buttonClock) return;
+    if (!e.button === 0) return;
     let bool;
     if (!e.shiftKey && !e.ctrlKey && !e.altKey && e.button === 0) {
       bool = span1.hidden !== true ? true : false;
@@ -194,7 +187,7 @@
   } } }
 
   function toggleSecondsAmPmFormat(e) {
-    if (!e.button === 0 || !buttonClock) return;
+    if (!e.button === 0) return;
     let bool1, bool2, int, formatCnt = 8;
     e.preventDefault();
     if (!e.shiftKey && !e.ctrlKey && !e.altKey && e.button === 0) {
@@ -216,6 +209,8 @@
   if (!GM_getValue('defaultSecondsView')) GM_setValue('defaultSecondsView', false);
   if (!GM_getValue('defaultAMPM')) GM_setValue('defaultAMPM', false);
   if (!GM_getValue('dateFormat')) GM_setValue('dateFormat', 1);
+  if (!GM_getValue('aCalendar')) GM_setValue('aCalendar', false);
+  if (!GM_getValue('aClock')) GM_setValue('aClock', false);
 
   var button1 = $c('button', {id: 'gCalendar', className: 'gBtn', textContent: 'Calendar', title: url1, style: 'background-image: url('+ icon1 +')', onclick: function() {window.open(url1, '_blank')}}),
       button2 = $c('button', {id: 'gClock', style: 'background-image: url('+ icon2 +')', title: hideShow, onmousedown: function(e) {toggleDateTime(e)}}),
@@ -229,30 +224,78 @@
       button10 = $c('button', {id: 'gTranslate', className: 'gBtn', textContent: 'Translate', title: url10, style: 'background-image: url('+ icon10 +')', onclick: function() {window.open(url10, '_blank')}}),
       button11 = $c('button', {id: 'gYouTube', className: 'gBtn', textContent: 'YouTube', title: url11, style: 'background-image: url('+ icon11 +')', onclick: function() {window.open(url11, '_blank')}}),
       button12 = $c('button', {id: 'gYouTubeTV', className: 'gBtn', textContent: 'YouTube TV', title: url12, style: 'background-image: url('+ icon12 +')', onclick: function() {window.open(url12, '_blank')}}),
+      checkbox1 = $c('input', {id: 'aCalendar', name: 'aCalendar', value: 'aCalendar', type: 'checkbox', checked: GM_getValue("aCalendar"), onclick: function(e) {onCheckbox(e)}}),
+      label1 = $c('label', {for: 'aCalendar', textContent: 'Calendar'}),
+      lf1 = $c('br'),
+      checkbox2 = $c('input', {id: 'aClock', name: 'aClock', value: 'aClock', type: 'checkbox', checked: GM_getValue("aClock"), onclick: function(e) {onCheckbox(e)}}),
+      label2 = $c('label', {for: 'aClock', textContent: 'Clock'}),
+      lf2 = $c('br'),
+      checkbox3 = $c('input', {id: 'aEarth', name: 'aEarth', value: 'aEarth', type: 'checkbox', checked: GM_getValue("aEarth"), onclick: function(e) {onCheckbox(e)}}),
+      label3 = $c('label', {for: 'aEarth', textContent: 'Earth'}),
+      lf3 = $c('br'),
+      checkbox4 = $c('input', {id: 'aMail', name: 'aMail', value: 'aMail', type: 'checkbox', checked: GM_getValue("aMail"), onclick: function(e) {onCheckbox(e)}}),
+      label4 = $c('label', {for: 'aMail', textContent: 'Mail'}),
+      lf4 = $c('br'),
+      checkbox5 = $c('input', {id: 'aMaps', name: 'aMaps', value: 'aMaps', type: 'checkbox', checked: GM_getValue("aMaps"), onclick: function(e) {onCheckbox(e)}}),
+      label5 = $c('label', {for: 'aMaps', textContent: 'Maps'}),
+      lf5 = $c('br'),
+      checkbox6 = $c('input', {id: 'aNews', name: 'aNews', value: 'aNews', type: 'checkbox', checked: GM_getValue("aNews"), onclick: function(e) {onCheckbox(e)}}),
+      label6 = $c('label', {for: 'aNews', textContent: 'News'}),
+      lf6 = $c('br'),
+      checkbox7 = $c('input', {id: 'aPhotos', name: 'aPhotos', value: 'aPhotos', type: 'checkbox', checked: GM_getValue("aPhotos"), onclick: function(e) {onCheckbox(e)}}),
+      label7 = $c('label', {for: 'aPhotos', textContent: 'Photos'}),
+      lf7 = $c('br'),
+      checkbox8 = $c('input', {id: 'aPlay', name: 'aPlay', value: 'aPlay', type: 'checkbox', checked: GM_getValue("aPlay"), onclick: function(e) {onCheckbox(e)}}),
+      label8 = $c('label', {for: 'aPlay', textContent: 'Play'}),
+      lf8 = $c('br'),
+      checkbox9 = $c('input', {id: 'aPodcasts', name: 'aPodcasts', value: 'aPodcasts', type: 'checkbox', checked: GM_getValue("aPodcasts"), onclick: function(e) {onCheckbox(e)}}),
+      label9 = $c('label', {for: 'aPodcasts', textContent: 'Podcasts'}),
+      lf9 = $c('br'),
+      checkbox10 = $c('input', {id: 'aTranslate', name: 'aTranslate', value: 'aTranslate', type: 'checkbox', checked: GM_getValue("aTranslate"), onclick: function(e) {onCheckbox(e)}}),
+      label10 = $c('label', {for: 'aTranslate', textContent: 'Translate'}),
+      lf10 = $c('br'),
+      checkbox11 = $c('input', {id: 'aYouTube', name: 'aYouTube', value: 'aYouTube', type: 'checkbox', checked: GM_getValue("aYouTube"), onclick: function(e) {onCheckbox(e)}}),
+      label11 = $c('label', {for: 'aYouTube', textContent: 'YouTube'}),
+      lf11 = $c('br'),
+      checkbox12 = $c('input', {id: 'aYouTubeTV', name: 'aYouTubeTV', value: 'aYouTubeTV', type: 'checkbox', checked: GM_getValue("aYouTubeTV"), onclick: function(e) {onCheckbox(e)}}),
+      label12 = $c('label', {for: 'aYouTubeTV', textContent: 'YouTubeTV'}),
+      lf12 = $c('br'),
+      reload = $c('button', {id: 'reload', className: 'gBtn', textContent: 'Reload Page', onclick: function() {document.location.reload(true)}}),
       div4 = $c('div', {id: 'dateContainer'}),
       span1 = $c('span', {id: 'dateTime', onmousedown: function(e) {toggleSecondsAmPmFormat(e)}}),
       div1 = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd'),
       div2 = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd > div'),
       div3 = $q('body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > div'),
       input1 = $q('body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.FPdoLc.lJ9FBc > center > input.gNO89b'),
+      srch = $q('#dEjpnf'),
       timer;
 
-  if (buttonClock) {
-    div4.appendChild(button2);
-    div4.appendChild(span1);
-    div1.appendChild(div4);
-  }
-  if (buttonCalendar) div2.appendChild(button1);
-  if (buttonEarth) div2.appendChild(button3);
-  if (buttonMail) div2.appendChild(button4);
-  if (buttonMaps) div2.appendChild(button5);
-  if (buttonNews) div2.appendChild(button6);
-  if (buttonPhotos) div2.appendChild(button7);
-  if (buttonPlay) div2.appendChild(button8);
-  if (buttonPodcasts) div2.appendChild(button9);
-  if (buttonTranslate) div2.appendChild(button10);
-  if (buttonYouTube) div2.appendChild(button11);
-  if (buttonYouTubeTV) div2.appendChild(button12);
+  srch.appendChild(checkbox1); srch.appendChild(label1); srch.appendChild(lf1);
+  srch.appendChild(checkbox2); srch.appendChild(label2); srch.appendChild(lf2);
+  srch.appendChild(checkbox3); srch.appendChild(label3); srch.appendChild(lf3);
+  srch.appendChild(checkbox4); srch.appendChild(label4); srch.appendChild(lf4);
+  srch.appendChild(checkbox5); srch.appendChild(label5); srch.appendChild(lf5);
+  srch.appendChild(checkbox6); srch.appendChild(label6); srch.appendChild(lf6);
+  srch.appendChild(checkbox7); srch.appendChild(label7); srch.appendChild(lf7);
+  srch.appendChild(checkbox8); srch.appendChild(label8); srch.appendChild(lf8);
+  srch.appendChild(checkbox9); srch.appendChild(label9); srch.appendChild(lf9);
+  srch.appendChild(checkbox10); srch.appendChild(label10); srch.appendChild(lf10);
+  srch.appendChild(checkbox11); srch.appendChild(label11); srch.appendChild(lf11);
+  srch.appendChild(checkbox12); srch.appendChild(label12); srch.appendChild(lf12);
+  srch.appendChild(reload);
+
+  if (GM_getValue('aCalendar')) div2.appendChild(button1);
+  if (GM_getValue('aClock')) {div4.appendChild(button2); div4.appendChild(span1); div1.appendChild(div4);}
+  if (GM_getValue('aEarth')) div2.appendChild(button3);
+  if (GM_getValue('aMail')) div2.appendChild(button4);
+  if (GM_getValue('aMaps')) div2.appendChild(button5);
+  if (GM_getValue('aNews')) div2.appendChild(button6);
+  if (GM_getValue('aPhotos')) div2.appendChild(button7);
+  if (GM_getValue('aPlay')) div2.appendChild(button8);
+  if (GM_getValue('aPodcasts')) div2.appendChild(button9);
+  if (GM_getValue('aTranslate')) div2.appendChild(button10);
+  if (GM_getValue('aYouTube')) div2.appendChild(button11);
+  if (GM_getValue('aYouTubeTV')) div2.appendChild(button12);
   div3.insertBefore(input1, div3.firstChild);
   input1.id = 'gSearch';
 
@@ -394,14 +437,14 @@
     'body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf {'+
     '  padding: 0 20px !important;'+
     '}'+
-    '.gBtn, #dateTime, #gSearch, #Mses6b, center > input, #gb > div > div.gb_0a.gb_E.gb_k.gb_1a.gb_la .gb_Pe {'+
+    '.gBtn, #dateTime, #gSearch, #Mses6b, #submit, center > input, #gb > div > div.gb_0a.gb_E.gb_k.gb_1a.gb_la .gb_Pe {'+
     '  background-color: #303030 !important;'+
     '  border: 1px solid #CCC !important;'+
     '  box-shadow: 1px 0px 4px #000 inset !important;'+
     '  color: #AAA !important;'+
     '  cursor: pointer !important;'+
     '}'+
-    '.gBtn:hover, #dateTime:hover, #gSearch:hover:hover, #Mses6b:hover, center > input:hover, #gb > div > div.gb_0a.gb_E.gb_k.gb_1a.gb_la .gb_Pe:hover {'+
+    '.gBtn:hover, #dateTime:hover, #gSearch:hover:hover, #Mses6b:hover, #submit:hover, center > input:hover, #gb > div > div.gb_0a.gb_E.gb_k.gb_1a.gb_la .gb_Pe:hover {'+
     '  background-color: #444 !important;'+
     '  border: 1px solid #000 !important;'+
     '  box-shadow: none !important;'+
@@ -423,6 +466,7 @@
     '}'+
     '#gSearch, #Mses6b {'+
     '  border-radius: 4px !important;'+
+    '  max-height: 36px !important;'+
     '  padding: 9px 16px !important;'+
     '  text-decoration: none !important;'+
     '}'+
@@ -477,6 +521,26 @@
     '}'+
     '#gb > div > div:nth-child(4) {'+
     '  height: calc(-155px + 100vh) !important;'+
+    '}'+
+    '#dEjpnf {'+
+    '  position: relative !important;'+
+    '  top: 0 !important;'+
+    '}'+
+    '#dEjpnf > li:last-of-type {'+
+    '  border-bottom: 1px solid #000 !important;'+
+    '}'+
+    '#dEjpnf input[type="checkbox"] {'+
+    '  height: 16px !important;'+
+    '  position: relative !important;'+
+    '  top: 3px !important;'+
+    '  width: 16px !important;'+
+    '}'+
+    '#aCalendar {'+
+    '  margin-top: 12px !important;'+
+    '}'+
+    '#reload {'+
+    '  margin-top: 6px !important;'+
+    '  padding: 4px !important;'+
     '}'+
   '');
 

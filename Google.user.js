@@ -23,6 +23,7 @@
         customFormat = 'Add a format in script line 122',
         hideShow = '• Left-click to Hide/Show Date/Time',
         addRemove = '• Left-click to Add/Remove :seconds\n• Shift + Left-click to Add/Remove AM/PM\n• Ctrl + Left-click to change Date format',
+        reloadTooltip = 'Reload page for changes to take effect',
         settingsOptions = 'Settings & Options',
         DayNameAbbr = 'Sun.,Mon.,Tue.,Wed.,Thu.,Fri.,Sat.',
         DayName = 'Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday',
@@ -256,6 +257,8 @@
       buttonAll = $c('button', {id: 'buttonAll', className: 'gBtn', textContent: 'Check All', onclick: function(e) {onButton(e)}}),
       buttonNone = $c('button', {id: 'buttonNone', className: 'gBtn', textContent: 'Clear All', onclick: function(e) {onButton(e)}}),
       lf0 = $c('br'),
+      headerLabel = $c('label', {id: 'headerLabel', textContent: '[ Header Buttons ]'}),
+      lfH = $c('br'),
       checkbox1 = $c('input', {id: 'aCalendar', name: 'aCalendar', value: 'aCalendar', type: 'checkbox', checked: GM_getValue("aCalendar"), onclick: function(e) {onCheckbox(e)}}),
       label1 = $c('label', {for: 'aCalendar', textContent: 'Calendar'}),
       lf1 = $c('br'),
@@ -278,7 +281,7 @@
       label7 = $c('label', {for: 'aPhotos', textContent: 'Photos'}),
       lf7 = $c('br'),
       checkbox8 = $c('input', {id: 'aPlay', name: 'aPlay', value: 'aPlay', type: 'checkbox', checked: GM_getValue("aPlay"), onclick: function(e) {onCheckbox(e)}}),
-      label8 = $c('label', {for: 'aPlay', textContent: 'Play'}),
+      label8 = $c('label', {for: 'aPlay', textContent: 'Play Store'}),
       lf8 = $c('br'),
       checkbox9 = $c('input', {id: 'aPodcasts', name: 'aPodcasts', value: 'aPodcasts', type: 'checkbox', checked: GM_getValue("aPodcasts"), onclick: function(e) {onCheckbox(e)}}),
       label9 = $c('label', {for: 'aPodcasts', textContent: 'Podcasts'}),
@@ -292,7 +295,7 @@
       checkbox12 = $c('input', {id: 'aYouTubeTV', name: 'aYouTubeTV', value: 'aYouTubeTV', type: 'checkbox', checked: GM_getValue("aYouTubeTV"), onclick: function(e) {onCheckbox(e)}}),
       label12 = $c('label', {for: 'aYouTubeTV', textContent: 'YouTubeTV'}),
       lf12 = $c('br'),
-      reload = $c('button', {id: 'reload', className: 'gBtn', textContent: 'Reload Page', onclick: function() {document.location.reload(true)}}),
+      reload = $c('button', {id: 'reload', className: 'gBtn', textContent: 'Reload Page', title: reloadTooltip, onclick: function() {document.location.reload(true)}}),
       div4 = $c('div', {id: 'dateContainer'}),
       span1 = $c('span', {id: 'dateTime', onmousedown: function(e) {toggleSecondsAmPmFormat(e)}}),
       div1 = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd'),
@@ -303,6 +306,7 @@
       srch = $q('#dEjpnf'),
       timer;
 
+  srch.appendChild(headerLabel); srch.appendChild(lfH);
   srch.appendChild(buttonAll); srch.appendChild(buttonNone); srch.appendChild(lf0);
   srch.appendChild(checkbox1); srch.appendChild(label1); srch.appendChild(lf1);
   srch.appendChild(checkbox2); srch.appendChild(label2); srch.appendChild(lf2);
@@ -561,6 +565,10 @@
     '}'+
     '#dEjpnf > li:last-of-type {'+
     '  border-bottom: 1px solid #000 !important;'+
+    '  margin-bottom: 8px !important;'+
+    '}'+
+    '#headerLabel {'+
+    '  margin: 0 0 6px 16px !important;'+
     '}'+
     '#buttonAll, #buttonNone {'+
     '  margin: 6px 4px 0 4px !important;'+
@@ -573,7 +581,7 @@
     '  width: 18px !important;'+
     '}'+
     '#reload {'+
-    '  margin: 8px 28px 6px 28px !important;'+
+    '  margin: 8px 0 6px 28px !important;'+
     '  padding: 4px !important;'+
     '}'+
   '');

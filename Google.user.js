@@ -23,6 +23,7 @@
         customFormat = 'Add a format in script line 122',
         hideShow = '• Left-click to Hide/Show Date/Time',
         addRemove = '• Left-click to Add/Remove :seconds\n• Shift + Left-click to Add/Remove AM/PM\n• Ctrl + Left-click to change Date format',
+        settingsOptions = 'Settins & Options',
         DayNameAbbr = 'Sun.,Mon.,Tue.,Wed.,Thu.,Fri.,Sat.',
         DayName = 'Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday',
         MonthNameAbbr = 'Jan.,Feb.,Mar.,Apr.,May,Jun.,Jul.,Aug.,Sep.,Oct.,Nov.,Dec.',
@@ -298,6 +299,7 @@
       div2 = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd > div'),
       div3 = $q('body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > div'),
       input1 = $q('body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.FPdoLc.lJ9FBc > center > input.gNO89b'),
+      settings = $q('#Mses6b'),
       srch = $q('#dEjpnf'),
       timer;
 
@@ -330,6 +332,7 @@
   if (GM_getValue('aYouTubeTV')) div2.appendChild(button12);
   div3.insertBefore(input1, div3.firstChild);
   input1.id = 'gSearch';
+  settings.textContent = settingsOptions;
 
   addEventListener('unload', function() {onClose()});
 

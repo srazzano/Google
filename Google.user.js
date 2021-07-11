@@ -536,9 +536,6 @@
     '#dEjpnf > li:first-of-type {'+
     '  border-radius: 4px 4px 0 0 !important;'+
     '}'+
-    '#dEjpnf > li:last-of-type {'+
-    '  border-radius: 0 0 4px 4px !important;'+
-    '}'+
     '.xtSCL {'+
     '  border-top: 1px solid transparent !important;'+
     '}'+
@@ -557,7 +554,7 @@
     '#dEjpnf {'+
     '  min-width: 150px !important;'+
     '  position: relative !important;'+
-    '  top: 0 !important;'+
+    '  top: -284px !important;'+
     '}'+
     '#dEjpnf > li:last-of-type {'+
     '  border-bottom: 1px solid #000 !important;'+
@@ -567,12 +564,13 @@
     '  margin-right: 8px !important;'+
     '}'+
     '#dEjpnf input[type="checkbox"] {'+
-    '  height: 16px !important;'+
+    '  height: 18px !important;'+
     '  position: relative !important;'+
-    '  top: 3px !important;'+
-    '  width: 16px !important;'+
+    '  top: 4px !important;'+
+    '  width: 18px !important;'+
     '}'+
-    '#aCalendar {'+
+    '#reload {'+
+    '  margin-left: 4px !important;'+
     '}'+
     '#buttonAll, #buttonNone, #reload {'+
     '  margin-top: 6px !important;'+

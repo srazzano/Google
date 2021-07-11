@@ -152,6 +152,24 @@
     setTimer();
   }
 
+  function onButton(e) {
+    let cb = $q('#dEjpnf input[type="checkbox"]', true), x;
+    switch (e.target.id) {
+      case 'buttonAll':
+        for (let i = 0; i < cb.length; i++) {
+          x = cb[i];
+          x.checked = true;
+          GM_setValue(x.id, true);
+        }
+        break;
+      case 'buttonNone':
+        for (let i = 0; i < cb.length; i++) {
+          x = cb[i];
+          x.checked = false;
+          GM_setValue(x.id, false);
+        }
+  } }
+
   function onCheckbox(e) {
     let bool = GM_getValue(e.target.id) !== true ? true : false;
     GM_setValue(e.target.id, bool);
@@ -211,6 +229,16 @@
   if (!GM_getValue('dateFormat')) GM_setValue('dateFormat', 1);
   if (!GM_getValue('aCalendar')) GM_setValue('aCalendar', false);
   if (!GM_getValue('aClock')) GM_setValue('aClock', false);
+  if (!GM_getValue('aEarth')) GM_setValue('aEarth', false);
+  if (!GM_getValue('aMail')) GM_setValue('aMail', false);
+  if (!GM_getValue('aMaps')) GM_setValue('aMaps', false);
+  if (!GM_getValue('aNews')) GM_setValue('aNews', false);
+  if (!GM_getValue('aPhotos')) GM_setValue('aPhotos', false);
+  if (!GM_getValue('aPlay')) GM_setValue('aPlay', false);
+  if (!GM_getValue('aPodcasts')) GM_setValue('aPodcasts', false);
+  if (!GM_getValue('aTranslate')) GM_setValue('aTranslate', false);
+  if (!GM_getValue('aYouTube')) GM_setValue('aYouTube', false);
+  if (!GM_getValue('aYouTubeTV')) GM_setValue('aYouTubeTV', false);
 
   var button1 = $c('button', {id: 'gCalendar', className: 'gBtn', textContent: 'Calendar', title: url1, style: 'background-image: url('+ icon1 +')', onclick: function() {window.open(url1, '_blank')}}),
       button2 = $c('button', {id: 'gClock', style: 'background-image: url('+ icon2 +')', title: hideShow, onmousedown: function(e) {toggleDateTime(e)}}),
@@ -224,6 +252,9 @@
       button10 = $c('button', {id: 'gTranslate', className: 'gBtn', textContent: 'Translate', title: url10, style: 'background-image: url('+ icon10 +')', onclick: function() {window.open(url10, '_blank')}}),
       button11 = $c('button', {id: 'gYouTube', className: 'gBtn', textContent: 'YouTube', title: url11, style: 'background-image: url('+ icon11 +')', onclick: function() {window.open(url11, '_blank')}}),
       button12 = $c('button', {id: 'gYouTubeTV', className: 'gBtn', textContent: 'YouTube TV', title: url12, style: 'background-image: url('+ icon12 +')', onclick: function() {window.open(url12, '_blank')}}),
+      buttonAll = $c('button', {id: 'buttonAll', className: 'gBtn', textContent: 'Check All', onclick: function(e) {onButton(e)}}),
+      buttonNone = $c('button', {id: 'buttonNone', className: 'gBtn', textContent: 'Clear All', onclick: function(e) {onButton(e)}}),
+      lf0 = $c('br'),
       checkbox1 = $c('input', {id: 'aCalendar', name: 'aCalendar', value: 'aCalendar', type: 'checkbox', checked: GM_getValue("aCalendar"), onclick: function(e) {onCheckbox(e)}}),
       label1 = $c('label', {for: 'aCalendar', textContent: 'Calendar'}),
       lf1 = $c('br'),
@@ -270,6 +301,7 @@
       srch = $q('#dEjpnf'),
       timer;
 
+  srch.appendChild(buttonAll); srch.appendChild(buttonNone); srch.appendChild(lf0);
   srch.appendChild(checkbox1); srch.appendChild(label1); srch.appendChild(lf1);
   srch.appendChild(checkbox2); srch.appendChild(label2); srch.appendChild(lf2);
   srch.appendChild(checkbox3); srch.appendChild(label3); srch.appendChild(lf3);
@@ -523,11 +555,16 @@
     '  height: calc(-155px + 100vh) !important;'+
     '}'+
     '#dEjpnf {'+
+    '  min-width: 150px !important;'+
     '  position: relative !important;'+
     '  top: 0 !important;'+
     '}'+
     '#dEjpnf > li:last-of-type {'+
     '  border-bottom: 1px solid #000 !important;'+
+    '}'+
+    '#buttonAll {'+
+    '  margin-left: 4px !important;'+
+    '  margin-right: 8px !important;'+
     '}'+
     '#dEjpnf input[type="checkbox"] {'+
     '  height: 16px !important;'+
@@ -536,9 +573,8 @@
     '  width: 16px !important;'+
     '}'+
     '#aCalendar {'+
-    '  margin-top: 12px !important;'+
     '}'+
-    '#reload {'+
+    '#buttonAll, #buttonNone, #reload {'+
     '  margin-top: 6px !important;'+
     '  padding: 4px !important;'+
     '}'+

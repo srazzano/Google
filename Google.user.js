@@ -251,40 +251,40 @@
       headerLabel = $c('label', {id: 'headerLabel', textContent: '[ Header Buttons ]'}),
       lfH = $c('br'),
       checkbox1 = $c('input', {id: 'aCalendar', name: 'aCalendar', value: 'aCalendar', type: 'checkbox', checked: GM_getValue("aCalendar"), onclick: function(e) {onCheckbox(e)}}),
-      label1 = $c('button', {for: 'aCalendar', textContent: 'Calendar', style: 'background: url('+ icon1 +') no-repeat right', onclick: function(e) {onButton(e)}}),
+      label1 = $c('button', {for: 'aCalendar', className: 'aBtn', textContent: 'Calendar', style: 'background: url('+ icon1 +') no-repeat right', onclick: function(e) {onButton(e)}}),
       lf1 = $c('br'),
       checkbox2 = $c('input', {id: 'aClock', name: 'aClock', value: 'aClock', type: 'checkbox', checked: GM_getValue("aClock"), onclick: function(e) {onCheckbox(e)}}),
-      label2 = $c('button', {for: 'aClock', textContent: 'Clock', style: 'background: url('+ icon2a +') no-repeat right', onclick: function(e) {onButton(e)}}),
+      label2 = $c('button', {for: 'aClock', className: 'aBtn', textContent: 'Clock', style: 'background: url('+ icon2a +') no-repeat right', onclick: function(e) {onButton(e)}}),
       lf2 = $c('br'),
       checkbox3 = $c('input', {id: 'aEarth', name: 'aEarth', value: 'aEarth', type: 'checkbox', checked: GM_getValue("aEarth"), onclick: function(e) {onCheckbox(e)}}),
-      label3 = $c('button', {for: 'aEarth', textContent: 'Earth', style: 'background: url('+ icon3 +') no-repeat right', onclick: function(e) {onButton(e)}}),
+      label3 = $c('button', {for: 'aEarth', className: 'aBtn', textContent: 'Earth', style: 'background: url('+ icon3 +') no-repeat right', onclick: function(e) {onButton(e)}}),
       lf3 = $c('br'),
       checkbox4 = $c('input', {id: 'aMail', name: 'aMail', value: 'aMail', type: 'checkbox', checked: GM_getValue("aMail"), onclick: function(e) {onCheckbox(e)}}),
-      label4 = $c('button', {for: 'aMail', textContent: 'Mail', style: 'background: url('+ icon4 +') no-repeat right', onclick: function(e) {onButton(e)}}),
+      label4 = $c('button', {for: 'aMail', className: 'aBtn', textContent: 'Mail', style: 'background: url('+ icon4 +') no-repeat right', onclick: function(e) {onButton(e)}}),
       lf4 = $c('br'),
       checkbox5 = $c('input', {id: 'aMaps', name: 'aMaps', value: 'aMaps', type: 'checkbox', checked: GM_getValue("aMaps"), onclick: function(e) {onCheckbox(e)}}),
-      label5 = $c('button', {for: 'aMaps', textContent: 'Maps', style: 'background: url('+ icon5 +') no-repeat right', onclick: function(e) {onButton(e)}}),
+      label5 = $c('button', {for: 'aMaps', className: 'aBtn', textContent: 'Maps', style: 'background: url('+ icon5 +') no-repeat right', onclick: function(e) {onButton(e)}}),
       lf5 = $c('br'),
       checkbox6 = $c('input', {id: 'aNews', name: 'aNews', value: 'aNews', type: 'checkbox', checked: GM_getValue("aNews"), onclick: function(e) {onCheckbox(e)}}),
-      label6 = $c('button', {for: 'aNews', textContent: 'News', style: 'background: url('+ icon6 +') no-repeat right', onclick: function(e) {onButton(e)}}),
+      label6 = $c('button', {for: 'aNews', className: 'aBtn', textContent: 'News', style: 'background: url('+ icon6 +') no-repeat right', onclick: function(e) {onButton(e)}}),
       lf6 = $c('br'),
       checkbox7 = $c('input', {id: 'aPhotos', name: 'aPhotos', value: 'aPhotos', type: 'checkbox', checked: GM_getValue("aPhotos"), onclick: function(e) {onCheckbox(e)}}),
-      label7 = $c('button', {for: 'aPhotos', textContent: 'Photos', style: 'background: url('+ icon7 +') no-repeat right', onclick: function(e) {onButton(e)}}),
+      label7 = $c('button', {for: 'aPhotos', className: 'aBtn', textContent: 'Photos', style: 'background: url('+ icon7 +') no-repeat right', onclick: function(e) {onButton(e)}}),
       lf7 = $c('br'),
       checkbox8 = $c('input', {id: 'aPlay', name: 'aPlay', value: 'aPlay', type: 'checkbox', checked: GM_getValue("aPlay"), onclick: function(e) {onCheckbox(e)}}),
-      label8 = $c('button', {for: 'aPlay', textContent: 'Play Store', style: 'background: url('+ icon8 +') no-repeat right', onclick: function(e) {onButton(e)}}),
+      label8 = $c('button', {for: 'aPlay', className: 'aBtn', textContent: 'Play Store', style: 'background: url('+ icon8 +') no-repeat right', onclick: function(e) {onButton(e)}}),
       lf8 = $c('br'),
       checkbox9 = $c('input', {id: 'aPodcasts', name: 'aPodcasts', value: 'aPodcasts', type: 'checkbox', checked: GM_getValue("aPodcasts"), onclick: function(e) {onCheckbox(e)}}),
-      label9 = $c('button', {for: 'aPodcasts', textContent: 'Podcasts', style: 'background: url('+ icon9 +') no-repeat right', onclick: function(e) {onButton(e)}}),
+      label9 = $c('button', {for: 'aPodcasts', className: 'aBtn', textContent: 'Podcasts', style: 'background: url('+ icon9 +') no-repeat right', onclick: function(e) {onButton(e)}}),
       lf9 = $c('br'),
       checkbox10 = $c('input', {id: 'aTranslate', name: 'aTranslate', value: 'aTranslate', type: 'checkbox', checked: GM_getValue("aTranslate"), onclick: function(e) {onCheckbox(e)}}),
-      label10 = $c('button', {for: 'aTranslate', textContent: 'Translate', style: 'background: url('+ icon10 +') no-repeat right', onclick: function(e) {onButton(e)}}),
+      label10 = $c('button', {for: 'aTranslate', className: 'aBtn', textContent: 'Translate', style: 'background: url('+ icon10 +') no-repeat right', onclick: function(e) {onButton(e)}}),
       lf10 = $c('br'),
       checkbox11 = $c('input', {id: 'aYouTube', name: 'aYouTube', value: 'aYouTube', type: 'checkbox', checked: GM_getValue("aYouTube"), onclick: function(e) {onCheckbox(e)}}),
-      label11 = $c('button', {for: 'aYouTube', textContent: 'YouTube', style: 'background: url('+ icon11 +') no-repeat right', onclick: function(e) {onButton(e)}}),
+      label11 = $c('button', {for: 'aYouTube', className: 'aBtn', textContent: 'YouTube', style: 'background: url('+ icon11 +') no-repeat right', onclick: function(e) {onButton(e)}}),
       lf11 = $c('br'),
       checkbox12 = $c('input', {id: 'aYouTubeTV', name: 'aYouTubeTV', value: 'aYouTubeTV', type: 'checkbox', checked: GM_getValue("aYouTubeTV"), onclick: function(e) {onCheckbox(e)}}),
-      label12 = $c('button', {for: 'aYouTubeTV', textContent: 'YouTubeTV', style: 'background: url('+ icon12 +') no-repeat right', onclick: function(e) {onButton(e)}}),
+      label12 = $c('button', {for: 'aYouTubeTV', className: 'aBtn', textContent: 'YouTubeTV', style: 'background: url('+ icon12 +') no-repeat right', onclick: function(e) {onButton(e)}}),
       lf12 = $c('br'),
       reload = $c('button', {id: 'reload', className: 'gBtn', textContent: 'Reload Page', title: reloadTooltip, onclick: function() {document.location.reload(true)}}),
       div4 = $c('div', {id: 'dateContainer'}),
@@ -562,22 +562,25 @@
     '#headerLabel {'+
     '  margin: 0 0 6px 17px !important;'+
     '}'+
+    '#dEjpnf > .aBtn {'+
+    '  color: #AAA !important;'+
+    '  padding: 2px 23px 2px 0 !important;'+
+    '}'+
+    '#dEjpnf > .aBtn:hover {'+
+    '  color: #FFF !important;'+
+    '  text-decoration: underline !important;'+
+    '}'+
     '#buttonAll, #buttonNone {'+
     '  margin: 6px 4px 0 4px !important;'+
     '  padding: 4px !important;'+
     '}'+
     '#dEjpnf > input[type="checkbox"] {'+
+    '  cursor: pointer !important;'+
     '  height: 18px !important;'+
     '  margin-right: 6px !important;'+
     '  position: relative !important;'+
     '  top: 4px !important;'+
     '  width: 18px !important;'+
-    '}'+
-    '#dEjpnf > input[type="checkbox"] + button {'+
-    '  padding-right: 23px !important;'+
-    '}'+
-    '#dEjpnf > input[type="checkbox"]:hover + button {'+
-    '  background-color: #222 !important;'+
     '}'+
     '#reload {'+
     '  margin: 8px 0 6px 28px !important;'+

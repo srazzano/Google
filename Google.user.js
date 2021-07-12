@@ -574,6 +574,7 @@
     '}'+
     '#dEjpnf > input[type="checkbox"] {'+
     '  height: 18px !important;'+
+    '  margin-right: 6px !important;'+
     '  position: relative !important;'+
     '  top: 4px !important;'+
     '  width: 18px !important;'+

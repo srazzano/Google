@@ -20,7 +20,7 @@
         elementSpacing = '14px',
         am = 'AM',
         pm = 'PM',
-        customFormat = 'Add a format in script line 124',
+        customFormat = 'Add a format in script line 125',
         hideShow = '• Left-click to Hide/Show Date/Time',
         addRemove = '• Left-click to Add/Remove :seconds\n• Shift + Left-click to Add/Remove AM/PM\n• Ctrl + Left-click to change Date format',
         reloadTooltip = 'Reload page for changes to take effect',
@@ -45,13 +45,14 @@
         dayord = DayOrd.split(','),
         icon1 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABT0lEQVR42mNkAAKp9Iv/GYgELMxMYJqZmZHh/mQdRkZSNMPAfwZGMM0IYpFjADJANyCMkIaHocYgahVOA57O0Fv17x8Dw7//IH8ygB37H6qCEcj5s5c1DK8BD6fqrTp+5w9DRP81hsNNOgxyIkwMJ+/+ZQjrvcoANJywAQ+m6K16/O4fg5IYE4N0xiWGvXU6DM5NV8CSRBkA8sLbL/8Z9EouM2yq0GYwVmBmuPrkL4NbC5EueDRNb9XDNwgXPJ6ux3D9KQkG3Jqou+rcg7/gMPAwUmWYncrJcPPZXwaXZiINeDJdbxUjJJ0w/PzDwMDOwsDw+y+Ez8pMRCzcmqyyCpLaGKDpDRWwH+IP+/+TGayGkf0vA6Ncs+3/X39/E52QLh3+uwqZj24AQQA0AM4W23uakVGx1eH/998/SDYApJkB5k2JBguiMxTIAJhmEAAA4quznkbNVyMAAAAASUVORK5CYII=',
         icon2 = 'data:image/png;base64,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',
+        icon2a = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAC5ElEQVR42p2T22tcRRzHP+e2ey7J3rK76ebWXCRtUysoLYLgvaBI8EIDbaGW0vooNP0T+lLokyv4qPUSoYKCiK8iakUfkgfBmqSWamluNGmSzW525+yes2ecjUtta586w28ODPP7nJnv7/vTeGCUPnkprT4nVZxQcaC9/buKz1V8ljr1/ea957UHks9GmlnssE2EqFGNXLUr8XSB47hs+yG6DCcV5P3/AVTyR07COS1KW9wUvdSyT9Jw+9B1DbNyC3f9NwadJZxUElEWlxTkzF1A689O0imurPgs59/AHH2WXb39DHRl+fDTSxx+bZy1lWWCP3+iZ/UbCgUbsSV2bqK13iw1Y0OXDWbTx3EOHcGt3SaZSNKd798BjL96mHKlTM3dhZj+irHSZSJiaLKZaQHOeh12cbbcR/TMOVwjwLRs8rluOr3kDuDoxBFW124TBj61poX+y3uMJRapbvuTLcC0aZoH57qO0Tn2IkYosG2PbDaHE3f58uIF3qoKFt45RaMuiCwl5twP7Fv/gjAMZ1oAv24k4rcee5fO7j5MpUncdil0F9hvWMy3RJqfZ6snj++rytR91hdusvvGB8Sb5XobkIz/rQCpfAFdzXQ6zZ2ff2Xv62+yV+Vfa1dq6vIUA4MDeIak/1rxLmDasGIHZ3Nv4ww9hdFskF69Q+G5lzl/8gSbuRzDw8N4HR4xU6d3aISkv8To8sdEYTDTFtEqXg0PET5xjMRf84yOT7D043c0hgaJWzH1pDhCXb+hohIaRDNTHLBmlIjBZLuM2oa00vzRNcHgt1fYfuV5GsMjKHGJpFTqB8hmgG96hItXeXzja7RgU5VRZv4zUsot3tjoY633BWI9e7ANTbksorU21al6KAkW58iuXGEks4go1f410v1Wjp0uVSwW7KcRmVGkk1KdALoo4ZSuszucJeFUVPL2/Va+t5k0TSu6HTGEzFCVqpmkhmf6OHqJ2lYVKeXDm+lR2/kfXyNFNnilPcEAAAAASUVORK5CYII=',
         icon3 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACZElEQVR42m2TT2gTQRTGv9nd2fzZuDGJ0aqJVmlVkqYqKLaheveUCiIiHr304MmTPSp46cmLCN5EL+Ihhar01EMLEWoRDwqK9I85tY0xsUk3MdmMM7PJ2rUdsjk83vt933xvl2CP83yuyGIh4EDURCxIsPVrA19Lfty8kiD/93oKrxa381HDzumBEFQFUBSnrhCGE/uasK0tzBdD0zcuBsd3AfjwSK2lFWxGwZgzHDGAw1GniTNwJmKBdFqY/UZHOeS9CxDKZYvmFFUDmPzJI0CUl04fAdSu1KlwAxr+CIh0IsuP35YYNaKo1jsIBRTolMhhCeFPUAcG+xw5jVtJRS2UymX0J5OEPH23whZWDqHWYO6ArhFczvi5OnGd6NxJKuFAdbWDkzyTmcV1kLtPvrAf1nFPsgLi1wmyaT98HMK6tXTCAbFu09ryd5BrUxvMVgwvoJuDGVQwNuR3oWIzAiK3wwvNBg/16qN1plAD9eo2NE2Fz/DxqxJ36NyAzjehyUovXAESIrXfFZCxiRnWpBm0mm0Q3kV9FPFErOuESbVsKgDTUDzuxN/SwizIQPYOMzL3PVeIH42C+qkbiACfH/ShL6K5ziyrjWcPJxyv6VtzTDWSnhANM4Bw3JS76ykKN6pC0LIZrJ/LmJ8aJhLQf+F2PjQ8mSOq7u5fnIAZROSg6V6+07VvN+tYfXNvevXDi3H3VeaQkWBmsgBF92yDcEWdXycUNmQmlc0y6h8fjPLhf6/yDkheP3Y9p+4fchMXlJ4ru/oZ7eJrqbzn17gDxGj8Ekj4rGzpVD6htVnA2tLLXf1/AQMj3p/5NSY6AAAAAElFTkSuQmCC',
         icon4 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABMElEQVR42mN85Wz6nwEIfjEw9MvsPV3EQAT4vYelD0gVgtiMMANA4DMjY9gU3Ygt/PyffjY0NPxD0sMYGrqKSVv7Gnu1TYs3kL8KLoFsAMyQQ9GZm7m5uX+Hhob+a2xsZGRgsGeSlPzMlqQchKIZqwEwQxbbJG9lYHj+B8T/ws3N2m5Y6YWuGWyAU+uX/yv2OWL1K8gguYpzDNg0goDlG3+IASAOLkMEK88z4NIMdwFMEJsh2AyAacYwAARm73cK4/3/fxUOA8KAmlEDEd2AfdU8jHddzEJhhiAZEMbq8me1yYrg/wQNANEwQ6AGgDWDGEQZAIx/5tWrV/8FGQKKBZBmmBixLmAEpkRGLS0txmvXrv2vr6//z8jI+J9oF4Do////g2mYRhgYQgbgAugGAAAzKLYhKvyRPwAAAABJRU5ErkJggg==',
         icon5 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACEElEQVR42o2Ty2sTURTGv9kIJZGx4kJUrGhQFELQcSPJygekKYg7l/VNjIsgqAVbF+6s4J/gwrbRYqfRjbErH+hK4zLgwpY4o41CxReMZcjM9d5zcm9GV71w577O9zvfPZexsMa2dOKIEN0IQghAxMg0Xllq31qLePH4YaUCYsEAmkvI09eWtedBmaHgw7g3cphcy8AX7kfK2vz2k4DO4HoCqCBr9/0yhb8ZvoUw7uLQwnUDiKXoOYkFmivf8f7XH4LuSw/gwGCaAZnaBfG2NImDjTE05aja/idXjaNnEmCp7Cs/GCDne+0UHNkJsEsClNBpXCPxu9JtAqjsdI0owsu6xy70FTakaa26tbN2Xmjh/9nVgZdfxlJ1lbIlC6iGzIIs4o6Zc0JXmyVIiDu0241ieJdDsq8zqxegZxyaOdsHiB4gIVa9FdxBEATYePMKA+RzquwE2D59RmiRhviFL0b8e9McPM+j/YGxCgE+VCdQLBYZsG3qtHGgml/omAuNuPOYLcckVpAwDGGPV/H1xiTy+TwDtiYAnwp92yNuHdrabDmi83a7jaB2F+tOjsJxHAZsmTpFcZ8Ly8ZFSYp1MQgnPw8vMqTVaiGVSiGXyzFg871R0TG2pXi+boToibWTuQr/TL7vI5vNMkAsHhP9zI/+EZriJoBuhZ3Ytq0BR+ls2H1sRMlXSV5D79cvRQbwF5scUJszafjwAAAAAElFTkSuQmCC',
         icon6 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAClElEQVR42o2SW0gUURjH/2cua2tby0CieYtatQyMLiBEFFmEBBFImClWREHh0lsERWJaKUFZSaAvgtFLYIH2EBUmJqwrJkpQCEUZ3toEV8fLuDPOzOnMzrTsZg8dOHO+c+b8f9/lfARxI/9GKcUWCSYoKAUINbGOqJCpAJ0SmOyQ+xLG6L2X5I+GxAN8DyopSfOAY8JUKKiSfuCoZwylU4X4rK1nABMILSJ09fm/AbmNFdSXxeNZej/cUCESHWCi6eEUtE9sRUu2GzOygtC1F6sBl8p89L4fSBY0tqPOZB5Z2GaEIPw4D1gBZJFH6+QsGgaGo1rS2eijRTsN3P3+BOGV1CjMyt8CUMe2IjfmRVDD2lNsWA7hysfrmDENkMG2dLojR8SFoQAWDCkGcBgx21qtIlq2R5PR1FeBoDwPUlWWSR9e5nB+qA8Lug3gWHCGIyZOolEQ++gsmrWqDaifnLb/y++yqP9TEEumhOICAWf3iwh+NdD0VsPFQy4c3M5HwRqr6elmBS5FxqNAOTJe95IooLs5m7aqAWzblIJzB0Q0dChITuIw8pOFm2QiSbC9G6wXwksEbpZC7fuTKOgK2IA9u3w090wPbpeno2NQYx5FpHkJRqZMLEYo9uUJsaeeCJu49fQXTr0pQVlggMSe8Vj9BK0sSsFGL4eWrmUc3y2C5zm0f9DhFp1CsvwXVbYuzKGzJoMk9EFx3Th1eyTUlIjwJgssXBPV7SpOFLqwN8euwQp7Rn/bMqDM4dXNzETAkdpxKrglCBwgsPu6YU+e2bxzy2QRqNa5MovuuqzVAH6NFN/ZTkPF9YRzpkdm0fM34HD1KAN4EwFxwvgG0yMyeu9sTgRk+/Ip4V34n0ENDWPfRqLa3wYbMFCh4PdOAAAAAElFTkSuQmCC',
         icon7 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAA7UlEQVR42o2SMQ7CMAxF60osgBg5BwNcABZ2lIi7MDNxCjbUiJ0FLgBX4ALMlAWpwama1o2dFktVVFXv1f4OJD31Wi0sHnp6vRvpO/wpcGVQonsF+WWgRuuvEQSiBEIYj8y17CVUUOCTBuMAgR2o6N9QoqnANkAtgQjsS+eHWeZfPoVNhim0OyBtS2VQ0OqKZYACm3QUCkqwgtkqxTXOTxtVjaQmz2OXnwsQbuWBAhPJp8wIApjlgQIdycjcduNGIMGuHtszLPdvtmIHsxEkiRO4EyX1JUOYX6RYBl7gJRTu2kItoYK/thCO0yf4Ae3NdduiROd4AAAAAElFTkSuQmCC',
         icon8 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABzklEQVR42pWTvUscQRjGn3dm78RwfqGYcLn6hGskVSCFjYVcc1Zu/oH0VtqEI4VNCsWQnGgsJNi5JxY2KuJ3DisRAzGQFLGJFhaxSCKsuzO+M3uai1nFG5hi3o/fPM87uyTWfw2g+bPXnFrAWWvg4tFYGXUssgDAo2wR0tcIk4QwM051ATRJj1QI6ipCSUCTMLl7qbEA1cAAzSefA7khKCSqaaZB3wmKFKSkpy/4wBDyQyD3kiHiuiiHhzjEaSwoUtAkWAHBQrgfvHV6Dmg5+Kf468k+sk826X9Ai/SgNUjVQAJjZ5iVOKwlwLPz31g9moFu4LiE2/gU5b+AdgaYJlUDsXaYkiti8WgFvedf7I3a4XjSdNoRuRGgwygwAI4HpgrXSuY/DCH/vBQ11QIce4wAupMBJln1f6Wk/P41+j59ZHcEerEHp+vnFeCGhTQ/Y1C9oQrpPv6OrVeDNpZwlBkR5OgaGnsQM8THkQViC5pBs9NjyO9UICQ/Jg/DESFCJdzWvdVbnjETWTAzmHzzFv2VbSSEguQthIptjAVMld6hsLFlEw+Sfpkb3ft9yhnypkoT6Fuu4EL7yH5bqu9nKvzY9cZHSmhr+nOn3Lh1CbI13UN9EkzxAAAAAElFTkSuQmCC',
-        icon9 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAiklEQVR42mNkwAN+7eT4D6LZ3H8w4lLDOPgMeOVs+l9s72msGkxWBP8/E7GWEacBIM0gGmYAugtABoBoZEOoZEDq9f8MszUZCRmADJxav/zfV83DyAjSzMjwn+H/bC2CBiC7AGQAxAUgA/7/Y/g/R5tMA5C8QCga0Q2AeGFwxAK1EhKhMMAGBt4AALMJnoWcpxARAAAAAElFTkSuQmCC',
+        icon9 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAdElEQVR42mNkwAN+72H5D6JZXf4w4lLDOPgMeOVs+l9s72msGkxWBP8/E7GWEacBIM0gGmYAugtABoBoZEOoY4BT65f/+6p5GAkZgAxgehhBDJAAMQYguwCmj3IDkJ1DKBrRDQB7YXDEAtUSEqEwwAYG3gAAuNudhTC8LbkAAAAASUVORK5CYII=',
         icon10 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACM0lEQVR42oWTz2sTQRTHvzOzWxrzY1uNpoGKTYkHhdZLaa1VUTCKNhZtTEU8+uOmtCcVvXgRUWulB/8FIaVe/AWeBC8KogdFRCUUS4n4o5q0S9TN7vpmdhuSFtLHzrzdZd7nve+8GZa5Y+YYnKzrAg7IXPVAfmuCj0yPBqfQwFhmYsFljHtBywCCY4oAIw0BwzWA2mDpHauEBxfirCHgqA/wCPUAOfWE3qAzNAshGA0Bh3Q6NDHm0jpGgNseYH0YOLXLQjQIFIrA+FMdFVrcYZg43fcTa1sjBKBKXS+T9Ap0hAAAx+VBC4/fCrz+whFuBkplrxJOmca259EWDSAcWkOZWT1gaNyrYPLEP5y/14R9Wxykttqo2MCl+7qSkk4WsKPzLyanH+Hq2ZNV/bZtE+CWB7iStvDkncCrGY7ehIOBpEMyNLUPBptDV+glNE3Aph/zCyY2xqIY2tkDdtgHbIgAZ2gPYgbwvcRw95lQXlYgmIOD8efoSsaQnysg2mqge3PCk5C+WdPGJavriKv8/vY8fnx9gUBzE46nBqgaTXWFDd7w27gyvhosp47IPILFh2gxgji2tw+6rqsNZYeWAaptqqHJd44KRns/omyZeD8zi8yefnBOAHkXzD92dmV2OmVMDg6fid2J3xjuXsS3X0W0rWvxJDQ6pgeuL0pwzv+cuNj/eSweCygw59yTgFXMh2TPbfuQ3dQeUK2UpUuAugurAZYg11KfcrquKYDKTMM0y/gPuRvvNRWbsbkAAAAASUVORK5CYII=',
         icon11 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAX0lEQVR42s2SwQoAIQhEx2t9X37k9n91NBGWTkE1sOxchHBeoyggJf8AGPB4KYfe6maVS/OEWAQgRlgCzJ9V/Y9KAF7lDLRGAKJTCEBKQO9f72BT/B1EWuYSmfgxAgsYuQErVcPEBlcAAAAASUVORK5CYII=',
         icon12 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAZklEQVR42s2S0QrAIAhFr6/1ffMj1//VoxNB9tRYXRg7BEHYUUuBY8Dp24E1mgAqm5dviUUB+8wF5seqnqMRgqRWoHdCEJFCCEoBxvj6DV7Cz0FUy0ziU0S2J7EmLfxHsPobKaUFF2w1NVWPtXHxAAAAAElFTkSuQmCC',
@@ -156,20 +157,27 @@
 
   function onButton(e) {
     let cb = $q('#dEjpnf input[type="checkbox"]', true), x;
-    switch (e.target.id) {
-      case 'buttonAll':
-        for (let i = 0; i < cb.length; i++) {
-          x = cb[i];
-          x.checked = true;
-          GM_setValue(x.id, true);
-        }
-        break;
-      case 'buttonNone':
-        for (let i = 0; i < cb.length; i++) {
-          x = cb[i];
-          x.checked = false;
-          GM_setValue(x.id, false);
-        }
+    if (e.target.hasAttribute('id')) {
+      switch (e.target.id) {
+        case 'buttonAll':
+          for (let i = 0; i < cb.length; i++) {
+            x = cb[i];
+            x.checked = true;
+            GM_setValue(x.id, true);
+          }
+          break;
+        case 'buttonNone':
+          for (let i = 0; i < cb.length; i++) {
+            x = cb[i];
+            x.checked = false;
+            GM_setValue(x.id, false);
+          }
+    } }
+    if (e.target.hasAttribute('for')) {
+      x = e.target.getAttribute('for');
+      let cbx = document.getElementById(x);
+      cbx.checked = !cbx.checked;
+      GM_setValue(cbx.id, cbx.checked);
   } }
 
   function onCheckbox(e) {
@@ -260,40 +268,40 @@
       headerLabel = $c('label', {id: 'headerLabel', textContent: '[ Header Buttons ]'}),
       lfH = $c('br'),
       checkbox1 = $c('input', {id: 'aCalendar', name: 'aCalendar', value: 'aCalendar', type: 'checkbox', checked: GM_getValue("aCalendar"), onclick: function(e) {onCheckbox(e)}}),
-      label1 = $c('label', {for: 'aCalendar', textContent: 'Calendar'}),
+      label1 = $c('button', {for: 'aCalendar', textContent: 'Calendar', style: 'background: url('+ icon1 +') no-repeat right', onclick: function(e) {onButton(e)}}),
       lf1 = $c('br'),
       checkbox2 = $c('input', {id: 'aClock', name: 'aClock', value: 'aClock', type: 'checkbox', checked: GM_getValue("aClock"), onclick: function(e) {onCheckbox(e)}}),
-      label2 = $c('label', {for: 'aClock', textContent: 'Clock'}),
+      label2 = $c('button', {for: 'aClock', textContent: 'Clock', style: 'background: url('+ icon2a +') no-repeat right', onclick: function(e) {onButton(e)}}),
       lf2 = $c('br'),
       checkbox3 = $c('input', {id: 'aEarth', name: 'aEarth', value: 'aEarth', type: 'checkbox', checked: GM_getValue("aEarth"), onclick: function(e) {onCheckbox(e)}}),
-      label3 = $c('label', {for: 'aEarth', textContent: 'Earth'}),
+      label3 = $c('button', {for: 'aEarth', textContent: 'Earth', style: 'background: url('+ icon3 +') no-repeat right', onclick: function(e) {onButton(e)}}),
       lf3 = $c('br'),
       checkbox4 = $c('input', {id: 'aMail', name: 'aMail', value: 'aMail', type: 'checkbox', checked: GM_getValue("aMail"), onclick: function(e) {onCheckbox(e)}}),
-      label4 = $c('label', {for: 'aMail', textContent: 'Mail'}),
+      label4 = $c('button', {for: 'aMail', textContent: 'Mail', style: 'background: url('+ icon4 +') no-repeat right', onclick: function(e) {onButton(e)}}),
       lf4 = $c('br'),
       checkbox5 = $c('input', {id: 'aMaps', name: 'aMaps', value: 'aMaps', type: 'checkbox', checked: GM_getValue("aMaps"), onclick: function(e) {onCheckbox(e)}}),
-      label5 = $c('label', {for: 'aMaps', textContent: 'Maps'}),
+      label5 = $c('button', {for: 'aMaps', textContent: 'Maps', style: 'background: url('+ icon5 +') no-repeat right', onclick: function(e) {onButton(e)}}),
       lf5 = $c('br'),
       checkbox6 = $c('input', {id: 'aNews', name: 'aNews', value: 'aNews', type: 'checkbox', checked: GM_getValue("aNews"), onclick: function(e) {onCheckbox(e)}}),
-      label6 = $c('label', {for: 'aNews', textContent: 'News'}),
+      label6 = $c('button', {for: 'aNews', textContent: 'News', style: 'background: url('+ icon6 +') no-repeat right', onclick: function(e) {onButton(e)}}),
       lf6 = $c('br'),
       checkbox7 = $c('input', {id: 'aPhotos', name: 'aPhotos', value: 'aPhotos', type: 'checkbox', checked: GM_getValue("aPhotos"), onclick: function(e) {onCheckbox(e)}}),
-      label7 = $c('label', {for: 'aPhotos', textContent: 'Photos'}),
+      label7 = $c('button', {for: 'aPhotos', textContent: 'Photos', style: 'background: url('+ icon7 +') no-repeat right', onclick: function(e) {onButton(e)}}),
       lf7 = $c('br'),
       checkbox8 = $c('input', {id: 'aPlay', name: 'aPlay', value: 'aPlay', type: 'checkbox', checked: GM_getValue("aPlay"), onclick: function(e) {onCheckbox(e)}}),
-      label8 = $c('label', {for: 'aPlay', textContent: 'Play Store'}),
+      label8 = $c('button', {for: 'aPlay', textContent: 'Play Store', style: 'background: url('+ icon8 +') no-repeat right', onclick: function(e) {onButton(e)}}),
       lf8 = $c('br'),
       checkbox9 = $c('input', {id: 'aPodcasts', name: 'aPodcasts', value: 'aPodcasts', type: 'checkbox', checked: GM_getValue("aPodcasts"), onclick: function(e) {onCheckbox(e)}}),
-      label9 = $c('label', {for: 'aPodcasts', textContent: 'Podcasts'}),
+      label9 = $c('button', {for: 'aPodcasts', textContent: 'Podcasts', style: 'background: url('+ icon9 +') no-repeat right', onclick: function(e) {onButton(e)}}),
       lf9 = $c('br'),
       checkbox10 = $c('input', {id: 'aTranslate', name: 'aTranslate', value: 'aTranslate', type: 'checkbox', checked: GM_getValue("aTranslate"), onclick: function(e) {onCheckbox(e)}}),
-      label10 = $c('label', {for: 'aTranslate', textContent: 'Translate'}),
+      label10 = $c('button', {for: 'aTranslate', textContent: 'Translate', style: 'background: url('+ icon10 +') no-repeat right', onclick: function(e) {onButton(e)}}),
       lf10 = $c('br'),
       checkbox11 = $c('input', {id: 'aYouTube', name: 'aYouTube', value: 'aYouTube', type: 'checkbox', checked: GM_getValue("aYouTube"), onclick: function(e) {onCheckbox(e)}}),
-      label11 = $c('label', {for: 'aYouTube', textContent: 'YouTube'}),
+      label11 = $c('button', {for: 'aYouTube', textContent: 'YouTube', style: 'background: url('+ icon11 +') no-repeat right', onclick: function(e) {onButton(e)}}),
       lf11 = $c('br'),
       checkbox12 = $c('input', {id: 'aYouTubeTV', name: 'aYouTubeTV', value: 'aYouTubeTV', type: 'checkbox', checked: GM_getValue("aYouTubeTV"), onclick: function(e) {onCheckbox(e)}}),
-      label12 = $c('label', {for: 'aYouTubeTV', textContent: 'YouTubeTV'}),
+      label12 = $c('button', {for: 'aYouTubeTV', textContent: 'YouTubeTV', style: 'background: url('+ icon12 +') no-repeat right', onclick: function(e) {onButton(e)}}),
       lf12 = $c('br'),
       reload = $c('button', {id: 'reload', className: 'gBtn', textContent: 'Reload Page', title: reloadTooltip, onclick: function() {document.location.reload(true)}}),
       div4 = $c('div', {id: 'dateContainer'}),
@@ -566,7 +574,7 @@
     '  margin-bottom: 8px !important;'+
     '}'+
     '#headerLabel {'+
-    '  margin: 0 0 6px 16px !important;'+
+    '  margin: 0 0 6px 17px !important;'+
     '}'+
     '#buttonAll, #buttonNone {'+
     '  margin: 6px 4px 0 4px !important;'+
@@ -578,6 +586,12 @@
     '  position: relative !important;'+
     '  top: 4px !important;'+
     '  width: 18px !important;'+
+    '}'+
+    '#dEjpnf > input[type="checkbox"] + button {'+
+    '  padding-right: 23px !important;'+
+    '}'+
+    '#dEjpnf > input[type="checkbox"]:hover + button {'+
+    '  background-color: #222 !important;'+
     '}'+
     '#reload {'+
     '  margin: 8px 0 6px 28px !important;'+

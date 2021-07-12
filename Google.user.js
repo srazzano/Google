@@ -20,7 +20,7 @@
         elementSpacing = '14px',
         am = 'AM',
         pm = 'PM',
-        customFormat = 'Add a format in script line 122',
+        customFormat = 'Add a format in script line 124',
         hideShow = '• Left-click to Hide/Show Date/Time',
         addRemove = '• Left-click to Add/Remove :seconds\n• Shift + Left-click to Add/Remove AM/PM\n• Ctrl + Left-click to change Date format',
         reloadTooltip = 'Reload page for changes to take effect',
@@ -572,7 +572,7 @@
     '  margin: 6px 4px 0 4px !important;'+
     '  padding: 4px !important;'+
     '}'+
-    '#dEjpnf input[type="checkbox"] {'+
+    '#dEjpnf > input[type="checkbox"] {'+
     '  height: 18px !important;'+
     '  position: relative !important;'+
     '  top: 4px !important;'+

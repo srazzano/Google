@@ -233,23 +233,6 @@
     span1.textContent = aDateTime(GM_getValue('dateFormat'));
   }
 
-  if (!GM_getValue('defaultDateTimeView')) GM_setValue('defaultDateTimeView', false);
-  if (!GM_getValue('defaultSecondsView')) GM_setValue('defaultSecondsView', false);
-  if (!GM_getValue('defaultAMPM')) GM_setValue('defaultAMPM', false);
-  if (!GM_getValue('dateFormat')) GM_setValue('dateFormat', 1);
-  if (!GM_getValue('aCalendar')) GM_setValue('aCalendar', false);
-  if (!GM_getValue('aClock')) GM_setValue('aClock', false);
-  if (!GM_getValue('aEarth')) GM_setValue('aEarth', false);
-  if (!GM_getValue('aMail')) GM_setValue('aMail', false);
-  if (!GM_getValue('aMaps')) GM_setValue('aMaps', false);
-  if (!GM_getValue('aNews')) GM_setValue('aNews', false);
-  if (!GM_getValue('aPhotos')) GM_setValue('aPhotos', false);
-  if (!GM_getValue('aPlay')) GM_setValue('aPlay', false);
-  if (!GM_getValue('aPodcasts')) GM_setValue('aPodcasts', false);
-  if (!GM_getValue('aTranslate')) GM_setValue('aTranslate', false);
-  if (!GM_getValue('aYouTube')) GM_setValue('aYouTube', false);
-  if (!GM_getValue('aYouTubeTV')) GM_setValue('aYouTubeTV', false);
-
   var button1 = $c('button', {id: 'gCalendar', className: 'gBtn', textContent: 'Calendar', title: url1, style: 'background-image: url('+ icon1 +')', onclick: function() {window.open(url1, '_blank')}}),
       button2 = $c('button', {id: 'gClock', style: 'background-image: url('+ icon2 +')', title: hideShow, onmousedown: function(e) {toggleDateTime(e)}}),
       button3 = $c('button', {id: 'gEarth', className: 'gBtn', textContent: 'Earth', title: url3, style: 'background-image: url('+ icon3 +')', onclick: function() {window.open(url3, '_blank')}}),
@@ -312,7 +295,10 @@
       input1 = $q('body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.FPdoLc.lJ9FBc > center > input.gNO89b'),
       settings = $q('#Mses6b'),
       srch = $q('#dEjpnf'),
-      timer;
+      timer,
+      pref = $q('#dEjpnf input[type="checkbox"]', true);
+
+  for (var i = 0; i < pref.length; i++) if (!GM_getValue(pref[i])) GM_setValue(pref[i], false);
 
   srch.appendChild(headerLabel); srch.appendChild(lfH);
   srch.appendChild(buttonAll); srch.appendChild(buttonNone); srch.appendChild(lf0);

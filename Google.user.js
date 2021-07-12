@@ -564,6 +564,7 @@
     '}'+
     '#dEjpnf > .aBtn {'+
     '  color: #AAA !important;'+
+    '  cursor: pointer !important;'+
     '  padding: 2px 23px 2px 0 !important;'+
     '}'+
     '#buttonAll, #buttonNone {'+

@@ -187,6 +187,10 @@
     GM_getValue('defaultDateTimeView') ? defaultDateTime() : span1.hidden = true;
   }
 
+  function onReload() {
+    document.location.reload(true);
+  }
+
   function setTimer() {
     clearInterval(timer);
     if (GM_getValue('defaultSecondsView')) timer = setInterval(function() {span1.textContent = aDateTime(GM_getValue('dateFormat'))}, timerShort);
@@ -295,7 +299,7 @@
       checkbox12 = $c('input', {id: 'aYouTubeTV', name: 'aYouTubeTV', value: 'aYouTubeTV', type: 'checkbox', checked: GM_getValue("aYouTubeTV"), onclick: function(e) {onCheckbox(e)}}),
       label12 = $c('label', {for: 'aYouTubeTV', textContent: 'YouTubeTV'}),
       lf12 = $c('br'),
-      reload = $c('button', {id: 'reload', className: 'gBtn', textContent: 'Reload Page', title: reloadTooltip, onclick: function() {document.location.reload(true)}}),
+      reload = $c('button', {id: 'reload', className: 'gBtn', textContent: 'Reload Page', title: reloadTooltip, onclick: function() {onReload()}}),
       div4 = $c('div', {id: 'dateContainer'}),
       span1 = $c('span', {id: 'dateTime', onmousedown: function(e) {toggleSecondsAmPmFormat(e)}}),
       div1 = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd'),
@@ -549,7 +553,7 @@
     '}'+
     '#dEjpnf > li > a, #dEjpnf > li > button {'+
     '  color: #FFF !important;'+
-    '  padding: 10px !important;'+
+    '  padding: 6px !important;'+
     '}'+
     '#dEjpnf > li:hover {'+
     '  background-color: #444 !important;'+

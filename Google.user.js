@@ -567,11 +567,6 @@
     '#headerLabel {'+
     '  margin: 0 0 6px 17px !important;'+
     '}'+
-    '#dEjpnf > .aBtn {'+
-    '  color: #AAA !important;'+
-    '  cursor: pointer !important;'+
-    '  padding: 2px 23px 2px 0 !important;'+
-    '}'+
     '#buttonAll, #buttonNone {'+
     '  margin: 6px 4px 0 4px !important;'+
     '  padding: 2px 4px !important;'+
@@ -583,6 +578,11 @@
     '  position: relative !important;'+
     '  top: 4px !important;'+
     '  width: 18px !important;'+
+    '}'+
+    '#dEjpnf > .aBtn {'+
+    '  color: #AAA !important;'+
+    '  cursor: pointer !important;'+
+    '  padding-right: 23px !important;'+
     '}'+
     '#dEjpnf > .aCkbx:hover + .aBtn, #dEjpnf > .aBtn:hover {'+
     '  color: #FFF !important;'+

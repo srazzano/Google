@@ -300,10 +300,7 @@
       input1 = $q('body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.FPdoLc.lJ9FBc > center > input.gNO89b'),
       settings = $q('#Mses6b'),
       srch = $q('#dEjpnf'),
-      timer,
-      pref = $q('#dEjpnf input[type="checkbox"]', true);
-
-  for (var i = 0; i < pref.length; i++) if (!GM_getValue(pref[i])) GM_setValue(pref[i], false);
+      timer;
 
   srch.appendChild(headerLabel); srch.appendChild(lfH);
   srch.appendChild(buttonAll); srch.appendChild(buttonNone); srch.appendChild(lf0);
@@ -340,7 +337,9 @@
   addEventListener('unload', function() {onClose()});
 
   setTimeout(function() {
-    let signIn = $q('#gb > div > div.gb_Se > a');
+    let box = $q('.aCkbx', true),
+        signIn = $q('#gb > div > div.gb_Se > a');
+    for (var i = 0; i < box.length; i++) if (!GM_getValue(box[i].id)) GM_setValue(box[i].id, false);
     if (signIn) signIn.click();
     centerElements();
     onOpen();

@@ -573,7 +573,6 @@
     '#dEjpnf > .aCkbx {'+
     '  cursor: pointer !important;'+
     '  height: 18px !important;'+
-    '  margin-right: 6px !important;'+
     '  position: relative !important;'+
     '  top: 4px !important;'+
     '  width: 18px !important;'+
@@ -583,7 +582,11 @@
     '  border: 1px solid transparent !important;'+
     '  color: #AAA !important;'+
     '  cursor: pointer !important;'+
-    '  padding: 0 25px 0 2px !important;'+
+    '  margin-left: -5px !important;'+
+    '  padding: 0 23px 0 8px !important;'+
+    '}'+
+    '#dEjpnf > .aCkbx:hover + .aBtn, #dEjpnf > .aBtn:hover {'+
+    '  border-left: 1px solid transparent !important;'+
     '}'+
     '#reload {'+
     '  margin: 8px 0 6px 28px !important;'+

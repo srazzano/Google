@@ -561,10 +561,10 @@
     '  right: 0 !important;'+
     '}'+
     '#headerLabel {'+
-    '  margin: 0 0 6px 17px !important;'+
+    '  margin: 0 0 0 17px !important;'+
     '}'+
     '#buttonAll, #buttonNone, #reload, #close {'+
-    '  margin: 6px 4px 0 4px !important;'+
+    '  margin: 8px 4px 0 4px !important;'+
     '  padding: 4px !important;'+
     '}'+
     '.aCkbx {'+

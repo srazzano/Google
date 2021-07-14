@@ -20,11 +20,11 @@
         elementSpacing = '14px',
         am = 'AM',
         pm = 'PM',
-        customFormat = 'Add a format in script line 125',
+        customFormat = 'Add a format in script line 127',
         hideShow = '• Left-click to Hide/Show Date/Time',
         addRemove = '• Left-click to Add/Remove :seconds\n• Shift + Left-click to Add/Remove AM/PM\n• Ctrl + Left-click to change Date format',
         reloadTooltip = 'Reload page for changes to take effect',
-        settingsOptions = 'Settings & Buttons',
+        settingsOptions = 'Settings',
         DayNameAbbr = 'Sun.,Mon.,Tue.,Wed.,Thu.,Fri.,Sat.',
         DayName = 'Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday',
         MonthNameAbbr = 'Jan.,Feb.,Mar.,Apr.,May,Jun.,Jul.,Aug.,Sep.,Oct.,Nov.,Dec.',
@@ -130,7 +130,7 @@
   function centerElements() {
     let lia = $q('#dEjpnf > li > a', true),
         num = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd > div > .gBtn', true),
-        len = ($q('#gSearch').offsetWidth + $q('#Mses6b').offsetWidth) / 2,
+        len = ($q('#gSearch').offsetWidth + $q('#Mses6b').offsetWidth + $q('#buttonsButton').offsetWidth) / 2,
         screenWidth = window.screen.width / 2,
         spacerWidth = parseInt(elementSpacing.match('\\d+') / 2),
         spacerCount = (num.length - 1) * spacerWidth,
@@ -145,9 +145,10 @@
     let sum = arr.reduce(function(a, b) {return a + b}, 1),
         buttonsWidth = sum / 2,
         fromLeft1 = Math.round(screenWidth - buttonsWidth - spacerCount) + 'px',
-        fromLeft2 = Math.round(screenWidth - len - spacerWidth) + 'px';
+        fromLeft2 = Math.round(screenWidth - len - (spacerWidth * 3) + 6) + 'px';
     div2.style.marginLeft = fromLeft1;
     div3.style.left = fromLeft2;
+    div5.style.top = '-' + ost;
   }
 
   function defaultDateTime() {
@@ -158,7 +159,7 @@
   }
 
   function onButton(e) {
-    let cb = $q('#dEjpnf input[type="checkbox"]', true), x;
+    let cb = $q('.aCkbx', true), x;
     if (e.target.hasAttribute('id')) {
       switch (e.target.id) {
         case 'buttonAll':
@@ -298,14 +299,16 @@
       label13 = $c('button', {for: 'aYouTubeTV', className: 'aBtn', textContent: 'YouTubeTV', style: 'background: url('+ icon13 +') no-repeat right', onclick: function(e) {onButton(e)}}),
       lf13 = $c('br'),
       reload = $c('button', {id: 'reload', className: 'gBtn', textContent: 'Reload Page', title: reloadTooltip, onclick: function() {onReload()}}),
+      close = $c('button', {id: 'close', className: 'gBtn', textContent: 'Close', onclick: function() {document.getElementById('buttonsContainer').hidden = true}}),
       div4 = $c('div', {id: 'dateContainer'}),
+      buttons = $c('button', {id: 'buttonsButton', className: 'gBtn', textContent: 'Buttons', onclick: function() {document.getElementById('buttonsContainer').hidden = false}}),
+      div5 = $c('div', {id: 'buttonsContainer', hidden: true}),
       span1 = $c('span', {id: 'dateTime', onmousedown: function(e) {toggleSecondsAmPmFormat(e)}}),
       div1 = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd'),
       div2 = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd > div'),
       div3 = $q('body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > div'),
       input1 = $q('body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.FPdoLc.lJ9FBc > center > input.gNO89b'),
       settings = $q('#Mses6b'),
-      srch = $q('#dEjpnf'),
       timer;
 
   if (!GM_getValue('defaultDateTimeView')) GM_setValue('defaultDateTimeView', false);
@@ -313,22 +316,23 @@
   if (!GM_getValue('defaultAMPM')) GM_setValue('defaultAMPM', false);
   if (!GM_getValue('dateFormat')) GM_setValue('dateFormat', 1);
 
-  srch.appendChild(headerLabel); srch.appendChild(lfH);
-  srch.appendChild(buttonAll); srch.appendChild(buttonNone); srch.appendChild(lf0);
-  srch.appendChild(checkbox1); srch.appendChild(label1); srch.appendChild(lf1);
-  srch.appendChild(checkbox2); srch.appendChild(label2); srch.appendChild(lf2);
-  srch.appendChild(checkbox3); srch.appendChild(label3); srch.appendChild(lf3);
-  srch.appendChild(checkbox4); srch.appendChild(label4); srch.appendChild(lf4);
-  srch.appendChild(checkbox5); srch.appendChild(label5); srch.appendChild(lf5);
-  srch.appendChild(checkbox6); srch.appendChild(label6); srch.appendChild(lf6);
-  srch.appendChild(checkbox7); srch.appendChild(label7); srch.appendChild(lf7);
-  srch.appendChild(checkbox8); srch.appendChild(label8); srch.appendChild(lf8);
-  srch.appendChild(checkbox9); srch.appendChild(label9); srch.appendChild(lf9);
-  srch.appendChild(checkbox10); srch.appendChild(label10); srch.appendChild(lf10);
-  srch.appendChild(checkbox11); srch.appendChild(label11); srch.appendChild(lf11);
-  srch.appendChild(checkbox12); srch.appendChild(label12); srch.appendChild(lf12);
-  srch.appendChild(checkbox13); srch.appendChild(label13); srch.appendChild(lf13);
-  srch.appendChild(reload);
+  div5.appendChild(headerLabel); div5.appendChild(lfH);
+  div5.appendChild(buttonAll); div5.appendChild(buttonNone); div5.appendChild(lf0);
+  div5.appendChild(checkbox1); div5.appendChild(label1); div5.appendChild(lf1);
+  div5.appendChild(checkbox2); div5.appendChild(label2); div5.appendChild(lf2);
+  div5.appendChild(checkbox3); div5.appendChild(label3); div5.appendChild(lf3);
+  div5.appendChild(checkbox4); div5.appendChild(label4); div5.appendChild(lf4);
+  div5.appendChild(checkbox5); div5.appendChild(label5); div5.appendChild(lf5);
+  div5.appendChild(checkbox6); div5.appendChild(label6); div5.appendChild(lf6);
+  div5.appendChild(checkbox7); div5.appendChild(label7); div5.appendChild(lf7);
+  div5.appendChild(checkbox8); div5.appendChild(label8); div5.appendChild(lf8);
+  div5.appendChild(checkbox9); div5.appendChild(label9); div5.appendChild(lf9);
+  div5.appendChild(checkbox10); div5.appendChild(label10); div5.appendChild(lf10);
+  div5.appendChild(checkbox11); div5.appendChild(label11); div5.appendChild(lf11);
+  div5.appendChild(checkbox12); div5.appendChild(label12); div5.appendChild(lf12);
+  div5.appendChild(checkbox13); div5.appendChild(label13); div5.appendChild(lf13);
+  div5.appendChild(reload); div5.appendChild(close);
+  buttons.appendChild(div5);
 
   if (GM_getValue('aCalendar')) div2.appendChild(button1);
   if (GM_getValue('aClock')) {div4.appendChild(button2); div4.appendChild(span1); div1.appendChild(div4);}
@@ -344,6 +348,8 @@
   if (GM_getValue('aYouTube')) div2.appendChild(button12);
   if (GM_getValue('aYouTubeTV')) div2.appendChild(button13);
   div3.insertBefore(input1, div3.firstChild);
+  div3.appendChild(buttons);
+  div3.appendChild(div5);
   input1.id = 'gSearch';
   settings.textContent = settingsOptions;
 
@@ -406,7 +412,7 @@
     '  background-color: #303030 !important;'+
     '  border: 1px solid #CCC !important;'+
     '  border-radius: 50% !important;'+
-    '  box-shadow: 1px 0px 4px #000 inset !important;'+
+    '  box-shadow: 1px 0 4px #000 inset !important;'+
     '  position: relative !important;'+
     '  right: -8px !important;'+
     '}'+
@@ -482,19 +488,19 @@
     '.RNNXgb {'+
     '  background: linear-gradient(#222, #444) !important;'+
     '  border-color: #CCC !important;'+
-    '  box-shadow: 1px 0px 8px #000 inset !important;'+
+    '  box-shadow: 1px 0 8px #000 inset !important;'+
     '}'+
     'body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf {'+
     '  padding: 0 20px !important;'+
     '}'+
-    '.gBtn, #dateTime, #gSearch, #Mses6b, #submit, center > input, #gb > div > div.gb_0a.gb_E.gb_k.gb_1a.gb_la .gb_Pe {'+
+    '.gBtn, #dateTime, #gSearch, #Mses6b, #buttonsButton, #submit, center > input, #gb > div > div.gb_0a.gb_E.gb_k.gb_1a.gb_la .gb_Pe {'+
     '  background-color: #303030 !important;'+
     '  border: 1px solid #CCC !important;'+
-    '  box-shadow: 1px 0px 4px #000 inset !important;'+
+    '  box-shadow: 1px 0 4px #000 inset !important;'+
     '  color: #AAA !important;'+
     '  cursor: pointer !important;'+
     '}'+
-    '.gBtn:hover, #dateTime:hover, #gSearch:hover:hover, #Mses6b:hover, #submit:hover, center > input:hover, #gb > div > div.gb_0a.gb_E.gb_k.gb_1a.gb_la .gb_Pe:hover, #dEjpnf > .aCkbx:hover + .aBtn, #dEjpnf > .aBtn:hover {'+
+    '.gBtn:hover, #dateTime:hover, #gSearch:hover:hover, #Mses6b:hover, #buttonsButton:hover, #submit:hover, center > input:hover, #gb > div > div.gb_0a.gb_E.gb_k.gb_1a.gb_la .gb_Pe:hover, .aCkbx:hover + .aBtn, .aBtn:hover {'+
     '  background-color: #444 !important;'+
     '  border: 1px solid #000 !important;'+
     '  box-shadow: none !important;'+
@@ -514,13 +520,13 @@
     '  display: flex !important;'+
     '  position: absolute !important;'+
     '}'+
-    '#gSearch, #Mses6b {'+
+    '#gSearch, #Mses6b, #buttonsButton {'+
     '  border-radius: 4px !important;'+
     '  max-height: 36px !important;'+
     '  padding: 9px 16px !important;'+
     '  text-decoration: none !important;'+
     '}'+
-    '#gSearch {'+
+    '#gSearch, #Mses6b {'+
     '  margin-right: '+ elementSpacing +' !important;'+
     '}'+
     'body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > div a, #gb > div > div.gb_1a.gb_F.gb_l.gb_2a.gb_ma a, #gb > div > div.gb_1a.gb_F.gb_l.gb_2a.gb_ma svg {'+
@@ -547,50 +553,31 @@
     '.aajZCb li span {'+
     '  color: #FFF !important;'+
     '}'+
-    '#dEjpnf {'+
-    '  background-color: #222 !important;'+
+    '#buttonsContainer {'+
+    '  background-color: #1C1E1F !important;'+
+    '  border: 1px solid #999 !important;'+
     '  border-radius: 4px !important;'+
-    '  min-width: 147px !important;'+
-    '  position: relative !important;'+
-    '  top: -249px !important;'+
-    '}'+
-    '#dEjpnf > li {'+
-    '  background: none !important;'+
-    '  border: none !important;'+
-    '}'+
-    '#dEjpnf > li > a, #dEjpnf > li > button.EzVRq {'+
-    '  color: #FFF !important;'+
-    '  padding: 4px 6px !important;'+
-    '}'+
-    '#dEjpnf > li:hover {'+
-    '  background-color: #444 !important;'+
-    '}'+
-    '#dEjpnf li:hover > a, #dEjpnf > li:hover > button.EzVRq {'+
-    '  color: #000 !important;'+
-    '  text-decoration: none !important;'+
-    '}'+
-    '#dEjpnf > li:first-of-type {'+
-    '  border-radius: 4px 4px 0 0 !important;'+
-    '}'+
-    '#dEjpnf > li:last-of-type {'+
-    '  border-bottom: 1px solid #000 !important;'+
-    '  margin-bottom: 8px !important;'+
+    '  min-width: 153px !important;'+
+    '  padding: 4px !important;'+
+    '  position: absolute !important;'+
+    '  text-align: left !important;'+
+    '  right: 0 !important;'+
     '}'+
     '#headerLabel {'+
     '  margin: 0 0 6px 17px !important;'+
     '}'+
-    '#buttonAll, #buttonNone {'+
+    '#buttonAll, #buttonNone, #reload, #close {'+
     '  margin: 6px 4px 0 4px !important;'+
-    '  padding: 2px 4px !important;'+
+    '  padding: 4px !important;'+
     '}'+
-    '#dEjpnf > .aCkbx {'+
+    '.aCkbx {'+
     '  cursor: pointer !important;'+
     '  height: 18px !important;'+
     '  position: relative !important;'+
     '  top: 4px !important;'+
     '  width: 18px !important;'+
     '}'+
-    '#dEjpnf > .aBtn {'+
+    '.aBtn {'+
     '  appearance: none !important;'+
     '  border: 1px solid transparent !important;'+
     '  color: #AAA !important;'+
@@ -598,12 +585,8 @@
     '  margin-left: -5px !important;'+
     '  padding: 0 23px 0 8px !important;'+
     '}'+
-    '#dEjpnf > .aCkbx:hover + .aBtn, #dEjpnf > .aBtn:hover {'+
+    '.aCkbx:hover + .aBtn, .aBtn:hover {'+
     '  border-left: 1px solid transparent !important;'+
-    '}'+
-    '#reload {'+
-    '  margin: 8px 0 6px 28px !important;'+
-    '  padding: 4px !important;'+
     '}'+
   '');
 

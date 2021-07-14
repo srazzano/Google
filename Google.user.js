@@ -17,7 +17,7 @@
 
   const timerLong = 15000,
         timerShort = 500,
-        elementSpacing = '14px',
+        elementSpacing = '8px',
         am = 'AM',
         pm = 'PM',
         customFormat = 'Add a format in script line 127',
@@ -145,7 +145,7 @@
     let sum = arr.reduce(function(a, b) {return a + b}, 1),
         buttonsWidth = sum / 2,
         fromLeft1 = Math.round(screenWidth - buttonsWidth - spacerCount) + 'px',
-        fromLeft2 = Math.round(screenWidth - len - (spacerWidth * 3) + 6) + 'px';
+        fromLeft2 = Math.round(screenWidth - len - (spacerWidth * 2) - 1) + 'px';
     div2.style.marginLeft = fromLeft1;
     div3.style.left = fromLeft2;
     div5.style.top = '-' + ost;
@@ -558,7 +558,7 @@
     '  border: 1px solid #999 !important;'+
     '  border-radius: 4px !important;'+
     '  min-width: 153px !important;'+
-    '  padding: 4px !important;'+
+    '  padding: 4px 2px !important;'+
     '  position: absolute !important;'+
     '  text-align: left !important;'+
     '  right: 0 !important;'+
@@ -572,10 +572,10 @@
     '}'+
     '.aCkbx {'+
     '  cursor: pointer !important;'+
-    '  height: 18px !important;'+
+    '  height: 22px !important;'+
     '  position: relative !important;'+
-    '  top: 4px !important;'+
-    '  width: 18px !important;'+
+    '  top: 6px !important;'+
+    '  width: 22px !important;'+
     '}'+
     '.aBtn {'+
     '  appearance: none !important;'+
@@ -583,7 +583,7 @@
     '  color: #AAA !important;'+
     '  cursor: pointer !important;'+
     '  margin-left: -5px !important;'+
-    '  padding: 0 23px 0 8px !important;'+
+    '  padding: 2px 23px 2px 8px !important;'+
     '}'+
     '.aCkbx:hover + .aBtn, .aBtn:hover {'+
     '  border-left: 1px solid transparent !important;'+

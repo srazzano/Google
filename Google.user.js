@@ -317,24 +317,6 @@
   if (!GM_getValue('defaultAMPM')) GM_setValue('defaultAMPM', false);
   if (!GM_getValue('dateFormat')) GM_setValue('dateFormat', 1);
 
-  if (GM_getValue('aCalendar')) div2.appendChild(button1);
-  if (GM_getValue('aClock')) {div4.appendChild(button2); div4.appendChild(span1); div1.appendChild(div4);}
-  if (GM_getValue('aEarth')) div2.appendChild(button3);
-  if (GM_getValue('aMail')) div2.appendChild(button4);
-  if (GM_getValue('aMaps')) div2.appendChild(button5);
-  if (GM_getValue('aMSEdge')) div2.appendChild(button6);
-  if (GM_getValue('aNews')) div2.appendChild(button7);
-  if (GM_getValue('aPhotos')) div2.appendChild(button8);
-  if (GM_getValue('aPlay')) div2.appendChild(button9);
-  if (GM_getValue('aPodcasts')) div2.appendChild(button10);
-  if (GM_getValue('aTranslate')) div2.appendChild(button11);
-  if (GM_getValue('aYouTube')) div2.appendChild(button12);
-  if (GM_getValue('aYouTubeTV')) div2.appendChild(button13);
-
-  div3.insertBefore(input1, div3.firstChild);
-  div3.appendChild(buttons);
-  div3.appendChild(div5);
-
   div5.appendChild(headerLabel); div5.appendChild(brH);
   div5.appendChild(buttonAll); div5.appendChild(buttonNone); div5.appendChild(brB);
   div5.appendChild(checkbox1); div5.appendChild(label1); div5.appendChild(br1);
@@ -351,11 +333,25 @@
   div5.appendChild(checkbox12); div5.appendChild(label12); div5.appendChild(br12);
   div5.appendChild(checkbox13); div5.appendChild(label13); div5.appendChild(br13);
   div5.appendChild(reload); div5.appendChild(close);
-
   buttons.appendChild(div5);
-
   input1.id = 'gSearch';
 
+  if (GM_getValue('aCalendar')) div2.appendChild(button1);
+  if (GM_getValue('aClock')) {div4.appendChild(button2); div4.appendChild(span1); div1.appendChild(div4);}
+  if (GM_getValue('aEarth')) div2.appendChild(button3);
+  if (GM_getValue('aMail')) div2.appendChild(button4);
+  if (GM_getValue('aMaps')) div2.appendChild(button5);
+  if (GM_getValue('aMSEdge')) div2.appendChild(button6);
+  if (GM_getValue('aNews')) div2.appendChild(button7);
+  if (GM_getValue('aPhotos')) div2.appendChild(button8);
+  if (GM_getValue('aPlay')) div2.appendChild(button9);
+  if (GM_getValue('aPodcasts')) div2.appendChild(button10);
+  if (GM_getValue('aTranslate')) div2.appendChild(button11);
+  if (GM_getValue('aYouTube')) div2.appendChild(button12);
+  if (GM_getValue('aYouTubeTV')) div2.appendChild(button13);
+  div3.insertBefore(input1, div3.firstChild);
+  div3.appendChild(buttons);
+  div3.appendChild(div5);
   addEventListener('unload', function() {onClose()});
 
   setTimeout(function() {

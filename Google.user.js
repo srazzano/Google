@@ -21,6 +21,7 @@
         am = 'AM',
         pm = 'PM',
         formatCount = 8,
+        settingsMarginTop = '18px',
         customFormat = 'Add a format in script line 127',
         hideShow = '• Left-click to Hide/Show Date/Time',
         addRemove = '• Left-click to Add/Remove :seconds\n• Shift + Left-click to Add/Remove AM/PM\n• Ctrl + Left-click to change Date format',
@@ -70,6 +71,75 @@
         url11 = 'https://translate.google.com/?hl=en',
         url12 = 'https://www.youtube.com/?gl=US',
         url13 = 'https://tv.youtube.com/library';
+
+  var button1 = $c('button', {id: 'gCalendar', className: 'gBtn', textContent: 'Calendar', title: url1, style: 'background-image: url('+ icon1 +')', onclick: function() {window.open(url1, '_blank')}}),
+      button2 = $c('button', {id: 'gClock', style: 'background-image: url('+ icon2 +')', title: hideShow, onmousedown: function(e) {toggleDateTime(e)}}),
+      button3 = $c('button', {id: 'gEarth', className: 'gBtn', textContent: 'Earth', title: url3, style: 'background-image: url('+ icon3 +')', onclick: function() {window.open(url3, '_blank')}}),
+      button4 = $c('button', {id: 'gMail', className: 'gBtn', textContent: 'Gmail', title: url4, style: 'background-image: url('+ icon4 +')', onclick: function() {window.open(url4, '_blank')}}),
+      button5 = $c('button', {id: 'gMaps', className: 'gBtn', textContent: 'Maps', title: url5, style: 'background-image: url('+ icon5 +')', onclick: function() {window.open(url5, '_blank')}}),
+      button6 = $c('button', {id: 'gMSEdge', className: 'gBtn', textContent: 'MS Store', title: url6, style: 'background-image: url('+ icon6 +')', onclick: function() {window.open(url6, '_blank')}}),
+      button7 = $c('button', {id: 'gNews', className: 'gBtn', textContent: 'News', title: url7, style: 'background-image: url('+ icon7 +')', onclick: function() {window.open(url7, '_blank')}}),
+      button8 = $c('button', {id: 'gPhotos', className: 'gBtn', textContent: 'Photos', title: url8, style: 'background-image: url('+ icon8 +')', onclick: function() {window.open(url8, '_blank')}}),
+      button9 = $c('button', {id: 'gPlay', className: 'gBtn', textContent: 'Play Store', title: url9, style: 'background-image: url('+ icon9 +')', onclick: function() {window.open(url9, '_blank')}}),
+      button10 = $c('button', {id: 'gPodcasts', className: 'gBtn', textContent: 'Podcasts', title: url10, style: 'background-image: url('+ icon10 +')', onclick: function() {window.open(url10, '_blank')}}),
+      button11 = $c('button', {id: 'gTranslate', className: 'gBtn', textContent: 'Translate', title: url11, style: 'background-image: url('+ icon11 +')', onclick: function() {window.open(url11, '_blank')}}),
+      button12 = $c('button', {id: 'gYouTube', className: 'gBtn', textContent: 'YouTube', title: url12, style: 'background-image: url('+ icon12 +')', onclick: function() {window.open(url12, '_blank')}}),
+      button13 = $c('button', {id: 'gYouTubeTV', className: 'gBtn', textContent: 'YouTube TV', title: url13, style: 'background-image: url('+ icon13 +')', onclick: function() {window.open(url13, '_blank')}}),
+      headerLabel = $c('button', {id: 'headerLabel', textContent: '[ Header Buttons ]'}),
+      brH = $c('br'),
+      buttonAll = $c('button', {id: 'buttonAll', className: 'gBtn', textContent: 'Check All', onclick: function(e) {onButton(e)}}),
+      buttonNone = $c('button', {id: 'buttonNone', className: 'gBtn', textContent: 'Clear All', onclick: function(e) {onButton(e)}}),
+      brB = $c('br'),
+      checkbox1 = $c('input', {id: 'aCalendar', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aCalendar"), onclick: function(e) {onCheckbox(e)}}),
+      label1 = $c('button', {for: 'aCalendar', className: 'aBtn', textContent: 'Calendar', style: 'background: url('+ icon1 +') no-repeat right', onclick: function(e) {onButton(e)}}),
+      br1 = $c('br'),
+      checkbox2 = $c('input', {id: 'aClock', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aClock"), onclick: function(e) {onCheckbox(e)}}),
+      label2 = $c('button', {for: 'aClock', className: 'aBtn', textContent: 'Clock', style: 'background: url('+ icon2a +') no-repeat right', onclick: function(e) {onButton(e)}}),
+      br2 = $c('br'),
+      checkbox3 = $c('input', {id: 'aEarth', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aEarth"), onclick: function(e) {onCheckbox(e)}}),
+      label3 = $c('button', {for: 'aEarth', className: 'aBtn', textContent: 'Earth', style: 'background: url('+ icon3 +') no-repeat right', onclick: function(e) {onButton(e)}}),
+      br3 = $c('br'),
+      checkbox4 = $c('input', {id: 'aMail', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aMail"), onclick: function(e) {onCheckbox(e)}}),
+      label4 = $c('button', {for: 'aMail', className: 'aBtn', textContent: 'Mail', style: 'background: url('+ icon4 +') no-repeat right', onclick: function(e) {onButton(e)}}),
+      br4 = $c('br'),
+      checkbox5 = $c('input', {id: 'aMaps', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aMaps"), onclick: function(e) {onCheckbox(e)}}),
+      label5 = $c('button', {for: 'aMaps', className: 'aBtn', textContent: 'Maps', style: 'background: url('+ icon5 +') no-repeat right', onclick: function(e) {onButton(e)}}),
+      br5 = $c('br'),
+      checkbox6 = $c('input', {id: 'aMSEdge', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aMSEdge"), onclick: function(e) {onCheckbox(e)}}),
+      label6 = $c('button', {for: 'aMSEdge', className: 'aBtn', textContent: 'MS Store', style: 'background: url('+ icon6 +') no-repeat right', onclick: function(e) {onButton(e)}}),
+      br6 = $c('br'),
+      checkbox7 = $c('input', {id: 'aNews', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aNews"), onclick: function(e) {onCheckbox(e)}}),
+      label7 = $c('button', {for: 'aNews', className: 'aBtn', textContent: 'News', style: 'background: url('+ icon7 +') no-repeat right', onclick: function(e) {onButton(e)}}),
+      br7 = $c('br'),
+      checkbox8 = $c('input', {id: 'aPhotos', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aPhotos"), onclick: function(e) {onCheckbox(e)}}),
+      label8 = $c('button', {for: 'aPhotos', className: 'aBtn', textContent: 'Photos', style: 'background: url('+ icon8 +') no-repeat right', onclick: function(e) {onButton(e)}}),
+      br8 = $c('br'),
+      checkbox9 = $c('input', {id: 'aPlay', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aPlay"), onclick: function(e) {onCheckbox(e)}}),
+      label9 = $c('button', {for: 'aPlay', className: 'aBtn', textContent: 'Play Store', style: 'background: url('+ icon9 +') no-repeat right', onclick: function(e) {onButton(e)}}),
+      br9 = $c('br'),
+      checkbox10 = $c('input', {id: 'aPodcasts', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aPodcasts"), onclick: function(e) {onCheckbox(e)}}),
+      label10 = $c('button', {for: 'aPodcasts', className: 'aBtn', textContent: 'Podcasts', style: 'background: url('+ icon10 +') no-repeat right', onclick: function(e) {onButton(e)}}),
+      br10 = $c('br'),
+      checkbox11 = $c('input', {id: 'aTranslate', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aTranslate"), onclick: function(e) {onCheckbox(e)}}),
+      label11 = $c('button', {for: 'aTranslate', className: 'aBtn', textContent: 'Translate', style: 'background: url('+ icon11 +') no-repeat right', onclick: function(e) {onButton(e)}}),
+      br11 = $c('br'),
+      checkbox12 = $c('input', {id: 'aYouTube', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aYouTube"), onclick: function(e) {onCheckbox(e)}}),
+      label12 = $c('button', {for: 'aYouTube', className: 'aBtn', textContent: 'YouTube', style: 'background: url('+ icon12 +') no-repeat right', onclick: function(e) {onButton(e)}}),
+      br12 = $c('br'),
+      checkbox13 = $c('input', {id: 'aYouTubeTV', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aYouTubeTV"), onclick: function(e) {onCheckbox(e)}}),
+      label13 = $c('button', {for: 'aYouTubeTV', className: 'aBtn', textContent: 'YouTubeTV', style: 'background: url('+ icon13 +') no-repeat right', onclick: function(e) {onButton(e)}}),
+      br13 = $c('br'),
+      reload = $c('button', {id: 'reload', className: 'gBtn', textContent: 'Reload Page', title: reloadTooltip, onclick: function() {onReload()}}),
+      close = $c('button', {id: 'close', className: 'gBtn', textContent: 'Close', onclick: function() {document.getElementById('buttonsContainer').hidden = true}}),
+      div4 = $c('div', {id: 'dateContainer'}),
+      buttons = $c('button', {id: 'buttonsButton', className: 'gBtn', textContent: 'Buttons', onclick: function() {document.getElementById('buttonsContainer').hidden = false}}),
+      div5 = $c('div', {id: 'buttonsContainer', hidden: true}),
+      span1 = $c('span', {id: 'dateTime', onmousedown: function(e) {toggleSecondsAmPmFormat(e)}}),
+      div1 = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd'),
+      div2 = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd > div'),
+      div3 = $q('body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > div'),
+      input1 = $q('body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.FPdoLc.lJ9FBc > center > input.gNO89b'),
+      timer;
 
   function $c(type, props) {
     let node = document.createElement(type);
@@ -134,10 +204,11 @@
         screenWidth = window.screen.width / 2,
         spacerWidth = parseInt(elementSpacing.match('\\d+') / 2),
         spacerCount = (num.length - 1) * spacerWidth,
+        settingsMargin = parseInt(settingsMarginTop.match('\\d+')) + 6,
         os1 = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd').offsetHeight,
         os2 = $q('body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ').offsetHeight,
         os3 = $q('body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.RNNXgb').offsetHeight,
-        ost = (os1 + os2 + os3 + 24) + 'px',
+        ost = (os1 + os2 + os3 + settingsMargin) + 'px',
         arr = [];
     div3.style.top = ost;
     for (let i = 0; i < lia.length; i++) lia[i].setAttribute('target', '_blank');
@@ -241,97 +312,10 @@
     span1.textContent = aDateTime(GM_getValue('dateFormat'));
   }
 
-  var button1 = $c('button', {id: 'gCalendar', className: 'gBtn', textContent: 'Calendar', title: url1, style: 'background-image: url('+ icon1 +')', onclick: function() {window.open(url1, '_blank')}}),
-      button2 = $c('button', {id: 'gClock', style: 'background-image: url('+ icon2 +')', title: hideShow, onmousedown: function(e) {toggleDateTime(e)}}),
-      button3 = $c('button', {id: 'gEarth', className: 'gBtn', textContent: 'Earth', title: url3, style: 'background-image: url('+ icon3 +')', onclick: function() {window.open(url3, '_blank')}}),
-      button4 = $c('button', {id: 'gMail', className: 'gBtn', textContent: 'Gmail', title: url4, style: 'background-image: url('+ icon4 +')', onclick: function() {window.open(url4, '_blank')}}),
-      button5 = $c('button', {id: 'gMaps', className: 'gBtn', textContent: 'Maps', title: url5, style: 'background-image: url('+ icon5 +')', onclick: function() {window.open(url5, '_blank')}}),
-      button6 = $c('button', {id: 'gMSEdge', className: 'gBtn', textContent: 'MS Store', title: url6, style: 'background-image: url('+ icon6 +')', onclick: function() {window.open(url6, '_blank')}}),
-      button7 = $c('button', {id: 'gNews', className: 'gBtn', textContent: 'News', title: url7, style: 'background-image: url('+ icon7 +')', onclick: function() {window.open(url7, '_blank')}}),
-      button8 = $c('button', {id: 'gPhotos', className: 'gBtn', textContent: 'Photos', title: url8, style: 'background-image: url('+ icon8 +')', onclick: function() {window.open(url8, '_blank')}}),
-      button9 = $c('button', {id: 'gPlay', className: 'gBtn', textContent: 'Play Store', title: url9, style: 'background-image: url('+ icon9 +')', onclick: function() {window.open(url9, '_blank')}}),
-      button10 = $c('button', {id: 'gPodcasts', className: 'gBtn', textContent: 'Podcasts', title: url10, style: 'background-image: url('+ icon10 +')', onclick: function() {window.open(url10, '_blank')}}),
-      button11 = $c('button', {id: 'gTranslate', className: 'gBtn', textContent: 'Translate', title: url11, style: 'background-image: url('+ icon11 +')', onclick: function() {window.open(url11, '_blank')}}),
-      button12 = $c('button', {id: 'gYouTube', className: 'gBtn', textContent: 'YouTube', title: url12, style: 'background-image: url('+ icon12 +')', onclick: function() {window.open(url12, '_blank')}}),
-      button13 = $c('button', {id: 'gYouTubeTV', className: 'gBtn', textContent: 'YouTube TV', title: url13, style: 'background-image: url('+ icon13 +')', onclick: function() {window.open(url13, '_blank')}}),
-      buttonAll = $c('button', {id: 'buttonAll', className: 'gBtn', textContent: 'Check All', onclick: function(e) {onButton(e)}}),
-      buttonNone = $c('button', {id: 'buttonNone', className: 'gBtn', textContent: 'Clear All', onclick: function(e) {onButton(e)}}),
-      lf0 = $c('br'),
-      headerLabel = $c('button', {id: 'headerLabel', textContent: '[ Header Buttons ]'}),
-      lfH = $c('br'),
-      checkbox1 = $c('input', {id: 'aCalendar', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aCalendar"), onclick: function(e) {onCheckbox(e)}}),
-      label1 = $c('button', {for: 'aCalendar', className: 'aBtn', textContent: 'Calendar', style: 'background: url('+ icon1 +') no-repeat right', onclick: function(e) {onButton(e)}}),
-      lf1 = $c('br'),
-      checkbox2 = $c('input', {id: 'aClock', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aClock"), onclick: function(e) {onCheckbox(e)}}),
-      label2 = $c('button', {for: 'aClock', className: 'aBtn', textContent: 'Clock', style: 'background: url('+ icon2a +') no-repeat right', onclick: function(e) {onButton(e)}}),
-      lf2 = $c('br'),
-      checkbox3 = $c('input', {id: 'aEarth', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aEarth"), onclick: function(e) {onCheckbox(e)}}),
-      label3 = $c('button', {for: 'aEarth', className: 'aBtn', textContent: 'Earth', style: 'background: url('+ icon3 +') no-repeat right', onclick: function(e) {onButton(e)}}),
-      lf3 = $c('br'),
-      checkbox4 = $c('input', {id: 'aMail', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aMail"), onclick: function(e) {onCheckbox(e)}}),
-      label4 = $c('button', {for: 'aMail', className: 'aBtn', textContent: 'Mail', style: 'background: url('+ icon4 +') no-repeat right', onclick: function(e) {onButton(e)}}),
-      lf4 = $c('br'),
-      checkbox5 = $c('input', {id: 'aMaps', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aMaps"), onclick: function(e) {onCheckbox(e)}}),
-      label5 = $c('button', {for: 'aMaps', className: 'aBtn', textContent: 'Maps', style: 'background: url('+ icon5 +') no-repeat right', onclick: function(e) {onButton(e)}}),
-      lf5 = $c('br'),
-      checkbox6 = $c('input', {id: 'aMSEdge', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aMSEdge"), onclick: function(e) {onCheckbox(e)}}),
-      label6 = $c('button', {for: 'aMSEdge', className: 'aBtn', textContent: 'MS Store', style: 'background: url('+ icon6 +') no-repeat right', onclick: function(e) {onButton(e)}}),
-      lf6 = $c('br'),
-      checkbox7 = $c('input', {id: 'aNews', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aNews"), onclick: function(e) {onCheckbox(e)}}),
-      label7 = $c('button', {for: 'aNews', className: 'aBtn', textContent: 'News', style: 'background: url('+ icon7 +') no-repeat right', onclick: function(e) {onButton(e)}}),
-      lf7 = $c('br'),
-      checkbox8 = $c('input', {id: 'aPhotos', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aPhotos"), onclick: function(e) {onCheckbox(e)}}),
-      label8 = $c('button', {for: 'aPhotos', className: 'aBtn', textContent: 'Photos', style: 'background: url('+ icon8 +') no-repeat right', onclick: function(e) {onButton(e)}}),
-      lf8 = $c('br'),
-      checkbox9 = $c('input', {id: 'aPlay', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aPlay"), onclick: function(e) {onCheckbox(e)}}),
-      label9 = $c('button', {for: 'aPlay', className: 'aBtn', textContent: 'Play Store', style: 'background: url('+ icon9 +') no-repeat right', onclick: function(e) {onButton(e)}}),
-      lf9 = $c('br'),
-      checkbox10 = $c('input', {id: 'aPodcasts', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aPodcasts"), onclick: function(e) {onCheckbox(e)}}),
-      label10 = $c('button', {for: 'aPodcasts', className: 'aBtn', textContent: 'Podcasts', style: 'background: url('+ icon10 +') no-repeat right', onclick: function(e) {onButton(e)}}),
-      lf10 = $c('br'),
-      checkbox11 = $c('input', {id: 'aTranslate', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aTranslate"), onclick: function(e) {onCheckbox(e)}}),
-      label11 = $c('button', {for: 'aTranslate', className: 'aBtn', textContent: 'Translate', style: 'background: url('+ icon11 +') no-repeat right', onclick: function(e) {onButton(e)}}),
-      lf11 = $c('br'),
-      checkbox12 = $c('input', {id: 'aYouTube', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aYouTube"), onclick: function(e) {onCheckbox(e)}}),
-      label12 = $c('button', {for: 'aYouTube', className: 'aBtn', textContent: 'YouTube', style: 'background: url('+ icon12 +') no-repeat right', onclick: function(e) {onButton(e)}}),
-      lf12 = $c('br'),
-      checkbox13 = $c('input', {id: 'aYouTubeTV', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aYouTubeTV"), onclick: function(e) {onCheckbox(e)}}),
-      label13 = $c('button', {for: 'aYouTubeTV', className: 'aBtn', textContent: 'YouTubeTV', style: 'background: url('+ icon13 +') no-repeat right', onclick: function(e) {onButton(e)}}),
-      lf13 = $c('br'),
-      reload = $c('button', {id: 'reload', className: 'gBtn', textContent: 'Reload Page', title: reloadTooltip, onclick: function() {onReload()}}),
-      close = $c('button', {id: 'close', className: 'gBtn', textContent: 'Close', onclick: function() {document.getElementById('buttonsContainer').hidden = true}}),
-      div4 = $c('div', {id: 'dateContainer'}),
-      buttons = $c('button', {id: 'buttonsButton', className: 'gBtn', textContent: 'Buttons', onclick: function() {document.getElementById('buttonsContainer').hidden = false}}),
-      div5 = $c('div', {id: 'buttonsContainer', hidden: true}),
-      span1 = $c('span', {id: 'dateTime', onmousedown: function(e) {toggleSecondsAmPmFormat(e)}}),
-      div1 = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd'),
-      div2 = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd > div'),
-      div3 = $q('body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > div'),
-      input1 = $q('body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.FPdoLc.lJ9FBc > center > input.gNO89b'),
-      timer;
-
   if (!GM_getValue('defaultDateTimeView')) GM_setValue('defaultDateTimeView', false);
   if (!GM_getValue('defaultSecondsView')) GM_setValue('defaultSecondsView', false);
   if (!GM_getValue('defaultAMPM')) GM_setValue('defaultAMPM', false);
   if (!GM_getValue('dateFormat')) GM_setValue('dateFormat', 1);
-
-  div5.appendChild(headerLabel); div5.appendChild(lfH);
-  div5.appendChild(buttonAll); div5.appendChild(buttonNone); div5.appendChild(lf0);
-  div5.appendChild(checkbox1); div5.appendChild(label1); div5.appendChild(lf1);
-  div5.appendChild(checkbox2); div5.appendChild(label2); div5.appendChild(lf2);
-  div5.appendChild(checkbox3); div5.appendChild(label3); div5.appendChild(lf3);
-  div5.appendChild(checkbox4); div5.appendChild(label4); div5.appendChild(lf4);
-  div5.appendChild(checkbox5); div5.appendChild(label5); div5.appendChild(lf5);
-  div5.appendChild(checkbox6); div5.appendChild(label6); div5.appendChild(lf6);
-  div5.appendChild(checkbox7); div5.appendChild(label7); div5.appendChild(lf7);
-  div5.appendChild(checkbox8); div5.appendChild(label8); div5.appendChild(lf8);
-  div5.appendChild(checkbox9); div5.appendChild(label9); div5.appendChild(lf9);
-  div5.appendChild(checkbox10); div5.appendChild(label10); div5.appendChild(lf10);
-  div5.appendChild(checkbox11); div5.appendChild(label11); div5.appendChild(lf11);
-  div5.appendChild(checkbox12); div5.appendChild(label12); div5.appendChild(lf12);
-  div5.appendChild(checkbox13); div5.appendChild(label13); div5.appendChild(lf13);
-  div5.appendChild(reload); div5.appendChild(close);
-  buttons.appendChild(div5);
 
   if (GM_getValue('aCalendar')) div2.appendChild(button1);
   if (GM_getValue('aClock')) {div4.appendChild(button2); div4.appendChild(span1); div1.appendChild(div4);}
@@ -346,9 +330,30 @@
   if (GM_getValue('aTranslate')) div2.appendChild(button11);
   if (GM_getValue('aYouTube')) div2.appendChild(button12);
   if (GM_getValue('aYouTubeTV')) div2.appendChild(button13);
+
   div3.insertBefore(input1, div3.firstChild);
   div3.appendChild(buttons);
   div3.appendChild(div5);
+
+  div5.appendChild(headerLabel); div5.appendChild(brH);
+  div5.appendChild(buttonAll); div5.appendChild(buttonNone); div5.appendChild(brB);
+  div5.appendChild(checkbox1); div5.appendChild(label1); div5.appendChild(br1);
+  div5.appendChild(checkbox2); div5.appendChild(label2); div5.appendChild(br2);
+  div5.appendChild(checkbox3); div5.appendChild(label3); div5.appendChild(br3);
+  div5.appendChild(checkbox4); div5.appendChild(label4); div5.appendChild(br4);
+  div5.appendChild(checkbox5); div5.appendChild(label5); div5.appendChild(br5);
+  div5.appendChild(checkbox6); div5.appendChild(label6); div5.appendChild(br6);
+  div5.appendChild(checkbox7); div5.appendChild(label7); div5.appendChild(br7);
+  div5.appendChild(checkbox8); div5.appendChild(label8); div5.appendChild(br8);
+  div5.appendChild(checkbox9); div5.appendChild(label9); div5.appendChild(br9);
+  div5.appendChild(checkbox10); div5.appendChild(label10); div5.appendChild(br10);
+  div5.appendChild(checkbox11); div5.appendChild(label11); div5.appendChild(br11);
+  div5.appendChild(checkbox12); div5.appendChild(label12); div5.appendChild(br12);
+  div5.appendChild(checkbox13); div5.appendChild(label13); div5.appendChild(br13);
+  div5.appendChild(reload); div5.appendChild(close);
+
+  buttons.appendChild(div5);
+
   input1.id = 'gSearch';
 
   addEventListener('unload', function() {onClose()});

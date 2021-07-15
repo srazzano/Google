@@ -21,8 +21,7 @@
         am = 'AM',
         pm = 'PM',
         formatCount = 8,
-        settingsMarginTop = '18px',
-        customFormat = 'Add a format in script line 127',
+        customFormat = 'Add a format in script line 194',
         hideShow = '• Left-click to Hide/Show Date/Time',
         addRemove = '• Left-click to Add/Remove :seconds\n• Shift + Left-click to Add/Remove AM/PM\n• Ctrl + Left-click to change Date format',
         reloadTooltip = 'Reload page for changes to take effect',
@@ -85,8 +84,8 @@
       button11 = $c('button', {id: 'gTranslate', className: 'gBtn', textContent: 'Translate', title: url11, style: 'background-image: url('+ icon11 +')', onclick: function() {window.open(url11, '_blank')}}),
       button12 = $c('button', {id: 'gYouTube', className: 'gBtn', textContent: 'YouTube', title: url12, style: 'background-image: url('+ icon12 +')', onclick: function() {window.open(url12, '_blank')}}),
       button13 = $c('button', {id: 'gYouTubeTV', className: 'gBtn', textContent: 'YouTube TV', title: url13, style: 'background-image: url('+ icon13 +')', onclick: function() {window.open(url13, '_blank')}}),
-      headerLabel = $c('button', {id: 'headerLabel', textContent: '[ Header Buttons ]'}),
-      brH = $c('br'),
+      buttons = $c('button', {id: 'buttonsButton', className: 'gBtn', textContent: 'Header Buttons', onclick: function() {document.getElementById('buttonsContainer').hidden = false}}),
+      div5 = $c('div', {id: 'buttonsContainer', hidden: true}),
       buttonAll = $c('button', {id: 'buttonAll', className: 'gBtn', textContent: 'Check All', onclick: function(e) {onButton(e)}}),
       buttonNone = $c('button', {id: 'buttonNone', className: 'gBtn', textContent: 'Clear All', onclick: function(e) {onButton(e)}}),
       brB = $c('br'),
@@ -131,13 +130,11 @@
       br13 = $c('br'),
       reload = $c('button', {id: 'reload', className: 'gBtn', textContent: 'Reload Page', title: reloadTooltip, onclick: function() {onReload()}}),
       close = $c('button', {id: 'close', className: 'gBtn', textContent: 'Close', onclick: function() {document.getElementById('buttonsContainer').hidden = true}}),
-      div4 = $c('div', {id: 'dateContainer'}),
-      buttons = $c('button', {id: 'buttonsButton', className: 'gBtn', textContent: 'Buttons', onclick: function() {document.getElementById('buttonsContainer').hidden = false}}),
-      div5 = $c('div', {id: 'buttonsContainer', hidden: true}),
       span1 = $c('span', {id: 'dateTime', onmousedown: function(e) {toggleSecondsAmPmFormat(e)}}),
       div1 = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd'),
       div2 = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd > div'),
       div3 = $q('body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > div'),
+      div4 = $c('div', {id: 'dateContainer'}),
       input1 = $q('body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.FPdoLc.lJ9FBc > center > input.gNO89b'),
       timer;
 
@@ -204,11 +201,10 @@
         screenWidth = window.screen.width / 2,
         spacerWidth = parseInt(elementSpacing.match('\\d+') / 2),
         spacerCount = (num.length - 1) * spacerWidth,
-        settingsMargin = parseInt(settingsMarginTop.match('\\d+')) + 6,
         os1 = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd').offsetHeight,
         os2 = $q('body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ').offsetHeight,
         os3 = $q('body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.RNNXgb').offsetHeight,
-        ost = (os1 + os2 + os3 + settingsMargin) + 'px',
+        ost = (os1 + os2 + os3 + 24) + 'px',
         arr = [];
     div3.style.top = ost;
     for (let i = 0; i < lia.length; i++) lia[i].setAttribute('target', '_blank');
@@ -317,7 +313,6 @@
   if (!GM_getValue('defaultAMPM')) GM_setValue('defaultAMPM', false);
   if (!GM_getValue('dateFormat')) GM_setValue('dateFormat', 1);
 
-  div5.appendChild(headerLabel); div5.appendChild(brH);
   div5.appendChild(buttonAll); div5.appendChild(buttonNone); div5.appendChild(brB);
   div5.appendChild(checkbox1); div5.appendChild(label1); div5.appendChild(br1);
   div5.appendChild(checkbox2); div5.appendChild(label2); div5.appendChild(br2);
@@ -552,6 +547,9 @@
     '.aajZCb li span {'+
     '  color: #FFF !important;'+
     '}'+
+    '#buttonsButton {'+
+    '  min-width: 133px !important;'+
+    '}'+
     '#buttonsContainer {'+
     '  background-color: #1C1E1F !important;'+
     '  border: 1px solid #999 !important;'+
@@ -559,15 +557,18 @@
     '  min-width: 153px !important;'+
     '  padding: 4px 2px 5px 2px !important;'+
     '  position: absolute !important;'+
-    '  text-align: left !important;'+
     '  right: 0 !important;'+
-    '}'+
-    '#headerLabel {'+
-    '  margin: 0 0 0 17px !important;'+
+    '  text-align: left !important;'+
+    '  z-index: 2147483647 !important;'+
     '}'+
     '#buttonAll, #buttonNone, #reload, #close {'+
-    '  margin: 8px 4px 0 4px !important;'+
     '  padding: 4px !important;'+
+    '}'+
+    '#buttonAll, #buttonNone {'+
+    '  margin: 0 4px !important;'+
+    '}'+
+    '#reload, #close {'+
+    '  margin: 8px 4px 0 4px !important;'+
     '}'+
     '.aCkbx {'+
     '  cursor: pointer !important;'+

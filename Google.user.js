@@ -547,6 +547,14 @@
     '.aajZCb li span {'+
     '  color: #FFF !important;'+
     '}'+
+    '#dEjpnf a.EzVRq, #dEjpnf button.EzVRq {'+
+    '  color: #CCC !important;'+
+    '  text-decoration: none !important;'+
+    '}'+
+    '#dEjpnf a.EzVRq:hover, #dEjpnf button.EzVRq:hover {'+
+    '  background-color: #333 !important;'+
+    '  color: #FFF !important;'+
+    '}'+
     '#headerButton {'+
     '  min-width: 133px !important;'+
     '}'+

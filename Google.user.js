@@ -71,7 +71,11 @@
         url12 = 'https://www.youtube.com/?gl=US',
         url13 = 'https://tv.youtube.com/library';
 
-  var button1 = $c('button', {id: 'gCalendar', className: 'gBtn', textContent: 'Calendar', title: url1, style: 'background-image: url('+ icon1 +')', onclick: function() {window.open(url1, '_blank')}}),
+  var div1 = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd'),
+      div2 = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd > div'),
+      div3 = $q('body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > div'),
+      searchButton = $q('body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.FPdoLc.lJ9FBc > center > input.gNO89b'),
+      button1 = $c('button', {id: 'gCalendar', className: 'gBtn', textContent: 'Calendar', title: url1, style: 'background-image: url('+ icon1 +')', onclick: function() {window.open(url1, '_blank')}}),
       button2 = $c('button', {id: 'gClock', style: 'background-image: url('+ icon2 +')', title: hideShow, onmousedown: function(e) {toggleDateTime(e)}}),
       button3 = $c('button', {id: 'gEarth', className: 'gBtn', textContent: 'Earth', title: url3, style: 'background-image: url('+ icon3 +')', onclick: function() {window.open(url3, '_blank')}}),
       button4 = $c('button', {id: 'gMail', className: 'gBtn', textContent: 'Gmail', title: url4, style: 'background-image: url('+ icon4 +')', onclick: function() {window.open(url4, '_blank')}}),
@@ -84,8 +88,8 @@
       button11 = $c('button', {id: 'gTranslate', className: 'gBtn', textContent: 'Translate', title: url11, style: 'background-image: url('+ icon11 +')', onclick: function() {window.open(url11, '_blank')}}),
       button12 = $c('button', {id: 'gYouTube', className: 'gBtn', textContent: 'YouTube', title: url12, style: 'background-image: url('+ icon12 +')', onclick: function() {window.open(url12, '_blank')}}),
       button13 = $c('button', {id: 'gYouTubeTV', className: 'gBtn', textContent: 'YouTube TV', title: url13, style: 'background-image: url('+ icon13 +')', onclick: function() {window.open(url13, '_blank')}}),
-      buttons = $c('button', {id: 'buttonsButton', className: 'gBtn', textContent: 'Header Buttons', onclick: function() {document.getElementById('buttonsContainer').hidden = false}}),
-      div5 = $c('div', {id: 'buttonsContainer', hidden: true}),
+      headerButton = $c('button', {id: 'headerButton', className: 'gBtn', textContent: 'Header Buttons', onclick: function() {document.getElementById('buttonsContainer').hidden = false}}),
+      buttonsContainer = $c('div', {id: 'buttonsContainer', hidden: true}),
       buttonAll = $c('button', {id: 'buttonAll', className: 'gBtn', textContent: 'Check All', onclick: function(e) {onButton(e)}}),
       buttonNone = $c('button', {id: 'buttonNone', className: 'gBtn', textContent: 'Clear All', onclick: function(e) {onButton(e)}}),
       brB = $c('br'),
@@ -130,12 +134,8 @@
       br13 = $c('br'),
       reload = $c('button', {id: 'reload', className: 'gBtn', textContent: 'Reload Page', title: reloadTooltip, onclick: function() {onReload()}}),
       close = $c('button', {id: 'close', className: 'gBtn', textContent: 'Close', onclick: function() {document.getElementById('buttonsContainer').hidden = true}}),
-      span1 = $c('span', {id: 'dateTime', onmousedown: function(e) {toggleSecondsAmPmFormat(e)}}),
-      div1 = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd'),
-      div2 = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd > div'),
-      div3 = $q('body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > div'),
-      div4 = $c('div', {id: 'dateContainer'}),
-      input1 = $q('body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.FPdoLc.lJ9FBc > center > input.gNO89b'),
+      dateTimeContainer = $c('div', {id: 'dateTimeContainer'}),
+      dateTime = $c('span', {id: 'dateTime', onmousedown: function(e) {toggleSecondsAmPmFormat(e)}}),
       timer;
 
   function $c(type, props) {
@@ -197,7 +197,7 @@
   function centerElements() {
     let lia = $q('#dEjpnf > li > a', true),
         num = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd > div > .gBtn', true),
-        len = ($q('#gSearch').offsetWidth + $q('#Mses6b').offsetWidth + $q('#buttonsButton').offsetWidth) / 2,
+        len = ($q('#gSearch').offsetWidth + $q('#Mses6b').offsetWidth + $q('#headerButton').offsetWidth) / 2,
         screenWidth = window.screen.width / 2,
         spacerWidth = parseInt(elementSpacing.match('\\d+') / 2),
         spacerCount = (num.length - 1) * spacerWidth,
@@ -206,7 +206,6 @@
         os3 = $q('body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.RNNXgb').offsetHeight,
         ost = (os1 + os2 + os3 + 24) + 'px',
         arr = [];
-    div3.style.top = ost;
     for (let i = 0; i < lia.length; i++) lia[i].setAttribute('target', '_blank');
     for (let j = 0; j < num.length; j++) arr.push(num[j].offsetWidth);
     let sum = arr.reduce(function(a, b) {return a + b}, 1),
@@ -215,13 +214,14 @@
         fromLeft2 = Math.round(screenWidth - len - (spacerWidth * 2) - 1) + 'px';
     div2.style.marginLeft = fromLeft1;
     div3.style.left = fromLeft2;
-    div5.style.top = '-' + ost;
+    div3.style.top = ost;
+    buttonsContainer.style.top = '-' + ost;
   }
 
   function defaultDateTime() {
-    span1.hidden = false;
-    span1.textContent = aDateTime(GM_getValue('dateFormat'));
-    span1.title = addRemove + ' (' + GM_getValue('dateFormat') + ')';
+    dateTime.hidden = false;
+    dateTime.textContent = aDateTime(GM_getValue('dateFormat'));
+    dateTime.title = addRemove + ' (' + GM_getValue('dateFormat') + ')';
     setTimer();
   }
 
@@ -262,7 +262,7 @@
   }
 
   function onOpen() {
-    GM_getValue('defaultDateTimeView') ? defaultDateTime() : span1.hidden = true;
+    GM_getValue('defaultDateTimeView') ? defaultDateTime() : dateTime.hidden = true;
   }
 
   function onReload() {
@@ -272,20 +272,20 @@
 
   function setTimer() {
     clearInterval(timer);
-    if (GM_getValue('defaultSecondsView')) timer = setInterval(function() {span1.textContent = aDateTime(GM_getValue('dateFormat'))}, timerShort);
-    else timer = setInterval(function() {span1.textContent = aDateTime(GM_getValue('dateFormat'))}, timerLong);
+    if (GM_getValue('defaultSecondsView')) timer = setInterval(function() {dateTime.textContent = aDateTime(GM_getValue('dateFormat'))}, timerShort);
+    else timer = setInterval(function() {dateTime.textContent = aDateTime(GM_getValue('dateFormat'))}, timerLong);
   }
 
   function toggleDateTime(e) {
     if (!e.button === 0) return;
     let bool;
     if (!e.shiftKey && !e.ctrlKey && !e.altKey && e.button === 0) {
-      bool = span1.hidden !== true ? true : false;
-      span1.hidden = bool;
+      bool = dateTime.hidden !== true ? true : false;
+      dateTime.hidden = bool;
       GM_setValue('defaultDateTimeView', !bool);
       if (bool) clearInterval(timer);
       else {
-        span1.textContent = aDateTime(GM_getValue('dateFormat'));
+        dateTime.textContent = aDateTime(GM_getValue('dateFormat'));
         setTimer();
   } } }
 
@@ -303,9 +303,9 @@
     } else if (!e.shiftKey && e.ctrlKey && !e.altKey && e.button === 0) {
       int = GM_getValue('dateFormat') + 1;
       int < formatCount + 1 ? GM_setValue('dateFormat', int) : GM_setValue('dateFormat', 1);
-      span1.title = addRemove + ' (' + GM_getValue('dateFormat') + ')';
+      dateTime.title = addRemove + ' (' + GM_getValue('dateFormat') + ')';
     }
-    span1.textContent = aDateTime(GM_getValue('dateFormat'));
+    dateTime.textContent = aDateTime(GM_getValue('dateFormat'));
   }
 
   if (!GM_getValue('defaultDateTimeView')) GM_setValue('defaultDateTimeView', false);
@@ -313,26 +313,26 @@
   if (!GM_getValue('defaultAMPM')) GM_setValue('defaultAMPM', false);
   if (!GM_getValue('dateFormat')) GM_setValue('dateFormat', 1);
 
-  div5.appendChild(buttonAll); div5.appendChild(buttonNone); div5.appendChild(brB);
-  div5.appendChild(checkbox1); div5.appendChild(label1); div5.appendChild(br1);
-  div5.appendChild(checkbox2); div5.appendChild(label2); div5.appendChild(br2);
-  div5.appendChild(checkbox3); div5.appendChild(label3); div5.appendChild(br3);
-  div5.appendChild(checkbox4); div5.appendChild(label4); div5.appendChild(br4);
-  div5.appendChild(checkbox5); div5.appendChild(label5); div5.appendChild(br5);
-  div5.appendChild(checkbox6); div5.appendChild(label6); div5.appendChild(br6);
-  div5.appendChild(checkbox7); div5.appendChild(label7); div5.appendChild(br7);
-  div5.appendChild(checkbox8); div5.appendChild(label8); div5.appendChild(br8);
-  div5.appendChild(checkbox9); div5.appendChild(label9); div5.appendChild(br9);
-  div5.appendChild(checkbox10); div5.appendChild(label10); div5.appendChild(br10);
-  div5.appendChild(checkbox11); div5.appendChild(label11); div5.appendChild(br11);
-  div5.appendChild(checkbox12); div5.appendChild(label12); div5.appendChild(br12);
-  div5.appendChild(checkbox13); div5.appendChild(label13); div5.appendChild(br13);
-  div5.appendChild(reload); div5.appendChild(close);
-  buttons.appendChild(div5);
-  input1.id = 'gSearch';
+  buttonsContainer.appendChild(buttonAll); buttonsContainer.appendChild(buttonNone); buttonsContainer.appendChild(brB);
+  buttonsContainer.appendChild(checkbox1); buttonsContainer.appendChild(label1); buttonsContainer.appendChild(br1);
+  buttonsContainer.appendChild(checkbox2); buttonsContainer.appendChild(label2); buttonsContainer.appendChild(br2);
+  buttonsContainer.appendChild(checkbox3); buttonsContainer.appendChild(label3); buttonsContainer.appendChild(br3);
+  buttonsContainer.appendChild(checkbox4); buttonsContainer.appendChild(label4); buttonsContainer.appendChild(br4);
+  buttonsContainer.appendChild(checkbox5); buttonsContainer.appendChild(label5); buttonsContainer.appendChild(br5);
+  buttonsContainer.appendChild(checkbox6); buttonsContainer.appendChild(label6); buttonsContainer.appendChild(br6);
+  buttonsContainer.appendChild(checkbox7); buttonsContainer.appendChild(label7); buttonsContainer.appendChild(br7);
+  buttonsContainer.appendChild(checkbox8); buttonsContainer.appendChild(label8); buttonsContainer.appendChild(br8);
+  buttonsContainer.appendChild(checkbox9); buttonsContainer.appendChild(label9); buttonsContainer.appendChild(br9);
+  buttonsContainer.appendChild(checkbox10); buttonsContainer.appendChild(label10); buttonsContainer.appendChild(br10);
+  buttonsContainer.appendChild(checkbox11); buttonsContainer.appendChild(label11); buttonsContainer.appendChild(br11);
+  buttonsContainer.appendChild(checkbox12); buttonsContainer.appendChild(label12); buttonsContainer.appendChild(br12);
+  buttonsContainer.appendChild(checkbox13); buttonsContainer.appendChild(label13); buttonsContainer.appendChild(br13);
+  buttonsContainer.appendChild(reload); buttonsContainer.appendChild(close);
+  headerButton.appendChild(buttonsContainer);
+  searchButton.id = 'gSearch';
 
   if (GM_getValue('aCalendar')) div2.appendChild(button1);
-  if (GM_getValue('aClock')) {div4.appendChild(button2); div4.appendChild(span1); div1.appendChild(div4);}
+  if (GM_getValue('aClock')) {dateTimeContainer.appendChild(button2); dateTimeContainer.appendChild(dateTime); div1.appendChild(dateTimeContainer);}
   if (GM_getValue('aEarth')) div2.appendChild(button3);
   if (GM_getValue('aMail')) div2.appendChild(button4);
   if (GM_getValue('aMaps')) div2.appendChild(button5);
@@ -344,9 +344,9 @@
   if (GM_getValue('aTranslate')) div2.appendChild(button11);
   if (GM_getValue('aYouTube')) div2.appendChild(button12);
   if (GM_getValue('aYouTubeTV')) div2.appendChild(button13);
-  div3.insertBefore(input1, div3.firstChild);
-  div3.appendChild(buttons);
-  div3.appendChild(div5);
+  div3.insertBefore(searchButton, div3.firstChild);
+  div3.appendChild(headerButton);
+  div3.appendChild(buttonsContainer);
   addEventListener('unload', function() {onClose()});
 
   setTimeout(function() {
@@ -428,7 +428,7 @@
     '  width: 40px !important;'+
     '  margin-right: '+ elementSpacing +' !important;'+
     '}'+
-    '#dateContainer:hover > #gClock {'+
+    '#dateTimeContainer:hover > #gClock {'+
     '  filter: none !important;'+
     '  opacity: .7 !important;'+
     '}'+
@@ -444,7 +444,7 @@
     '  top: 6px !important;'+
     '  width: 40px !important;'+
     '}'+
-    '#dateContainer:hover > #gClock:hover {'+
+    '#dateTimeContainer:hover > #gClock:hover {'+
     '  opacity: 1 !important;'+
     '}'+
     '#dateTime:not(#f) {'+
@@ -487,14 +487,14 @@
     'body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf {'+
     '  padding: 0 20px !important;'+
     '}'+
-    '.gBtn, #dateTime, #gSearch, #Mses6b, #buttonsButton, #submit, center > input, #gb > div > div.gb_0a.gb_E.gb_k.gb_1a.gb_la .gb_Pe {'+
+    '.gBtn, #dateTime, #gSearch, #Mses6b, #headerButton, #submit, center > input, #gb > div > div.gb_0a.gb_E.gb_k.gb_1a.gb_la .gb_Pe {'+
     '  background-color: #303030 !important;'+
     '  border: 1px solid #CCC !important;'+
     '  box-shadow: 1px 0 4px #000 inset !important;'+
     '  color: #AAA !important;'+
     '  cursor: pointer !important;'+
     '}'+
-    '.gBtn:hover, #dateTime:hover, #gSearch:hover:hover, #Mses6b:hover, #buttonsButton:hover, #submit:hover, center > input:hover, #gb > div > div.gb_0a.gb_E.gb_k.gb_1a.gb_la .gb_Pe:hover, .aCkbx:hover + .aBtn, .aBtn:hover {'+
+    '.gBtn:hover, #dateTime:hover, #gSearch:hover:hover, #Mses6b:hover, #headerButton:hover, #submit:hover, center > input:hover, #gb > div > div.gb_0a.gb_E.gb_k.gb_1a.gb_la .gb_Pe:hover, .aCkbx:hover + .aBtn, .aBtn:hover {'+
     '  background-color: #444 !important;'+
     '  border: 1px solid #000 !important;'+
     '  box-shadow: none !important;'+
@@ -514,7 +514,7 @@
     '  display: flex !important;'+
     '  position: absolute !important;'+
     '}'+
-    '#gSearch, #Mses6b, #buttonsButton {'+
+    '#gSearch, #Mses6b, #headerButton {'+
     '  border-radius: 4px !important;'+
     '  max-height: 36px !important;'+
     '  padding: 9px 16px !important;'+
@@ -547,7 +547,7 @@
     '.aajZCb li span {'+
     '  color: #FFF !important;'+
     '}'+
-    '#buttonsButton {'+
+    '#headerButton {'+
     '  min-width: 133px !important;'+
     '}'+
     '#buttonsContainer {'+

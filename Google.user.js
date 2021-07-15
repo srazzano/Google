@@ -20,7 +20,8 @@
         elementSpacing = '8px',
         am = 'AM',
         pm = 'PM',
-        customFormat = 'Add a format in script line 126',
+        formatCount = 8,
+        customFormat = 'Add a format in script line 127',
         hideShow = '• Left-click to Hide/Show Date/Time',
         addRemove = '• Left-click to Add/Remove :seconds\n• Shift + Left-click to Add/Remove AM/PM\n• Ctrl + Left-click to change Date format',
         reloadTooltip = 'Reload page for changes to take effect',
@@ -136,7 +137,7 @@
         os1 = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd').offsetHeight,
         os2 = $q('body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ').offsetHeight,
         os3 = $q('body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.RNNXgb').offsetHeight,
-        ost = (os1 + os2 + os3 + 30) + 'px',
+        ost = (os1 + os2 + os3 + 24) + 'px',
         arr = [];
     div3.style.top = ost;
     for (let i = 0; i < lia.length; i++) lia[i].setAttribute('target', '_blank');
@@ -198,7 +199,7 @@
   }
 
   function onReload() {
-    $q('#dEjpnf').style.display = 'none';
+    $q('#buttonsContainer').hidden = true;
     document.location.reload(true);
   }
 
@@ -223,7 +224,7 @@
 
   function toggleSecondsAmPmFormat(e) {
     if (!e.button === 0) return;
-    let bool1, bool2, int, formatCnt = 8;
+    let bool1, bool2, int;
     e.preventDefault();
     if (!e.shiftKey && !e.ctrlKey && !e.altKey && e.button === 0) {
       bool1 = GM_getValue('defaultSecondsView') !== true ? true : false;
@@ -234,7 +235,7 @@
       GM_setValue('defaultAMPM', bool2);
     } else if (!e.shiftKey && e.ctrlKey && !e.altKey && e.button === 0) {
       int = GM_getValue('dateFormat') + 1;
-      int < formatCnt + 1 ? GM_setValue('dateFormat', int) : GM_setValue('dateFormat', 1);
+      int < formatCount + 1 ? GM_setValue('dateFormat', int) : GM_setValue('dateFormat', 1);
       span1.title = addRemove + ' (' + GM_getValue('dateFormat') + ')';
     }
     span1.textContent = aDateTime(GM_getValue('dateFormat'));

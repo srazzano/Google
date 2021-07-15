@@ -493,6 +493,7 @@
     '  box-shadow: 1px 0 4px #000 inset !important;'+
     '  color: #AAA !important;'+
     '  cursor: pointer !important;'+
+    '  width: auto !important;'+
     '}'+
     '.gBtn:hover, #dateTime:hover, #gSearch:hover:hover, #Mses6b:hover, #headerButton:hover, #submit:hover, center > input:hover, #gb > div > div.gb_0a.gb_E.gb_k.gb_1a.gb_la .gb_Pe:hover, .aCkbx:hover + .aBtn, .aBtn:hover {'+
     '  background-color: #444 !important;'+
@@ -554,9 +555,6 @@
     '#dEjpnf a.EzVRq:hover, #dEjpnf button.EzVRq:hover {'+
     '  background-color: #333 !important;'+
     '  color: #FFF !important;'+
-    '}'+
-    '#headerButton {'+
-    '  min-width: 133px !important;'+
     '}'+
     '#buttonsContainer {'+
     '  background-color: #1C1E1F !important;'+

@@ -21,7 +21,7 @@
         am = 'AM',
         pm = 'PM',
         formatCount = 8,
-        customFormat = 'Add a format in script line 194',
+        customFormat = 'Add a format in script line 198',
         hideShow = '• Left-click to Hide/Show Date/Time',
         addRemove = '• Left-click to Add/Remove :seconds\n• Shift + Left-click to Add/Remove AM/PM\n• Ctrl + Left-click to change Date format',
         reloadTooltip = 'Reload page for changes to take effect',
@@ -75,20 +75,24 @@
       div2 = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd > div'),
       div3 = $q('body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > div'),
       searchButton = $q('body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.FPdoLc.lJ9FBc > center > input.gNO89b'),
-      btnCalendar = $c('button', {id: 'gCalendar', className: 'gBtn', textContent: 'Calendar', title: urlCalendar, style: 'background-image: url('+ imgCalendar +')', onclick: function() {window.open(urlCalendar, '_blank')}}),
-      btnEarth = $c('button', {id: 'gEarth', className: 'gBtn', textContent: 'Earth', title: urlEarth, style: 'background-image: url('+ imgEarth +')', onclick: function() {window.open(urlEarth, '_blank')}}),
-      btnMail = $c('button', {id: 'gMail', className: 'gBtn', textContent: 'Gmail', title: urlMail, style: 'background-image: url('+ imgMail +')', onclick: function() {window.open(urlMail, '_blank')}}),
-      btnMaps = $c('button', {id: 'gMaps', className: 'gBtn', textContent: 'Maps', title: urlMaps, style: 'background-image: url('+ imgMaps +')', onclick: function() {window.open(urlMaps, '_blank')}}),
-      btnMSEdge = $c('button', {id: 'gMSEdge', className: 'gBtn', textContent: 'MS Store', title: urlMSEdge, style: 'background-image: url('+ imgMSEdge +')', onclick: function() {window.open(urlMSEdge, '_blank')}}),
-      btnNews = $c('button', {id: 'gNews', className: 'gBtn', textContent: 'News', title: urlNews, style: 'background-image: url('+ imgNews +')', onclick: function() {window.open(urlNews, '_blank')}}),
-      btnPhotos = $c('button', {id: 'gPhotos', className: 'gBtn', textContent: 'Photos', title: urlPhotos, style: 'background-image: url('+ imgPhotos +')', onclick: function() {window.open(urlPhotos, '_blank')}}),
-      btnPlay = $c('button', {id: 'gPlay', className: 'gBtn', textContent: 'Play Store', title: urlPlay, style: 'background-image: url('+ imgPlay +')', onclick: function() {window.open(urlPlay, '_blank')}}),
-      btnPodcasts = $c('button', {id: 'gPodcasts', className: 'gBtn', textContent: 'Podcasts', title: urlPodcasts, style: 'background-image: url('+ imgPodcasts +')', onclick: function() {window.open(urlPodcasts, '_blank')}}),
-      btnTranslate = $c('button', {id: 'gTranslate', className: 'gBtn', textContent: 'Translate', title: urlTranslate, style: 'background-image: url('+ imgTranslate +')', onclick: function() {window.open(urlTranslate, '_blank')}}),
-      btnYouTube = $c('button', {id: 'gYouTube', className: 'gBtn', textContent: 'YouTube', title: urlYouTube, style: 'background-image: url('+ imgYouTube +')', onclick: function() {window.open(urlYouTube, '_blank')}}),
-      btnYouTubeTV = $c('button', {id: 'gYouTubeTV', className: 'gBtn', textContent: 'YouTube TV', title: urlYouTubeTV, style: 'background-image: url('+ imgYouTubeTV +')', onclick: function() {window.open(urlYouTubeTV, '_blank')}}),
+      where = GM_getValue('aNewTab') ? '_blank' : '_self',
+      btnCalendar = $c('button', {id: 'gCalendar', className: 'gBtn', textContent: 'Calendar', title: urlCalendar, style: 'background-image: url('+ imgCalendar +')', onclick: function() {window.open(urlCalendar, where)}}),
+      btnEarth = $c('button', {id: 'gEarth', className: 'gBtn', textContent: 'Earth', title: urlEarth, style: 'background-image: url('+ imgEarth +')', onclick: function() {window.open(urlEarth, where)}}),
+      btnMail = $c('button', {id: 'gMail', className: 'gBtn', textContent: 'Gmail', title: urlMail, style: 'background-image: url('+ imgMail +')', onclick: function() {window.open(urlMail, where)}}),
+      btnMaps = $c('button', {id: 'gMaps', className: 'gBtn', textContent: 'Maps', title: urlMaps, style: 'background-image: url('+ imgMaps +')', onclick: function() {window.open(urlMaps, where)}}),
+      btnMSEdge = $c('button', {id: 'gMSEdge', className: 'gBtn', textContent: 'MS Store', title: urlMSEdge, style: 'background-image: url('+ imgMSEdge +')', onclick: function() {window.open(urlMSEdge, where)}}),
+      btnNews = $c('button', {id: 'gNews', className: 'gBtn', textContent: 'News', title: urlNews, style: 'background-image: url('+ imgNews +')', onclick: function() {window.open(urlNews, where)}}),
+      btnPhotos = $c('button', {id: 'gPhotos', className: 'gBtn', textContent: 'Photos', title: urlPhotos, style: 'background-image: url('+ imgPhotos +')', onclick: function() {window.open(urlPhotos, where)}}),
+      btnPlay = $c('button', {id: 'gPlay', className: 'gBtn', textContent: 'Play Store', title: urlPlay, style: 'background-image: url('+ imgPlay +')', onclick: function() {window.open(urlPlay, where)}}),
+      btnPodcasts = $c('button', {id: 'gPodcasts', className: 'gBtn', textContent: 'Podcasts', title: urlPodcasts, style: 'background-image: url('+ imgPodcasts +')', onclick: function() {window.open(urlPodcasts, where)}}),
+      btnTranslate = $c('button', {id: 'gTranslate', className: 'gBtn', textContent: 'Translate', title: urlTranslate, style: 'background-image: url('+ imgTranslate +')', onclick: function() {window.open(urlTranslate, where)}}),
+      btnYouTube = $c('button', {id: 'gYouTube', className: 'gBtn', textContent: 'YouTube', title: urlYouTube, style: 'background-image: url('+ imgYouTube +')', onclick: function() {window.open(urlYouTube, where)}}),
+      btnYouTubeTV = $c('button', {id: 'gYouTubeTV', className: 'gBtn', textContent: 'YouTube TV', title: urlYouTubeTV, style: 'background-image: url('+ imgYouTubeTV +')', onclick: function() {window.open(urlYouTubeTV, where)}}),
       headerButton = $c('button', {id: 'headerButton', className: 'gBtn', textContent: 'Header Buttons', onclick: function() {document.getElementById('buttonsContainer').hidden = false}}),
       buttonsContainer = $c('div', {id: 'buttonsContainer', hidden: true}),
+      cbNewTab = $c('input', {id: 'aNewTab', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aNewTab"), onclick: function(e) {onCheckbox(e)}}),
+      labNewTab = $c('button', {for: 'aNewTab', className: 'aBtn', textContent: 'In New Tabs', onclick: function(e) {onButton(e)}}),
+      brNewTab = $c('br'),
       buttonAll = $c('button', {id: 'buttonAll', className: 'gBtn', textContent: 'Check All', onclick: function(e) {onButton(e)}}),
       buttonNone = $c('button', {id: 'buttonNone', className: 'gBtn', textContent: 'Clear All', onclick: function(e) {onButton(e)}}),
       brButton = $c('br'),
@@ -227,6 +231,11 @@
 
   function onButton(e) {
     let cb = $q('#buttonsContainer > .aCkbx', true), x;
+    if (e.target.id === 'aNewTab') {
+      e.target.checked = !e.target.checked;
+      GM_setValue('aNewTab', e.target.checked);
+      return;
+    }
     if (e.target.hasAttribute('id')) {
       switch (e.target.id) {
         case 'buttonAll':
@@ -263,6 +272,10 @@
 
   function onOpen() {
     GM_getValue('defaultDateTimeView') ? defaultDateTime() : dateTime.hidden = true;
+  }
+
+  function onRadio(e) {
+
   }
 
   function onReload() {
@@ -313,6 +326,7 @@
   if (!GM_getValue('defaultAMPM')) GM_setValue('defaultAMPM', false);
   if (!GM_getValue('dateFormat')) GM_setValue('dateFormat', 1);
 
+  buttonsContainer.appendChild(cbNewTab); buttonsContainer.appendChild(labNewTab); buttonsContainer.appendChild(brNewTab);
   buttonsContainer.appendChild(buttonAll); buttonsContainer.appendChild(buttonNone); buttonsContainer.appendChild(brButton);
   buttonsContainer.appendChild(cbCalendar); buttonsContainer.appendChild(labCalendar); buttonsContainer.appendChild(brCalendar);
   buttonsContainer.appendChild(cbClock); buttonsContainer.appendChild(labClock); buttonsContainer.appendChild(brClock);
@@ -350,9 +364,9 @@
   addEventListener('unload', function() {onClose()});
 
   setTimeout(function() {
-    let box = $q('#buttonsContainer > .aCkbx', true),
+    let cb = $q('#buttonsContainer > .aCkbx', true),
         signIn = $q('#gb > div > div.gb_Se > a');
-    for (var i = 0; i < box.length; i++) if (!GM_getValue(box[i].id)) GM_setValue(box[i].id, false);
+    for (var i = 0; i < cb.length; i++) if (!GM_getValue(cb[i].id)) GM_setValue(cb[i].id, false);
     if (signIn) signIn.click();
     centerElements();
     onOpen();
@@ -567,11 +581,12 @@
     '  text-align: left !important;'+
     '  z-index: 2147483647 !important;'+
     '}'+
+    '#buttonAll {'+
+    '  margin-left: 4px !important;'+
+    '  margin-right: 8px !important;'+
+    '}'+
     '#buttonAll, #buttonNone, #reload, #close {'+
     '  padding: 4px !important;'+
-    '}'+
-    '#buttonAll, #buttonNone {'+
-    '  margin: 0 4px !important;'+
     '}'+
     '#reload, #close {'+
     '  margin: 8px 4px 0 4px !important;'+
@@ -594,6 +609,10 @@
     '}'+
     '.aCkbx:hover + .aBtn, .aBtn:hover {'+
     '  border-left: 1px solid transparent !important;'+
+    '}'+
+    '#aNewTab.aCkbx {'+
+    '  margin-bottom: 15px !important;'+
+    '  margin-top: -4px !important;'+
     '}'+
   '');
 

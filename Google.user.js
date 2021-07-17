@@ -276,10 +276,6 @@
     GM_getValue('defaultDateTimeView') ? defaultDateTime() : dateTime.hidden = true;
   }
 
-  function onRadio(e) {
-
-  }
-
   function onReload() {
     $q('#buttonsContainer').hidden = true;
     document.location.reload(true);

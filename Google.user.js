@@ -599,20 +599,25 @@
     '  top: 6px !important;'+
     '  width: 22px !important;'+
     '}'+
+    '.aCkbx:first-of-type {'+
+    '  margin-bottom: 15px !important;'+
+    '  margin-top: -4px !important;'+
+    '}'+
     '.aBtn {'+
     '  appearance: none !important;'+
     '  border: 1px solid transparent !important;'+
     '  color: #AAA !important;'+
     '  cursor: pointer !important;'+
     '  margin-left: -5px !important;'+
+    '}'+
+    '.aBtn:not(:first-of-type) {'+
     '  padding: 2px 23px 2px 8px !important;'+
+    '}'+
+    '.aBtn:first-of-type {'+
+    '  padding: 2px 8px 2px 8px !important;'+
     '}'+
     '.aCkbx:hover + .aBtn, .aBtn:hover {'+
     '  border-left: 1px solid transparent !important;'+
-    '}'+
-    '#aNewTab.aCkbx {'+
-    '  margin-bottom: 15px !important;'+
-    '  margin-top: -4px !important;'+
     '}'+
   '');
 

@@ -93,8 +93,8 @@
       cbNewTab = $c('input', {id: 'aNewTab', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aNewTab"), onclick: function(e) {onCheckbox(e)}}),
       labNewTab = $c('button', {for: 'aNewTab', className: 'aBtn', textContent: 'In New Tabs', onclick: function(e) {onButton(e)}}),
       brNewTab = $c('br'),
-      buttonAll = $c('button', {id: 'buttonAll', className: 'gBtn', textContent: 'Check All', onclick: function(e) {onButton(e)}}),
-      buttonNone = $c('button', {id: 'buttonNone', className: 'gBtn', textContent: 'Clear All', onclick: function(e) {onButton(e)}}),
+      buttonCheckAll = $c('button', {id: 'buttonCheckAll', className: 'gBtn', textContent: 'Check All', onclick: function(e) {onButton(e)}}),
+      buttonClearAll = $c('button', {id: 'buttonClearAll', className: 'gBtn', textContent: 'Clear All', onclick: function(e) {onButton(e)}}),
       brButton = $c('br'),
       cbCalendar = $c('input', {id: 'aCalendar', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aCalendar"), onclick: function(e) {onCheckbox(e)}}),
       labCalendar = $c('button', {for: 'aCalendar', className: 'aBtn', textContent: 'Calendar', style: 'background: url('+ imgCalendar +') no-repeat right', onclick: function(e) {onButton(e)}}),
@@ -135,8 +135,8 @@
       cbYouTubeTV = $c('input', {id: 'aYouTubeTV', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aYouTubeTV"), onclick: function(e) {onCheckbox(e)}}),
       labYouTubeTV = $c('button', {for: 'aYouTubeTV', className: 'aBtn', textContent: 'YouTubeTV', style: 'background: url('+ imgYouTubeTV +') no-repeat right', onclick: function(e) {onButton(e)}}),
       brYouTubeTV = $c('br'),
-      reload = $c('button', {id: 'reload', className: 'gBtn', textContent: 'Reload Page', title: reloadTooltip, onclick: function() {onReload()}}),
-      close = $c('button', {id: 'close', className: 'gBtn', textContent: 'Close', onclick: function() {document.getElementById('buttonsContainer').hidden = true}}),
+      buttonReload = $c('button', {id: 'buttonReload', className: 'gBtn', textContent: 'Reload Page', title: reloadTooltip, onclick: function() {onReload()}}),
+      buttonClose = $c('button', {id: 'buttonClose', className: 'gBtn', textContent: 'Close', onclick: function() {document.getElementById('buttonsContainer').hidden = true}}),
       dateTimeContainer = $c('div', {id: 'dateTimeContainer'}),
       btnClock = $c('button', {id: 'gClock', style: 'background-image: url('+ imgClock2 +')', title: hideShow, onmousedown: function(e) {toggleDateTime(e)}}),
       dateTime = $c('span', {id: 'dateTime', onmousedown: function(e) {toggleSecondsAmPmFormat(e)}}),
@@ -238,16 +238,18 @@
     }
     if (e.target.hasAttribute('id')) {
       switch (e.target.id) {
-        case 'buttonAll':
+        case 'buttonCheckAll':
           for (let i = 0; i < cb.length; i++) {
             x = cb[i];
+            if (x.id === 'aNewTab') continue;
             x.checked = true;
             GM_setValue(x.id, true);
           }
           break;
-        case 'buttonNone':
+        case 'buttonClearAll':
           for (let i = 0; i < cb.length; i++) {
             x = cb[i];
+            if (x.id === 'aNewTab') continue;
             x.checked = false;
             GM_setValue(x.id, false);
           }
@@ -261,8 +263,8 @@
 
   function onCheckbox(e) {
     let bool = GM_getValue(e.target.id) !== true ? true : false;
-    GM_setValue(e.target.id, bool);
     e.target.checked = bool;
+    GM_setValue(e.target.id, bool);
   }
 
   function onClose() {
@@ -327,7 +329,7 @@
   if (!GM_getValue('dateFormat')) GM_setValue('dateFormat', 1);
 
   buttonsContainer.appendChild(cbNewTab); buttonsContainer.appendChild(labNewTab); buttonsContainer.appendChild(brNewTab);
-  buttonsContainer.appendChild(buttonAll); buttonsContainer.appendChild(buttonNone); buttonsContainer.appendChild(brButton);
+  buttonsContainer.appendChild(buttonCheckAll); buttonsContainer.appendChild(buttonClearAll); buttonsContainer.appendChild(brButton);
   buttonsContainer.appendChild(cbCalendar); buttonsContainer.appendChild(labCalendar); buttonsContainer.appendChild(brCalendar);
   buttonsContainer.appendChild(cbClock); buttonsContainer.appendChild(labClock); buttonsContainer.appendChild(brClock);
   buttonsContainer.appendChild(cbEarth); buttonsContainer.appendChild(labEarth); buttonsContainer.appendChild(brEarth);
@@ -341,7 +343,7 @@
   buttonsContainer.appendChild(cbTranslate); buttonsContainer.appendChild(labTranslate); buttonsContainer.appendChild(brTranslate);
   buttonsContainer.appendChild(cbYouTube); buttonsContainer.appendChild(labYouTube); buttonsContainer.appendChild(brYouTube);
   buttonsContainer.appendChild(cbYouTubeTV); buttonsContainer.appendChild(labYouTubeTV); buttonsContainer.appendChild(brYouTubeTV);
-  buttonsContainer.appendChild(reload); buttonsContainer.appendChild(close);
+  buttonsContainer.appendChild(buttonReload); buttonsContainer.appendChild(buttonClose);
   headerButton.appendChild(buttonsContainer);
   searchButton.id = 'gSearch';
 
@@ -581,14 +583,14 @@
     '  text-align: left !important;'+
     '  z-index: 2147483647 !important;'+
     '}'+
-    '#buttonAll {'+
+    '#buttonCheckAll {'+
     '  margin-left: 4px !important;'+
     '  margin-right: 8px !important;'+
     '}'+
-    '#buttonAll, #buttonNone, #reload, #close {'+
+    '#buttonCheckAll, #buttonClearAll, #buttonReload, #buttonClose {'+
     '  padding: 4px !important;'+
     '}'+
-    '#reload, #close {'+
+    '#buttonReload, #buttonClose {'+
     '  margin: 8px 4px 0 4px !important;'+
     '}'+
     '.aCkbx {'+

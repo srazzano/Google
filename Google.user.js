@@ -611,7 +611,7 @@
     '  margin-left: -5px !important;'+
     '}'+
     '.aBtn:first-of-type {'+
-    '  padding: 4px 4px 4px 6px!important;'+
+    '  padding: 4px 4px 4px 6px !important;'+
     '}'+
     '.aBtn:not(:first-of-type) {'+
     '  padding: 4px 23px 4px 6px !important;'+

@@ -88,10 +88,10 @@
       btnTranslate = $c('button', {id: 'gTranslate', className: 'gBtn', textContent: 'Translate', title: urlTranslate, style: 'background-image: url('+ imgTranslate +')', onclick: function() {window.open(urlTranslate, where)}}),
       btnYouTube = $c('button', {id: 'gYouTube', className: 'gBtn', textContent: 'YouTube', title: urlYouTube, style: 'background-image: url('+ imgYouTube +')', onclick: function() {window.open(urlYouTube, where)}}),
       btnYouTubeTV = $c('button', {id: 'gYouTubeTV', className: 'gBtn', textContent: 'YouTube TV', title: urlYouTubeTV, style: 'background-image: url('+ imgYouTubeTV +')', onclick: function() {window.open(urlYouTubeTV, where)}}),
-      headerButton = $c('button', {id: 'headerButton', className: 'gBtn', textContent: 'Header Buttons', onclick: function() {document.getElementById('buttonsContainer').hidden = false}}),
+      headerButton = $c('button', {id: 'headerButton', className: 'gBtn', textContent: 'Header Buttons', onclick: function() {$q('#buttonsContainer').hidden = false}}),
       buttonsContainer = $c('div', {id: 'buttonsContainer', hidden: true}),
       cbNewTab = $c('input', {id: 'aNewTab', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aNewTab"), onclick: function(e) {onCheckbox(e)}}),
-      labNewTab = $c('button', {for: 'aNewTab', className: 'aBtn', textContent: 'In New Tabs', onclick: function(e) {onButton(e)}}),
+      labNewTab = $c('button', {for: 'aNewTab', className: 'aBtn', textContent: 'Open In New Tabs', onclick: function(e) {onButton(e)}}),
       brNewTab = $c('br'),
       buttonCheckAll = $c('button', {id: 'buttonCheckAll', className: 'gBtn', textContent: 'Check All', onclick: function(e) {onButton(e)}}),
       buttonClearAll = $c('button', {id: 'buttonClearAll', className: 'gBtn', textContent: 'Clear All', onclick: function(e) {onButton(e)}}),
@@ -136,7 +136,7 @@
       labYouTubeTV = $c('button', {for: 'aYouTubeTV', className: 'aBtn', textContent: 'YouTubeTV', style: 'background: url('+ imgYouTubeTV +') no-repeat right', onclick: function(e) {onButton(e)}}),
       brYouTubeTV = $c('br'),
       buttonReload = $c('button', {id: 'buttonReload', className: 'gBtn', textContent: 'Reload Page', title: reloadTooltip, onclick: function() {onReload()}}),
-      buttonClose = $c('button', {id: 'buttonClose', className: 'gBtn', textContent: 'Close', onclick: function() {document.getElementById('buttonsContainer').hidden = true}}),
+      buttonClose = $c('button', {id: 'buttonClose', className: 'gBtn', textContent: 'Close', onclick: function() {$q("#buttonsContainer").hidden = true}}),
       dateTimeContainer = $c('div', {id: 'dateTimeContainer'}),
       btnClock = $c('button', {id: 'gClock', style: 'background-image: url('+ imgClock2 +')', title: hideShow, onmousedown: function(e) {toggleDateTime(e)}}),
       dateTime = $c('span', {id: 'dateTime', onmousedown: function(e) {toggleSecondsAmPmFormat(e)}}),
@@ -230,12 +230,12 @@
   }
 
   function onButton(e) {
-    let cb = $q('#buttonsContainer > .aCkbx', true), x;
     if (e.target.id === 'aNewTab') {
       e.target.checked = !e.target.checked;
       GM_setValue('aNewTab', e.target.checked);
       return;
     }
+    let cb = $q('#buttonsContainer > .aCkbx', true), x;
     if (e.target.hasAttribute('id')) {
       switch (e.target.id) {
         case 'buttonCheckAll':
@@ -359,6 +359,7 @@
   div3.insertBefore(searchButton, div3.firstChild);
   div3.appendChild(headerButton);
   div3.appendChild(buttonsContainer);
+
   addEventListener('unload', function() {onClose()});
 
   setTimeout(function() {
@@ -507,7 +508,7 @@
     '  cursor: pointer !important;'+
     '  width: auto !important;'+
     '}'+
-    '.gBtn:hover, #dateTime:hover, #gSearch:hover:hover, #Mses6b:hover, #headerButton:hover, #submit:hover, center > input:hover, #gb > div > div.gb_0a.gb_E.gb_k.gb_1a.gb_la .gb_Pe:hover, .aCkbx:hover + .aBtn, .aBtn:hover {'+
+    '.gBtn:hover, #dateTime:hover, #gSearch:hover:hover, #Mses6b:hover, #headerButton:hover, #submit:hover, center > input:hover, #gb > div > div.gb_0a.gb_E.gb_k.gb_1a.gb_la .gb_Pe:hover {'+
     '  background-color: #444 !important;'+
     '  border: 1px solid #000 !important;'+
     '  box-shadow: none !important;'+
@@ -604,19 +605,20 @@
     '}'+
     '.aBtn {'+
     '  appearance: none !important;'+
-    '  border: 1px solid transparent !important;'+
+    '  border: none !important;'+
     '  color: #AAA !important;'+
     '  cursor: pointer !important;'+
     '  margin-left: -5px !important;'+
     '}'+
-    '.aBtn:not(:first-of-type) {'+
-    '  padding: 2px 23px 2px 6px !important;'+
-    '}'+
     '.aBtn:first-of-type {'+
-    '  padding: 2px 8px !important;'+
+    '  padding: 4px 4px 4px 6px!important;'+
+    '}'+
+    '.aBtn:not(:first-of-type) {'+
+    '  padding: 4px 23px 4px 6px !important;'+
     '}'+
     '.aCkbx:hover + .aBtn, .aBtn:hover {'+
-    '  border-left: 1px solid transparent !important;'+
+    '  background-color: #444 !important;'+
+    '  color: #FFF !important;'+
     '}'+
   '');
 

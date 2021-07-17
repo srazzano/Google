@@ -577,7 +577,7 @@
     '  border: 1px solid #999 !important;'+
     '  border-radius: 4px !important;'+
     '  min-width: 153px !important;'+
-    '  padding: 4px 2px 5px 2px !important;'+
+    '  padding: 4px 2px 6px 2px !important;'+
     '  position: absolute !important;'+
     '  right: 0 !important;'+
     '  text-align: left !important;'+
@@ -597,12 +597,13 @@
     '  cursor: pointer !important;'+
     '  filter: invert(1) !important;'+
     '  height: 22px !important;'+
+    '  margin:  0 4px !important;'+
     '  position: relative !important;'+
     '  top: 6px !important;'+
     '  width: 22px !important;'+
     '}'+
     '.aCkbx:first-of-type {'+
-    '  margin-bottom: 15px !important;'+
+    '  margin-bottom: 12px !important;'+
     '  margin-top: -4px !important;'+
     '}'+
     '.aBtn {'+
@@ -616,7 +617,7 @@
     '  padding: 2px 23px 2px 8px !important;'+
     '}'+
     '.aBtn:first-of-type {'+
-    '  padding: 2px 8px 2px 8px !important;'+
+    '  padding: 2px 8px !important;'+
     '}'+
     '.aCkbx:hover + .aBtn, .aBtn:hover {'+
     '  border-left: 1px solid transparent !important;'+

@@ -21,7 +21,7 @@
         am = 'AM',
         pm = 'PM',
         formatCount = 8,
-        customFormat = 'Add a format in script line 198',
+        customFormat = 'Add a format in script line 199',
         hideShow = '• Left-click to Hide/Show Date/Time',
         addRemove = '• Left-click to Add/Remove :seconds\n• Shift + Left-click to Add/Remove AM/PM\n• Ctrl + Left-click to change Date format',
         reloadTooltip = 'Reload page for changes to take effect',
@@ -88,8 +88,9 @@
       btnTranslate = $c('button', {id: 'gTranslate', className: 'gBtn', textContent: 'Translate', title: urlTranslate, style: 'background-image: url('+ imgTranslate +')', onclick: function() {window.open(urlTranslate, where)}}),
       btnYouTube = $c('button', {id: 'gYouTube', className: 'gBtn', textContent: 'YouTube', title: urlYouTube, style: 'background-image: url('+ imgYouTube +')', onclick: function() {window.open(urlYouTube, where)}}),
       btnYouTubeTV = $c('button', {id: 'gYouTubeTV', className: 'gBtn', textContent: 'YouTube TV', title: urlYouTubeTV, style: 'background-image: url('+ imgYouTubeTV +')', onclick: function() {window.open(urlYouTubeTV, where)}}),
-      headerButton = $c('button', {id: 'headerButton', className: 'gBtn', textContent: 'Header Buttons', onclick: function() {$q('#buttonsContainer').hidden = false}}),
+      headerButton = $c('button', {id: 'headerButton', className: 'gBtn', textContent: 'Header Buttons', onclick: function() {$q('#buttonsContainer').hidden = false; $q('#buttonsContainer2').hidden = false}}),
       buttonsContainer = $c('div', {id: 'buttonsContainer', hidden: true}),
+      buttonsContainer2 = $c('div', {id: 'buttonsContainer2', hidden: true}),
       cbNewTab = $c('input', {id: 'aNewTab', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aNewTab"), onclick: function(e) {onCheckbox(e)}}),
       labNewTab = $c('button', {for: 'aNewTab', className: 'aBtn', textContent: 'Open In New Tabs', onclick: function(e) {onButton(e)}}),
       brNewTab = $c('br'),
@@ -136,7 +137,7 @@
       labYouTubeTV = $c('button', {for: 'aYouTubeTV', className: 'aBtn', textContent: 'YouTubeTV', style: 'background: url('+ imgYouTubeTV +') no-repeat right', onclick: function(e) {onButton(e)}}),
       brYouTubeTV = $c('br'),
       buttonReload = $c('button', {id: 'buttonReload', className: 'gBtn', textContent: 'Reload Page', title: reloadTooltip, onclick: function() {onReload()}}),
-      buttonClose = $c('button', {id: 'buttonClose', className: 'gBtn', textContent: 'Close', onclick: function() {$q("#buttonsContainer").hidden = true}}),
+      buttonClose = $c('button', {id: 'buttonClose', className: 'gBtn', textContent: 'Close', onclick: function() {$q("#buttonsContainer").hidden = true; $q("#buttonsContainer2").hidden = true}}),
       dateTimeContainer = $c('div', {id: 'dateTimeContainer'}),
       btnClock = $c('button', {id: 'gClock', style: 'background-image: url('+ imgClock2 +')', title: hideShow, onmousedown: function(e) {toggleDateTime(e)}}),
       dateTime = $c('span', {id: 'dateTime', onmousedown: function(e) {toggleSecondsAmPmFormat(e)}}),
@@ -219,7 +220,9 @@
     div2.style.marginLeft = fromLeft1;
     div3.style.left = fromLeft2;
     div3.style.top = ost;
-    buttonsContainer.style.top = '-' + ost;
+    //buttonsContainer.style.top = '-' + ost;
+    buttonsContainer.style.bottom = 0;
+    buttonsContainer2.style.bottom = 0;
   }
 
   function defaultDateTime() {
@@ -235,7 +238,9 @@
       GM_setValue('aNewTab', e.target.checked);
       return;
     }
-    let cb = $q('#buttonsContainer > .aCkbx', true), x;
+    let cb = $q('#buttonsContainer > .aCkbx', true),
+        cb2 = $q('#buttonsContainer2 > .aCkbx', true),
+        x, y;
     if (e.target.hasAttribute('id')) {
       switch (e.target.id) {
         case 'buttonCheckAll':
@@ -245,6 +250,11 @@
             x.checked = true;
             GM_setValue(x.id, true);
           }
+          for (let j = 0; j < cb2.length; j++) {
+            y = cb2[j];
+            y.checked = true;
+            GM_setValue(y.id, true);
+          }
           break;
         case 'buttonClearAll':
           for (let i = 0; i < cb.length; i++) {
@@ -252,6 +262,11 @@
             if (x.id === 'aNewTab') continue;
             x.checked = false;
             GM_setValue(x.id, false);
+          }
+          for (let j = 0; j < cb2.length; j++) {
+            y = cb2[j];
+            y.checked = false;
+            GM_setValue(y.id, false);
           }
     } }
     if (e.target.hasAttribute('for')) {
@@ -278,6 +293,7 @@
 
   function onReload() {
     $q('#buttonsContainer').hidden = true;
+    $q('#buttonsContainer2').hidden = true;
     document.location.reload(true);
   }
 
@@ -333,14 +349,17 @@
   buttonsContainer.appendChild(cbMaps); buttonsContainer.appendChild(labMaps); buttonsContainer.appendChild(brMaps);
   buttonsContainer.appendChild(cbMSEdge); buttonsContainer.appendChild(labMSEdge); buttonsContainer.appendChild(brMSEdge);
   buttonsContainer.appendChild(cbNews); buttonsContainer.appendChild(labNews); buttonsContainer.appendChild(brNews);
-  buttonsContainer.appendChild(cbPhotos); buttonsContainer.appendChild(labPhotos); buttonsContainer.appendChild(brPhotos);
-  buttonsContainer.appendChild(cbPlay); buttonsContainer.appendChild(labPlay); buttonsContainer.appendChild(brPlay);
-  buttonsContainer.appendChild(cbPodcasts); buttonsContainer.appendChild(labPodcasts); buttonsContainer.appendChild(brPodcasts);
-  buttonsContainer.appendChild(cbTranslate); buttonsContainer.appendChild(labTranslate); buttonsContainer.appendChild(brTranslate);
-  buttonsContainer.appendChild(cbYouTube); buttonsContainer.appendChild(labYouTube); buttonsContainer.appendChild(brYouTube);
-  buttonsContainer.appendChild(cbYouTubeTV); buttonsContainer.appendChild(labYouTubeTV); buttonsContainer.appendChild(brYouTubeTV);
-  buttonsContainer.appendChild(buttonReload); buttonsContainer.appendChild(buttonClose);
+
+  buttonsContainer2.appendChild(cbPhotos); buttonsContainer2.appendChild(labPhotos); buttonsContainer2.appendChild(brPhotos);
+  buttonsContainer2.appendChild(cbPlay); buttonsContainer2.appendChild(labPlay); buttonsContainer2.appendChild(brPlay);
+  buttonsContainer2.appendChild(cbPodcasts); buttonsContainer2.appendChild(labPodcasts); buttonsContainer2.appendChild(brPodcasts);
+  buttonsContainer2.appendChild(cbTranslate); buttonsContainer2.appendChild(labTranslate); buttonsContainer2.appendChild(brTranslate);
+  buttonsContainer2.appendChild(cbYouTube); buttonsContainer2.appendChild(labYouTube); buttonsContainer2.appendChild(brYouTube);
+  buttonsContainer2.appendChild(cbYouTubeTV); buttonsContainer2.appendChild(labYouTubeTV); buttonsContainer2.appendChild(brYouTubeTV);
+  buttonsContainer2.appendChild(buttonReload); buttonsContainer2.appendChild(buttonClose);
+
   headerButton.appendChild(buttonsContainer);
+  headerButton.appendChild(buttonsContainer2);
   searchButton.id = 'gSearch';
 
   if (GM_getValue('aCalendar')) div2.appendChild(btnCalendar);
@@ -359,13 +378,16 @@
   div3.insertBefore(searchButton, div3.firstChild);
   div3.appendChild(headerButton);
   div3.appendChild(buttonsContainer);
+  div3.appendChild(buttonsContainer2);
 
   addEventListener('unload', function() {onClose()});
 
   setTimeout(function() {
     let cb = $q('#buttonsContainer > .aCkbx', true),
+        cb2 = $q('#buttonsContainer2 > .aCkbx', true),
         signIn = $q('#gb > div > div.gb_Se > a');
     for (var i = 0; i < cb.length; i++) if (!GM_getValue(cb[i].id)) GM_setValue(cb[i].id, false);
+    for (var j = 0; j < cb2.length; j++) if (!GM_getValue(cb[j].id)) GM_setValue(cb[j].id, false);
     if (signIn) signIn.click();
     centerElements();
     onOpen();
@@ -572,7 +594,19 @@
     '#buttonsContainer {'+
     '  background-color: #1C1E1F !important;'+
     '  border: 1px solid #999 !important;'+
-    '  border-radius: 4px !important;'+
+    '  border-radius: 4px 0 0 4px !important;'+
+    '  min-width: 153px !important;'+
+    '  padding: 4px 2px 6px 2px !important;'+
+    '  position: absolute !important;'+
+    '  right: 157px !important;'+
+    '  text-align: left !important;'+
+    '  z-index: 2147483647 !important;'+
+    '}'+
+    '#buttonsContainer2 {'+
+    '  background-color: #1C1E1F !important;'+
+    '  border: 1px solid #999 !important;'+
+    '  border-left: none !important;'+
+    '  border-radius: 0 4px 4px 0 !important;'+
     '  min-width: 153px !important;'+
     '  padding: 4px 2px 6px 2px !important;'+
     '  position: absolute !important;'+
@@ -599,7 +633,7 @@
     '  top: 6px !important;'+
     '  width: 22px !important;'+
     '}'+
-    '.aCkbx:first-of-type {'+
+    '#buttonsContainer > .aCkbx:first-of-type {'+
     '  margin-bottom: 12px !important;'+
     '  margin-top: -4px !important;'+
     '}'+
@@ -610,10 +644,10 @@
     '  cursor: pointer !important;'+
     '  margin-left: -5px !important;'+
     '}'+
-    '.aBtn:first-of-type {'+
+    '#buttonsContainer > .aBtn:first-of-type {'+
     '  padding: 4px 4px 4px 6px !important;'+
     '}'+
-    '.aBtn:not(:first-of-type) {'+
+    '.aBtn {'+
     '  padding: 4px 23px 4px 6px !important;'+
     '}'+
     '.aCkbx:hover + .aBtn, .aBtn:hover {'+

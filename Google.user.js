@@ -21,7 +21,7 @@
         am = 'AM',
         pm = 'PM',
         formatCount = 8,
-        customFormat = 'Add a format in script line 199',
+        customFormat = 'Add a format in script line 200',
         hideShow = '• Left-click to Hide/Show Date/Time',
         addRemove = '• Left-click to Add/Remove :seconds\n• Shift + Left-click to Add/Remove AM/PM\n• Ctrl + Left-click to change Date format',
         reloadTooltip = 'Reload page for changes to take effect',
@@ -75,6 +75,7 @@
       div2 = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd > div'),
       div3 = $q('body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > div'),
       searchButton = $q('body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.FPdoLc.lJ9FBc > center > input.gNO89b'),
+      settingsButton = $q('#Mses6b'),
       where = GM_getValue('aNewTab') ? '_blank' : '_self',
       btnCalendar = $c('button', {id: 'gCalendar', className: 'gBtn', textContent: 'Calendar', title: urlCalendar, style: 'background-image: url('+ imgCalendar +')', onclick: function() {window.open(urlCalendar, where)}}),
       btnEarth = $c('button', {id: 'gEarth', className: 'gBtn', textContent: 'Earth', title: urlEarth, style: 'background-image: url('+ imgEarth +')', onclick: function() {window.open(urlEarth, where)}}),
@@ -88,7 +89,7 @@
       btnTranslate = $c('button', {id: 'gTranslate', className: 'gBtn', textContent: 'Translate', title: urlTranslate, style: 'background-image: url('+ imgTranslate +')', onclick: function() {window.open(urlTranslate, where)}}),
       btnYouTube = $c('button', {id: 'gYouTube', className: 'gBtn', textContent: 'YouTube', title: urlYouTube, style: 'background-image: url('+ imgYouTube +')', onclick: function() {window.open(urlYouTube, where)}}),
       btnYouTubeTV = $c('button', {id: 'gYouTubeTV', className: 'gBtn', textContent: 'YouTube TV', title: urlYouTubeTV, style: 'background-image: url('+ imgYouTubeTV +')', onclick: function() {window.open(urlYouTubeTV, where)}}),
-      headerButton = $c('button', {id: 'headerButton', className: 'gBtn', textContent: 'Header Buttons', onclick: function() {$q('#buttonsContainer').hidden = false; $q('#buttonsContainer2').hidden = false}}),
+      headerButton = $c('button', {id: 'headerButton', className: 'gBtn', textContent: 'Header Buttons', onclick: function(e) {onButton(e)}}),
       buttonsContainer = $c('div', {id: 'buttonsContainer', hidden: true}),
       buttonsContainer2 = $c('div', {id: 'buttonsContainer2', hidden: true}),
       cbNewTab = $c('input', {id: 'aNewTab', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aNewTab"), onclick: function(e) {onCheckbox(e)}}),
@@ -220,9 +221,8 @@
     div2.style.marginLeft = fromLeft1;
     div3.style.left = fromLeft2;
     div3.style.top = ost;
-    //buttonsContainer.style.top = '-' + ost;
-    buttonsContainer.style.bottom = 0;
-    buttonsContainer2.style.bottom = 0;
+    buttonsContainer.style.bottom = '36px';
+    buttonsContainer2.style.bottom = '36px';
   }
 
   function defaultDateTime() {
@@ -233,6 +233,23 @@
   }
 
   function onButton(e) {
+    if (e.target.id === 'Mses6b') {
+      if (!$q('#buttonsContainer').hidden) {
+        $q('#buttonsContainer').hidden = true;
+        $q('#buttonsContainer2').hidden = true;
+      }
+      return;
+    }
+    if (e.target.id === 'headerButton') {
+      if ($q('#buttonsContainer').hidden) {
+        $q('#buttonsContainer').hidden = false;
+        $q('#buttonsContainer2').hidden = false;
+      } else {
+        $q('#buttonsContainer').hidden = true;
+        $q('#buttonsContainer2').hidden = true;
+      }
+      return;
+    }
     if (e.target.id === 'aNewTab') {
       e.target.checked = !e.target.checked;
       GM_setValue('aNewTab', e.target.checked);
@@ -360,6 +377,7 @@
 
   headerButton.appendChild(buttonsContainer);
   headerButton.appendChild(buttonsContainer2);
+  settingsButton.onmousedown = function(e) {onButton(e)};
   searchButton.id = 'gSearch';
 
   if (GM_getValue('aCalendar')) div2.appendChild(btnCalendar);

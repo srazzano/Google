@@ -203,7 +203,7 @@
   function centerElements() {
     let lia = $q('#dEjpnf > li > a', true),
         num = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd > div > .gBtn', true),
-        len = ($q('#gSearch').offsetWidth + $q('#Mses6b').offsetWidth + $q('#headerButton').offsetWidth) / 2,
+        len = (searchButton.offsetWidth + settingsButton.offsetWidth + headerButton.offsetWidth) / 2,
         screenWidth = window.screen.width / 2,
         spacerWidth = parseInt(elementSpacing.match('\\d+') / 2),
         spacerCount = (num.length - 1) * spacerWidth,
@@ -221,8 +221,6 @@
     div2.style.marginLeft = fromLeft1;
     div3.style.left = fromLeft2;
     div3.style.top = ost;
-    buttonsContainer1.style.bottom = '36px';
-    buttonsContainer2.style.bottom = '36px';
   }
 
   function defaultDateTime() {
@@ -234,19 +232,19 @@
 
   function onButton(e) {
     if (e.target.id === 'Mses6b' || e.target.id === 'gSearch') {
-      if (!$q('#buttonsContainer1').hidden) {
-        $q('#buttonsContainer1').hidden = true;
-        $q('#buttonsContainer2').hidden = true;
+      if (!buttonsContainer1.hidden) {
+        buttonsContainer1.hidden = true;
+        buttonsContainer2.hidden = true;
       }
       return;
     }
     if (e.target.id === 'headerButton') {
-      if ($q('#buttonsContainer1').hidden) {
-        $q('#buttonsContainer1').hidden = false;
-        $q('#buttonsContainer2').hidden = false;
-      } else {
-        $q('#buttonsContainer1').hidden = true;
-        $q('#buttonsContainer2').hidden = true;
+      buttonsContainer1.hidden = !buttonsContainer1.hidden;
+      buttonsContainer2.hidden = !buttonsContainer2.hidden;
+      if (!buttonsContainer1.hidden) {
+        buttonsContainer1.style.right = buttonsContainer2.clientWidth + 'px';
+        buttonsContainer1.style.bottom = headerButton.offsetHeight + 'px';
+        buttonsContainer2.style.bottom = headerButton.offsetHeight + 'px';
       }
       return;
     }
@@ -309,8 +307,8 @@
   }
 
   function onReload() {
-    $q('#buttonsContainer1').hidden = true;
-    $q('#buttonsContainer2').hidden = true;
+    buttonsContainer1.hidden = true;
+    buttonsContainer2.hidden = true;
     document.location.reload(true);
   }
 
@@ -377,9 +375,9 @@
 
   headerButton.appendChild(buttonsContainer1);
   headerButton.appendChild(buttonsContainer2);
+  searchButton.onmouseup = function(e) {onButton(e)};
   settingsButton.onmousedown = function(e) {onButton(e)};
   searchButton.id = 'gSearch';
-  searchButton.onmouseup = function(e) {onButton(e)};
 
   if (GM_getValue('aCalendar')) div2.appendChild(btnCalendar);
   if (GM_getValue('aClock')) {dateTimeContainer.appendChild(btnClock); dateTimeContainer.appendChild(dateTime); div1.appendChild(dateTimeContainer);}
@@ -394,6 +392,7 @@
   if (GM_getValue('aTranslate')) div2.appendChild(btnTranslate);
   if (GM_getValue('aYouTube')) div2.appendChild(btnYouTube);
   if (GM_getValue('aYouTubeTV')) div2.appendChild(btnYouTubeTV);
+
   div3.insertBefore(searchButton, div3.firstChild);
   div3.appendChild(headerButton);
   div3.appendChild(buttonsContainer1);
@@ -610,28 +609,22 @@
     '  background-color: #333 !important;'+
     '  color: #FFF !important;'+
     '}'+
-    '#buttonsContainer1 {'+
+    '#buttonsContainer1, #buttonsContainer2 {'+
     '  background-color: #1C1E1F !important;'+
-    '  border: 1px solid #999 !important;'+
-    '  border-radius: 4px 0 0 4px !important;'+
+    '  border: 1px solid #625B51 !important;'+
     '  min-width: 153px !important;'+
     '  padding: 4px 2px 6px 2px !important;'+
     '  position: absolute !important;'+
-    '  right: 157px !important;'+
     '  text-align: left !important;'+
     '  z-index: 2147483647 !important;'+
     '}'+
+    '#buttonsContainer1 {'+
+    '  border-radius: 4px 0 0 4px !important;'+
+    '}'+
     '#buttonsContainer2 {'+
-    '  background-color: #1C1E1F !important;'+
-    '  border: 1px solid #999 !important;'+
     '  border-left: none !important;'+
     '  border-radius: 0 4px 4px 0 !important;'+
-    '  min-width: 153px !important;'+
-    '  padding: 4px 2px 6px 2px !important;'+
-    '  position: absolute !important;'+
     '  right: 0 !important;'+
-    '  text-align: left !important;'+
-    '  z-index: 2147483647 !important;'+
     '}'+
     '#buttonCheckAll {'+
     '  margin-left: 4px !important;'+

@@ -404,8 +404,8 @@
     let cb = $q('#buttonsContainer1 > .aCkbx', true),
         cb2 = $q('#buttonsContainer2 > .aCkbx', true),
         signIn = $q('#gb > div > div.gb_Se > a');
-    for (var i = 0; i < cb.length; i++) if (!GM_getValue(cb[i].id)) GM_setValue(cb[i].id, false);
-    for (var j = 0; j < cb2.length; j++) if (!GM_getValue(cb[j].id)) GM_setValue(cb[j].id, false);
+    for (let i = 0; i < cb.length; i++) if (!GM_getValue(cb[i].id)) GM_setValue(cb[i].id, false);
+    for (let j = 0; j < cb2.length; j++) if (!GM_getValue(cb[j].id)) GM_setValue(cb[j].id, false);
     if (signIn) signIn.click();
     centerElements();
     onOpen();

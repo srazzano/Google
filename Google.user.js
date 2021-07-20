@@ -15,7 +15,7 @@
 
   'use strict';
 
-  const timerLong = 15000,
+  const timerLong = 10000,
         timerShort = 500,
         elementSpacing = '8px',
         am = 'AM',
@@ -212,7 +212,7 @@
         os3 = $q('body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.RNNXgb').offsetHeight,
         ost = (os1 + os2 + os3 + 24) + 'px',
         arr = [];
-    for (let i = 0; i < lia.length; i++) lia[i].setAttribute('target', '_blank');
+    for (let i = 0; i < lia.length; i++) lia[i].setAttribute('target', where);
     for (let j = 0; j < num.length; j++) arr.push(num[j].offsetWidth);
     let sum = arr.reduce(function(a, b) {return a + b}, 1),
         buttonsWidth = sum / 2,

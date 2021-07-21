@@ -500,7 +500,7 @@
     '#dateTimeContainer:hover > #gClock:hover {'+
     '  opacity: 1 !important;'+
     '}'+
-    '#dateTime:not(#f) {'+
+    '#dateTimeContainer > #dateTime {'+
     '  border-radius: 4px !important;'+
     '  color: #FFF !important;'+
     '  font: 16px monospace !important;'+

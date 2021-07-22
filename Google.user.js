@@ -221,7 +221,7 @@
         os1 = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd').offsetHeight,
         os2 = $q('body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ').offsetHeight,
         os3 = $q('body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.RNNXgb').offsetHeight,
-        ost = (os1 + os2 + os3 + 24) + 'px',
+        ost = (os1 + os2 + os3 + 34) + 'px',
         arr = [];
     for (let i = 0; i < lia.length; i++) lia[i].setAttribute('target', where);
     for (let j = 0; j < num.length; j++) arr.push(num[j].offsetWidth);
@@ -375,8 +375,8 @@
   buttonsContainer1.appendChild(cbMail); buttonsContainer1.appendChild(labMail); buttonsContainer1.appendChild(brMail);
   buttonsContainer1.appendChild(cbMaps); buttonsContainer1.appendChild(labMaps); buttonsContainer1.appendChild(brMaps);
   buttonsContainer1.appendChild(cbMSEdge); buttonsContainer1.appendChild(labMSEdge); buttonsContainer1.appendChild(brMSEdge);
+  buttonsContainer1.appendChild(cbNews); buttonsContainer1.appendChild(labNews); buttonsContainer1.appendChild(brNews);
 
-  buttonsContainer2.appendChild(cbNews); buttonsContainer2.appendChild(labNews); buttonsContainer2.appendChild(brNews);
   buttonsContainer2.appendChild(cbPhotos); buttonsContainer2.appendChild(labPhotos); buttonsContainer2.appendChild(brPhotos);
   buttonsContainer2.appendChild(cbPlay); buttonsContainer2.appendChild(labPlay); buttonsContainer2.appendChild(brPlay);
   buttonsContainer2.appendChild(cbPodcasts); buttonsContainer2.appendChild(labPodcasts); buttonsContainer2.appendChild(brPodcasts);

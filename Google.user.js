@@ -21,9 +21,15 @@
         am = 'AM',
         pm = 'PM',
         formatCount = 8,
-        customFormat = 'Add a format in script line 200',
-        hideShow = '• Left-click to Hide/Show Date/Time',
-        addRemove = '• Left-click to Add/Remove :seconds\n• Shift + Left-click to Add/Remove AM/PM\n• Ctrl + Left-click to change Date format',
+        bullet = '•',
+        comma = ',',
+        hyphen = '-',
+        slash = '/',
+        space = ' ',
+        star = '★',
+        customFormat = 'Add a format in script line 205',
+        hideShow = bullet + ' Left-click to Hide/Show Date/Time',
+        addRemove = bullet + ' Left-click to Add/Remove :seconds\n' + bullet + '  Shift + Left-click to Add/Remove AM/PM\n' + bullet + ' Ctrl + Left-click to change Date format',
         reloadTooltip = 'Reload page for changes to take effect',
         DayNameAbbr = 'Sun.,Mon.,Tue.,Wed.,Thu.,Fri.,Sat.',
         DayName = 'Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday',
@@ -176,8 +182,7 @@
         ddd = dayord[dt],
         yy = yr - 2000,
         yyyy = yr,
-        hr12, hr24, ampm,
-        bullet = '•', comma = ',', hyphen = '-', slash = '/', space = ' ', star = '★';
+        hr12, hr24, ampm;
     if (hr > 12) {hr12 = hr - 12; hr24 = hr}
     else {hr12 = hr; hr24 = hr}
     if (hr < 10) {hr12 = hr; hr24 = '0' + hr}
@@ -188,7 +193,7 @@
     if (GM_getValue('defaultAMPM')) hr < 12 ? ampm = am : ampm = pm;
     else ampm = '';
     switch (int) {
-      // RETURN OPTIONS: (w / ww) + (m / mm / mmm / mmmm) + (d / dd / ddd) +  (yy / yyyy) + (hr12 / hr24) + (min) + (sec) + (ampm)
+      // RETURN OPTIONS: (w / ww) + (m / mm / mmm / mmmm) + (d / dd / ddd) +  (yy / yyyy) + (hr12 / hr24) + (min) + (sec) + (ampm) special characters: bullet, comma, hyphen, slash, space, star
       case 1: return ww + space + bullet + space + mmmm + space + ddd + comma + space + yyyy + space + star + space + hr12 + min + sec + space + ampm; // Sunday • March 1ˢᵗ, 2021 ★ 12:34 AM
       case 2: return w + space + bullet + space + mmm + space + d + comma + space + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • Mar. 1, 2021 • 12:34 AM
       case 3: return w + space + bullet + space + mmm + space + dd + comma + space + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • Mar. 01, 2021 • 12:34 AM

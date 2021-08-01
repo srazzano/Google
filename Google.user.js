@@ -315,6 +315,10 @@
 
   function onOpen() {
     GM_getValue('defaultDateTimeView') ? defaultDateTime() : dateTime.hidden = true;
+    let abc = document.querySelector("body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > div"),
+        amt = abc.style.top.split("px"),
+        signIn = $q('#gb > div > div.gb_Se > a');
+    if (parseInt(amt) < 250 || signIn) document.location.reload();
   }
 
   function onReload() {
@@ -414,18 +418,20 @@
   addEventListener('unload', function() {onClose()});
 
   setTimeout(function() {
-    let cb = $q('#buttonsContainer1 > .aCkbx', true),
-        cb2 = $q('#buttonsContainer2 > .aCkbx', true),
-        signIn = $q('#gb > div > div.gb_Se > a');
-    for (let i = 0; i < cb.length; i++) if (!GM_getValue(cb[i].id)) GM_setValue(cb[i].id, false);
-    for (let j = 0; j < cb2.length; j++) if (!GM_getValue(cb[j].id)) GM_setValue(cb[j].id, false);
-    if (signIn) signIn.click();
-    centerElements();
-    onOpen();
-  }, 200);
+    try {
+      let cb = $q('#buttonsContainer1 > .aCkbx', true),
+          cb2 = $q('#buttonsContainer2 > .aCkbx', true),
+          signIn = $q('#gb > div > div.gb_Se > a');
+      for (let i = 0; i < cb.length; i++) if (!GM_getValue(cb[i].id)) GM_setValue(cb[i].id, false);
+      for (let j = 0; j < cb2.length; j++) if (!GM_getValue(cb[j].id)) GM_setValue(cb[j].id, false);
+      if (signIn) signIn.click();
+      centerElements();
+      onOpen();
+    } catch(ex) {}
+  }, 1000);
 
   GM_addStyle(''+
-    '#hpcanvas, #hplogocta, a.MV3Tnb, #gb > div > div:nth-child(1) > div, #gbqfbb, body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.ssOUyb, body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.AghGtd, body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > a, body > div.L3eUgb > div.o3j99.qarstb > div, body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ > div > div.SuUcIb, body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ > div > div:nth-child(2), #yDmH0d, #gb > div > div.gb_0a.gb_E.gb_k.gb_1a.gb_la > div.gb_Qf.gb_sb {'+
+    '#hpcta, #hpcanvas, #hplogocta, a.MV3Tnb, #gb > div > div:nth-child(1) > div, #gbqfbb, body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.ssOUyb, body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.AghGtd, body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > a, body > div.L3eUgb > div.o3j99.qarstb > div, body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ > div > div.SuUcIb, body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ > div > div:nth-child(2), #yDmH0d, #gb > div > div.gb_0a.gb_E.gb_k.gb_1a.gb_la > div.gb_Qf.gb_sb {'+
     '  display: none !important;'+
     '}'+
     'body {'+
@@ -515,7 +521,7 @@
     '}'+
     '#dateTimeContainer > #dateTime {'+
     '  border-radius: 4px !important;'+
-    '  color: #FFF !important;'+
+    '  color: #AAA !important;'+
     '  font: 16px monospace !important;'+
     '  margin-left: '+ elementSpacing +' !important;'+
     '  min-width: 100px !important;'+
@@ -526,6 +532,7 @@
     '#gClock:hover + #dateTime {'+
     '  background: #900 !important;'+
     '  border-color: #C00 !important;'+
+    '  color: #FFF !important;'+
     '}'+
     '#gb {'+
     '  height: 8px !important;'+
@@ -561,7 +568,7 @@
     '  cursor: pointer !important;'+
     '  width: auto !important;'+
     '}'+
-    '.gBtn:hover, #dateTime:hover, #gSearch:hover:hover, #Mses6b:hover, #headerButton:hover, #submit:hover, center > input:hover, #gb > div > div.gb_0a.gb_E.gb_k.gb_1a.gb_la .gb_Pe:hover {'+
+    '.gBtn:hover, #dateTimeContainer > #dateTime:hover, #gSearch:hover:hover, #Mses6b:hover, #headerButton:hover, #submit:hover, center > input:hover, #gb > div > div.gb_0a.gb_E.gb_k.gb_1a.gb_la .gb_Pe:hover {'+
     '  background-color: #444 !important;'+
     '  border: 1px solid #000 !important;'+
     '  box-shadow: none !important;'+

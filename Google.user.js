@@ -658,7 +658,7 @@
     '}'+
     '.aCkbx {'+
     '  cursor: pointer !important;'+
-    '  filter: invert(1) !important;'+
+    '  filter: grayscale(1) invert(1) !important;'+
     '  height: 22px !important;'+
     '  margin:  0 4px !important;'+
     '  position: relative !important;'+

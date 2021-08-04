@@ -16,7 +16,7 @@
   'use strict';
 
   const timerLong = 10000,
-        timerShort = 500,
+        timerShort = 250,
         elementSpacing = '8px',
         am = 'AM',
         pm = 'PM',
@@ -315,10 +315,11 @@
 
   function onOpen() {
     GM_getValue('defaultDateTimeView') ? defaultDateTime() : dateTime.hidden = true;
-    let abc = document.querySelector("body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > div"),
+    let img = $q("body > div.L3eUgb > div.o3j99.LLD4me.yr19Zb.LS8OJ > div > img.lnXdpd"),
+        abc = $q("body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > div"),
         amt = abc.style.top.split("px"),
         signIn = $q('#gb > div > div.gb_Se > a');
-    if (parseInt(amt) < 250 || signIn) document.location.reload();
+    if (parseInt(amt) < 250 || signIn || img.clientWidth !== 250) document.location.reload();
   }
 
   function onReload() {
@@ -428,7 +429,7 @@
       centerElements();
       onOpen();
     } catch(ex) {}
-  }, 1000);
+  }, 200);
 
   GM_addStyle(''+
     '#hpcta, #hpcanvas, #hplogocta, a.MV3Tnb, #gb > div > div:nth-child(1) > div, #gbqfbb, body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.ssOUyb, body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.AghGtd, body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > a, body > div.L3eUgb > div.o3j99.qarstb > div, body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ > div > div.SuUcIb, body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ > div > div:nth-child(2), #yDmH0d, #gb > div > div.gb_0a.gb_E.gb_k.gb_1a.gb_la > div.gb_Qf.gb_sb {'+

@@ -15,7 +15,8 @@
 
   'use strict';
 
-  const timerLong = 10000,
+  const openDelay = 500,
+        timerLong = 10000,
         timerShort = 250,
         elementSpacing = '8px',
         am = 'AM',
@@ -27,7 +28,7 @@
         slash = '/',
         space = ' ',
         star = '★',
-        customFormat = 'Add a format in script line 212',
+        customFormat = 'Add a format in script line 213',
         hideShow = bullet + ' Left-click to Hide/Show Date/Time',
         addRemove = bullet + ' Left-click to Add/Remove :seconds\n' + bullet + '  Shift + Left-click to Add/Remove AM/PM\n' + bullet + ' Ctrl + Left-click to change Date format',
         reloadTooltip = 'Reload page for changes to take effect',
@@ -86,19 +87,19 @@
       searchButton = $q('body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.FPdoLc.lJ9FBc > center > input.gNO89b'),
       settingsButton = $q('#Mses6b'),
       where = GM_getValue('aNewTab') ? '_blank' : '_self',
-      btnCalendar = $c('button', {id: 'gCalendar', className: 'gBtn', textContent: 'Calendar', title: urlCalendar, style: 'background: url('+ imgCalendar +'), linear-gradient(135deg, #070707, #252525)', onclick: function() {window.open(urlCalendar, where)}}),
-      btnChrome = $c('button', {id: 'gChrome', className: 'gBtn', textContent: 'Chrome Store', title: urlChrome, style: 'background: url('+ imgChrome +'), linear-gradient(135deg, #070707, #252525)', onclick: function() {window.open(urlChrome, where)}}),
-      btnEarth = $c('button', {id: 'gEarth', className: 'gBtn', textContent: 'Earth', title: urlEarth, style: 'background: url('+ imgEarth +'), linear-gradient(135deg, #070707, #252525)', onclick: function() {window.open(urlEarth, where)}}),
-      btnMail = $c('button', {id: 'gMail', className: 'gBtn', textContent: 'Gmail', title: urlMail, style: 'background: url('+ imgMail +'), linear-gradient(135deg, #070707, #252525)', onclick: function() {window.open(urlMail, where)}}),
-      btnMaps = $c('button', {id: 'gMaps', className: 'gBtn', textContent: 'Maps', title: urlMaps, style: 'background: url('+ imgMaps +'), linear-gradient(135deg, #070707, #252525)', onclick: function() {window.open(urlMaps, where)}}),
-      btnMSEdge = $c('button', {id: 'gMSEdge', className: 'gBtn', textContent: 'MS Store', title: urlMSEdge, style: 'background: url('+ imgMSEdge +'), linear-gradient(135deg, #070707, #252525)', onclick: function() {window.open(urlMSEdge, where)}}),
-      btnNews = $c('button', {id: 'gNews', className: 'gBtn', textContent: 'News', title: urlNews, style: 'background: url('+ imgNews +'), linear-gradient(135deg, #070707, #252525)', onclick: function() {window.open(urlNews, where)}}),
-      btnPhotos = $c('button', {id: 'gPhotos', className: 'gBtn', textContent: 'Photos', title: urlPhotos, style: 'background: url('+ imgPhotos +'), linear-gradient(135deg, #070707, #252525)', onclick: function() {window.open(urlPhotos, where)}}),
-      btnPlay = $c('button', {id: 'gPlay', className: 'gBtn', textContent: 'Play Store', title: urlPlay, style: 'background: url('+ imgPlay +'), linear-gradient(135deg, #070707, #252525)', onclick: function() {window.open(urlPlay, where)}}),
-      btnPodcasts = $c('button', {id: 'gPodcasts', className: 'gBtn', textContent: 'Podcasts', title: urlPodcasts, style: 'background: url('+ imgPodcasts +'), linear-gradient(135deg, #070707, #252525)', onclick: function() {window.open(urlPodcasts, where)}}),
-      btnTranslate = $c('button', {id: 'gTranslate', className: 'gBtn', textContent: 'Translate', title: urlTranslate, style: 'background: url('+ imgTranslate +'), linear-gradient(135deg, #070707, #252525)', onclick: function() {window.open(urlTranslate, where)}}),
-      btnYouTube = $c('button', {id: 'gYouTube', className: 'gBtn', textContent: 'YouTube', title: urlYouTube, style: 'background: url('+ imgYouTube +'), linear-gradient(135deg, #070707, #252525)', onclick: function() {window.open(urlYouTube, where)}}),
-      btnYouTubeTV = $c('button', {id: 'gYouTubeTV', className: 'gBtn', textContent: 'YouTube TV', title: urlYouTubeTV, style: 'background: url('+ imgYouTubeTV +'), linear-gradient(135deg, #070707, #252525)', onclick: function() {window.open(urlYouTubeTV, where)}}),
+      btnCalendar = $c('button', {id: 'gCalendar', className: 'gBtn', textContent: 'Calendar', title: urlCalendar, style: 'background: url('+ imgCalendar +'), linear-gradient(135deg, #070707, #333)', onclick: function() {window.open(urlCalendar, where)}}),
+      btnChrome = $c('button', {id: 'gChrome', className: 'gBtn', textContent: 'Chrome Store', title: urlChrome, style: 'background: url('+ imgChrome +'), linear-gradient(135deg, #070707, #333)', onclick: function() {window.open(urlChrome, where)}}),
+      btnEarth = $c('button', {id: 'gEarth', className: 'gBtn', textContent: 'Earth', title: urlEarth, style: 'background: url('+ imgEarth +'), linear-gradient(135deg, #070707, #333)', onclick: function() {window.open(urlEarth, where)}}),
+      btnMail = $c('button', {id: 'gMail', className: 'gBtn', textContent: 'Gmail', title: urlMail, style: 'background: url('+ imgMail +'), linear-gradient(135deg, #070707, #333)', onclick: function() {window.open(urlMail, where)}}),
+      btnMaps = $c('button', {id: 'gMaps', className: 'gBtn', textContent: 'Maps', title: urlMaps, style: 'background: url('+ imgMaps +'), linear-gradient(135deg, #070707, #333)', onclick: function() {window.open(urlMaps, where)}}),
+      btnMSEdge = $c('button', {id: 'gMSEdge', className: 'gBtn', textContent: 'MS Store', title: urlMSEdge, style: 'background: url('+ imgMSEdge +'), linear-gradient(135deg, #070707, #333)', onclick: function() {window.open(urlMSEdge, where)}}),
+      btnNews = $c('button', {id: 'gNews', className: 'gBtn', textContent: 'News', title: urlNews, style: 'background: url('+ imgNews +'), linear-gradient(135deg, #070707, #333)', onclick: function() {window.open(urlNews, where)}}),
+      btnPhotos = $c('button', {id: 'gPhotos', className: 'gBtn', textContent: 'Photos', title: urlPhotos, style: 'background: url('+ imgPhotos +'), linear-gradient(135deg, #070707, #333)', onclick: function() {window.open(urlPhotos, where)}}),
+      btnPlay = $c('button', {id: 'gPlay', className: 'gBtn', textContent: 'Play Store', title: urlPlay, style: 'background: url('+ imgPlay +'), linear-gradient(135deg, #070707, #333)', onclick: function() {window.open(urlPlay, where)}}),
+      btnPodcasts = $c('button', {id: 'gPodcasts', className: 'gBtn', textContent: 'Podcasts', title: urlPodcasts, style: 'background: url('+ imgPodcasts +'), linear-gradient(135deg, #070707, #333)', onclick: function() {window.open(urlPodcasts, where)}}),
+      btnTranslate = $c('button', {id: 'gTranslate', className: 'gBtn', textContent: 'Translate', title: urlTranslate, style: 'background: url('+ imgTranslate +'), linear-gradient(135deg, #070707, #333)', onclick: function() {window.open(urlTranslate, where)}}),
+      btnYouTube = $c('button', {id: 'gYouTube', className: 'gBtn', textContent: 'YouTube', title: urlYouTube, style: 'background: url('+ imgYouTube +'), linear-gradient(135deg, #070707, #333)', onclick: function() {window.open(urlYouTube, where)}}),
+      btnYouTubeTV = $c('button', {id: 'gYouTubeTV', className: 'gBtn', textContent: 'YouTube TV', title: urlYouTubeTV, style: 'background: url('+ imgYouTubeTV +'), linear-gradient(135deg, #070707, #333)', onclick: function() {window.open(urlYouTubeTV, where)}}),
       headerButton = $c('button', {id: 'headerButton', className: 'gBtn', textContent: 'Header Buttons', onclick: function(e) {onButton(e)}}),
       buttonsContainer1 = $c('div', {id: 'buttonsContainer1', hidden: true}),
       buttonsContainer2 = $c('div', {id: 'buttonsContainer2', hidden: true}),
@@ -310,6 +311,7 @@
   }
 
   function onClose() {
+    removeEventListener('resize', function() {onResize()});
     removeEventListener('unload', function() {onClose()});
     clearInterval(timer);
   }
@@ -440,7 +442,7 @@
       onOpen();
       onResize();
     } catch(ex) {}
-  }, 500);
+  }, openDelay);
 
 
   GM_addStyle(''+
@@ -570,12 +572,15 @@
     '  width: 0 !important;'+
     '}'+
     '.RNNXgb {'+
-    '  background: linear-gradient(135deg, #070707, #252525) !important;'+
+    '  background: linear-gradient(135deg, #070707, #333) !important;'+
     '  border-color: #CCC !important;'+
     '  box-shadow: 1px 0 4px #000 inset !important;'+
     '}'+
+    '.RNNXgb:hover, .RNNXgb:focus-within {'+
+    '  border-color: #000 !important;'+
+    '}'+
     'div.ayzqOc > input, div.ayzqOc > button {'+
-    ' background: linear-gradient(135deg, #070707, #252525) !important;'+
+    ' background: linear-gradient(135deg, #070707, #333) !important;'+
     '}'+
     'body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf {'+
     '  padding: 0 20px !important;'+

@@ -639,7 +639,9 @@
     '  height: calc(-140px + 100vh) !important;'+
     '}'+
     '.aajZCb {'+
-    '  background: #333 !important;'+
+    '  background: #252525 !important;'+
+    '  border: 1px solid #000 !important;'+
+    '  border-top: none !important;'+
     '}'+
     '.aajZCb li span {'+
     '  color: #FFF !important;'+

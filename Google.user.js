@@ -28,7 +28,7 @@
         slash = '/',
         space = ' ',
         star = '★',
-        customFormat = 'Add a format in script line 213',
+        customFormat = 'Add a format in script line 214',
         hideShow = bullet + ' Left-click to Hide/Show Date/Time',
         addRemove = bullet + ' Left-click to Add/Remove :seconds\n' + bullet + '  Shift + Left-click to Add/Remove AM/PM\n' + bullet + ' Ctrl + Left-click to change Date format',
         reloadTooltip = 'Reload page for changes to take effect',

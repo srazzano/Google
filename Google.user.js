@@ -15,7 +15,7 @@
 
   'use strict';
 
-  const openDelay = 500,
+  const openDelay = 1500,
         timerLong = 10000,
         timerShort = 250,
         elementSpacing = '8px',
@@ -50,7 +50,8 @@
         daynum = DayNum.split(','),
         dayno = DayNo.split(','),
         dayord = DayOrd.split(','),
-        backgroundImage = 'https://raw.githubusercontent.com/srazzano/Images/master/windowsDark.jpg',
+        windowsImage = 'https://raw.githubusercontent.com/srazzano/Images/master/windowsDark.jpg',
+        usmapImage = 'https://raw.githubusercontent.com/srazzano/Images/master/usmap.png',
         imgCalendar = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABT0lEQVR42mNkAAKp9Iv/GYgELMxMYJqZmZHh/mQdRkZSNMPAfwZGMM0IYpFjADJANyCMkIaHocYgahVOA57O0Fv17x8Dw7//IH8ygB37H6qCEcj5s5c1DK8BD6fqrTp+5w9DRP81hsNNOgxyIkwMJ+/+ZQjrvcoANJywAQ+m6K16/O4fg5IYE4N0xiWGvXU6DM5NV8CSRBkA8sLbL/8Z9EouM2yq0GYwVmBmuPrkL4NbC5EueDRNb9XDNwgXPJ6ux3D9KQkG3Jqou+rcg7/gMPAwUmWYncrJcPPZXwaXZiINeDJdbxUjJJ0w/PzDwMDOwsDw+y+Ez8pMRCzcmqyyCpLaGKDpDRWwH+IP+/+TGayGkf0vA6Ncs+3/X39/E52QLh3+uwqZj24AQQA0AM4W23uakVGx1eH/998/SDYApJkB5k2JBguiMxTIAJhmEAAA4quznkbNVyMAAAAASUVORK5CYII=',
         imgChrome = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABlklEQVR42rWRPUiCYRDH/8/7RYqWOFRCS1/UbFC2GBWRU4RUBkVDQ7S1hVptlklBWIsgNDVEKtQmRkTY0OIbYW01BxZhgRmp2aNWYj2GBP3hOO6O+90dR8DQyrIzy8rbF2zke46UAySeE4jH4zTKokajgUqpYgNY08bGLfD79/D6msrHoijCbB5BwOcDE2CzW/EXOVdW/wlwPWBops5NzfSRClKbazk8u/kVQBv1hOflbCbDnEhroDU9Bck/ALTZkX7LLAocX8n2DgpZ/AKMHu/rH5IJWSGIqKJGCKkEovf1Dst5wLouih2PjDpJQhV9mcQLSHYYoOg3IZ1O4zFyDHJ7BJ4nEDjkvSQJCKjNhQ1c9Rdov8vAdXAFjShB693FfKgBsafCqNpqYNMcgzpqgShxIBzdkJorPFQE5LS1HUVblxEbjWtfzZ/KQTzdDlSnTvPNhOPgDJlKAUpOxIluHLORHubRvslzaO+Xim8MDpYCcrponcF0uJMNmLqENmb9HTDRZMTD5RTzBG+fG6qXw5+ASn5WTu9OGbH/eUCknAAAAABJRU5ErkJggg==',
         imgClock = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAC5ElEQVR42p2T22tcRRzHP+e2ey7J3rK76ebWXCRtUysoLYLgvaBI8EIDbaGW0vooNP0T+lLokyv4qPUSoYKCiK8iakUfkgfBmqSWamluNGmSzW525+yes2ecjUtta586w28ODPP7nJnv7/vTeGCUPnkprT4nVZxQcaC9/buKz1V8ljr1/ea957UHks9GmlnssE2EqFGNXLUr8XSB47hs+yG6DCcV5P3/AVTyR07COS1KW9wUvdSyT9Jw+9B1DbNyC3f9NwadJZxUElEWlxTkzF1A689O0imurPgs59/AHH2WXb39DHRl+fDTSxx+bZy1lWWCP3+iZ/UbCgUbsSV2bqK13iw1Y0OXDWbTx3EOHcGt3SaZSNKd798BjL96mHKlTM3dhZj+irHSZSJiaLKZaQHOeh12cbbcR/TMOVwjwLRs8rluOr3kDuDoxBFW124TBj61poX+y3uMJRapbvuTLcC0aZoH57qO0Tn2IkYosG2PbDaHE3f58uIF3qoKFt45RaMuiCwl5twP7Fv/gjAMZ1oAv24k4rcee5fO7j5MpUncdil0F9hvWMy3RJqfZ6snj++rytR91hdusvvGB8Sb5XobkIz/rQCpfAFdzXQ6zZ2ff2Xv62+yV+Vfa1dq6vIUA4MDeIak/1rxLmDasGIHZ3Nv4ww9hdFskF69Q+G5lzl/8gSbuRzDw8N4HR4xU6d3aISkv8To8sdEYTDTFtEqXg0PET5xjMRf84yOT7D043c0hgaJWzH1pDhCXb+hohIaRDNTHLBmlIjBZLuM2oa00vzRNcHgt1fYfuV5GsMjKHGJpFTqB8hmgG96hItXeXzja7RgU5VRZv4zUsot3tjoY633BWI9e7ANTbksorU21al6KAkW58iuXGEks4go1f410v1Wjp0uVSwW7KcRmVGkk1KdALoo4ZSuszucJeFUVPL2/Va+t5k0TSu6HTGEzFCVqpmkhmf6OHqJ2lYVKeXDm+lR2/kfXyNFNnilPcEAAAAASUVORK5CYII=',
@@ -336,7 +337,7 @@
         ch = bod.clientHeight + 2 + "px",
         cw = bod.clientWidth + "px";
     size = cw + " " + ch;
-    bod.style = "background: url("+ backgroundImage +"); background-size: "+ size +"";
+    bod.style = "background: url("+ windowsImage +"); background-size: "+ size +"";
   }
 
   function setTimer() {
@@ -443,7 +444,6 @@
       onResize();
     } catch(ex) {}
   }, openDelay);
-
 
   GM_addStyle(''+
     '#hpcta, #hpcanvas, #hplogocta, a.MV3Tnb, #gb > div > div:nth-child(1) > div, #gbqfbb, body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.ssOUyb, body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.AghGtd, body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > a, body > div.L3eUgb > div.o3j99.qarstb > div, body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ > div > div.SuUcIb, body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ > div > div:nth-child(2), #yDmH0d, #gb > div > div.gb_0a.gb_E.gb_k.gb_1a.gb_la > div.gb_Qf.gb_sb {'+
@@ -577,7 +577,7 @@
     '  box-shadow: 1px 0 4px #000 inset !important;'+
     '}'+
     '.RNNXgb:hover, .RNNXgb:focus-within {'+
-    '  border-color: #000 !important;'+
+    '  border-color: #777 !important;'+
     '}'+
     'div.ayzqOc > input, div.ayzqOc > button {'+
     ' background: linear-gradient(135deg, #070707, #333) !important;'+
@@ -640,7 +640,7 @@
     '}'+
     '.aajZCb {'+
     '  background: #252525 !important;'+
-    '  border: 1px solid #000 !important;'+
+    '  border: 1px solid #777 !important;'+
     '  border-top: none !important;'+
     '}'+
     '.aajZCb li span {'+

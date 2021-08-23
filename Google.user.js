@@ -15,7 +15,7 @@
 
   'use strict';
 
-  const openDelay = 1500,
+  const openDelay = 200,
         timerLong = 10000,
         timerShort = 250,
         elementSpacing = '8px',
@@ -50,7 +50,7 @@
         daynum = DayNum.split(','),
         dayno = DayNo.split(','),
         dayord = DayOrd.split(','),
-        windowsImage = 'https://raw.githubusercontent.com/srazzano/Images/master/windowsDark.jpg',
+        backgroundImage = 'https://raw.githubusercontent.com/srazzano/Images/master/22-windowsDark.jpg',
         usmapImage = 'https://raw.githubusercontent.com/srazzano/Images/master/usmap.png',
         imgCalendar = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABT0lEQVR42mNkAAKp9Iv/GYgELMxMYJqZmZHh/mQdRkZSNMPAfwZGMM0IYpFjADJANyCMkIaHocYgahVOA57O0Fv17x8Dw7//IH8ygB37H6qCEcj5s5c1DK8BD6fqrTp+5w9DRP81hsNNOgxyIkwMJ+/+ZQjrvcoANJywAQ+m6K16/O4fg5IYE4N0xiWGvXU6DM5NV8CSRBkA8sLbL/8Z9EouM2yq0GYwVmBmuPrkL4NbC5EueDRNb9XDNwgXPJ6ux3D9KQkG3Jqou+rcg7/gMPAwUmWYncrJcPPZXwaXZiINeDJdbxUjJJ0w/PzDwMDOwsDw+y+Ez8pMRCzcmqyyCpLaGKDpDRWwH+IP+/+TGayGkf0vA6Ncs+3/X39/E52QLh3+uwqZj24AQQA0AM4W23uakVGx1eH/998/SDYApJkB5k2JBguiMxTIAJhmEAAA4quznkbNVyMAAAAASUVORK5CYII=',
         imgChrome = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABlklEQVR42rWRPUiCYRDH/8/7RYqWOFRCS1/UbFC2GBWRU4RUBkVDQ7S1hVptlklBWIsgNDVEKtQmRkTY0OIbYW01BxZhgRmp2aNWYj2GBP3hOO6O+90dR8DQyrIzy8rbF2zke46UAySeE4jH4zTKokajgUqpYgNY08bGLfD79/D6msrHoijCbB5BwOcDE2CzW/EXOVdW/wlwPWBops5NzfSRClKbazk8u/kVQBv1hOflbCbDnEhroDU9Bck/ALTZkX7LLAocX8n2DgpZ/AKMHu/rH5IJWSGIqKJGCKkEovf1Dst5wLouih2PjDpJQhV9mcQLSHYYoOg3IZ1O4zFyDHJ7BJ4nEDjkvSQJCKjNhQ1c9Rdov8vAdXAFjShB693FfKgBsafCqNpqYNMcgzpqgShxIBzdkJorPFQE5LS1HUVblxEbjWtfzZ/KQTzdDlSnTvPNhOPgDJlKAUpOxIluHLORHubRvslzaO+Xim8MDpYCcrponcF0uJMNmLqENmb9HTDRZMTD5RTzBG+fG6qXw5+ASn5WTu9OGbH/eUCknAAAAABJRU5ErkJggg==',
@@ -225,13 +225,14 @@
         os2 = $q('body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ').offsetHeight,
         os3 = $q('body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.RNNXgb').offsetHeight,
         ost = (os1 + os2 + os3 + 34) + 'px',
+        cw = div3.clientWidth / 2,
         arr = [];
     for (let i = 0; i < lia.length; i++) lia[i].setAttribute('target', where);
     for (let j = 0; j < num.length; j++) arr.push(num[j].offsetWidth);
     let sum = arr.reduce(function(a, b) {return a + b}, 1),
         buttonsWidth = sum / 2,
         fromLeft1 = Math.round(screenWidth - buttonsWidth - spacerCount) + 'px',
-        fromLeft2 = Math.round(screenWidth - len - (spacerWidth * 2) - 1) + 'px';
+        fromLeft2 = Math.round(screenWidth - cw - 1) + 'px';
     div2.style.marginLeft = fromLeft1;
     div3.style.left = fromLeft2;
     div3.style.top = ost;
@@ -337,7 +338,7 @@
         ch = bod.clientHeight + 2 + "px",
         cw = bod.clientWidth + "px";
     size = cw + " " + ch;
-    bod.style = "background: url("+ windowsImage +"); background-size: "+ size +"";
+    bod.style = "background: url("+ backgroundImage +"); background-size: "+ size +"";
   }
 
   function setTimer() {
@@ -720,3 +721,4 @@
   '');
 
 })();
+

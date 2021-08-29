@@ -157,7 +157,7 @@
       dateTimeContainer = $c('div', {id: 'dateTimeContainer'}),
       btnClock = $c('button', {id: 'gClock', style: 'background-image: url('+ imgClock2 +')', title: hideShow, onmousedown: function(e) {toggleDateTime(e)}}),
       dateTime = $c('span', {id: 'dateTime', onmousedown: function(e) {toggleSecondsAmPmFormat(e)}}),
-      timer, size;
+      timer;
 
   function $c(type, props) {
     let node = document.createElement(type);
@@ -236,6 +236,7 @@
     div2.style.marginLeft = fromLeft1;
     div3.style.left = fromLeft2;
     div3.style.top = ost;
+    onResize();
   }
 
   function defaultDateTime() {
@@ -243,6 +244,19 @@
     dateTime.textContent = aDateTime(GM_getValue('dateFormat'));
     dateTime.title = addRemove + ' (' + GM_getValue('dateFormat') + ')';
     setTimer();
+  }
+
+  function init() {
+    let cb = $q('#buttonsContainer1 > .aCkbx', true),
+        cb2 = $q('#buttonsContainer2 > .aCkbx', true),
+        signIn = $q('#gb > div > div.gb_Se > a');
+    try {
+      for (let i = 0; i < cb.length; i++) if (!GM_getValue(cb[i].id)) GM_setValue(cb[i].id, false);
+      for (let j = 0; j < cb2.length; j++) if (!GM_getValue(cb[j].id)) GM_setValue(cb[j].id, false);
+      if (signIn) signIn.click();
+      centerElements();
+      onOpen();
+    } catch(ex) {}
   }
 
   function onButton(e) {
@@ -335,10 +349,9 @@
 
   function onResize() {
     let bod = $q('body'),
-        ch = bod.clientHeight + 2 + "px",
-        cw = bod.clientWidth + "px";
-    size = cw + " " + ch;
-    bod.style = "background: url("+ backgroundImage +"); background-size: "+ size +"";
+        ch = bod.clientHeight + 2 + 'px',
+        cw = bod.clientWidth + 'px';
+    bod.style = 'background: url('+ backgroundImage +'); background-size: '+ cw +' '+ ch;
   }
 
   function setTimer() {
@@ -432,22 +445,7 @@
   addEventListener('resize', function() {onResize()});
   addEventListener('unload', function() {onClose()});
 
-  //setTimeout(function() {
-  setInterval(function() {
-    try {
-      let cb = $q('#buttonsContainer1 > .aCkbx', true),
-          cb2 = $q('#buttonsContainer2 > .aCkbx', true),
-          signIn = $q('#gb > div > div.gb_Se > a');
-      for (let i = 0; i < cb.length; i++) if (!GM_getValue(cb[i].id)) GM_setValue(cb[i].id, false);
-      for (let j = 0; j < cb2.length; j++) if (!GM_getValue(cb[j].id)) GM_setValue(cb[j].id, false);
-      if (signIn) signIn.click();
-      centerElements();
-      onOpen();
-      onResize();
-      if (dateTimeContainer) clearInterval();
-    } catch(ex) {}
-  }, 200);
-  //}, openDelay);
+  setTimeout(function() {init()}, openDelay);
 
   GM_addStyle(''+
     '#hpcta, #hpcanvas, #hplogocta, a.MV3Tnb, #gb > div > div:nth-child(1) > div, #gbqfbb, body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.ssOUyb, body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.AghGtd, body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > a, body > div.L3eUgb > div.o3j99.qarstb > div, body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ > div > div.SuUcIb, body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ > div > div:nth-child(2), #yDmH0d, #gb > div > div.gb_0a.gb_E.gb_k.gb_1a.gb_la > div.gb_Qf.gb_sb {'+
@@ -724,5 +722,3 @@
   '');
 
 })();
-
-

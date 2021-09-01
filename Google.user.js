@@ -15,7 +15,7 @@
 
   'use strict';
 
-  const openDelay = 1000,
+  const //openDelay = 1000,
         timerLong = 10000,
         timerShort = 250,
         elementSpacing = '8px',
@@ -157,7 +157,7 @@
       dateTimeContainer = $c('div', {id: 'dateTimeContainer'}),
       btnClock = $c('button', {id: 'gClock', style: 'background-image: url('+ imgClock2 +')', title: hideShow, onmousedown: function(e) {toggleDateTime(e)}}),
       dateTime = $c('span', {id: 'dateTime', onmousedown: function(e) {toggleSecondsAmPmFormat(e)}}),
-      timer;
+      timer, initInterval;
 
   function $c(type, props) {
     let node = document.createElement(type);
@@ -445,7 +445,11 @@
   addEventListener('resize', function() {onResize()});
   addEventListener('unload', function() {onClose()});
 
-  setTimeout(function() {init()}, openDelay);
+  //setTimeout(function() {init()}, openDelay);
+  initInterval = setInterval( () => {
+    init();
+    if (dateTimeContainer) clearInterval(initInterval);
+  }, 20);
 
   GM_addStyle(''+
     '#hpcta, #hpcanvas, #hplogocta, a.MV3Tnb, #gb > div > div:nth-child(1) > div, #gbqfbb, body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.ssOUyb, body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.AghGtd, body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > a, body > div.L3eUgb > div.o3j99.qarstb > div, body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ > div > div.SuUcIb, body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ > div > div:nth-child(2), #yDmH0d, #gb > div > div.gb_0a.gb_E.gb_k.gb_1a.gb_la > div.gb_Qf.gb_sb {'+
@@ -722,3 +726,4 @@
   '');
 
 })();
+

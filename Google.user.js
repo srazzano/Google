@@ -27,7 +27,7 @@
         slash = '/',
         space = ' ',
         star = '★',
-        customFormat = 'Add a format in script line 209',
+        customFormat = 'Add a custom format in script line 209',
         hideShow = bullet + ' Left-click to Hide/Show Date/Time',
         addRemove = bullet + ' Left-click to Add/Remove :seconds\n' + bullet + '  Shift + Left-click to Add/Remove AM/PM\n' + bullet + ' Ctrl + Left-click to change Date format',
         reloadTooltip = 'Reload page for changes to take effect',
@@ -241,19 +241,6 @@
     setTimer();
   }
 
-  function init() {
-    let cb = $q('#buttonsContainer1 > .aCkbx', true),
-        cb2 = $q('#buttonsContainer2 > .aCkbx', true),
-        signIn = $q('#gb > div > div.gb_Se > a');
-    try {
-      for (let i = 0; i < cb.length; i++) if (!GM_getValue(cb[i].id)) GM_setValue(cb[i].id, false);
-      for (let j = 0; j < cb2.length; j++) if (!GM_getValue(cb[j].id)) GM_setValue(cb[j].id, false);
-      if (signIn) signIn.click();
-      GM_getValue('defaultDateTimeView') ? defaultDateTime() : dateTime.hidden = true;
-      centerElements();
-    } catch(ex) {}
-  }
-
   function onButton(e) {
     if (e.target.id === 'Mses6b' || e.target.id === 'gSearch') {
       if (!buttonsContainer1.hidden) {
@@ -325,6 +312,19 @@
     removeEventListener('resize', function() {onResize()});
     removeEventListener('unload', function() {onClose()});
     clearInterval(timer);
+  }
+
+  function onOpen() {
+    let cb = $q('#buttonsContainer1 > .aCkbx', true),
+        cb2 = $q('#buttonsContainer2 > .aCkbx', true),
+        signIn = $q('#gb > div > div.gb_Se > a');
+    try {
+      for (let i = 0; i < cb.length; i++) if (!GM_getValue(cb[i].id)) GM_setValue(cb[i].id, false);
+      for (let j = 0; j < cb2.length; j++) if (!GM_getValue(cb[j].id)) GM_setValue(cb[j].id, false);
+      if (signIn) signIn.click();
+      GM_getValue('defaultDateTimeView') ? defaultDateTime() : dateTime.hidden = true;
+      centerElements();
+    } catch(ex) {}
   }
 
   function onReload() {
@@ -431,7 +431,7 @@
   addEventListener('unload', function() {onClose()});
 
   initInterval = setInterval( () => {
-    init();
+    onOpen();
     if (dateTimeContainer) clearInterval(initInterval);
   }, 20);
 

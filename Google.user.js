@@ -16,21 +16,23 @@
 
   'use strict';
 
-  const timerLong = 10000,
+  const openInterval = 20,
+        timerLong = 10000,
         timerShort = 250,
         elementSpacing = '8px',
         am = 'AM',
         pm = 'PM',
-        formatCount = 8,
+        formatCount = 9,
         bullet = '•',
         comma = ',',
         hyphen = '-',
         slash = '/',
         space = ' ',
         star = '★',
-        customFormat = 'Add a custom format in script line 210',
+        customFormat1 = 'Add a custom format in script line 212',
+        customFormat2 = 'Add a custom format in script line 213',
         hideShow = bullet + ' Left-click to Hide/Show Date/Time',
-        addRemove = bullet + ' Left-click to Add/Remove :seconds\n' + bullet + '  Shift + Left-click to Add/Remove AM/PM\n' + bullet + ' Ctrl + Left-click to change Date format',
+        addRemove = bullet + ' Left-click to Add/Remove :seconds\n' + bullet + ' Shift + Left-click to Add/Remove AM/PM\n' + bullet + ' Ctrl + Left-click to change Date format',
         reloadTooltip = 'Reload page for changes to take effect',
         DayNameAbbr = 'Sun.,Mon.,Tue.,Wed.,Thu.,Fri.,Sat.',
         DayName = 'Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday',
@@ -206,8 +208,9 @@
       case 5: return w + space + bullet + space + mm + hyphen + dd + hyphen + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03-01-2021 • 12:34 AM
       case 6: return w + space + bullet + space + m + slash + d + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
       case 7: return w + space + bullet + space + mm + slash + dd + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
-      // Delete "customFormat" text below and add return options with bullet, comma, hyphen, slash, space, star characters.
-      case 8: return customFormat;
+      // Delete "customFormat1/customFormat2" text below and add return options with bullet, comma, hyphen, slash, space, star characters.
+      case 8: return customFormat1;
+      case 9: return customFormat2;
   } }
 
   function centerElements() {
@@ -323,7 +326,8 @@
       for (let i = 0; i < cb.length; i++) if (!GM_getValue(cb[i].id)) GM_setValue(cb[i].id, false);
       for (let j = 0; j < cb2.length; j++) if (!GM_getValue(cb[j].id)) GM_setValue(cb[j].id, false);
       if (signIn) signIn.click();
-      GM_getValue('defaultDateTimeView') ? defaultDateTime() : dateTime.hidden = true;
+      if (GM_getValue('defaultDateTimeView')) defaultDateTime();
+      else {dateTime.hidden = true; clearInterval(timer)}
       centerElements();
     } catch(ex) {}
   }
@@ -342,7 +346,7 @@
   }
 
   function setTimer() {
-    clearInterval(timer);
+    if (GM_getValue('defaultDateTimeView') === false) {clearInterval(timer); return}
     if (GM_getValue('defaultSecondsView')) timer = setInterval(function() {dateTime.textContent = aDateTime(GM_getValue('dateFormat'))}, timerShort);
     else timer = setInterval(function() {dateTime.textContent = aDateTime(GM_getValue('dateFormat'))}, timerLong);
   }
@@ -355,10 +359,8 @@
       dateTime.hidden = bool;
       GM_setValue('defaultDateTimeView', !bool);
       if (bool) clearInterval(timer);
-      else {
-        dateTime.textContent = aDateTime(GM_getValue('dateFormat'));
-        setTimer();
-  } } }
+      else {dateTime.textContent = aDateTime(GM_getValue('dateFormat')); setTimer()}
+  } }
 
   function toggleSecondsAmPmFormat(e) {
     if (!e.button === 0) return;
@@ -434,7 +436,7 @@
   initInterval = setInterval( () => {
     onOpen();
     if (dateTimeContainer) clearInterval(initInterval);
-  }, 20);
+  }, openInterval);
 
   GM_addStyle(''+
     '#hpcta, #hpcanvas, #hplogocta, a.MV3Tnb, #gb > div > div:nth-child(1) > div, #gbqfbb, body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.ssOUyb, body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.AghGtd, body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > a, body > div.L3eUgb > div.o3j99.qarstb > div, body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ > div > div.SuUcIb, body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ > div > div:nth-child(2), #yDmH0d, #gb > div > div.gb_0a.gb_E.gb_k.gb_1a.gb_la > div.gb_Qf.gb_sb {'+
@@ -711,4 +713,3 @@
   '');
 
 })();
-

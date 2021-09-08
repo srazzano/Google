@@ -84,7 +84,7 @@
         urlYouTubeTV = 'https://tv.youtube.com/library';
 
   var div1 = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd'),
-      div2 = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd > div'),
+      div2 = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd > div.LX3sZb'),
       div3 = $q('body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > div'),
       searchButton = $q('body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.FPdoLc.lJ9FBc > center > input.gNO89b'),
       settingsButton = $q('#Mses6b'),
@@ -92,7 +92,7 @@
       btnCalendar = $c('button', {id: 'gCalendar', className: 'gBtn', textContent: 'Calendar', title: urlCalendar, style: 'background: url('+ imgCalendar +'), linear-gradient(135deg, #070707, #333)', onclick: function() {window.open(urlCalendar, where)}}),
       btnChrome = $c('button', {id: 'gChrome', className: 'gBtn', textContent: 'Chrome Store', title: urlChrome, style: 'background: url('+ imgChrome +'), linear-gradient(135deg, #070707, #333)', onclick: function() {window.open(urlChrome, where)}}),
       btnEarth = $c('button', {id: 'gEarth', className: 'gBtn', textContent: 'Earth', title: urlEarth, style: 'background: url('+ imgEarth +'), linear-gradient(135deg, #070707, #333)', onclick: function() {window.open(urlEarth, where)}}),
-      btnMail = $c('button', {id: 'gMail', className: 'gBtn', textContent: 'Gmail', title: urlMail, style: 'background: url('+ imgMail +'), linear-gradient(135deg, #070707, #333)', onclick: function() {window.open(urlMail, where)}}),
+      btnMail = $c('button', {id: 'gMail', className: 'gBtn', textContent: 'GMail', title: urlMail, style: 'background: url('+ imgMail +'), linear-gradient(135deg, #070707, #333)', onclick: function() {window.open(urlMail, where)}}),
       btnMaps = $c('button', {id: 'gMaps', className: 'gBtn', textContent: 'Maps', title: urlMaps, style: 'background: url('+ imgMaps +'), linear-gradient(135deg, #070707, #333)', onclick: function() {window.open(urlMaps, where)}}),
       btnMSEdge = $c('button', {id: 'gMSEdge', className: 'gBtn', textContent: 'MS Store', title: urlMSEdge, style: 'background: url('+ imgMSEdge +'), linear-gradient(135deg, #070707, #333)', onclick: function() {window.open(urlMSEdge, where)}}),
       btnNews = $c('button', {id: 'gNews', className: 'gBtn', textContent: 'News', title: urlNews, style: 'background: url('+ imgNews +'), linear-gradient(135deg, #070707, #333)', onclick: function() {window.open(urlNews, where)}}),
@@ -121,7 +121,7 @@
       labEarth = $c('button', {for: 'aEarth', className: 'aBtn', textContent: 'Earth', style: 'background: url('+ imgEarth +') no-repeat right', onclick: function(e) {onButton(e)}}),
       brEarth = $c('br'),
       cbMail = $c('input', {id: 'aMail', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aMail"), onclick: function(e) {onCheckbox(e)}}),
-      labMail = $c('button', {for: 'aMail', className: 'aBtn', textContent: 'Mail', style: 'background: url('+ imgMail +') no-repeat right', onclick: function(e) {onButton(e)}}),
+      labMail = $c('button', {for: 'aMail', className: 'aBtn', textContent: 'GMail', style: 'background: url('+ imgMail +') no-repeat right', onclick: function(e) {onButton(e)}}),
       brMail = $c('br'),
       cbMaps = $c('input', {id: 'aMaps', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aMaps"), onclick: function(e) {onCheckbox(e)}}),
       labMaps = $c('button', {for: 'aMaps', className: 'aBtn', textContent: 'Maps', style: 'background: url('+ imgMaps +') no-repeat right', onclick: function(e) {onButton(e)}}),
@@ -154,7 +154,7 @@
       buttonClose = $c('button', {id: 'buttonClose', className: 'gBtn', textContent: 'Close', onclick: function() {$q("#buttonsContainer1").hidden = true; $q("#buttonsContainer2").hidden = true}}),
       dateTimeContainer = $c('div', {id: 'dateTimeContainer'}),
       btnClock = $c('button', {id: 'gClock', style: 'background-image: url('+ imgClock +')', title: hideShow, onmousedown: function(e) {toggleDateTime(e)}}),
-      dateTime = $c('span', {id: 'dateTime', onmousedown: function(e) {toggleSecondsAmPmFormat(e)}}),
+      dateTime = $c('span', {id: 'dateTime', className: 'gBtn', onmousedown: function(e) {toggleSecondsAmPmFormat(e)}}),
       initInterval, timer;
 
   function $c(type, props) {
@@ -215,10 +215,10 @@
 
   function centerElements() {
     let lia = $q('#dEjpnf > li > a', true),
-        num = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd > div > .gBtn', true),
+        num = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd > div.LX3sZb > .gBtn', true),
         len = (searchButton.offsetWidth + settingsButton.offsetWidth + headerButton.offsetWidth) / 2,
         screenWidth = window.screen.width / 2,
-        spacerWidth = parseInt(elementSpacing.match('\\d+') / 2),
+        spacerWidth = parseInt(elementSpacing.match(/\d+/) / 2),
         spacerCount = (num.length - 1) * spacerWidth,
         os1 = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd').offsetHeight,
         os2 = $q('body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ').offsetHeight,
@@ -439,7 +439,7 @@
   }, openInterval);
 
   GM_addStyle(''+
-    '#hpcta, #hpcanvas, #hplogocta, a.MV3Tnb, #gb > div > div:nth-child(1) > div, #gbqfbb, body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.ssOUyb, body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.AghGtd, body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > a, body > div.L3eUgb > div.o3j99.qarstb > div, body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ > div > div.SuUcIb, body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ > div > div:nth-child(2), #yDmH0d, #gb > div > div.gb_0a.gb_E.gb_k.gb_1a.gb_la > div.gb_Qf.gb_sb {'+
+    '#hpcta, #hpcanvas, #hplogocta, div.ddlsv-cta_, a.MV3Tnb, #gb > div > div:nth-child(1) > div, #gbqfbb, body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.ssOUyb, body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.AghGtd, body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > a, body > div.L3eUgb > div.o3j99.qarstb > div, body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ > div > div.SuUcIb, body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ > div > div:nth-child(2), #yDmH0d, #gb > div > div.gb_0a.gb_E.gb_k.gb_1a.gb_la > div.gb_Qf.gb_sb {'+
     '  display: none !important;'+
     '}'+
     'body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd > div > .gBtn {'+
@@ -564,7 +564,7 @@
     '  pointer-events: none !important;'+
     '  width: 0 !important;'+
     '}'+
-    '.RNNXgb {'+
+    '.RNNXgb, #dateTime {'+
     '  background: linear-gradient(135deg, #070707, #333) !important;'+
     '  border-color: #CCC !important;'+
     '  box-shadow: 1px 0 4px #000 inset !important;'+
@@ -578,7 +578,7 @@
     'body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf {'+
     '  padding: 0 20px !important;'+
     '}'+
-    '.gBtn, #dateTime, #gSearch, #Mses6b, #headerButton, #submit, center > input, #gb > div > div.gb_0a.gb_E.gb_k.gb_1a.gb_la .gb_Pe {'+
+    '.gBtn, #gSearch, #Mses6b, #headerButton, #submit, center > input, #gb > div > div.gb_0a.gb_E.gb_k.gb_1a.gb_la .gb_Pe {'+
     '  border: 1px solid #CCC !important;'+
     '  box-shadow: 1px 0 4px #000 inset !important;'+
     '  color: #AAA !important;'+
@@ -713,4 +713,3 @@
   '');
 
 })();
-

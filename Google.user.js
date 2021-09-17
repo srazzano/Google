@@ -22,7 +22,7 @@
         elementSpacing = '8px',
         am = 'AM',
         pm = 'PM',
-        formatCount = 9,
+        dateTimeFormatCount = 9,
         bullet = '•',
         comma = ',',
         hyphen = '-',
@@ -208,8 +208,8 @@
       case 6: return w + space + bullet + space + m + slash + d + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
       case 7: return w + space + bullet + space + mm + slash + dd + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
       // Delete "customFormat + 210/customFormat + 211" text below and add return options with bullet, comma, hyphen, slash, space, star characters.
-      case 8: return customFormat + 210;
-      case 9: return customFormat + 211;
+      case 8: return customFormat + 211;
+      case 9: return customFormat + 212;
   } }
 
   function defaultDateTime() {
@@ -335,7 +335,7 @@
       GM_setValue('defaultAMPM', bool2);
     } else if (!e.shiftKey && e.ctrlKey && !e.altKey && e.button === 0) {
       int = GM_getValue('dateFormat') + 1;
-      int < formatCount + 1 ? GM_setValue('dateFormat', int) : GM_setValue('dateFormat', 1);
+      int < dateTimeFormatCount + 1 ? GM_setValue('dateFormat', int) : GM_setValue('dateFormat', 1);
       dateTime.title = addRemove + ' (' + GM_getValue('dateFormat') + ')';
     }
     dateTime.textContent = aDateTime(GM_getValue('dateFormat'));

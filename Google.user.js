@@ -435,7 +435,7 @@
     '  margin-top: 14px !important;'+
     '  width: 584px !important;'+
     '}'+
-    'body > div.L3eUgb > div.o3j99.LLD4me.yr19Zb.LS8OJ > div.ayzqOc {'+
+    'body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ > div.ayzqOc {'+
     '  display: inline-flex !important;'+
     '  position: relative !important;'+
     '  top: -27px !important;'+
@@ -649,7 +649,7 @@
     '}'+
     '#dEjpnf a.EzVRq, #dEjpnf button.EzVRq {'+
     '  color: #CCC !important;'+
-    '  padding: 10px !important;'+
+    '  padding: 11px !important;'+
     '  text-decoration: none !important;'+
     '}'+
     '#dEjpnf a.EzVRq:hover, #dEjpnf button.EzVRq:hover {'+

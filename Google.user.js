@@ -385,16 +385,6 @@
   if (GM_getValue('aYouTube')) div0.appendChild(btnYouTube);
   if (GM_getValue('aYouTubeTV')) div0.appendChild(btnYouTubeTV);
 
-  if (GM_getValue('aClock')) {
-    let badge = $c('span', {id: 'badge'}),
-        date = new Date();
-    badge.textContent = daynum[date.getDate()];
-    btnClock.appendChild(badge);
-    dateTimeContainer.appendChild(btnClock);
-    dateTimeContainer.appendChild(dateTime);
-    div1.appendChild(dateTimeContainer);
-  }
-
   div3.insertBefore(searchButton, div3.firstChild);
   div3.appendChild(headerButton);
   div3.appendChild(buttonsContainer1);
@@ -410,7 +400,9 @@
         img = $c('img', {id: 'googImg'}),
         div = $q('body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ'),
         btns = $q('body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > div'),
-        form = $q('body > div.L3eUgb form');
+        form = $q('body > div.L3eUgb form'),
+        badge = $c('span', {id: 'badge'}),
+        date = new Date();
     try {
       for (let i = 0; i < cb.length; i++) if (!GM_getValue(cb[i].id)) GM_setValue(cb[i].id, false);
       for (let j = 0; j < cb2.length; j++) if (!GM_getValue(cb[j].id)) GM_setValue(cb[j].id, false);
@@ -421,6 +413,11 @@
       div.insertBefore(img, div.firstChild.nextSibling);
       div.insertBefore(form, div.lastChild);
       div.appendChild(btns);
+      badge.textContent = daynum[date.getDate()];
+      btnClock.appendChild(badge);
+      dateTimeContainer.appendChild(btnClock);
+      dateTimeContainer.appendChild(dateTime);
+      div1.appendChild(dateTimeContainer);
       onResize();
       if (dateTimeContainer) clearInterval(initInterval);
     } catch(ex) {}

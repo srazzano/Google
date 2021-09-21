@@ -369,7 +369,6 @@
   searchButton.onmouseup = function(e) {onButton(e)};
   settingsButton.onmousedown = function(e) {onButton(e)};
   searchButton.id = 'gSearch';
-  settingsButton.textContent = 'Search Settings';
 
   if (GM_getValue('aCalendar')) div0.appendChild(btnCalendar);
   if (GM_getValue('aChrome')) div0.appendChild(btnChrome);
@@ -384,6 +383,12 @@
   if (GM_getValue('aTranslate')) div0.appendChild(btnTranslate);
   if (GM_getValue('aYouTube')) div0.appendChild(btnYouTube);
   if (GM_getValue('aYouTubeTV')) div0.appendChild(btnYouTubeTV);
+
+  if (GM_getValue('aClock')) {
+    dateTimeContainer.appendChild(btnClock);
+    dateTimeContainer.appendChild(dateTime);
+    div1.appendChild(dateTimeContainer);
+  }
 
   div3.insertBefore(searchButton, div3.firstChild);
   div3.appendChild(headerButton);
@@ -400,9 +405,7 @@
         img = $c('img', {id: 'googImg'}),
         div = $q('body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ'),
         btns = $q('body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > div'),
-        form = $q('body > div.L3eUgb form'),
-        badge = $c('span', {id: 'badge'}),
-        date = new Date();
+        form = $q('body > div.L3eUgb form');
     try {
       for (let i = 0; i < cb.length; i++) if (!GM_getValue(cb[i].id)) GM_setValue(cb[i].id, false);
       for (let j = 0; j < cb2.length; j++) if (!GM_getValue(cb[j].id)) GM_setValue(cb[j].id, false);
@@ -413,29 +416,12 @@
       div.insertBefore(img, div.firstChild.nextSibling);
       div.insertBefore(form, div.lastChild);
       div.appendChild(btns);
-      badge.textContent = daynum[date.getDate()];
-      btnClock.appendChild(badge);
-      dateTimeContainer.appendChild(btnClock);
-      dateTimeContainer.appendChild(dateTime);
-      div1.appendChild(dateTimeContainer);
       onResize();
       if (dateTimeContainer) clearInterval(initInterval);
     } catch(ex) {}
   }, openInterval);
 
   GM_addStyle(''+
-    '#badge {'+
-    '  background: #FFF !important;'+
-    '  border-radius: 50% !important;'+
-    '  color: #000 !important;'+
-    '  font-size: 12px !important;'+
-    '  left: -11px !important;'+
-    '  padding: 2px !important;'+
-    '  position: relative !important;'+
-    '  text-align: center !important;'+
-    '  text-shadow: 1px 1px #000 !important;'+
-    '  top: -11px !important;'+
-    '}'+
     '#headerButtonsDiv {'+
     '  margin-bottom: 20px !important;'+
     '}'+
@@ -544,11 +530,12 @@
     '  background-repeat: no-repeat !important;'+
     '  background-position: center !important;'+
     '  cursor: pointer !important;'+
+    '  border-radius: 50% !important;'+
     '  height: 40px !important;'+
     '  margin-left: '+ elementSpacing +' !important;'+
     '  filter: grayscale(1) brightness(.65) !important;'+
     '  position: relative !important;'+
-    '  top: 4px !important;'+
+    '  top: 6px !important;'+
     '  width: 40px !important;'+
     '}'+
     '#dateTimeContainer:hover > #gClock:hover {'+
@@ -562,9 +549,9 @@
     '  min-width: 100px !important;'+
     '  padding: 5px 8px 6px 8px !important;'+
     '  position: relative !important;'+
-    '  top: 4px !important;'+
+    '  top: -9px !important;'+
     '}'+
-    '#gClock:hover + #dateTime, #gClock:hover > #badge {'+
+    '#gClock:hover + #dateTime {'+
     '  background: #900 !important;'+
     '  border-color: #C00 !important;'+
     '  color: #FFF !important;'+

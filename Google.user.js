@@ -401,7 +401,7 @@
   initInterval = setInterval( () => {
     let cb = $q('#buttonsContainer1 > .aCkbx', true),
         cb2 = $q('#buttonsContainer2 > .aCkbx', true),
-        signIn = $q('#gb > div > div.gb_Se > a'),
+        signIn = $q('a.gb_3.gb_4.gb_3d.gb_3c'),
         img = $c('img', {id: 'googImg'}),
         div = $q('body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ'),
         btns = $q('body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > div'),
@@ -496,7 +496,7 @@
     '  border-radius: 50% !important;'+
     '  box-shadow: 1px 0 4px #000 inset !important;'+
     '  position: relative !important;'+
-    '  right: -8px !important;'+
+    '  right: -4px !important;'+
     '}'+
     '#gbwa > div > a:hover {'+
     '  background-color: #444 !important;'+
@@ -505,11 +505,15 @@
     '#gbwa > div > a:hover > svg {'+
     '  background-color: #444 !important;'+
     '}'+
-    '.gb_Ca {'+
-    '  top: -4px !important;'+
+    '.gb_Na .gb_C {'+
+    '  padding: 0px !important;'+
     '}'+
-    '#gb > div > div.gb_Se > div.gb_Na.gb_bd.gb_mg.gb_h.gb_Af > div > a {'+
-    '  margin-left: '+ elementSpacing +' !important;'+
+    '#gb > div > div.gb_Me > div.gb_Na.gb_bd.gb_gg.gb_h.gb_uf > div {'+
+    '  margin: 0 -8px 0 8px !important;'+
+    '}'+
+    '.gb_Ca {'+
+    '  height: 40px !important;'+
+    '  width: 40px !important;'+
     '}'+
     '#gb > div > div.gb_Se > div.gb_Na.gb_bd.gb_mg.gb_h.gb_Af > div > a > img, #gb > div > div.gb_Se > div.gb_Na.gb_bd.gb_mg.gb_h.gb_Af {'+
     '  height: 40px !important;'+
@@ -518,6 +522,9 @@
     '}'+
     'body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd > div.LX3sZb {'+
     '  margin-top: -8px !important;'+
+    '}'+
+    '#gb > div {'+
+    '  margin-right: '+ elementSpacing +' !important;'+
     '}'+
     '#dateTimeContainer {'+
     '  margin-top: -16px !important;'+
@@ -532,7 +539,6 @@
     '  cursor: pointer !important;'+
     '  border-radius: 50% !important;'+
     '  height: 40px !important;'+
-    '  margin-left: '+ elementSpacing +' !important;'+
     '  filter: grayscale(1) brightness(.65) !important;'+
     '  position: relative !important;'+
     '  top: 6px !important;'+

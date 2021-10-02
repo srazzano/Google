@@ -437,8 +437,8 @@
     '}'+
     'body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ > div.ayzqOc {'+
     '  display: inline-flex !important;'+
-    '  position: relative !important;'+
-    '  top: -27px !important;'+
+    '  position: absolute !important;'+
+    '  top: 337px !important;'+
     '}'+
     'div.ayzqOc > input, div.ayzqOc > button {'+
     ' background: linear-gradient(135deg, #070707, #333) !important;'+
@@ -509,7 +509,7 @@
     '  padding: 0px !important;'+
     '}'+
     '#gb > div > div.gb_Me > div.gb_Na.gb_bd.gb_gg.gb_h.gb_uf > div {'+
-    '  margin: 0 -8px 0 8px !important;'+
+    '  margin: 0 0 0 '+ elementSpacing +' !important;'+
     '}'+
     '.gb_Ca {'+
     '  height: 40px !important;'+
@@ -524,10 +524,10 @@
     '  margin-top: -8px !important;'+
     '}'+
     '#gb > div {'+
-    '  margin-right: '+ elementSpacing +' !important;'+
+    '  margin-right: 0 !important;'+
     '}'+
     '#dateTimeContainer {'+
-    '  margin-top: -16px !important;'+
+    '  margin: -16px 0 0 0 !important;'+
     '}'+
     '#dateTimeContainer:hover > #gClock {'+
     '  filter: none !important;'+

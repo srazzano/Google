@@ -51,7 +51,8 @@
         daynum = DayNum.split(','),
         dayno = DayNo.split(','),
         dayord = DayOrd.split(','),
-        backgroundImage = 'https://raw.githubusercontent.com/srazzano/Images/master/20-windowsDark.jpg',
+        backgroundImage = "https://raw.githubusercontent.com/srazzano/Images/master/image",
+        backgroundImg = "https://raw.githubusercontent.com/srazzano/Images/master/image1.jpg",
         googleImage = 'https://raw.githubusercontent.com/srazzano/Images/master/googleImage5.png',
         imgCalendar = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABT0lEQVR42mNkAAKp9Iv/GYgELMxMYJqZmZHh/mQdRkZSNMPAfwZGMM0IYpFjADJANyCMkIaHocYgahVOA57O0Fv17x8Dw7//IH8ygB37H6qCEcj5s5c1DK8BD6fqrTp+5w9DRP81hsNNOgxyIkwMJ+/+ZQjrvcoANJywAQ+m6K16/O4fg5IYE4N0xiWGvXU6DM5NV8CSRBkA8sLbL/8Z9EouM2yq0GYwVmBmuPrkL4NbC5EueDRNb9XDNwgXPJ6ux3D9KQkG3Jqou+rcg7/gMPAwUmWYncrJcPPZXwaXZiINeDJdbxUjJJ0w/PzDwMDOwsDw+y+Ez8pMRCzcmqyyCpLaGKDpDRWwH+IP+/+TGayGkf0vA6Ncs+3/X39/E52QLh3+uwqZj24AQQA0AM4W23uakVGx1eH/998/SDYApJkB5k2JBguiMxTIAJhmEAAA4quznkbNVyMAAAAASUVORK5CYII=',
         imgChrome = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABlklEQVR42rWRPUiCYRDH/8/7RYqWOFRCS1/UbFC2GBWRU4RUBkVDQ7S1hVptlklBWIsgNDVEKtQmRkTY0OIbYW01BxZhgRmp2aNWYj2GBP3hOO6O+90dR8DQyrIzy8rbF2zke46UAySeE4jH4zTKokajgUqpYgNY08bGLfD79/D6msrHoijCbB5BwOcDE2CzW/EXOVdW/wlwPWBops5NzfSRClKbazk8u/kVQBv1hOflbCbDnEhroDU9Bck/ALTZkX7LLAocX8n2DgpZ/AKMHu/rH5IJWSGIqKJGCKkEovf1Dst5wLouih2PjDpJQhV9mcQLSHYYoOg3IZ1O4zFyDHJ7BJ4nEDjkvSQJCKjNhQ1c9Rdov8vAdXAFjShB693FfKgBsafCqNpqYNMcgzpqgShxIBzdkJorPFQE5LS1HUVblxEbjWtfzZ/KQTzdDlSnTvPNhOPgDJlKAUpOxIluHLORHubRvslzaO+Xim8MDpYCcrponcF0uJMNmLqENmb9HTDRZMTD5RTzBG+fG6qXw5+ASn5WTu9OGbH/eUCknAAAAABJRU5ErkJggg==',
@@ -66,7 +67,7 @@
         imgPodcasts = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAdElEQVR42mNkwAN+72H5D6JZXf4w4lLDOPgMeOVs+l9s72msGkxWBP8/E7GWEacBIM0gGmYAugtABoBoZEOoY4BT65f/+6p5GAkZgAxgehhBDJAAMQYguwCmj3IDkJ1DKBrRDQB7YXDEAtUSEqEwwAYG3gAAuNudhTC8LbkAAAAASUVORK5CYII=',
         imgTranslate = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACM0lEQVR42oWTz2sTQRTHvzOzWxrzY1uNpoGKTYkHhdZLaa1VUTCKNhZtTEU8+uOmtCcVvXgRUWulB/8FIaVe/AWeBC8KogdFRCUUS4n4o5q0S9TN7vpmdhuSFtLHzrzdZd7nve+8GZa5Y+YYnKzrAg7IXPVAfmuCj0yPBqfQwFhmYsFljHtBywCCY4oAIw0BwzWA2mDpHauEBxfirCHgqA/wCPUAOfWE3qAzNAshGA0Bh3Q6NDHm0jpGgNseYH0YOLXLQjQIFIrA+FMdFVrcYZg43fcTa1sjBKBKXS+T9Ap0hAAAx+VBC4/fCrz+whFuBkplrxJOmca259EWDSAcWkOZWT1gaNyrYPLEP5y/14R9Wxykttqo2MCl+7qSkk4WsKPzLyanH+Hq2ZNV/bZtE+CWB7iStvDkncCrGY7ehIOBpEMyNLUPBptDV+glNE3Aph/zCyY2xqIY2tkDdtgHbIgAZ2gPYgbwvcRw95lQXlYgmIOD8efoSsaQnysg2mqge3PCk5C+WdPGJavriKv8/vY8fnx9gUBzE46nBqgaTXWFDd7w27gyvhosp47IPILFh2gxgji2tw+6rqsNZYeWAaptqqHJd44KRns/omyZeD8zi8yefnBOAHkXzD92dmV2OmVMDg6fid2J3xjuXsS3X0W0rWvxJDQ6pgeuL0pwzv+cuNj/eSweCygw59yTgFXMh2TPbfuQ3dQeUK2UpUuAugurAZYg11KfcrquKYDKTMM0y/gPuRvvNRWbsbkAAAAASUVORK5CYII=',
         imgYouTube = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAX0lEQVR42s2SwQoAIQhEx2t9X37k9n91NBGWTkE1sOxchHBeoyggJf8AGPB4KYfe6maVS/OEWAQgRlgCzJ9V/Y9KAF7lDLRGAKJTCEBKQO9f72BT/B1EWuYSmfgxAgsYuQErVcPEBlcAAAAASUVORK5CYII=',
-        imgYouTubeTV = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAZklEQVR42s2S0QrAIAhFr6/1ffMj1//VoxNB9tRYXRg7BEHYUUuBY8Dp24E1mgAqm5dviUUB+8wF5seqnqMRgqRWoHdCEJFCCEoBxvj6DV7Cz0FUy0ziU0S2J7EmLfxHsPobKaUFF2w1NVWPtXHxAAAAAElFTkSuQmCC',
+        imgYouTubeTV = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAbElEQVR42mNkAIL/DAyrgFQoA2lgNSMDQxgjmZoRhvwHO4B8gNuA/0DhwEAGhg0bKDAABEAGZGUxMDx/TqYBcJWMFLggM5OB4cULeocBkYDydAB2LSUpEZ8KmPcYwQiHFwaPAaTGBsxQig0AAAp6OVWm895eAAAAAElFTkSuQmCC',
         urlCalendar = 'https://calendar.google.com/calendar/u/0/r',
         urlChrome = 'https://chrome.google.com/webstore/category/extensions',
         urlEarth = 'https://earth.google.com/web/@0,-6.8073,0a,22251752.77375655d,35y,0h,0t,0r',
@@ -92,7 +93,7 @@
       btnChrome = $c('button', {id: 'gChrome', className: 'gBtn', textContent: 'Chrome Store', title: urlChrome, style: 'background: url('+ imgChrome +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: function() {window.open(urlChrome, where)}}),
       btnEarth = $c('button', {id: 'gEarth', className: 'gBtn', textContent: 'Earth', title: urlEarth, style: 'background: url('+ imgEarth +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: function() {window.open(urlEarth, where)}}),
       btnMail = $c('button', {id: 'gMail', className: 'gBtn', textContent: 'GMail', title: urlMail, style: 'background: url('+ imgMail +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: function() {window.open(urlMail, where)}}),
-      btnMaps = $c('button', {id: 'gMaps', className: 'gBtn', textContent: 'Maps', title: urlMaps, style: 'background: url('+ imgMaps +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: function() {window.open(urlMaps, where)}}),
+      btnMaps = $c('button', {id: 'gMaps', className: 'gBtn', textContent: 'GMaps', title: urlMaps, style: 'background: url('+ imgMaps +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: function() {window.open(urlMaps, where)}}),
       btnMSEdge = $c('button', {id: 'gMSEdge', className: 'gBtn', textContent: 'MS Store', title: urlMSEdge, style: 'background: url('+ imgMSEdge +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: function() {window.open(urlMSEdge, where)}}),
       btnNews = $c('button', {id: 'gNews', className: 'gBtn', textContent: 'News', title: urlNews, style: 'background: url('+ imgNews +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: function() {window.open(urlNews, where)}}),
       btnPhotos = $c('button', {id: 'gPhotos', className: 'gBtn', textContent: 'Photos', title: urlPhotos, style: 'background: url('+ imgPhotos +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: function() {window.open(urlPhotos, where)}}),
@@ -123,7 +124,7 @@
       labMail = $c('button', {for: 'aMail', className: 'aBtn', textContent: 'GMail', style: 'background: url('+ imgMail +') no-repeat right', onclick: function(e) {onButton(e)}}),
       brMail = $c('br'),
       cbMaps = $c('input', {id: 'aMaps', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aMaps"), onclick: function(e) {onCheckbox(e)}}),
-      labMaps = $c('button', {for: 'aMaps', className: 'aBtn', textContent: 'Maps', style: 'background: url('+ imgMaps +') no-repeat right', onclick: function(e) {onButton(e)}}),
+      labMaps = $c('button', {for: 'aMaps', className: 'aBtn', textContent: 'GMaps', style: 'background: url('+ imgMaps +') no-repeat right', onclick: function(e) {onButton(e)}}),
       brMaps = $c('br'),
       cbMSEdge = $c('input', {id: 'aMSEdge', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aMSEdge"), onclick: function(e) {onCheckbox(e)}}),
       labMSEdge = $c('button', {for: 'aMSEdge', className: 'aBtn', textContent: 'MS Store', style: 'background: url('+ imgMSEdge +') no-repeat right', onclick: function(e) {onButton(e)}}),
@@ -154,7 +155,9 @@
       dateTimeContainer = $c('div', {id: 'dateTimeContainer'}),
       btnClock = $c('button', {id: 'gClock', style: 'background-image: url('+ imgClock +')', title: hideShow, onmousedown: function(e) {toggleDateTime(e)}}),
       dateTime = $c('span', {id: 'dateTime', className: 'gBtn', onmousedown: function(e) {toggleSecondsAmPmFormat(e)}}),
-      initInterval, timer;
+      changeInterval,
+      initInterval,
+      timer;
 
   function $c(type, props) {
     let node = document.createElement(type);
@@ -211,6 +214,24 @@
       case 8: return customFormat + 211;
       case 9: return customFormat + 212;
   } }
+
+  function changeBg() {
+    var bod = $q('body'),
+        ch = bod.clientHeight + 'px',
+        cw = bod.clientWidth + 'px';
+    bod.style.backgroundSize = cw +"  "+ ch;
+    if (GM_getValue('themeChanger')) {
+      var now = new Date(),
+          hour = now.getHours();
+      if (hour > 12) hour = hour - 12;
+      else hour = hour;
+      bod.style.background = "url("+ backgroundImage + hour +".jpg)";
+      changeInterval = setInterval(() => changeBg(), 60000);
+    } else {
+      clearInterval(changeInterval);
+      bod.style.background = "url("+ backgroundImg +")";
+    }
+  }
 
   function defaultDateTime() {
     dateTime.hidden = false;
@@ -272,6 +293,7 @@
             y.checked = false;
             GM_setValue(y.id, false);
           }
+          break;
     } }
     if (e.target.hasAttribute('for')) {
       x = e.target.getAttribute('for');
@@ -299,16 +321,19 @@
   }
 
   function onResize() {
-    let bod = $q('body'),
-        ch = bod.clientHeight + 'px',
-        cw = bod.clientWidth + 'px';
-    bod.style = 'background: url('+ backgroundImage +'); background-size: '+ cw +' '+ ch;
+    if (GM_getValue('themeChanger')) changeBg();
   }
 
   function setTimer() {
-    if (GM_getValue('defaultDateTimeView') === false) {clearInterval(timer); return}
+    clearInterval(timer);
+    if (!GM_getValue('defaultDateTimeView')) return;
     if (GM_getValue('defaultSecondsView')) timer = setInterval(function() {dateTime.textContent = aDateTime(GM_getValue('dateFormat'))}, timerShort);
     else timer = setInterval(function() {dateTime.textContent = aDateTime(GM_getValue('dateFormat'))}, timerLong);
+  }
+
+  function themeChanger(e) {
+    GM_setValue('themeChanger', !GM_getValue('themeChanger'));
+    document.location.reload();
   }
 
   function toggleDateTime(e) {
@@ -345,6 +370,7 @@
   if (!GM_getValue('defaultSecondsView')) GM_setValue('defaultSecondsView', false);
   if (!GM_getValue('defaultAMPM')) GM_setValue('defaultAMPM', false);
   if (!GM_getValue('dateFormat')) GM_setValue('dateFormat', 1);
+  if (!GM_getValue('themeChanger')) GM_setValue('themeChanger', false);
 
   buttonsContainer1.appendChild(cbNewTab); buttonsContainer1.appendChild(labNewTab); buttonsContainer1.appendChild(brNewTab);
   buttonsContainer1.appendChild(buttonCheckAll); buttonsContainer1.appendChild(buttonClearAll); buttonsContainer1.appendChild(brButton);
@@ -398,14 +424,18 @@
   addEventListener('resize', function() {onResize()});
   addEventListener('unload', function() {onClose()});
 
-  initInterval = setInterval( () => {
+  initInterval = setInterval(() => {
     let cb = $q('#buttonsContainer1 > .aCkbx', true),
         cb2 = $q('#buttonsContainer2 > .aCkbx', true),
         signIn = $q('a.gb_3.gb_4.gb_3d.gb_3c'),
         img = $c('img', {id: 'googImg'}),
         div = $q('body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ'),
         btns = $q('body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > div'),
-        form = $q('body > div.L3eUgb form');
+        form = $q('body > div.L3eUgb form'),
+        pop = $q('#dEjpnf'),
+        li = $c('li', {role: "none"}),
+        inp = $c('input', {id: 'inputThemer', type: 'checkbox', checked: GM_getValue('themeChanger'), onclick: function(e) {themeChanger(e)}}),
+        btn = $c('button', {id: 'buttonThemer', textContent: 'Change Theme Hourly', onclick: function(e) {themeChanger(e)}})
     try {
       for (let i = 0; i < cb.length; i++) if (!GM_getValue(cb[i].id)) GM_setValue(cb[i].id, false);
       for (let j = 0; j < cb2.length; j++) if (!GM_getValue(cb[j].id)) GM_setValue(cb[j].id, false);
@@ -416,14 +446,28 @@
       div.insertBefore(img, div.firstChild.nextSibling);
       div.insertBefore(form, div.lastChild);
       div.appendChild(btns);
+      li.appendChild(inp);
+      li.appendChild(btn);
+      pop.appendChild(li);
       onResize();
       if (dateTimeContainer) clearInterval(initInterval);
     } catch(ex) {}
   }, openInterval);
 
+  changeBg();
+
   GM_addStyle(''+
-    '#headerButtonsDiv {'+
-    '  margin-bottom: 20px !important;'+
+    '#inputThemer {'+
+    '  margin-left: 15px !important;'+
+    '  position: relative !important;'+
+    '  top: 2px !important;'+
+    '}'+
+    '#buttonThemer {'+
+    '  color: #999 !important;'+
+    '  margin-left: 6px !important;'+
+    '}'+
+    '#buttonThemer:hover {'+
+    '  color: #FFF !important;'+
     '}'+
     '#headerButtonsDiv > .gBtn {'+
     '  border-radius: 4px !important;'+
@@ -440,16 +484,17 @@
     '  position: absolute !important;'+
     '  top: 337px !important;'+
     '}'+
-    'div.ayzqOc > input, div.ayzqOc > button {'+
+    'div.ayzqOc > input, div.ayzqOc > button, div#buttonsContainer1 > button.gBtn, div#buttonsContainer2 > button.gBtn {'+
     ' background: linear-gradient(135deg, #070707, #333) !important;'+
     '}'+
     '#dEjpnf {'+
+    '  padding-bottom: 9px !important;'+
     '  text-align: left !important;'+
     '}'+
     'body > div.L3eUgb > div.o3j99.LLD4me.yr19Zb.LS8OJ > div > img.lnXdpd {'+
     '  display: none !important;'+
     '}'+
-    '#hpcta, #hpcanvas, #hplogocta, div.ddlsv-cta_, a.MV3Tnb, #gb > div > div:nth-child(1) > div, #gbqfbb, body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.ssOUyb, body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.AghGtd, body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > a, body > div.L3eUgb > div.o3j99.qarstb > div, body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ > div > div.SuUcIb, body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ > div > div:nth-child(2), #yDmH0d, #gb > div > div.gb_0a.gb_E.gb_k.gb_1a.gb_la > div.gb_Qf.gb_sb {'+
+    '#hplogo, #hpcta, #hpcanvas, #hplogocta, div.ddlsv-cta_, a.MV3Tnb, #gb > div > div:nth-child(1) > div, #gbqfbb, body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.ssOUyb, body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.AghGtd, body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > a, body > div.L3eUgb > div.o3j99.qarstb > div, body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ > div > div.SuUcIb, body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ > div > div:nth-child(2), #yDmH0d, #gb > div > div.gb_0a.gb_E.gb_k.gb_1a.gb_la > div.gb_Qf.gb_sb {'+
     '  display: none !important;'+
     '}'+
     'body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd > div > .gBtn {'+
@@ -655,7 +700,7 @@
     '}'+
     '#dEjpnf a.EzVRq, #dEjpnf button.EzVRq {'+
     '  color: #CCC !important;'+
-    '  padding: 11px !important;'+
+    '  padding: 9px !important;'+
     '  text-decoration: none !important;'+
     '}'+
     '#dEjpnf a.EzVRq:hover, #dEjpnf button.EzVRq:hover {'+

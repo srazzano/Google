@@ -16,9 +16,9 @@
 
   'use strict';
 
-  const openInterval = 0,
+  const openInterval = 20,
         timerLong = 10000,
-        timerShort = 250,
+        timerShort = 1000,
         themerInterval = 60000,
         elementSpacing = '8px',
         am = 'AM',
@@ -218,8 +218,8 @@
 
   function changeBg() {
     let bod = $q('body'),
-        ch = bod.clientHeight + 'px',
-        cw = bod.clientWidth + 'px';
+        ch = window.screen.height + 'px',
+        cw = window.screen.width + 'px';
     if (GM_getValue('themeChanger')) {
       let now = new Date(),
           hour = now.getHours();
@@ -231,9 +231,9 @@
       changeInterval = setInterval(() => changeBg(), themerInterval);
     } else {
       bod.style.background = "url("+ defaultBackgroundImage +")";
+      bod.style.backgroundSize = cw +"  "+ ch;
       clearInterval(changeInterval);
-    }
-  }
+  } }
 
   function themeChanger() {
     let bool = GM_getValue('themeChanger') !== true ? true : false,
@@ -344,7 +344,7 @@
   }
 
   function onResize() {
-    if (GM_getValue('themeChanger')) changeBg();
+    changeBg();
   }
 
   function setTimer() {
@@ -470,13 +470,11 @@
       li.appendChild(btn);
       li.appendChild(tn)
       pop.appendChild(li);
-      tn.value = GM_getValue('themeNumber')
+      tn.value = GM_getValue('themeNumber');
       onResize();
       if (dateTimeContainer) clearInterval(initInterval);
     } catch(ex) {}
   }, openInterval);
-
-  changeBg();
 
   GM_addStyle(''+
     '#buttonThemer {'+

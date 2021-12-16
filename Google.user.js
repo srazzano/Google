@@ -52,8 +52,8 @@
         daynum = DayNum.split(','),
         dayno = DayNo.split(','),
         dayord = DayOrd.split(','),
-        backgroundImage = "https://raw.githubusercontent.com/srazzano/Images/master/image",
-        backgroundImg = "https://raw.githubusercontent.com/srazzano/Images/master/image1.jpg",
+        themerBackgroundImage = "https://raw.githubusercontent.com/srazzano/Images/master/image",
+        defaultBackgroundImage = "https://raw.githubusercontent.com/srazzano/Images/master/image1.jpg",
         googleImage = 'https://raw.githubusercontent.com/srazzano/Images/master/googleImage5.png',
         imgCalendar = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABT0lEQVR42mNkAAKp9Iv/GYgELMxMYJqZmZHh/mQdRkZSNMPAfwZGMM0IYpFjADJANyCMkIaHocYgahVOA57O0Fv17x8Dw7//IH8ygB37H6qCEcj5s5c1DK8BD6fqrTp+5w9DRP81hsNNOgxyIkwMJ+/+ZQjrvcoANJywAQ+m6K16/O4fg5IYE4N0xiWGvXU6DM5NV8CSRBkA8sLbL/8Z9EouM2yq0GYwVmBmuPrkL4NbC5EueDRNb9XDNwgXPJ6ux3D9KQkG3Jqou+rcg7/gMPAwUmWYncrJcPPZXwaXZiINeDJdbxUjJJ0w/PzDwMDOwsDw+y+Ez8pMRCzcmqyyCpLaGKDpDRWwH+IP+/+TGayGkf0vA6Ncs+3/X39/E52QLh3+uwqZj24AQQA0AM4W23uakVGx1eH/998/SDYApJkB5k2JBguiMxTIAJhmEAAA4quznkbNVyMAAAAASUVORK5CYII=',
         imgChrome = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABlklEQVR42rWRPUiCYRDH/8/7RYqWOFRCS1/UbFC2GBWRU4RUBkVDQ7S1hVptlklBWIsgNDVEKtQmRkTY0OIbYW01BxZhgRmp2aNWYj2GBP3hOO6O+90dR8DQyrIzy8rbF2zke46UAySeE4jH4zTKokajgUqpYgNY08bGLfD79/D6msrHoijCbB5BwOcDE2CzW/EXOVdW/wlwPWBops5NzfSRClKbazk8u/kVQBv1hOflbCbDnEhroDU9Bck/ALTZkX7LLAocX8n2DgpZ/AKMHu/rH5IJWSGIqKJGCKkEovf1Dst5wLouih2PjDpJQhV9mcQLSHYYoOg3IZ1O4zFyDHJ7BJ4nEDjkvSQJCKjNhQ1c9Rdov8vAdXAFjShB693FfKgBsafCqNpqYNMcgzpqgShxIBzdkJorPFQE5LS1HUVblxEbjWtfzZ/KQTzdDlSnTvPNhOPgDJlKAUpOxIluHLORHubRvslzaO+Xim8MDpYCcrponcF0uJMNmLqENmb9HTDRZMTD5RTzBG+fG6qXw5+ASn5WTu9OGbH/eUCknAAAAABJRU5ErkJggg==',
@@ -226,11 +226,11 @@
       if (hour > 12) hour = hour - 12;
       else hour = hour;
       GM_setValue('themeNumber', hour);
-      bod.style.background = "url("+ backgroundImage + hour +".jpg)";
+      bod.style.background = "url("+ themerBackgroundImage + hour +".jpg)";
       bod.style.backgroundSize = cw +"  "+ ch;
       changeInterval = setInterval(() => changeBg(), themerInterval);
     } else {
-      bod.style.background = "url("+ backgroundImg +")";
+      bod.style.background = "url("+ defaultBackgroundImage +")";
       clearInterval(changeInterval);
     }
   }
@@ -238,22 +238,23 @@
   function themeChanger() {
     let bool = GM_getValue('themeChanger') !== true ? true : false,
         now = new Date(),
-        inp = $q('#themeNum');
+        inp = $q('#themeNum'),
+        btn = $q('#buttonThemer');
     GM_setValue('themeChanger', bool);
     if (bool) {
       let hour = now.getHours();
       if (hour > 12) hour = hour - 12;
       else hour = hour;
       GM_setValue('themeNumber', hour);
+      btn.textContext = 'Change theme hourly:  On';
       inp.value = hour;
     } else {
       GM_setValue('themeNumber', 1);
+      btn.textContext = 'Change theme hourly:  Off';
       inp.value = 1;
     }
     document.location.reload();
   }
-
-  //changeInterval = setInterval(() => changeBg(), themerInterval);
 
   function defaultDateTime() {
     dateTime.hidden = false;
@@ -452,8 +453,7 @@
         form = $q('body > div.L3eUgb form'),
         pop = $q('#dEjpnf'),
         li = $c('li', {role: "none"}),
-        inp = $c('input', {id: 'inputThemer', type: 'checkbox', checked: GM_getValue('themeChanger'), onclick: function() {themeChanger()}}),
-        btn = $c('button', {id: 'buttonThemer', textContent: 'Change Theme Hourly', onclick: function() {themeChanger()}}),
+        btn = $c('button', {id: 'buttonThemer', onclick: function() {themeChanger()}}),
         tn = $c('input', {id: 'themeNum', type: 'number', style: 'display: none;', onchange: function() {document.location.reload();}});
     try {
       for (let i = 0; i < cb.length; i++) if (!GM_getValue(cb[i].id)) GM_setValue(cb[i].id, false);
@@ -465,7 +465,8 @@
       div.insertBefore(img, div.firstChild.nextSibling);
       div.insertBefore(form, div.lastChild);
       div.appendChild(btns);
-      li.appendChild(inp);
+      if (GM_getValue('themeChanger')) btn.textContent = 'Change theme hourly:  On';
+      else btn.textContent = 'Change theme hourly:  Off';
       li.appendChild(btn);
       li.appendChild(tn)
       pop.appendChild(li);
@@ -478,15 +479,12 @@
   changeBg();
 
   GM_addStyle(''+
-    '#inputThemer {'+
-    '  margin-left: 15px !important;'+
-    '  position: relative !important;'+
-    '  top: 2px !important;'+
-    '}'+
     '#buttonThemer {'+
     '  color: #999 !important;'+
-    '  margin-left: 6px !important;'+
+    '  cursor: pointer !important;'+
+    '  margin-left: 15px !important;'+
     '}'+
+    '#YUIDDb > div:hover,'+
     '#buttonThemer:hover {'+
     '  color: #FFF !important;'+
     '}'+
@@ -509,7 +507,7 @@
     ' background: linear-gradient(135deg, #070707, #333) !important;'+
     '}'+
     '#dEjpnf {'+
-    '  padding-bottom: 9px !important;'+
+    '  padding-bottom: 10px !important;'+
     '  text-align: left !important;'+
     '}'+
     'body > div.L3eUgb > div.o3j99.LLD4me.yr19Zb.LS8OJ > div > img.lnXdpd {'+

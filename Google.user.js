@@ -19,6 +19,7 @@
   const openInterval = 0,
         timerLong = 10000,
         timerShort = 250,
+        themerInterval = 60000,
         elementSpacing = '8px',
         am = 'AM',
         pm = 'PM',
@@ -216,22 +217,43 @@
   } }
 
   function changeBg() {
-    var bod = $q('body'),
+    let bod = $q('body'),
         ch = bod.clientHeight + 'px',
         cw = bod.clientWidth + 'px';
-    bod.style.backgroundSize = cw +"  "+ ch;
     if (GM_getValue('themeChanger')) {
-      var now = new Date(),
+      let now = new Date(),
           hour = now.getHours();
       if (hour > 12) hour = hour - 12;
       else hour = hour;
+      GM_setValue('themeNumber', hour);
       bod.style.background = "url("+ backgroundImage + hour +".jpg)";
-      changeInterval = setInterval(() => changeBg(), 60000);
+      bod.style.backgroundSize = cw +"  "+ ch;
+      changeInterval = setInterval(() => changeBg(), themerInterval);
     } else {
-      clearInterval(changeInterval);
       bod.style.background = "url("+ backgroundImg +")";
+      clearInterval(changeInterval);
     }
   }
+
+  function themeChanger() {
+    let bool = GM_getValue('themeChanger') !== true ? true : false,
+        now = new Date(),
+        inp = $q('#themeNum');
+    GM_setValue('themeChanger', bool);
+    if (bool) {
+      let hour = now.getHours();
+      if (hour > 12) hour = hour - 12;
+      else hour = hour;
+      GM_setValue('themeNumber', hour);
+      inp.value = hour;
+    } else {
+      GM_setValue('themeNumber', 1);
+      inp.value = 1;
+    }
+    document.location.reload();
+  }
+
+  //changeInterval = setInterval(() => changeBg(), themerInterval);
 
   function defaultDateTime() {
     dateTime.hidden = false;
@@ -331,11 +353,6 @@
     else timer = setInterval(function() {dateTime.textContent = aDateTime(GM_getValue('dateFormat'))}, timerLong);
   }
 
-  function themeChanger(e) {
-    GM_setValue('themeChanger', !GM_getValue('themeChanger'));
-    document.location.reload();
-  }
-
   function toggleDateTime(e) {
     if (!e.button === 0) return;
     let bool;
@@ -371,6 +388,7 @@
   if (!GM_getValue('defaultAMPM')) GM_setValue('defaultAMPM', false);
   if (!GM_getValue('dateFormat')) GM_setValue('dateFormat', 1);
   if (!GM_getValue('themeChanger')) GM_setValue('themeChanger', false);
+  if (!GM_getValue('themeNumber')) GM_setValue('themeNumber', 1);
 
   buttonsContainer1.appendChild(cbNewTab); buttonsContainer1.appendChild(labNewTab); buttonsContainer1.appendChild(brNewTab);
   buttonsContainer1.appendChild(buttonCheckAll); buttonsContainer1.appendChild(buttonClearAll); buttonsContainer1.appendChild(brButton);
@@ -434,8 +452,9 @@
         form = $q('body > div.L3eUgb form'),
         pop = $q('#dEjpnf'),
         li = $c('li', {role: "none"}),
-        inp = $c('input', {id: 'inputThemer', type: 'checkbox', checked: GM_getValue('themeChanger'), onclick: function(e) {themeChanger(e)}}),
-        btn = $c('button', {id: 'buttonThemer', textContent: 'Change Theme Hourly', onclick: function(e) {themeChanger(e)}})
+        inp = $c('input', {id: 'inputThemer', type: 'checkbox', checked: GM_getValue('themeChanger'), onclick: function() {themeChanger()}}),
+        btn = $c('button', {id: 'buttonThemer', textContent: 'Change Theme Hourly', onclick: function() {themeChanger()}}),
+        tn = $c('input', {id: 'themeNum', type: 'number', style: 'display: none;', onchange: function() {document.location.reload();}});
     try {
       for (let i = 0; i < cb.length; i++) if (!GM_getValue(cb[i].id)) GM_setValue(cb[i].id, false);
       for (let j = 0; j < cb2.length; j++) if (!GM_getValue(cb[j].id)) GM_setValue(cb[j].id, false);
@@ -448,7 +467,9 @@
       div.appendChild(btns);
       li.appendChild(inp);
       li.appendChild(btn);
+      li.appendChild(tn)
       pop.appendChild(li);
+      tn.value = GM_getValue('themeNumber')
       onResize();
       if (dateTimeContainer) clearInterval(initInterval);
     } catch(ex) {}
@@ -622,6 +643,8 @@
     '  min-height: 140px !important;'+
     '  padding-left: 436px !important;'+
     '  pointer-events: none !important;'+
+    '  position: relative !important;'+
+    '  top: 9px !important;'+
     '  width: 0 !important;'+
     '}'+
     '.RNNXgb, #dateTime {'+
@@ -700,7 +723,7 @@
     '}'+
     '#dEjpnf a.EzVRq, #dEjpnf button.EzVRq {'+
     '  color: #CCC !important;'+
-    '  padding: 9px !important;'+
+    '  padding: 8px !important;'+
     '  text-decoration: none !important;'+
     '}'+
     '#dEjpnf a.EzVRq:hover, #dEjpnf button.EzVRq:hover {'+

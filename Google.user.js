@@ -636,11 +636,12 @@
     '}'+
     '#googImg {'+
     '  background: url('+ googleImage +') no-repeat !important;'+
+    '  margin-bottom: 20px !important;'+
     '  min-height: 140px !important;'+
     '  padding-left: 436px !important;'+
     '  pointer-events: none !important;'+
     '  position: relative !important;'+
-    '  top: 9px !important;'+
+    '  top: 20px !important;'+
     '  width: 0 !important;'+
     '}'+
     '.RNNXgb, #dateTime {'+

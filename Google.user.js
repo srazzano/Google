@@ -156,9 +156,7 @@
       dateTimeContainer = $c('div', {id: 'dateTimeContainer'}),
       btnClock = $c('button', {id: 'gClock', style: 'background-image: url('+ imgClock +')', title: hideShow, onmousedown: function(e) {toggleDateTime(e)}}),
       dateTime = $c('span', {id: 'dateTime', className: 'gBtn', onmousedown: function(e) {toggleSecondsAmPmFormat(e)}}),
-      changeInterval,
-      initInterval,
-      timer;
+      changeInterval, initInterval, timer;
 
   function $c(type, props) {
     let node = document.createElement(type);
@@ -212,8 +210,8 @@
       case 6: return w + space + bullet + space + m + slash + d + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
       case 7: return w + space + bullet + space + mm + slash + dd + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
       // Delete "customFormat + 210/customFormat + 211" text below and add return options with bullet, comma, hyphen, slash, space, star characters.
-      case 8: return customFormat + 211;
-      case 9: return customFormat + 212;
+      case 8: return customFormat + 213;
+      case 9: return customFormat + 214;
   } }
 
   function changeBg() {

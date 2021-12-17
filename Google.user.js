@@ -30,6 +30,7 @@
         slash = '/',
         space = ' ',
         star = '★',
+        changeThemeText = 'Change theme hourly:',
         customFormat = 'Add a custom format in script line ',
         hideShow = bullet + ' Left-click to Hide/Show Date/Time',
         addRemove = bullet + ' Left-click to Add/Remove :seconds\n' + bullet + ' Shift + Left-click to Add/Remove AM/PM\n' + bullet + ' Ctrl + Left-click to change Date format',
@@ -52,8 +53,10 @@
         daynum = DayNum.split(','),
         dayno = DayNo.split(','),
         dayord = DayOrd.split(','),
-        themerBackgroundImage = "https://raw.githubusercontent.com/srazzano/Images/master/image",
-        defaultBackgroundImage = "https://raw.githubusercontent.com/srazzano/Images/master/image1.jpg",
+        themerBackgroundImage = 'https://raw.githubusercontent.com/srazzano/Images/master/image',
+        defaultBackgroundImage = 'https://raw.githubusercontent.com/srazzano/Images/master/image1.jpg',
+        themeOff = 'https://raw.githubusercontent.com/srazzano/Images/master/bulbOff.png',
+        themeOn = 'https://raw.githubusercontent.com/srazzano/Images/master/bulbOn.png',
         googleImage = 'https://raw.githubusercontent.com/srazzano/Images/master/googleImage5.png',
         imgCalendar = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABT0lEQVR42mNkAAKp9Iv/GYgELMxMYJqZmZHh/mQdRkZSNMPAfwZGMM0IYpFjADJANyCMkIaHocYgahVOA57O0Fv17x8Dw7//IH8ygB37H6qCEcj5s5c1DK8BD6fqrTp+5w9DRP81hsNNOgxyIkwMJ+/+ZQjrvcoANJywAQ+m6K16/O4fg5IYE4N0xiWGvXU6DM5NV8CSRBkA8sLbL/8Z9EouM2yq0GYwVmBmuPrkL4NbC5EueDRNb9XDNwgXPJ6ux3D9KQkG3Jqou+rcg7/gMPAwUmWYncrJcPPZXwaXZiINeDJdbxUjJJ0w/PzDwMDOwsDw+y+Ez8pMRCzcmqyyCpLaGKDpDRWwH+IP+/+TGayGkf0vA6Ncs+3/X39/E52QLh3+uwqZj24AQQA0AM4W23uakVGx1eH/998/SDYApJkB5k2JBguiMxTIAJhmEAAA4quznkbNVyMAAAAASUVORK5CYII=',
         imgChrome = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABlklEQVR42rWRPUiCYRDH/8/7RYqWOFRCS1/UbFC2GBWRU4RUBkVDQ7S1hVptlklBWIsgNDVEKtQmRkTY0OIbYW01BxZhgRmp2aNWYj2GBP3hOO6O+90dR8DQyrIzy8rbF2zke46UAySeE4jH4zTKokajgUqpYgNY08bGLfD79/D6msrHoijCbB5BwOcDE2CzW/EXOVdW/wlwPWBops5NzfSRClKbazk8u/kVQBv1hOflbCbDnEhroDU9Bck/ALTZkX7LLAocX8n2DgpZ/AKMHu/rH5IJWSGIqKJGCKkEovf1Dst5wLouih2PjDpJQhV9mcQLSHYYoOg3IZ1O4zFyDHJ7BJ4nEDjkvSQJCKjNhQ1c9Rdov8vAdXAFjShB693FfKgBsafCqNpqYNMcgzpqgShxIBzdkJorPFQE5LS1HUVblxEbjWtfzZ/KQTzdDlSnTvPNhOPgDJlKAUpOxIluHLORHubRvslzaO+Xim8MDpYCcrponcF0uJMNmLqENmb9HTDRZMTD5RTzBG+fG6qXw5+ASn5WTu9OGbH/eUCknAAAAABJRU5ErkJggg==',
@@ -219,21 +222,24 @@
         now = new Date(),
         hour = now.getHours(),
         btn = $q('#buttonThemer'),
-        inp = $q('#themeNum');
+        inp = $q('#themeNum'),
+        ti = $q('#themeImage');
     if (GM_getValue('themeChanger')) {
       if (hour > 12) hour = hour - 12;
       else if (hour === 0) hour = 12;
       else hour = hour;
       GM_setValue('themeNumber', hour);
       bod.style.background = "url("+ themerBackgroundImage + hour +".jpg) center center / cover no-repeat";
-      btn.innerHTML = 'Change theme hourly:  On';
+      btn.innerHTML = changeThemeText + '  On';
       inp.value = hour;
+      ti.src = themeOn;
       changeInterval = setInterval(() => changeBg(), themerInterval);
     } else {
       GM_setValue('themeNumber', 1);
       bod.style.background = "url("+ defaultBackgroundImage +") center center / cover no-repeat";
-      btn.innerHTML = 'Change theme hourly:  Off';
+      btn.innerHTML = changeThemeText + '  Off';
       inp.value = 1;
+      ti.src = themeOff;
       clearInterval(changeInterval);
   } }
 
@@ -441,6 +447,7 @@
         pop = $q('#dEjpnf'),
         li = $c('li', {role: "none"}),
         btn = $c('button', {id: 'buttonThemer', onclick: function() {themeChanger()}}),
+        ti = $c('img', {id: 'themeImage'}),
         tn = $c('input', {id: 'themeNum', type: 'number', style: 'display: none;', onchange: function() {document.location.reload();}});
     try {
       for (let i = 0; i < cb.length; i++) if (!GM_getValue(cb[i].id)) GM_setValue(cb[i].id, false);
@@ -452,10 +459,16 @@
       div.insertBefore(img, div.firstChild.nextSibling);
       div.insertBefore(form, div.lastChild);
       div.appendChild(btns);
-      if (GM_getValue('themeChanger')) btn.textContent = 'Change theme hourly:  On';
-      else btn.textContent = 'Change theme hourly:  Off';
+      if (GM_getValue('themeChanger')) {
+        btn.textContent = 'Change theme hourly:  On';
+        ti.src = themeOn;
+      } else {
+        btn.textContent = 'Change theme hourly:  Off';
+        ti.src = themeOff;
+      }
       li.appendChild(btn);
-      li.appendChild(tn)
+      li.appendChild(ti);
+      li.appendChild(tn);
       pop.appendChild(li);
       tn.value = GM_getValue('themeNumber');
       onResize();
@@ -464,10 +477,20 @@
   }, openInterval);
 
   GM_addStyle(''+
+    '#themeImage {'+
+    '  display: inline-block !important;'+
+    '  height: 16px !important;'+
+    '  margin: 0 9px 0 16px !important;'+
+    '  opacity: 0 !important;'+
+    '  width: 16px !important;'+
+    '}'+
     '#buttonThemer {'+
     '  color: #999 !important;'+
     '  cursor: pointer !important;'+
     '  margin-left: 15px !important;'+
+    '}'+
+    '#buttonThemer:hover + #themeImage {'+
+    '  opacity: 1 !important;'+
     '}'+
     '#YUIDDb > div:hover,'+
     '#buttonThemer:hover {'+

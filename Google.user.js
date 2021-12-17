@@ -17,9 +17,9 @@
   'use strict';
 
   const openInterval = 20,
+        themerInterval = 60000,
         timerLong = 10000,
         timerShort = 1000,
-        themerInterval = 60000,
         elementSpacing = '8px',
         am = 'AM',
         pm = 'PM',
@@ -217,16 +217,23 @@
   function changeBg() {
     let bod = $q('body'),
         now = new Date(),
-        hour = now.getHours();
+        hour = now.getHours(),
+        btn = $q('#buttonThemer'),
+        inp = $q('#themeNum');
     if (GM_getValue('themeChanger')) {
       if (hour > 12) hour = hour - 12;
       else if (hour === 0) hour = 12;
       else hour = hour;
       GM_setValue('themeNumber', hour);
       bod.style.background = "url("+ themerBackgroundImage + hour +".jpg) center center / cover no-repeat";
+      btn.innerHTML = 'Change theme hourly:  On';
+      inp.value = hour;
       changeInterval = setInterval(() => changeBg(), themerInterval);
     } else {
+      GM_setValue('themeNumber', 1);
       bod.style.background = "url("+ defaultBackgroundImage +") center center / cover no-repeat";
+      btn.innerHTML = 'Change theme hourly:  Off';
+      inp.value = 1;
       clearInterval(changeInterval);
   } }
 
@@ -329,24 +336,9 @@
   }
 
   function themeChanger() {
-    let bool = GM_getValue('themeChanger') !== true ? true : false,
-        now = new Date(),
-        inp = $q('#themeNum'),
-        btn = $q('#buttonThemer');
+    let bool = GM_getValue('themeChanger') !== true ? true : false;
     GM_setValue('themeChanger', bool);
-    if (bool) {
-      let hour = now.getHours();
-      if (hour > 12) hour = hour - 12;
-      else hour = hour;
-      GM_setValue('themeNumber', hour);
-      btn.textContext = 'Change theme hourly:  On';
-      inp.value = hour;
-    } else {
-      GM_setValue('themeNumber', 1);
-      btn.textContext = 'Change theme hourly:  Off';
-      inp.value = 1;
-    }
-    document.location.reload();
+    changeBg();
   }
 
   function toggleDateTime(e) {

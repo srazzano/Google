@@ -218,44 +218,19 @@
 
   function changeBg() {
     let bod = $q('body'),
-        ch = window.screen.height + 'px',
-        cw = window.screen.width + 'px';
+        now = new Date(),
+        hour = now.getHours();
     if (GM_getValue('themeChanger')) {
-      let now = new Date(),
-          hour = now.getHours();
       if (hour > 12) hour = hour - 12;
       else if (hour === 0) hour = 12;
       else hour = hour;
       GM_setValue('themeNumber', hour);
-      bod.style.background = "url("+ themerBackgroundImage + hour +".jpg)";
-      bod.style.backgroundSize = cw +"  "+ ch;
+      bod.style.background = "url("+ themerBackgroundImage + hour +".jpg) center center / cover no-repeat";
       changeInterval = setInterval(() => changeBg(), themerInterval);
     } else {
-      bod.style.background = "url("+ defaultBackgroundImage +")";
-      bod.style.backgroundSize = cw +"  "+ ch;
+      bod.style.background = "url("+ defaultBackgroundImage +") center center / cover no-repeat";
       clearInterval(changeInterval);
   } }
-
-  function themeChanger() {
-    let bool = GM_getValue('themeChanger') !== true ? true : false,
-        now = new Date(),
-        inp = $q('#themeNum'),
-        btn = $q('#buttonThemer');
-    GM_setValue('themeChanger', bool);
-    if (bool) {
-      let hour = now.getHours();
-      if (hour > 12) hour = hour - 12;
-      else hour = hour;
-      GM_setValue('themeNumber', hour);
-      btn.textContext = 'Change theme hourly:  On';
-      inp.value = hour;
-    } else {
-      GM_setValue('themeNumber', 1);
-      btn.textContext = 'Change theme hourly:  Off';
-      inp.value = 1;
-    }
-    document.location.reload();
-  }
 
   function defaultDateTime() {
     dateTime.hidden = false;
@@ -353,6 +328,27 @@
     if (!GM_getValue('defaultDateTimeView')) return;
     if (GM_getValue('defaultSecondsView')) timer = setInterval(function() {dateTime.textContent = aDateTime(GM_getValue('dateFormat'))}, timerShort);
     else timer = setInterval(function() {dateTime.textContent = aDateTime(GM_getValue('dateFormat'))}, timerLong);
+  }
+
+  function themeChanger() {
+    let bool = GM_getValue('themeChanger') !== true ? true : false,
+        now = new Date(),
+        inp = $q('#themeNum'),
+        btn = $q('#buttonThemer');
+    GM_setValue('themeChanger', bool);
+    if (bool) {
+      let hour = now.getHours();
+      if (hour > 12) hour = hour - 12;
+      else hour = hour;
+      GM_setValue('themeNumber', hour);
+      btn.textContext = 'Change theme hourly:  On';
+      inp.value = hour;
+    } else {
+      GM_setValue('themeNumber', 1);
+      btn.textContext = 'Change theme hourly:  Off';
+      inp.value = 1;
+    }
+    document.location.reload();
   }
 
   function toggleDateTime(e) {

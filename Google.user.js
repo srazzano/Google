@@ -224,6 +224,7 @@
       let now = new Date(),
           hour = now.getHours();
       if (hour > 12) hour = hour - 12;
+      else if (hour === 0) hour = 12;
       else hour = hour;
       GM_setValue('themeNumber', hour);
       bod.style.background = "url("+ themerBackgroundImage + hour +".jpg)";

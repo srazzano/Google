@@ -93,72 +93,72 @@
       searchButton = $q('body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.FPdoLc.lJ9FBc > center > input.gNO89b'),
       settingsButton = $q('#Mses6b'),
       where = GM_getValue('aNewTab') ? '_blank' : '_self',
-      btnCalendar = $c('button', {id: 'gCalendar', className: 'gBtn', textContent: 'Calendar', title: urlCalendar, style: 'background: url('+ imgCalendar +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: function() {window.open(urlCalendar, where)}}),
-      btnChrome = $c('button', {id: 'gChrome', className: 'gBtn', textContent: 'Chrome Store', title: urlChrome, style: 'background: url('+ imgChrome +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: function() {window.open(urlChrome, where)}}),
-      btnEarth = $c('button', {id: 'gEarth', className: 'gBtn', textContent: 'Earth', title: urlEarth, style: 'background: url('+ imgEarth +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: function() {window.open(urlEarth, where)}}),
-      btnMail = $c('button', {id: 'gMail', className: 'gBtn', textContent: 'GMail', title: urlMail, style: 'background: url('+ imgMail +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: function() {window.open(urlMail, where)}}),
-      btnMaps = $c('button', {id: 'gMaps', className: 'gBtn', textContent: 'GMaps', title: urlMaps, style: 'background: url('+ imgMaps +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: function() {window.open(urlMaps, where)}}),
-      btnMSEdge = $c('button', {id: 'gMSEdge', className: 'gBtn', textContent: 'MS Store', title: urlMSEdge, style: 'background: url('+ imgMSEdge +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: function() {window.open(urlMSEdge, where)}}),
-      btnNews = $c('button', {id: 'gNews', className: 'gBtn', textContent: 'News', title: urlNews, style: 'background: url('+ imgNews +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: function() {window.open(urlNews, where)}}),
-      btnPhotos = $c('button', {id: 'gPhotos', className: 'gBtn', textContent: 'Photos', title: urlPhotos, style: 'background: url('+ imgPhotos +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: function() {window.open(urlPhotos, where)}}),
-      btnPlay = $c('button', {id: 'gPlay', className: 'gBtn', textContent: 'Play Store', title: urlPlay, style: 'background: url('+ imgPlay +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: function() {window.open(urlPlay, where)}}),
-      btnPodcasts = $c('button', {id: 'gPodcasts', className: 'gBtn', textContent: 'Podcasts', title: urlPodcasts, style: 'background: url('+ imgPodcasts +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: function() {window.open(urlPodcasts, where)}}),
-      btnTranslate = $c('button', {id: 'gTranslate', className: 'gBtn', textContent: 'Translate', title: urlTranslate, style: 'background: url('+ imgTranslate +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: function() {window.open(urlTranslate, where)}}),
-      btnYouTube = $c('button', {id: 'gYouTube', className: 'gBtn', textContent: 'YouTube', title: urlYouTube, style: 'background: url('+ imgYouTube +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: function() {window.open(urlYouTube, where)}}),
-      btnYouTubeTV = $c('button', {id: 'gYouTubeTV', className: 'gBtn', textContent: 'YouTube TV', title: urlYouTubeTV, style: 'background: url('+ imgYouTubeTV +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: function() {window.open(urlYouTubeTV, where)}}),
-      headerButton = $c('button', {id: 'headerButton', className: 'gBtn', textContent: 'Header Buttons', onclick: function(e) {onButton(e)}}),
+      btnCalendar = $c('button', {id: 'gCalendar', className: 'gBtn', textContent: 'Calendar', title: urlCalendar, style: 'background: url('+ imgCalendar +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: () => window.open(urlCalendar, where)}),
+      btnChrome = $c('button', {id: 'gChrome', className: 'gBtn', textContent: 'Chrome Store', title: urlChrome, style: 'background: url('+ imgChrome +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: () => window.open(urlChrome, where)}),
+      btnEarth = $c('button', {id: 'gEarth', className: 'gBtn', textContent: 'Earth', title: urlEarth, style: 'background: url('+ imgEarth +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: () => window.open(urlEarth, where)}),
+      btnMail = $c('button', {id: 'gMail', className: 'gBtn', textContent: 'GMail', title: urlMail, style: 'background: url('+ imgMail +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: () => window.open(urlMail, where)}),
+      btnMaps = $c('button', {id: 'gMaps', className: 'gBtn', textContent: 'GMaps', title: urlMaps, style: 'background: url('+ imgMaps +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: () => window.open(urlMaps, where)}),
+      btnMSEdge = $c('button', {id: 'gMSEdge', className: 'gBtn', textContent: 'MS Store', title: urlMSEdge, style: 'background: url('+ imgMSEdge +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: () => window.open(urlMSEdge, where)}),
+      btnNews = $c('button', {id: 'gNews', className: 'gBtn', textContent: 'News', title: urlNews, style: 'background: url('+ imgNews +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: () => window.open(urlNews, where)}),
+      btnPhotos = $c('button', {id: 'gPhotos', className: 'gBtn', textContent: 'Photos', title: urlPhotos, style: 'background: url('+ imgPhotos +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: () => window.open(urlPhotos, where)}),
+      btnPlay = $c('button', {id: 'gPlay', className: 'gBtn', textContent: 'Play Store', title: urlPlay, style: 'background: url('+ imgPlay +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: () => window.open(urlPlay, where)}),
+      btnPodcasts = $c('button', {id: 'gPodcasts', className: 'gBtn', textContent: 'Podcasts', title: urlPodcasts, style: 'background: url('+ imgPodcasts +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: () => window.open(urlPodcasts, where)}),
+      btnTranslate = $c('button', {id: 'gTranslate', className: 'gBtn', textContent: 'Translate', title: urlTranslate, style: 'background: url('+ imgTranslate +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: () => window.open(urlTranslate, where)}),
+      btnYouTube = $c('button', {id: 'gYouTube', className: 'gBtn', textContent: 'YouTube', title: urlYouTube, style: 'background: url('+ imgYouTube +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: () => window.open(urlYouTube, where)}),
+      btnYouTubeTV = $c('button', {id: 'gYouTubeTV', className: 'gBtn', textContent: 'YouTube TV', title: urlYouTubeTV, style: 'background: url('+ imgYouTubeTV +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: () => window.open(urlYouTubeTV, where)}),
+      headerButton = $c('button', {id: 'headerButton', className: 'gBtn', textContent: 'Header Buttons', onclick: e => onButton(e)}),
       buttonsContainer1 = $c('div', {id: 'buttonsContainer1', hidden: true}),
       buttonsContainer2 = $c('div', {id: 'buttonsContainer2', hidden: true}),
-      cbNewTab = $c('input', {id: 'aNewTab', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aNewTab"), onclick: function(e) {onCheckbox(e)}}),
-      labNewTab = $c('button', {for: 'aNewTab', className: 'aBtn', textContent: 'Open In New Tabs', onclick: function(e) {onButton(e)}}),
+      cbNewTab = $c('input', {id: 'aNewTab', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aNewTab"), onclick: e => onCheckbox(e)}),
+      labNewTab = $c('button', {for: 'aNewTab', className: 'aBtn', textContent: 'Open In New Tabs', onclick: e => onButton(e)}),
       brNewTab = $c('br'),
-      buttonCheckAll = $c('button', {id: 'buttonCheckAll', className: 'gBtn', textContent: 'Check All', onclick: function(e) {onButton(e)}}),
-      buttonClearAll = $c('button', {id: 'buttonClearAll', className: 'gBtn', textContent: 'Clear All', onclick: function(e) {onButton(e)}}),
+      buttonCheckAll = $c('button', {id: 'buttonCheckAll', className: 'gBtn', textContent: 'Check All', onclick: e => onButton(e)}),
+      buttonClearAll = $c('button', {id: 'buttonClearAll', className: 'gBtn', textContent: 'Clear All', onclick: e => onButton(e)}),
       brButton = $c('br'),
-      cbCalendar = $c('input', {id: 'aCalendar', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aCalendar"), onclick: function(e) {onCheckbox(e)}}),
-      labCalendar = $c('button', {for: 'aCalendar', className: 'aBtn', textContent: 'Calendar', style: 'background: url('+ imgCalendar +') no-repeat right', onclick: function(e) {onButton(e)}}),
+      cbCalendar = $c('input', {id: 'aCalendar', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aCalendar"), onclick: e => onCheckbox(e)}),
+      labCalendar = $c('button', {for: 'aCalendar', className: 'aBtn', textContent: 'Calendar', style: 'background: url('+ imgCalendar +') no-repeat right', onclick: e => onButton(e)}),
       brCalendar = $c('br'),
-      cbChrome = $c('input', {id: 'aChrome', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aChrome"), onclick: function(e) {onCheckbox(e)}}),
-      labChrome = $c('button', {for: 'aChrome', className: 'aBtn', textContent: 'Chrome Store', style: 'background: url('+ imgChrome +') no-repeat right', onclick: function(e) {onButton(e)}}),
+      cbChrome = $c('input', {id: 'aChrome', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aChrome"), onclick: e => onCheckbox(e)}),
+      labChrome = $c('button', {for: 'aChrome', className: 'aBtn', textContent: 'Chrome Store', style: 'background: url('+ imgChrome +') no-repeat right', onclick: e => onButton(e)}),
       brChrome = $c('br'),
-      cbEarth = $c('input', {id: 'aEarth', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aEarth"), onclick: function(e) {onCheckbox(e)}}),
-      labEarth = $c('button', {for: 'aEarth', className: 'aBtn', textContent: 'Earth', style: 'background: url('+ imgEarth +') no-repeat right', onclick: function(e) {onButton(e)}}),
+      cbEarth = $c('input', {id: 'aEarth', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aEarth"), onclick: e => onCheckbox(e)}),
+      labEarth = $c('button', {for: 'aEarth', className: 'aBtn', textContent: 'Earth', style: 'background: url('+ imgEarth +') no-repeat right', onclick: e => onButton(e)}),
       brEarth = $c('br'),
-      cbMail = $c('input', {id: 'aMail', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aMail"), onclick: function(e) {onCheckbox(e)}}),
-      labMail = $c('button', {for: 'aMail', className: 'aBtn', textContent: 'GMail', style: 'background: url('+ imgMail +') no-repeat right', onclick: function(e) {onButton(e)}}),
+      cbMail = $c('input', {id: 'aMail', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aMail"), onclick: e => onCheckbox(e)}),
+      labMail = $c('button', {for: 'aMail', className: 'aBtn', textContent: 'GMail', style: 'background: url('+ imgMail +') no-repeat right', onclick: e => onButton(e)}),
       brMail = $c('br'),
-      cbMaps = $c('input', {id: 'aMaps', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aMaps"), onclick: function(e) {onCheckbox(e)}}),
-      labMaps = $c('button', {for: 'aMaps', className: 'aBtn', textContent: 'GMaps', style: 'background: url('+ imgMaps +') no-repeat right', onclick: function(e) {onButton(e)}}),
+      cbMaps = $c('input', {id: 'aMaps', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aMaps"), onclick: e => onCheckbox(e)}),
+      labMaps = $c('button', {for: 'aMaps', className: 'aBtn', textContent: 'GMaps', style: 'background: url('+ imgMaps +') no-repeat right', onclick: e => onButton(e)}),
       brMaps = $c('br'),
-      cbMSEdge = $c('input', {id: 'aMSEdge', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aMSEdge"), onclick: function(e) {onCheckbox(e)}}),
-      labMSEdge = $c('button', {for: 'aMSEdge', className: 'aBtn', textContent: 'MS Store', style: 'background: url('+ imgMSEdge +') no-repeat right', onclick: function(e) {onButton(e)}}),
+      cbMSEdge = $c('input', {id: 'aMSEdge', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aMSEdge"), onclick: e => onCheckbox(e)}),
+      labMSEdge = $c('button', {for: 'aMSEdge', className: 'aBtn', textContent: 'MS Store', style: 'background: url('+ imgMSEdge +') no-repeat right', onclick: e => onButton(e)}),
       brMSEdge = $c('br'),
-      cbNews = $c('input', {id: 'aNews', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aNews"), onclick: function(e) {onCheckbox(e)}}),
-      labNews = $c('button', {for: 'aNews', className: 'aBtn', textContent: 'News', style: 'background: url('+ imgNews +') no-repeat right', onclick: function(e) {onButton(e)}}),
+      cbNews = $c('input', {id: 'aNews', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aNews"), onclick: e => onCheckbox(e)}),
+      labNews = $c('button', {for: 'aNews', className: 'aBtn', textContent: 'News', style: 'background: url('+ imgNews +') no-repeat right', onclick: e => onButton(e)}),
       brNews = $c('br'),
-      cbPhotos = $c('input', {id: 'aPhotos', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aPhotos"), onclick: function(e) {onCheckbox(e)}}),
-      labPhotos = $c('button', {for: 'aPhotos', className: 'aBtn', textContent: 'Photos', style: 'background: url('+ imgPhotos +') no-repeat right', onclick: function(e) {onButton(e)}}),
+      cbPhotos = $c('input', {id: 'aPhotos', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aPhotos"), onclick: e => onCheckbox(e)}),
+      labPhotos = $c('button', {for: 'aPhotos', className: 'aBtn', textContent: 'Photos', style: 'background: url('+ imgPhotos +') no-repeat right', onclick: e => onButton(e)}),
       brPhotos = $c('br'),
-      cbPlay = $c('input', {id: 'aPlay', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aPlay"), onclick: function(e) {onCheckbox(e)}}),
-      labPlay = $c('button', {for: 'aPlay', className: 'aBtn', textContent: 'Play Store', style: 'background: url('+ imgPlay +') no-repeat right', onclick: function(e) {onButton(e)}}),
+      cbPlay = $c('input', {id: 'aPlay', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aPlay"), onclick: e => onCheckbox(e)}),
+      labPlay = $c('button', {for: 'aPlay', className: 'aBtn', textContent: 'Play Store', style: 'background: url('+ imgPlay +') no-repeat right', onclick: e => onButton(e)}),
       brPlay = $c('br'),
-      cbPodcasts = $c('input', {id: 'aPodcasts', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aPodcasts"), onclick: function(e) {onCheckbox(e)}}),
-      labPodcasts = $c('button', {for: 'aPodcasts', className: 'aBtn', textContent: 'Podcasts', style: 'background: url('+ imgPodcasts +') no-repeat right', onclick: function(e) {onButton(e)}}),
+      cbPodcasts = $c('input', {id: 'aPodcasts', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aPodcasts"), onclick: e => onCheckbox(e)}),
+      labPodcasts = $c('button', {for: 'aPodcasts', className: 'aBtn', textContent: 'Podcasts', style: 'background: url('+ imgPodcasts +') no-repeat right', onclick: e => onButton(e)}),
       brPodcasts = $c('br'),
-      cbTranslate = $c('input', {id: 'aTranslate', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aTranslate"), onclick: function(e) {onCheckbox(e)}}),
-      labTranslate = $c('button', {for: 'aTranslate', className: 'aBtn', textContent: 'Translate', style: 'background: url('+ imgTranslate +') no-repeat right', onclick: function(e) {onButton(e)}}),
+      cbTranslate = $c('input', {id: 'aTranslate', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aTranslate"), onclick: e => onCheckbox(e)}),
+      labTranslate = $c('button', {for: 'aTranslate', className: 'aBtn', textContent: 'Translate', style: 'background: url('+ imgTranslate +') no-repeat right', onclick: e => onButton(e)}),
       brTranslate = $c('br'),
-      cbYouTube = $c('input', {id: 'aYouTube', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aYouTube"), onclick: function(e) {onCheckbox(e)}}),
-      labYouTube = $c('button', {for: 'aYouTube', className: 'aBtn', textContent: 'YouTube', style: 'background: url('+ imgYouTube +') no-repeat right', onclick: function(e) {onButton(e)}}),
+      cbYouTube = $c('input', {id: 'aYouTube', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aYouTube"), onclick: e => onCheckbox(e)}),
+      labYouTube = $c('button', {for: 'aYouTube', className: 'aBtn', textContent: 'YouTube', style: 'background: url('+ imgYouTube +') no-repeat right', onclick: e => onButton(e)}),
       brYouTube = $c('br'),
-      cbYouTubeTV = $c('input', {id: 'aYouTubeTV', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aYouTubeTV"), onclick: function(e) {onCheckbox(e)}}),
-      labYouTubeTV = $c('button', {for: 'aYouTubeTV', className: 'aBtn', textContent: 'YouTubeTV', style: 'background: url('+ imgYouTubeTV +') no-repeat right', onclick: function(e) {onButton(e)}}),
+      cbYouTubeTV = $c('input', {id: 'aYouTubeTV', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aYouTubeTV"), onclick: e => onCheckbox(e)}),
+      labYouTubeTV = $c('button', {for: 'aYouTubeTV', className: 'aBtn', textContent: 'YouTubeTV', style: 'background: url('+ imgYouTubeTV +') no-repeat right', onclick: e => onButton(e)}),
       brYouTubeTV = $c('br'),
-      buttonReload = $c('button', {id: 'buttonReload', className: 'gBtn', textContent: 'Reload Page', title: reloadTooltip, onclick: function() {onReload()}}),
-      buttonClose = $c('button', {id: 'buttonClose', className: 'gBtn', textContent: 'Close', onclick: function() {$q("#buttonsContainer1").hidden = true; $q("#buttonsContainer2").hidden = true}}),
+      buttonReload = $c('button', {id: 'buttonReload', className: 'gBtn', textContent: 'Reload Page', title: reloadTooltip, onclick: e => onReload()}),
+      buttonClose = $c('button', {id: 'buttonClose', className: 'gBtn', textContent: 'Close', onclick: () => {$q("#buttonsContainer1").hidden = true; $q("#buttonsContainer2").hidden = true}}),
       dateTimeContainer = $c('div', {id: 'dateTimeContainer'}),
-      btnClock = $c('button', {id: 'gClock', style: 'background-image: url('+ imgClock +')', title: hideShow, onmousedown: function(e) {toggleDateTime(e)}}),
-      dateTime = $c('span', {id: 'dateTime', className: 'gBtn', onmousedown: function(e) {toggleSecondsAmPmFormat(e)}}),
+      btnClock = $c('button', {id: 'gClock', style: 'background-image: url('+ imgClock +')', title: hideShow, onmousedown: e => toggleDateTime(e)}),
+      dateTime = $c('span', {id: 'dateTime', className: 'gBtn', onmousedown: e => toggleSecondsAmPmFormat(e)}),
       changeInterval, initInterval, timer;
 
   function $c(type, props) {
@@ -316,8 +316,8 @@
   }
 
   function onClose() {
-    removeEventListener('resize', function() {onResize()});
-    removeEventListener('unload', function() {onClose()});
+    removeEventListener('resize', () => onResize());
+    removeEventListener('unload', () => onClose());
     clearInterval(timer);
   }
 
@@ -401,8 +401,8 @@
 
   headerButton.appendChild(buttonsContainer1);
   headerButton.appendChild(buttonsContainer2);
-  searchButton.onmouseup = function(e) {onButton(e)};
-  settingsButton.onmousedown = function(e) {onButton(e)};
+  searchButton.onmouseup = e => onButton(e);
+  settingsButton.onmousedown = e => onButton(e);
   searchButton.id = 'gSearch';
 
   if (GM_getValue('aCalendar')) div0.appendChild(btnCalendar);
@@ -430,8 +430,8 @@
   div3.appendChild(buttonsContainer1);
   div3.appendChild(buttonsContainer2);
 
-  addEventListener('resize', function() {onResize()});
-  addEventListener('unload', function() {onClose()});
+  addEventListener('resize', () => onResize());
+  addEventListener('unload', () => onClose());
 
   initInterval = setInterval(() => {
     let cb = $q('#buttonsContainer1 > .aCkbx', true),
@@ -443,7 +443,7 @@
         form = $q('body > div.L3eUgb form'),
         pop = $q('#dEjpnf'),
         li = $c('li', {role: "none"}),
-        btn = $c('button', {id: 'buttonThemer', onclick: function() {themeChanger()}}),
+        btn = $c('button', {id: 'buttonThemer', onclick: () => themeChanger()}),
         ti = $c('img', {id: 'themeImage'});
     try {
       for (let i = 0; i < cb.length; i++) if (!GM_getValue(cb[i].id)) GM_setValue(cb[i].id, false);

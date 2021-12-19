@@ -35,7 +35,6 @@
         customFormat = 'Add a custom format in script line ',
         hideShow = bullet + ' Left-click to Hide/Show Date/Time',
         addRemove = bullet + ' Left-click to Add/Remove :seconds\n' + bullet + ' Shift + Left-click to Add/Remove AM/PM\n' + bullet + ' Ctrl + Left-click to change Date format',
-        reloadTooltip = 'Reload page for changes to take effect',
         DayNameAbbr = 'Sun.,Mon.,Tue.,Wed.,Thu.,Fri.,Sat.',
         DayName = 'Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday',
         MonthNameAbbr = 'Jan.,Feb.,Mar.,Apr.,May,Jun.,Jul.,Aug.,Sep.,Oct.,Nov.,Dec.',
@@ -92,25 +91,25 @@
       div3 = $q('body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > div'),
       searchButton = $q('body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.FPdoLc.lJ9FBc > center > input.gNO89b'),
       settingsButton = $q('#Mses6b'),
-      where = GM_getValue('aNewTab') ? '_blank' : '_self',
-      btnCalendar = $c('button', {id: 'gCalendar', className: 'gBtn', textContent: 'Calendar', title: urlCalendar, style: 'background: url('+ imgCalendar +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: () => window.open(urlCalendar, where)}),
-      btnChrome = $c('button', {id: 'gChrome', className: 'gBtn', textContent: 'Chrome Store', title: urlChrome, style: 'background: url('+ imgChrome +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: () => window.open(urlChrome, where)}),
-      btnEarth = $c('button', {id: 'gEarth', className: 'gBtn', textContent: 'Earth', title: urlEarth, style: 'background: url('+ imgEarth +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: () => window.open(urlEarth, where)}),
-      btnMail = $c('button', {id: 'gMail', className: 'gBtn', textContent: 'GMail', title: urlMail, style: 'background: url('+ imgMail +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: () => window.open(urlMail, where)}),
-      btnMaps = $c('button', {id: 'gMaps', className: 'gBtn', textContent: 'GMaps', title: urlMaps, style: 'background: url('+ imgMaps +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: () => window.open(urlMaps, where)}),
-      btnMSEdge = $c('button', {id: 'gMSEdge', className: 'gBtn', textContent: 'MS Store', title: urlMSEdge, style: 'background: url('+ imgMSEdge +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: () => window.open(urlMSEdge, where)}),
-      btnNews = $c('button', {id: 'gNews', className: 'gBtn', textContent: 'News', title: urlNews, style: 'background: url('+ imgNews +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: () => window.open(urlNews, where)}),
-      btnPhotos = $c('button', {id: 'gPhotos', className: 'gBtn', textContent: 'Photos', title: urlPhotos, style: 'background: url('+ imgPhotos +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: () => window.open(urlPhotos, where)}),
-      btnPlay = $c('button', {id: 'gPlay', className: 'gBtn', textContent: 'Play Store', title: urlPlay, style: 'background: url('+ imgPlay +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: () => window.open(urlPlay, where)}),
-      btnPodcasts = $c('button', {id: 'gPodcasts', className: 'gBtn', textContent: 'Podcasts', title: urlPodcasts, style: 'background: url('+ imgPodcasts +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: () => window.open(urlPodcasts, where)}),
-      btnTranslate = $c('button', {id: 'gTranslate', className: 'gBtn', textContent: 'Translate', title: urlTranslate, style: 'background: url('+ imgTranslate +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: () => window.open(urlTranslate, where)}),
-      btnYouTube = $c('button', {id: 'gYouTube', className: 'gBtn', textContent: 'YouTube', title: urlYouTube, style: 'background: url('+ imgYouTube +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: () => window.open(urlYouTube, where)}),
-      btnYouTubeTV = $c('button', {id: 'gYouTubeTV', className: 'gBtn', textContent: 'YouTube TV', title: urlYouTubeTV, style: 'background: url('+ imgYouTubeTV +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: () => window.open(urlYouTubeTV, where)}),
+      //where = GM_getValue('aNewTab') ? '_blank' : '_self',
+      btnCalendar = $c('button', {id: 'gCalendar', className: 'gBtn', textContent: 'Calendar', title: urlCalendar, style: 'background: url('+ imgCalendar +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: () => window.open(urlCalendar, GM_getValue('tabWhere'))}),
+      btnChrome = $c('button', {id: 'gChrome', className: 'gBtn', textContent: 'Chrome Store', title: urlChrome, style: 'background: url('+ imgChrome +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: () => window.open(urlChrome, GM_getValue('tabWhere'))}),
+      btnEarth = $c('button', {id: 'gEarth', className: 'gBtn', textContent: 'Earth', title: urlEarth, style: 'background: url('+ imgEarth +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: () => window.open(urlEarth, GM_getValue('tabWhere'))}),
+      btnMail = $c('button', {id: 'gMail', className: 'gBtn', textContent: 'GMail', title: urlMail, style: 'background: url('+ imgMail +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: () => window.open(urlMail, GM_getValue('tabWhere'))}),
+      btnMaps = $c('button', {id: 'gMaps', className: 'gBtn', textContent: 'GMaps', title: urlMaps, style: 'background: url('+ imgMaps +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: () => window.open(urlMaps, GM_getValue('tabWhere'))}),
+      btnMSEdge = $c('button', {id: 'gMSEdge', className: 'gBtn', textContent: 'MS Store', title: urlMSEdge, style: 'background: url('+ imgMSEdge +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: () => window.open(urlMSEdge, GM_getValue('tabWhere'))}),
+      btnNews = $c('button', {id: 'gNews', className: 'gBtn', textContent: 'News', title: urlNews, style: 'background: url('+ imgNews +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: () => window.open(urlNews, GM_getValue('tabWhere'))}),
+      btnPhotos = $c('button', {id: 'gPhotos', className: 'gBtn', textContent: 'Photos', title: urlPhotos, style: 'background: url('+ imgPhotos +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: () => window.open(urlPhotos, GM_getValue('tabWhere'))}),
+      btnPlay = $c('button', {id: 'gPlay', className: 'gBtn', textContent: 'Play Store', title: urlPlay, style: 'background: url('+ imgPlay +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: () => window.open(urlPlay, GM_getValue('tabWhere'))}),
+      btnPodcasts = $c('button', {id: 'gPodcasts', className: 'gBtn', textContent: 'Podcasts', title: urlPodcasts, style: 'background: url('+ imgPodcasts +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: () => window.open(urlPodcasts, GM_getValue('tabWhere'))}),
+      btnTranslate = $c('button', {id: 'gTranslate', className: 'gBtn', textContent: 'Translate', title: urlTranslate, style: 'background: url('+ imgTranslate +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: () => window.open(urlTranslate, GM_getValue('tabWhere'))}),
+      btnYouTube = $c('button', {id: 'gYouTube', className: 'gBtn', textContent: 'YouTube', title: urlYouTube, style: 'background: url('+ imgYouTube +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: () => window.open(urlYouTube, GM_getValue('tabWhere'))}),
+      btnYouTubeTV = $c('button', {id: 'gYouTubeTV', className: 'gBtn', textContent: 'YouTube TV', title: urlYouTubeTV, style: 'background: url('+ imgYouTubeTV +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: () => window.open(urlYouTubeTV, GM_getValue('tabWhere'))}),
       headerButton = $c('button', {id: 'headerButton', className: 'gBtn', textContent: 'Header Buttons', onclick: e => onButton(e)}),
       buttonsContainer1 = $c('div', {id: 'buttonsContainer1', hidden: true}),
       buttonsContainer2 = $c('div', {id: 'buttonsContainer2', hidden: true}),
-      cbNewTab = $c('input', {id: 'aNewTab', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aNewTab"), onclick: e => onCheckbox(e)}),
-      labNewTab = $c('button', {for: 'aNewTab', className: 'aBtn', textContent: 'Open In New Tabs', onclick: e => onButton(e)}),
+      cbNewTab = $c('input', {id: 'aNewTab', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aNewTab"), onclick: e => onWhere(e)}),
+      labNewTab = $c('button', {id: 'gNewTab', className: 'aBtn', textContent: 'Open In New Tabs', onclick: e => onWhere(e)}),
       brNewTab = $c('br'),
       buttonCheckAll = $c('button', {id: 'buttonCheckAll', className: 'gBtn', textContent: 'Check All', onclick: e => onButton(e)}),
       buttonClearAll = $c('button', {id: 'buttonClearAll', className: 'gBtn', textContent: 'Clear All', onclick: e => onButton(e)}),
@@ -154,7 +153,6 @@
       cbYouTubeTV = $c('input', {id: 'aYouTubeTV', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aYouTubeTV"), onclick: e => onCheckbox(e)}),
       labYouTubeTV = $c('button', {for: 'aYouTubeTV', className: 'aBtn', textContent: 'YouTubeTV', style: 'background: url('+ imgYouTubeTV +') no-repeat right', onclick: e => onButton(e)}),
       brYouTubeTV = $c('br'),
-      buttonReload = $c('button', {id: 'buttonReload', className: 'gBtn', textContent: 'Reload Page', title: reloadTooltip, onclick: e => onReload()}),
       buttonClose = $c('button', {id: 'buttonClose', className: 'gBtn', textContent: 'Close', onclick: () => {$q("#buttonsContainer1").hidden = true; $q("#buttonsContainer2").hidden = true}}),
       dateTimeContainer = $c('div', {id: 'dateTimeContainer'}),
       btnClock = $c('button', {id: 'gClock', style: 'background-image: url('+ imgClock +')', title: hideShow, onmousedown: e => toggleDateTime(e)}),
@@ -228,13 +226,13 @@
       else if (hour === 0) hour = 12;
       else hour = hour;
       GM_setValue('themeNumber', hour);
-      bod.style.background = "url("+ themerBackgroundImage + hour +".jpg) center center / cover no-repeat";
+      bod.style.background = "url("+ themerBackgroundImage + hour +".jpg) no-repeat center center / cover";
       btn.innerHTML = changeThemeText + '  On';
       ti.src = themeOn;
       changeInterval = setInterval(() => changeBg(), themerInterval);
     } else {
       GM_setValue('themeNumber', defaultBackgroundImage);
-      bod.style.background = "url("+ themerBackgroundImage + defaultBackgroundImage +".jpg) center center / cover no-repeat";
+      bod.style.background = "url("+ themerBackgroundImage + defaultBackgroundImage +".jpg) no-repeat center center / cover";
       btn.innerHTML = changeThemeText + '  Off';
       ti.src = themeOff;
       clearInterval(changeInterval);
@@ -265,54 +263,61 @@
       }
       return;
     }
-    if (e.target.id === 'aNewTab') {
-      e.target.checked = !e.target.checked;
-      GM_setValue('aNewTab', e.target.checked);
-      return;
-    }
     let cb = $q('#buttonsContainer1 > .aCkbx', true),
         cb2 = $q('#buttonsContainer2 > .aCkbx', true),
-        x, y;
+        ret, x, y;
     if (e.target.hasAttribute('id')) {
       switch (e.target.id) {
         case 'buttonCheckAll':
           for (let i = 0; i < cb.length; i++) {
             x = cb[i];
             if (x.id === 'aNewTab') continue;
-            x.checked = true;
             GM_setValue(x.id, true);
+            x.checked = true;
+            ret = x.id.replace('a', 'g');
+            document.getElementById(ret).style.display = 'inline-block';
           }
           for (let j = 0; j < cb2.length; j++) {
             y = cb2[j];
-            y.checked = true;
             GM_setValue(y.id, true);
+            y.checked = true;
+            ret = y.id.replace('a', 'g');
+            document.getElementById(ret).style.display = 'inline-block';
           }
+          div0.hidden = false;
           break;
         case 'buttonClearAll':
           for (let i = 0; i < cb.length; i++) {
             x = cb[i];
             if (x.id === 'aNewTab') continue;
-            x.checked = false;
             GM_setValue(x.id, false);
+            x.checked = false;
           }
           for (let j = 0; j < cb2.length; j++) {
             y = cb2[j];
-            y.checked = false;
             GM_setValue(y.id, false);
+            y.checked = false;
           }
+          div0.hidden = true;
           break;
     } }
     if (e.target.hasAttribute('for')) {
       x = e.target.getAttribute('for');
+      y = x.replace('a', 'g');
       let cbx = document.getElementById(x);
       cbx.checked = !cbx.checked;
       GM_setValue(cbx.id, cbx.checked);
+      if (cbx.checked) document.getElementById(y).style.display = 'inline-block';
+      else document.getElementById(y).style.display = 'none';
   } }
 
   function onCheckbox(e) {
-    let bool = GM_getValue(e.target.id) !== true ? true : false;
-    e.target.checked = bool;
+    let bool = GM_getValue(e.target.id) !== true ? true : false,
+        x = e.target.id.replace('a', 'g');
     GM_setValue(e.target.id, bool);
+    e.target.checked = bool;
+    if (bool) document.getElementById(x).style.display = 'inline-block';
+    else document.getElementById(x).style.display = 'none';
   }
 
   function onClose() {
@@ -321,15 +326,23 @@
     clearInterval(timer);
   }
 
-  function onReload() {
-    buttonsContainer1.hidden = true;
-    buttonsContainer2.hidden = true;
-    document.location.reload(true);
-  }
-
   function onResize() {
     changeBg();
   }
+
+  function onWhere(e) {
+    let bool = GM_getValue('aNewTab') !== true ? true : false;
+    GM_setValue('aNewTab', bool);
+    if (bool) GM_setValue('tabWhere', '_blank');
+    else GM_setValue('tabWhere', '_self');
+    switch (e.target.id) {
+      case 'aNewTab':
+        e.target.checked = bool;
+        break;
+      case 'gNewTab':
+        e.target.previousSibling.checked = bool;
+        break;
+  } }
 
   function setTimer() {
     clearInterval(timer);
@@ -380,6 +393,7 @@
   if (!GM_getValue('defaultAMPM')) GM_setValue('defaultAMPM', false);
   if (!GM_getValue('themeChanger')) GM_setValue('themeChanger', false);
   if (!GM_getValue('themeNumber')) GM_setValue('themeNumber', defaultBackgroundImage);
+  if (!GM_getValue('tabWhere')) GM_setValue('tabWhere', '_self');
 
   buttonsContainer1.appendChild(cbNewTab); buttonsContainer1.appendChild(labNewTab); buttonsContainer1.appendChild(brNewTab);
   buttonsContainer1.appendChild(buttonCheckAll); buttonsContainer1.appendChild(buttonClearAll); buttonsContainer1.appendChild(brButton);
@@ -397,7 +411,7 @@
   buttonsContainer2.appendChild(cbTranslate); buttonsContainer2.appendChild(labTranslate); buttonsContainer2.appendChild(brTranslate);
   buttonsContainer2.appendChild(cbYouTube); buttonsContainer2.appendChild(labYouTube); buttonsContainer2.appendChild(brYouTube);
   buttonsContainer2.appendChild(cbYouTubeTV); buttonsContainer2.appendChild(labYouTubeTV); buttonsContainer2.appendChild(brYouTubeTV);
-  buttonsContainer2.appendChild(buttonReload); buttonsContainer2.appendChild(buttonClose);
+  buttonsContainer2.appendChild(buttonClose);
 
   headerButton.appendChild(buttonsContainer1);
   headerButton.appendChild(buttonsContainer2);
@@ -495,6 +509,10 @@
     '#buttonThemer:hover {'+
     '  color: #FFF !important;'+
     '}'+
+    '#headerButtonsDiv {'+
+    '  position: absolute !important;'+
+    ' top: 10px !important;'+
+    '}'+
     '#headerButtonsDiv > .gBtn {'+
     '  border-radius: 4px !important;'+
     '  margin-right: '+ elementSpacing +' !important;'+
@@ -508,7 +526,7 @@
     'body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ > div.ayzqOc {'+
     '  display: inline-flex !important;'+
     '  position: absolute !important;'+
-    '  top: 337px !important;'+
+    '  top: 317px !important;'+
     '}'+
     'div.ayzqOc > input, div.ayzqOc > button, div#buttonsContainer1 > button.gBtn, div#buttonsContainer2 > button.gBtn {'+
     ' background: linear-gradient(135deg, #070707, #333) !important;'+
@@ -577,7 +595,7 @@
     '  background-color: #444 !important;'+
     '}'+
     '.gb_Na .gb_C {'+
-    '  padding: 0px !important;'+
+    '  padding: 0 !important;'+
     '}'+
     '#gb > div > div.gb_Me > div.gb_Na.gb_bd.gb_gg.gb_h.gb_uf > div {'+
     '  margin: 0 0 0 '+ elementSpacing +' !important;'+
@@ -636,9 +654,6 @@
     '#gb {'+
     '  height: 8px !important;'+
     '  width: 100% !important;'+
-    '}'+
-    'body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ > div {'+
-    '  margin-top: -50px !important;'+
     '}'+
     'body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ > div > a {'+
     '  display: none !important;'+
@@ -757,10 +772,12 @@
     '  margin-left: 4px !important;'+
     '  margin-right: 8px !important;'+
     '}'+
-    '#buttonCheckAll, #buttonClearAll, #buttonReload, #buttonClose {'+
-    '  padding: 4px !important;'+
+    '#buttonCheckAll, #buttonClearAll, #buttonClose {'+
+    '  padding: 0 6px !important;'+
+    '  min-height: 24px !important;'+
     '}'+
-    '#buttonReload, #buttonClose {'+
+    '#buttonClose {'+
+    '  float: right !important;'+
     '  margin: 8px 4px 0 4px !important;'+
     '}'+
     '.aCkbx {'+

@@ -24,7 +24,6 @@
         am = 'AM',
         pm = 'PM',
         dateTimeFormatCount = 9,
-        defaultBackgroundImage = 1, // 1 - 13
         bullet = '•',
         comma = ',',
         hyphen = '-',
@@ -53,8 +52,11 @@
         daynum = DayNum.split(','),
         dayno = DayNo.split(','),
         dayord = DayOrd.split(','),
-        googleImage = 'https://raw.githubusercontent.com/srazzano/Images/master/googleImage5.png',
-        themerBackgroundImage = 'https://raw.githubusercontent.com/srazzano/Images/master/image',
+        //googleImage = 'https://raw.githubusercontent.com/srazzano/Images/master/googleImage5.png', // GitHub site
+        googleImage = 'https://sonco.synthasite.com/resources/googleImage5.png', // Yola site
+        defaultBackgroundImage = 1, // 1 - 13
+        //themerBackgroundImage = 'https://raw.githubusercontent.com/srazzano/Images/master/image', // GitHub site
+        themerBackgroundImage = 'https://sonco.synthasite.com/resources/image', // Yola site
         themeOff = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACE0lEQVR42pWSS4hSYRTHz+QrEV/DmKAoIqi1yIWWu8BVIrgKJHDRqo0Ybdyam1au3AhCtJYZ3YQJEiIItokJcVW5EfGFNk4+8IV6s3M+nIg7d2D6w+E797vn/7vnO/c7Ap4KhYIIl+cYLzEeH7bPMd5jnAUCAe7f+iOe+cF+v/9mt9tBJpOBSCQCfAaJRAK9Xo+Cw72HCPl+DYDmY47jLl0uF4xGI8D8L2C73YLFYoFOpwPdbncpFotNCPnFB6R0Ol0EAxqNBsjlchZkXi6XLNdqtZDNZnsej+cDAl7xARf4lZPZbMa+pFKpmGmz2cBisYDVagVOpxOq1SqYTKYRAnSCgHa7zVo3m83s7CQ6f6vVArfbDaVSCWw2myAghYOLjMdjmM/nrAOFQgG73Q5oj2ai1+uhWCz+8Pl8ZaEjHGPxxXq9vkMGXBmAjCTqRqlUglQqXWNuvDZEUjKZfGS1Ws8nkwlMp1M2QPqldCy1Wk3AXS6Xe5bJZD4K3gOSwWC4F4vFhrjCYDAAo9HIuimXy1/y+fxrLPna7/d/3wggBYPBVDQajdRqNZo4DIdDiMfjL/DVKZq3N97EK/n9/qcI+FSv18HhcECz2YREIvEEzZ/5tYIAbP9uOp1e0SxIGo0GwuHwfQQ0bgUgVSqV/VXu9XrfIPQdAn7+F4CMh/xtKBQ6QcDlrQGoGBkPHfixgyoCFvyiP+nSCSCyiE9MAAAAAElFTkSuQmCC',
         themeOn = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACKElEQVR42pWSS2gTURSG/+nEpCE2qWkSQaK0iosRKUSNuinMQmoFKaKCmyKCEsSISzdWQcWNbhSjYhARdKELUapQFZVgu7CtWgR1ELH1EYtNbPNoXm0zif90UpBJlHrgzD1z/3u+OefOEWCwDz0QueyhH6D7K9tD9Gv0O2s6of55XjAkS9phaX2XDY0tgMmmC8UskByF8vpWVoMSolQBmOzkMirJZ+wwvWRYAOqsuljK81FP0GYokWNpvrQQMmkEhKR1HUE4fMDMZX7dA6heXRSjTI4B5kNAahjKm0eXCDhsBMSltlMuCA+R+j4IR1Mj1RW6WP6G1EQSjuUbGW+H0nfiFwHuaoC8z4XMXWDWATTsYNWVFgpsYeo+sCgFLN7FNm7UBISkte5guhDH2Gdg5SpW3OCc02amJjHCvWXcs9e7obyL12zBOT0txr3Nal30ExBLMmGpro2NAx525F0NRL+IJYtFdVddomZnjzZt2LopMVRWS8ix2kQG+GELw2cOwLoEyBXMxe6Lpp1P+nMPas5BxTy958Xx1lYVaQIEQYTVouLkFevA9Xv5I9RfaT/2XwB0bUHo5oXO4NuBHgwWw2h3BtC8G3sp3abP/nUS563Dj/beq77Hz54PY8TOFkoB+A+ijVK/8WxNgDZ25/Yjr3wFMhzIF+/x9Gdi7tY/LhSASCRSno9lWT7OJUyP/RegkqjFpxm7GE4sGEDr1hIrFWzj0kfPGg/9BuI3xhFLjykHAAAAAElFTkSuQmCC',
         imgCalendar = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABT0lEQVR42mNkAAKp9Iv/GYgELMxMYJqZmZHh/mQdRkZSNMPAfwZGMM0IYpFjADJANyCMkIaHocYgahVOA57O0Fv17x8Dw7//IH8ygB37H6qCEcj5s5c1DK8BD6fqrTp+5w9DRP81hsNNOgxyIkwMJ+/+ZQjrvcoANJywAQ+m6K16/O4fg5IYE4N0xiWGvXU6DM5NV8CSRBkA8sLbL/8Z9EouM2yq0GYwVmBmuPrkL4NbC5EueDRNb9XDNwgXPJ6ux3D9KQkG3Jqou+rcg7/gMPAwUmWYncrJcPPZXwaXZiINeDJdbxUjJJ0w/PzDwMDOwsDw+y+Ez8pMRCzcmqyyCpLaGKDpDRWwH+IP+/+TGayGkf0vA6Ncs+3/X39/E52QLh3+uwqZj24AQQA0AM4W23uakVGx1eH/998/SDYApJkB5k2JBguiMxTIAJhmEAAA4quznkbNVyMAAAAASUVORK5CYII=',
@@ -74,9 +76,9 @@
         urlCalendar = 'https://calendar.google.com/calendar/u/0/r',
         urlChrome = 'https://chrome.google.com/webstore/category/extensions',
         urlEarth = 'https://earth.google.com/web/@0,-6.8073,0a,22251752.77375655d,35y,0h,0t,0r',
-        urlMail = 'https://mail.google.com/mail/?authuser=0&amp;ogbl',
+        urlMail = 'https://mail.google.com/mail/ca/u/0/#inbox',
         urlMaps = 'https://www.google.com/maps/@36.1489458,-115.0874625,15z?hl=en&authuser=0',
-        urlMSEdge = 'https://www.microsoft.com/en-us/store/collections/edgeextensions/pc',
+        urlMSEdge = 'https://www.microsoft.com',
         urlNews = 'https://news.google.com/topstories?hl',
         urlPhotos = 'https://photos.google.com/?pageId=none',
         urlPlay = 'https://play.google.com/store/apps',
@@ -151,7 +153,7 @@
       labYouTube = $c('button', {for: 'aYouTube', className: 'aBtn', textContent: 'YouTube', style: 'background: url('+ imgYouTube +') no-repeat right', onclick: e => onButton(e)}),
       brYouTube = $c('br'),
       cbYouTubeTV = $c('input', {id: 'aYouTubeTV', className: 'aCkbx', type: 'checkbox', checked: GM_getValue("aYouTubeTV"), onclick: e => onCheckbox(e)}),
-      labYouTubeTV = $c('button', {for: 'aYouTubeTV', className: 'aBtn', textContent: 'YouTubeTV', style: 'background: url('+ imgYouTubeTV +') no-repeat right', onclick: e => onButton(e)}),
+      labYouTubeTV = $c('button', {for: 'aYouTubeTV', className: 'aBtn', textContent: 'YouTube TV', style: 'background: url('+ imgYouTubeTV +') no-repeat right', onclick: e => onButton(e)}),
       brYouTubeTV = $c('br'),
       buttonClose = $c('button', {id: 'buttonClose', className: 'gBtn', textContent: 'Close', onclick: () => {$q("#buttonsContainer1").hidden = true; $q("#buttonsContainer2").hidden = true}}),
       dateTimeContainer = $c('div', {id: 'dateTimeContainer'}),
@@ -232,6 +234,7 @@
       changeInterval = setInterval(() => changeBg(), themerInterval);
     } else {
       GM_setValue('themeNumber', defaultBackgroundImage);
+      //bod.style.background = "url("+ themerBackgroundImage + defaultBackgroundImage +".jpg) no-repeat center center / cover";
       bod.style.background = "url("+ themerBackgroundImage + defaultBackgroundImage +".jpg) no-repeat center center / cover";
       btn.innerHTML = changeThemeText + '  Off';
       ti.src = themeOff;

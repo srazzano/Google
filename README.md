@@ -1,4 +1,5 @@
 # Google
-A user.js script to use in Tampermonkey for layout and theme on Google site with Chrome, MS Edge and Vivaldi browsers.
-Themed for use with the Dark Reader add-on. For Chrome and Vivaldi Browsers: https://chrome.google.com/webstore/detail/dark-reader/eimadpbcbfnmbkopoojfekhnkhdbieehFor and MS Edge Browser: https://microsoftedge.microsoft.com/addons/detail/dark-reader/ifoakfbpdcdoeenechcleahebpibofpc?hl
+A user.js script to use in Tampermonkey for theming background on Google site with Chrome, MS Edge and Vivaldi browsers.
+On Google site, in Setting, click item "Change theme hourly" to "On", for hourly theme changes or "Off" for a default theme.
+
 

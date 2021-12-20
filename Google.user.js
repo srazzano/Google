@@ -57,17 +57,16 @@
 
   function initialize() {
     let signIn = $q('a.gb_3.gb_4.gb_3d.gb_3c'),
+        div = $q('.o3j99.qarstb'),
+        set = $q('.o3j99.c93Gbe'),
         pop = $q('#dEjpnf'),
         li = $c('li', {role: 'none'}),
-        btn = $c('button', {id: 'buttonThemer', className: 'EzVRq', onclick: () => themeChanger()});
+        btn = $c('button', {id: 'buttonThemer', className: 'EzVRq', onclick: () => themeChange()});
+    div.appendChild(set);
     li.appendChild(btn);
     pop.appendChild(li);
     if (signIn) signIn.click();
     setThemer();
-  }
-
-  function onClose() {
-    clearInterval(timer);
   }
 
   function setThemer() {
@@ -76,7 +75,7 @@
     changeBg();
   }
 
-  function themeChanger() {
+  function themeChange() {
     let bool = GM_getValue('themeChanger') !== true ? true : false;
     GM_setValue('themeChanger', bool);
     setThemer();
@@ -87,17 +86,26 @@
 
   initialize();
 
-  window.addEventListener('unload', function() {onClose()});
+  window.addEventListener('unload', function() {clearInterval(timer)});
 
   GM_addStyle(''+
+    '.vcVZ7d,'+
+    '.KxwPGc.AghGtd,'+
+    '.KxwPGc.ssOUyb,'+
+    '.KxwPGc.iTjxkf > a {'+
+    '  display: none !important;'+
+    '}'+
     '#hplogo {'+
     '  background: url('+ googleLogo +') no-repeat !important;'+
     '  height: 140px !important;'+
     '  padding-left: 436px !important;'+
     '  width: 0 !important;'+
     '}'+
-    '.o3j99.c93Gbe {'+
-    '  background: transparent !important;'+
+    '.KxwPGc.iTjxkf {'+
+    '  width: 100% !important;'+
+    '}'+
+    '.ayzqOc {'+
+    '  margin: auto !important;'+
     '}'+
     '#Mses6b {'+
     '  background: #181A1B !important;'+
@@ -105,7 +113,7 @@
     '  border-radius: 4px !important;'+
     '  color: #999 !important;'+
     '  height: 36px !important;'+
-    '  padding: 0 10px !important;'+
+    '  padding: 0 16px !important;'+
     '}'+
     '#Mses6b:hover {'+
     '  color: #FFF !important;'+
@@ -118,17 +126,10 @@
     '  background-color: #111 !important;'+
     '  color: #FFF !important;'+
     '}'+
-    '.KxwPGc.AghGtd,'+
-    '.KxwPGc.ssOUyb,'+
-    '.KxwPGc.iTjxkf > a {'+
-    '  display: none !important;'+
-    '}'+
-    '.KxwPGc.iTjxkf {'+
-    '  margin-left: 15px !important;'+
-    '  position: absolute !important;'+
-    '  top: 560px !important;'+
-    '  width: 50% !important;'+
+    '.o3j99.c93Gbe {'+
+    '  background: transparent !important;'+
     '}'+
   '');
 
 })();
+

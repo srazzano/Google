@@ -52,10 +52,10 @@
         daynum = DayNum.split(','),
         dayno = DayNo.split(','),
         dayord = DayOrd.split(','),
-        //googleImage = 'https://raw.githubusercontent.com/srazzano/Images/master/googleImage5.png', // GitHub site
-        googleImage = 'https://sonco.synthasite.com/resources/googleImage5.png', // Yola site
         defaultBackgroundImage = 1, // 1 - 13
+        //googleImage = 'https://raw.githubusercontent.com/srazzano/Images/master/googleImage5.png', // GitHub site
         //themerBackgroundImage = 'https://raw.githubusercontent.com/srazzano/Images/master/image', // GitHub site
+        googleImage = 'https://sonco.synthasite.com/resources/googleImage5.png', // Yola site
         themerBackgroundImage = 'https://sonco.synthasite.com/resources/image', // Yola site
         themeOff = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACE0lEQVR42pWSS4hSYRTHz+QrEV/DmKAoIqi1yIWWu8BVIrgKJHDRqo0Ybdyam1au3AhCtJYZ3YQJEiIItokJcVW5EfGFNk4+8IV6s3M+nIg7d2D6w+E797vn/7vnO/c7Ap4KhYIIl+cYLzEeH7bPMd5jnAUCAe7f+iOe+cF+v/9mt9tBJpOBSCQCfAaJRAK9Xo+Cw72HCPl+DYDmY47jLl0uF4xGI8D8L2C73YLFYoFOpwPdbncpFotNCPnFB6R0Ol0EAxqNBsjlchZkXi6XLNdqtZDNZnsej+cDAl7xARf4lZPZbMa+pFKpmGmz2cBisYDVagVOpxOq1SqYTKYRAnSCgHa7zVo3m83s7CQ6f6vVArfbDaVSCWw2myAghYOLjMdjmM/nrAOFQgG73Q5oj2ai1+uhWCz+8Pl8ZaEjHGPxxXq9vkMGXBmAjCTqRqlUglQqXWNuvDZEUjKZfGS1Ws8nkwlMp1M2QPqldCy1Wk3AXS6Xe5bJZD4K3gOSwWC4F4vFhrjCYDAAo9HIuimXy1/y+fxrLPna7/d/3wggBYPBVDQajdRqNZo4DIdDiMfjL/DVKZq3N97EK/n9/qcI+FSv18HhcECz2YREIvEEzZ/5tYIAbP9uOp1e0SxIGo0GwuHwfQQ0bgUgVSqV/VXu9XrfIPQdAn7+F4CMh/xtKBQ6QcDlrQGoGBkPHfixgyoCFvyiP+nSCSCyiE9MAAAAAElFTkSuQmCC',
         themeOn = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACKElEQVR42pWSS2gTURSG/+nEpCE2qWkSQaK0iosRKUSNuinMQmoFKaKCmyKCEsSISzdWQcWNbhSjYhARdKELUapQFZVgu7CtWgR1ELH1EYtNbPNoXm0zif90UpBJlHrgzD1z/3u+OefOEWCwDz0QueyhH6D7K9tD9Gv0O2s6of55XjAkS9phaX2XDY0tgMmmC8UskByF8vpWVoMSolQBmOzkMirJZ+wwvWRYAOqsuljK81FP0GYokWNpvrQQMmkEhKR1HUE4fMDMZX7dA6heXRSjTI4B5kNAahjKm0eXCDhsBMSltlMuCA+R+j4IR1Mj1RW6WP6G1EQSjuUbGW+H0nfiFwHuaoC8z4XMXWDWATTsYNWVFgpsYeo+sCgFLN7FNm7UBISkte5guhDH2Gdg5SpW3OCc02amJjHCvWXcs9e7obyL12zBOT0txr3Nal30ExBLMmGpro2NAx525F0NRL+IJYtFdVddomZnjzZt2LopMVRWS8ix2kQG+GELw2cOwLoEyBXMxe6Lpp1P+nMPas5BxTy958Xx1lYVaQIEQYTVouLkFevA9Xv5I9RfaT/2XwB0bUHo5oXO4NuBHgwWw2h3BtC8G3sp3abP/nUS563Dj/beq77Hz54PY8TOFkoB+A+ijVK/8WxNgDZ25/Yjr3wFMhzIF+/x9Gdi7tY/LhSASCRSno9lWT7OJUyP/RegkqjFpxm7GE4sGEDr1hIrFWzj0kfPGg/9BuI3xhFLjykHAAAAAElFTkSuQmCC',
@@ -93,7 +93,6 @@
       div3 = $q('body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > div'),
       searchButton = $q('body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.FPdoLc.lJ9FBc > center > input.gNO89b'),
       settingsButton = $q('#Mses6b'),
-      //where = GM_getValue('aNewTab') ? '_blank' : '_self',
       btnCalendar = $c('button', {id: 'gCalendar', className: 'gBtn', textContent: 'Calendar', title: urlCalendar, style: 'background: url('+ imgCalendar +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: () => window.open(urlCalendar, GM_getValue('tabWhere'))}),
       btnChrome = $c('button', {id: 'gChrome', className: 'gBtn', textContent: 'Chrome Store', title: urlChrome, style: 'background: url('+ imgChrome +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: () => window.open(urlChrome, GM_getValue('tabWhere'))}),
       btnEarth = $c('button', {id: 'gEarth', className: 'gBtn', textContent: 'Earth', title: urlEarth, style: 'background: url('+ imgEarth +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: () => window.open(urlEarth, GM_getValue('tabWhere'))}),
@@ -213,8 +212,8 @@
       case 6: return w + space + bullet + space + m + slash + d + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
       case 7: return w + space + bullet + space + mm + slash + dd + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
       // Delete "customFormat + 210/customFormat + 211" text below and add return options with bullet, comma, hyphen, slash, space, star characters.
-      case 8: return customFormat + 216;
-      case 9: return customFormat + 217;
+      case 8: return customFormat + 215;
+      case 9: return customFormat + 216;
   } }
 
   function changeBg() {
@@ -231,14 +230,11 @@
       bod.style.background = "url("+ themerBackgroundImage + hour +".jpg) no-repeat center center / cover";
       btn.innerHTML = changeThemeText + '  On';
       ti.src = themeOn;
-      changeInterval = setInterval(() => changeBg(), themerInterval);
     } else {
       GM_setValue('themeNumber', defaultBackgroundImage);
-      //bod.style.background = "url("+ themerBackgroundImage + defaultBackgroundImage +".jpg) no-repeat center center / cover";
       bod.style.background = "url("+ themerBackgroundImage + defaultBackgroundImage +".jpg) no-repeat center center / cover";
       btn.innerHTML = changeThemeText + '  Off';
       ti.src = themeOff;
-      clearInterval(changeInterval);
   } }
 
   function defaultDateTime() {
@@ -324,13 +320,8 @@
   }
 
   function onClose() {
-    removeEventListener('resize', () => onResize());
-    removeEventListener('unload', () => onClose());
+    clearInterval(changeInterval);
     clearInterval(timer);
-  }
-
-  function onResize() {
-    changeBg();
   }
 
   function onWhere(e) {
@@ -347,6 +338,12 @@
         break;
   } }
 
+  function setThemer() {
+    if (GM_getValue('themeChanger')) changeInterval = setInterval(() => changeBg(), themerInterval);
+    else clearInterval(changeInterval);
+    changeBg();
+  }
+
   function setTimer() {
     clearInterval(timer);
     if (!GM_getValue('defaultDateTimeView')) return;
@@ -357,7 +354,7 @@
   function themeChanger() {
     let bool = GM_getValue('themeChanger') !== true ? true : false;
     GM_setValue('themeChanger', bool);
-    changeBg();
+    setThemer();
   }
 
   function toggleDateTime(e) {
@@ -447,9 +444,6 @@
   div3.appendChild(buttonsContainer1);
   div3.appendChild(buttonsContainer2);
 
-  addEventListener('resize', () => onResize());
-  addEventListener('unload', () => onClose());
-
   initInterval = setInterval(() => {
     let cb = $q('#buttonsContainer1 > .aCkbx', true),
         cb2 = $q('#buttonsContainer2 > .aCkbx', true),
@@ -482,10 +476,14 @@
       li.appendChild(btn);
       li.appendChild(ti);
       pop.appendChild(li);
-      onResize();
+      setThemer();
       if (dateTimeContainer) clearInterval(initInterval);
     } catch(ex) {}
   }, openInterval);
+
+  changeInterval = setInterval(() => changeBg(), themerInterval)
+
+  window.onunload = () => onClose();
 
   GM_addStyle(''+
     '#themeImage {'+

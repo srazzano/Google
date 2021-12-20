@@ -19,8 +19,8 @@
   const themerInterval = 60000,
         changeThemeText = 'Change theme hourly:',
         defaultBackgroundImage = 1, // 1 - 13
-        //googleImage = 'https://raw.githubusercontent.com/srazzano/Images/master/googleImage5.png', // GitHub site
-        googleImage = 'https://sonco.synthasite.com/resources/googleImage5.png', // Yola site
+        //googleImage = 'https://raw.githubusercontent.com/srazzano/Images/master/googleImage.png', // GitHub site
+        googleImage = 'https://sonco.synthasite.com/resources/googleImage.png', // Yola site
         //themerBackgroundImage = 'https://raw.githubusercontent.com/srazzano/Images/master/image', // GitHub site
         themerBackgroundImage = 'https://sonco.synthasite.com/resources/image'; // Yola site
 

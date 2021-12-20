@@ -87,7 +87,7 @@
   window.onunload = onClose();
 
   GM_addStyle(''+
-    '.k1zIA.kKvsb img {'+
+    '#hplogo {'+
     '  background: url('+ googleImage +') no-repeat !important;'+
     '  height: 140px !important;'+
     '  padding-left: 436px !important;'+

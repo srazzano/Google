@@ -57,7 +57,7 @@
 
   function initialize() {
     let signIn = $q('a.gb_3.gb_4.gb_3d.gb_3c'),
-        div = $q('.o3j99.qarstb'),
+        div = $q('.o3j99.LLD4me.LS8OJ'),
         set = $q('.o3j99.c93Gbe'),
         pop = $q('#dEjpnf'),
         li = $c('li', {role: 'none'}),
@@ -106,6 +106,7 @@
     '}'+
     '.ayzqOc {'+
     '  margin: auto !important;'+
+    '  top: -20px !important;'+
     '}'+
     '#Mses6b {'+
     '  background: #181A1B !important;'+
@@ -120,11 +121,18 @@
     '}'+
     '.EzVRq {'+
     '  color: #999 !important;'+
+    '  padding: 6px 16px !important;'+
     '  text-decoration: none !important;'+
+    '}'+
+    '#buttonThemer.EzVRq {'+
+    '  margin-top: -5px !important;'+
     '}'+
     '.EzVRq:hover {'+
     '  background-color: #111 !important;'+
     '  color: #FFF !important;'+
+    '}'+
+    '.om7nvf {'+
+    '  padding: 0 !important;'+
     '}'+
     '.o3j99.c93Gbe {'+
     '  background: transparent !important;'+
@@ -132,4 +140,3 @@
   '');
 
 })();
-

@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Google Hourly Theme Changer
+// @name         Google Wallpaper
 // @namespace    srazzano
 // @version      1.0.1
 // @description  Layout and Theme
@@ -20,8 +20,8 @@
         changeThemeText = 'Change theme hourly:',
         defaultBackgroundImage = 1, // 1 - 13
         //googleImage = 'https://raw.githubusercontent.com/srazzano/Images/master/googleImage5.png', // GitHub site
-        //themerBackgroundImage = 'https://raw.githubusercontent.com/srazzano/Images/master/image', // GitHub site
         googleImage = 'https://sonco.synthasite.com/resources/googleImage5.png', // Yola site
+        //themerBackgroundImage = 'https://raw.githubusercontent.com/srazzano/Images/master/image', // GitHub site
         themerBackgroundImage = 'https://sonco.synthasite.com/resources/image'; // Yola site
 
   var changeInterval;
@@ -60,11 +60,13 @@
   }
 
   function onLoad() {
-    let pop = $q('#dEjpnf'),
+    let signIn = $q('a.gb_3.gb_4.gb_3d.gb_3c'),
+        pop = $q('#dEjpnf'),
         li = $c('li', {role: "none"}),
         btn = $c('button', {id: 'buttonThemer', className: 'EzVRq', onclick: () => themeChanger()});
     li.appendChild(btn);
     pop.appendChild(li);
+    if (signIn) signIn.click();
     setThemer();
   }
 
@@ -92,6 +94,17 @@
     '  height: 140px !important;'+
     '  padding-left: 436px !important;'+
     '  width: 0 !important;'+
+    '}'+
+    '.o3j99.c93Gbe {'+
+    '  background: transparent !important;'+
+    '}'+
+    '#Mses6b {'+
+    '  background: #111 !important;'+
+    '  border-radius: 4px !important;'+
+    '  color: #FFF !important;'+
+    '}'+
+    '.EzVRq {'+
+    '  color: #FFF !important;'+
     '}'+
   '');
 

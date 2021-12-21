@@ -98,7 +98,7 @@
   window.addEventListener('unload', function() {clearInterval(timer)});
 
   GM_addStyle(''+
-    '.vcVZ7d,'+
+    /*'.vcVZ7d,'+*/
     '.KxwPGc.AghGtd,'+
     '.KxwPGc.ssOUyb,'+
     '.KxwPGc.iTjxkf > a {'+
@@ -150,6 +150,7 @@
     '  background: none !important;'+
     '  border: none !important;'+
     '  color: #999 !important;'+
+    '  cursor: pointer !important;'+
     '  margin: 0 8px 0 -6px !important;'+
     '}'+
     '#buttonThemer:hover {'+
@@ -168,6 +169,12 @@
     '}'+
     '.o3j99.c93Gbe {'+
     '  background: transparent !important;'+
+    '}'+
+    '.SuUcIb {'+
+    '  background-color: #222 !important;'+
+    '  border: 1px solid #CCC !important;'+
+    '  border-radius: 50% !important;'+
+    '  padding: 4px !important;'+
     '}'+
   '');
 

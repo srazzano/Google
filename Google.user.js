@@ -19,7 +19,7 @@
   const themerInterval = 30000,
         wallpaperDefault = 1, // 1 - 13 or 0 for no wallpaper
         changeThemeText = 'Change theme hourly:',
-        //googleLogo = 'https://raw.githubusercontent.com/srazzano/Images/master/googleImage.png', // GitHub site
+        //googleImage = 'https://raw.githubusercontent.com/srazzano/Images/master/googleImage.png', // GitHub site
         googleImage = 'https://sonco.synthasite.com/resources/googleImage.png', // Yola site
         //wallpaper = 'https://raw.githubusercontent.com/srazzano/Images/master/image', // GitHub site
         wallpaper = 'https://sonco.synthasite.com/resources/image', // Yola site

@@ -45,12 +45,12 @@
         btn = $q('.o3j99.c93Gbe'),
         pop = $q('#dEjpnf'),
         li = $c('li', {role: 'none'}),
-        div2 = $c('div', {id: 'themerDiv', className: 'EzVRq'}),
-        inp = $c('input', {id: 'buttonThemer', type: 'button', onclick: () => setStatus()}),
-        img = $c('img', {id: 'themerImage'});
+        div2 = $c('div', {id: 'divThemer', className: 'EzVRq'}),
+        inp1 = $c('input', {id: 'buttonThemer', type: 'button', onclick: () => setStatus()}),
+        inp2 = $c('input', {id: 'buttonImage', type: 'image', onclick: () => setStatus()});
     div1.appendChild(btn);
-    div2.appendChild(inp);
-    div2.appendChild(img);
+    div2.appendChild(inp1);
+    div2.appendChild(inp2);
     li.appendChild(div2);
     pop.appendChild(li);
     if (signIn) signIn.click();
@@ -61,21 +61,21 @@
     let now = new Date(),
         hour = now.getHours(),
         body = $q('body'),
-        inp = $q('#buttonThemer'),
-        img = $q('#themerImage');
+        inp1 = $q('#buttonThemer'),
+        inp2 = $q('#buttonImage');
     if (GM_getValue('themeChanger')) {
       if (hour > 12) hour = hour - 12;
       else if (hour === 0) hour = 12;
       else hour = hour;
       GM_setValue('themeNumber', hour);
       body.style.background = 'url('+ wallpaper + hour +'.jpg) no-repeat center center / cover';
-      inp.value = changeThemeText + ' On';
-      img.src = statusImageOn;
+      inp1.value = changeThemeText + ' On';
+      inp2.src = statusImageOn;
     } else {
       GM_setValue('themeNumber', wallpaperDefault);
       body.style.background = 'url('+ wallpaper + wallpaperDefault +'.jpg) no-repeat center center / cover';
-      inp.value = changeThemeText + ' Off';
-      img.src = statusImageOff;
+      inp1.value = changeThemeText + ' Off';
+      inp2.src = statusImageOff;
   } }
 
   function setStatus() {
@@ -140,7 +140,7 @@
     '  background-color: #111 !important;'+
     '  color: #FFF !important;'+
     '}'+
-    '#themerDiv {'+
+    '#divThemer {'+
     '  margin-top: -8px !important;'+
     '}'+
     '#buttonThemer {'+
@@ -150,15 +150,15 @@
     '  cursor: pointer !important;'+
     '  margin: 0 8px 0 -6px !important;'+
     '}'+
-    '#buttonThemer:hover {'+
-    '  color: #FFF !important;'+
-    '}'+
-    '#themerImage {'+
+    '#buttonImage {'+
     '  opacity: 0 !important;'+
     '  position: relative !important;'+
     '  top: 2px !important;'+
     '}'+
-    '#buttonThemer:hover + #themerImage {'+
+    '#divThemer:hover > #buttonThemer {'+
+    '  color: #FFF !important;'+
+    '}'+
+    '#divThemer:hover > #buttonImage {'+
     '  opacity: 1 !important;'+
     '}'+
     '.om7nvf {'+

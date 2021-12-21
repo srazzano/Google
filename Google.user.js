@@ -16,7 +16,7 @@
 
   'use strict';
 
-  const themerInterval = 30000,
+  const themerInterval = 30000, // Frequency to check for hour change
         wallpaperDefault = 1, // 1 - 13 or 0 for no wallpaper
         changeThemeText = 'Change theme hourly:',
         //googleImage = 'https://raw.githubusercontent.com/srazzano/Images/master/googleImage.png', // GitHub site
@@ -46,11 +46,11 @@
         pop = $q('#dEjpnf'),
         li = $c('li', {role: 'none'}),
         div2 = $c('div', {id: 'divThemer', className: 'EzVRq'}),
-        inp1 = $c('input', {id: 'buttonThemer', type: 'button', onclick: () => setStatus()}),
-        inp2 = $c('input', {id: 'buttonImage', type: 'image', onclick: () => setStatus()});
+        input1 = $c('input', {id: 'buttonThemer', type: 'button', onclick: () => setStatus()}),
+        input2 = $c('input', {id: 'buttonImage', type: 'image', onclick: () => setStatus()});
     div1.appendChild(btn);
-    div2.appendChild(inp1);
-    div2.appendChild(inp2);
+    div2.appendChild(input1);
+    div2.appendChild(input2);
     li.appendChild(div2);
     pop.appendChild(li);
     if (signIn) signIn.click();
@@ -61,21 +61,21 @@
     let now = new Date(),
         hour = now.getHours(),
         body = $q('body'),
-        inp1 = $q('#buttonThemer'),
-        inp2 = $q('#buttonImage');
+        input1 = $q('#buttonThemer'),
+        input2 = $q('#buttonImage');
     if (GM_getValue('themeChanger')) {
       if (hour > 12) hour = hour - 12;
       else if (hour === 0) hour = 12;
       else hour = hour;
       GM_setValue('themeNumber', hour);
       body.style.background = 'url('+ wallpaper + hour +'.jpg) no-repeat center center / cover';
-      inp1.value = changeThemeText + ' On';
-      inp2.src = statusOnImage;
+      input1.value = changeThemeText + ' On';
+      input2.src = statusOnImage;
     } else {
       GM_setValue('themeNumber', wallpaperDefault);
       body.style.background = 'url('+ wallpaper + wallpaperDefault +'.jpg) no-repeat center center / cover';
-      inp1.value = changeThemeText + ' Off';
-      inp2.src = statusOffImage;
+      input1.value = changeThemeText + ' Off';
+      input2.src = statusOffImage;
   } }
 
   function setStatus() {
@@ -118,7 +118,7 @@
     '  top: -20px !important;'+
     '}'+
     '#Mses6b {'+
-    '  background: #222 !important;'+
+    '  background: #282828 !important;'+
     '  border: 1px solid #999 !important;'+
     '  border-radius: 4px !important;'+
     '  color: #CCC !important;'+

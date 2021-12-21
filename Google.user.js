@@ -16,7 +16,7 @@
 
   'use strict';
 
-  const themerInterval = 30000, // Frequency to check for hour change
+  const themerInterval = 30000, // Frequency to check for hour change in milliseconds
         wallpaperDefault = 1, // 1 - 13 or 0 for no wallpaper
         changeThemeText = 'Change theme hourly:',
         //googleImage = 'https://raw.githubusercontent.com/srazzano/Images/master/googleImage.png', // GitHub site

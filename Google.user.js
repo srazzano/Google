@@ -141,6 +141,7 @@
     '  color: #FFF !important;'+
     '}'+
     '#divThemer {'+
+    '  cursor: pointer !important;'+
     '  margin-top: -8px !important;'+
     '}'+
     '#buttonThemer {'+
@@ -151,6 +152,7 @@
     '  margin: 0 8px 0 -6px !important;'+
     '}'+
     '#buttonImage {'+
+    '  cursor: pointer !important;'+
     '  opacity: 0 !important;'+
     '  position: relative !important;'+
     '  top: 2px !important;'+

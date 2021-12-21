@@ -17,7 +17,7 @@
   'use strict';
 
   const themerInterval = 30000,
-        wallpaperDefault = 1, // 1 - 13
+        wallpaperDefault = 1, // 1 - 13 or 0 for no wallpaper
         changeThemeText = 'Change theme hourly:',
         //googleLogo = 'https://raw.githubusercontent.com/srazzano/Images/master/googleImage.png', // GitHub site
         googleLogo = 'https://sonco.synthasite.com/resources/googleImage.png', // Yola site

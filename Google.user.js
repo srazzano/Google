@@ -18,7 +18,7 @@
 
   const themerInterval = 30000, // Frequency to check for hour change in milliseconds
         wallpaperDefault = 1, // 1 - 13 or 0 for no wallpaper
-        changeThemeText = 'Change theme hourly:',
+        changeThemeText = 'Change theme hourly:', // Label in Settings Popup
         //googleImage = 'https://raw.githubusercontent.com/srazzano/Images/master/googleImage.png', // GitHub site
         googleImage = 'https://sonco.synthasite.com/resources/googleImage.png', // Yola site
         //wallpaper = 'https://raw.githubusercontent.com/srazzano/Images/master/image', // GitHub site

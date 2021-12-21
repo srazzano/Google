@@ -22,7 +22,9 @@
         //googleLogo = 'https://raw.githubusercontent.com/srazzano/Images/master/googleImage.png', // GitHub site
         googleLogo = 'https://sonco.synthasite.com/resources/googleImage.png', // Yola site
         //wallpaper = 'https://raw.githubusercontent.com/srazzano/Images/master/image', // GitHub site
-        wallpaper = 'https://sonco.synthasite.com/resources/image'; // Yola site
+        wallpaper = 'https://sonco.synthasite.com/resources/image', // Yola site
+        themerImageOff = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACE0lEQVR42pWSS4hSYRTHz+QrEV/DmKAoIqi1yIWWu8BVIrgKJHDRqo0Ybdyam1au3AhCtJYZ3YQJEiIItokJcVW5EfGFNk4+8IV6s3M+nIg7d2D6w+E797vn/7vnO/c7Ap4KhYIIl+cYLzEeH7bPMd5jnAUCAe7f+iOe+cF+v/9mt9tBJpOBSCQCfAaJRAK9Xo+Cw72HCPl+DYDmY47jLl0uF4xGI8D8L2C73YLFYoFOpwPdbncpFotNCPnFB6R0Ol0EAxqNBsjlchZkXi6XLNdqtZDNZnsej+cDAl7xARf4lZPZbMa+pFKpmGmz2cBisYDVagVOpxOq1SqYTKYRAnSCgHa7zVo3m83s7CQ6f6vVArfbDaVSCWw2myAghYOLjMdjmM/nrAOFQgG73Q5oj2ai1+uhWCz+8Pl8ZaEjHGPxxXq9vkMGXBmAjCTqRqlUglQqXWNuvDZEUjKZfGS1Ws8nkwlMp1M2QPqldCy1Wk3AXS6Xe5bJZD4K3gOSwWC4F4vFhrjCYDAAo9HIuimXy1/y+fxrLPna7/d/3wggBYPBVDQajdRqNZo4DIdDiMfjL/DVKZq3N97EK/n9/qcI+FSv18HhcECz2YREIvEEzZ/5tYIAbP9uOp1e0SxIGo0GwuHwfQQ0bgUgVSqV/VXu9XrfIPQdAn7+F4CMh/xtKBQ6QcDlrQGoGBkPHfixgyoCFvyiP+nSCSCyiE9MAAAAAElFTkSuQmCC',
+        themerImageOn = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACKElEQVR42pWSS2gTURSG/+nEpCE2qWkSQaK0iosRKUSNuinMQmoFKaKCmyKCEsSISzdWQcWNbhSjYhARdKELUapQFZVgu7CtWgR1ELH1EYtNbPNoXm0zif90UpBJlHrgzD1z/3u+OefOEWCwDz0QueyhH6D7K9tD9Gv0O2s6of55XjAkS9phaX2XDY0tgMmmC8UskByF8vpWVoMSolQBmOzkMirJZ+wwvWRYAOqsuljK81FP0GYokWNpvrQQMmkEhKR1HUE4fMDMZX7dA6heXRSjTI4B5kNAahjKm0eXCDhsBMSltlMuCA+R+j4IR1Mj1RW6WP6G1EQSjuUbGW+H0nfiFwHuaoC8z4XMXWDWATTsYNWVFgpsYeo+sCgFLN7FNm7UBISkte5guhDH2Gdg5SpW3OCc02amJjHCvWXcs9e7obyL12zBOT0txr3Nal30ExBLMmGpro2NAx525F0NRL+IJYtFdVddomZnjzZt2LopMVRWS8ix2kQG+GELw2cOwLoEyBXMxe6Lpp1P+nMPas5BxTy958Xx1lYVaQIEQYTVouLkFevA9Xv5I9RfaT/2XwB0bUHo5oXO4NuBHgwWw2h3BtC8G3sp3abP/nUS563Dj/beq77Hz54PY8TOFkoB+A+ijVK/8WxNgDZ25/Yjr3wFMhzIF+/x9Gdi7tY/LhSASCRSno9lWT7OJUyP/RegkqjFpxm7GE4sGEDr1hIrFWzj0kfPGg/9BuI3xhFLjykHAAAAAElFTkSuQmCC';
 
   var timer;
 
@@ -41,18 +43,21 @@
     let now = new Date(),
         hour = now.getHours(),
         bod = $q('body'),
-        btn = $q('#buttonThemer');
+        btn = $q('#buttonThemer'),
+        img = $q('#themerImage');
     if (GM_getValue('themeChanger')) {
       if (hour > 12) hour = hour - 12;
       else if (hour === 0) hour = 12;
       else hour = hour;
       GM_setValue('themeNumber', hour);
       bod.style.background = 'url('+ wallpaper + hour +'.jpg) no-repeat center center / cover';
-      btn.innerHTML = changeThemeText + '  On';
+      btn.value = changeThemeText + ' On';
+      img.src = themerImageOn;
     } else {
       GM_setValue('themeNumber', wallpaperDefault);
       bod.style.background = 'url('+ wallpaper + wallpaperDefault +'.jpg) no-repeat center center / cover';
-      btn.innerHTML = changeThemeText + '  Off';
+      btn.value = changeThemeText + ' Off';
+      img.src = themerImageOff;
   } }
 
   function initialize() {
@@ -61,9 +66,13 @@
         set = $q('.o3j99.c93Gbe'),
         pop = $q('#dEjpnf'),
         li = $c('li', {role: 'none'}),
-        btn = $c('button', {id: 'buttonThemer', className: 'EzVRq', onclick: () => themeChange()});
+        div1 = $c('div', {id: 'themerDiv', className: 'EzVRq'}),
+        btn = $c('input', {id: 'buttonThemer', type: 'button', onclick: () => themeChange()}),
+        img = $c('img', {id: 'themerImage'});
     div.appendChild(set);
-    li.appendChild(btn);
+    div1.appendChild(btn);
+    div1.appendChild(img);
+    li.appendChild(div1);
     pop.appendChild(li);
     if (signIn) signIn.click();
     setThemer();
@@ -112,10 +121,10 @@
     '  top: -20px !important;'+
     '}'+
     '#Mses6b {'+
-    '  background: #181A1B !important;'+
+    '  background: #222 !important;'+
     '  border: 1px solid #999 !important;'+
     '  border-radius: 4px !important;'+
-    '  color: #999 !important;'+
+    '  color: #CCC !important;'+
     '  height: 36px !important;'+
     '  padding: 0 16px !important;'+
     '}'+
@@ -133,6 +142,26 @@
     '.EzVRq:hover {'+
     '  background-color: #111 !important;'+
     '  color: #FFF !important;'+
+    '}'+
+    '#themerDiv {'+
+    '  margin-top: -8px !important;'+
+    '}'+
+    '#buttonThemer {'+
+    '  background: none !important;'+
+    '  border: none !important;'+
+    '  color: #999 !important;'+
+    '  margin: 0 8px 0 -6px !important;'+
+    '}'+
+    '#buttonThemer:hover {'+
+    '  color: #FFF !important;'+
+    '}'+
+    '#themerImage {'+
+    '  opacity: 0 !important;'+
+    '  position: relative !important;'+
+    '  top: 2px !important;'+
+    '}'+
+    '#buttonThemer:hover + #themerImage {'+
+    '  opacity: 1 !important;'+
     '}'+
     '.om7nvf {'+
     '  padding: 0 !important;'+

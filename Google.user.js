@@ -95,6 +95,9 @@
     '.KxwPGc.iTjxkf > a {'+
     '  display: none !important;'+
     '}'+
+    'a.MV3Tnb {'+
+    '  background-color: #111 !important;'+
+    '}'+
     '#hplogo {'+
     '  background: url('+ googleLogo +') no-repeat !important;'+
     '  height: 140px !important;'+

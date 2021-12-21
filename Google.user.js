@@ -98,6 +98,7 @@
   window.addEventListener('unload', () => clearInterval(timer));
 
   GM_addStyle(''+
+    '#gbqfbb,'+
     '.KxwPGc.AghGtd,'+
     '.KxwPGc.ssOUyb,'+
     '.KxwPGc.iTjxkf > a {'+

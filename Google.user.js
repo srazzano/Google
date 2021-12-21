@@ -95,20 +95,17 @@
 
   initialize();
 
-  window.addEventListener('unload', function() {clearInterval(timer)});
+  window.addEventListener('unload', () => clearInterval(timer));
 
   GM_addStyle(''+
-    /*'.vcVZ7d,'+*/
     '.KxwPGc.AghGtd,'+
     '.KxwPGc.ssOUyb,'+
     '.KxwPGc.iTjxkf > a {'+
     '  display: none !important;'+
     '}'+
-    'a.MV3Tnb {'+
-    '  background-color: #111 !important;'+
-    '}'+
     '#hplogo {'+
     '  background: url('+ googleLogo +') no-repeat !important;'+
+    '  border-radius: 20px !important;'+
     '  height: 140px !important;'+
     '  padding-left: 436px !important;'+
     '  width: 0 !important;'+

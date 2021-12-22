@@ -43,6 +43,8 @@
 
   function initialize() {
     let signIn = $q('a.gb_3.gb_4.gb_3d.gb_3c'),
+        div0 = $q('.gb_Qd.gb_Sa.gb_Ed'),
+        set = $q('.ayzqOc'),
         div1 = $q('.o3j99.LLD4me.LS8OJ'),
         btn = $q('.o3j99.c93Gbe'),
         pop = $q('#dEjpnf'),
@@ -50,6 +52,7 @@
         div2 = $c('div', {id: 'divThemer', className: 'EzVRq'}),
         input1 = $c('input', {id: 'buttonThemer', type: 'button', onclick: () => setStatus()}),
         input2 = $c('input', {id: 'buttonImage', type: 'image', onclick: () => setStatus()});
+    div0.insertBefore(set, div0.firstChild);
     div1.appendChild(btn);
     div2.appendChild(input1);
     div2.appendChild(input2);
@@ -106,22 +109,14 @@
     '.KxwPGc.iTjxkf > a {'+
     '  display: none !important;'+
     '}'+
-    '#gb > div > div:last-of-type {'+
-    '  height: calc(-140px + 100vh) !important;'+
+    /*'.o3j99.n1xJcf.Ne6nSd {'+
+    '  margin-bottom: 20px !important;'+
     '}'+
-    '#hplogo {'+
-    '  background: url('+ googleImage +') no-repeat !important;'+
-    '  border-radius: 20px !important;'+
-    '  height: 140px !important;'+
-    '  padding-left: 436px !important;'+
-    '  width: 0 !important;'+
-    '}'+
-    '.KxwPGc.iTjxkf {'+
-    '  width: 100% !important;'+
-    '}'+
+    '.o3j99.LLD4me.LS8OJ {'+
+    '  height: 165px !important;'+
+    '}'+*/
     '.ayzqOc {'+
-    '  margin: auto !important;'+
-    '  top: -20px !important;'+
+    '  top: -1px !important;'+
     '}'+
     '#Mses6b {'+
     '  background: #282828 !important;'+
@@ -134,9 +129,14 @@
     '#Mses6b:hover {'+
     '  color: #FFF !important;'+
     '}'+
+    '#dEjpnf {'+
+    '  bottom: auto !important;'+
+    '  top: 36px !important;'+
+    '  z-index: 9 !important;'+
+    '}'+
     '.EzVRq {'+
     '  color: #999 !important;'+
-    '  padding: 6px 16px !important;'+
+    '  padding: 12px 16px !important;'+
     '  text-decoration: none !important;'+
     '}'+
     '#buttonThemer.EzVRq {'+
@@ -169,8 +169,12 @@
     '#divThemer:hover > #buttonImage {'+
     '  opacity: 1 !important;'+
     '}'+
-    '.om7nvf {'+
-    '  padding: 0 !important;'+
+    '#hplogo {'+
+    '  background: url('+ googleImage +') no-repeat !important;'+
+    '  border-radius: 20px !important;'+
+    '  height: 140px !important;'+
+    '  padding-left: 436px !important;'+
+    '  width: 0 !important;'+
     '}'+
     '.o3j99.c93Gbe {'+
     '  background: transparent !important;'+
@@ -180,6 +184,9 @@
     '  border: 1px solid #CCC !important;'+
     '  border-radius: 50% !important;'+
     '  padding: 4px !important;'+
+    '}'+
+    '#gb > div > div:last-of-type {'+
+    '  height: calc(-140px + 100vh) !important;'+
     '}'+
   '');
 

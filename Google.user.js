@@ -177,14 +177,14 @@
     '  padding-left: 436px !important;'+
     '  width: 0 !important;'+
     '}'+
-    '.o3j99.c93Gbe {'+
-    '  background: transparent !important;'+
-    '}'+
     '.SuUcIb {'+
     '  background-color: #222 !important;'+
     '  border: 1px solid #CCC !important;'+
     '  border-radius: 50% !important;'+
     '  padding: 4px !important;'+
+    '}'+
+    '.o3j99.c93Gbe {'+
+    '  background: transparent !important;'+
     '}'+
     '#gb > div > div:last-of-type {'+
     '  height: calc(-140px + 100vh) !important;'+

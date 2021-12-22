@@ -161,6 +161,7 @@
     '  cursor: pointer !important;'+
     '  opacity: 0 !important;'+
     '  position: relative !important;'+
+    '  left: -2px !important;'+
     '  top: 2px !important;'+
     '}'+
     '#divThemer:hover > #buttonThemer {'+

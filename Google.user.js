@@ -104,6 +104,9 @@
     '.KxwPGc.iTjxkf > a {'+
     '  display: none !important;'+
     '}'+
+    '#gb > div > div:last-of-type {'+
+    '  height: calc(-140px + 100vh) !important;'+
+    '}'+
     '#hplogo {'+
     '  background: url('+ googleImage +') no-repeat !important;'+
     '  border-radius: 20px !important;'+

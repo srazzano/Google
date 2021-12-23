@@ -32,7 +32,10 @@
 
   function $c(type, props) {
     let node = document.createElement(type);
-    if (props && typeof props == 'object') for (let prop in props) typeof node[prop] == 'undefined' ? node.setAttribute(prop, props[prop]) : node[prop] = props[prop];
+    if (props && typeof props == 'object') {
+      for (let prop in props) {
+        typeof node[prop] == 'undefined' ? node.setAttribute(prop, props[prop]) : node[prop] = props[prop];
+    } }
     return node;
   }
 
@@ -52,13 +55,13 @@
         div2 = $c('div', {id: 'divThemer', className: 'EzVRq'}),
         input1 = $c('input', {id: 'buttonThemer', type: 'button', onclick: () => setStatus()}),
         input2 = $c('input', {id: 'buttonImage', type: 'image', onclick: () => setStatus()});
+    if (signIn) signIn.click();
     div0.insertBefore(set, div0.firstChild);
     div1.appendChild(btn);
     div2.appendChild(input1);
     div2.appendChild(input2);
     li.appendChild(div2);
     pop.appendChild(li);
-    if (signIn) signIn.click();
     setTimer();
   }
 

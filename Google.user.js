@@ -78,11 +78,13 @@
       GM_setValue('themeNumber', hour);
       body.style.background = 'url('+ wallpaper + hour +'.jpg) no-repeat center center / cover';
       input1.value = changeThemeText + ' ' + onText;
+      input1.title = 'Active image: ' + hour;
       input2.src = statusOnImage;
     } else {
       GM_setValue('themeNumber', wallpaperDefault);
       body.style.background = 'url('+ wallpaper + wallpaperDefault +'.jpg) no-repeat center center / cover';
       input1.value = changeThemeText + ' ' + offText;
+      input1.title = 'Active image: ' + wallpaperDefault;
       input2.src = statusOffImage;
   } }
 

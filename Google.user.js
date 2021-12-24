@@ -79,6 +79,25 @@
     setTimer();
   }
 
+  function getLogo() {
+    let inp = $q('#positionLogo'),
+        img = $q('#positionImage');
+    if (GM_getValue('repositionLogo')) {
+      inp.value = repositionLogoText + ' ' + downText;
+      img.src = arrowDn;
+      GM_addStyle(''+
+        '.o3j99.n1xJcf.Ne6nSd {margin-bottom: 20px !important;}'+
+        '.o3j99.LLD4me.LS8OJ {height: 165px !important;}'+
+      '');
+    } else {
+      inp.value = repositionLogoText + ' ' + upText;
+      img.src = arrowUp;
+      GM_addStyle(''+
+        '.o3j99.n1xJcf.Ne6nSd {margin-bottom: 0 !important;}'+
+        '.o3j99.LLD4me.LS8OJ {height: calc(100% - 560px) !important;}'+
+      '');
+  } }
+
   function setBackground() {
     let now = new Date(),
         hour = now.getHours(),
@@ -102,33 +121,6 @@
       div2.title = changeThemeTooltip + wallpaperDefault;
       input1.value = changeThemeText + ' ' + offText;
       input2.src = statusOffImage;
-  } }
-
-  function getLogo() {
-    let inp = $q('#positionLogo'),
-        img = $q('#positionImage');
-    if (GM_getValue('repositionLogo')) {
-      inp.value = repositionLogoText + ' ' + downText;
-      img.src = arrowDn;
-      GM_addStyle(''+
-        '.o3j99.n1xJcf.Ne6nSd {'+
-        '  margin-bottom: 20px !important;'+
-        '}'+
-        '.o3j99.LLD4me.LS8OJ {'+
-        '  height: 165px !important;'+
-        '}'+
-      '');
-    } else {
-      inp.value = repositionLogoText + ' ' + upText;
-      img.src = arrowUp;
-      GM_addStyle(''+
-        '.o3j99.n1xJcf.Ne6nSd {'+
-        '  margin-bottom: 0 !important;'+
-        '}'+
-        '.o3j99.LLD4me.LS8OJ {'+
-        '  height: calc(100% - 560px) !important;'+
-        '}'+
-      '');
   } }
 
   function setLogo() {

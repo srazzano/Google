@@ -18,10 +18,13 @@
 
   const themerInterval = 30000, // Frequency to check for hour change in milliseconds
         wallpaperDefault = 1, // 1 - 13 or 0 for no wallpaper
-        changeThemeText = 'Change theme hourly:', // Label text in Settings Popup
+        changeThemeText = 'Change theme hourly:', // Input text in Settings Popup
+        repositionLogoText = 'Reposition Logo:', // Input text in Settings Popup
         changeThemeTooltip = 'Active wallpaper image', // Current wallpaper image number
         offText = 'Off', // Status text for changeTheme
         onText = 'On', // Status text for changeTheme
+        downText = 'Down', // Down text for positionLogo
+        upText = 'Up', // Up text for positionLogo
         //googleImage = 'https://raw.githubusercontent.com/srazzano/Images/master/googleImage.png', // GitHub site
         googleImage = 'https://sonco.synthasite.com/resources/googleImage.png', // Yola site
         //wallpaper = 'https://raw.githubusercontent.com/srazzano/Images/master/image', // GitHub site
@@ -59,7 +62,7 @@
         input2 = $c('input', {id: 'buttonImage', type: 'image'}),
         li2 = $c('li', {role: 'none'}),
         div3 = $c('div', {id: 'divPosition', className: 'EzVRq', onclick: () => setLogo()}),
-        input3 = $c('input', {id: 'positionLogo', value: 'Reposition Logo', type: 'button'}),
+        input3 = $c('input', {id: 'positionLogo', type: 'button'}),
         input4 = $c('input', {id: 'positionImage', type: 'image'});
     if (signIn) signIn.click();
     div0.insertBefore(set, div0.firstChild);
@@ -102,8 +105,10 @@
   } }
 
   function getLogo() {
-    let img = $q('#positionImage');
+    let inp = $q('#positionLogo'),
+        img = $q('#positionImage');
     if (GM_getValue('repositionLogo')) {
+      inp.value = repositionLogoText + ' ' + downText;
       img.src = arrowDn;
       GM_addStyle(''+
         '.o3j99.n1xJcf.Ne6nSd {'+
@@ -114,6 +119,7 @@
         '}'+
       '');
     } else {
+      inp.value = repositionLogoText + ' ' + upText;
       img.src = arrowUp;
       GM_addStyle(''+
         '.o3j99.n1xJcf.Ne6nSd {'+
@@ -235,7 +241,7 @@
     '  color: #FFF !important;'+
     '}'+
     '#divThemer:hover > #buttonImage,'+
-    '#positionImage {'+
+    '#divPosition:hover > #positionImage {'+
     '  opacity: 1 !important;'+
     '}'+
     '#hplogo {'+

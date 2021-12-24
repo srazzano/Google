@@ -126,9 +126,8 @@
     '  top: -1px !important;'+
     '}'+
     '#Mses6b {'+
-    '  background:rgba(24, 26, 27, .3) !important;'+
     '  border: 1px solid #999 !important;'+
-    '  border-radius: 4px !important;'+
+    '  border-radius: 6px !important;'+
     '  color: #CCC !important;'+
     '  height: 36px !important;'+
     '  padding: 0 16px !important;'+
@@ -183,9 +182,13 @@
     '  padding-left: 436px !important;'+
     '  width: 0 !important;'+
     '}'+
+    '#Mses6b,'+
     '.RNNXgb,'+
     '.FPdoLc.lJ9FBc input {'+
-    '  background-color: rgba(24, 26, 27, .3) !important;'+
+    '  background-color: rgba(24, 26, 27, .1) !important;'+
+    '}'+
+    '.FPdoLc.lJ9FBc input {'+
+    '  border-radius: 6px !important;'+
     '}'+
     '#Mses6b:hover,'+
     '.RNNXgb:hover,'+

@@ -19,7 +19,7 @@
   const themerInterval = 30000, // Frequency to check for hour change in milliseconds
         wallpaperDefault = 1, // 1 - 13 or 0 for no wallpaper
         changeThemeText = 'Change theme hourly:', // Label text in Settings Popup
-        changeThemeTooltip = 'Active wallpaper image:', // Current wallpaper image number
+        changeThemeTooltip = 'Active wallpaper image', // Current wallpaper image number
         offText = 'Off', // Status text for changeTheme
         onText = 'On', // Status text for changeTheme
         //googleImage = 'https://raw.githubusercontent.com/srazzano/Images/master/googleImage.png', // GitHub site
@@ -79,13 +79,13 @@
       else hour = hour;
       GM_setValue('themeNumber', hour);
       body.style.background = 'url('+ wallpaper + hour +'.jpg) no-repeat center center / cover';
-      div2.title = changeThemeTooltip + ' ' + hour;
+      div2.title = changeThemeTooltip + hour;
       input1.value = changeThemeText + ' ' + onText;
       input2.src = statusOnImage;
     } else {
       GM_setValue('themeNumber', wallpaperDefault);
       body.style.background = 'url('+ wallpaper + wallpaperDefault +'.jpg) no-repeat center center / cover';
-      div2.title = changeThemeTooltip + ' ' + wallpaperDefault;
+      div2.title = changeThemeTooltip + wallpaperDefault;
       input1.value = changeThemeText + ' ' + offText;
       input2.src = statusOffImage;
   } }
@@ -185,6 +185,14 @@
     '  height: 140px !important;'+
     '  padding-left: 436px !important;'+
     '  width: 0 !important;'+
+    '}'+
+    '.RNNXgb,'+
+    '.FPdoLc.lJ9FBc input {'+
+    '  background-color: rgba(24, 26, 27, .3) !important;'+
+    '}'+
+    '.RNNXgb:hover,'+
+    '.FPdoLc.lJ9FBc input:hover {'+
+    '  background-color: rgb(24, 26, 27) !important;'+
     '}'+
     '.SuUcIb {'+
     '  background-color: #222 !important;'+

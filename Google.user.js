@@ -122,6 +122,14 @@
     '.o3j99.LLD4me.LS8OJ {'+
     '  height: 165px !important;'+
     '}'+*/
+    'a.MV3Tnb {'+
+    '  border: 1px solid #999 !important;'+
+    '  border-radius: 6px !important;'+
+    '  color: #CCC !important;'+
+    '  padding: 10px 16px 8px 16px !important;'+
+    '  margin-top: -2px !important;'+
+    '  text-decoration: none !important;'+
+    '}'+
     '.ayzqOc {'+
     '  top: -1px !important;'+
     '}'+
@@ -193,16 +201,19 @@
     '  padding-left: 436px !important;'+
     '  width: 0 !important;'+
     '}'+
+    'a.MV3Tnb,'+
     '#Mses6b,'+
     '.gb_h > a.gb_f,'+
     '.RNNXgb,'+
     '.FPdoLc.lJ9FBc input {'+
     '  background-color: rgba(24, 26, 27, .01) !important;'+
     '}'+
+    'a.MV3Tnb,'+
     '.gb_h > a.gb_f,'+
     '.FPdoLc.lJ9FBc input {'+
     '  border-radius: 6px !important;'+
     '}'+
+    'a.MV3Tnb:hover,'+
     '#Mses6b:hover,'+
     '.gb_h > a.gb_f:hover,'+
     '.RNNXgb:hover,'+

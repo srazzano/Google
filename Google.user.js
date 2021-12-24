@@ -16,7 +16,7 @@
 
   'use strict';
 
-  const moveBodyUp = false, // Increase vertical height
+  const moveLogoUp = false, // Move logo and search box up to increase vertical space
         themerInterval = 30000, // Frequency to check for hour change in milliseconds
         wallpaperDefault = 1, // 1 - 13 or 0 for no wallpaper
         changeThemeText = 'Change theme hourly:', // Label text in Settings Popup
@@ -110,7 +110,7 @@
 
   window.addEventListener('unload', () => clearInterval(timer));
 
-  if (moveBodyUp) {
+  if (moveLogoUp) {
     GM_addStyle(''+
       '.o3j99.n1xJcf.Ne6nSd {'+
       '  margin-bottom: 20px !important;'+

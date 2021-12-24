@@ -16,8 +16,7 @@
 
   'use strict';
 
-  const moveLogoUp = false, // Move logo and search box up to increase vertical space
-        themerInterval = 30000, // Frequency to check for hour change in milliseconds
+  const themerInterval = 30000, // Frequency to check for hour change in milliseconds
         wallpaperDefault = 1, // 1 - 13 or 0 for no wallpaper
         changeThemeText = 'Change theme hourly:', // Label text in Settings Popup
         changeThemeTooltip = 'Active wallpaper image', // Current wallpaper image number
@@ -28,8 +27,9 @@
         //wallpaper = 'https://raw.githubusercontent.com/srazzano/Images/master/image', // GitHub site
         wallpaper = 'https://sonco.synthasite.com/resources/image', // Yola site
         statusOffImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACBElEQVR42pWSO4haURCGx/WFiK9ljaAoIqikWAvN2gWsIoJVQNKlSiOGNLbGJttY2Qg2qSXRJhhBggiCacIGsUpiI+ILRRMf+EK9MTMHNyx37y7JD8N53Pm/M2fuEQFPhUJBjMMzjBcYF8ftK4y3GO+DwSB3M1/EMz88HA7fHA4HyOVyEIvFgGuQSqXQ6/UoONw7R8j3WwA0n3Ic99PtdsN4PAac/wXsdjuwWq3Q6XSg2+2uJBKJGSG/+ICUXq+PYECj0QCFQsGCzKvVis11Oh1ks9me1+v9gICXfMAITzmbz+fsJLVazUzb7RaWyyWs12twuVxQrVbBbDaPEaAXBLTbbVa6xWJhdyfR/VutFng8HiiVSmC32wUBKWxcZDKZwGKxYBUolUrY7/dAe9QTg8EAxWLxh9/vLwtd4RSTR5vN5oQMODIAGUlUjUqlAplMtsG56VYTSclk8pHNZruaTqcwm81YA+mX0rU0Gg0B97lc7mkmk/ko+A5IRqPxQSwWG+IIg8EATCYTq6ZcLn/J5/OvMOVrv9//fSeAFAqFUtFoNFKr1ajjMBwOIR6PP8dP79C8u/MlXisQCDxBwKd6vQ5OpxOazSYkEonHaP7MzxUEYPnadDo9oV6QtFothMNhHQKm/wQgVSqVw821z+cTzL0XgKbXx/mb/wagYmQ8nk6gS6GkP1++/BEOSJ94AAAAAElFTkSuQmCC',
-        statusOnImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACH0lEQVR42pWSS2gTURSG/+nEpCE2qWkTQaK0iosRKUSNuinMQmoXUkQFN0UEJYgRl26sgq+NbhSjYhERdKELUapQFZWgXdhWLYI6iNjaGotttHk0TdI2k/hPZ4QyGYseOHMf/znfvefOEWCyj10QOeym76eHjO1++jX6nTVtUOfHC6ZkSQuW1re7UNsI2Fy6UJwCUkNQ3tya0qCEKBUAJns5DEnyGTdsrzgtAFVOXSzl+akmaDOU2NEMF42ETJgBUWldawSeIDBzmaf7ATWgi2KcyeOA/SCQHoDy9tElAg6ZAQmp+WQ9hIdIf+uDp66W6gpdLI8g/SsFz/KNnG+D8vL4TwJ8lQB5bz2yd4FZD1Cznbc2SiiwhMn7wKI0sHgny7hhCYhKa32RTCGB0S/AylW8cY13TpuZnMAg95Zxz13tg/I+YVmCd3paTAQa1Kr4Z2A8xYSlujY6BvhZUWA1EP8qlhwO1VfxiJqdPVK3YeumZH9ZLSHH2yazwHdXJ4L2MJxLgFzBXuy4aNvxpCf3wLIPDPN3nxfHmppUZAgQBBFOh4oTV5y91+/lD1N/rf3YhQBo34LozQttkXe9XegrdqLFG0bDLuyhdJs++9dO/GOtIbR0Xw0+fvZ8AINullAKI3QAzZR6zLGWAK3tzu1DXhkGsmzIFx/w9Edy7tU//SsAsVisPH8ty7Jl7IIAJh0z5qf+G0Dr0BKN0zXQaaug31A0whEts3O7AAAAAElFTkSuQmCC';
-
+        statusOnImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACH0lEQVR42pWSS2gTURSG/+nEpCE2qWkTQaK0iosRKUSNuinMQmoXUkQFN0UEJYgRl26sgq+NbhSjYhERdKELUapQFZWgXdhWLYI6iNjaGotttHk0TdI2k/hPZ4QyGYseOHMf/znfvefOEWCyj10QOeym76eHjO1++jX6nTVtUOfHC6ZkSQuW1re7UNsI2Fy6UJwCUkNQ3tya0qCEKBUAJns5DEnyGTdsrzgtAFVOXSzl+akmaDOU2NEMF42ETJgBUWldawSeIDBzmaf7ATWgi2KcyeOA/SCQHoDy9tElAg6ZAQmp+WQ9hIdIf+uDp66W6gpdLI8g/SsFz/KNnG+D8vL4TwJ8lQB5bz2yd4FZD1Cznbc2SiiwhMn7wKI0sHgny7hhCYhKa32RTCGB0S/AylW8cY13TpuZnMAg95Zxz13tg/I+YVmCd3paTAQa1Kr4Z2A8xYSlujY6BvhZUWA1EP8qlhwO1VfxiJqdPVK3YeumZH9ZLSHH2yazwHdXJ4L2MJxLgFzBXuy4aNvxpCf3wLIPDPN3nxfHmppUZAgQBBFOh4oTV5y91+/lD1N/rf3YhQBo34LozQttkXe9XegrdqLFG0bDLuyhdJs++9dO/GOtIbR0Xw0+fvZ8AINullAKI3QAzZR6zLGWAK3tzu1DXhkGsmzIFx/w9Edy7tU//SsAsVisPH8ty7Jl7IIAJh0z5qf+G0Dr0BKN0zXQaaug31A0whEts3O7AAAAAElFTkSuQmCC',
+        arrowDn = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABFUlEQVR42r2Sz0pCQRTGvzOjV9RwUYiIcREX4UYJKlFQxHwJX6EnatOuTaIt2vUWQYsWPUcEFneOM3e4Is6McBc1MBw4M9+P7/wheM7THdiXX9yDDnMUAky6Es1WApaAEhGeX3/yAaZ9gca5AhU1AAKrF/XfgGuJRpwABQ0ggfUyL2CkHbSVBWgH68e/AoRGNr8lnMUMSgGE1YP3mwXEdfrujblSPd170UJdejpG6EvSplmWbfzcpI2lzLIDOQLIxKakXU0OxAM4FDtNNJBOm5L+jGV0koksALIA/lDOPjhdNZDLG0JnCBQrnDphUQK//3qXKTjG7hWpiymLqFYDvX3l28QdZFBWveZGhMRHARnExJDYnC3sfY0xR9ilugAAAABJRU5ErkJggg==',
+        arrowUp = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABDklEQVR42q2SwUpCQRSG/3+uXtHCRREixkVchBslqCTBkPIleoWeqE27NoW2aNdbBC1a9BwRWNw5Hecm1W3GFDxwGJg5/zfnzD/Egri5gMzW80swVMNF4navbDv1qRnf2yCEQfEB7d5QTFytgo+vCEHoE+8fEa1joFjRCQqAmBLk6cMLYV7cajLtnkoUb+phpGJNuCxAnu0fCH+Kkx2+dQZS2diCu5nmG5DBypCX6S8IvWL4AbPIQ+gV/wNw6xeEc6/zMTojthMBFaRlGF95y8I2DvsGtaZ1nVgYTK6XtHF9gMMItSTNAPoYk9tVAV3tYFenL2YdLP0T1wY4aUeoN1JnozUx7h7eVwP49n2AT5shjTEvfA5vAAAAAElFTkSuQmCC';
   var timer;
 
   function $c(type, props) {
@@ -53,17 +53,26 @@
         div1 = $q('.o3j99.LLD4me.LS8OJ'),
         btn = $q('.o3j99.c93Gbe'),
         pop = $q('#dEjpnf'),
-        li = $c('li', {role: 'none'}),
+        li1 = $c('li', {role: 'none'}),
         div2 = $c('div', {id: 'divThemer', className: 'EzVRq', onclick: () => setStatus()}),
         input1 = $c('input', {id: 'buttonThemer', type: 'button'}),
-        input2 = $c('input', {id: 'buttonImage', type: 'image'});
+        input2 = $c('input', {id: 'buttonImage', type: 'image'}),
+        li2 = $c('li', {role: 'none'}),
+        div3 = $c('div', {id: 'divPosition', className: 'EzVRq', onclick: () => setLogo()}),
+        input3 = $c('input', {id: 'positionLogo', value: 'Reposition Logo', type: 'button'}),
+        input4 = $c('input', {id: 'positionImage', type: 'image'});
     if (signIn) signIn.click();
     div0.insertBefore(set, div0.firstChild);
     div1.appendChild(btn);
     div2.appendChild(input1);
     div2.appendChild(input2);
-    li.appendChild(div2);
-    pop.appendChild(li);
+    li1.appendChild(div2);
+    div3.appendChild(input3);
+    div3.appendChild(input4);
+    li2.appendChild(div3);
+    pop.appendChild(li1);
+    pop.appendChild(li2);
+    getLogo();
     setTimer();
   }
 
@@ -73,7 +82,8 @@
         body = $q('body'),
         div2 = $q('#divThemer'),
         input1 = $q('#buttonThemer'),
-        input2 = $q('#buttonImage');
+        input2 = $q('#buttonImage'),
+        input3 = $q('#positionLogo');
     if (GM_getValue('themeChanger')) {
       if (hour > 12) hour = hour - 12;
       else if (hour === 0) hour = 12;
@@ -91,6 +101,36 @@
       input2.src = statusOffImage;
   } }
 
+  function getLogo() {
+    let img = $q('#positionImage');
+    if (GM_getValue('repositionLogo')) {
+      img.src = arrowDn;
+      GM_addStyle(''+
+        '.o3j99.n1xJcf.Ne6nSd {'+
+        '  margin-bottom: 20px !important;'+
+        '}'+
+        '.o3j99.LLD4me.LS8OJ {'+
+        '  height: 165px !important;'+
+        '}'+
+      '');
+    } else {
+      img.src = arrowUp;
+      GM_addStyle(''+
+        '.o3j99.n1xJcf.Ne6nSd {'+
+        '  margin-bottom: 0 !important;'+
+        '}'+
+        '.o3j99.LLD4me.LS8OJ {'+
+        '  height: calc(100% - 560px) !important;'+
+        '}'+
+      '');
+  } }
+
+  function setLogo() {
+    let bool = GM_getValue('repositionLogo') !== true ? true : false;
+    GM_setValue('repositionLogo', bool);
+    getLogo();
+  }
+
   function setStatus() {
     let bool = GM_getValue('themeChanger') !== true ? true : false;
     GM_setValue('themeChanger', bool);
@@ -105,21 +145,11 @@
 
   if (!GM_getValue('themeChanger')) GM_setValue('themeChanger', false);
   if (!GM_getValue('themeNumber')) GM_setValue('themeNumber', wallpaperDefault);
+  if (!GM_getValue('repositionLogo')) GM_setValue('repositionLogo', false);
 
   initialize();
 
   window.addEventListener('unload', () => clearInterval(timer));
-
-  if (moveLogoUp) {
-    GM_addStyle(''+
-      '.o3j99.n1xJcf.Ne6nSd {'+
-      '  margin-bottom: 20px !important;'+
-      '}'+
-      '.o3j99.LLD4me.LS8OJ {'+
-      '  height: 165px !important;'+
-      '}'+
-    '');
-  }
 
   GM_addStyle(''+
     '#gbqfbb,'+
@@ -178,14 +208,20 @@
     '  cursor: pointer !important;'+
     '  margin-top: -8px !important;'+
     '}'+
-    '#buttonThemer {'+
+    '#divPosition {'+
+    '  cursor: pointer !important;'+
+    '  margin-top: -4px !important;'+
+    '}'+
+    '#buttonThemer,'+
+    '#positionLogo {'+
     '  background: none !important;'+
     '  border: none !important;'+
     '  color: #999 !important;'+
     '  cursor: pointer !important;'+
     '  margin: 0 8px 0 -6px !important;'+
     '}'+
-    '#buttonImage {'+
+    '#buttonImage,'+
+    '#positionImage {'+
     '  cursor: pointer !important;'+
     '  height: 16px !important;'+
     '  left: -2px !important;'+
@@ -194,10 +230,12 @@
     '  top: 2px !important;'+
     '  width: 16px !important;'+
     '}'+
-    '#divThemer:hover > #buttonThemer {'+
+    '#divThemer:hover > #buttonThemer,'+
+    '#divPosition:hover > #positionLogo {'+
     '  color: #FFF !important;'+
     '}'+
-    '#divThemer:hover > #buttonImage {'+
+    '#divThemer:hover > #buttonImage,'+
+    '#positionImage {'+
     '  opacity: 1 !important;'+
     '}'+
     '#hplogo {'+

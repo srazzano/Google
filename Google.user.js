@@ -126,15 +126,12 @@
     '  top: -1px !important;'+
     '}'+
     '#Mses6b {'+
-    '  background: #282828 !important;'+
+    '  background:rgba(24, 26, 27, .3) !important;'+
     '  border: 1px solid #999 !important;'+
     '  border-radius: 4px !important;'+
     '  color: #CCC !important;'+
     '  height: 36px !important;'+
     '  padding: 0 16px !important;'+
-    '}'+
-    '#Mses6b:hover {'+
-    '  color: #FFF !important;'+
     '}'+
     '#dEjpnf {'+
     '  bottom: auto !important;'+
@@ -190,9 +187,11 @@
     '.FPdoLc.lJ9FBc input {'+
     '  background-color: rgba(24, 26, 27, .3) !important;'+
     '}'+
+    '#Mses6b:hover,'+
     '.RNNXgb:hover,'+
     '.FPdoLc.lJ9FBc input:hover {'+
     '  background-color: rgb(24, 26, 27) !important;'+
+    '  color: #FFF !important;'+
     '}'+
     '.SuUcIb {'+
     '  background-color: #222 !important;'+

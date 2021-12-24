@@ -19,6 +19,7 @@
   const themerInterval = 30000, // Frequency to check for hour change in milliseconds
         wallpaperDefault = 1, // 1 - 13 or 0 for no wallpaper
         changeThemeText = 'Change theme hourly:', // Label text in Settings Popup
+        changeThemeTooltip = 'Active image:',
         offText = 'Off', // Status text for changeTheme
         onText = 'On', // Status text for changeTheme
         //googleImage = 'https://raw.githubusercontent.com/srazzano/Images/master/googleImage.png', // GitHub site
@@ -78,13 +79,13 @@
       GM_setValue('themeNumber', hour);
       body.style.background = 'url('+ wallpaper + hour +'.jpg) no-repeat center center / cover';
       input1.value = changeThemeText + ' ' + onText;
-      input1.title = 'Active image: ' + hour;
+      input1.title = changeThemeTooltip + ' ' + hour;
       input2.src = statusOnImage;
     } else {
       GM_setValue('themeNumber', wallpaperDefault);
       body.style.background = 'url('+ wallpaper + wallpaperDefault +'.jpg) no-repeat center center / cover';
       input1.value = changeThemeText + ' ' + offText;
-      input1.title = 'Active image: ' + wallpaperDefault;
+      input1.title = changeThemeTooltip + ' ' + wallpaperDefault;
       input2.src = statusOffImage;
   } }
 

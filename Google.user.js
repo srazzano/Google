@@ -53,9 +53,9 @@
         btn = $q('.o3j99.c93Gbe'),
         pop = $q('#dEjpnf'),
         li = $c('li', {role: 'none'}),
-        div2 = $c('div', {id: 'divThemer', className: 'EzVRq'}),
-        input1 = $c('input', {id: 'buttonThemer', type: 'button', onclick: () => setStatus()}),
-        input2 = $c('input', {id: 'buttonImage', type: 'image', onclick: () => setStatus()});
+        div2 = $c('div', {id: 'divThemer', className: 'EzVRq', onclick: () => setStatus()}),
+        input1 = $c('input', {id: 'buttonThemer', type: 'button'}),
+        input2 = $c('input', {id: 'buttonImage', type: 'image'});
     if (signIn) signIn.click();
     div0.insertBefore(set, div0.firstChild);
     div1.appendChild(btn);
@@ -70,6 +70,7 @@
     let now = new Date(),
         hour = now.getHours(),
         body = $q('body'),
+        div2 = $q('#divThemer'),
         input1 = $q('#buttonThemer'),
         input2 = $q('#buttonImage');
     if (GM_getValue('themeChanger')) {
@@ -78,14 +79,14 @@
       else hour = hour;
       GM_setValue('themeNumber', hour);
       body.style.background = 'url('+ wallpaper + hour +'.jpg) no-repeat center center / cover';
+      div2.title = changeThemeTooltip + ' ' + hour;
       input1.value = changeThemeText + ' ' + onText;
-      input1.title = changeThemeTooltip + ' ' + hour;
       input2.src = statusOnImage;
     } else {
       GM_setValue('themeNumber', wallpaperDefault);
       body.style.background = 'url('+ wallpaper + wallpaperDefault +'.jpg) no-repeat center center / cover';
+      div2.title = changeThemeTooltip + ' ' + wallpaperDefault;
       input1.value = changeThemeText + ' ' + offText;
-      input1.title = changeThemeTooltip + ' ' + wallpaperDefault;
       input2.src = statusOffImage;
   } }
 

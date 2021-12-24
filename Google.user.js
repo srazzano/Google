@@ -132,6 +132,17 @@
     '  height: 36px !important;'+
     '  padding: 0 16px !important;'+
     '}'+
+    '.gb_h > a.gb_f {'+
+    '  border: 1px solid #999 !important;'+
+    '  border-radius: 6px !important;'+
+    '  color: #CCC !important;'+
+    '  padding: 6px 16px 4px 16px !important;'+
+    '  margin-top: -2px !important;'+
+    '  text-decoration: none !important;'+
+    '}'+
+    '.gb_Pe:hover {'+
+    '  color: #FFF !important;'+
+    '}'+
     '#dEjpnf {'+
     '  bottom: auto !important;'+
     '  top: 36px !important;'+
@@ -183,14 +194,17 @@
     '  width: 0 !important;'+
     '}'+
     '#Mses6b,'+
+    '.gb_h > a.gb_f,'+
     '.RNNXgb,'+
     '.FPdoLc.lJ9FBc input {'+
-    '  background-color: rgba(24, 26, 27, .1) !important;'+
+    '  background-color: rgba(24, 26, 27, .01) !important;'+
     '}'+
+    '.gb_h > a.gb_f,'+
     '.FPdoLc.lJ9FBc input {'+
     '  border-radius: 6px !important;'+
     '}'+
     '#Mses6b:hover,'+
+    '.gb_h > a.gb_f:hover,'+
     '.RNNXgb:hover,'+
     '.FPdoLc.lJ9FBc input:hover {'+
     '  background-color: rgb(24, 26, 27) !important;'+

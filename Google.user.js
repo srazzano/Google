@@ -19,7 +19,7 @@
   const themerInterval = 30000, // Frequency to check for hour change in milliseconds
         wallpaperDefault = 1, // 1 - 13 or 0 for no wallpaper
         changeThemeText = 'Change theme hourly:', // Label text in Settings Popup
-        changeThemeTooltip = 'Active image:',
+        changeThemeTooltip = 'Active image:', // Current wallpaper image number
         offText = 'Off', // Status text for changeTheme
         onText = 'On', // Status text for changeTheme
         //googleImage = 'https://raw.githubusercontent.com/srazzano/Images/master/googleImage.png', // GitHub site

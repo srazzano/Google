@@ -16,7 +16,8 @@
 
   'use strict';
 
-  const themerInterval = 30000, // Frequency to check for hour change in milliseconds
+  const moveBodyUp = false, // Increase vertical height
+        themerInterval = 30000, // Frequency to check for hour change in milliseconds
         wallpaperDefault = 1, // 1 - 13 or 0 for no wallpaper
         changeThemeText = 'Change theme hourly:', // Label text in Settings Popup
         changeThemeTooltip = 'Active wallpaper image', // Current wallpaper image number
@@ -109,6 +110,17 @@
 
   window.addEventListener('unload', () => clearInterval(timer));
 
+  if (moveBodyUp) {
+    GM_addStyle(''+
+      '.o3j99.n1xJcf.Ne6nSd {'+
+      '  margin-bottom: 20px !important;'+
+      '}'+
+      '.o3j99.LLD4me.LS8OJ {'+
+      '  height: 165px !important;'+
+      '}'+
+    '');
+  }
+
   GM_addStyle(''+
     '#gbqfbb,'+
     '.KxwPGc.AghGtd,'+
@@ -116,12 +128,6 @@
     '.KxwPGc.iTjxkf > a {'+
     '  display: none !important;'+
     '}'+
-    /*'.o3j99.n1xJcf.Ne6nSd {'+
-    '  margin-bottom: 20px !important;'+
-    '}'+
-    '.o3j99.LLD4me.LS8OJ {'+
-    '  height: 165px !important;'+
-    '}'+*/
     'a.MV3Tnb {'+
     '  border: 1px solid #999 !important;'+
     '  border-radius: 6px !important;'+

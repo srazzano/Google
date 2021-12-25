@@ -31,8 +31,8 @@
         wallpaper = 'https://sonco.synthasite.com/resources/image', // Yola site
         statusOffImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACBElEQVR42pWSO4haURCGx/WFiK9ljaAoIqikWAvN2gWsIoJVQNKlSiOGNLbGJttY2Qg2qSXRJhhBggiCacIGsUpiI+ILRRMf+EK9MTMHNyx37y7JD8N53Pm/M2fuEQFPhUJBjMMzjBcYF8ftK4y3GO+DwSB3M1/EMz88HA7fHA4HyOVyEIvFgGuQSqXQ6/UoONw7R8j3WwA0n3Ic99PtdsN4PAac/wXsdjuwWq3Q6XSg2+2uJBKJGSG/+ICUXq+PYECj0QCFQsGCzKvVis11Oh1ks9me1+v9gICXfMAITzmbz+fsJLVazUzb7RaWyyWs12twuVxQrVbBbDaPEaAXBLTbbVa6xWJhdyfR/VutFng8HiiVSmC32wUBKWxcZDKZwGKxYBUolUrY7/dAe9QTg8EAxWLxh9/vLwtd4RSTR5vN5oQMODIAGUlUjUqlAplMtsG56VYTSclk8pHNZruaTqcwm81YA+mX0rU0Gg0B97lc7mkmk/ko+A5IRqPxQSwWG+IIg8EATCYTq6ZcLn/J5/OvMOVrv9//fSeAFAqFUtFoNFKr1ajjMBwOIR6PP8dP79C8u/MlXisQCDxBwKd6vQ5OpxOazSYkEonHaP7MzxUEYPnadDo9oV6QtFothMNhHQKm/wQgVSqVw821z+cTzL0XgKbXx/mb/wagYmQ8nk6gS6GkP1++/BEOSJ94AAAAAElFTkSuQmCC',
         statusOnImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACH0lEQVR42pWSS2gTURSG/+nEpCE2qWkTQaK0iosRKUSNuinMQmoXUkQFN0UEJYgRl26sgq+NbhSjYhERdKELUapQFZWgXdhWLYI6iNjaGotttHk0TdI2k/hPZ4QyGYseOHMf/znfvefOEWCyj10QOeym76eHjO1++jX6nTVtUOfHC6ZkSQuW1re7UNsI2Fy6UJwCUkNQ3tya0qCEKBUAJns5DEnyGTdsrzgtAFVOXSzl+akmaDOU2NEMF42ETJgBUWldawSeIDBzmaf7ATWgi2KcyeOA/SCQHoDy9tElAg6ZAQmp+WQ9hIdIf+uDp66W6gpdLI8g/SsFz/KNnG+D8vL4TwJ8lQB5bz2yd4FZD1Cznbc2SiiwhMn7wKI0sHgny7hhCYhKa32RTCGB0S/AylW8cY13TpuZnMAg95Zxz13tg/I+YVmCd3paTAQa1Kr4Z2A8xYSlujY6BvhZUWA1EP8qlhwO1VfxiJqdPVK3YeumZH9ZLSHH2yazwHdXJ4L2MJxLgFzBXuy4aNvxpCf3wLIPDPN3nxfHmppUZAgQBBFOh4oTV5y91+/lD1N/rf3YhQBo34LozQttkXe9XegrdqLFG0bDLuyhdJs++9dO/GOtIbR0Xw0+fvZ8AINullAKI3QAzZR6zLGWAK3tzu1DXhkGsmzIFx/w9Edy7tU//SsAsVisPH8ty7Jl7IIAJh0z5qf+G0Dr0BKN0zXQaaug31A0whEts3O7AAAAAElFTkSuQmCC',
-        arrowDn = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABFUlEQVR42r2Sz0pCQRTGvzOjV9RwUYiIcREX4UYJKlFQxHwJX6EnatOuTaIt2vUWQYsWPUcEFneOM3e4Is6McBc1MBw4M9+P7/wheM7THdiXX9yDDnMUAky6Es1WApaAEhGeX3/yAaZ9gca5AhU1AAKrF/XfgGuJRpwABQ0ggfUyL2CkHbSVBWgH68e/AoRGNr8lnMUMSgGE1YP3mwXEdfrujblSPd170UJdejpG6EvSplmWbfzcpI2lzLIDOQLIxKakXU0OxAM4FDtNNJBOm5L+jGV0koksALIA/lDOPjhdNZDLG0JnCBQrnDphUQK//3qXKTjG7hWpiymLqFYDvX3l28QdZFBWveZGhMRHARnExJDYnC3sfY0xR9ilugAAAABJRU5ErkJggg==',
-        arrowUp = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABDklEQVR42q2SwUpCQRSG/3+uXtHCRREixkVchBslqCTBkPIleoWeqE27NoW2aNdbBC1a9BwRWNw5Hecm1W3GFDxwGJg5/zfnzD/Egri5gMzW80swVMNF4navbDv1qRnf2yCEQfEB7d5QTFytgo+vCEHoE+8fEa1joFjRCQqAmBLk6cMLYV7cajLtnkoUb+phpGJNuCxAnu0fCH+Kkx2+dQZS2diCu5nmG5DBypCX6S8IvWL4AbPIQ+gV/wNw6xeEc6/zMTojthMBFaRlGF95y8I2DvsGtaZ1nVgYTK6XtHF9gMMItSTNAPoYk9tVAV3tYFenL2YdLP0T1wY4aUeoN1JnozUx7h7eVwP49n2AT5shjTEvfA5vAAAAAElFTkSuQmCC',
+        arrowDn = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAgklEQVR42mNkoBAwYhNcP4nhPzbxwDxM9TgNCAgRQBHbsObDqAH4DLi2ieEzsuDNBww82AxQV2D4giym5cfACzcRZIimiQAPAxHg+pkPX0CaMbxAjCHImrGGAT5D0DXjDERshmDTjNMAdENwacZrAMwQWGjjUkPIgFCoAavJMoAYAADlt1MR93xgYAAAAABJRU5ErkJggg==',
+        arrowUp = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAfUlEQVR42mNkoBAw4pO8tokhFERr+TGsJteAz1ADeEk2AKRZ00SAB8S+fubDF1yGMBLSDAO4DGEkRjM+QxiJ1YzLEEZSNGMzhBE5tGHg5gMGnoAQARRNG9Z8YFBXYPiCLAYyBGsgrp/E8B+bAYF5mGE2agAeA7CJE20AKQAAGplTEco2iXoAAAAASUVORK5CYII=',
         li1 = $c('li', {role: 'none'}),
         div2 = $c('div', {id: 'divThemer', className: 'EzVRq', onclick: () => setStatus()}),
         input1 = $c('input', {id: 'buttonThemer', className: 'input', type: 'button'}),
@@ -136,9 +136,9 @@
     setBackground();
   }
 
+  if (!GM_getValue('repositionLogo')) GM_setValue('repositionLogo', false);
   if (!GM_getValue('themeChanger')) GM_setValue('themeChanger', false);
   if (!GM_getValue('themeNumber')) GM_setValue('themeNumber', wallpaperDefault);
-  if (!GM_getValue('repositionLogo')) GM_setValue('repositionLogo', false);
 
   initialize();
 
@@ -150,6 +150,9 @@
     '.KxwPGc.ssOUyb,'+
     '.KxwPGc.iTjxkf > a {'+
     '  display: none !important;'+
+    '}'+
+    '#gb {'+
+    '  background: transparent !important;'+
     '}'+
     'a.MV3Tnb {'+
     '  border: 1px solid #999 !important;'+
@@ -177,6 +180,7 @@
     '  margin-top: -2px !important;'+
     '  text-decoration: none !important;'+
     '}'+
+    '.QCzoEc,'+
     '.gb_Pe:hover {'+
     '  color: #FFF !important;'+
     '}'+
@@ -225,7 +229,7 @@
     '  left: -2px !important;'+
     '  opacity: 0 !important;'+
     '  position: relative !important;'+
-    '  top: 2px !important;'+
+    '  top: 3px !important;'+
     '  width: 16px !important;'+
     '}'+
     '#divThemer:hover > #buttonThemer,'+

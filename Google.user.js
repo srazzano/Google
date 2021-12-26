@@ -86,7 +86,7 @@
       input4.src = arrowDn;
       GM_addStyle(''+
         '.o3j99.n1xJcf.Ne6nSd {margin-bottom: 20px !important;}'+
-        '.o3j99.LLD4me.LS8OJ {height: 165px !important;}'+
+        '.o3j99.LLD4me.LS8OJ {height: 145px !important;}'+
       '');
     } else {
       input3.value = repositionLogoText + ' ' + upText;
@@ -112,7 +112,8 @@
       input2.src = statusOnImage;
     } else {
       GM_setValue('themeNumber', wallpaperDefault);
-      body.style.background = 'url('+ wallpaper + wallpaperDefault +'.jpg) no-repeat center center / cover';
+      if (wallpaperDefault === 0) body.style.background = 'initial';
+      else body.style.background = 'url('+ wallpaper + wallpaperDefault +'.jpg) no-repeat center center / cover';
       div2.title = changeThemeTooltip + wallpaperDefault;
       input1.value = changeThemeText + ' ' + offText;
       input2.src = statusOffImage;
@@ -201,6 +202,10 @@
     '#buttonThemer.EzVRq {'+
     '  margin-top: -5px !important;'+
     '}'+
+    '.gb_C {'+
+    '  margin-right: 4px !important;'+
+    '}'+
+    '.gb_C:hover,'+
     '.NKcBbd:hover,'+
     '.EzVRq:hover {'+
     '  background-color: #111 !important;'+

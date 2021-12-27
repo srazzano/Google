@@ -59,7 +59,7 @@
   }
 
   function initialize() {
-    let signIn = $q('a.gb_3.gb_4.gb_3d.gb_3c'),
+    let signIn = $q('.gb_3.gb_4.gb_3d.gb_3c'),
         div0 = $q('.gb_Qd.gb_Sa.gb_Ed'),
         set = $q('.ayzqOc'),
         div1 = $q('.o3j99.LLD4me.LS8OJ'),
@@ -155,7 +155,7 @@
     '#gb {'+
     '  background: transparent !important;'+
     '}'+
-    'a.MV3Tnb {'+
+    '.MV3Tnb {'+
     '  border: 1px solid #999 !important;'+
     '  border-radius: 6px !important;'+
     '  color: #CCC !important;'+
@@ -203,12 +203,19 @@
     '  margin-top: -5px !important;'+
     '}'+
     '.gb_C {'+
+    '  border-radius: 50% !important;'+
     '  margin-right: 4px !important;'+
+    '}'+
+    '.gb_C,'+
+    '.NKcBbd,'+
+    '.EzVRq {'+
+    '  border: 1px solid transparent !important;'+
     '}'+
     '.gb_C:hover,'+
     '.NKcBbd:hover,'+
     '.EzVRq:hover {'+
     '  background-color: #111 !important;'+
+    '  border: 1px solid #999 !important;'+
     '  color: #FFF !important;'+
     '}'+
     '#divThemer {'+
@@ -237,6 +244,7 @@
     '  top: 3px !important;'+
     '  width: 16px !important;'+
     '}'+
+    '.gb_B:hover svg,'+
     '#divThemer:hover > #buttonThemer,'+
     '#divPosition:hover > #positionLogo {'+
     '  color: #FFF !important;'+
@@ -252,19 +260,19 @@
     '  padding-left: 436px !important;'+
     '  width: 0 !important;'+
     '}'+
-    'a.MV3Tnb,'+
+    '.MV3Tnb,'+
     '#Mses6b,'+
     '.gb_h > a.gb_f,'+
     '.RNNXgb,'+
     '.FPdoLc.lJ9FBc input {'+
     '  background-color: rgba(24, 26, 27, .01) !important;'+
     '}'+
-    'a.MV3Tnb,'+
+    '.MV3Tnb,'+
     '.gb_h > a.gb_f,'+
     '.FPdoLc.lJ9FBc input {'+
     '  border-radius: 6px !important;'+
     '}'+
-    'a.MV3Tnb:hover,'+
+    '.MV3Tnb:hover,'+
     '#Mses6b:hover,'+
     '.gb_h > a.gb_f:hover,'+
     '.RNNXgb:hover,'+

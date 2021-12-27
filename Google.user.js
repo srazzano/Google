@@ -60,12 +60,16 @@
 
   function initialize() {
     let signIn = $q('.gb_3.gb_4.gb_3d.gb_3c'),
+        aBtns = $q('.MV3Tnb', true),
+        bBtns = $q('.gb_f', true),
         div0 = $q('.gb_Qd.gb_Sa.gb_Ed'),
         set = $q('.ayzqOc'),
         div1 = $q('.o3j99.LLD4me.LS8OJ'),
         btn = $q('.o3j99.c93Gbe'),
         pop = $q('#dEjpnf');
     if (signIn) signIn.click();
+    for (let i = 0; i < aBtns.length; i++) aBtns[i].setAttribute('target', '_blank');
+    for (let j = 0; j < bBtns.length; j++) bBtns[j].setAttribute('target', '_blank');
     div0.insertBefore(set, div0.firstChild);
     div1.appendChild(btn);
     div2.appendChild(input1);

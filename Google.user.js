@@ -34,11 +34,11 @@
         arrowDn = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAgklEQVR42mNkoBAwYhNcP4nhPzbxwDxM9TgNCAgRQBHbsObDqAH4DLi2ieEzsuDNBww82AxQV2D4giym5cfACzcRZIimiQAPAxHg+pkPX0CaMbxAjCHImrGGAT5D0DXjDERshmDTjNMAdENwacZrAMwQWGjjUkPIgFCoAavJMoAYAADlt1MR93xgYAAAAABJRU5ErkJggg==',
         arrowUp = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAfUlEQVR42mNkoBAw4pO8tokhFERr+TGsJteAz1ADeEk2AKRZ00SAB8S+fubDF1yGMBLSDAO4DGEkRjM+QxiJ1YzLEEZSNGMzhBE5tGHg5gMGnoAQARRNG9Z8YFBXYPiCLAYyBGsgrp/E8B+bAYF5mGE2agAeA7CJE20AKQAAGplTEco2iXoAAAAASUVORK5CYII=',
         li1 = $c('li', {role: 'none'}),
-        div2 = $c('div', {id: 'divThemer', className: 'EzVRq', onclick: () => setStatus()}),
+        div2 = $c('div', {id: 'divThemer', className: 'EzVRq tFYjZe', onclick: () => setStatus()}),
         input1 = $c('input', {id: 'buttonThemer', className: 'input', type: 'button'}),
         input2 = $c('input', {id: 'buttonImage', className: 'input', type: 'image'}),
         li2 = $c('li', {role: 'none'}),
-        div3 = $c('div', {id: 'divPosition', className: 'EzVRq', onclick: () => setLogo()}),
+        div3 = $c('div', {id: 'divPosition', className: 'EzVRq tFYjZe', onclick: () => setLogo()}),
         input3 = $c('input', {id: 'positionLogo', className: 'input', type: 'button'}),
         input4 = $c('input', {id: 'positionImage', className: 'input', type: 'image'});
 
@@ -154,7 +154,8 @@
     '.KxwPGc.iTjxkf > a {'+
     '  display: none !important;'+
     '}'+
-    '#gb {'+
+    '#gb,'+
+    '.o3j99.c93Gbe {'+
     '  background: transparent !important;'+
     '}'+
     '.MV3Tnb {'+
@@ -288,10 +289,9 @@
     '  border-radius: 50% !important;'+
     '  padding: 4px !important;'+
     '}'+
-    '.o3j99.c93Gbe {'+
-    '  background: transparent !important;'+
-    '}'+
     '#gb > div > div:last-of-type {'+
+    '  height: calc(-140px + 100vh) !important;'+
+    '}'+
     '  height: calc(-140px + 100vh) !important;'+
     '}'+
   '');

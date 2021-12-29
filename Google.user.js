@@ -220,13 +220,9 @@
     '  border: 1px solid #999 !important;'+
     '  color: #FFF !important;'+
     '}'+
-    '#divThemer {'+
-    '  cursor: pointer !important;'+
-    '  margin-top: -8px !important;'+
-    '}'+
+    '#divThemer,'+
     '#divPosition {'+
     '  cursor: pointer !important;'+
-    '  margin-top: -4px !important;'+
     '}'+
     '#buttonThemer,'+
     '#positionLogo {'+
@@ -242,8 +238,6 @@
     '  height: 16px !important;'+
     '  left: -2px !important;'+
     '  opacity: 0 !important;'+
-    '  position: relative !important;'+
-    '  top: 3px !important;'+
     '  width: 16px !important;'+
     '}'+
     '.gb_B:hover svg,'+
@@ -291,7 +285,8 @@
     '#gb > div > div:last-of-type {'+
     '  height: calc(-140px + 100vh) !important;'+
     '}'+
-    '  height: calc(-140px + 100vh) !important;'+
+    '#YUIDDb {'+
+    '  padding: 8px 16px !important;'+
     '}'+
   '');
 

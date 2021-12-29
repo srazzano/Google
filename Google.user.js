@@ -288,6 +288,9 @@
     '#YUIDDb {'+
     '  padding: 8px 16px !important;'+
     '}'+
+    '.gNO89b {'+
+    '  border: 1px solid #CCC !important;'+
+    '}'+
   '');
 
 })();

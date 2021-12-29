@@ -4,8 +4,7 @@
 // @version      1.0.1
 // @description  Wallpaper Themes
 // @author       Sonny Razzano a.k.a. srazzano
-// @match        https://*.google.*
-// @include      https://www.google.com*
+// @match        https://*.google.com*
 // @icon         https://raw.githubusercontent.com/srazzano/Images/master/googleicon64.png
 // @grant        GM_addStyle
 // @grant        GM_getValue
@@ -42,7 +41,8 @@
         input3 = $c('input', {id: 'positionLogo', className: 'input', type: 'button'}),
         input4 = $c('input', {id: 'positionImage', className: 'input', type: 'image'});
 
-  var timer;
+  var initInterval,
+      timer;
 
   function $c(type, props) {
     let node = document.createElement(type);
@@ -143,7 +143,13 @@
   if (!GM_getValue('themeChanger')) GM_setValue('themeChanger', false);
   if (!GM_getValue('themeNumber')) GM_setValue('themeNumber', wallpaperDefault);
 
-  initialize();
+  initInterval = setInterval(() => {
+    let body = $q('body');
+    try {
+      initialize();
+      if (body.hasAttribute('style')) clearInterval(initInterval);
+    } catch(ex) {}
+  }, 20);
 
   window.addEventListener('unload', () => clearInterval(timer));
 

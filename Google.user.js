@@ -41,8 +41,7 @@
         input3 = $c('input', {id: 'positionLogo', className: 'input', type: 'button'}),
         input4 = $c('input', {id: 'positionImage', className: 'input', type: 'image'});
 
-  var initInterval,
-      timer;
+  var timer;
 
   function $c(type, props) {
     let node = document.createElement(type);
@@ -119,9 +118,7 @@
       div2.title = changeThemeTooltip + wallpaperDefault;
       input1.value = changeThemeText + ' ' + offText;
       input2.src = statusOffImage;
-    }
-    body.setAttribute('wallpaper', true);
-  }
+  } }
 
   function setLogo() {
     let bool = GM_getValue('repositionLogo') !== true ? true : false;
@@ -145,19 +142,9 @@
   if (!GM_getValue('themeChanger')) GM_setValue('themeChanger', false);
   if (!GM_getValue('themeNumber')) GM_setValue('themeNumber', wallpaperDefault);
 
-  initInterval = setInterval(() => {
-    let body = $q('body');
-    try {
-      initialize();
-      if (body.hasAttribute('wallpaper')) clearInterval(initInterval);
-    } catch(ex) {}
-  }, 20);
+  initialize();
 
-  window.addEventListener('unload', () => {
-    let body = $q('body');
-    body.removeAttribute('wallpaper');
-    clearInterval(timer);
-  });
+  window.addEventListener('unload', () => clearInterval(timer));
 
   GM_addStyle(''+
     '#gbqfbb,'+

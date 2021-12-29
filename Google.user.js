@@ -119,7 +119,9 @@
       div2.title = changeThemeTooltip + wallpaperDefault;
       input1.value = changeThemeText + ' ' + offText;
       input2.src = statusOffImage;
-  } }
+    }
+    body.setAttribute('wallpaper', true);
+  }
 
   function setLogo() {
     let bool = GM_getValue('repositionLogo') !== true ? true : false;
@@ -147,11 +149,15 @@
     let body = $q('body');
     try {
       initialize();
-      if (body.hasAttribute('style')) clearInterval(initInterval);
+      if (body.hasAttribute('wallpaper')) clearInterval(initInterval);
     } catch(ex) {}
   }, 20);
 
-  window.addEventListener('unload', () => clearInterval(timer));
+  window.addEventListener('unload', () => {
+    let body = $q('body');
+    body.removeAttribute('wallpaper');
+    clearInterval(timer);
+  });
 
   GM_addStyle(''+
     '#gbqfbb,'+

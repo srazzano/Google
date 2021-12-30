@@ -15,10 +15,11 @@
 
   'use strict';
 
-  const themerInterval = 30000, // Frequency to check for hour change in milliseconds
-        wallpaperDefault = 1, // 1 - 24 or 0 for no wallpaper
+  const wallpaperDefault = 1, // 1 - 24 or 0 for no wallpaper
+        themerInterval = 30000, // Frequency to check for hour change in milliseconds
         changeThemeText = 'Change theme hourly:', // Input text in Settings Popup
-        repositionLogoText = 'Reposition Logo:', // Input text in Settings Popup
+        repositionLogoText = 'Reposition logo:', // Input text in Settings Popup
+        headerLinksInNewTabText = 'Header links in new Tab:', // Option to opens header links in new tab
         changeThemeTooltip = 'Active wallpaper image', // Current wallpaper image number
         offText = 'Off', // Status text for changeTheme
         onText = 'On', // Status text for changeTheme
@@ -30,8 +31,8 @@
         wallpaper = 'https://sonco.synthasite.com/resources/image', // Yola site
         statusOffImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACBElEQVR42pWSO4haURCGx/WFiK9ljaAoIqikWAvN2gWsIoJVQNKlSiOGNLbGJttY2Qg2qSXRJhhBggiCacIGsUpiI+ILRRMf+EK9MTMHNyx37y7JD8N53Pm/M2fuEQFPhUJBjMMzjBcYF8ftK4y3GO+DwSB3M1/EMz88HA7fHA4HyOVyEIvFgGuQSqXQ6/UoONw7R8j3WwA0n3Ic99PtdsN4PAac/wXsdjuwWq3Q6XSg2+2uJBKJGSG/+ICUXq+PYECj0QCFQsGCzKvVis11Oh1ks9me1+v9gICXfMAITzmbz+fsJLVazUzb7RaWyyWs12twuVxQrVbBbDaPEaAXBLTbbVa6xWJhdyfR/VutFng8HiiVSmC32wUBKWxcZDKZwGKxYBUolUrY7/dAe9QTg8EAxWLxh9/vLwtd4RSTR5vN5oQMODIAGUlUjUqlAplMtsG56VYTSclk8pHNZruaTqcwm81YA+mX0rU0Gg0B97lc7mkmk/ko+A5IRqPxQSwWG+IIg8EATCYTq6ZcLn/J5/OvMOVrv9//fSeAFAqFUtFoNFKr1ajjMBwOIR6PP8dP79C8u/MlXisQCDxBwKd6vQ5OpxOazSYkEonHaP7MzxUEYPnadDo9oV6QtFothMNhHQKm/wQgVSqVw821z+cTzL0XgKbXx/mb/wagYmQ8nk6gS6GkP1++/BEOSJ94AAAAAElFTkSuQmCC',
         statusOnImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACH0lEQVR42pWSS2gTURSG/+nEpCE2qWkTQaK0iosRKUSNuinMQmoXUkQFN0UEJYgRl26sgq+NbhSjYhERdKELUapQFZWgXdhWLYI6iNjaGotttHk0TdI2k/hPZ4QyGYseOHMf/znfvefOEWCyj10QOeym76eHjO1++jX6nTVtUOfHC6ZkSQuW1re7UNsI2Fy6UJwCUkNQ3tya0qCEKBUAJns5DEnyGTdsrzgtAFVOXSzl+akmaDOU2NEMF42ETJgBUWldawSeIDBzmaf7ATWgi2KcyeOA/SCQHoDy9tElAg6ZAQmp+WQ9hIdIf+uDp66W6gpdLI8g/SsFz/KNnG+D8vL4TwJ8lQB5bz2yd4FZD1Cznbc2SiiwhMn7wKI0sHgny7hhCYhKa32RTCGB0S/AylW8cY13TpuZnMAg95Zxz13tg/I+YVmCd3paTAQa1Kr4Z2A8xYSlujY6BvhZUWA1EP8qlhwO1VfxiJqdPVK3YeumZH9ZLSHH2yazwHdXJ4L2MJxLgFzBXuy4aNvxpCf3wLIPDPN3nxfHmppUZAgQBBFOh4oTV5y91+/lD1N/rf3YhQBo34LozQttkXe9XegrdqLFG0bDLuyhdJs++9dO/GOtIbR0Xw0+fvZ8AINullAKI3QAzZR6zLGWAK3tzu1DXhkGsmzIFx/w9Edy7tU//SsAsVisPH8ty7Jl7IIAJh0z5qf+G0Dr0BKN0zXQaaug31A0whEts3O7AAAAAElFTkSuQmCC',
-        arrowDn = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAgklEQVR42mNkoBAwYhNcP4nhPzbxwDxM9TgNCAgRQBHbsObDqAH4DLi2ieEzsuDNBww82AxQV2D4giym5cfACzcRZIimiQAPAxHg+pkPX0CaMbxAjCHImrGGAT5D0DXjDERshmDTjNMAdENwacZrAMwQWGjjUkPIgFCoAavJMoAYAADlt1MR93xgYAAAAABJRU5ErkJggg==',
-        arrowUp = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAfUlEQVR42mNkoBAw4pO8tokhFERr+TGsJteAz1ADeEk2AKRZ00SAB8S+fubDF1yGMBLSDAO4DGEkRjM+QxiJ1YzLEEZSNGMzhBE5tGHg5gMGnoAQARRNG9Z8YFBXYPiCLAYyBGsgrp/E8B+bAYF5mGE2agAeA7CJE20AKQAAGplTEco2iXoAAAAASUVORK5CYII=',
+        arrowDnImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAgklEQVR42mNkoBAwYhNcP4nhPzbxwDxM9TgNCAgRQBHbsObDqAH4DLi2ieEzsuDNBww82AxQV2D4giym5cfACzcRZIimiQAPAxHg+pkPX0CaMbxAjCHImrGGAT5D0DXjDERshmDTjNMAdENwacZrAMwQWGjjUkPIgFCoAavJMoAYAADlt1MR93xgYAAAAABJRU5ErkJggg==',
+        arrowUpImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAfUlEQVR42mNkoBAw4pO8tokhFERr+TGsJteAz1ADeEk2AKRZ00SAB8S+fubDF1yGMBLSDAO4DGEkRjM+QxiJ1YzLEEZSNGMzhBE5tGHg5gMGnoAQARRNG9Z8YFBXYPiCLAYyBGsgrp/E8B+bAYF5mGE2agAeA7CJE20AKQAAGplTEco2iXoAAAAASUVORK5CYII=',
         li1 = $c('li', {role: 'none'}),
         div2 = $c('div', {id: 'divThemer', className: 'EzVRq tFYjZe', onclick: () => setStatus()}),
         input1 = $c('input', {id: 'buttonThemer', className: 'input', type: 'button'}),
@@ -39,7 +40,10 @@
         li2 = $c('li', {role: 'none'}),
         div3 = $c('div', {id: 'divPosition', className: 'EzVRq tFYjZe', onclick: () => setLogo()}),
         input3 = $c('input', {id: 'positionLogo', className: 'input', type: 'button'}),
-        input4 = $c('input', {id: 'positionImage', className: 'input', type: 'image'});
+        input4 = $c('input', {id: 'positionImage', className: 'input', type: 'image'}),
+        li3 = $c('li', {role: 'none'}),
+        div4 = $c('div', {id: 'divInNewTab', className: 'EzVRq tFYjZe', onclick: () => setTabs()}),
+        input5 = $c('input', {id: 'linkInNewTab', className: 'input', type: 'button'});
 
   var timer;
 
@@ -66,7 +70,9 @@
         btn = $q('.o3j99.c93Gbe'),
         pop = $q('#dEjpnf');
     if (signIn) signIn.click();
-    for (let i = 0; i < gBtns.length; i++) gBtns[i].setAttribute('target', '_blank');
+    if (GM_getValue('headerButtonsInNewTab')) for (let i = 0; i < gBtns.length; i++) gBtns[i].setAttribute('target', '_blank');
+    else for (let i = 0; i < gBtns.length; i++) gBtns[i].setAttribute('target', '_top');
+    input5.value = headerLinksInNewTabText + '  ' + GM_getValue('headerButtonsInNewTab');
     div0.insertBefore(set, div0.firstChild);
     div1.appendChild(btn);
     div2.appendChild(input1);
@@ -75,23 +81,26 @@
     div3.appendChild(input3);
     div3.appendChild(input4);
     li2.appendChild(div3);
+    div4.appendChild(input5);
+    li3.appendChild(div4);
     pop.appendChild(li1);
     pop.appendChild(li2);
-    getLogo();
+    pop.appendChild(li3);
+    moveLogo();
     setTimer();
   }
 
-  function getLogo() {
+  function moveLogo() {
     if (GM_getValue('repositionLogo')) {
       input3.value = repositionLogoText + ' ' + downText;
-      input4.src = arrowDn;
+      input4.src = arrowDnImage;
       GM_addStyle(''+
         '.o3j99.n1xJcf.Ne6nSd {margin-bottom: 20px !important;}'+
         '.o3j99.LLD4me.LS8OJ {height: 145px !important;}'+
       '');
     } else {
       input3.value = repositionLogoText + ' ' + upText;
-      input4.src = arrowUp;
+      input4.src = arrowUpImage;
       GM_addStyle(''+
         '.o3j99.n1xJcf.Ne6nSd {margin-bottom: 0 !important;}'+
         '.o3j99.LLD4me.LS8OJ {height: calc(100% - 560px) !important;}'+
@@ -122,7 +131,7 @@
   function setLogo() {
     let bool = GM_getValue('repositionLogo') !== true ? true : false;
     GM_setValue('repositionLogo', bool);
-    getLogo();
+    moveLogo();
   }
 
   function setStatus() {
@@ -131,12 +140,24 @@
     setTimer();
   }
 
+  function setTabs() {
+    let gBtns = $q('.L3eUgb a', true),
+        tab = $q('#linkInNewTab'),
+        bool = GM_getValue('headerButtonsInNewTab') !== true ? true : false;
+    GM_setValue('headerButtonsInNewTab', bool);
+    if (GM_getValue('headerButtonsInNewTab')) for (let i = 0; i < gBtns.length; i++) gBtns[i].setAttribute('target', '_blank');
+    else for (let i = 0; i < gBtns.length; i++) gBtns[i].setAttribute('target', '_top');
+    if (bool) input5.value = headerLinksInNewTabText + '  ' + bool;
+    else input5.value = headerLinksInNewTabText + '  ' + bool;
+  }
+
   function setTimer() {
     if (GM_getValue('themeChanger')) timer = setInterval(() => setBackground(), themerInterval);
     else clearInterval(timer);
     setBackground();
   }
 
+  if (!GM_getValue('headerButtonsInNewTab')) GM_setValue('headerButtonsInNewTab', false);
   if (!GM_getValue('repositionLogo')) GM_setValue('repositionLogo', false);
   if (!GM_getValue('themeChanger')) GM_setValue('themeChanger', false);
   if (!GM_getValue('themeNumber')) GM_setValue('themeNumber', wallpaperDefault);
@@ -189,6 +210,7 @@
     '#dEjpnf {'+
     '  bottom: auto !important;'+
     '  top: 36px !important;'+
+    '  width: 240px !important;'+
     '  z-index: 9 !important;'+
     '}'+
     '.NKcBbd {'+
@@ -220,11 +242,13 @@
     '  color: #FFF !important;'+
     '}'+
     '#divThemer,'+
-    '#divPosition {'+
+    '#divPosition,'+
+    '#divInNewTab {'+
     '  cursor: pointer !important;'+
     '}'+
     '#buttonThemer,'+
-    '#positionLogo {'+
+    '#positionLogo,'+
+    '#linkInNewTab {'+
     '  background: none !important;'+
     '  border: none !important;'+
     '  color: #999 !important;'+
@@ -241,7 +265,8 @@
     '}'+
     '.gb_B:hover svg,'+
     '#divThemer:hover > #buttonThemer,'+
-    '#divPosition:hover > #positionLogo {'+
+    '#divPosition:hover > #positionLogo,'+
+    '#divInNewTab:hover > #linkInNewTab {'+
     '  color: #FFF !important;'+
     '}'+
     '#divThemer:hover > #buttonImage,'+

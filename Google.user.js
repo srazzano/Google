@@ -103,8 +103,7 @@
         hour = now.getHours(),
         body = $q('body');
     if (GM_getValue('themeChanger')) {
-      if (hour > 12) hour = hour - 12;
-      else if (hour === 0) hour = 12;
+      if (hour === 0) hour = 24;
       else hour = hour;
       GM_setValue('themeNumber', hour);
       body.style.background = 'url('+ wallpaper + hour +'.jpg) no-repeat center center / cover';

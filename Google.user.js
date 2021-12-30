@@ -16,7 +16,7 @@
   'use strict';
 
   const themerInterval = 30000, // Frequency to check for hour change in milliseconds
-        wallpaperDefault = 1, // 1 - 13 or 0 for no wallpaper
+        wallpaperDefault = 1, // 1 - 24 or 0 for no wallpaper
         changeThemeText = 'Change theme hourly:', // Input text in Settings Popup
         repositionLogoText = 'Reposition Logo:', // Input text in Settings Popup
         changeThemeTooltip = 'Active wallpaper image', // Current wallpaper image number

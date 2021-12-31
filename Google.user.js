@@ -301,10 +301,16 @@
     '  color: #FFF !important;'+
     '}'+
     '.SuUcIb {'+
-    '  background-color: #222 !important;'+
+    '  background: transparent !important;'+
     '  border: 1px solid #CCC !important;'+
     '  border-radius: 50% !important;'+
     '  padding: 4px !important;'+
+    '}'+
+    '.SuUcIb:hover {'+
+    '  background: #222 !important;'+
+    '}'+
+    '.SuUcIb:hover .GVqCqe {'+
+    '  opacity: 1 !important;'+
     '}'+
     '#gb > div > div:last-of-type {'+
     '  height: calc(-140px + 100vh) !important;'+

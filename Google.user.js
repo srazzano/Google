@@ -19,7 +19,7 @@
         themerInterval = 30000, // Frequency to check for hour change in milliseconds
         changeThemeText = 'Change theme hourly:', // Input text in Settings Popup
         repositionLogoText = 'Reposition logo:', // Input text in Settings Popup
-        headerLinksInNewTabText = 'Header links in new Tab:', // Option to opens header links in new tab
+        headerLinksInNewTabText = 'Header links in new tab:', // Option to opens header links in new tab
         changeThemeTooltip = 'Active wallpaper image', // Current wallpaper image number
         offText = 'Off', // Status text for changeTheme
         onText = 'On', // Status text for changeTheme

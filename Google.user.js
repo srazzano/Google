@@ -29,10 +29,12 @@
         googleImage = 'https://sonco.synthasite.com/resources/googleImage.png', // Yola site
         //wallpaper = 'https://raw.githubusercontent.com/srazzano/Images/master/image', // GitHub site
         wallpaper = 'https://sonco.synthasite.com/resources/image', // Yola site
-        statusOffImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACBElEQVR42pWSO4haURCGx/WFiK9ljaAoIqikWAvN2gWsIoJVQNKlSiOGNLbGJttY2Qg2qSXRJhhBggiCacIGsUpiI+ILRRMf+EK9MTMHNyx37y7JD8N53Pm/M2fuEQFPhUJBjMMzjBcYF8ftK4y3GO+DwSB3M1/EMz88HA7fHA4HyOVyEIvFgGuQSqXQ6/UoONw7R8j3WwA0n3Ic99PtdsN4PAac/wXsdjuwWq3Q6XSg2+2uJBKJGSG/+ICUXq+PYECj0QCFQsGCzKvVis11Oh1ks9me1+v9gICXfMAITzmbz+fsJLVazUzb7RaWyyWs12twuVxQrVbBbDaPEaAXBLTbbVa6xWJhdyfR/VutFng8HiiVSmC32wUBKWxcZDKZwGKxYBUolUrY7/dAe9QTg8EAxWLxh9/vLwtd4RSTR5vN5oQMODIAGUlUjUqlAplMtsG56VYTSclk8pHNZruaTqcwm81YA+mX0rU0Gg0B97lc7mkmk/ko+A5IRqPxQSwWG+IIg8EATCYTq6ZcLn/J5/OvMOVrv9//fSeAFAqFUtFoNFKr1ajjMBwOIR6PP8dP79C8u/MlXisQCDxBwKd6vQ5OpxOazSYkEonHaP7MzxUEYPnadDo9oV6QtFothMNhHQKm/wQgVSqVw821z+cTzL0XgKbXx/mb/wagYmQ8nk6gS6GkP1++/BEOSJ94AAAAAElFTkSuQmCC',
-        statusOnImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACH0lEQVR42pWSS2gTURSG/+nEpCE2qWkTQaK0iosRKUSNuinMQmoXUkQFN0UEJYgRl26sgq+NbhSjYhERdKELUapQFZWgXdhWLYI6iNjaGotttHk0TdI2k/hPZ4QyGYseOHMf/znfvefOEWCyj10QOeym76eHjO1++jX6nTVtUOfHC6ZkSQuW1re7UNsI2Fy6UJwCUkNQ3tya0qCEKBUAJns5DEnyGTdsrzgtAFVOXSzl+akmaDOU2NEMF42ETJgBUWldawSeIDBzmaf7ATWgi2KcyeOA/SCQHoDy9tElAg6ZAQmp+WQ9hIdIf+uDp66W6gpdLI8g/SsFz/KNnG+D8vL4TwJ8lQB5bz2yd4FZD1Cznbc2SiiwhMn7wKI0sHgny7hhCYhKa32RTCGB0S/AylW8cY13TpuZnMAg95Zxz13tg/I+YVmCd3paTAQa1Kr4Z2A8xYSlujY6BvhZUWA1EP8qlhwO1VfxiJqdPVK3YeumZH9ZLSHH2yazwHdXJ4L2MJxLgFzBXuy4aNvxpCf3wLIPDPN3nxfHmppUZAgQBBFOh4oTV5y91+/lD1N/rf3YhQBo34LozQttkXe9XegrdqLFG0bDLuyhdJs++9dO/GOtIbR0Xw0+fvZ8AINullAKI3QAzZR6zLGWAK3tzu1DXhkGsmzIFx/w9Edy7tU//SsAsVisPH8ty7Jl7IIAJh0z5qf+G0Dr0BKN0zXQaaug31A0whEts3O7AAAAAElFTkSuQmCC',
+        lightbulbOffImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACBElEQVR42pWSO4haURCGx/WFiK9ljaAoIqikWAvN2gWsIoJVQNKlSiOGNLbGJttY2Qg2qSXRJhhBggiCacIGsUpiI+ILRRMf+EK9MTMHNyx37y7JD8N53Pm/M2fuEQFPhUJBjMMzjBcYF8ftK4y3GO+DwSB3M1/EMz88HA7fHA4HyOVyEIvFgGuQSqXQ6/UoONw7R8j3WwA0n3Ic99PtdsN4PAac/wXsdjuwWq3Q6XSg2+2uJBKJGSG/+ICUXq+PYECj0QCFQsGCzKvVis11Oh1ks9me1+v9gICXfMAITzmbz+fsJLVazUzb7RaWyyWs12twuVxQrVbBbDaPEaAXBLTbbVa6xWJhdyfR/VutFng8HiiVSmC32wUBKWxcZDKZwGKxYBUolUrY7/dAe9QTg8EAxWLxh9/vLwtd4RSTR5vN5oQMODIAGUlUjUqlAplMtsG56VYTSclk8pHNZruaTqcwm81YA+mX0rU0Gg0B97lc7mkmk/ko+A5IRqPxQSwWG+IIg8EATCYTq6ZcLn/J5/OvMOVrv9//fSeAFAqFUtFoNFKr1ajjMBwOIR6PP8dP79C8u/MlXisQCDxBwKd6vQ5OpxOazSYkEonHaP7MzxUEYPnadDo9oV6QtFothMNhHQKm/wQgVSqVw821z+cTzL0XgKbXx/mb/wagYmQ8nk6gS6GkP1++/BEOSJ94AAAAAElFTkSuQmCC',
+        lightbulbOnImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACH0lEQVR42pWSS2gTURSG/+nEpCE2qWkTQaK0iosRKUSNuinMQmoXUkQFN0UEJYgRl26sgq+NbhSjYhERdKELUapQFZWgXdhWLYI6iNjaGotttHk0TdI2k/hPZ4QyGYseOHMf/znfvefOEWCyj10QOeym76eHjO1++jX6nTVtUOfHC6ZkSQuW1re7UNsI2Fy6UJwCUkNQ3tya0qCEKBUAJns5DEnyGTdsrzgtAFVOXSzl+akmaDOU2NEMF42ETJgBUWldawSeIDBzmaf7ATWgi2KcyeOA/SCQHoDy9tElAg6ZAQmp+WQ9hIdIf+uDp66W6gpdLI8g/SsFz/KNnG+D8vL4TwJ8lQB5bz2yd4FZD1Cznbc2SiiwhMn7wKI0sHgny7hhCYhKa32RTCGB0S/AylW8cY13TpuZnMAg95Zxz13tg/I+YVmCd3paTAQa1Kr4Z2A8xYSlujY6BvhZUWA1EP8qlhwO1VfxiJqdPVK3YeumZH9ZLSHH2yazwHdXJ4L2MJxLgFzBXuy4aNvxpCf3wLIPDPN3nxfHmppUZAgQBBFOh4oTV5y91+/lD1N/rf3YhQBo34LozQttkXe9XegrdqLFG0bDLuyhdJs++9dO/GOtIbR0Xw0+fvZ8AINullAKI3QAzZR6zLGWAK3tzu1DXhkGsmzIFx/w9Edy7tU//SsAsVisPH8ty7Jl7IIAJh0z5qf+G0Dr0BKN0zXQaaug31A0whEts3O7AAAAAElFTkSuQmCC',
         arrowDnImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAgklEQVR42mNkoBAwYhNcP4nhPzbxwDxM9TgNCAgRQBHbsObDqAH4DLi2ieEzsuDNBww82AxQV2D4giym5cfACzcRZIimiQAPAxHg+pkPX0CaMbxAjCHImrGGAT5D0DXjDERshmDTjNMAdENwacZrAMwQWGjjUkPIgFCoAavJMoAYAADlt1MR93xgYAAAAABJRU5ErkJggg==',
         arrowUpImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAfUlEQVR42mNkoBAw4pO8tokhFERr+TGsJteAz1ADeEk2AKRZ00SAB8S+fubDF1yGMBLSDAO4DGEkRjM+QxiJ1YzLEEZSNGMzhBE5tGHg5gMGnoAQARRNG9Z8YFBXYPiCLAYyBGsgrp/E8B+bAYF5mGE2agAeA7CJE20AKQAAGplTEco2iXoAAAAASUVORK5CYII=',
+        thumbDnImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABOklEQVR42qWSPS9DURyHfzdRYiAxSEgkEqPYDPUFDMIktm5dfAir1WY2dUKUUAOJt4TUQGJE4mURkWhrQUh6+5yee5vT0qM4yZP8z73n95zXQFG7lVKdUkYNrQ0epMMrKTdj/5fgLf4fxEVBCj/kb31S+lFacvqjgW/2bwRrCKad/mJV8Mzsnz+lbeAUQdLpH1cFTwjKfxW0uvymglaX31TAnYTv/xGw9rkJad588K2kA3qkPIIxR3BkDnEAJmHcfEtJ/QvSkBvehk3pNctjotyHYRiBCyNoh95I1MUMu254VipvSJeUeTiAc0hAN5QCd/AL5xG/UTMibcNnlOuwBzdQdHdbE7jX2RBetjswQ/TltdcE9wzioKZ+E64TsPcwYfdcWJWuKVdgyxeuE0SnyiVoEE5gB+58YdMq/yRpKnkXKjAAAAAASUVORK5CYII=',
+        thumbUpImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABUklEQVR42mNkIAx4gNgaiFOA2BSInwNxFxCvB0kyEqHZFoizgNiR1U+K6/d8U0aG3/8YGCQ2MxIyAKY5G4gdGPwkuRnmmzGANJscefPqTMhxcXwG4NQMAhHz7k9fUXUlC5sBXECsCMSWQBwGxFbomhk4mRkY+DfA9TFCFUoC8Ssg/gHEniD/ArEcUDMbwywTVCskNpcDybdAfBGIb4AMOA/ECkD8GIivArENs6+kzN9AGQYGLwlU52Wc/fNtw7PvQOYnID4IxBNABnxgeOHLj2TDF4b3ATwMP//iDl5WJjBlUXd1DyPYtBe+vEgGfAXyuYlIHwwMHMwMlBkAdAlFBoCik3wDmIBaxTYxkm8AKCCFN4INuATUoItkwDMgX4oY54NSI8iAaKCGJUgGzAfyE/HqZgPaLrQRa2YSAmI5m3yV1neWItbXXMT5Gf78w2k7iA0AMrx37irbwRgAAAAASUVORK5CYII=',
         li1 = $c('li', {role: 'none'}),
         div2 = $c('div', {id: 'divThemer', className: 'EzVRq tFYjZe', onclick: () => setStatus()}),
         input1 = $c('input', {id: 'buttonThemer', className: 'input', type: 'button'}),
@@ -42,8 +44,9 @@
         input3 = $c('input', {id: 'positionLogo', className: 'input', type: 'button'}),
         input4 = $c('input', {id: 'positionImage', className: 'input', type: 'image'}),
         li3 = $c('li', {role: 'none'}),
-        div4 = $c('div', {id: 'divInNewTab', className: 'EzVRq tFYjZe', onclick: () => setTabs()}),
-        input5 = $c('input', {id: 'linkInNewTab', className: 'input', type: 'button'});
+        div4 = $c('div', {id: 'divInNewTab', className: 'EzVRq tFYjZe', onclick: () => setLinks()}),
+        input5 = $c('input', {id: 'linkInNewTab', className: 'input', type: 'button'}),
+        input6 = $c('input', {id: 'linkImage', className: 'input', type: 'image'});
 
   var timer;
 
@@ -70,9 +73,6 @@
         btn = $q('.o3j99.c93Gbe'),
         pop = $q('#dEjpnf');
     if (signIn) signIn.click();
-    if (GM_getValue('headerButtonsInNewTab')) for (let i = 0; i < gBtns.length; i++) gBtns[i].setAttribute('target', '_blank');
-    else for (let i = 0; i < gBtns.length; i++) gBtns[i].setAttribute('target', '_top');
-    input5.value = headerLinksInNewTabText + '  ' + GM_getValue('headerButtonsInNewTab');
     div0.insertBefore(set, div0.firstChild);
     div1.appendChild(btn);
     div2.appendChild(input1);
@@ -82,13 +82,27 @@
     div3.appendChild(input4);
     li2.appendChild(div3);
     div4.appendChild(input5);
+    div4.appendChild(input6);
     li3.appendChild(div4);
     pop.appendChild(li1);
     pop.appendChild(li2);
     pop.appendChild(li3);
+    getLinks();
     moveLogo();
     setTimer();
   }
+
+  function getLinks() {
+    let gBtns = $q('.L3eUgb a', true);
+    if (GM_getValue('headerButtonsInNewTab')) {
+      for (let i = 0; i < gBtns.length; i++) gBtns[i].setAttribute('target', '_blank');
+      input5.value = headerLinksInNewTabText + '  ' + onText;
+      input6.src = thumbUpImage;
+    } else {
+      for (let i = 0; i < gBtns.length; i++) gBtns[i].setAttribute('target', '_top');
+      input5.value = headerLinksInNewTabText + '  ' + offText;
+      input6.src = thumbDnImage
+  } }
 
   function moveLogo() {
     if (GM_getValue('repositionLogo')) {
@@ -118,15 +132,21 @@
       body.style.background = 'url('+ wallpaper + hour +'.jpg) no-repeat center center / cover';
       div2.title = changeThemeTooltip + hour;
       input1.value = changeThemeText + ' ' + onText;
-      input2.src = statusOnImage;
+      input2.src = lightbulbOnImage
     } else {
       GM_setValue('themeNumber', wallpaperDefault);
       if (wallpaperDefault === 0) body.style.background = 'initial';
       else body.style.background = 'url('+ wallpaper + wallpaperDefault +'.jpg) no-repeat center center / cover';
       div2.title = changeThemeTooltip + wallpaperDefault;
       input1.value = changeThemeText + ' ' + offText;
-      input2.src = statusOffImage;
+      input2.src = lightbulbOffImage
   } }
+
+  function setLinks() {
+    let bool = GM_getValue('headerButtonsInNewTab') !== true ? true : false;
+    GM_setValue('headerButtonsInNewTab', bool);
+    getLinks();
+  }
 
   function setLogo() {
     let bool = GM_getValue('repositionLogo') !== true ? true : false;
@@ -138,17 +158,6 @@
     let bool = GM_getValue('themeChanger') !== true ? true : false;
     GM_setValue('themeChanger', bool);
     setTimer();
-  }
-
-  function setTabs() {
-    let gBtns = $q('.L3eUgb a', true),
-        tab = $q('#linkInNewTab'),
-        bool = GM_getValue('headerButtonsInNewTab') !== true ? true : false;
-    GM_setValue('headerButtonsInNewTab', bool);
-    if (GM_getValue('headerButtonsInNewTab')) for (let i = 0; i < gBtns.length; i++) gBtns[i].setAttribute('target', '_blank');
-    else for (let i = 0; i < gBtns.length; i++) gBtns[i].setAttribute('target', '_top');
-    if (bool) input5.value = headerLinksInNewTabText + '  ' + bool;
-    else input5.value = headerLinksInNewTabText + '  ' + bool;
   }
 
   function setTimer() {
@@ -256,7 +265,8 @@
     '  margin: 0 8px 0 -6px !important;'+
     '}'+
     '#buttonImage,'+
-    '#positionImage {'+
+    '#positionImage,'+
+    '#linkImage {'+
     '  cursor: pointer !important;'+
     '  height: 16px !important;'+
     '  left: -2px !important;'+
@@ -270,7 +280,8 @@
     '  color: #FFF !important;'+
     '}'+
     '#divThemer:hover > #buttonImage,'+
-    '#divPosition:hover > #positionImage {'+
+    '#divPosition:hover > #positionImage,'+
+    '#divInNewTab:hover > #linkImage {'+
     '  opacity: 1 !important;'+
     '}'+
     '#hplogo {'+

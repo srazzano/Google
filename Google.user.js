@@ -284,10 +284,18 @@
     '#divInNewTab:hover > #linkImage {'+
     '  opacity: 1 !important;'+
     '}'+
-    '#hplogo {'+
+    '.k1zIA.rSk4se {'+
+    '  max-height: 140px !important;'+
+    '}'+
+    '#hplogo,'+
+    '.k1zIA.rSk4se .lnXdpd {'+
     '  background: url('+ googleImage +') no-repeat !important;'+
     '  border-radius: 20px !important;'+
     '  height: 140px !important;'+
+    '  max-height: 140px !important;'+
+    '  max-width: 0 !important;'+
+    '  min-height: 140px !important;'+
+    '  min-width: 0 !important;'+
     '  padding-left: 436px !important;'+
     '  width: 0 !important;'+
     '}'+

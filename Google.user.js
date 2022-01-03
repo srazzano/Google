@@ -25,10 +25,10 @@
         onText = 'On', // Status text for changeTheme
         downText = 'Down', // Down text for positionLogo
         upText = 'Up', // Up text for positionLogo
-        //googleImage = 'https://raw.githubusercontent.com/srazzano/Images/master/googleImage.png', // GitHub site
-        googleImage = 'https://sonco.synthasite.com/resources/googleImage.png', // Yola site
-        //wallpaper = 'https://raw.githubusercontent.com/srazzano/Images/master/image', // GitHub site
-        wallpaper = 'https://sonco.synthasite.com/resources/image', // Yola site
+        googleImage = 'https://raw.githubusercontent.com/srazzano/Images/master/googleImage.png', // GitHub site
+        //googleImage = 'https://sonco.synthasite.com/resources/googleImage.png', // Yola site
+        wallpaper = 'https://raw.githubusercontent.com/srazzano/Images/master/image', // GitHub site
+        //wallpaper = 'https://sonco.synthasite.com/resources/image', // Yola site
         lightbulbOffImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACBElEQVR42pWSO4haURCGx/WFiK9ljaAoIqikWAvN2gWsIoJVQNKlSiOGNLbGJttY2Qg2qSXRJhhBggiCacIGsUpiI+ILRRMf+EK9MTMHNyx37y7JD8N53Pm/M2fuEQFPhUJBjMMzjBcYF8ftK4y3GO+DwSB3M1/EMz88HA7fHA4HyOVyEIvFgGuQSqXQ6/UoONw7R8j3WwA0n3Ic99PtdsN4PAac/wXsdjuwWq3Q6XSg2+2uJBKJGSG/+ICUXq+PYECj0QCFQsGCzKvVis11Oh1ks9me1+v9gICXfMAITzmbz+fsJLVazUzb7RaWyyWs12twuVxQrVbBbDaPEaAXBLTbbVa6xWJhdyfR/VutFng8HiiVSmC32wUBKWxcZDKZwGKxYBUolUrY7/dAe9QTg8EAxWLxh9/vLwtd4RSTR5vN5oQMODIAGUlUjUqlAplMtsG56VYTSclk8pHNZruaTqcwm81YA+mX0rU0Gg0B97lc7mkmk/ko+A5IRqPxQSwWG+IIg8EATCYTq6ZcLn/J5/OvMOVrv9//fSeAFAqFUtFoNFKr1ajjMBwOIR6PP8dP79C8u/MlXisQCDxBwKd6vQ5OpxOazSYkEonHaP7MzxUEYPnadDo9oV6QtFothMNhHQKm/wQgVSqVw821z+cTzL0XgKbXx/mb/wagYmQ8nk6gS6GkP1++/BEOSJ94AAAAAElFTkSuQmCC',
         lightbulbOnImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACH0lEQVR42pWSS2gTURSG/+nEpCE2qWkTQaK0iosRKUSNuinMQmoXUkQFN0UEJYgRl26sgq+NbhSjYhERdKELUapQFZWgXdhWLYI6iNjaGotttHk0TdI2k/hPZ4QyGYseOHMf/znfvefOEWCyj10QOeym76eHjO1++jX6nTVtUOfHC6ZkSQuW1re7UNsI2Fy6UJwCUkNQ3tya0qCEKBUAJns5DEnyGTdsrzgtAFVOXSzl+akmaDOU2NEMF42ETJgBUWldawSeIDBzmaf7ATWgi2KcyeOA/SCQHoDy9tElAg6ZAQmp+WQ9hIdIf+uDp66W6gpdLI8g/SsFz/KNnG+D8vL4TwJ8lQB5bz2yd4FZD1Cznbc2SiiwhMn7wKI0sHgny7hhCYhKa32RTCGB0S/AylW8cY13TpuZnMAg95Zxz13tg/I+YVmCd3paTAQa1Kr4Z2A8xYSlujY6BvhZUWA1EP8qlhwO1VfxiJqdPVK3YeumZH9ZLSHH2yazwHdXJ4L2MJxLgFzBXuy4aNvxpCf3wLIPDPN3nxfHmppUZAgQBBFOh4oTV5y91+/lD1N/rf3YhQBo34LozQttkXe9XegrdqLFG0bDLuyhdJs++9dO/GOtIbR0Xw0+fvZ8AINullAKI3QAzZR6zLGWAK3tzu1DXhkGsmzIFx/w9Edy7tU//SsAsVisPH8ty7Jl7IIAJh0z5qf+G0Dr0BKN0zXQaaug31A0whEts3O7AAAAAElFTkSuQmCC',
         arrowDnImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAgklEQVR42mNkoBAwYhNcP4nhPzbxwDxM9TgNCAgRQBHbsObDqAH4DLi2ieEzsuDNBww82AxQV2D4giym5cfACzcRZIimiQAPAxHg+pkPX0CaMbxAjCHImrGGAT5D0DXjDERshmDTjNMAdENwacZrAMwQWGjjUkPIgFCoAavJMoAYAADlt1MR93xgYAAAAABJRU5ErkJggg==',
@@ -108,17 +108,11 @@
     if (GM_getValue('repositionLogo')) {
       input3.value = repositionLogoText + ' ' + downText;
       input4.src = arrowDnImage;
-      GM_addStyle(''+
-        '.o3j99.n1xJcf.Ne6nSd {margin-bottom: 20px !important;}'+
-        '.o3j99.LLD4me.LS8OJ {height: 145px !important;}'+
-      '');
+      GM_addStyle('.o3j99.LLD4me.LS8OJ {height: 145px !important;}');
     } else {
       input3.value = repositionLogoText + ' ' + upText;
       input4.src = arrowUpImage;
-      GM_addStyle(''+
-        '.o3j99.n1xJcf.Ne6nSd {margin-bottom: 0 !important;}'+
-        '.o3j99.LLD4me.LS8OJ {height: calc(100% - 560px) !important;}'+
-      '');
+      GM_addStyle('.o3j99.LLD4me.LS8OJ {height: calc(100% - 560px) !important;}');
   } }
 
   function setBackground() {
@@ -288,7 +282,7 @@
     '  max-height: 140px !important;'+
     '}'+
     '#hplogo,'+
-    '.k1zIA.rSk4se .lnXdpd {'+
+    '.k1zIA.rSk4se > .lnXdpd {'+
     '  background: url('+ googleImage +') no-repeat !important;'+
     '  border-radius: 20px !important;'+
     '  height: 140px !important;'+

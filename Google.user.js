@@ -167,7 +167,9 @@
       li2 = $c('li', {role: "none"}),
       button = $c('button', {id: 'themerNumber'}),
       input = $c('input', {id: 'themerNum', type: 'number', min: 0, max: 24, oninput: e => wallpaperDefaultChanger(e)}),
-      changeInterval, initInterval, timer;
+      clockInterval,
+      initInterval,
+      wallpaperInterval;
 
   function $c(type, props) {
     let node = document.createElement(type);
@@ -221,8 +223,8 @@
       case 6: return w + space + bullet + space + m + slash + d + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
       case 7: return w + space + bullet + space + mm + slash + dd + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
       // Delete "customFormat + 210/customFormat + 211" text below and add return options with bullet, comma, hyphen, slash, space, star characters.
-      case 8: return customFormat + 224;
-      case 9: return customFormat + 225;
+      case 8: return customFormat + 226;
+      case 9: return customFormat + 227;
   } }
 
   function changeWallpaper() {
@@ -330,8 +332,8 @@
   }
 
   function onClose() {
-    clearInterval(changeInterval);
-    clearInterval(timer);
+    clearInterval(wallpaperInterval);
+    clearInterval(clockInterval);
   }
 
   function onWhere(e) {
@@ -349,15 +351,15 @@
   } }
 
   function setClockTimer() {
-    clearInterval(timer);
+    clearInterval(clockInterval);
     if (!GM_getValue('defaultDateTimeView')) return;
-    if (GM_getValue('defaultSecondsView')) timer = setInterval(function() {dateTime.textContent = aDateTime(GM_getValue('dateFormat'))}, timerShort);
-    else timer = setInterval(function() {dateTime.textContent = aDateTime(GM_getValue('dateFormat'))}, timerLong);
+    if (GM_getValue('defaultSecondsView')) clockInterval = setInterval(function() {dateTime.textContent = aDateTime(GM_getValue('dateFormat'))}, timerShort);
+    else clockInterval = setInterval(function() {dateTime.textContent = aDateTime(GM_getValue('dateFormat'))}, timerLong);
   }
 
   function setWallpaperTimer() {
-    if (GM_getValue('themeChanger')) changeInterval = setInterval(() => changeWallpaper(), themerInterval);
-    else clearInterval(changeInterval);
+    if (GM_getValue('themeChanger')) wallpaperInterval = setInterval(() => changeWallpaper(), themerInterval);
+    else clearInterval(wallpaperInterval);
     changeWallpaper();
   }
 
@@ -367,7 +369,7 @@
       bool = dateTime.hidden !== true ? true : false;
       dateTime.hidden = bool;
       GM_setValue('defaultDateTimeView', !bool);
-      if (bool) clearInterval(timer);
+      if (bool) clearInterval(clockInterval);
       else {dateTime.textContent = aDateTime(GM_getValue('dateFormat')); setClockTimer()}
   } }
 
@@ -403,13 +405,13 @@
   }
 
   if (!GM_getValue('dateFormat')) GM_setValue('dateFormat', 1);
+  if (!GM_getValue('defaultAMPM')) GM_setValue('defaultAMPM', false);
   if (!GM_getValue('defaultDateTimeView')) GM_setValue('defaultDateTimeView', false);
   if (!GM_getValue('defaultSecondsView')) GM_setValue('defaultSecondsView', false);
-  if (!GM_getValue('defaultAMPM')) GM_setValue('defaultAMPM', false);
+  if (!GM_getValue('tabWhere')) GM_setValue('tabWhere', '_self');
   if (!GM_getValue('themeChanger')) GM_setValue('themeChanger', false);
   if (!GM_getValue('wallpaperDefaultImage')) GM_setValue('wallpaperDefaultImage', 0);
   if (!GM_getValue('wallpaperImage')) GM_setValue('wallpaperImage', 0);
-  if (!GM_getValue('tabWhere')) GM_setValue('tabWhere', '_self');
 
   buttonsContainer1.appendChild(cbNewTab); buttonsContainer1.appendChild(labNewTab); buttonsContainer1.appendChild(brNewTab);
   buttonsContainer1.appendChild(buttonCheckAll); buttonsContainer1.appendChild(buttonClearAll); buttonsContainer1.appendChild(brButton);
@@ -467,7 +469,8 @@
       for (let j = 0; j < cb2.length; j++) if (!GM_getValue(cb[j].id)) GM_setValue(cb[j].id, false);
       if (signIn) signIn.click();
       if (GM_getValue('defaultDateTimeView')) defaultDateTime();
-      else {dateTime.hidden = true; clearInterval(timer)}
+      else {dateTime.hidden = true; clearInterval(clockInterval)}
+      dateTime.title = addRemove + ' (' + GM_getValue('dateFormat') + ')';
       div.insertBefore(div0, div.firstChild);
       div.insertBefore(img, div.firstChild.nextSibling);
       div.insertBefore(form, div.lastChild);
@@ -496,7 +499,7 @@
     } catch(ex) {}
   }, openInterval);
 
-  changeInterval = setInterval(() => changeWallpaper(), themerInterval)
+  wallpaperInterval = setInterval(() => changeWallpaper(), themerInterval)
 
   window.onunload = () => onClose();
 

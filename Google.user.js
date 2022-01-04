@@ -21,7 +21,6 @@
         timerLong = 10000,
         timerShort = 1000,
         dateTimeFormatCount = 9,
-        defaultBackgroundImage = 1, // 1 - 24
         elementSpacing = '8px',
         am = 'AM',
         pm = 'PM',
@@ -31,9 +30,11 @@
         slash = '/',
         space = ' ',
         star = '★',
-        changeThemeText = 'Change theme hourly:',
+        changeThemeText = 'Change wallpaper hourly:',
         changeThemeTooltip = 'Active wallpaper image',
         customFormat = 'Add a custom format in script line ',
+        defaultWallpaperText = 'Default wallpaper image',
+        defaultWallpaperTooltip = '1 - 24 and 0 for no wallpaper',
         hideShow = bullet + ' Left-click to Hide/Show Date/Time',
         addRemove = bullet + ' Left-click to Add/Remove :seconds\n' + bullet + ' Shift + Left-click to Add/Remove AM/PM\n' + bullet + ' Ctrl + Left-click to change Date format',
         DayNameAbbr = 'Sun.,Mon.,Tue.,Wed.,Thu.,Fri.,Sat.',
@@ -163,6 +164,9 @@
       li = $c('li', {role: "none"}),
       btn = $c('button', {id: 'buttonThemer', onclick: () => themeChanger()}),
       ti = $c('img', {id: 'themeImage'}),
+      li2 = $c('li', {role: "none"}),
+      button = $c('button', {id: 'themerNumber'}),
+      input = $c('input', {id: 'themerNum', type: 'number', min: 0, max: 24, value: GM_getValue('wallpaperImage'), onchange: () => themeInteger()}),
       changeInterval, initInterval, timer;
 
   function $c(type, props) {
@@ -226,21 +230,22 @@
         now = new Date(),
         hour = now.getHours(),
         btn = $q('#buttonThemer'),
-        ti = $q('#themeImage');
+        ti = $q('#themeImage'),
+        int = GM_getValue('wallpaperImage');
     if (GM_getValue('themeChanger')) {
       if (hour === 0) hour = 24;
       else hour = hour;
-      GM_setValue('themeNumber', hour);
+      GM_setValue(int, hour);
       body.style.background = "url("+ themerBackgroundImage + hour +".jpg) no-repeat center center / cover";
       btn.innerHTML = changeThemeText + '  On';
       btn.title = changeThemeTooltip + hour;
       ti.src = themeOn;
     } else {
-      GM_setValue('themeNumber', defaultBackgroundImage);
-      if (defaultBackgroundImage === 0) body.style.background = 'initial';
-      else body.style.background = 'url('+ themerBackgroundImage + defaultBackgroundImage +'.jpg) no-repeat center center / cover';
+      GM_setValue(int, GM_getValue('wallpaperImage'));
+      if (int === 0) body.style.background = 'initial';
+      else body.style.background = 'url('+ themerBackgroundImage + int +'.jpg) no-repeat center center / cover';
       btn.innerHTML = changeThemeText + '  Off';
-      btn.title = changeThemeTooltip + defaultBackgroundImage;
+      btn.title = changeThemeTooltip + int;
       ti.src = themeOff;
   } }
 
@@ -364,8 +369,13 @@
     setThemer();
   }
 
+  function themeInteger() {
+    let int = $q('#themerNum');
+    GM_setValue('wallpaperImage', parseInt(int.value));
+    changeBg();
+  }
+
   function toggleDateTime(e) {
-    if (!e.button === 0) return;
     let bool;
     if (!e.shiftKey && !e.ctrlKey && !e.altKey && e.button === 0) {
       bool = dateTime.hidden !== true ? true : false;
@@ -399,7 +409,7 @@
   if (!GM_getValue('defaultSecondsView')) GM_setValue('defaultSecondsView', false);
   if (!GM_getValue('defaultAMPM')) GM_setValue('defaultAMPM', false);
   if (!GM_getValue('themeChanger')) GM_setValue('themeChanger', false);
-  if (!GM_getValue('themeNumber')) GM_setValue('themeNumber', defaultBackgroundImage);
+  if (!GM_getValue('wallpaperImage')) GM_setValue('wallpaperImage', 0);
   if (!GM_getValue('tabWhere')) GM_setValue('tabWhere', '_self');
 
   buttonsContainer1.appendChild(cbNewTab); buttonsContainer1.appendChild(labNewTab); buttonsContainer1.appendChild(brNewTab);
@@ -473,9 +483,15 @@
         btn.textContent = 'Change theme hourly:  Off';
         ti.src = themeOff;
       }
+      button.textContent = defaultWallpaperText;
+      button.title = defaultWallpaperTooltip;
+      input.value = GM_getValue('wallpaperImage');
       li.appendChild(btn);
       li.appendChild(ti);
+      li2.appendChild(button);
+      li2.appendChild(input);
       pop.appendChild(li);
+      pop.appendChild(li2);
       setThemer();
       if (dateTimeContainer) clearInterval(initInterval);
     } catch(ex) {}
@@ -850,7 +866,22 @@
     '  background-color: rgb(24, 26, 27) !important;'+
     '  color: #FFF !important;'+
     '}'+
+    '#themerNumber {'+
+    '  color: #666 !important;'+
+    '  margin: 16px 0 0 16px !important;'+
+    '}'+
+    '#themerNum {'+
+    '  border: none !important;'+
+    '  color: #666 !important;'+
+    '  text-align: center !important;'+
+    '  width: 42px !important;'+
+    '}'+
+    '#themerNumber:hover,'+
+    '#themerNum:hover,'+
+    '#themerNumber:hover,'+
+    '#themerNumber:hover + #themerNum {'+
+    '  color: #FFF !important;'+
+    '}'+
   '');
 
 })();
-

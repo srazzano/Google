@@ -162,11 +162,11 @@
       dateTime = $c('span', {id: 'dateTime', className: 'gBtn', onmousedown: e => toggleSecondsAmPmFormat(e)}),
       img = $c('img', {id: 'googImg'}),
       li = $c('li', {role: "none"}),
-      btn = $c('button', {id: 'buttonThemer', onclick: () => themeChanger()}),
+      btn = $c('button', {id: 'buttonThemer', onclick: () => wallpaperChanger()}),
       ti = $c('img', {id: 'themeImage'}),
       li2 = $c('li', {role: "none"}),
       button = $c('button', {id: 'themerNumber'}),
-      input = $c('input', {id: 'themerNum', type: 'number', min: 0, max: 24, value: GM_getValue('wallpaperImage'), onchange: () => themeInteger()}),
+      input = $c('input', {id: 'themerNum', type: 'number', min: 0, max: 24, oninput: e => wallpaperDefaultChanger(e)}),
       changeInterval, initInterval, timer;
 
   function $c(type, props) {
@@ -225,27 +225,25 @@
       case 9: return customFormat + 225;
   } }
 
-  function changeBg() {
+  function changeWallpaper() {
     let body = $q('body'),
         now = new Date(),
         hour = now.getHours(),
         btn = $q('#buttonThemer'),
-        ti = $q('#themeImage'),
-        int = GM_getValue('wallpaperImage');
+        ti = $q('#themeImage');
     if (GM_getValue('themeChanger')) {
       if (hour === 0) hour = 24;
       else hour = hour;
-      GM_setValue(int, hour);
+      GM_setValue('wallpaperImage', hour);
       body.style.background = "url("+ themerBackgroundImage + hour +".jpg) no-repeat center center / cover";
       btn.innerHTML = changeThemeText + '  On';
       btn.title = changeThemeTooltip + hour;
       ti.src = themeOn;
     } else {
-      GM_setValue(int, GM_getValue('wallpaperImage'));
-      if (int === 0) body.style.background = 'initial';
-      else body.style.background = 'url('+ themerBackgroundImage + int +'.jpg) no-repeat center center / cover';
+      if (GM_getValue('wallpaperDefaultImage') === 0) body.style.background = 'initial';
+      else body.style.background = 'url('+ themerBackgroundImage + GM_getValue('wallpaperDefaultImage') +'.jpg) no-repeat center center / cover';
       btn.innerHTML = changeThemeText + '  Off';
-      btn.title = changeThemeTooltip + int;
+      btn.title = changeThemeTooltip + GM_getValue('wallpaperDefaultImage');
       ti.src = themeOff;
   } }
 
@@ -253,7 +251,7 @@
     dateTime.hidden = false;
     dateTime.textContent = aDateTime(GM_getValue('dateFormat'));
     dateTime.title = addRemove + ' (' + GM_getValue('dateFormat') + ')';
-    setTimer();
+    setClockTimer();
   }
 
   function onButton(e) {
@@ -350,29 +348,17 @@
         break;
   } }
 
-  function setThemer() {
-    if (GM_getValue('themeChanger')) changeInterval = setInterval(() => changeBg(), themerInterval);
-    else clearInterval(changeInterval);
-    changeBg();
-  }
-
-  function setTimer() {
+  function setClockTimer() {
     clearInterval(timer);
     if (!GM_getValue('defaultDateTimeView')) return;
     if (GM_getValue('defaultSecondsView')) timer = setInterval(function() {dateTime.textContent = aDateTime(GM_getValue('dateFormat'))}, timerShort);
     else timer = setInterval(function() {dateTime.textContent = aDateTime(GM_getValue('dateFormat'))}, timerLong);
   }
 
-  function themeChanger() {
-    let bool = GM_getValue('themeChanger') !== true ? true : false;
-    GM_setValue('themeChanger', bool);
-    setThemer();
-  }
-
-  function themeInteger() {
-    let int = $q('#themerNum');
-    GM_setValue('wallpaperImage', parseInt(int.value));
-    changeBg();
+  function setWallpaperTimer() {
+    if (GM_getValue('themeChanger')) changeInterval = setInterval(() => changeWallpaper(), themerInterval);
+    else clearInterval(changeInterval);
+    changeWallpaper();
   }
 
   function toggleDateTime(e) {
@@ -382,7 +368,7 @@
       dateTime.hidden = bool;
       GM_setValue('defaultDateTimeView', !bool);
       if (bool) clearInterval(timer);
-      else {dateTime.textContent = aDateTime(GM_getValue('dateFormat')); setTimer()}
+      else {dateTime.textContent = aDateTime(GM_getValue('dateFormat')); setClockTimer()}
   } }
 
   function toggleSecondsAmPmFormat(e) {
@@ -392,7 +378,7 @@
     if (!e.shiftKey && !e.ctrlKey && !e.altKey && e.button === 0) {
       bool1 = GM_getValue('defaultSecondsView') !== true ? true : false;
       GM_setValue('defaultSecondsView', bool1);
-      setTimer();
+      setClockTimer();
     } else if (e.shiftKey && !e.ctrlKey && !e.altKey && e.button === 0) {
       bool2 = GM_getValue('defaultAMPM') !== true ? true : false;
       GM_setValue('defaultAMPM', bool2);
@@ -404,11 +390,24 @@
     dateTime.textContent = aDateTime(GM_getValue('dateFormat'));
   }
 
+  function wallpaperChanger() {
+    let bool = GM_getValue('themeChanger') !== true ? true : false;
+    GM_setValue('themeChanger', bool);
+    setWallpaperTimer();
+  }
+
+  function wallpaperDefaultChanger(e) {
+    let inp = e.target.value;
+    GM_setValue('wallpaperDefaultImage', parseInt(inp));
+    changeWallpaper();
+  }
+
   if (!GM_getValue('dateFormat')) GM_setValue('dateFormat', 1);
   if (!GM_getValue('defaultDateTimeView')) GM_setValue('defaultDateTimeView', false);
   if (!GM_getValue('defaultSecondsView')) GM_setValue('defaultSecondsView', false);
   if (!GM_getValue('defaultAMPM')) GM_setValue('defaultAMPM', false);
   if (!GM_getValue('themeChanger')) GM_setValue('themeChanger', false);
+  if (!GM_getValue('wallpaperDefaultImage')) GM_setValue('wallpaperDefaultImage', 0);
   if (!GM_getValue('wallpaperImage')) GM_setValue('wallpaperImage', 0);
   if (!GM_getValue('tabWhere')) GM_setValue('tabWhere', '_self');
 
@@ -485,19 +484,19 @@
       }
       button.textContent = defaultWallpaperText;
       button.title = defaultWallpaperTooltip;
-      input.value = GM_getValue('wallpaperImage');
+      input.value = GM_getValue('wallpaperDefaultImage');
       li.appendChild(btn);
       li.appendChild(ti);
       li2.appendChild(button);
       li2.appendChild(input);
       pop.appendChild(li);
       pop.appendChild(li2);
-      setThemer();
+      setWallpaperTimer();
       if (dateTimeContainer) clearInterval(initInterval);
     } catch(ex) {}
   }, openInterval);
 
-  changeInterval = setInterval(() => changeBg(), themerInterval)
+  changeInterval = setInterval(() => changeWallpaper(), themerInterval)
 
   window.onunload = () => onClose();
 
@@ -878,9 +877,18 @@
     '}'+
     '#themerNumber:hover,'+
     '#themerNum:hover,'+
-    '#themerNumber:hover,'+
     '#themerNumber:hover + #themerNum {'+
     '  color: #FFF !important;'+
+    '}'+
+    'input[type=number]::-webkit-inner-spin-button,'+
+    'input[type=number]::-webkit-outer-spin-button {'+
+    '  opacity: .5 !important;'+
+    '}'+
+    '#themerNumber:hover + input[type=number]::-webkit-inner-spin-button,'+
+    '#themerNumber:hover + input[type=number]::-webkit-outer-spin-button,'+
+    'input[type=number]::-webkit-inner-spin-button:hover,'+
+    'input[type=number]::-webkit-outer-spin-button:hover {'+
+    '  opacity: 1 !important;'+
     '}'+
   '');
 

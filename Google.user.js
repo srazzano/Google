@@ -20,10 +20,11 @@
         themerInterval = 60000,
         timerLong = 10000,
         timerShort = 1000,
+        dateTimeFormatCount = 9,
+        defaultBackgroundImage = 1, // 1 - 24
         elementSpacing = '8px',
         am = 'AM',
         pm = 'PM',
-        dateTimeFormatCount = 9,
         bullet = '•',
         comma = ',',
         hyphen = '-',
@@ -53,7 +54,6 @@
         daynum = DayNum.split(','),
         dayno = DayNo.split(','),
         dayord = DayOrd.split(','),
-        defaultBackgroundImage = 1, // 1 - 13
         googleImage = 'https://raw.githubusercontent.com/srazzano/Images/master/googleImage.png', // GitHub site
         themerBackgroundImage = 'https://raw.githubusercontent.com/srazzano/Images/master/image', // GitHub site
         //googleImage = 'https://sonco.synthasite.com/resources/googleImage.png', // Yola site
@@ -217,12 +217,12 @@
       case 6: return w + space + bullet + space + m + slash + d + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
       case 7: return w + space + bullet + space + mm + slash + dd + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
       // Delete "customFormat + 210/customFormat + 211" text below and add return options with bullet, comma, hyphen, slash, space, star characters.
-      case 8: return customFormat + 215;
-      case 9: return customFormat + 216;
+      case 8: return customFormat + 220;
+      case 9: return customFormat + 221;
   } }
 
   function changeBg() {
-    let bod = $q('body'),
+    let body = $q('body'),
         now = new Date(),
         hour = now.getHours(),
         btn = $q('#buttonThemer'),
@@ -231,13 +231,14 @@
       if (hour === 0) hour = 24;
       else hour = hour;
       GM_setValue('themeNumber', hour);
-      bod.style.background = "url("+ themerBackgroundImage + hour +".jpg) no-repeat center center / cover";
+      body.style.background = "url("+ themerBackgroundImage + hour +".jpg) no-repeat center center / cover";
       btn.innerHTML = changeThemeText + '  On';
       btn.title = changeThemeTooltip + hour;
       ti.src = themeOn;
     } else {
       GM_setValue('themeNumber', defaultBackgroundImage);
-      bod.style.background = "url("+ themerBackgroundImage + defaultBackgroundImage +".jpg) no-repeat center center / cover";
+      if (defaultBackgroundImage === 0) body.style.background = 'initial';
+      else body.style.background = 'url('+ themerBackgroundImage + defaultBackgroundImage +'.jpg) no-repeat center center / cover';
       btn.innerHTML = changeThemeText + '  Off';
       btn.title = changeThemeTooltip + defaultBackgroundImage;
       ti.src = themeOff;

@@ -72,9 +72,9 @@
       pop = $q('#dEjpnf'),
       searchButton = $q('body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.FPdoLc.lJ9FBc > center > input.gNO89b'),
       settingsButton = $q('#Mses6b'),
-      btnClock = $c('button', {id: 'gClock', style: 'background-image: url('+ imgClock +')', title: hideShow, onmousedown: e => toggleDateTime(e)}),
+      btnClock = $c('button', {id: 'gClock', style: 'background-image: url('+ imgClock +')', title: hideShow, onmousedown: e => dateTimeToggle(e)}),
       dateTimeContainer = $c('div', {id: 'dateTimeContainer'}),
-      dateTime = $c('span', {id: 'dateTime', className: 'gBtn', onmousedown: e => toggleSecondsAmPmFormat(e)}),
+      dateTime = $c('span', {id: 'dateTime', className: 'gBtn', onmousedown: e => dateTimeSecondsAmPmFormat(e)}),
       img = $c('img', {id: 'googImg'}),
       div3 = $c('div', {id: 'divThemer'}),
       div4 = $c('div', {id: 'divNumber'}),
@@ -99,7 +99,7 @@
     return document.querySelector(el);
   }
 
-  function aDateTime(int) {
+  function dateTimeFormat(int) {
     if (!GM_getValue('defaultDateTimeView')) return;
     let date = new Date(),
         dy = date.getDay(),
@@ -144,7 +144,60 @@
       case 9: return customFormat + 139;
   } }
 
-  function changeWallpaper() {
+  function dateTimeDefault() {
+    dateTime.hidden = false;
+    dateTime.textContent = dateTimeFormat(GM_getValue('dateFormat'));
+    dateTime.title = addRemove + ' (' + GM_getValue('dateFormat') + ')';
+    dateTimeTimer();
+  }
+
+  function dateTimeTimer() {
+    clearInterval(clockInterval);
+    if (!GM_getValue('defaultDateTimeView')) return;
+    if (GM_getValue('defaultSecondsView')) clockInterval = setInterval(function() {dateTime.textContent = dateTimeFormat(GM_getValue('dateFormat'))}, timerShort);
+    else clockInterval = setInterval(function() {dateTime.textContent = dateTimeFormat(GM_getValue('dateFormat'))}, timerLong);
+  }
+
+  function dateTimeToggle(e) {
+    let bool;
+    if (!e.shiftKey && !e.ctrlKey && !e.altKey && e.button === 0) {
+      bool = dateTime.hidden !== true ? true : false;
+      dateTime.hidden = bool;
+      GM_setValue('defaultDateTimeView', !bool);
+      if (bool) clearInterval(clockInterval);
+      else {dateTime.textContent = dateTimeFormat(GM_getValue('dateFormat')); dateTimeTimer()}
+  } }
+
+  function dateTimeSecondsAmPmFormat(e) {
+    if (!e.button === 0) return;
+    let bool1, bool2, int;
+    e.preventDefault();
+    if (!e.shiftKey && !e.ctrlKey && !e.altKey && e.button === 0) {
+      bool1 = GM_getValue('defaultSecondsView') !== true ? true : false;
+      GM_setValue('defaultSecondsView', bool1);
+      dateTimeTimer();
+    } else if (e.shiftKey && !e.ctrlKey && !e.altKey && e.button === 0) {
+      bool2 = GM_getValue('defaultAMPM') !== true ? true : false;
+      GM_setValue('defaultAMPM', bool2);
+    } else if (!e.shiftKey && e.ctrlKey && !e.altKey && e.button === 0) {
+      int = GM_getValue('dateFormat') + 1;
+      int < dateTimeFormatCount + 1 ? GM_setValue('dateFormat', int) : GM_setValue('dateFormat', 1);
+      dateTime.title = addRemove + ' (' + GM_getValue('dateFormat') + ')';
+    }
+    dateTime.textContent = dateTimeFormat(GM_getValue('dateFormat'));
+  }
+
+  function onClose() {
+    clearInterval(wallpaperInterval);
+    clearInterval(clockInterval);
+  }
+
+  function searchPopupLinks() {
+    let links = $q('#dEjpnf > li > a', true);
+    for (let i = 0; i < links.length; i++) links[i].setAttribute('target', GM_getValue('linksWhere'));
+  }
+
+  function wallpaper() {
     let body = $q('body'),
         now = new Date(),
         hour = now.getHours(),
@@ -166,96 +219,34 @@
       ti.src = themeOff;
   } }
 
-  function defaultDateTime() {
-    dateTime.hidden = false;
-    dateTime.textContent = aDateTime(GM_getValue('dateFormat'));
-    dateTime.title = addRemove + ' (' + GM_getValue('dateFormat') + ')';
-    setClockTimer();
-  }
-
-  function onClose() {
-    clearInterval(wallpaperInterval);
-    clearInterval(clockInterval);
-  }
-
-  function onWhere(e) {
-    let bool = GM_getValue('aNewTab') !== true ? true : false;
-    GM_setValue('aNewTab', bool);
-    if (bool) GM_setValue('tabWhere', '_blank');
-    else GM_setValue('tabWhere', '_self');
-    switch (e.target.id) {
-      case 'aNewTab':
-        e.target.checked = bool;
-        break;
-      case 'gNewTab':
-        e.target.previousSibling.checked = bool;
-        break;
-  } }
-
-  function searchPopupLinks() {
-    let links = $q('#dEjpnf > li > a', true);
-    for (let i = 0; i < links.length; i++) links[i].setAttribute('target', GM_getValue('tabWhere'));
-  }
-
-  function setClockTimer() {
-    clearInterval(clockInterval);
-    if (!GM_getValue('defaultDateTimeView')) return;
-    if (GM_getValue('defaultSecondsView')) clockInterval = setInterval(function() {dateTime.textContent = aDateTime(GM_getValue('dateFormat'))}, timerShort);
-    else clockInterval = setInterval(function() {dateTime.textContent = aDateTime(GM_getValue('dateFormat'))}, timerLong);
-  }
-
-  function setWallpaperTimer() {
-    if (GM_getValue('themeChanger')) wallpaperInterval = setInterval(() => changeWallpaper(), themerInterval);
-    else clearInterval(wallpaperInterval);
-    changeWallpaper();
-  }
-
-  function toggleDateTime(e) {
-    let bool;
-    if (!e.shiftKey && !e.ctrlKey && !e.altKey && e.button === 0) {
-      bool = dateTime.hidden !== true ? true : false;
-      dateTime.hidden = bool;
-      GM_setValue('defaultDateTimeView', !bool);
-      if (bool) clearInterval(clockInterval);
-      else {dateTime.textContent = aDateTime(GM_getValue('dateFormat')); setClockTimer()}
-  } }
-
-  function toggleSecondsAmPmFormat(e) {
-    if (!e.button === 0) return;
-    let bool1, bool2, int;
-    e.preventDefault();
-    if (!e.shiftKey && !e.ctrlKey && !e.altKey && e.button === 0) {
-      bool1 = GM_getValue('defaultSecondsView') !== true ? true : false;
-      GM_setValue('defaultSecondsView', bool1);
-      setClockTimer();
-    } else if (e.shiftKey && !e.ctrlKey && !e.altKey && e.button === 0) {
-      bool2 = GM_getValue('defaultAMPM') !== true ? true : false;
-      GM_setValue('defaultAMPM', bool2);
-    } else if (!e.shiftKey && e.ctrlKey && !e.altKey && e.button === 0) {
-      int = GM_getValue('dateFormat') + 1;
-      int < dateTimeFormatCount + 1 ? GM_setValue('dateFormat', int) : GM_setValue('dateFormat', 1);
-      dateTime.title = addRemove + ' (' + GM_getValue('dateFormat') + ')';
-    }
-    dateTime.textContent = aDateTime(GM_getValue('dateFormat'));
-  }
-
   function wallpaperChanger() {
     let bool = GM_getValue('themeChanger') !== true ? true : false;
     GM_setValue('themeChanger', bool);
-    setWallpaperTimer();
+    wallpaperTimer();
   }
 
   function wallpaperDefaultChanger(e) {
     let inp = e.target.value;
     GM_setValue('wallpaperDefaultImage', parseInt(inp));
-    changeWallpaper();
+    wallpaper();
+  }
+
+  function wallpaperTimer() {
+    if (GM_getValue('themeChanger')) wallpaperInterval = setInterval(() => wallpaper(), themerInterval);
+    else clearInterval(wallpaperInterval);
+    wallpaper();
+  }
+
+  function where() {
+    let bool = GM_getValue('linksWhere') !== '_blank' ? '_blank' : '_self';
+    GM_setValue('linksWhere', bool);
   }
 
   if (!GM_getValue('dateFormat')) GM_setValue('dateFormat', 1);
   if (!GM_getValue('defaultAMPM')) GM_setValue('defaultAMPM', false);
   if (!GM_getValue('defaultDateTimeView')) GM_setValue('defaultDateTimeView', false);
   if (!GM_getValue('defaultSecondsView')) GM_setValue('defaultSecondsView', false);
-  if (!GM_getValue('tabWhere')) GM_setValue('tabWhere', '_self');
+  if (!GM_getValue('linksWhere')) GM_setValue('linksWhere', '_self');
   if (!GM_getValue('themeChanger')) GM_setValue('themeChanger', false);
   if (!GM_getValue('wallpaperDefaultImage')) GM_setValue('wallpaperDefaultImage', 0);
   if (!GM_getValue('wallpaperImage')) GM_setValue('wallpaperImage', 0);
@@ -267,7 +258,7 @@
   initInterval = setInterval(() => {
     try {
       if (signIn) signIn.click();
-      if (GM_getValue('defaultDateTimeView')) defaultDateTime();
+      if (GM_getValue('defaultDateTimeView')) dateTimeDefault();
       else {dateTime.hidden = true; clearInterval(clockInterval)}
       dateTime.title = addRemove + ' (' + GM_getValue('dateFormat') + ')';
       div.insertBefore(img, div.firstChild.nextSibling);
@@ -295,12 +286,12 @@
       pop.appendChild(li);
       pop.appendChild(li2);
       settingsButton.onclick = () => searchPopupLinks();
-      setWallpaperTimer();
+      wallpaperTimer();
       if (dateTimeContainer) clearInterval(initInterval);
     } catch(ex) {}
   }, openInterval);
 
-  wallpaperInterval = setInterval(() => changeWallpaper(), themerInterval)
+  wallpaperInterval = setInterval(() => wallpaper(), themerInterval)
 
   window.onunload = () => onClose();
 
@@ -353,6 +344,7 @@
     '  background: linear-gradient(135deg, #070707, #333) !important;'+
     '  border: 1px solid #CCC !important;'+
     '  box-shadow: 1px 0 4px #000 inset !important;'+
+    '  cursor: pointer !important;'+
     '}'+
     '#gClock {'+
     '  background-repeat: no-repeat !important;'+

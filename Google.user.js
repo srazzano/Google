@@ -91,8 +91,7 @@
 
   var div0 = $c('div', {id: 'headerButtonsDiv'}),
       div1 = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd'),
-      div2 = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd > div.LX3sZb'),
-      div3 = $q('body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > div'),
+      div2 = $q('body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > div'),
       searchButton = $q('body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.FPdoLc.lJ9FBc > center > input.gNO89b'),
       settingsButton = $q('#Mses6b'),
       btnCalendar = $c('button', {id: 'gCalendar', className: 'gBtn', textContent: 'Calendar', title: urlCalendar, style: 'background: url('+ imgCalendar +') no-repeat 4px center, linear-gradient(135deg, #070707, #333)', onclick: () => window.open(urlCalendar, GM_getValue('tabWhere'))}),
@@ -161,6 +160,8 @@
       dateTimeContainer = $c('div', {id: 'dateTimeContainer'}),
       dateTime = $c('span', {id: 'dateTime', className: 'gBtn', onmousedown: e => toggleSecondsAmPmFormat(e)}),
       img = $c('img', {id: 'googImg'}),
+      div3 = $c('div', {id: 'divThemer'}),
+      div4 = $c('div', {id: 'divNumber'}),
       li = $c('li', {role: "none"}),
       btn = $c('button', {id: 'buttonThemer', onclick: () => wallpaperChanger()}),
       ti = $c('img', {id: 'themeImage'}),
@@ -350,6 +351,11 @@
         break;
   } }
 
+  function searchPopupLinks() {
+    let links = $q('#dEjpnf > li > a', true);
+    for (let i = 0; i < links.length; i++) links[i].setAttribute('target', GM_getValue('tabWhere'));
+  }
+
   function setClockTimer() {
     clearInterval(clockInterval);
     if (!GM_getValue('defaultDateTimeView')) return;
@@ -451,10 +457,10 @@
   if (GM_getValue('aYouTube')) div0.appendChild(btnYouTube);
   if (GM_getValue('aYouTubeTV')) div0.appendChild(btnYouTubeTV);
 
-  div3.insertBefore(searchButton, div3.firstChild);
-  div3.appendChild(headerButton);
-  div3.appendChild(buttonsContainer1);
-  div3.appendChild(buttonsContainer2);
+  div2.insertBefore(searchButton, div2.firstChild);
+  div2.appendChild(headerButton);
+  div2.appendChild(buttonsContainer1);
+  div2.appendChild(buttonsContainer2);
 
   initInterval = setInterval(() => {
     let cb = $q('#buttonsContainer1 > .aCkbx', true),
@@ -488,12 +494,15 @@
       button.textContent = defaultWallpaperText;
       button.title = defaultWallpaperTooltip;
       input.value = GM_getValue('wallpaperDefaultImage');
-      li.appendChild(btn);
-      li.appendChild(ti);
-      li2.appendChild(button);
-      li2.appendChild(input);
+      div3.appendChild(btn);
+      div3.appendChild(ti);
+      li.appendChild(div3);
+      div4.appendChild(button);
+      div4.appendChild(input);
+      li2.appendChild(div4);
       pop.appendChild(li);
       pop.appendChild(li2);
+      settingsButton.onclick = () => searchPopupLinks();
       setWallpaperTimer();
       if (dateTimeContainer) clearInterval(initInterval);
     } catch(ex) {}
@@ -504,7 +513,6 @@
   window.onunload = () => onClose();
 
   GM_addStyle(''+
-    '#themeImage,'+
     '#clockImage {'+
     '  display: inline-block !important;'+
     '  height: 16px !important;'+
@@ -514,16 +522,12 @@
     '  top: 2px !important;'+
     '  width: 16px !important;'+
     '}'+
-    '#buttonThemer,'+
     '#viewClock {'+
     '  color: #999 !important;'+
     '  cursor: pointer !important;'+
     '  margin-left: 15px !important;'+
-    '}'+
-    '#viewClock {'+
     '  margin-top: 16px !important;'+
     '}'+
-    '#buttonThemer:hover + #themeImage,'+
     '#viewClock:hover + #clockImage {'+
     '  opacity: 1 !important;'+
     '}'+
@@ -531,7 +535,6 @@
     '  padding: 2px 0 !important;'+
     '}'+
     '#YUIDDb > div:hover,'+
-    '#buttonThemer:hover,'+
     '#viewClock:hover:hover {'+
     '  color: #FFF !important;'+
     '}'+
@@ -831,12 +834,10 @@
     '  color: #AAA !important;'+
     '  cursor: pointer !important;'+
     '  margin-left: -5px !important;'+
+    '  padding: 4px 23px 4px 6px !important;'+
     '}'+
     '#buttonsContainer1 > .aBtn:first-of-type {'+
     '  padding: 4px 4px 4px 6px !important;'+
-    '}'+
-    '.aBtn {'+
-    '  padding: 4px 23px 4px 6px !important;'+
     '}'+
     '.aCkbx:hover + .aBtn, .aBtn:hover {'+
     '  background-color: #444 !important;'+
@@ -868,9 +869,18 @@
     '  background-color: rgb(24, 26, 27) !important;'+
     '  color: #FFF !important;'+
     '}'+
-    '#themerNumber {'+
-    '  color: #666 !important;'+
-    '  margin: 16px 0 0 16px !important;'+
+    '#divThemer,'+
+    '#divNumber {'+
+    '  margin-left: 15px !important;'+
+    '}'+
+    '#themeImage {'+
+    '  margin: 0 17px !important;'+
+    '  opacity: 0 !important;'+
+    '  position: relative !important;'+
+    '  top: 2px !important;'+
+    '}'+
+    '#divNumber {'+
+    '  margin-top: 13px !important;'+
     '}'+
     '#themerNum {'+
     '  border: none !important;'+
@@ -878,19 +888,27 @@
     '  text-align: center !important;'+
     '  width: 42px !important;'+
     '}'+
-    '#themerNumber:hover,'+
-    '#themerNum:hover,'+
-    '#themerNumber:hover + #themerNum {'+
+    '#buttonThemer {'+
+    '  cursor: pointer !important;'+
+    '}'+
+    '#buttonThemer,'+
+    '#themerNumber {'+
+    '  color: #666 !important;'+
+    '}'+
+    '#divThemer:hover > #buttonThemer,'+
+    '#divNumber:hover > #themerNumber,'+
+    '#divNumber:hover > #themerNum {'+
     '  color: #FFF !important;'+
     '}'+
     'input[type=number]::-webkit-inner-spin-button,'+
     'input[type=number]::-webkit-outer-spin-button {'+
-    '  opacity: .5 !important;'+
+    '  opacity: 0 !important;'+
     '}'+
-    '#themerNumber:hover + input[type=number]::-webkit-inner-spin-button,'+
-    '#themerNumber:hover + input[type=number]::-webkit-outer-spin-button,'+
-    'input[type=number]::-webkit-inner-spin-button:hover,'+
-    'input[type=number]::-webkit-outer-spin-button:hover {'+
+    '#divThemer:hover > #themeImage,'+
+    '#divThemer:hover input[type=number]::-webkit-inner-spin-button,'+
+    '#divThemer:hover input[type=number]::-webkit-outer-spin-button,'+
+    '#divNumber:hover input[type=number]::-webkit-inner-spin-button,'+
+    '#divNumber:hover input[type=number]::-webkit-outer-spin-button {'+
     '  opacity: 1 !important;'+
     '}'+
   '');

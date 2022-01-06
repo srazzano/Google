@@ -562,6 +562,9 @@
     '.RNNXgb:hover, .RNNXgb:focus-within {'+
     '  border-color: #777 !important;'+
     '}'+
+    '.RNNXgb:focus-within {'+
+    '  background-color: #111 !important;'+
+    '}'+
     'body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf {'+
     '  padding: 0 20px !important;'+
     '}'+

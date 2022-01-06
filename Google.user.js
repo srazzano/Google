@@ -507,7 +507,7 @@
     '  margin-top: -8px !important;'+
     '}'+
     '#gbwa {'+
-    '  margin-right: 6px !important;'+
+    '  margin-right: 4px !important;'+
     '  padding: 0 !important;'+
     '  width: 40px !important;'+
     '}'+

@@ -384,8 +384,8 @@
     '  top: 12px !important;'+
     '  width: 0 !important;'+
     '}'+
-    '#gSearch, #Mses6b, #headerButton {'+
-    '  border-radius: 4px !important;'+
+    '#gSearch, #Mses6b {'+
+    '  border-radius: 8px !important;'+
     '  max-height: 36px !important;'+
     '  padding: 9px 16px !important;'+
     '  text-decoration: none !important;'+

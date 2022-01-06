@@ -507,6 +507,7 @@
     '  margin-top: -8px !important;'+
     '}'+
     '#gbwa {'+
+    '  margin-right: 6px !important;'+
     '  padding: 0 !important;'+
     '  width: 40px !important;'+
     '}'+
@@ -515,8 +516,6 @@
     '  border: 1px solid #CCC !important;'+
     '  border-radius: 50% !important;'+
     '  box-shadow: 1px 0 4px #000 inset !important;'+
-    '  position: relative !important;'+
-    '  right: -4px !important;'+
     '}'+
     '#gbwa > div > a:hover {'+
     '  background-color: #444 !important;'+
@@ -570,12 +569,12 @@
     '}'+
     '#gSearch, #Mses6b, #submit, center > input {'+
     '  border: 1px solid #CCC !important;'+
-    '  color: #AAA !important;'+
+    '  color: #FFF !important;'+
     '  cursor: pointer !important;'+
     '  width: auto !important;'+
     '  min-height: 32px  !important;'+
     '}'+
-    '#dateTimeContainer > #dateTime:hover, #gSearch:hover:hover, #Mses6b:hover, #submit:hover, center > input:hover, #gb > div > div.gb_0a.gb_E.gb_k.gb_1a.gb_la .gb_Pe:hover {'+
+    '#dateTimeContainer > #dateTime:hover, #gb > div > div.gb_0a.gb_E.gb_k.gb_1a.gb_la .gb_Pe:hover {'+
     '  border: 1px solid #000 !important;'+
     '  color: #FFF !important;'+
     '}'+
@@ -634,7 +633,7 @@
     'div.ayzqOc > button,'+
     '.RNNXgb,'+
     '.FPdoLc.lJ9FBc input {'+
-    '  background: rgba(24, 26, 27, .01) !important;'+
+    '  background: transparent !important;'+
     '  box-shadow: none !important;'+
     '}'+
     '.MV3Tnb:hover,'+
@@ -650,3 +649,4 @@
   '');
 
 })();
+

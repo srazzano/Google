@@ -35,6 +35,8 @@
         customFormat = 'Add a custom format in script line ',
         defaultWallpaperText = 'Default wallpaper image',
         defaultWallpaperTooltip = '1 - 24 and 0 for no wallpaper',
+        linksTextCurrent = 'Search links in current tab',
+        linksTextNew = 'Search links in new tab',
         hideShow = bullet + ' Left-click to Hide/Show Date/Time',
         addRemove = bullet + ' Left-click to Add/Remove :seconds\n' + bullet + ' Shift + Left-click to Add/Remove AM/PM\n' + bullet + ' Ctrl + Left-click to change Date format',
         DayNameAbbr = 'Sun.,Mon.,Tue.,Wed.,Thu.,Fri.,Sat.',
@@ -78,12 +80,15 @@
       img = $c('img', {id: 'googImg'}),
       div3 = $c('div', {id: 'divThemer'}),
       div4 = $c('div', {id: 'divNumber'}),
+      div5 = $c('div', {id: 'divLinks'}),
       li = $c('li', {role: "none"}),
       btn = $c('button', {id: 'buttonThemer', onclick: () => wallpaperChanger()}),
       ti = $c('img', {id: 'themeImage'}),
       li2 = $c('li', {role: "none"}),
       button = $c('button', {id: 'themerNumber'}),
       input = $c('input', {id: 'themerNum', type: 'number', min: 0, max: 24, oninput: e => wallpaperDefaultChanger(e)}),
+      li3 = $c('li', {role: "none"}),
+      button2 = $c('button', {id: 'searchLinks', onclick: () => where()}),
       clockInterval,
       initInterval,
       wallpaperInterval;
@@ -240,6 +245,9 @@
   function where() {
     let bool = GM_getValue('linksWhere') !== '_blank' ? '_blank' : '_self';
     GM_setValue('linksWhere', bool);
+    if (bool === '_self') button2.textContent = linksTextCurrent;
+    else button2.textContent = linksTextNew;
+    searchPopupLinks();
   }
 
   if (!GM_getValue('dateFormat')) GM_setValue('dateFormat', 1);
@@ -283,8 +291,12 @@
       div4.appendChild(button);
       div4.appendChild(input);
       li2.appendChild(div4);
+      div5.appendChild(button2);
+      li3.appendChild(div5);
+      button2.textContent = GM_getValue('linksWhere') === '_self' ? linksTextCurrent : linksTextNew;
       pop.appendChild(li);
       pop.appendChild(li2);
+      pop.appendChild(li3);
       settingsButton.onclick = () => searchPopupLinks();
       wallpaperTimer();
       if (dateTimeContainer) clearInterval(initInterval);
@@ -399,11 +411,13 @@
     '  margin-top: -4px !important;'+
     '}'+
     '#divThemer,'+
-    '#divNumber {'+
+    '#divNumber,'+
+    '#divLinks {'+
     '  padding: 7px 0 7px 9px !important;'+
     '}'+
     '#divThemer:hover,'+
-    '#divNumber:hover {'+
+    '#divNumber:hover,'+
+    '#divLinks:hover {'+
     '  background-color: #333 !important;'+
     '}'+
     '#themeImage {'+
@@ -418,7 +432,9 @@
     '  text-align: center !important;'+
     '  width: 42px !important;'+
     '}'+
-    '#buttonThemer {'+
+    '#buttonThemer,'+
+    '#divLinks,'+
+    '#searchLinks {'+
     '  cursor: pointer !important;'+
     '}'+
     '#buttonThemer,'+

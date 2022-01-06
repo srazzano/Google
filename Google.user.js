@@ -411,7 +411,7 @@
     '#divThemer,'+
     '#divNumber,'+
     '#divLinks {'+
-    '  padding: 7px 0 7px 9px !important;'+
+    '  padding: 7px 0 7px 8px !important;'+
     '}'+
     '#divThemer:hover,'+
     '#divNumber:hover,'+

@@ -21,7 +21,6 @@
         timerLong = 10000,
         timerShort = 1000,
         dateTimeFormatCount = 9,
-        elementSpacing = '8px',
         am = 'AM',
         pm = 'PM',
         bullet = '•',
@@ -149,8 +148,8 @@
       case 6: return w + space + bullet + space + m + slash + d + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
       case 7: return w + space + bullet + space + mm + slash + dd + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
       // Delete "customFormat + 210/customFormat + 211" text below and add return options with bullet, comma, hyphen, slash, space, star characters.
-      case 8: return customFormat + 152;
-      case 9: return customFormat + 153;
+      case 8: return customFormat + 151;
+      case 9: return customFormat + 152;
   } }
 
   function dateTimeDefault() {
@@ -380,7 +379,7 @@
     '  border-radius: 4px !important;'+
     '  color: #AAA !important;'+
     '  font: 16px monospace !important;'+
-    '  margin-left: '+ elementSpacing +' !important;'+
+    '  margin-left: 8px !important;'+
     '  min-width: 100px !important;'+
     '  padding: 5px 8px 6px 8px !important;'+
     '  position: relative !important;'+
@@ -423,6 +422,12 @@
     '  padding-bottom: 0 !important;'+
     '  text-align: left !important;'+
     '  z-index: 999 !important;'+
+    '}'+
+    '.tFYjZe {'+
+    '  padding: 0 !important;'+
+    '}'+
+    '#dEjpnf .EzVRq.pENqnf {'+
+    '  padding: 7px 8px !important;'+
     '}'+
     '#dEjpnf .EzVRq,'+
     '#dEjpnf button.EzVRq {'+
@@ -468,11 +473,11 @@
     '#buttonThemer,'+
     '#searchLinks {'+
     '  color: #CCC !important;'+
-    '  padding: 7px 0 7px 9px !important;'+
+    '  padding: 8px 0 8px 9px !important;'+
     '}'+
     '#themerNumber {'+
     '  color: #CCC !important;'+
-    '  padding: 7px 0 7px 8px !important;'+
+    '  padding: 8px 0 8px 8px !important;'+
     '}'+
     '#divThemer:hover > #buttonThemer,'+
     '#divNumber:hover > #themerNumber,'+
@@ -491,17 +496,14 @@
     '#divNumber:hover input[type=number]::-webkit-outer-spin-button {'+
     '  opacity: 1 !important;'+
     '}'+
-    '.tFYjZe {'+
-    '  padding: 0 !important;'+
-    '}'+
     'body > div.L3eUgb form {'+
-    '  margin-top: 21px !important;'+
+    '  margin-top: 23px !important;'+
     '  width: 584px !important;'+
     '}'+
     'body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ > div.ayzqOc {'+
     '  display: inline-flex !important;'+
     '  position: absolute !important;'+
-    '  top: 320px !important;'+
+    '  top: 322px !important;'+
     '}'+
     '.RNNXgb,'+
     '#gSearch,'+
@@ -513,7 +515,7 @@
     '#gSearch,'+
     '#Mses6b {'+
     '  border-radius: 8px !important;'+
-    '  margin-right: '+ elementSpacing +' !important;'+
+    '  margin-right: 8px !important;'+
     '  max-height: 36px !important;'+
     '  padding: 9px 16px !important;'+
     '  text-decoration: none !important;'+

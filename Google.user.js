@@ -214,12 +214,14 @@
       btn.innerHTML = changeThemeText + '  On';
       btn.title = changeThemeTooltip + hour;
       ti.src = themeOn;
+      div4.style = 'opacity: .5; pointer-events: none';
     } else {
       if (GM_getValue('wallpaperDefaultImage') === 0) body.style.background = 'initial';
       else body.style.background = 'url('+ googleBackgroundImage + GM_getValue('wallpaperDefaultImage') +'.jpg) no-repeat center center / cover';
       btn.innerHTML = changeThemeText + '  Off';
       btn.title = changeThemeTooltip + GM_getValue('wallpaperDefaultImage');
       ti.src = themeOff;
+      div4.style = 'opacity: 1; pointer-events: all';
   } }
 
   function wallpaperChanger() {

@@ -459,6 +459,7 @@
     '  width: 42px !important;'+
     '}'+
     '#buttonThemer,'+
+    '#searchLinks,'+
     '#divLinks {'+
     '  cursor: pointer !important;'+
     '}'+

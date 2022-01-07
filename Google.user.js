@@ -436,7 +436,7 @@
     '  color: #FFF !important;'+
     '}'+
     '#divThemer {'+
-    '  margin-top: -4px !important;'+
+    '  margin-top: -2px !important;'+
     '}'+
     '#divThemer,'+
     '#divNumber,'+

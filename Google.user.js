@@ -439,7 +439,7 @@
     '#divThemer,'+
     '#divNumber,'+
     '#divLinks {'+
-    '  padding: 7px 0 7px 8px !important;'+
+    '  padding-right: 8px !important;'+
     '}'+
     '#divThemer:hover,'+
     '#divNumber:hover,'+
@@ -464,8 +464,13 @@
     '  cursor: pointer !important;'+
     '}'+
     '#buttonThemer,'+
+    '#searchLinks {'+
+    '  color: #CCC !important;'+
+    '  padding: 7px 0 7px 9px !important;'+
+    '}'+
     '#themerNumber {'+
     '  color: #CCC !important;'+
+    '  padding: 7px 0 7px 8px !important;'+
     '}'+
     '#divThemer:hover > #buttonThemer,'+
     '#divNumber:hover > #themerNumber,'+

@@ -17,7 +17,7 @@
   'use strict';
 
   const openInterval = 20,
-        themerInterval = 60000,
+        themerInterval = 30000,
         timerLong = 10000,
         timerShort = 1000,
         dateTimeFormatCount = 9,
@@ -225,7 +225,7 @@
   function wallpaperChanger() {
     let bool = GM_getValue('themeChanger') !== true ? true : false;
     GM_setValue('themeChanger', bool);
-    wallpaperTimer();
+    wallpaperTimer(bool);
   }
 
   function wallpaperDefaultChanger(e) {
@@ -234,8 +234,8 @@
     wallpaper();
   }
 
-  function wallpaperTimer() {
-    if (GM_getValue('themeChanger')) wallpaperInterval = setInterval(() => wallpaper(), themerInterval);
+  function wallpaperTimer(e) {
+    if (e) wallpaperInterval = setInterval(() => wallpaper(), themerInterval);
     else clearInterval(wallpaperInterval);
     wallpaper();
   }
@@ -296,12 +296,11 @@
       pop.appendChild(li2);
       pop.appendChild(li3);
       settingsButton.onclick = () => searchPopupLinks();
-      wallpaperTimer();
       if (dateTimeContainer) clearInterval(initInterval);
     } catch(ex) {}
   }, openInterval);
 
-  wallpaperInterval = setInterval(() => wallpaper(), themerInterval)
+  wallpaperTimer(GM_getValue('themeChanger'));
 
   window.onunload = () => onClose();
 

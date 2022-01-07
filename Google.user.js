@@ -485,9 +485,6 @@
     '.tFYjZe {'+
     '  padding: 0 !important;'+
     '}'+
-    '#viewClock:hover:hover {'+
-    '  color: #FFF !important;'+
-    '}'+
     'body > div.L3eUgb form {'+
     '  margin-top: 21px !important;'+
     '  width: 584px !important;'+
@@ -504,14 +501,6 @@
     '  border: 1px solid #CCC !important;'+
     '  box-shadow: none !important;'+
     '}'+
-    '.RNNXgb:hover,'+
-    '.RNNXgb:focus-within,'+
-    '#gSearch:hover,'+
-    '#Mses6b:hover {'+
-    '  background-color: #111 !important;'+
-    '  border-color: #777 !important;'+
-    '  color: #FFF !important;'+
-    '}'+
     '#gSearch,'+
     '#Mses6b {'+
     '  border-radius: 8px !important;'+
@@ -525,10 +514,18 @@
     '#submit,'+
     'center > input {'+
     '  border: 1px solid #CCC !important;'+
-    '  color: #FFF !important;'+
+    '  color: #AAA !important;'+
     '  cursor: pointer !important;'+
     '  min-height: 32px  !important;'+
     '  width: auto !important;'+
+    '}'+
+    '.RNNXgb:hover,'+
+    '.RNNXgb:focus-within,'+
+    '#gSearch:hover,'+
+    '#Mses6b:hover {'+
+    '  background-color: #000 !important;'+
+    '  border-color: #777 !important;'+
+    '  color: #FFF !important;'+
     '}'+
     '#gb > div > div:nth-child(4) {'+
     '  height: calc(-140px + 100vh) !important;'+

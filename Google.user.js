@@ -33,6 +33,8 @@
         changeThemeOffText = 'Change wallpaper hourly: Off',
         changeThemeOnText = 'Change wallpaper hourly: On',
         changeThemeTooltip = 'Active wallpaper image',
+        changeThemeTooltip2 = 'Setting to Off will enable default wallpaper',
+        changeThemeTooltip3 = 'Setting to On will disable default wallpaper',
         customFormat = 'Add a custom format in script line ',
         defaultWallpaperText = 'Default wallpaper image',
         defaultWallpaperTooltip = '1 - 24 and 0 for no wallpaper',
@@ -147,8 +149,8 @@
       case 6: return w + space + bullet + space + m + slash + d + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
       case 7: return w + space + bullet + space + mm + slash + dd + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
       // Delete "customFormat + 210/customFormat + 211" text below and add return options with bullet, comma, hyphen, slash, space, star characters.
-      case 8: return customFormat + 150;
-      case 9: return customFormat + 151;
+      case 8: return customFormat + 152;
+      case 9: return customFormat + 153;
   } }
 
   function dateTimeDefault() {
@@ -213,14 +215,14 @@
       GM_setValue('wallpaperImage', hour);
       body.style.background = "url("+ googleBackgroundImage + hour +".jpg) no-repeat center center / cover";
       btn.innerHTML = changeThemeOnText;
-      btn.title = changeThemeTooltip + hour;
+      btn.title = changeThemeTooltip + hour + '\n' + changeThemeTooltip2;
       ti.src = themeOn;
       div4.style = 'opacity: .5; pointer-events: none';
     } else {
       if (GM_getValue('wallpaperDefaultImage') === 0) body.style.background = 'initial';
       else body.style.background = 'url('+ googleBackgroundImage + GM_getValue('wallpaperDefaultImage') +'.jpg) no-repeat center center / cover';
       btn.innerHTML = changeThemeOffText
-      btn.title = changeThemeTooltip + GM_getValue('wallpaperDefaultImage');
+      btn.title = changeThemeTooltip + GM_getValue('wallpaperDefaultImage') + '\n' + changeThemeTooltip3;
       ti.src = themeOff;
       div4.style = 'opacity: 1; pointer-events: all';
   } }

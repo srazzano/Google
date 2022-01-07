@@ -324,7 +324,8 @@
     'body > div.L3eUgb > div.o3j99.qarstb > div,'+
     'body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ > div > div.SuUcIb,'+
     'body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ > div > div:nth-child(2),'+
-    '#yDmH0d, #gb > div > div.gb_0a.gb_E.gb_k.gb_1a.gb_la > div.gb_Qf.gb_sb {'+
+    '#yDmH0d, #gb > div > div.gb_0a.gb_E.gb_k.gb_1a.gb_la > div.gb_Qf.gb_sb,'+
+    '.gb_If.gb_qb {'+
     '  display: none !important;'+
     '}'+
      '#gbwa {'+
@@ -540,6 +541,9 @@
     '}'+
     '#gb > div > div:nth-child(4) {'+
     '  height: calc(-140px + 100vh) !important;'+
+    '}'+
+    '.gb_Xa.gb_C.gb_i.gb_Za.gb_ja a:hover {'+
+    '  background: #333 !important;'+
     '}'+
   '');
 

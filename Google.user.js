@@ -334,17 +334,17 @@
     '  width: 40px !important;'+
     '}'+
     '#gbwa > div > a {'+
-    '  background-color: #303030 !important;'+
+    '  background-color: transparent !important;'+
     '  border: 1px solid #CCC !important;'+
     '  border-radius: 50% !important;'+
     '  box-shadow: 1px 0 4px #000 inset !important;'+
     '}'+
     '#gbwa > div > a:hover {'+
-    '  background-color: #444 !important;'+
+    '  background-color: #181A1B !important;'+
     '  border: 1px solid #000 !important;'+
     '}'+
     '#gbwa > div > a:hover > svg {'+
-    '  background-color: #444 !important;'+
+    '  background-color: #181A1B !important;'+
     '}'+
     '.gb_Aa {'+
     '  height: 40px !important;'+
@@ -535,7 +535,7 @@
     '.RNNXgb:focus-within,'+
     '#gSearch:hover,'+
     '#Mses6b:hover {'+
-    '  background-color: #000 !important;'+
+    '  background-color: #181A1B !important;'+
     '  border-color: #777 !important;'+
     '  color: #FFF !important;'+
     '}'+

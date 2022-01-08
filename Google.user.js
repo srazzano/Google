@@ -77,8 +77,8 @@
       pop = $q('#dEjpnf'),
       searchButton = $q('body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.FPdoLc.lJ9FBc > center > input.gNO89b'),
       settingsButton = $q('#Mses6b'),
-      btnClock = $c('button', {id: 'gClock', style: 'background-image: url('+ imgClock +')', title: hideShow, onmousedown: e => dateTimeToggle(e)}),
       dateTimeContainer = $c('div', {id: 'dateTimeContainer'}),
+      btnClock = $c('button', {id: 'gClock', style: 'background-image: url('+ imgClock +')', title: hideShow, onmousedown: e => dateTimeToggle(e)}),
       dateTime = $c('span', {id: 'dateTime', className: 'gBtn', onmousedown: e => dateTimeToggleSecondsAmPm(e)}),
       img = $c('img', {id: 'googImg'}),
       div3 = $c('div', {id: 'divThemer'}),
@@ -353,44 +353,8 @@
     '  right: 4px !important;'+
     '  width: 40px !important;'+
     '}'+
-    '#clockImage {'+
-    '  display: inline-block !important;'+
-    '  height: 16px !important;'+
-    '  margin: 0 9px 0 16px !important;'+
-    '  opacity: 0 !important;'+
-    '  position: relative !important;'+
-    '  top: 2px !important;'+
-    '  width: 16px !important;'+
-    '}'+
     '#dateTimeContainer {'+
     '  margin: -16px 0 0 0 !important;'+
-    '}'+
-    '#dateTimeContainer > #dateTime:hover {'+
-    '  border: 1px solid #000 !important;'+
-    '  color: #FFF !important;'+
-    '}'+
-    '#dateTimeContainer:hover > #gClock {'+
-    '  filter: none !important;'+
-    '  opacity: .7 !important;'+
-    '}'+
-    '#dateTimeContainer:hover > #gClock:hover {'+
-    '  opacity: 1 !important;'+
-    '}'+
-    '#dateTimeContainer > #dateTime {'+
-    '  border-radius: 4px !important;'+
-    '  color: #AAA !important;'+
-    '  font: 16px monospace !important;'+
-    '  margin-left: 8px !important;'+
-    '  min-width: 100px !important;'+
-    '  padding: 5px 8px 6px 8px !important;'+
-    '  position: relative !important;'+
-    '  top: -9px !important;'+
-    '}'+
-    '#dateTime {'+
-    '  background: linear-gradient(135deg, #070707, #333) !important;'+
-    '  border: 1px solid #CCC !important;'+
-    '  box-shadow: 1px 0 4px #000 inset !important;'+
-    '  cursor: pointer !important;'+
     '}'+
     '#gClock {'+
     '  background-repeat: no-repeat !important;'+
@@ -406,6 +370,32 @@
     '#gClock:hover + #dateTime {'+
     '  background: #900 !important;'+
     '  border-color: #C00 !important;'+
+    '  color: #FFF !important;'+
+    '}'+
+    '#dateTimeContainer:hover > #gClock {'+
+    '  filter: none !important;'+
+    '  opacity: .7 !important;'+
+    '}'+
+    '#dateTimeContainer:hover > #gClock:hover {'+
+    '  opacity: 1 !important;'+
+    '}'+
+    '#dateTimeContainer > #dateTime {'+
+    '  background-color: transparent !important;'+
+    '  border: 1px solid #CCC !important;'+
+    '  border-radius: 4px !important;'+
+    '  box-shadow: 1px 0 4px #000 inset !important;'+
+    '  color: #AAA !important;'+
+    '  cursor: pointer !important;'+
+    '  font: 16px monospace !important;'+
+    '  margin-left: 8px !important;'+
+    '  min-width: 100px !important;'+
+    '  padding: 5px 8px 6px 8px !important;'+
+    '  position: relative !important;'+
+    '  top: -9px !important;'+
+    '}'+
+    '#dateTimeContainer > #dateTime:hover {'+
+    '  background-color: #181A1B !important;'+
+    '  border: 1px solid #000 !important;'+
     '  color: #FFF !important;'+
     '}'+
     '#googImg {'+

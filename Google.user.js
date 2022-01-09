@@ -209,8 +209,9 @@
     let now = new Date(),
         hour = now.getHours();
     if (GM_getValue('themeChanger')) {
-      if (hour === 0) hour = 24;
-      else hour = hour;
+      //if (hour === 0) hour = 24;
+      //else hour = hour;
+      hour === 0 ? hour = 24 : hour = hour;
       GM_setValue('wallpaperImage', hour);
       body.style.background = "url("+ googleBackgroundImage + hour +".jpg) no-repeat center center / cover";
       btn.innerHTML = changeThemeOnText;
@@ -239,16 +240,18 @@
   }
 
   function wallpaperTimer(e) {
-    if (e) wallpaperInterval = setInterval(() => wallpaper(), themerInterval);
-    else clearInterval(wallpaperInterval);
+    //if (e) wallpaperInterval = setInterval(() => wallpaper(), themerInterval);
+    //else clearInterval(wallpaperInterval);
+    e ? wallpaperInterval = setInterval(() => wallpaper(), themerInterval) : clearInterval(wallpaperInterval);
     wallpaper();
   }
 
   function where() {
     let bool = GM_getValue('linksWhere') !== '_blank' ? '_blank' : '_self';
     GM_setValue('linksWhere', bool);
-    if (bool === '_self') button2.textContent = linksTextCurrent;
-    else button2.textContent = linksTextNew;
+    //if (bool === '_self') button2.textContent = linksTextCurrent;
+    //else button2.textContent = linksTextNew;
+    bool === '_self' ? button2.textContent = linksTextCurrent : button2.textContent = linksTextNew;
     searchPopupLinks();
   }
 
@@ -331,13 +334,15 @@
      '#gbwa {'+
     '  margin-right: 4px !important;'+
     '  padding: 0 !important;'+
+    '  position: relative !important;'+
+    '  top: -3px !important;'+
     '  width: 40px !important;'+
     '}'+
     '#gbwa > div > a {'+
     '  background-color: transparent !important;'+
     '  border: 1px solid #CCC !important;'+
     '  border-radius: 50% !important;'+
-    '  box-shadow: 1px 0 4px #000 inset !important;'+
+    '  box-shadow: none !important;'+
     '}'+
     '#gbwa > div > a:hover {'+
     '  background-color: #181A1B !important;'+

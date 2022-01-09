@@ -80,7 +80,8 @@
       dateTimeContainer = $c('div', {id: 'dateTimeContainer'}),
       btnClock = $c('button', {id: 'gClock', style: 'background-image: url('+ imgClock +')', title: hideShow, onmousedown: e => dateTimeToggle(e)}),
       dateTime = $c('span', {id: 'dateTime', className: 'gBtn', onmousedown: e => dateTimeToggleSecondsAmPm(e)}),
-      img = $c('img', {id: 'googImg'}),
+      logo = $c('span', {id: 'googLogo', onclick: () => repositionLogo()}),
+      img = $c('img', {id: 'googImg', onclick: () => repositionLogo()}),
       div3 = $c('div', {id: 'divThemer'}),
       div4 = $c('div', {id: 'divNumber'}),
       div5 = $c('div', {id: 'divLinks'}),
@@ -200,6 +201,17 @@
     clearInterval(clockInterval);
   }
 
+  function repositionLogo() {
+    let bool = GM_getValue('googleLogoLeft') !== true ? true : false;
+    GM_setValue('googleLogoLeft', bool);
+    if (bool) {
+      logo.style.opacity = 1;
+      img.style.opacity = 0;
+    } else {
+      logo.style.opacity = 0;
+      img.style.opacity = 1;
+  } }
+
   function searchPopupLinks() {
     let links = $q('#dEjpnf > li > a', true);
     for (let i = 0; i < links.length; i++) links[i].setAttribute('target', GM_getValue('linksWhere'));
@@ -259,6 +271,7 @@
   if (!GM_getValue('defaultAMPM')) GM_setValue('defaultAMPM', false);
   if (!GM_getValue('defaultDateTimeView')) GM_setValue('defaultDateTimeView', false);
   if (!GM_getValue('defaultSecondsView')) GM_setValue('defaultSecondsView', false);
+  if (!GM_getValue('googleLogoLeft')) GM_setValue('googleLogoLeft', false);
   if (!GM_getValue('linksWhere')) GM_setValue('linksWhere', '_self');
   if (!GM_getValue('themeChanger')) GM_setValue('themeChanger', false);
   if (!GM_getValue('wallpaperDefaultImage')) GM_setValue('wallpaperDefaultImage', 0);
@@ -271,6 +284,14 @@
   initInterval = setInterval(() => {
     try {
       if (signIn) signIn.click();
+      body.appendChild(logo);
+      if (GM_getValue('googleLogoLeft')) {
+        logo.style.opacity = 1;
+        img.style.opacity = 0;
+      } else {
+        logo.style.opacity = 0;
+        img.style.opacity = 1;
+      }
       if (GM_getValue('defaultDateTimeView')) dateTimeDefault();
       else {dateTime.hidden = true; clearInterval(clockInterval)}
       dateTime.title = addRemove + ' (' + GM_getValue('dateFormat') + ')';
@@ -330,6 +351,25 @@
     '#yDmH0d, #gb > div > div.gb_0a.gb_E.gb_k.gb_1a.gb_la > div.gb_Qf.gb_sb,'+
     '.gb_If.gb_qb {'+
     '  display: none !important;'+
+    '}'+
+    '#googLogo {'+
+    '  background: url('+ googleImage +') no-repeat !important;'+
+    '  border: none !important;'+
+    '  height: 140px !important;'+
+    '  left: 0 !important;'+
+    '  margin: 10px !important;'+
+    '  position: absolute !important;'+
+    '  top: 0 !important;'+
+    '  width: 436px !important;'+
+    '}'+
+    '#googImg {'+
+    '  background: url('+ googleImage +') no-repeat !important;'+
+    '  margin-bottom: 16px !important;'+
+    '  min-height: 140px !important;'+
+    '  padding-left: 436px !important;'+
+    '  position: relative !important;'+
+    '  top: 12px !important;'+
+    '  width: 0 !important;'+
     '}'+
      '#gbwa {'+
     '  margin-right: 4px !important;'+
@@ -402,16 +442,6 @@
     '  background-color: #181A1B !important;'+
     '  border: 1px solid #000 !important;'+
     '  color: #FFF !important;'+
-    '}'+
-    '#googImg {'+
-    '  background: url('+ googleImage +') no-repeat !important;'+
-    '  margin-bottom: 16px !important;'+
-    '  min-height: 140px !important;'+
-    '  padding-left: 436px !important;'+
-    '  pointer-events: none !important;'+
-    '  position: relative !important;'+
-    '  top: 12px !important;'+
-    '  width: 0 !important;'+
     '}'+
     '#dEjpnf {'+
     '  min-width: 230px !important;'+

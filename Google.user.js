@@ -81,7 +81,7 @@
       btnClock = $c('button', {id: 'gClock', style: 'background-image: url('+ imgClock +')', title: hideShow, onmousedown: e => dateTimeToggle(e)}),
       dateTime = $c('span', {id: 'dateTime', className: 'gBtn', onmousedown: e => dateTimeToggleSecondsAmPm(e)}),
       logo = $c('span', {id: 'googLogo', onclick: () => repositionLogo()}),
-      img = $c('img', {id: 'googImg', onclick: () => repositionLogo()}),
+      img = $c('span', {id: 'googImg', onclick: () => repositionLogo()}),
       div3 = $c('div', {id: 'divThemer'}),
       div4 = $c('div', {id: 'divNumber'}),
       div5 = $c('div', {id: 'divLinks'}),
@@ -352,24 +352,23 @@
     '.gb_If.gb_qb {'+
     '  display: none !important;'+
     '}'+
-    '#googLogo {'+
+    '#googLogo,'+
+    '#googImg {'+
     '  background: url('+ googleImage +') no-repeat !important;'+
     '  border: none !important;'+
-    '  height: 140px !important;'+
+    '  min-height: 140px !important;'+
+    '  width: 436px !important;'+
+    '}'+
+    '#googLogo {'+
     '  left: 0 !important;'+
     '  margin: 10px !important;'+
     '  position: absolute !important;'+
     '  top: 0 !important;'+
-    '  width: 436px !important;'+
     '}'+
     '#googImg {'+
-    '  background: url('+ googleImage +') no-repeat !important;'+
     '  margin-bottom: 16px !important;'+
-    '  min-height: 140px !important;'+
-    '  padding-left: 436px !important;'+
     '  position: relative !important;'+
     '  top: 12px !important;'+
-    '  width: 0 !important;'+
     '}'+
      '#gbwa {'+
     '  margin-right: 4px !important;'+

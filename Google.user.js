@@ -346,7 +346,7 @@
     '}'+
     '#gbwa > div > a:hover {'+
     '  background-color: #181A1B !important;'+
-    '  border: 1px solid #000 !important;'+
+    '  border-color: #777 !important;'+
     '}'+
     '#gbwa > div > a:hover > svg {'+
     '  background-color: #181A1B !important;'+
@@ -529,7 +529,9 @@
     '.RNNXgb:hover,'+
     '.RNNXgb:focus-within,'+
     '#gSearch:hover,'+
-    '#Mses6b:hover {'+
+    '#Mses6b:hover,'+
+    '#submit:hover,'+
+    'center > input:hover {'+
     '  background-color: #181A1B !important;'+
     '  border-color: #777 !important;'+
     '  color: #FFF !important;'+

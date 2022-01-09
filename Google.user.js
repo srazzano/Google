@@ -388,7 +388,7 @@
     '  background-color: transparent !important;'+
     '  border: 1px solid #CCC !important;'+
     '  border-radius: 4px !important;'+
-    '  box-shadow: 1px 0 4px #000 inset !important;'+
+    '  box-shadow: none !important;'+
     '  color: #AAA !important;'+
     '  cursor: pointer !important;'+
     '  font: 16px monospace !important;'+

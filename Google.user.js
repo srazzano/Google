@@ -379,7 +379,7 @@
     '}'+
     '#gbwa > div > a {'+
     '  background-color: transparent !important;'+
-    '  border: 1px solid #CCC !important;'+
+    '  border: 1px solid transparent !important;'+
     '  border-radius: 50% !important;'+
     '  box-shadow: none !important;'+
     '}'+
@@ -387,8 +387,12 @@
     '  background-color: #181A1B !important;'+
     '  border-color: #777 !important;'+
     '}'+
+    '#gbwa > div > a > svg {'+
+    '  color: #999 !important;'+
+    '}'+
     '#gbwa > div > a:hover > svg {'+
     '  background-color: #181A1B !important;'+
+    '  color: #FFF !important;'+
     '}'+
     '.gb_Aa {'+
     '  height: 40px !important;'+

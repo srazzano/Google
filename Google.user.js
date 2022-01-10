@@ -221,8 +221,6 @@
     let now = new Date(),
         hour = now.getHours();
     if (GM_getValue('themeChanger')) {
-      //if (hour === 0) hour = 24;
-      //else hour = hour;
       hour === 0 ? hour = 24 : hour = hour;
       GM_setValue('wallpaperImage', hour);
       body.style.background = "url("+ googleBackgroundImage + hour +".jpg) no-repeat center center / cover";
@@ -252,8 +250,6 @@
   }
 
   function wallpaperTimer(e) {
-    //if (e) wallpaperInterval = setInterval(() => wallpaper(), themerInterval);
-    //else clearInterval(wallpaperInterval);
     e ? wallpaperInterval = setInterval(() => wallpaper(), themerInterval) : clearInterval(wallpaperInterval);
     wallpaper();
   }
@@ -261,8 +257,6 @@
   function where() {
     let bool = GM_getValue('linksWhere') !== '_blank' ? '_blank' : '_self';
     GM_setValue('linksWhere', bool);
-    //if (bool === '_self') button2.textContent = linksTextCurrent;
-    //else button2.textContent = linksTextNew;
     bool === '_self' ? button2.textContent = linksTextCurrent : button2.textContent = linksTextNew;
     searchPopupLinks();
   }

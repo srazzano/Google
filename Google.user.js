@@ -374,7 +374,7 @@
     '#logoBtn,'+
     '#imgBtn {'+
     '  background: transparent url('+ logoButton +') no-repeat !important;'+
-    '  border: 1px solid #000 !important;'+
+    '  border: 1px solid transparent !important;'+
     '  border-radius: 50% !important;'+
     '  float: right !important;'+
     '  height: 32px !important;'+
@@ -382,6 +382,10 @@
     '  position: relative !important;'+
     '  width: 32px !important;'+
     '  z-index: 999 !important;'+
+    '}'+
+    '#logoBtn:hover,'+
+    '#imgBtn:hover {'+
+    '  border: 1px solid #000 !important;'+
     '}'+
      '#gbwa {'+
     '  margin-right: 4px !important;'+

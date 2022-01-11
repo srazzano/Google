@@ -381,7 +381,7 @@
     '  margin-right: -32px !important;'+
     '  position: relative !important;'+
     '  width: 32px !important;'+
-    '  z-index: 999999999 !important;'+
+    '  z-index: 999 !important;'+
     '}'+
      '#gbwa {'+
     '  margin-right: 4px !important;'+

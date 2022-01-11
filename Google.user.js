@@ -357,7 +357,7 @@
     '  background: url('+ googleImage +') no-repeat !important;'+
     '  border: none !important;'+
     '  min-height: 140px !important;'+
-    '  transition: all .5s ease-in !important;'+
+    '  transition: all .5s ease-in-out !important;'+
     '  width: 436px !important;'+
     '}'+
     '#googLogo {'+

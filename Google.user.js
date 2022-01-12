@@ -385,6 +385,7 @@
     '}'+
     '#logo1Btn:hover,'+
     '#logo2Btn:hover {'+
+    '  background-color: #181A1B !important;'+
     '  border: 1px solid #000 !important;'+
     '}'+
      '#gbwa {'+

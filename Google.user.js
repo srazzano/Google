@@ -34,7 +34,8 @@
         changeThemeTooltip = 'Active wallpaper image',
         changeThemeTooltip2 = 'Setting to Off will enable default wallpaper',
         changeThemeTooltip3 = 'Setting to On will disable default wallpaper',
-        moveLogoTooltip = 'Reposition Logo',
+        moveLogo1Tooltip = 'Reposition Logo to top-center',
+        moveLogo2Tooltip = 'Reposition Logo to top-left',
         customFormat = 'Add a custom format in script line ',
         defaultWallpaperText = 'Default wallpaper image',
         defaultWallpaperTooltip = '1 - 24 and 0 for no wallpaper',
@@ -80,9 +81,9 @@
       searchButton = $q('body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.FPdoLc.lJ9FBc > center > input.gNO89b'),
       settingsButton = $q('#Mses6b'),
       logo1 = $c('span', {id: 'logo1'}),
-      logo1Btn = $c('span', {id: 'logo1Btn', title: moveLogoTooltip, onclick: () => repositionLogo()}),
+      logo1Btn = $c('span', {id: 'logo1Btn', title: moveLogo1Tooltip, onclick: () => repositionLogo()}),
       logo2 = $c('span', {id: 'logo2'}),
-      logo2Btn = $c('span', {id: 'logo2Btn', title: moveLogoTooltip, onclick: () => repositionLogo()}),
+      logo2Btn = $c('span', {id: 'logo2Btn', title: moveLogo2Tooltip, onclick: () => repositionLogo()}),
       dateTimeContainer = $c('div', {id: 'dateTimeContainer'}),
       btnClock = $c('button', {id: 'gClock', style: 'background-image: url('+ imgClock +')', title: hideShow, onmousedown: e => dateTimeToggle(e)}),
       dateTime = $c('span', {id: 'dateTime', className: 'gBtn', onmousedown: e => dateTimeToggleSecondsAmPm(e)}),
@@ -153,8 +154,8 @@
       case 6: return w + space + bullet + space + m + slash + d + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
       case 7: return w + space + bullet + space + mm + slash + dd + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
       // Delete "customFormat + 210/customFormat + 211" text below and add return options with bullet, comma, hyphen, slash, space, star characters.
-      case 8: return customFormat + 156;
-      case 9: return customFormat + 157;
+      case 8: return customFormat + 157;
+      case 9: return customFormat + 158;
   } }
 
   function dateTimeDefault() {

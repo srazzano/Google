@@ -82,10 +82,10 @@
       dateTimeContainer = $c('div', {id: 'dateTimeContainer'}),
       btnClock = $c('button', {id: 'gClock', style: 'background-image: url('+ imgClock +')', title: hideShow, onmousedown: e => dateTimeToggle(e)}),
       dateTime = $c('span', {id: 'dateTime', className: 'gBtn', onmousedown: e => dateTimeToggleSecondsAmPm(e)}),
-      logo = $c('span', {id: 'googLogo'}),
-      logoBtn = $c('span', {id: 'logoBtn', title: moveLogoTooltip, onclick: () => repositionLogo()}),
-      img = $c('span', {id: 'googImg'}),
-      imgBtn = $c('span', {id: 'imgBtn', title: moveLogoTooltip, onclick: () => repositionLogo()}),
+      logo1 = $c('span', {id: 'logo1'}),
+      logo1Btn = $c('span', {id: 'logo1Btn', title: moveLogoTooltip, onclick: () => repositionLogo()}),
+      logo2 = $c('span', {id: 'logo2'}),
+      logo2Btn = $c('span', {id: 'logo2Btn', title: moveLogoTooltip, onclick: () => repositionLogo()}),
       div3 = $c('div', {id: 'divThemer'}),
       div4 = $c('div', {id: 'divNumber'}),
       div5 = $c('div', {id: 'divLinks'}),
@@ -209,11 +209,11 @@
     let bool = GM_getValue('googleLogoLeft') !== true ? true : false;
     GM_setValue('googleLogoLeft', bool);
     if (bool) {
-      logo.style.opacity = 1;
-      img.style.opacity = 0;
+      logo1.style.opacity = 1;
+      logo2.style.opacity = 0;
     } else {
-      logo.style.opacity = 0;
-      img.style.opacity = 1;
+      logo1.style.opacity = 0;
+      logo2.style.opacity = 1;
   } }
 
   function searchPopupLinks() {
@@ -282,20 +282,20 @@
   initInterval = setInterval(() => {
     try {
       if (signIn) signIn.click();
-      logo.appendChild(logoBtn);
-      img.appendChild(imgBtn);
-      body.appendChild(logo);
+      logo1.appendChild(logo1Btn);
+      logo2.appendChild(logo2Btn);
+      body.appendChild(logo1);
       if (GM_getValue('googleLogoLeft')) {
-        logo.style.opacity = 1;
-        img.style.opacity = 0;
+        logo1.style.opacity = 1;
+        logo2.style.opacity = 0;
       } else {
-        logo.style.opacity = 0;
-        img.style.opacity = 1;
+        logo1.style.opacity = 0;
+        logo2.style.opacity = 1;
       }
       if (GM_getValue('defaultDateTimeView')) dateTimeDefault();
       else {dateTime.hidden = true; clearInterval(clockInterval)}
       dateTime.title = addRemove + ' (' + GM_getValue('dateFormat') + ')';
-      div0.insertBefore(img, div0.firstChild.nextSibling);
+      div0.insertBefore(logo2, div0.firstChild.nextSibling);
       div0.insertBefore(form, div0.lastChild);
       div0.appendChild(btns);
       dateTimeContainer.appendChild(btnClock);
@@ -352,27 +352,27 @@
     '.gb_If.gb_qb {'+
     '  display: none !important;'+
     '}'+
-    '#googLogo,'+
-    '#googImg {'+
+    '#logo1,'+
+    '#logo2 {'+
     '  background: url('+ googleImage +') no-repeat !important;'+
     '  border: none !important;'+
     '  min-height: 140px !important;'+
     '  transition: all .5s ease-in-out !important;'+
     '  width: 436px !important;'+
     '}'+
-    '#googLogo {'+
+    '#logo1 {'+
     '  left: 0 !important;'+
     '  margin: 10px !important;'+
     '  position: absolute !important;'+
     '  top: 0 !important;'+
     '}'+
-    '#googImg {'+
+    '#logo2 {'+
     '  margin-bottom: 16px !important;'+
     '  position: relative !important;'+
     '  top: 12px !important;'+
     '}'+
-    '#logoBtn,'+
-    '#imgBtn {'+
+    '#logo1Btn,'+
+    '#logo2Btn {'+
     '  background: transparent url('+ logoButton +') no-repeat !important;'+
     '  border: 1px solid transparent !important;'+
     '  border-radius: 50% !important;'+
@@ -383,8 +383,8 @@
     '  width: 32px !important;'+
     '  z-index: 999 !important;'+
     '}'+
-    '#logoBtn:hover,'+
-    '#imgBtn:hover {'+
+    '#logo1Btn:hover,'+
+    '#logo2Btn:hover {'+
     '  border: 1px solid #000 !important;'+
     '}'+
      '#gbwa {'+

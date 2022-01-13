@@ -34,8 +34,8 @@
         changeThemeTooltip = 'Active wallpaper image',
         changeThemeTooltip2 = 'Setting to Off will enable default wallpaper',
         changeThemeTooltip3 = 'Setting to On will disable default wallpaper',
-        moveLogo1Tooltip = 'Reposition Logo to top-center',
-        moveLogo2Tooltip = 'Reposition Logo to top-left',
+        moveLogo1Tooltip = 'Reposition Logo to Top-Center',
+        moveLogo2Tooltip = 'Reposition Logo to Top-Left',
         customFormat = 'Add a custom format in script line ',
         defaultWallpaperText = 'Default wallpaper image',
         defaultWallpaperTooltip = '1 - 24 and 0 for no wallpaper',
@@ -81,9 +81,9 @@
       searchButton = $q('body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.FPdoLc.lJ9FBc > center > input.gNO89b'),
       settingsButton = $q('#Mses6b'),
       logo1 = $c('span', {id: 'logo1'}),
-      logo1Btn = $c('span', {id: 'logo1Btn', title: moveLogo1Tooltip, onclick: () => repositionLogo()}),
+      logo1Btn = $c('input', {id: 'logo1Btn', type: 'image', src: logoButton, title: moveLogo1Tooltip, onclick: () => repositionLogo()}),
       logo2 = $c('span', {id: 'logo2'}),
-      logo2Btn = $c('span', {id: 'logo2Btn', title: moveLogo2Tooltip, onclick: () => repositionLogo()}),
+      logo2Btn = $c('input', {id: 'logo2Btn', type: 'image', src: logoButton, title: moveLogo2Tooltip, onclick: () => repositionLogo()}),
       dateTimeContainer = $c('div', {id: 'dateTimeContainer'}),
       btnClock = $c('button', {id: 'gClock', style: 'background-image: url('+ imgClock +')', title: hideShow, onmousedown: e => dateTimeToggle(e)}),
       dateTime = $c('span', {id: 'dateTime', className: 'gBtn', onmousedown: e => dateTimeToggleSecondsAmPm(e)}),
@@ -276,10 +276,6 @@
   if (!GM_getValue('wallpaperDefaultImage')) GM_setValue('wallpaperDefaultImage', 0);
   if (!GM_getValue('wallpaperImage')) GM_setValue('wallpaperImage', 0);
 
-  searchButton.id = 'gSearch';
-
-  div2.insertBefore(searchButton, div2.firstChild);
-
   initInterval = setInterval(() => {
     try {
       if (signIn) signIn.click();
@@ -302,6 +298,8 @@
       dateTimeContainer.appendChild(btnClock);
       dateTimeContainer.appendChild(dateTime);
       div1.appendChild(dateTimeContainer);
+      div2.insertBefore(searchButton, div2.firstChild);
+      searchButton.id = 'gSearch';
       if (GM_getValue('themeChanger')) {
         btn.textContent = changeThemeOnText;
         ti.src = themeOn;
@@ -350,7 +348,8 @@
     'body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ > div > div.SuUcIb,'+
     'body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ > div > div:nth-child(2),'+
     '#yDmH0d, #gb > div > div.gb_0a.gb_E.gb_k.gb_1a.gb_la > div.gb_Qf.gb_sb,'+
-    '.gb_If.gb_qb {'+
+    '.gb_If.gb_qb,'+
+    '.XDyW0e {'+
     '  display: none !important;'+
     '}'+
     '#logo1,'+
@@ -374,7 +373,7 @@
     '}'+
     '#logo1Btn,'+
     '#logo2Btn {'+
-    '  background: transparent url('+ logoButton +') no-repeat !important;'+
+    '  background-color: transparent !important;'+
     '  border: 1px solid transparent !important;'+
     '  border-radius: 50% !important;'+
     '  float: right !important;'+

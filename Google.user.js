@@ -1,11 +1,11 @@
 // ==UserScript==
-// @name         Google
+// @name         Google w/Wallpaper
 // @namespace    srazzano
 // @version      1.0.1
 // @description  Layout and Theme
 // @author       Sonny Razzano a.k.a. srazzano
-// @match        https://*.google.*
 // @include      https://www.google.com*
+// @exclude      https://www.google.com/search*
 // @icon         https://raw.githubusercontent.com/srazzano/Images/master/googleicon64.png
 // @grant        GM_addStyle
 // @grant        GM_getValue
@@ -204,6 +204,7 @@
   function onClose() {
     clearInterval(wallpaperInterval);
     clearInterval(clockInterval);
+    window.removeEventListener("unload", () => onClose());
   }
 
   function repositionLogo() {
@@ -329,7 +330,7 @@
 
   wallpaperTimer(GM_getValue('themeChanger'));
 
-  window.onunload = () => onClose();
+  window.addEventListener("unload", () => onClose());
 
   GM_addStyle(''+
     'body > div.L3eUgb > div.o3j99.LLD4me.yr19Zb.LS8OJ > div > img.lnXdpd,'+

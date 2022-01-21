@@ -75,7 +75,7 @@
       div2 = $q('html[itemtype="http://schema.org/WebPage"] div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > div'),
       btns = $q('html[itemtype="http://schema.org/WebPage"] div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > div'),
       form = $q('html[itemtype="http://schema.org/WebPage"] div.L3eUgb form'),
-      pop = $q('html[itemtype="http://schema.org/WebPage"] #dEjpnf'),
+      pop = $q('html[itemtype="http://schema.org/WebPage"] ul#dEjpnf'),
       searchButton = $q('html[itemtype="http://schema.org/WebPage"] div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.FPdoLc.lJ9FBc > center > input.gNO89b'),
       settingsButton = $q('html[itemtype="http://schema.org/WebPage"] #Mses6b'),
       logo1 = $c('span', {id: 'logo1'}),
@@ -152,8 +152,8 @@
       case 6: return w + space + bullet + space + m + slash + d + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
       case 7: return w + space + bullet + space + mm + slash + dd + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
       // Delete "customFormat + 210/customFormat + 211" text below and add return options with bullet, comma, hyphen, slash, space, star characters.
-      case 8: return customFormat + 157;
-      case 9: return customFormat + 158;
+      case 8: return customFormat + 155;
+      case 9: return customFormat + 156;
   } }
 
   function dateTimeDefault() {

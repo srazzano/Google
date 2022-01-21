@@ -245,6 +245,7 @@
         btnThemer.title = activeWallpaperTooltip + day + '\n' + settingOffTooltip;
       }
       btnThemer.innerHTML = changeWallpaperOnText;
+      btnWhen.style = 'opacity: 1; pointer-events: all';
       ti.src = themeOn;
       div4.style = 'opacity: .5; pointer-events: none';
     } else {
@@ -252,6 +253,7 @@
       else body.style.background = 'url('+ googleBackgroundImage + GM_getValue('wallpaperDefaultImage') +'.jpg) no-repeat center center / cover';
       btnThemer.innerHTML = changeWallpaperOffText;
       btnThemer.title = activeWallpaperTooltip + GM_getValue('wallpaperDefaultImage') + '\n' + settingOnTooltip;
+      btnWhen.style = 'opacity: .5; pointer-events: none';
       ti.src = themeOff;
       div4.style = 'opacity: 1; pointer-events: all';
   } }
@@ -327,9 +329,11 @@
       GM_getValue('changeThemeHourly') ? btnWhen.innerHTML = hourlyText : btnWhen.innerHTML = dailyText;
       if (GM_getValue('themeChanger')) {
         btnThemer.innerHTML = changeWallpaperOnText;
+        btnWhen.style = 'opacity: 1; pointer-events: all';
         ti.src = themeOn;
       } else {
         btnThemer.innerHTML = changeWallpaperOffText;
+        btnWhen.style = 'opacity: .5; pointer-events: none';
         ti.src = themeOff;
       }
       button.textContent = defaultWallpaperText;
@@ -492,7 +496,7 @@
     '  color: #FFF !important;'+
     '}'+
     'body#gWP1 #dEjpnf {'+
-    '  min-width: 240px !important;'+
+    '  min-width: 250px !important;'+
     '  padding-bottom: 0 !important;'+
     '  text-align: left !important;'+
     '  z-index: 999 !important;'+
@@ -549,7 +553,7 @@
     '  color: #CCC !important;'+
     '  padding: 8px 0 8px 9px !important;'+
     '}'+
-    '#buttonWhen {'+
+    'body#gWP1 #buttonWhen {'+
     '  border: 1px solid #CCC !important;'+
     '  border-radius: 4px !important;'+
     '  margin: 0 8px !important;'+
@@ -560,10 +564,14 @@
     '  padding: 8px 0 8px 8px !important;'+
     '}'+
     'body#gWP1 #divThemer:hover > #buttonThemer,'+
+    'body#gWP1 #divThemer:hover > #buttonWhen,'+
     'body#gWP1 #divNumber:hover > #themerNumber,'+
     'body#gWP1 #divNumber:hover > #themerNum,'+
     'body#gWP1 #divLinks:hover > #searchLinks {'+
     '  color: #FFF !important;'+
+    '}'+
+    'body#gWP1 #buttonWhen:hover {'+
+    '  border-color: #000 !important;'+
     '}'+
     'body#gWP1 input[type=number]::-webkit-inner-spin-button,'+
     'body#gWP1 input[type=number]::-webkit-outer-spin-button {'+

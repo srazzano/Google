@@ -34,11 +34,11 @@
         hourlyText = 'Hourly',
         offText = 'Off',
         onText = 'On',
-        changeThemeTooltip = 'Active wallpaper image',
-        changeThemeTooltip2 = 'Setting to Off will enable default wallpaper',
-        changeThemeTooltip3 = 'Setting to On will disable default wallpaper',
-        moveLogo1Tooltip = 'Reposition Logo to Top-Center',
-        moveLogo2Tooltip = 'Reposition Logo to Top-Left',
+        activeWallpaperTooltip = 'Active wallpaper image',
+        settingOffTooltip = 'Setting to Off will enable default wallpaper',
+        settingOnTooltip = 'Setting to On will disable default wallpaper',
+        logoCenterTooltip = 'Reposition Logo to Top-Center',
+        logoLeftTooltip = 'Reposition Logo to Top-Left',
         customFormat = 'Add a custom format in script line ',
         defaultWallpaperText = 'Default wallpaper image',
         defaultWallpaperTooltip = '1 - 24 and 0 for no wallpaper',
@@ -83,9 +83,9 @@
       searchButton = $q('html[itemtype="http://schema.org/WebPage"] div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.FPdoLc.lJ9FBc > center > input.gNO89b'),
       settingsButton = $q('html[itemtype="http://schema.org/WebPage"] #Mses6b'),
       logo1 = $c('span', {id: 'logo1'}),
-      logo1Btn = $c('input', {id: 'logo1Btn', type: 'image', src: logoButton, title: moveLogo1Tooltip, onclick: () => repositionLogo()}),
+      logo1Btn = $c('input', {id: 'logo1Btn', type: 'image', src: logoButton, title: logoCenterTooltip, onclick: () => repositionLogo()}),
       logo2 = $c('span', {id: 'logo2'}),
-      logo2Btn = $c('input', {id: 'logo2Btn', type: 'image', src: logoButton, title: moveLogo2Tooltip, onclick: () => repositionLogo()}),
+      logo2Btn = $c('input', {id: 'logo2Btn', type: 'image', src: logoButton, title: logoLeftTooltip, onclick: () => repositionLogo()}),
       dateTimeContainer = $c('div', {id: 'dateTimeContainer'}),
       btnClock = $c('button', {id: 'gClock', style: 'background-image: url('+ imgClock +')', title: hideShow, onmousedown: e => dateTimeToggle(e)}),
       dateTime = $c('span', {id: 'dateTime', className: 'gBtn', onmousedown: e => dateTimeToggleSecondsAmPm(e)}),
@@ -236,19 +236,19 @@
         hour === 0 ? hour = 24 : hour = hour;
         GM_setValue('wallpaperImage', hour);
         body.style.background = 'url('+ googleBackgroundImage + hour +'.jpg) no-repeat center center / cover';
-        btnThemer.title = changeThemeTooltip + hour + '\n' + changeThemeTooltip2;
+        btnThemer.title = activeWallpaperTooltip + hour + '\n' + settingOffTooltip;
       } else {
         day = daynum[day];
         GM_setValue('wallpaperImage', day);
         body.style.background = 'url('+ googleBackgroundImage + day +'.jpg) no-repeat center center / cover';
-        btnThemer.title = changeThemeTooltip + day + '\n' + changeThemeTooltip2;
+        btnThemer.title = activeWallpaperTooltip + day + '\n' + settingOffTooltip;
       }
       ti.src = themeOn;
       div4.style = 'opacity: .5; pointer-events: none';
     } else {
       if (GM_getValue('wallpaperDefaultImage') === 0) body.style.background = 'initial';
       else body.style.background = 'url('+ googleBackgroundImage + GM_getValue('wallpaperDefaultImage') +'.jpg) no-repeat center center / cover';
-      btnThemer.title = changeThemeTooltip + GM_getValue('wallpaperDefaultImage') + '\n' + changeThemeTooltip3;
+      btnThemer.title = activeWallpaperTooltip + GM_getValue('wallpaperDefaultImage') + '\n' + settingOnTooltip;
       ti.src = themeOff;
       div4.style = 'opacity: 1; pointer-events: all';
   } }

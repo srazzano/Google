@@ -5,8 +5,6 @@
 // @description  Layout and Theme
 // @author       Sonny Razzano a.k.a. srazzano
 // @include      https://www.google.com*
-// @exclude      https://www.google.com/search*
-// @exclude      https://www.google.com/maps*
 // @icon         https://raw.githubusercontent.com/srazzano/Images/master/googleicon64.png
 // @grant        GM_addStyle
 // @grant        GM_getValue
@@ -71,15 +69,15 @@
         logoButton = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAr0lEQVR42mNkoDFgHLWAKhY8mCi6CkiFYpEKU8h/vZoiC4CGh4IMAdFQS9AtglsCVPMfyGYkyQJsFqJbBDIUZDiMTZEFaBatQhcnaIHtijv/8Rl8OEIFRQ/M5TSxAN1wagcRVodQzQJiAf0tINbrVLUA2XBSUxlBC9BdTnULoIBgmUNyECFnfygAWbCaVIuwWgALFhzFAdwiWEFIkgVYLMRa5kAtCSPZB9QGoxYQBAAjC2gZL6fbHgAAAABJRU5ErkJggg==';
 
   var body = $q('html[itemtype="http://schema.org/WebPage"] > body'),
-      signIn = $q('a.gb_1.gb_2.gb_1d.gb_1c'),
-      div0 = $q('body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ'),
-      div1 = $q('body > div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd'),
-      div2 = $q('body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > div'),
-      btns = $q('body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > div'),
-      form = $q('body > div.L3eUgb form'),
-      pop = $q('#dEjpnf'),
-      searchButton = $q('body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.FPdoLc.lJ9FBc > center > input.gNO89b'),
-      settingsButton = $q('#Mses6b'),
+      signIn = $q('html[itemtype="http://schema.org/WebPage"] a.gb_1.gb_2.gb_1d.gb_1c'),
+      div0 = $q('html[itemtype="http://schema.org/WebPage"] div.L3eUgb > div.o3j99.LLD4me.LS8OJ'),
+      div1 = $q('html[itemtype="http://schema.org/WebPage"] div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd'),
+      div2 = $q('html[itemtype="http://schema.org/WebPage"] div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > div'),
+      btns = $q('html[itemtype="http://schema.org/WebPage"] div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > div'),
+      form = $q('html[itemtype="http://schema.org/WebPage"] div.L3eUgb form'),
+      pop = $q('html[itemtype="http://schema.org/WebPage"] #dEjpnf'),
+      searchButton = $q('html[itemtype="http://schema.org/WebPage"] div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.FPdoLc.lJ9FBc > center > input.gNO89b'),
+      settingsButton = $q('html[itemtype="http://schema.org/WebPage"] #Mses6b'),
       logo1 = $c('span', {id: 'logo1'}),
       logo1Btn = $c('input', {id: 'logo1Btn', type: 'image', src: logoButton, title: moveLogo1Tooltip, onclick: () => repositionLogo()}),
       logo2 = $c('span', {id: 'logo2'}),
@@ -219,7 +217,7 @@
   } }
 
   function searchPopupLinks() {
-    let links = $q('#dEjpnf > li > a', true);
+    let links = $q('html[itemtype="http://schema.org/WebPage"] #dEjpnf > li > a', true);
     for (let i = 0; i < links.length; i++) links[i].setAttribute('target', GM_getValue('linksWhere'));
   }
 
@@ -333,24 +331,25 @@
   window.addEventListener('unload', () => onClose());
 
   GM_addStyle(''+
-    'body > div.L3eUgb > div.o3j99.LLD4me.yr19Zb.LS8OJ > div > img.lnXdpd,'+
-    '#hplogo,'+
-    '#hpcta,'+
-    '#hpcanvas,'+
-    '#hplogocta,'+
-    'div.ddlsv-cta_,'+
-    'a.MV3Tnb,'+
-    '#gb > div > div:nth-child(1) > div,'+
-    '#gbqfbb,'+
-    'body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.ssOUyb,'+
-    'body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.AghGtd,'+
-    'body > div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > a,'+
-    'body > div.L3eUgb > div.o3j99.qarstb > div,'+
-    'body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ > div > div.SuUcIb,'+
-    'body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ > div > div:nth-child(2),'+
-    '#yDmH0d, #gb > div > div.gb_0a.gb_E.gb_k.gb_1a.gb_la > div.gb_Qf.gb_sb,'+
-    '.gb_If.gb_qb,'+
-    '.XDyW0e {'+
+    'html[itemtype="http://schema.org/WebPage"] div.L3eUgb > div.o3j99.LLD4me.yr19Zb.LS8OJ > div > img.lnXdpd,'+
+    'html[itemtype="http://schema.org/WebPage"] #hplogo,'+
+    'html[itemtype="http://schema.org/WebPage"] #hpcta,'+
+    'html[itemtype="http://schema.org/WebPage"] #hpcanvas,'+
+    'html[itemtype="http://schema.org/WebPage"] #hplogocta,'+
+    'html[itemtype="http://schema.org/WebPage"] div.ddlsv-cta_,'+
+    'html[itemtype="http://schema.org/WebPage"] a.MV3Tnb,'+
+    'html[itemtype="http://schema.org/WebPage"] #gb > div > div:nth-child(1) > div,'+
+    'html[itemtype="http://schema.org/WebPage"] #gbqfbb,'+
+    'html[itemtype="http://schema.org/WebPage"] div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.ssOUyb,'+
+    'html[itemtype="http://schema.org/WebPage"] div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.AghGtd,'+
+    'html[itemtype="http://schema.org/WebPage"] div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > a,'+
+    'html[itemtype="http://schema.org/WebPage"] div.L3eUgb > div.o3j99.qarstb > div,'+
+    'html[itemtype="http://schema.org/WebPage"] div.L3eUgb > div.o3j99.LLD4me.LS8OJ > div > div.SuUcIb,'+
+    'html[itemtype="http://schema.org/WebPage"] div.L3eUgb > div.o3j99.LLD4me.LS8OJ > div > div:nth-child(2),'+
+    'html[itemtype="http://schema.org/WebPage"] #yDmH0d,'+
+    'html[itemtype="http://schema.org/WebPage"] #gb > div > div.gb_0a.gb_E.gb_k.gb_1a.gb_la > div.gb_Qf.gb_sb,'+
+    'html[itemtype="http://schema.org/WebPage"] .gb_If.gb_qb,'+
+    'html[itemtype="http://schema.org/WebPage"] .XDyW0e {'+
     '  display: none !important;'+
     '}'+
     'html[itemtype="http://schema.org/WebPage"] #logo1,'+
@@ -389,41 +388,41 @@
     '  background-color: #181A1B !important;'+
     '  border: 1px solid #000 !important;'+
     '}'+
-     '#gbwa {'+
+    'html[itemtype="http://schema.org/WebPage"] #gbwa {'+
     '  margin-right: 4px !important;'+
     '  padding: 0 !important;'+
     '  position: relative !important;'+
     '  top: -3px !important;'+
     '  width: 40px !important;'+
     '}'+
-    '#gbwa > div > a {'+
+    'html[itemtype="http://schema.org/WebPage"] #gbwa > div > a {'+
     '  background-color: transparent !important;'+
     '  border: 1px solid transparent !important;'+
     '  border-radius: 50% !important;'+
     '  box-shadow: none !important;'+
     '}'+
-    '#gbwa > div > a:hover {'+
+    'html[itemtype="http://schema.org/WebPage"] #gbwa > div > a:hover {'+
     '  background-color: #181A1B !important;'+
     '  border-color: #777 !important;'+
     '}'+
-    '#gbwa > div > a > svg {'+
+    'html[itemtype="http://schema.org/WebPage"] #gbwa > div > a > svg {'+
     '  color: #999 !important;'+
     '}'+
-    '#gbwa > div > a:hover > svg {'+
+    'html[itemtype="http://schema.org/WebPage"] #gbwa > div > a:hover > svg {'+
     '  background-color: #181A1B !important;'+
     '  color: #FFF !important;'+
     '}'+
-    '.gb_Aa {'+
+    'html[itemtype="http://schema.org/WebPage"] .gb_Aa {'+
     '  height: 40px !important;'+
     '  margin-top: -7px !important;'+
     '  position: relative !important;'+
     '  right: 4px !important;'+
     '  width: 40px !important;'+
     '}'+
-    '#dateTimeContainer {'+
+    'html[itemtype="http://schema.org/WebPage"] #dateTimeContainer {'+
     '  margin: -16px 0 0 0 !important;'+
     '}'+
-    '#gClock {'+
+    'html[itemtype="http://schema.org/WebPage"] #gClock {'+
     '  background-repeat: no-repeat !important;'+
     '  background-position: center !important;'+
     '  border-radius: 50% !important;'+
@@ -434,19 +433,19 @@
     '  top: 6px !important;'+
     '  width: 40px !important;'+
     '}'+
-    '#gClock:hover + #dateTime {'+
+    'html[itemtype="http://schema.org/WebPage"] #gClock:hover + #dateTime {'+
     '  background: #900 !important;'+
     '  border-color: #C00 !important;'+
     '  color: #FFF !important;'+
     '}'+
-    '#dateTimeContainer:hover > #gClock {'+
+    'html[itemtype="http://schema.org/WebPage"] #dateTimeContainer:hover > #gClock {'+
     '  filter: none !important;'+
     '  opacity: .7 !important;'+
     '}'+
-    '#dateTimeContainer:hover > #gClock:hover {'+
+    'html[itemtype="http://schema.org/WebPage"] #dateTimeContainer:hover > #gClock:hover {'+
     '  opacity: 1 !important;'+
     '}'+
-    '#dateTimeContainer > #dateTime {'+
+    'html[itemtype="http://schema.org/WebPage"] #dateTimeContainer > #dateTime {'+
     '  background-color: transparent !important;'+
     '  border: 1px solid #CCC !important;'+
     '  border-radius: 4px !important;'+
@@ -460,138 +459,138 @@
     '  position: relative !important;'+
     '  top: -9px !important;'+
     '}'+
-    '#dateTimeContainer > #dateTime:hover {'+
+    'html[itemtype="http://schema.org/WebPage"] #dateTimeContainer > #dateTime:hover {'+
     '  background-color: #181A1B !important;'+
     '  border: 1px solid #000 !important;'+
     '  color: #FFF !important;'+
     '}'+
-    '#dEjpnf {'+
+    'html[itemtype="http://schema.org/WebPage"] #dEjpnf {'+
     '  min-width: 230px !important;'+
     '  padding-bottom: 0 !important;'+
     '  text-align: left !important;'+
     '  z-index: 999 !important;'+
     '}'+
-    '.tFYjZe {'+
+    'html[itemtype="http://schema.org/WebPage"] .tFYjZe {'+
     '  padding: 0 !important;'+
     '}'+
-    '#dEjpnf .EzVRq.pENqnf {'+
+    'html[itemtype="http://schema.org/WebPage"] #dEjpnf .EzVRq.pENqnf {'+
     '  padding: 7px 8px !important;'+
     '}'+
-    '#dEjpnf .EzVRq,'+
-    '#dEjpnf button.EzVRq {'+
+    'html[itemtype="http://schema.org/WebPage"] #dEjpnf .EzVRq,'+
+    'html[itemtype="http://schema.org/WebPage"] #dEjpnf button.EzVRq {'+
     '  color: #CCC !important;'+
     '  padding: 8px !important;'+
     '  text-decoration: none !important;'+
     '}'+
-    '#dEjpnf .EzVRq:hover,'+
-    '#dEjpnf button.EzVRq:hover {'+
+    'html[itemtype="http://schema.org/WebPage"] #dEjpnf .EzVRq:hover,'+
+    'html[itemtype="http://schema.org/WebPage"] #dEjpnf button.EzVRq:hover {'+
     '  background-color: #333 !important;'+
     '  color: #FFF !important;'+
     '}'+
-    '#divThemer {'+
+    'html[itemtype="http://schema.org/WebPage"] #divThemer {'+
     '  margin-top: -2px !important;'+
     '}'+
-    '#divThemer,'+
-    '#divNumber,'+
-    '#divLinks {'+
+    'html[itemtype="http://schema.org/WebPage"] #divThemer,'+
+    'html[itemtype="http://schema.org/WebPage"] #divNumber,'+
+    'html[itemtype="http://schema.org/WebPage"] #divLinks {'+
     '  padding-right: 8px !important;'+
     '}'+
-    '#divThemer:hover,'+
-    '#divNumber:hover,'+
-    '#divLinks:hover {'+
+    'html[itemtype="http://schema.org/WebPage"] #divThemer:hover,'+
+    'html[itemtype="http://schema.org/WebPage"] #divNumber:hover,'+
+    'html[itemtype="http://schema.org/WebPage"] #divLinks:hover {'+
     '  background-color: #333 !important;'+
     '}'+
-    '#themeImage {'+
+    'html[itemtype="http://schema.org/WebPage"] #themeImage {'+
     '  margin-left: 14px !important;'+
     '  opacity: 0 !important;'+
     '  position: relative !important;'+
     '  top: 2px !important;'+
     '}'+
-    '#themerNum {'+
+    'html[itemtype="http://schema.org/WebPage"] #themerNum {'+
     '  border: none !important;'+
     '  color: #CCC !important;'+
     '  text-align: center !important;'+
     '  width: 42px !important;'+
     '}'+
-    '#buttonThemer,'+
-    '#searchLinks,'+
-    '#divLinks {'+
+    'html[itemtype="http://schema.org/WebPage"] #buttonThemer,'+
+    'html[itemtype="http://schema.org/WebPage"] #searchLinks,'+
+    'html[itemtype="http://schema.org/WebPage"] #divLinks {'+
     '  cursor: pointer !important;'+
     '}'+
-    '#buttonThemer,'+
-    '#searchLinks {'+
+    'html[itemtype="http://schema.org/WebPage"] #buttonThemer,'+
+    'html[itemtype="http://schema.org/WebPage"] #searchLinks {'+
     '  color: #CCC !important;'+
     '  padding: 8px 0 8px 9px !important;'+
     '}'+
-    '#themerNumber {'+
+    'html[itemtype="http://schema.org/WebPage"] #themerNumber {'+
     '  color: #CCC !important;'+
     '  padding: 8px 0 8px 8px !important;'+
     '}'+
-    '#divThemer:hover > #buttonThemer,'+
-    '#divNumber:hover > #themerNumber,'+
-    '#divNumber:hover > #themerNum,'+
-    '#divLinks:hover > #searchLinks {'+
+    'html[itemtype="http://schema.org/WebPage"] #divThemer:hover > #buttonThemer,'+
+    'html[itemtype="http://schema.org/WebPage"] #divNumber:hover > #themerNumber,'+
+    'html[itemtype="http://schema.org/WebPage"] #divNumber:hover > #themerNum,'+
+    'html[itemtype="http://schema.org/WebPage"] #divLinks:hover > #searchLinks {'+
     '  color: #FFF !important;'+
     '}'+
-    'input[type=number]::-webkit-inner-spin-button,'+
-    'input[type=number]::-webkit-outer-spin-button {'+
+    'html[itemtype="http://schema.org/WebPage"] input[type=number]::-webkit-inner-spin-button,'+
+    'html[itemtype="http://schema.org/WebPage"] input[type=number]::-webkit-outer-spin-button {'+
     '  opacity: 0 !important;'+
     '}'+
-    '#divThemer:hover > #themeImage,'+
-    '#divThemer:hover input[type=number]::-webkit-inner-spin-button,'+
-    '#divThemer:hover input[type=number]::-webkit-outer-spin-button,'+
-    '#divNumber:hover input[type=number]::-webkit-inner-spin-button,'+
-    '#divNumber:hover input[type=number]::-webkit-outer-spin-button {'+
+    'html[itemtype="http://schema.org/WebPage"] #divThemer:hover > #themeImage,'+
+    'html[itemtype="http://schema.org/WebPage"] #divThemer:hover input[type=number]::-webkit-inner-spin-button,'+
+    'html[itemtype="http://schema.org/WebPage"] #divThemer:hover input[type=number]::-webkit-outer-spin-button,'+
+    'html[itemtype="http://schema.org/WebPage"] #divNumber:hover input[type=number]::-webkit-inner-spin-button,'+
+    'html[itemtype="http://schema.org/WebPage"] #divNumber:hover input[type=number]::-webkit-outer-spin-button {'+
     '  opacity: 1 !important;'+
     '}'+
-    'body > div.L3eUgb form {'+
+    'html[itemtype="http://schema.org/WebPage"] div.L3eUgb form {'+
     '  margin-top: 10px !important;'+
     '  width: 584px !important;'+
     '}'+
-    'body > div.L3eUgb > div.o3j99.LLD4me.LS8OJ > div.ayzqOc {'+
+    'html[itemtype="http://schema.org/WebPage"] div.L3eUgb > div.o3j99.LLD4me.LS8OJ > div.ayzqOc {'+
     '  display: inline-flex !important;'+
     '  position: absolute !important;'+
     '  top: 322px !important;'+
     '}'+
-    '.RNNXgb,'+
-    '#gSearch,'+
-    '#Mses6b {'+
+    'html[itemtype="http://schema.org/WebPage"] .RNNXgb,'+
+    'html[itemtype="http://schema.org/WebPage"] #gSearch,'+
+    'html[itemtype="http://schema.org/WebPage"] #Mses6b {'+
     '  background: transparent !important;'+
     '  border: 1px solid #CCC !important;'+
     '  box-shadow: none !important;'+
     '}'+
-    '#gSearch,'+
-    '#Mses6b {'+
+    'html[itemtype="http://schema.org/WebPage"] #gSearch,'+
+    'html[itemtype="http://schema.org/WebPage"] #Mses6b {'+
     '  border-radius: 8px !important;'+
     '  margin-right: 8px !important;'+
     '  max-height: 36px !important;'+
     '  padding: 9px 16px !important;'+
     '  text-decoration: none !important;'+
     '}'+
-    '#gSearch,'+
-    '#Mses6b,'+
-    '#submit,'+
-    'center > input {'+
+    'html[itemtype="http://schema.org/WebPage"] #gSearch,'+
+    'html[itemtype="http://schema.org/WebPage"] #Mses6b,'+
+    'html[itemtype="http://schema.org/WebPage"] #submit,'+
+    'html[itemtype="http://schema.org/WebPage"] center > input {'+
     '  border: 1px solid #CCC !important;'+
     '  color: #AAA !important;'+
     '  cursor: pointer !important;'+
     '  min-height: 32px  !important;'+
     '  width: auto !important;'+
     '}'+
-    '.RNNXgb:hover,'+
-    '.RNNXgb:focus-within,'+
-    '#gSearch:hover,'+
-    '#Mses6b:hover,'+
-    '#submit:hover,'+
-    'center > input:hover {'+
+    'html[itemtype="http://schema.org/WebPage"] .RNNXgb:hover,'+
+    'html[itemtype="http://schema.org/WebPage"] .RNNXgb:focus-within,'+
+    'html[itemtype="http://schema.org/WebPage"] #gSearch:hover,'+
+    'html[itemtype="http://schema.org/WebPage"] #Mses6b:hover,'+
+    'html[itemtype="http://schema.org/WebPage"] #submit:hover,'+
+    'html[itemtype="http://schema.org/WebPage"] center > input:hover {'+
     '  background-color: #181A1B !important;'+
     '  border-color: #777 !important;'+
     '  color: #FFF !important;'+
     '}'+
-    '#gb > div > div:nth-child(4) {'+
+    'html[itemtype="http://schema.org/WebPage"] #gb > div > div:nth-child(4) {'+
     '  height: calc(-140px + 100vh) !important;'+
     '}'+
-    '.gb_Xa.gb_C.gb_i.gb_Za.gb_ja a:hover {'+
+    'html[itemtype="http://schema.org/WebPage"] .gb_Xa.gb_C.gb_i.gb_Za.gb_ja a:hover {'+
     '  background: #333 !important;'+
     '}'+
   '');

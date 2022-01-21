@@ -28,7 +28,8 @@
         slash = '/',
         space = ' ',
         star = '★',
-        changeWallpaperText = 'Change wallpaper',
+        changeWallpaperOffText = 'Change wallpaper: Off',
+        changeWallpaperOnText = 'Change wallpaper: On',
         dailyHourlyTooltip = 'Change wallpaper Daily/Hourly',
         dailyText = 'Daily',
         hourlyText = 'Hourly',
@@ -157,8 +158,8 @@
       case 6: return w + space + bullet + space + m + slash + d + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
       case 7: return w + space + bullet + space + mm + slash + dd + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
       // Delete "customFormat + 210/customFormat + 211" text below and add return options with bullet, comma, hyphen, slash, space, star characters.
-      case 8: return customFormat + 160;
-      case 9: return customFormat + 161;
+      case 8: return customFormat + 161;
+      case 9: return customFormat + 162;
   } }
 
   function dateTimeDefault() {
@@ -243,11 +244,13 @@
         body.style.background = 'url('+ googleBackgroundImage + day +'.jpg) no-repeat center center / cover';
         btnThemer.title = activeWallpaperTooltip + day + '\n' + settingOffTooltip;
       }
+      btnThemer.innerHTML = changeWallpaperOnText;
       ti.src = themeOn;
       div4.style = 'opacity: .5; pointer-events: none';
     } else {
       if (GM_getValue('wallpaperDefaultImage') === 0) body.style.background = 'initial';
       else body.style.background = 'url('+ googleBackgroundImage + GM_getValue('wallpaperDefaultImage') +'.jpg) no-repeat center center / cover';
+      btnThemer.innerHTML = changeWallpaperOffText;
       btnThemer.title = activeWallpaperTooltip + GM_getValue('wallpaperDefaultImage') + '\n' + settingOnTooltip;
       ti.src = themeOff;
       div4.style = 'opacity: 1; pointer-events: all';
@@ -319,10 +322,16 @@
       div1.appendChild(dateTimeContainer);
       div2.insertBefore(searchButton, div2.firstChild);
       searchButton.id = 'gSearch';
-      btnThemer.innerHTML = changeWallpaperText;
+      //btnThemer.innerHTML = changeWallpaperText;
       btnWhen.title = dailyHourlyTooltip;
       GM_getValue('changeThemeHourly') ? btnWhen.innerHTML = hourlyText : btnWhen.innerHTML = dailyText;
-      GM_getValue('themeChanger') ? ti.src = themeOn : ti.src = themeOff;
+      if (GM_getValue('themeChanger')) {
+        btnThemer.innerHTML = changeWallpaperOnText;
+        ti.src = themeOn;
+      } else {
+        btnThemer.innerHTML = changeWallpaperOffText;
+        ti.src = themeOff;
+      }
       button.textContent = defaultWallpaperText;
       button.title = defaultWallpaperTooltip;
       input.value = GM_getValue('wallpaperDefaultImage');
@@ -483,7 +492,7 @@
     '  color: #FFF !important;'+
     '}'+
     'body#gWP1 #dEjpnf {'+
-    '  min-width: 230px !important;'+
+    '  min-width: 240px !important;'+
     '  padding-bottom: 0 !important;'+
     '  text-align: left !important;'+
     '  z-index: 999 !important;'+
@@ -543,7 +552,7 @@
     '#buttonWhen {'+
     '  border: 1px solid #CCC !important;'+
     '  border-radius: 4px !important;'+
-    '  margin-left: 8px !important;'+
+    '  margin: 0 8px !important;'+
     '  padding: 4px 8px !important;'+
     '}'+
     'body#gWP1 #themerNumber {'+

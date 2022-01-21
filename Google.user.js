@@ -28,8 +28,12 @@
         slash = '/',
         space = ' ',
         star = '★',
-        changeThemeOffText = 'Change wallpaper hourly: Off',
-        changeThemeOnText = 'Change wallpaper hourly: On',
+        changeWallpaperText = 'Change wallpaper',
+        dailyHourlyTooltip = 'Change wallpaper Daily/Hourly',
+        dailyText = 'Daily',
+        hourlyText = 'Hourly',
+        offText = 'Off',
+        onText = 'On',
         changeThemeTooltip = 'Active wallpaper image',
         changeThemeTooltip2 = 'Setting to Off will enable default wallpaper',
         changeThemeTooltip3 = 'Setting to On will disable default wallpaper',
@@ -89,13 +93,14 @@
       div4 = $c('div', {id: 'divNumber'}),
       div5 = $c('div', {id: 'divLinks'}),
       li = $c('li', {role: 'none'}),
-      btn = $c('button', {id: 'buttonThemer', onclick: () => wallpaperChanger()}),
+      btnThemer = $c('button', {id: 'buttonThemer', onclick: () => wallpaperChanger()}),
+      btnWhen = $c('button', {id: 'buttonWhen', onclick: () => wallpaperDailyHourly()}),
       ti = $c('img', {id: 'themeImage'}),
       li2 = $c('li', {role: 'none'}),
       button = $c('button', {id: 'themerNumber'}),
-      input = $c('input', {id: 'themerNum', type: 'number', min: 0, max: 24, oninput: e => wallpaperDefaultChanger(e)}),
+      input = $c('input', {id: 'themerNum', type: 'number', min: 0, max: 31, oninput: e => wallpaperDefaultChanger(e)}),
       li3 = $c('li', {role: 'none'}),
-      button2 = $c('button', {id: 'searchLinks', onclick: () => where()}),
+      button2 = $c('button', {id: 'searchLinks', onclick: () => linksBlankSelf()}),
       clockInterval,
       initInterval,
       wallpaperInterval;
@@ -152,8 +157,8 @@
       case 6: return w + space + bullet + space + m + slash + d + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
       case 7: return w + space + bullet + space + mm + slash + dd + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
       // Delete "customFormat + 210/customFormat + 211" text below and add return options with bullet, comma, hyphen, slash, space, star characters.
-      case 8: return customFormat + 155;
-      case 9: return customFormat + 156;
+      case 8: return customFormat + 160;
+      case 9: return customFormat + 161;
   } }
 
   function dateTimeDefault() {
@@ -199,10 +204,11 @@
     dateTime.textContent = dateTimeFormat(GM_getValue('dateFormat'));
   }
 
-  function onClose() {
-    clearInterval(wallpaperInterval);
-    clearInterval(clockInterval);
-    window.removeEventListener('unload', () => onClose());
+  function linksBlankSelf() {
+    let bool = GM_getValue('linksWhere') !== '_blank' ? '_blank' : '_self';
+    GM_setValue('linksWhere', bool);
+    bool === '_self' ? button2.textContent = linksTextCurrent : button2.textContent = linksTextNew;
+    searchPopupLinks();
   }
 
   function repositionLogo() {
@@ -223,20 +229,26 @@
 
   function wallpaper() {
     let now = new Date(),
-        hour = now.getHours();
+        hour = now.getHours(),
+        day = now.getDate();
     if (GM_getValue('themeChanger')) {
-      hour === 0 ? hour = 24 : hour = hour;
-      GM_setValue('wallpaperImage', hour);
-      body.style.background = 'url('+ googleBackgroundImage + hour +'.jpg) no-repeat center center / cover';
-      btn.innerHTML = changeThemeOnText;
-      btn.title = changeThemeTooltip + hour + '\n' + changeThemeTooltip2;
+      if (GM_getValue('changeThemeHourly')) {
+        hour === 0 ? hour = 24 : hour = hour;
+        GM_setValue('wallpaperImage', hour);
+        body.style.background = 'url('+ googleBackgroundImage + hour +'.jpg) no-repeat center center / cover';
+        btnThemer.title = changeThemeTooltip + hour + '\n' + changeThemeTooltip2;
+      } else {
+        day = daynum[day];
+        GM_setValue('wallpaperImage', day);
+        body.style.background = 'url('+ googleBackgroundImage + day +'.jpg) no-repeat center center / cover';
+        btnThemer.title = changeThemeTooltip + day + '\n' + changeThemeTooltip2;
+      }
       ti.src = themeOn;
       div4.style = 'opacity: .5; pointer-events: none';
     } else {
       if (GM_getValue('wallpaperDefaultImage') === 0) body.style.background = 'initial';
       else body.style.background = 'url('+ googleBackgroundImage + GM_getValue('wallpaperDefaultImage') +'.jpg) no-repeat center center / cover';
-      btn.innerHTML = changeThemeOffText
-      btn.title = changeThemeTooltip + GM_getValue('wallpaperDefaultImage') + '\n' + changeThemeTooltip3;
+      btnThemer.title = changeThemeTooltip + GM_getValue('wallpaperDefaultImage') + '\n' + changeThemeTooltip3;
       ti.src = themeOff;
       div4.style = 'opacity: 1; pointer-events: all';
   } }
@@ -245,6 +257,13 @@
     let bool = GM_getValue('themeChanger') !== true ? true : false;
     GM_setValue('themeChanger', bool);
     wallpaperTimer(bool);
+  }
+
+  function wallpaperDailyHourly() {
+    let bool = GM_getValue('changeThemeHourly') !== true ? true : false;
+    GM_setValue('changeThemeHourly', bool);
+    bool ? btnWhen.innerHTML = hourlyText : btnWhen.innerHTML = dailyText;
+    wallpaper();
   }
 
   function wallpaperDefaultChanger(e) {
@@ -258,13 +277,13 @@
     wallpaper();
   }
 
-  function where() {
-    let bool = GM_getValue('linksWhere') !== '_blank' ? '_blank' : '_self';
-    GM_setValue('linksWhere', bool);
-    bool === '_self' ? button2.textContent = linksTextCurrent : button2.textContent = linksTextNew;
-    searchPopupLinks();
+  function whenClose() {
+    clearInterval(wallpaperInterval);
+    clearInterval(clockInterval);
+    window.removeEventListener('unload', () => whenClose());
   }
 
+  if (!GM_getValue('changeThemeHourly')) GM_setValue('changeThemeHourly', false);
   if (!GM_getValue('dateFormat')) GM_setValue('dateFormat', 1);
   if (!GM_getValue('defaultAMPM')) GM_setValue('defaultAMPM', false);
   if (!GM_getValue('defaultDateTimeView')) GM_setValue('defaultDateTimeView', false);
@@ -300,17 +319,15 @@
       div1.appendChild(dateTimeContainer);
       div2.insertBefore(searchButton, div2.firstChild);
       searchButton.id = 'gSearch';
-      if (GM_getValue('themeChanger')) {
-        btn.textContent = changeThemeOnText;
-        ti.src = themeOn;
-      } else {
-        btn.textContent = changeThemeOffText;
-        ti.src = themeOff;
-      }
+      btnThemer.innerHTML = changeWallpaperText;
+      btnWhen.title = dailyHourlyTooltip;
+      GM_getValue('changeThemeHourly') ? btnWhen.innerHTML = hourlyText : btnWhen.innerHTML = dailyText;
+      GM_getValue('themeChanger') ? ti.src = themeOn : ti.src = themeOff;
       button.textContent = defaultWallpaperText;
       button.title = defaultWallpaperTooltip;
       input.value = GM_getValue('wallpaperDefaultImage');
-      div3.appendChild(btn);
+      div3.appendChild(btnThemer);
+      div3.appendChild(btnWhen);
       div3.appendChild(ti);
       li.appendChild(div3);
       div4.appendChild(button);
@@ -329,7 +346,7 @@
 
   wallpaperTimer(GM_getValue('themeChanger'));
 
-  window.addEventListener('unload', () => onClose());
+  window.addEventListener('unload', () => whenClose());
 
   GM_addStyle(''+
     'body#gWP1 > div.L3eUgb > div.o3j99.LLD4me.yr19Zb.LS8OJ > div > img.lnXdpd,'+
@@ -502,10 +519,10 @@
     '  background-color: #333 !important;'+
     '}'+
     'body#gWP1 #themeImage {'+
-    '  margin-left: 14px !important;'+
+    '  float: right !important;'+
     '  opacity: 0 !important;'+
     '  position: relative !important;'+
-    '  top: 2px !important;'+
+    '  top: 8px !important;'+
     '}'+
     'body#gWP1 #themerNum {'+
     '  border: none !important;'+
@@ -522,6 +539,12 @@
     'body#gWP1 #searchLinks {'+
     '  color: #CCC !important;'+
     '  padding: 8px 0 8px 9px !important;'+
+    '}'+
+    '#buttonWhen {'+
+    '  border: 1px solid #CCC !important;'+
+    '  border-radius: 4px !important;'+
+    '  margin-left: 8px !important;'+
+    '  padding: 4px 8px !important;'+
     '}'+
     'body#gWP1 #themerNumber {'+
     '  color: #CCC !important;'+

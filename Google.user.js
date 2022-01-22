@@ -603,11 +603,12 @@
     'body#gWP1 #gSearch,'+
     'body#gWP1 #Mses6b {'+
     '  background: transparent !important;'+
-    '  border: 1px solid #CCC !important;'+
+    '  border: 1px solid transparent !important;'+
     '  box-shadow: none !important;'+
     '}'+
     'body#gWP1 #gSearch,'+
     'body#gWP1 #Mses6b {'+
+    '  border: none !important;'+
     '  border-radius: 8px !important;'+
     '  margin-right: 8px !important;'+
     '  max-height: 36px !important;'+
@@ -618,7 +619,7 @@
     'body#gWP1 #Mses6b,'+
     'body#gWP1 #submit,'+
     'body#gWP1 center > input {'+
-    '  border: 1px solid #CCC !important;'+
+    '  border: 1px solid transparent !important;'+
     '  color: #AAA !important;'+
     '  cursor: pointer !important;'+
     '  min-height: 32px  !important;'+

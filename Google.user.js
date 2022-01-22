@@ -585,9 +585,9 @@
     '  opacity: 1 !important;'+
     '}'+
     'body#gWP1 > div.L3eUgb form {'+
-    '  background: rgba(0, 0, 0, .2) !important;'+
+    '  border: 1px solid #CCC !important;'+
     '  border-radius: 24px !important;'+
-    '  height: 109px !important;'+
+    '  height: 107px !important;'+
     '  margin: 10px 0 0 0 !important;'+
     '  width: 584px !important;'+
     '}'+

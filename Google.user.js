@@ -42,7 +42,7 @@
         logoLeftTooltip = 'Reposition Logo to Top-Left',
         customFormat = 'Add a custom format in script line ',
         defaultWallpaperText = 'Default wallpaper image',
-        defaultWallpaperTooltip = '1 - 24 and 0 for no wallpaper',
+        defaultWallpaperTooltip = '1 - 31 and 0 for no wallpaper',
         linksTextCurrent = 'Search links in current tab: True',
         linksTextNew = 'Search links in new tab: True',
         hideShow = bullet + ' Left-click to Hide/Show Date/Time',

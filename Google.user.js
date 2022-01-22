@@ -608,12 +608,12 @@
     '}'+
     'body#gWP1 #gSearch,'+
     'body#gWP1 #Mses6b {'+
-    '  border: none !important;'+
     '  border-radius: 8px !important;'+
     '  margin-right: 8px !important;'+
     '  max-height: 36px !important;'+
     '  padding: 9px 16px !important;'+
     '  text-decoration: none !important;'+
+    '  text-shadow: 1px 1px 2px #000 !important;'+
     '}'+
     'body#gWP1 #gSearch,'+
     'body#gWP1 #Mses6b,'+

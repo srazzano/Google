@@ -97,12 +97,12 @@
       div4 = $c('div', {id: 'divNumber'}),
       div5 = $c('div', {id: 'divLinks'}),
       li = $c('li', {role: 'none'}),
-      btnThemer = $c('button', {id: 'buttonThemer', onclick: () => wallpaperChanger()}),
+      btnThemer = $c('button', {id: 'buttonThemer', onclick: () => wallpaperThemer()}),
       btnWhen = $c('button', {id: 'buttonWhen', onclick: () => wallpaperDailyHourly()}),
       ti = $c('img', {id: 'themeImage'}),
       li2 = $c('li', {role: 'none'}),
-      button = $c('button', {id: 'themerNumber'}),
-      input = $c('input', {id: 'themerNum', type: 'number', min: 0, max: 31, oninput: e => wallpaperDefaultChanger(e)}),
+      button = $c('button', {id: 'buttonStatic', onclick: () => wallpaperButtonChanger()}),
+      input = $c('input', {id: 'inputStatic', type: 'number', min: 0, max: 31, oninput: e => wallpaperInputChanger(e)}),
       li3 = $c('li', {role: 'none'}),
       button2 = $c('button', {id: 'searchLinks', onclick: () => linksBlankSelf()}),
       clockInterval,
@@ -252,19 +252,22 @@
       ti.src = themeOn;
       div4.style = 'opacity: .5; pointer-events: none';
     } else {
-      if (GM_getValue('wallpaperDefaultImage') === 0) body.style.background = 'initial';
-      else body.style.background = 'url('+ googleBackgroundImage + GM_getValue('wallpaperDefaultImage') +'.jpg) no-repeat center center / cover';
+      if (GM_getValue('wallpaperStaticImage') === 0) body.style.background = 'initial';
+      else body.style.background = 'url('+ googleBackgroundImage + GM_getValue('wallpaperStaticImage') +'.jpg) no-repeat center center / cover';
       btnThemer.innerHTML = changeWallpaperOffText;
-      btnThemer.title = activeWallpaperTooltip + GM_getValue('wallpaperDefaultImage') + '\n' + settingOnTooltip;
+      btnThemer.title = activeWallpaperTooltip + GM_getValue('wallpaperStaticImage') + '\n' + settingOnTooltip;
       btnWhen.style = 'opacity: .5; pointer-events: none';
       ti.src = themeOff;
       div4.style = 'opacity: 1; pointer-events: all';
   } }
 
-  function wallpaperChanger() {
-    let bool = GM_getValue('themeChanger') !== true ? true : false;
-    GM_setValue('themeChanger', bool);
-    wallpaperTimer(bool);
+  function wallpaperButtonChanger() {
+    let num = GM_getValue('wallpaperStaticImage');
+    if (num > 30) num = 0;
+    else num = parseInt(num + 1);
+    input.value = num;
+    GM_setValue('wallpaperStaticImage', parseInt(num));
+    wallpaper();
   }
 
   function wallpaperDailyHourly() {
@@ -274,10 +277,16 @@
     wallpaper();
   }
 
-  function wallpaperDefaultChanger(e) {
+  function wallpaperInputChanger(e) {
     let inp = e.target.value;
-    GM_setValue('wallpaperDefaultImage', parseInt(inp));
+    GM_setValue('wallpaperStaticImage', parseInt(inp));
     wallpaper();
+  }
+
+  function wallpaperThemer() {
+    let bool = GM_getValue('themeChanger') !== true ? true : false;
+    GM_setValue('themeChanger', bool);
+    wallpaperTimer(bool);
   }
 
   function wallpaperTimer(e) {
@@ -299,7 +308,7 @@
   if (!GM_getValue('googleLogoLeft')) GM_setValue('googleLogoLeft', false);
   if (!GM_getValue('linksWhere')) GM_setValue('linksWhere', '_self');
   if (!GM_getValue('themeChanger')) GM_setValue('themeChanger', false);
-  if (!GM_getValue('wallpaperDefaultImage')) GM_setValue('wallpaperDefaultImage', 0);
+  if (!GM_getValue('wallpaperStaticImage')) GM_setValue('wallpaperStaticImage', 0);
   if (!GM_getValue('wallpaperImage')) GM_setValue('wallpaperImage', 0);
 
   initInterval = setInterval(() => {
@@ -340,7 +349,7 @@
       }
       button.textContent = defaultWallpaperText;
       button.title = defaultWallpaperTooltip;
-      input.value = GM_getValue('wallpaperDefaultImage');
+      input.value = GM_getValue('wallpaperStaticImage');
       div3.appendChild(btnThemer);
       div3.appendChild(btnWhen);
       div3.appendChild(ti);
@@ -551,12 +560,13 @@
     '  position: relative !important;'+
     '  top: 8px !important;'+
     '}'+
-    'body#gWP1 #themerNum {'+
+    'body#gWP1 #inputStatic {'+
     '  border: none !important;'+
     '  color: #CCC !important;'+
     '  text-align: center !important;'+
     '  width: 42px !important;'+
     '}'+
+    'body#gWP1 #buttonStatic,'+
     'body#gWP1 #buttonThemer,'+
     'body#gWP1 #searchLinks,'+
     'body#gWP1 #divLinks {'+
@@ -573,14 +583,14 @@
     '  margin: 0 8px !important;'+
     '  padding: 4px 8px !important;'+
     '}'+
-    'body#gWP1 #themerNumber {'+
+    'body#gWP1 #buttonStatic {'+
     '  color: #CCC !important;'+
     '  padding: 7px 0 7px 8px !important;'+
     '}'+
     'body#gWP1 #divThemer:hover > #buttonThemer,'+
     'body#gWP1 #divThemer:hover > #buttonWhen,'+
-    'body#gWP1 #divNumber:hover > #themerNumber,'+
-    'body#gWP1 #divNumber:hover > #themerNum,'+
+    'body#gWP1 #divNumber:hover > #buttonStatic,'+
+    'body#gWP1 #divNumber:hover > #inputStatic,'+
     'body#gWP1 #divLinks:hover > #searchLinks {'+
     '  color: #FFF !important;'+
     '}'+

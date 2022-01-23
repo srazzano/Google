@@ -411,6 +411,8 @@
     '}'+
     'body#gWP1 #logo2 {'+
     '  margin-bottom: 16px !important;'+
+    '  position: relative !important;'+
+    '  top: -16px !important;'+
     '}'+
     'body#gWP1 #logo1Btn,'+
     'body#gWP1 #logo2Btn {'+

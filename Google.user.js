@@ -36,6 +36,7 @@
         hourlyText = 'Hourly',
         offText = 'Off',
         onText = 'On',
+        darkThemeTooltip = '.gb_na.gb_Qd set to transparent in script',
         activeWallpaperTooltip = 'Active wallpaper image',
         settingOffTooltip = 'Setting to Off will enable static wallpaper',
         settingOnTooltip = 'Setting to On will disable static wallpaper',
@@ -83,6 +84,7 @@
       btns = $q('html[itemtype="http://schema.org/WebPage"] div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > div'),
       form = $q('html[itemtype="http://schema.org/WebPage"] div.L3eUgb form'),
       pop = $q('html[itemtype="http://schema.org/WebPage"] ul#dEjpnf'),
+      darkTheme = $q('.EzVRq.pENqnf'),
       searchButton = $q('html[itemtype="http://schema.org/WebPage"] div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.FPdoLc.lJ9FBc > center > input.gNO89b'),
       settingsButton = $q('html[itemtype="http://schema.org/WebPage"] #Mses6b'),
       logo1 = $c('span', {id: 'logo1'}),
@@ -161,8 +163,8 @@
       case 6: return w + space + bullet + space + m + slash + d + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
       case 7: return w + space + bullet + space + mm + slash + dd + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
       // Delete "customFormat + 210/customFormat + 211" text below and add return options with bullet, comma, hyphen, slash, space, star characters.
-      case 8: return customFormat + 164;
-      case 9: return customFormat + 165;
+      case 8: return customFormat + 166;
+      case 9: return customFormat + 167;
   } }
 
   function dateTimeDefault() {
@@ -365,6 +367,7 @@
       pop.insertBefore(li3, pop.firstChild);
       pop.insertBefore(popBtn, pop.firstChild);
       settingsButton.onclick = () => searchPopupLinks();
+      darkTheme.title = darkThemeTooltip;
       if (dateTimeContainer) clearInterval(initInterval);
     } catch(ex) {}
   }, openInterval);
@@ -394,6 +397,9 @@
     'body#gWP1 .gb_If.gb_qb,'+
     'body#gWP1 .XDyW0e {'+
     '  display: none !important;'+
+    '}'+
+    'body#gWP1 .gb_na.gb_Qd {'+
+    '  background: transparent !important;'+
     '}'+
     'body#gWP1 > #logo1,'+
     'body#gWP1 #logo2 {'+
@@ -659,6 +665,11 @@
     '  background-color: #181A1B !important;'+
     '  border-color: #777 !important;'+
     '  color: #FFF !important;'+
+    '}'+
+    'body#gWP1 .aajZCb {'+
+    '  border: 1px solid #CCC !important;'+
+    '  margin: 0 -1px !important;'+
+    '  padding: 0 !important;'+
     '}'+
     'body#gWP1 #gb > div > div:nth-child(4) {'+
     '  height: calc(-140px + 100vh) !important;'+

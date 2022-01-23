@@ -324,7 +324,6 @@
       div1.appendChild(dateTimeContainer);
       div2.insertBefore(searchButton, div2.firstChild);
       searchButton.id = 'gSearch';
-      //btnThemer.innerHTML = changeWallpaperText;
       btnWhen.title = dailyHourlyTooltip;
       GM_getValue('changeThemeHourly') ? btnWhen.innerHTML = hourlyText : btnWhen.innerHTML = dailyText;
       if (GM_getValue('themeChanger')) {
@@ -351,7 +350,7 @@
       button2.textContent = GM_getValue('linksWhere') === '_self' ? linksTextCurrent : linksTextNew;
       pop.appendChild(li);
       pop.appendChild(li2);
-      pop.appendChild(li3);
+      pop.insertBefore(li3, pop.firstChild);
       settingsButton.onclick = () => searchPopupLinks();
       if (dateTimeContainer) clearInterval(initInterval);
     } catch(ex) {}

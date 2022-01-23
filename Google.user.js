@@ -30,6 +30,7 @@
         star = '★',
         changeWallpaperOffText = 'Change wallpaper: Off',
         changeWallpaperOnText = 'Change wallpaper: On',
+        closePopupTooltip = 'Close Popup',
         dailyHourlyTooltip = 'Change wallpaper Daily/Hourly',
         dailyText = 'Daily',
         hourlyText = 'Hourly',
@@ -71,7 +72,8 @@
         themeOff = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACE0lEQVR42pWSS4hSYRTHz+QrEV/DmKAoIqi1yIWWu8BVIrgKJHDRqo0Ybdyam1au3AhCtJYZ3YQJEiIItokJcVW5EfGFNk4+8IV6s3M+nIg7d2D6w+E797vn/7vnO/c7Ap4KhYIIl+cYLzEeH7bPMd5jnAUCAe7f+iOe+cF+v/9mt9tBJpOBSCQCfAaJRAK9Xo+Cw72HCPl+DYDmY47jLl0uF4xGI8D8L2C73YLFYoFOpwPdbncpFotNCPnFB6R0Ol0EAxqNBsjlchZkXi6XLNdqtZDNZnsej+cDAl7xARf4lZPZbMa+pFKpmGmz2cBisYDVagVOpxOq1SqYTKYRAnSCgHa7zVo3m83s7CQ6f6vVArfbDaVSCWw2myAghYOLjMdjmM/nrAOFQgG73Q5oj2ai1+uhWCz+8Pl8ZaEjHGPxxXq9vkMGXBmAjCTqRqlUglQqXWNuvDZEUjKZfGS1Ws8nkwlMp1M2QPqldCy1Wk3AXS6Xe5bJZD4K3gOSwWC4F4vFhrjCYDAAo9HIuimXy1/y+fxrLPna7/d/3wggBYPBVDQajdRqNZo4DIdDiMfjL/DVKZq3N97EK/n9/qcI+FSv18HhcECz2YREIvEEzZ/5tYIAbP9uOp1e0SxIGo0GwuHwfQQ0bgUgVSqV/VXu9XrfIPQdAn7+F4CMh/xtKBQ6QcDlrQGoGBkPHfixgyoCFvyiP+nSCSCyiE9MAAAAAElFTkSuQmCC',
         themeOn = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACKElEQVR42pWSS2gTURSG/+nEpCE2qWkSQaK0iosRKUSNuinMQmoFKaKCmyKCEsSISzdWQcWNbhSjYhARdKELUapQFZVgu7CtWgR1ELH1EYtNbPNoXm0zif90UpBJlHrgzD1z/3u+OefOEWCwDz0QueyhH6D7K9tD9Gv0O2s6of55XjAkS9phaX2XDY0tgMmmC8UskByF8vpWVoMSolQBmOzkMirJZ+wwvWRYAOqsuljK81FP0GYokWNpvrQQMmkEhKR1HUE4fMDMZX7dA6heXRSjTI4B5kNAahjKm0eXCDhsBMSltlMuCA+R+j4IR1Mj1RW6WP6G1EQSjuUbGW+H0nfiFwHuaoC8z4XMXWDWATTsYNWVFgpsYeo+sCgFLN7FNm7UBISkte5guhDH2Gdg5SpW3OCc02amJjHCvWXcs9e7obyL12zBOT0txr3Nal30ExBLMmGpro2NAx525F0NRL+IJYtFdVddomZnjzZt2LopMVRWS8ix2kQG+GELw2cOwLoEyBXMxe6Lpp1P+nMPas5BxTy958Xx1lYVaQIEQYTVouLkFevA9Xv5I9RfaT/2XwB0bUHo5oXO4NuBHgwWw2h3BtC8G3sp3abP/nUS563Dj/beq77Hz54PY8TOFkoB+A+ijVK/8WxNgDZ25/Yjr3wFMhzIF+/x9Gdi7tY/LhSASCRSno9lWT7OJUyP/RegkqjFpxm7GE4sGEDr1hIrFWzj0kfPGg/9BuI3xhFLjykHAAAAAElFTkSuQmCC',
         imgClock = 'data:image/png;base64,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',
-        logoButton = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAr0lEQVR42mNkoDFgHLWAKhY8mCi6CkiFYpEKU8h/vZoiC4CGh4IMAdFQS9AtglsCVPMfyGYkyQJsFqJbBDIUZDiMTZEFaBatQhcnaIHtijv/8Rl8OEIFRQ/M5TSxAN1wagcRVodQzQJiAf0tINbrVLUA2XBSUxlBC9BdTnULoIBgmUNyECFnfygAWbCaVIuwWgALFhzFAdwiWEFIkgVYLMRa5kAtCSPZB9QGoxYQBAAjC2gZL6fbHgAAAABJRU5ErkJggg==';
+        logoButton = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAr0lEQVR42mNkoDFgHLWAKhY8mCi6CkiFYpEKU8h/vZoiC4CGh4IMAdFQS9AtglsCVPMfyGYkyQJsFqJbBDIUZDiMTZEFaBatQhcnaIHtijv/8Rl8OEIFRQ/M5TSxAN1wagcRVodQzQJiAf0tINbrVLUA2XBSUxlBC9BdTnULoIBgmUNyECFnfygAWbCaVIuwWgALFhzFAdwiWEFIkgVYLMRa5kAtCSPZB9QGoxYQBAAjC2gZL6fbHgAAAABJRU5ErkJggg==',
+        popCloseBtn = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAUElEQVR42mNkoDJgHDWQdgYeOHDgv4ODAyOpcjg1wNjoGvHJEXQhukZChhEMQ2QDkAEuwwgaiM1QfIbR30CqepmqkUKzZEO1hE0JGDWQcgAAQ+tAFUn6VDkAAAAASUVORK5CYII=';
 
   var body = $q('html[itemtype="http://schema.org/WebPage"] > body'),
       signIn = $q('html[itemtype="http://schema.org/WebPage"] a.gb_1.gb_2.gb_1d.gb_1c'),
@@ -90,6 +92,7 @@
       dateTimeContainer = $c('div', {id: 'dateTimeContainer'}),
       btnClock = $c('button', {id: 'gClock', style: 'background-image: url('+ imgClock +')', title: hideShow, onmousedown: e => dateTimeToggle(e)}),
       dateTime = $c('span', {id: 'dateTime', className: 'gBtn', onmousedown: e => dateTimeToggleSecondsAmPm(e)}),
+      popBtn = $c('button', {id: 'popClose', style: 'background-image: url('+ popCloseBtn +')', title: closePopupTooltip, onclick: () => popClose()}),
       div3 = $c('div', {id: 'divThemer'}),
       div4 = $c('div', {id: 'divNumber'}),
       div5 = $c('div', {id: 'divLinks'}),
@@ -158,8 +161,8 @@
       case 6: return w + space + bullet + space + m + slash + d + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
       case 7: return w + space + bullet + space + mm + slash + dd + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
       // Delete "customFormat + 210/customFormat + 211" text below and add return options with bullet, comma, hyphen, slash, space, star characters.
-      case 8: return customFormat + 161;
-      case 9: return customFormat + 162;
+      case 8: return customFormat + 164;
+      case 9: return customFormat + 165;
   } }
 
   function dateTimeDefault() {
@@ -210,6 +213,10 @@
     GM_setValue('linksWhere', bool);
     bool === '_self' ? button2.textContent = linksTextCurrent : button2.textContent = linksTextNew;
     searchPopupLinks();
+  }
+
+  function popClose() {
+    pop.style.display = 'none';
   }
 
   function repositionLogo() {
@@ -351,6 +358,7 @@
       pop.appendChild(li);
       pop.appendChild(li2);
       pop.insertBefore(li3, pop.firstChild);
+      pop.insertBefore(popBtn, pop.firstChild);
       settingsButton.onclick = () => searchPopupLinks();
       if (dateTimeContainer) clearInterval(initInterval);
     } catch(ex) {}
@@ -500,6 +508,20 @@
     '  text-align: left !important;'+
     '  z-index: 999 !important;'+
     '}'+
+    'body#gWP1 #popClose {'+
+    '  background-color: #575757 !important;'+
+    '  border-radius: 50% !important;'+
+    '  height: 20px !important;'+
+    '  position: absolute !important;'+
+    '  right: 0 !important;'+
+    '  width: 20px !important;'+
+    '}'+
+    'body#gWP1 #popClose:hover {'+
+    '  background-color: #900 !important;'+
+    '}'+
+    'body#gWP1 #divLinks {'+
+    '  margin-top: 20px !important;'+
+    '}'+
     'body#gWP1 .tFYjZe {'+
     '  padding: 0 !important;'+
     '}'+
@@ -509,7 +531,7 @@
     'body#gWP1 #dEjpnf .EzVRq,'+
     'body#gWP1 #dEjpnf button.EzVRq {'+
     '  color: #CCC !important;'+
-    '  padding: 8px !important;'+
+    '  padding: 7px 8px !important;'+
     '  text-decoration: none !important;'+
     '}'+
     'body#gWP1 #dEjpnf .EzVRq:hover,'+
@@ -550,7 +572,7 @@
     'body#gWP1 #buttonThemer,'+
     'body#gWP1 #searchLinks {'+
     '  color: #CCC !important;'+
-    '  padding: 8px 0 8px 9px !important;'+
+    '  padding: 7px 0 7px 9px !important;'+
     '}'+
     'body#gWP1 #buttonWhen {'+
     '  border: 1px solid #CCC !important;'+
@@ -560,7 +582,7 @@
     '}'+
     'body#gWP1 #themerNumber {'+
     '  color: #CCC !important;'+
-    '  padding: 8px 0 8px 8px !important;'+
+    '  padding: 7px 0 7px 8px !important;'+
     '}'+
     'body#gWP1 #divThemer:hover > #buttonThemer,'+
     'body#gWP1 #divThemer:hover > #buttonWhen,'+
@@ -587,7 +609,7 @@
     '  border: 1px solid #CCC !important;'+
     '  border-radius: 24px !important;'+
     '  height: 107px !important;'+
-    '  margin: 10px 0 0 0 !important;'+
+    '  margin: 14px 0 0 0 !important;'+
     '  width: 584px !important;'+
     '}'+
     '.A8SBwf {'+
@@ -596,7 +618,7 @@
     'body#gWP1 > div.L3eUgb > div.o3j99.LLD4me.LS8OJ > div.ayzqOc {'+
     '  display: inline-flex !important;'+
     '  position: absolute !important;'+
-    '  top: 322px !important;'+
+    '  top: 326px !important;'+
     '}'+
     'body#gWP1 .RNNXgb,'+
     'body#gWP1 #gSearch,'+

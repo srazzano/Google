@@ -92,7 +92,7 @@
       dateTimeContainer = $c('div', {id: 'dateTimeContainer'}),
       btnClock = $c('button', {id: 'gClock', style: 'background-image: url('+ imgClock +')', title: hideShow, onmousedown: e => dateTimeToggle(e)}),
       dateTime = $c('span', {id: 'dateTime', className: 'gBtn', onmousedown: e => dateTimeToggleSecondsAmPm(e)}),
-      popBtn = $c('button', {id: 'popClose', style: 'background-image: url('+ popCloseBtn +')', title: closePopupTooltip, onclick: () => popClose()}),
+      popBtn = $c('button', {id: 'popClose', style: 'background-image: url('+ popCloseBtn +')', title: closePopupTooltip, onclick: function() {pop.style.display = "none"}}),
       div3 = $c('div', {id: 'divThemer'}),
       div4 = $c('div', {id: 'divNumber'}),
       div5 = $c('div', {id: 'divLinks'}),
@@ -213,10 +213,6 @@
     GM_setValue('linksWhere', bool);
     bool === '_self' ? button2.textContent = linksTextCurrent : button2.textContent = linksTextNew;
     searchPopupLinks();
-  }
-
-  function popClose() {
-    pop.style.display = 'none';
   }
 
   function repositionLogo() {
@@ -406,8 +402,6 @@
     '}'+
     'body#gWP1 #logo2 {'+
     '  margin-bottom: 16px !important;'+
-    '  position: relative !important;'+
-    '  top: 12px !important;'+
     '}'+
     'body#gWP1 #logo1Btn,'+
     'body#gWP1 #logo2Btn {'+
@@ -513,14 +507,12 @@
     '  border-radius: 50% !important;'+
     '  height: 20px !important;'+
     '  position: absolute !important;'+
-    '  right: 0 !important;'+
+    '  right: -11px !important;'+
+    '  top: -10px !important;'+
     '  width: 20px !important;'+
     '}'+
     'body#gWP1 #popClose:hover {'+
     '  background-color: #900 !important;'+
-    '}'+
-    'body#gWP1 #divLinks {'+
-    '  margin-top: 20px !important;'+
     '}'+
     'body#gWP1 .tFYjZe {'+
     '  padding: 0 !important;'+
@@ -609,7 +601,6 @@
     '  border: 1px solid #CCC !important;'+
     '  border-radius: 24px !important;'+
     '  height: 107px !important;'+
-    '  margin: 14px 0 0 0 !important;'+
     '  width: 584px !important;'+
     '}'+
     'body#gWP1 .A8SBwf {'+
@@ -618,7 +609,7 @@
     'body#gWP1 > div.L3eUgb > div.o3j99.LLD4me.LS8OJ > div.ayzqOc {'+
     '  display: inline-flex !important;'+
     '  position: absolute !important;'+
-    '  top: 326px !important;'+
+    '  top: 312px !important;'+
     '}'+
     'body#gWP1 .RNNXgb,'+
     'body#gWP1 #gSearch,'+

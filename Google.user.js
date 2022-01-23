@@ -612,7 +612,7 @@
     '  margin: 14px 0 0 0 !important;'+
     '  width: 584px !important;'+
     '}'+
-    '.A8SBwf {'+
+    'body#gWP1 .A8SBwf {'+
     '  padding: 0 !important;'+
     '}'+
     'body#gWP1 > div.L3eUgb > div.o3j99.LLD4me.LS8OJ > div.ayzqOc {'+

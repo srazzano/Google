@@ -36,7 +36,7 @@
         hourlyText = 'Hourly',
         offText = 'Off',
         onText = 'On',
-        darkThemeTooltip = '.gb_na.gb_Qd is set to transparent in script',
+        darkThemeTooltip = '#gb is set to transparent in script',
         activeWallpaperTooltip = 'Active wallpaper image',
         settingOffTooltip = 'Setting to Off will enable static wallpaper',
         settingOnTooltip = 'Setting to On will disable static wallpaper',
@@ -398,7 +398,7 @@
     'body#gWP1 .XDyW0e {'+
     '  display: none !important;'+
     '}'+
-    'body#gWP1 .gb_na.gb_Qd {'+
+    'body#gWP1 #gb {'+
     '  background: transparent !important;'+
     '}'+
     'body#gWP1 > #logo1,'+

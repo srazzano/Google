@@ -76,7 +76,6 @@
         logoButton = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAr0lEQVR42mNkoDFgHLWAKhY8mCi6CkiFYpEKU8h/vZoiC4CGh4IMAdFQS9AtglsCVPMfyGYkyQJsFqJbBDIUZDiMTZEFaBatQhcnaIHtijv/8Rl8OEIFRQ/M5TSxAN1wagcRVodQzQJiAf0tINbrVLUA2XBSUxlBC9BdTnULoIBgmUNyECFnfygAWbCaVIuwWgALFhzFAdwiWEFIkgVYLMRa5kAtCSPZB9QGoxYQBAAjC2gZL6fbHgAAAABJRU5ErkJggg==',
         popCloseBtn = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAYUlEQVR42mNkoDFgHLVg8Fpw4MCB/w4ODngdQIwaRlwaYWxcBhCjhqAPcBlArOF4LcBlECmGE7QA3UBkQIzhRFmAzRJiDR8cFtA0iGgayTRNpnTLaDQrKqgJRi0YtYByAABtCFAZvm66FQAAAABJRU5ErkJggg==',
         body = $q('html[itemtype="http://schema.org/WebPage"] > body'),
-        promo = $q('.QlyBfb'),
         signIn = $q('html[itemtype="http://schema.org/WebPage"] a.gb_1.gb_2'),
         div0 = $q('html[itemtype="http://schema.org/WebPage"] div.L3eUgb > div.o3j99.LLD4me.LS8OJ'),
         div1 = $q('html[itemtype="http://schema.org/WebPage"] div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd'),
@@ -316,7 +315,6 @@
 
   initInterval = setInterval(() => {
     try {
-      if (promo) promo.firstChild.click();
       if (signIn) signIn.click();
       logo1.appendChild(logo1Btn);
       logo2.appendChild(logo2Btn);
@@ -397,7 +395,8 @@
     'body#gWP1 #yDmH0d,'+
     'body#gWP1 #gb > div > div.gb_0a.gb_E.gb_k.gb_1a.gb_la > div.gb_Qf.gb_sb,'+
     'body#gWP1 .gb_If.gb_qb,'+
-    'body#gWP1 .XDyW0e {'+
+    'body#gWP1 .XDyW0e'+
+    'body#gWP1 .QlyBfb {'+
     '  display: none !important;'+
     '}'+
     'body#gWP1 #gb {'+

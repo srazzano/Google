@@ -395,7 +395,7 @@
     'body#gWP1 #yDmH0d,'+
     'body#gWP1 #gb > div > div.gb_0a.gb_E.gb_k.gb_1a.gb_la > div.gb_Qf.gb_sb,'+
     'body#gWP1 .gb_If.gb_qb,'+
-    'body#gWP1 .XDyW0e'+
+    'body#gWP1 .XDyW0e,'+
     'body#gWP1 .QlyBfb {'+
     '  display: none !important;'+
     '}'+

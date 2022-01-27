@@ -76,6 +76,7 @@
         logoButton = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAr0lEQVR42mNkoDFgHLWAKhY8mCi6CkiFYpEKU8h/vZoiC4CGh4IMAdFQS9AtglsCVPMfyGYkyQJsFqJbBDIUZDiMTZEFaBatQhcnaIHtijv/8Rl8OEIFRQ/M5TSxAN1wagcRVodQzQJiAf0tINbrVLUA2XBSUxlBC9BdTnULoIBgmUNyECFnfygAWbCaVIuwWgALFhzFAdwiWEFIkgVYLMRa5kAtCSPZB9QGoxYQBAAjC2gZL6fbHgAAAABJRU5ErkJggg==',
         popCloseBtn = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAYUlEQVR42mNkoDFgHLVg8Fpw4MCB/w4ODngdQIwaRlwaYWxcBhCjhqAPcBlArOF4LcBlECmGE7QA3UBkQIzhRFmAzRJiDR8cFtA0iGgayTRNpnTLaDQrKqgJRi0YtYByAABtCFAZvm66FQAAAABJRU5ErkJggg==',
         body = $q('html[itemtype="http://schema.org/WebPage"] > body'),
+        promo = $q('.QlyBfb'),
         signIn = $q('html[itemtype="http://schema.org/WebPage"] a.gb_1.gb_2'),
         div0 = $q('html[itemtype="http://schema.org/WebPage"] div.L3eUgb > div.o3j99.LLD4me.LS8OJ'),
         div1 = $q('html[itemtype="http://schema.org/WebPage"] div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd'),
@@ -93,19 +94,19 @@
         dateTimeContainer = $c('div', {id: 'dateTimeContainer'}),
         btnClock = $c('button', {id: 'gClock', style: 'background-image: url('+ imgClock +')', title: hideShow, onmousedown: e => dateTimeToggle(e)}),
         dateTime = $c('span', {id: 'dateTime', className: 'gBtn', onmousedown: e => dateTimeToggleSecondsAmPm(e)}),
-        popBtn = $c('button', {id: 'popClose', style: 'background-image: url('+ popCloseBtn +')', title: closePopupTooltip, onclick: function() {pop.style.display = "none"}}),
+        btnPopClose = $c('button', {id: 'popClose', style: 'background-image: url('+ popCloseBtn +')', title: closePopupTooltip, onclick: function() {pop.style.display = "none"}}),
         div3 = $c('div', {id: 'divThemer'}),
         div4 = $c('div', {id: 'divNumber'}),
         div5 = $c('div', {id: 'divLinks'}),
-        li = $c('li', {role: 'none'}),
+        li1 = $c('li', {role: 'none'}),
         btnThemer = $c('button', {id: 'buttonThemer', onclick: () => wallpaperThemer()}),
         btnWhen = $c('button', {id: 'buttonWhen', onclick: () => wallpaperDailyHourly()}),
-        ti = $c('img', {id: 'themeImage'}),
+        ti1 = $c('img', {id: 'themeImage'}),
         li2 = $c('li', {role: 'none'}),
-        button = $c('button', {id: 'buttonStatic', onclick: () => wallpaperButtonChanger()}),
-        input = $c('input', {id: 'inputStatic', type: 'number', min: 0, max: 31, oninput: e => wallpaperInputChanger(e)}),
+        btnStatic = $c('button', {id: 'buttonStatic', onclick: () => wallpaperButtonChanger()}),
+        inpStatic = $c('input', {id: 'inputStatic', type: 'number', min: 0, max: 31, oninput: e => wallpaperInputChanger(e)}),
         li3 = $c('li', {role: 'none'}),
-        button2 = $c('button', {id: 'searchLinks', onclick: () => linksBlankSelf()});
+        btnSearchLinks = $c('button', {id: 'searchLinks', onclick: () => searchLinksWhere()});
 
   let clockInterval,
       initInterval,
@@ -210,13 +211,6 @@
     dateTime.textContent = dateTimeFormat(GM_getValue('dateFormat'));
   }
 
-  function linksBlankSelf() {
-    let bool = GM_getValue('linksWhere') !== '_blank' ? '_blank' : '_self';
-    GM_setValue('linksWhere', bool);
-    bool === '_self' ? button2.textContent = linksTextCurrent : button2.textContent = linksTextNew;
-    searchPopupLinks();
-  }
-
   function repositionLogo() {
     let bool = GM_getValue('googleLogoLeft') !== true ? true : false;
     GM_setValue('googleLogoLeft', bool);
@@ -231,6 +225,13 @@
   function searchPopupLinks() {
     let links = $q('body#gWP1 #dEjpnf > li > a', true);
     for (let i = 0; i < links.length; i++) links[i].setAttribute('target', GM_getValue('linksWhere'));
+  }
+
+  function searchLinksWhere() {
+    let bool = GM_getValue('linksWhere') !== '_blank' ? '_blank' : '_self';
+    GM_setValue('linksWhere', bool);
+    bool === '_self' ? btnSearchLinks.textContent = linksTextCurrent : btnSearchLinks.textContent = linksTextNew;
+    searchPopupLinks();
   }
 
   function wallpaper() {
@@ -251,7 +252,7 @@
       }
       btnThemer.innerHTML = changeWallpaperOnText;
       btnWhen.style = 'opacity: 1; pointer-events: all';
-      ti.src = themeOn;
+      ti1.src = themeOn;
       div4.style = 'opacity: .5; pointer-events: none';
     } else {
       if (GM_getValue('wallpaperStaticImage') === 0) body.style.background = 'initial';
@@ -259,7 +260,7 @@
       btnThemer.innerHTML = changeWallpaperOffText;
       btnThemer.title = activeWallpaperTooltip + GM_getValue('wallpaperStaticImage') + '\n' + settingOnTooltip;
       btnWhen.style = 'opacity: .5; pointer-events: none';
-      ti.src = themeOff;
+      ti1.src = themeOff;
       div4.style = 'opacity: 1; pointer-events: all';
   } }
 
@@ -267,7 +268,7 @@
     let num = GM_getValue('wallpaperStaticImage');
     if (num > 30) num = 0;
     else num = parseInt(num + 1);
-    input.value = num;
+    inpStatic.value = num;
     GM_setValue('wallpaperStaticImage', parseInt(num));
     wallpaper();
   }
@@ -315,6 +316,7 @@
 
   initInterval = setInterval(() => {
     try {
+      if (promo) promo.firstChild.click();
       if (signIn) signIn.click();
       logo1.appendChild(logo1Btn);
       logo2.appendChild(logo2Btn);
@@ -343,29 +345,29 @@
       if (GM_getValue('themeChanger')) {
         btnThemer.innerHTML = changeWallpaperOnText;
         btnWhen.style = 'opacity: 1; pointer-events: all';
-        ti.src = themeOn;
+        ti1.src = themeOn;
       } else {
         btnThemer.innerHTML = changeWallpaperOffText;
         btnWhen.style = 'opacity: .5; pointer-events: none';
-        ti.src = themeOff;
+        ti1.src = themeOff;
       }
-      button.textContent = defaultWallpaperText;
-      button.title = defaultWallpaperTooltip;
-      input.value = GM_getValue('wallpaperStaticImage');
+      btnStatic.textContent = defaultWallpaperText;
+      btnStatic.title = defaultWallpaperTooltip;
+      inpStatic.value = GM_getValue('wallpaperStaticImage');
       div3.appendChild(btnThemer);
       div3.appendChild(btnWhen);
-      div3.appendChild(ti);
-      li.appendChild(div3);
-      div4.appendChild(button);
-      div4.appendChild(input);
+      div3.appendChild(ti1);
+      li1.appendChild(div3);
+      div4.appendChild(btnStatic);
+      div4.appendChild(inpStatic);
       li2.appendChild(div4);
-      div5.appendChild(button2);
+      div5.appendChild(btnSearchLinks);
       li3.appendChild(div5);
-      button2.textContent = GM_getValue('linksWhere') === '_self' ? linksTextCurrent : linksTextNew;
-      pop.appendChild(li);
+      btnSearchLinks.textContent = GM_getValue('linksWhere') === '_self' ? linksTextCurrent : linksTextNew;
+      pop.appendChild(li1);
       pop.appendChild(li2);
       pop.insertBefore(li3, pop.firstChild);
-      pop.insertBefore(popBtn, pop.firstChild);
+      pop.insertBefore(btnPopClose, pop.firstChild);
       settingsButton.onclick = () => searchPopupLinks();
       darkTheme.title = darkThemeTooltip;
       if (dateTimeContainer) clearInterval(initInterval);

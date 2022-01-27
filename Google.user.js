@@ -620,9 +620,6 @@
     '  height: 107px !important;'+
     '  width: 584px !important;'+
     '}'+
-    'body#gWP1 > div.L3eUgb form:hover {'+
-    '  border-color: #333 !important;'+
-    '}'+
     'body#gWP1 .A8SBwf {'+
     '  padding: 0 !important;'+
     '}'+
@@ -669,8 +666,6 @@
     '}'+
     'body#gWP1 .aajZCb {'+
     '  border: 1px solid #CCC !important;'+
-    '  margin: 0 -1px !important;'+
-    '  padding: 0 !important;'+
     '}'+
     'body#gWP1 #gb > div > div:nth-child(4) {'+
     '  height: calc(-140px + 100vh) !important;'+

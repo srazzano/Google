@@ -36,6 +36,7 @@
         hourlyText = 'Hourly',
         offText = 'Off',
         onText = 'On',
+        placeHolderText = 'Search Look-up',
         darkThemeTooltip = '#gb is set to transparent in script',
         activeWallpaperTooltip = 'Active wallpaper image',
         settingOffTooltip = 'Setting to Off will enable static wallpaper',
@@ -83,7 +84,8 @@
         btns = $q('html[itemtype="http://schema.org/WebPage"] div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > div'),
         form = $q('html[itemtype="http://schema.org/WebPage"] div.L3eUgb form'),
         pop = $q('html[itemtype="http://schema.org/WebPage"] ul#dEjpnf'),
-        darkTheme = $q('.EzVRq.pENqnf'),
+        placeHolder = $q('html[itemtype="http://schema.org/WebPage"] .gLFyf.gsfi'),
+        darkTheme = $q('html[itemtype="http://schema.org/WebPage"] .EzVRq.pENqnf'),
         searchButton = $q('html[itemtype="http://schema.org/WebPage"] div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.FPdoLc.lJ9FBc > center > input.gNO89b'),
         settingsButton = $q('html[itemtype="http://schema.org/WebPage"] #Mses6b'),
         logo1 = $c('span', {id: 'logo1'}),
@@ -163,8 +165,8 @@
       case 6: return w + space + bullet + space + m + slash + d + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
       case 7: return w + space + bullet + space + mm + slash + dd + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
       // Delete "customFormat + 210/customFormat + 211" text below and add return options with bullet, comma, hyphen, slash, space, star characters.
-      case 8: return customFormat + 166;
-      case 9: return customFormat + 167;
+      case 8: return customFormat + 168;
+      case 9: return customFormat + 169;
   } }
 
   function dateTimeDefault() {
@@ -338,6 +340,7 @@
       div1.appendChild(dateTimeContainer);
       div2.insertBefore(searchButton, div2.firstChild);
       searchButton.id = 'gSearch';
+      placeHolder.placeholder = placeHolderText;
       btnWhen.title = dailyHourlyTooltip;
       GM_getValue('changeThemeHourly') ? btnWhen.innerHTML = hourlyText : btnWhen.innerHTML = dailyText;
       if (GM_getValue('themeChanger')) {
@@ -528,7 +531,7 @@
     '  width: 24px !important;'+
     '}'+
     'body#gWP1 #popClose:hover {'+
-    '  background-color: #333 !important;'+
+    '  background-color: #900 !important;'+
     '}'+
     'body#gWP1 .tFYjZe {'+
     '  padding: 0 !important;'+
@@ -615,9 +618,8 @@
     '  opacity: 1 !important;'+
     '}'+
     'body#gWP1 > div.L3eUgb form {'+
-    '  border: 1px solid #CCC !important;'+
-    '  border-radius: 24px !important;'+
-    '  height: 107px !important;'+
+    '  margin-top: 10px !important;'+
+    '  height: 97px !important;'+
     '  width: 584px !important;'+
     '}'+
     'body#gWP1 .A8SBwf {'+
@@ -653,6 +655,9 @@
     '  cursor: pointer !important;'+
     '  min-height: 32px  !important;'+
     '  width: auto !important;'+
+    '}'+
+    'body#gWP1 .gLFyf.gsfi {'+
+    '  color: #CCC !important;'+
     '}'+
     'body#gWP1 .RNNXgb:hover,'+
     'body#gWP1 .RNNXgb:focus-within,'+

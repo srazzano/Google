@@ -658,6 +658,7 @@
     '}'+
     'body#gWP1 .gLFyf.gsfi {'+
     '  color: #CCC !important;'+
+    '  filter: brightness(2) !important;'+
     '}'+
     'body#gWP1 .RNNXgb:hover,'+
     'body#gWP1 .RNNXgb:focus-within,'+

@@ -36,7 +36,7 @@
         hourlyText = 'Hourly',
         offText = 'Off',
         onText = 'On',
-        placeHolderText = 'Search Look-up',
+        placeHolderText = '\u2003 \u2003 \u2003 \u2003 \u2003 \u2003 \u2003 \u2003 \u2003 Search Look-up',
         darkThemeTooltip = '#gb is set to transparent in script',
         activeWallpaperTooltip = 'Active wallpaper image',
         settingOffTooltip = 'Setting to Off will enable static wallpaper',
@@ -621,6 +621,13 @@
     '  margin-top: 10px !important;'+
     '  height: 97px !important;'+
     '  width: 584px !important;'+
+    '}'+
+    'body#gWP1 > div.L3eUgb form .iblpc {'+
+    '  opacity: 0 !important;'+
+    '}'+
+    'body#gWP1 .RNNXgb:hover .iblpc,'+
+    'body#gWP1 .RNNXgb:focus-within .iblpc {'+
+    '  opacity: 1 !important;'+
     '}'+
     'body#gWP1 .A8SBwf {'+
     '  padding: 0 !important;'+

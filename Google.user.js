@@ -498,7 +498,7 @@
     '}'+
     'body#gWP1 #dateTimeContainer > #dateTime {'+
     '  background-color: transparent !important;'+
-    '  border: 1px solid #CCC !important;'+
+    '  border: 1px solid transparent !important;'+
     '  border-radius: 4px !important;'+
     '  box-shadow: none !important;'+
     '  color: #AAA !important;'+
@@ -508,6 +508,7 @@
     '  min-width: 100px !important;'+
     '  padding: 5px 8px 6px 8px !important;'+
     '  position: relative !important;'+
+    '  text-shadow: 1px 1px 2px #000 !important;'+
     '  top: -9px !important;'+
     '}'+
     'body#gWP1 #dateTimeContainer > #dateTime:hover {'+
@@ -643,6 +644,7 @@
     '  background: transparent !important;'+
     '  border: 1px solid transparent !important;'+
     '  box-shadow: none !important;'+
+    '  text-shadow: 1px 1px 2px #000 !important;'+
     '}'+
     'body#gWP1 #gSearch,'+
     'body#gWP1 #Mses6b {'+

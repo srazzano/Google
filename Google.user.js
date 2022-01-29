@@ -501,7 +501,7 @@
     '  border: 1px solid transparent !important;'+
     '  border-radius: 4px !important;'+
     '  box-shadow: none !important;'+
-    '  color: #AAA !important;'+
+    '  color: #FFF !important;'+
     '  cursor: pointer !important;'+
     '  font: 16px monospace !important;'+
     '  margin-left: 8px !important;'+
@@ -514,7 +514,6 @@
     'body#gWP1 #dateTimeContainer > #dateTime:hover {'+
     '  background-color: #181A1B !important;'+
     '  border: 1px solid #000 !important;'+
-    '  color: #FFF !important;'+
     '}'+
     'body#gWP1 #dEjpnf {'+
     '  min-width: 250px !important;'+

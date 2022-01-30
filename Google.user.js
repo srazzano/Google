@@ -36,7 +36,7 @@
         hourlyText = 'Hourly',
         offText = 'Off',
         onText = 'On',
-        placeHolderText = '\u2003 \u2003 \u2003 \u2003 \u2003 \u2003 \u2003 \u2003 \u2003 Search Look-up',
+        placeHolderText = '                                          Search Look-up',
         darkThemeTooltip = '#gb is set to transparent in script',
         activeWallpaperTooltip = 'Active wallpaper image',
         settingOffTooltip = 'Setting to Off will enable static wallpaper',

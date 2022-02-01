@@ -528,7 +528,7 @@
     '  border: 1px solid #000 !important;'+
     '}'+
     'body#gWP1 #dEjpnf {'+
-    '  min-width: 245px !important;'+
+    '  min-width: 250px !important;'+
     '  padding-bottom: 0 !important;'+
     '  text-align: left !important;'+
     '  z-index: 999 !important;'+

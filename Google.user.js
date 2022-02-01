@@ -76,6 +76,8 @@
         imgClock = 'data:image/png;base64,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',
         logoButton = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAr0lEQVR42mNkoDFgHLWAKhY8mCi6CkiFYpEKU8h/vZoiC4CGh4IMAdFQS9AtglsCVPMfyGYkyQJsFqJbBDIUZDiMTZEFaBatQhcnaIHtijv/8Rl8OEIFRQ/M5TSxAN1wagcRVodQzQJiAf0tINbrVLUA2XBSUxlBC9BdTnULoIBgmUNyECFnfygAWbCaVIuwWgALFhzFAdwiWEFIkgVYLMRa5kAtCSPZB9QGoxYQBAAjC2gZL6fbHgAAAABJRU5ErkJggg==',
         popCloseBtn = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAWElEQVR42mNkoDFgHLVg1ALaW3DgwIH/Dg4OjKTKEWUByAAYG90gfHIk+wDdIGINJ8oCdAORASHDibYAmyXEGD54LKBpENE0kumWTGmW0agBRi0YtYByAAD7EUAZR7FtMAAAAABJRU5ErkJggg==',
+        downButton = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAUCAYAAABiS3YzAAAAVElEQVR42u3PIQ4AIAxDUXZIOCQcEmYwwOgqEEv4pu4llfQg+WhQtGs0oiE061TCLGo2eJ+AN9BEnfARvKIANkGIGvAVdKELDEE3OmEPSKFMHw2CDqxnJhXJpV2WAAAAAElFTkSuQmCC',
+        upButton = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAUCAYAAABiS3YzAAAAV0lEQVR42u3PSwrAIAxF0d5F1kXaRcaICB20xu+gxQuPzA6EY0Fs9GeoiJzANQ2NoB6vczWwid7AnAnTCFbBdIAmTCdYhBkAX+EnVBrAhGjm+6Nt9CNoAKxnJhXBhZb0AAAAAElFTkSuQmCC',
         body = $q('html[itemtype="http://schema.org/WebPage"] > body'),
         signIn = $q('html[itemtype="http://schema.org/WebPage"] a.gb_1.gb_2'),
         div0 = $q('html[itemtype="http://schema.org/WebPage"] div.L3eUgb > div.o3j99.LLD4me.LS8OJ'),
@@ -104,8 +106,10 @@
         btnWhen = $c('button', {id: 'buttonWhen', onclick: () => wallpaperDailyHourly()}),
         ti1 = $c('img', {id: 'themeImage'}),
         li2 = $c('li', {role: 'none'}),
-        btnStatic = $c('button', {id: 'buttonStatic', onclick: () => wallpaperButtonChanger()}),
+        btnStatic = $c('button', {id: 'buttonStatic', onclick: e => wallpaperButtonChanger(e)}),
+        btnUp = $c('input', {id: 'buttonUp', type: 'image', src: upButton, title: '', onclick: e => wallpaperButtonChanger(e)}),
         inpStatic = $c('input', {id: 'inputStatic', type: 'number', min: 0, max: 31, oninput: e => wallpaperInputChanger(e)}),
+        btnDown = $c('input', {id: 'buttonDown', type: 'image', src: downButton, title: '', onclick: e => wallpaperButtonChanger(e)}),
         li3 = $c('li', {role: 'none'}),
         btnSearchLinks = $c('button', {id: 'searchLinks', onclick: () => searchLinksWhere()});
 
@@ -165,8 +169,8 @@
       case 6: return w + space + bullet + space + m + slash + d + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
       case 7: return w + space + bullet + space + mm + slash + dd + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
       // Delete "customFormat + 210/customFormat + 211" text below and add return options with bullet, comma, hyphen, slash, space, star characters.
-      case 8: return customFormat + 168;
-      case 9: return customFormat + 169;
+      case 8: return customFormat + 172;
+      case 9: return customFormat + 173;
   } }
 
   function dateTimeDefault() {
@@ -265,10 +269,16 @@
       div4.style = 'opacity: 1; pointer-events: all';
   } }
 
-  function wallpaperButtonChanger() {
+  function wallpaperButtonChanger(e) {
     let num = GM_getValue('wallpaperStaticImage');
-    if (num > 30) num = 0;
-    else num = parseInt(num + 1);
+    switch (e.target.id) {
+      case 'buttonStatic': case 'buttonUp':
+        num > 30 ? num = 0 : num = parseInt(num + 1);
+        break;
+      case 'buttonDown':
+        num < 1 ? num = 31 : num = parseInt(num - 1);
+        break;
+    }
     inpStatic.value = num;
     GM_setValue('wallpaperStaticImage', parseInt(num));
     wallpaper();
@@ -360,7 +370,9 @@
       div3.appendChild(ti1);
       li1.appendChild(div3);
       div4.appendChild(btnStatic);
+      div4.appendChild(btnUp);
       div4.appendChild(inpStatic);
+      div4.appendChild(btnDown);
       li2.appendChild(div4);
       div5.appendChild(btnSearchLinks);
       li3.appendChild(div5);
@@ -516,7 +528,7 @@
     '  border: 1px solid #000 !important;'+
     '}'+
     'body#gWP1 #dEjpnf {'+
-    '  min-width: 250px !important;'+
+    '  min-width: 245px !important;'+
     '  padding-bottom: 0 !important;'+
     '  text-align: left !important;'+
     '  z-index: 999 !important;'+
@@ -553,9 +565,7 @@
     'body#gWP1 #divThemer {'+
     '  margin-top: -2px !important;'+
     '}'+
-    'body#gWP1 #divThemer,'+
-    'body#gWP1 #divNumber,'+
-    'body#gWP1 #divLinks {'+
+    'body#gWP1 #divThemer {'+
     '  padding-right: 8px !important;'+
     '}'+
     'body#gWP1 #divThemer:hover,'+
@@ -568,12 +578,6 @@
     '  opacity: 0 !important;'+
     '  position: relative !important;'+
     '  top: 8px !important;'+
-    '}'+
-    'body#gWP1 #inputStatic {'+
-    '  border: none !important;'+
-    '  color: #CCC !important;'+
-    '  text-align: center !important;'+
-    '  width: 42px !important;'+
     '}'+
     'body#gWP1 #buttonStatic,'+
     'body#gWP1 #buttonThemer,'+
@@ -594,7 +598,27 @@
     '}'+
     'body#gWP1 #buttonStatic {'+
     '  color: #CCC !important;'+
+    '  margin-right: 4px !important;'+
     '  padding: 7px 0 7px 8px !important;'+
+    '}'+
+    'body#gWP1 #buttonUp,'+
+    'body#gWP1 #buttonDown {'+
+    '  background: transparent !important;'+
+    '  height: 20px !important;'+
+    '  margin: 0 4px !important;'+
+    '  position: relative !important;'+
+    '  top: 6px !important;'+
+    '  width: 21px !important;'+
+    '}'+
+    'body#gWP1 #inputStatic {'+
+    '  border: none !important;'+
+    '  color: #CCC !important;'+
+    '  text-align: center !important;'+
+    '  width: 28px !important;'+
+    '}'+
+    'body#gWP1 input[type=number]::-webkit-inner-spin-button,'+
+    'body#gWP1 input[type=number]::-webkit-outer-spin-button {'+
+    '  display: none !important;'+
     '}'+
     'body#gWP1 #divThemer:hover > #buttonThemer,'+
     'body#gWP1 #divThemer:hover > #buttonWhen,'+
@@ -606,15 +630,7 @@
     'body#gWP1 #buttonWhen:hover {'+
     '  border-color: #000 !important;'+
     '}'+
-    'body#gWP1 input[type=number]::-webkit-inner-spin-button,'+
-    'body#gWP1 input[type=number]::-webkit-outer-spin-button {'+
-    '  opacity: 0 !important;'+
-    '}'+
-    'body#gWP1 #divThemer:hover > #themeImage,'+
-    'body#gWP1 #divThemer:hover input[type=number]::-webkit-inner-spin-button,'+
-    'body#gWP1 #divThemer:hover input[type=number]::-webkit-outer-spin-button,'+
-    'body#gWP1 #divNumber:hover input[type=number]::-webkit-inner-spin-button,'+
-    'body#gWP1 #divNumber:hover input[type=number]::-webkit-outer-spin-button {'+
+    'body#gWP1 #divThemer:hover > #themeImage {'+
     '  opacity: 1 !important;'+
     '}'+
     'body#gWP1 > div.L3eUgb form {'+
@@ -680,6 +696,15 @@
     '}'+
     'body#gWP1 .aajZCb {'+
     '  border: 1px solid #CCC !important;'+
+    '}'+
+    'body#gWP1 .xtSCL {'+
+    '  display: none !important;'+
+    '}'+
+    'body#gWP1 .G43f7e {'+
+    '  max-height: 600px !important;'+
+    '}'+
+    'body#gWP1 .lJ9FBc {'+
+    '  height: 50px !important;'+
     '}'+
     'body#gWP1 #gb > div > div:nth-child(4) {'+
     '  height: calc(-140px + 100vh) !important;'+

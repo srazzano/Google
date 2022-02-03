@@ -712,9 +712,6 @@
     'body#gWP1 .xtSCL {'+
     '  display: none !important;'+
     '}'+
-    'body#gWP1 .G43f7e {'+
-    '  max-height: 600px !important;'+
-    '}'+
     'body#gWP1 .lJ9FBc {'+
     '  height: 50px !important;'+
     '}'+

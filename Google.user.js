@@ -662,6 +662,9 @@
     '  cursor: pointer !important;'+
     '  margin-left: 9px !important;'+
     '}'+
+    'body#gWP1 #buttonSites {'+
+    '  width: 64px !important;'+
+    '}'+
     'body#gWP1 input[type=number]::-webkit-inner-spin-button,'+
     'body#gWP1 input[type=number]::-webkit-outer-spin-button {'+
     '  display: none !important;'+

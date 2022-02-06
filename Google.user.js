@@ -47,7 +47,7 @@
         logoLeftTooltip = 'Reposition Logo to Top-Left',
         customFormat = 'Add a custom format in script line ',
         defaultWallpaperText = 'Static wallpaper image',
-        defaultWallpaperTooltip = '1 - 31 and 0 for no wallpaper',
+        defaultWallpaperTooltip = '1 - 35 and 0 for no wallpaper',
         linksTextCurrent = 'Search links in current tab: True',
         linksTextNew = 'Search links in new tab: True',
         hideShow = bullet + ' Left-click to Hide/Show Date/Time',
@@ -111,7 +111,7 @@
         li2 = $c('li', {role: 'none'}),
         btnStatic = $c('button', {id: 'buttonStatic', onclick: e => wallpaperButtonChanger(e)}),
         btnUp = $c('input', {id: 'buttonUp', type: 'image', src: upButton, onclick: e => wallpaperButtonChanger(e)}),
-        inpStatic = $c('input', {id: 'inputStatic', type: 'number', min: 0, max: 31, oninput: e => wallpaperInputChanger(e)}),
+        inpStatic = $c('input', {id: 'inputStatic', type: 'number', min: 0, max: 35, oninput: e => wallpaperInputChanger(e)}),
         btnDown = $c('input', {id: 'buttonDown', type: 'image', src: downButton, onclick: e => wallpaperButtonChanger(e)}),
         li3 = $c('li', {role: 'none'}),
         spnSites = $c('button', {id: 'spanSites', title: buttonSitesTooltip, onclick: () => wallpaperSite()}),
@@ -279,10 +279,10 @@
     let num = GM_getValue('wallpaperStaticImage');
     switch (e.target.id) {
       case 'buttonStatic': case 'buttonUp':
-        num > 30 ? num = 0 : num = parseInt(num + 1);
+        num > 34 ? num = 0 : num = parseInt(num + 1);
         break;
       case 'buttonDown':
-        num < 1 ? num = 31 : num = parseInt(num - 1);
+        num < 1 ? num = 35 : num = parseInt(num - 1);
         break;
     }
     inpStatic.value = num;
@@ -686,8 +686,8 @@
     '  opacity: 1 !important;'+
     '}'+
     'body#gWP1 > div.L3eUgb form {'+
-    '  margin-top: 0 !important;'+
-    '  height: 97px !important;'+
+    '  margin-top: 20px !important;'+
+    '  height: 46px !important;'+
     '  width: 584px !important;'+
     '}'+
     'body#gWP1 > div.L3eUgb form .iblpc {'+

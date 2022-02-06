@@ -569,7 +569,7 @@
     '  width: 24px !important;'+
     '}'+
     'body#gWP1 #popClose:hover {'+
-    '  background-color: #900 !important;'+
+    '  background-color: #C00 !important;'+
     '}'+
     'body#gWP1 .tFYjZe {'+
     '  padding: 0 !important;'+

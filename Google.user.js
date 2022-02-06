@@ -763,7 +763,7 @@
     '  border: none !important;'+
     '  margin-right: 0 !important;'+
     '}'+
-    'body#gWP1 #gb > div > div:nth-child(4) {'+
+    'body#gWP1 #gb > div > div[style] {'+
     '  height: calc(-140px + 100vh) !important;'+
     '}'+
   '');

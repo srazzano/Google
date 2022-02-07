@@ -457,11 +457,6 @@
     '  position: absolute !important;'+
     '  top: 0 !important;'+
     '}'+
-    'body#gWP1 #logo2 {'+
-    '  margin-bottom: 16px !important;'+
-    '  position: relative !important;'+
-    '  top: -16px !important;'+
-    '}'+
     'body#gWP1 #logo1Btn,'+
     'body#gWP1 #logo2Btn {'+
     '  background-color: transparent !important;'+
@@ -703,7 +698,7 @@
     '  top: 341px !important;'+
     '}'+
     'body#gWP1 .RNNXgb {'+
-    '  margin-top: 8px !important;'+
+    '  margin-top: 24px !important;'+
     '}'+
     'body#gWP1 .RNNXgb,'+
     'body#gWP1 #gSearch,'+

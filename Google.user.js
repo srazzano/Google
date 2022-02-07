@@ -30,7 +30,7 @@
         star = '★',
         changeWallpaperOffText = 'Change wallpaper: Off',
         changeWallpaperOnText = 'Change wallpaper: On',
-        changeImageSiteText = 'Image Host Site:',
+        changeImageSiteText = 'Wallpaper host site:',
         buttonSitesTooltip = 'Change between GitHub and Sonco host sites',
         closePopupTooltip = 'Close Popup',
         dailyHourlyTooltip = 'Change wallpaper Daily/Hourly',
@@ -43,7 +43,7 @@
         activeWallpaperTooltip = 'Active wallpaper image',
         settingOffTooltip = 'Setting to Off will enable static wallpaper',
         settingOnTooltip = 'Setting to On will disable static wallpaper',
-        logoCenterTooltip = 'Reposition Logo to Top-Center',
+        logoCenterTooltip = 'Reposition logo to top-center',
         logoLeftTooltip = 'Reposition Logo to Top-Left',
         customFormat = 'Add a custom format in script line ',
         defaultWallpaperText = 'Static wallpaper image',
@@ -574,9 +574,6 @@
     'body#gWP1 .tFYjZe {'+
     '  padding: 0 !important;'+
     '}'+
-    'body#gWP1 #dEjpnf .EzVRq.pENqnf {'+
-    '  padding: 7px 8px !important;'+
-    '}'+
     'body#gWP1 #dEjpnf .EzVRq,'+
     'body#gWP1 #dEjpnf button.EzVRq {'+
     '  color: #CCC !important;'+
@@ -589,11 +586,11 @@
     '  color: #FFF !important;'+
     '}'+
     'body#gWP1 #divThemer {'+
-    '  margin-top: -2px !important;'+
+    '  margin-top: -1px !important;'+
     '  padding-right: 8px !important;'+
     '}'+
     'body#gWP1 #divSites {'+
-    '  margin-top: 1px !important;'+
+    '  margin-top: 2px !important;'+
     '}'+
     'body#gWP1 #divThemer:hover,'+
     'body#gWP1 #divNumber:hover,'+
@@ -703,7 +700,7 @@
     'body#gWP1 > div.L3eUgb > div.o3j99.LLD4me.LS8OJ > div.ayzqOc {'+
     '  display: inline-flex !important;'+
     '  position: absolute !important;'+
-    '  top: 340px !important;'+
+    '  top: 341px !important;'+
     '}'+
     'body#gWP1 .RNNXgb,'+
     'body#gWP1 #gSearch,'+
@@ -763,6 +760,7 @@
     '  border: none !important;'+
     '  margin-right: 0 !important;'+
     '}'+
+    /*'body#gWP1 #gb > div > div:nth-child(3) {'+*/
     'body#gWP1 #gb > div > div[style] {'+
     '  height: calc(-140px + 100vh) !important;'+
     '}'+

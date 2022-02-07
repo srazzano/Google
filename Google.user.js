@@ -702,6 +702,9 @@
     '  position: absolute !important;'+
     '  top: 341px !important;'+
     '}'+
+    'body#gWP1 .RNNXgb {'+
+    '  margin-top: 8px !important;'+
+    '}'+
     'body#gWP1 .RNNXgb,'+
     'body#gWP1 #gSearch,'+
     'body#gWP1 #Mses6b {'+

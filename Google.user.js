@@ -478,7 +478,7 @@
     '  margin-right: 4px !important;'+
     '  padding: 0 !important;'+
     '  position: relative !important;'+
-    '  top: -3px !important;'+
+    '  top: -4px !important;'+
     '  width: 40px !important;'+
     '}'+
     'body#gWP1 #gbwa > div > a {'+
@@ -502,6 +502,9 @@
     '  background-color: rgba(0, 0, 0, .5) !important;'+
     '  border-radius: 16px !important;'+
     '  padding: 7px 12px 0 8px !important;'+
+    '}'+
+    'body#gWP1 .gb_La.gb_ed.gb_jg.gb_f.gb_xf {'+
+    '  margin-top: -2px !important;'+
     '}'+
     'body#gWP1 .gb_Aa {'+
     '  height: 40px !important;'+

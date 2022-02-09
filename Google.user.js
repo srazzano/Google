@@ -83,7 +83,7 @@
         body = $q('html[itemtype="http://schema.org/WebPage"] > body'),
         signIn = $q('html[itemtype="http://schema.org/WebPage"] a.gb_1.gb_2'),
         div0 = $q('html[itemtype="http://schema.org/WebPage"] div.L3eUgb > div.o3j99.LLD4me.LS8OJ'),
-        div1 = $q('html[itemtype="http://schema.org/WebPage"] div.L3eUgb > div.o3j99.n1xJcf.Ne6nSd'),
+        div1 = $q('html[itemtype="http://schema.org/WebPage"] div.gb_Td.gb_Va.gb_Id'),
         div2 = $q('html[itemtype="http://schema.org/WebPage"] div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > div'),
         btns = $q('html[itemtype="http://schema.org/WebPage"] div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > div'),
         form = $q('html[itemtype="http://schema.org/WebPage"] div.L3eUgb form'),
@@ -498,6 +498,11 @@
     '  background-color: #181A1B !important;'+
     '  color: #FFF !important;'+
     '}'+
+    'body#gWP1 .gb_Td.gb_Va.gb_Id {'+
+    '  background-color: rgba(0, 0, 0, .5) !important;'+
+    '  border-radius: 16px !important;'+
+    '  padding: 7px 12px 0 8px !important;'+
+    '}'+
     'body#gWP1 .gb_Aa {'+
     '  height: 40px !important;'+
     '  margin-top: -7px !important;'+
@@ -506,7 +511,7 @@
     '  width: 40px !important;'+
     '}'+
     'body#gWP1 #dateTimeContainer {'+
-    '  margin: -16px 0 0 0 !important;'+
+    '  margin: -16px 0 0 4px !important;'+
     '}'+
     'body#gWP1 #gClock {'+
     '  border-radius: 50% !important;'+

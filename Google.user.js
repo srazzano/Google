@@ -758,7 +758,7 @@
     '  border: none !important;'+
     '  margin-right: 0 !important;'+
     '}'+
-    'body#gWP1 #gb > div > div[style] {'+
+    'body#gWP1 #gb > div > div[style*="width: 328px;"] {'+
     '  height: calc(-140px + 100vh) !important;'+
     '}'+
   '');

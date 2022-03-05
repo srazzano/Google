@@ -391,8 +391,8 @@
       div3.appendChild(ti1);
       li1.appendChild(div3);
       div4.appendChild(btnStatic);
-      div4.appendChild(inpStatic);
       div4.appendChild(btnUp);
+      div4.appendChild(inpStatic);
       div4.appendChild(btnDown);
       li2.appendChild(div4);
       div5.appendChild(btnSearchLinks);
@@ -640,12 +640,13 @@
     '  top: 5px !important;'+
     '  width: 21px !important;'+
     '}'+
+    'body#gWP1 #buttonStatic:hover + #buttonUp,'+
     'body#gWP1 #buttonUp:hover,'+
     'body#gWP1 #buttonDown:hover {'+
     '  opacity: 1 !important;'+
     '}'+
     'body#gWP1 #buttonUp {'+
-    '  margin-right: 4px !important;'+
+    '  margin-left: 4px !important;'+
     '}'+
     'body#gWP1 #inputStatic {'+
     '  border: none !important;'+

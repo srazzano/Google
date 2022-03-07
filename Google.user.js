@@ -658,6 +658,7 @@
     '  text-align: center !important;'+
     '  width: 28px !important;'+
     '}'+
+    'body#gWP1 #divNumber:hover > #inputStatic,'+
     'body#gWP1 #inputStatic:hover,'+
     'body#gWP1 #inputStatic:focus-within {'+
     '  opacity: 1 !important;'+

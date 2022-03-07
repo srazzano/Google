@@ -649,8 +649,11 @@
     '  margin-left: 4px !important;'+
     '}'+
     'body#gWP1 #inputStatic {'+
-    '  border: none !important;'+
+    '  border: 1px solid #666 !important;'+
+    '  border-radius: 4px !important;'+
     '  color: #FFF !important;'+
+    '  height: 18px !important;'+
+    '  margin: 0 4px !important;'+
     '  opacity: .5 !important;'+
     '  text-align: center !important;'+
     '  width: 28px !important;'+
@@ -769,6 +772,9 @@
     '}'+
     'body#gWP1 #gb > div > div[style*="width: 328px;"] {'+
     '  height: calc(-140px + 100vh) !important;'+
+    '}'+
+    'body#gWP1 div.gb_Td.gb_Va.gb_Id > div[style] {'+
+    '  margin-top: 50px !important;'+
     '}'+
   '');
 

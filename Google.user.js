@@ -628,8 +628,8 @@
     '}'+
     'body#gWP1 #buttonStatic {'+
     '  color: #CCC !important;'+
-    '  margin-right: 4px !important;'+
-    '  padding: 7px 0 7px 8px !important;'+
+    '  margin: 0 !important;'+
+    '  padding: 7px 7px 7px 8px !important;'+
     '}'+
     'body#gWP1 #buttonUp,'+
     'body#gWP1 #buttonDown {'+
@@ -646,7 +646,7 @@
     '  opacity: 1 !important;'+
     '}'+
     'body#gWP1 #buttonUp {'+
-    '  margin-left: 4px !important;'+
+    '  margin: 0 !important;'+
     '}'+
     'body#gWP1 #inputStatic {'+
     '  border: 1px solid #666 !important;'+

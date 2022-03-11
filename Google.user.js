@@ -500,7 +500,7 @@
     '}'+
     'body#gWP1 #headerButtonsDiv > .hBtn {'+
     '  background-color: rgba(0, 0, 0, 0.3) !important;'+
-    '  border: 1px solid #999 !important;'+
+    '  border: 1px solid transparent !important;'+
     '  border-radius: 4px !important;'+
     '  color: #CCC !important;'+
     '  height: 32px !important;'+

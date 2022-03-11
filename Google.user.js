@@ -504,7 +504,7 @@
     '  border-radius: 4px !important;'+
     '  color: #CCC !important;'+
     '  height: 32px !important;'+
-    '  margin-right: 10px !important;'+
+    '  margin: 0 5px !important;'+
     '  padding: 4px !important;'+
     '  text-indent: 22px !important;'+
     '}'+

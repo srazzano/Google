@@ -15,7 +15,8 @@
 
   'use strict';
 
-  const // Display Header Buttons
+  const displayHeaderButtons = true,
+        // Display Header Button
         headerBtnCalendar = true,
         headerBtnChrome = true,
         headerBtnEarth = true,
@@ -29,7 +30,7 @@
         headerBtnTranslate = true,
         headerBtnYouTube = true,
         headerBtnYouTubeTV = true,
-        // End Header Buttons
+        // End Header Button
         openInterval = 20,
         themerInterval = 30000,
         timerLong = 10000,
@@ -231,8 +232,8 @@
       case 6: return w + space + bullet + space + m + slash + d + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
       case 7: return w + space + bullet + space + mm + slash + dd + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
       // Delete "customFormat + 210/customFormat + 211" text below and add return options with bullet, comma, hyphen, slash, space, star characters.
-      case 8: return customFormat + 234;
-      case 9: return customFormat + 235;
+      case 8: return customFormat + 235;
+      case 9: return customFormat + 236;
   } }
 
   function dateTimeDefault() {
@@ -419,6 +420,7 @@
   initInterval = setInterval(() => {
     try {
       if (signIn) signIn.click();
+      displayHeaderButtons ? divHeader.style.display = 'block' : divHeader.style.display = 'none';
       logo1.appendChild(logo1Btn);
       logo2.appendChild(logo2Btn);
       body.appendChild(logo1);

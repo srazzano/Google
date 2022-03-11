@@ -48,8 +48,8 @@
         customFormat = 'Add a custom format in script line ',
         defaultWallpaperText = 'Static wallpaper image',
         defaultWallpaperTooltip = '1 - 35 and 0 for no wallpaper',
-        linksTextCurrent = 'Search links in current tab: True',
-        linksTextNew = 'Search links in new tab: True',
+        linksTextCurrent = 'Links in current tab: True',
+        linksTextNew = 'Links in new tab: True',
         hideShow = bullet + ' Left-click to Hide/Show Date/Time',
         addRemove = bullet + ' Left-click to Add/Remove :seconds\n' + bullet + ' Shift + Left-click to Add/Remove AM/PM\n' + bullet + ' Ctrl + Left-click to change Date format',
         DayNameAbbr = 'Sun.,Mon.,Tue.,Wed.,Thu.,Fri.,Sat.',
@@ -82,6 +82,7 @@
         upButton = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAUCAYAAABiS3YzAAAAsElEQVR42mNkoAFgHDV04Az9////fkZGRkeqGQo0sB1IVQBxB9DgSooNBRooCaSuArEgEL8HYm2gwc8pNXQlkApDEloFNDScbEOBBuoDqblAbIwkfBaIk4EGXyTX0DMwA4GGMAL5/2EGA7kmJBsK1O8BpLbDDEQShxnsCRTeQbShQH0g8bdALIhsIJrBoEgTBnmAWEPTgNRMbAaiGZwOVDKLWEP/4zOQkLphmPeHp6EA2JNHFW0nieAAAAAASUVORK5CYII=',
         body = $q('html[itemtype="http://schema.org/WebPage"] > body'),
         signIn = $q('html[itemtype="http://schema.org/WebPage"] a.gb_1.gb_2'),
+        divBtns = $q('.o3j99.LLD4me.yr19Zb.LS8OJ'),
         div0 = $q('html[itemtype="http://schema.org/WebPage"] div.L3eUgb > div.o3j99.LLD4me.LS8OJ'),
         div1 = $q('html[itemtype="http://schema.org/WebPage"] div.gb_Td.gb_Va.gb_Id'),
         div2 = $q('html[itemtype="http://schema.org/WebPage"] div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > div'),
@@ -117,11 +118,51 @@
         spnSites = $c('button', {id: 'spanSites', title: buttonSitesTooltip, onclick: () => wallpaperSite()}),
         btnSites = $c('button', {id: 'buttonSites', title: buttonSitesTooltip, onclick: () => wallpaperSite()}),
         li4 = $c('li', {role: 'none'}),
-        btnSearchLinks = $c('button', {id: 'searchLinks', onclick: () => searchLinksWhere()});
+        btnSearchLinks = $c('button', {id: 'searchLinks', onclick: () => searchLinksWhere()}),
+        divHeader = $c('div', {id: 'headerButtonsDiv'}),
+        imgCalendar = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABT0lEQVR42mNkAAKp9Iv/GYgELMxMYJqZmZHh/mQdRkZSNMPAfwZGMM0IYpFjADJANyCMkIaHocYgahVOA57O0Fv17x8Dw7//IH8ygB37H6qCEcj5s5c1DK8BD6fqrTp+5w9DRP81hsNNOgxyIkwMJ+/+ZQjrvcoANJywAQ+m6K16/O4fg5IYE4N0xiWGvXU6DM5NV8CSRBkA8sLbL/8Z9EouM2yq0GYwVmBmuPrkL4NbC5EueDRNb9XDNwgXPJ6ux3D9KQkG3Jqou+rcg7/gMPAwUmWYncrJcPPZXwaXZiINeDJdbxUjJJ0w/PzDwMDOwsDw+y+Ez8pMRCzcmqyyCpLaGKDpDRWwH+IP+/+TGayGkf0vA6Ncs+3/X39/E52QLh3+uwqZj24AQQA0AM4W23uakVGx1eH/998/SDYApJkB5k2JBguiMxTIAJhmEAAA4quznkbNVyMAAAAASUVORK5CYII=',
+        imgChrome = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABlklEQVR42rWRPUiCYRDH/8/7RYqWOFRCS1/UbFC2GBWRU4RUBkVDQ7S1hVptlklBWIsgNDVEKtQmRkTY0OIbYW01BxZhgRmp2aNWYj2GBP3hOO6O+90dR8DQyrIzy8rbF2zke46UAySeE4jH4zTKokajgUqpYgNY08bGLfD79/D6msrHoijCbB5BwOcDE2CzW/EXOVdW/wlwPWBops5NzfSRClKbazk8u/kVQBv1hOflbCbDnEhroDU9Bck/ALTZkX7LLAocX8n2DgpZ/AKMHu/rH5IJWSGIqKJGCKkEovf1Dst5wLouih2PjDpJQhV9mcQLSHYYoOg3IZ1O4zFyDHJ7BJ4nEDjkvSQJCKjNhQ1c9Rdov8vAdXAFjShB693FfKgBsafCqNpqYNMcgzpqgShxIBzdkJorPFQE5LS1HUVblxEbjWtfzZ/KQTzdDlSnTvPNhOPgDJlKAUpOxIluHLORHubRvslzaO+Xim8MDpYCcrponcF0uJMNmLqENmb9HTDRZMTD5RTzBG+fG6qXw5+ASn5WTu9OGbH/eUCknAAAAABJRU5ErkJggg==',
+        imgEarth = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACnUlEQVR42m1TTUgUYRh+vvn5ZnZnd2ZnTVk3icTWRPuFIDDtqJUQrKc6ei2CQPDSpUsZgtClLh2kLkkHhWghIToURnVTCDaFWq0Uf3c3dded3Z3p+2bX0a1eZmDm5Xuf53mf93sJ/op7L7easzv26PJmsTe9VfbznBkUc41hecrQhME7V4PfD54nB3+Gnmcnfq4V+3rOBWlzhILKlXzZdvA7ncf4dB6RsDw5ct3o/wfg5lh6riVKY8GAH44DCAJj1oDGcOUQYbk2M48Xn4uYWbTnHw2YrR4AZ46EpXiAFcNxHzc4kCwBx6OAWKVqNXYxnCgkBEIsroTwnr+kCsmu02HKekfAJzDpxC12Qdjrp0AsUqGTmJQWvYBbT3esjqNKGxl69sNZyIRQKAleAZUIuk+qjJ14SihT0t5UAaWije10Dm9mMyDxkV+OLYZqJsFBVErQ2aFCYSBONdfRVAHi36US8OTVMsiV4VVHolotQNUH3S+g64TqgYpCBYQbzBMPxtdALt9fcQRZw042B0kSoWgKa5V4RWeOUTYJyc3smcuBOEniAwPoufvNSW+KKBZKIOyUrMiob6qrKnFcts52H3RNqFFnl4G3H1MgF268niiUjXgRDV4L9YfDkFXZM4QDn40piJiSp2xmJonk14VJcn5gvDkQPZVcW6X0oIma7oNRr7uzc6pJrkYUCIplB+WtRWt7abbNbZaroIFD8fV0yJs/D5/uh9mge83be/IzSVjb65PTjy/1e1f54u33cyL1xVY29kfKwQhjpKydgKG5ntBSCmUrP//uYff+Vd4LrkQ1j/RtrmTprm0yNqnqWgmqmEFdxLB204sJzvzfbeTBPZF8oVHFiPZSf527zlZuI1fILk2V8pnBT2PXatb5D06f/8vKDSZRAAAAAElFTkSuQmCC',
+        imgMail = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABMElEQVR42mN85Wz6nwEIfjEw9MvsPV3EQAT4vYelD0gVgtiMMANA4DMjY9gU3Ygt/PyffjY0NPxD0sMYGrqKSVv7Gnu1TYs3kL8KLoFsAMyQQ9GZm7m5uX+Hhob+a2xsZGRgsGeSlPzMlqQchKIZqwEwQxbbJG9lYHj+B8T/ws3N2m5Y6YWuGWyAU+uX/yv2OWL1K8gguYpzDNg0goDlG3+IASAOLkMEK88z4NIMdwFMEJsh2AyAacYwAARm73cK4/3/fxUOA8KAmlEDEd2AfdU8jHddzEJhhiAZEMbq8me1yYrg/wQNANEwQ6AGgDWDGEQZAIx/5tWrV/8FGQKKBZBmmBixLmAEpkRGLS0txmvXrv2vr6//z8jI+J9oF4Do////g2mYRhgYQgbgAugGAAAzKLYhKvyRPwAAAABJRU5ErkJggg==',
+        imgMaps = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACEElEQVR42o2Ty2sTURTGv9kIJZGx4kJUrGhQFELQcSPJygekKYg7l/VNjIsgqAVbF+6s4J/gwrbRYqfRjbErH+hK4zLgwpY4o41CxReMZcjM9d5zcm9GV71w577O9zvfPZexsMa2dOKIEN0IQghAxMg0Xllq31qLePH4YaUCYsEAmkvI09eWtedBmaHgw7g3cphcy8AX7kfK2vz2k4DO4HoCqCBr9/0yhb8ZvoUw7uLQwnUDiKXoOYkFmivf8f7XH4LuSw/gwGCaAZnaBfG2NImDjTE05aja/idXjaNnEmCp7Cs/GCDne+0UHNkJsEsClNBpXCPxu9JtAqjsdI0owsu6xy70FTakaa26tbN2Xmjh/9nVgZdfxlJ1lbIlC6iGzIIs4o6Zc0JXmyVIiDu0241ieJdDsq8zqxegZxyaOdsHiB4gIVa9FdxBEATYePMKA+RzquwE2D59RmiRhviFL0b8e9McPM+j/YGxCgE+VCdQLBYZsG3qtHGgml/omAuNuPOYLcckVpAwDGGPV/H1xiTy+TwDtiYAnwp92yNuHdrabDmi83a7jaB2F+tOjsJxHAZsmTpFcZ8Ly8ZFSYp1MQgnPw8vMqTVaiGVSiGXyzFg871R0TG2pXi+boToibWTuQr/TL7vI5vNMkAsHhP9zI/+EZriJoBuhZ3Ytq0BR+ls2H1sRMlXSV5D79cvRQbwF5scUJszafjwAAAAAElFTkSuQmCC',
+        imgMSEdge = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAKklEQVR42mN876/4nwEP6M96hE+agXHUgGFhAPOSd3gN+CEkNmrA8DcAAKkTP3nVsyb/AAAAAElFTkSuQmCC',
+        imgNews = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAClElEQVR42o2SW0gUURjH/2cua2tby0CieYtatQyMLiBEFFmEBBFImClWREHh0lsERWJaKUFZSaAvgtFLYIH2EBUmJqwrJkpQCEUZ3toEV8fLuDPOzOnMzrTsZg8dOHO+c+b8f9/lfARxI/9GKcUWCSYoKAUINbGOqJCpAJ0SmOyQ+xLG6L2X5I+GxAN8DyopSfOAY8JUKKiSfuCoZwylU4X4rK1nABMILSJ09fm/AbmNFdSXxeNZej/cUCESHWCi6eEUtE9sRUu2GzOygtC1F6sBl8p89L4fSBY0tqPOZB5Z2GaEIPw4D1gBZJFH6+QsGgaGo1rS2eijRTsN3P3+BOGV1CjMyt8CUMe2IjfmRVDD2lNsWA7hysfrmDENkMG2dLojR8SFoQAWDCkGcBgx21qtIlq2R5PR1FeBoDwPUlWWSR9e5nB+qA8Lug3gWHCGIyZOolEQ++gsmrWqDaifnLb/y++yqP9TEEumhOICAWf3iwh+NdD0VsPFQy4c3M5HwRqr6elmBS5FxqNAOTJe95IooLs5m7aqAWzblIJzB0Q0dChITuIw8pOFm2QiSbC9G6wXwksEbpZC7fuTKOgK2IA9u3w090wPbpeno2NQYx5FpHkJRqZMLEYo9uUJsaeeCJu49fQXTr0pQVlggMSe8Vj9BK0sSsFGL4eWrmUc3y2C5zm0f9DhFp1CsvwXVbYuzKGzJoMk9EFx3Th1eyTUlIjwJgssXBPV7SpOFLqwN8euwQp7Rn/bMqDM4dXNzETAkdpxKrglCBwgsPu6YU+e2bxzy2QRqNa5MovuuqzVAH6NFN/ZTkPF9YRzpkdm0fM34HD1KAN4EwFxwvgG0yMyeu9sTgRk+/Ip4V34n0ENDWPfRqLa3wYbMFCh4PdOAAAAAElFTkSuQmCC',
+        imgPhotos = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAA5ElEQVR42mNkIABeOZv+B1JhYntPr8Ymz0ikASCwGmhIGCUGYDUExYCvO1hDgRQIr+b2+L0a3YB/QMyE5h1GJM2roJrhtgENCUM24D9EA4orGHFohoGwr90Gq2Ccb//+M3AxMaK6AOrsVQzYwWqgASiuwggDoAH/GfAAoAFgjVDNGFGJNRZMVgTDAjOU7+5CvLHEiEUzSngADViNI3zAYcSIphkjPIAGhOEIo9X7qnkwDMCIjTMRaxmdWr9gRDFIM4YXsLkAZACIBhoCT2RAzZgJCZcrYAYQHYjohpBlALJ3CBkAAL5FbdsK51LmAAAAAElFTkSuQmCC',
+        imgPlay = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABzklEQVR42pWTvUscQRjGn3dm78RwfqGYcLn6hGskVSCFjYVcc1Zu/oH0VtqEI4VNCsWQnGgsJNi5JxY2KuJ3DisRAzGQFLGJFhaxSCKsuzO+M3uai1nFG5hi3o/fPM87uyTWfw2g+bPXnFrAWWvg4tFYGXUssgDAo2wR0tcIk4QwM051ATRJj1QI6ipCSUCTMLl7qbEA1cAAzSefA7khKCSqaaZB3wmKFKSkpy/4wBDyQyD3kiHiuiiHhzjEaSwoUtAkWAHBQrgfvHV6Dmg5+Kf468k+sk826X9Ai/SgNUjVQAJjZ5iVOKwlwLPz31g9moFu4LiE2/gU5b+AdgaYJlUDsXaYkiti8WgFvedf7I3a4XjSdNoRuRGgwygwAI4HpgrXSuY/DCH/vBQ11QIce4wAupMBJln1f6Wk/P41+j59ZHcEerEHp+vnFeCGhTQ/Y1C9oQrpPv6OrVeDNpZwlBkR5OgaGnsQM8THkQViC5pBs9NjyO9UICQ/Jg/DESFCJdzWvdVbnjETWTAzmHzzFv2VbSSEguQthIptjAVMld6hsLFlEw+Sfpkb3ft9yhnypkoT6Fuu4EL7yH5bqu9nKvzY9cZHSmhr+nOn3Lh1CbI13UN9EkzxAAAAAElFTkSuQmCC',
+        imgPodcasts = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAdElEQVR42mNkwAN+72H5D6JZXf4w4lLDOPgMeOVs+l9s72msGkxWBP8/E7GWEacBIM0gGmYAugtABoBoZEOoY4BT65f/+6p5GAkZgAxgehhBDJAAMQYguwCmj3IDkJ1DKBrRDQB7YXDEAtUSEqEwwAYG3gAAuNudhTC8LbkAAAAASUVORK5CYII=',
+        imgTranslate = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACM0lEQVR42oWTz2sTQRTHvzOzWxrzY1uNpoGKTYkHhdZLaa1VUTCKNhZtTEU8+uOmtCcVvXgRUWulB/8FIaVe/AWeBC8KogdFRCUUS4n4o5q0S9TN7vpmdhuSFtLHzrzdZd7nve+8GZa5Y+YYnKzrAg7IXPVAfmuCj0yPBqfQwFhmYsFljHtBywCCY4oAIw0BwzWA2mDpHauEBxfirCHgqA/wCPUAOfWE3qAzNAshGA0Bh3Q6NDHm0jpGgNseYH0YOLXLQjQIFIrA+FMdFVrcYZg43fcTa1sjBKBKXS+T9Ap0hAAAx+VBC4/fCrz+whFuBkplrxJOmca259EWDSAcWkOZWT1gaNyrYPLEP5y/14R9Wxykttqo2MCl+7qSkk4WsKPzLyanH+Hq2ZNV/bZtE+CWB7iStvDkncCrGY7ehIOBpEMyNLUPBptDV+glNE3Aph/zCyY2xqIY2tkDdtgHbIgAZ2gPYgbwvcRw95lQXlYgmIOD8efoSsaQnysg2mqge3PCk5C+WdPGJavriKv8/vY8fnx9gUBzE46nBqgaTXWFDd7w27gyvhosp47IPILFh2gxgji2tw+6rqsNZYeWAaptqqHJd44KRns/omyZeD8zi8yefnBOAHkXzD92dmV2OmVMDg6fid2J3xjuXsS3X0W0rWvxJDQ6pgeuL0pwzv+cuNj/eSweCygw59yTgFXMh2TPbfuQ3dQeUK2UpUuAugurAZYg11KfcrquKYDKTMM0y/gPuRvvNRWbsbkAAAAASUVORK5CYII=',
+        imgYouTube = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAX0lEQVR42s2SwQoAIQhEx2t9X37k9n91NBGWTkE1sOxchHBeoyggJf8AGPB4KYfe6maVS/OEWAQgRlgCzJ9V/Y9KAF7lDLRGAKJTCEBKQO9f72BT/B1EWuYSmfgxAgsYuQErVcPEBlcAAAAASUVORK5CYII=',
+        imgYouTubeTV = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAbElEQVR42mNkAIL/DAyrgFQoA2lgNSMDQxgjmZoRhvwHO4B8gNuA/0DhwEAGhg0bKDAABEAGZGUxMDx/TqYBcJWMFLggM5OB4cULeocBkYDydAB2LSUpEZ8KmPcYwQiHFwaPAaTGBsxQig0AAAp6OVWm895eAAAAAElFTkSuQmCC',
+        urlCalendar = 'https://calendar.google.com/calendar/u/0/r',
+        urlChrome = 'https://chrome.google.com/webstore/category/extensions',
+        urlEarth = 'https://earth.google.com/web/@0,-6.8073,0a,22251752.77375655d,35y,0h,0t,0r',
+        urlMail = 'https://mail.google.com/mail/ca/u/0/#inbox',
+        urlMaps = 'https://www.google.com/maps/@36.1489458,-115.0874625,15z?hl=en&authuser=0',
+        urlMSEdge = 'https://www.microsoft.com',
+        urlNews = 'https://news.google.com/topstories?hl',
+        urlPhotos = 'https://photos.google.com/?pageId=none',
+        urlPlay = 'https://play.google.com/store/apps',
+        urlPodcasts = 'https://podcasts.google.com/',
+        urlTranslate = 'https://translate.google.com/?hl=en',
+        urlYouTube = 'https://www.youtube.com/?gl=US',
+        urlYouTubeTV = 'https://tv.youtube.com/library';
 
   let clockInterval,
       initInterval,
-      wallpaperInterval;
+      wallpaperInterval,
+      btnCalendar = $c('button', {id: 'gCalendar', className: 'hBtn', textContent: 'Calendar', title: urlCalendar, style: 'background: url('+ imgCalendar +') no-repeat 4px center', onclick: () => window.open(urlCalendar, GM_getValue('linksWhere'))}),
+      btnChrome = $c('button', {id: 'gChrome', className: 'hBtn', textContent: 'Chrome Store', title: urlChrome, style: 'background: url('+ imgChrome +') no-repeat 4px center', onclick: () => window.open(urlChrome, GM_getValue('linksWhere'))}),
+      btnEarth = $c('button', {id: 'gEarth', className: 'hBtn', textContent: 'Earth', title: urlEarth, style: 'background: url('+ imgEarth +') no-repeat 4px center', onclick: () => window.open(urlEarth, GM_getValue('linksWhere'))}),
+      btnMail = $c('button', {id: 'gMail', className: 'hBtn', textContent: 'GMail', title: urlMail, style: 'background: url('+ imgMail +') no-repeat 4px center', onclick: () => window.open(urlMail, GM_getValue('linksWhere'))}),
+      btnMaps = $c('button', {id: 'gMaps', className: 'hBtn', textContent: 'GMaps', title: urlMaps, style: 'background: url('+ imgMaps +') no-repeat 4px center', onclick: () => window.open(urlMaps, GM_getValue('linksWhere'))}),
+      btnMSEdge = $c('button', {id: 'gMSEdge', className: 'hBtn', textContent: 'MS Store', title: urlMSEdge, style: 'background: url('+ imgMSEdge +') no-repeat 4px center', onclick: () => window.open(urlMSEdge, GM_getValue('linksWhere'))}),
+      btnNews = $c('button', {id: 'gNews', className: 'hBtn', textContent: 'News', title: urlNews, style: 'background: url('+ imgNews +') no-repeat 4px center', onclick: () => window.open(urlNews, GM_getValue('linksWhere'))}),
+      btnPhotos = $c('button', {id: 'gPhotos', className: 'hBtn', textContent: 'Photos', title: urlPhotos, style: 'background: url('+ imgPhotos +') no-repeat 4px center', onclick: () => window.open(urlPhotos, GM_getValue('linksWhere'))}),
+      btnPlay = $c('button', {id: 'gPlay', className: 'hBtn', textContent: 'Play Store', title: urlPlay, style: 'background: url('+ imgPlay +') no-repeat 4px center', onclick: () => window.open(urlPlay, GM_getValue('linksWhere'))}),
+      btnPodcasts = $c('button', {id: 'gPodcasts', className: 'hBtn', textContent: 'Podcasts', title: urlPodcasts, style: 'background: url('+ imgPodcasts +') no-repeat 4px center', onclick: () => window.open(urlPodcasts, GM_getValue('linksWhere'))}),
+      btnTranslate = $c('button', {id: 'gTranslate', className: 'hBtn', textContent: 'Translate', title: urlTranslate, style: 'background: url('+ imgTranslate +') no-repeat 4px center', onclick: () => window.open(urlTranslate, GM_getValue('linksWhere'))}),
+      btnYouTube = $c('button', {id: 'gYouTube', className: 'hBtn', textContent: 'YouTube', title: urlYouTube, style: 'background: url('+ imgYouTube +') no-repeat 4px center', onclick: () => window.open(urlYouTube, GM_getValue('linksWhere'))}),
+      btnYouTubeTV = $c('button', {id: 'gYouTubeTV', className: 'hBtn', textContent: 'YouTube TV', title: urlYouTubeTV, style: 'background: url('+ imgYouTubeTV +') no-repeat 4px center', onclick: () => window.open(urlYouTubeTV, GM_getValue('linksWhere'))});
 
   function $c(type, props) {
     let node = document.createElement(type);
@@ -175,8 +216,8 @@
       case 6: return w + space + bullet + space + m + slash + d + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
       case 7: return w + space + bullet + space + mm + slash + dd + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
       // Delete "customFormat + 210/customFormat + 211" text below and add return options with bullet, comma, hyphen, slash, space, star characters.
-      case 8: return customFormat + 178;
-      case 9: return customFormat + 179;
+      case 8: return customFormat + 210;
+      case 9: return customFormat + 220;
   } }
 
   function dateTimeDefault() {
@@ -344,6 +385,21 @@
   if (!GM_getValue('wallpaperStaticImage')) GM_setValue('wallpaperStaticImage', 0);
   if (!GM_getValue('wallpaperImage')) GM_setValue('wallpaperImage', 0);
 
+  divHeader.appendChild(btnCalendar);
+  divHeader.appendChild(btnChrome);
+  divHeader.appendChild(btnEarth);
+  divHeader.appendChild(btnMail);
+  divHeader.appendChild(btnMaps);
+  divHeader.appendChild(btnMSEdge);
+  divHeader.appendChild(btnNews);
+  divHeader.appendChild(btnPhotos);
+  divHeader.appendChild(btnPlay);
+  divHeader.appendChild(btnPodcasts);
+  divHeader.appendChild(btnTranslate);
+  divHeader.appendChild(btnYouTube);
+  divHeader.appendChild(btnYouTubeTV);
+  divBtns.insertBefore(divHeader, divBtns.firstChild);
+
   initInterval = setInterval(() => {
     try {
       if (signIn) signIn.click();
@@ -418,6 +474,27 @@
   window.addEventListener('unload', () => whenClose());
 
   GM_addStyle(''+
+    'body#gWP1 #headerButtonsDiv {'+
+    '  margin-bottom: -20px !important;'+
+    '  position: relative !important;'+
+    '  top: -45px !important;'+
+    '  z-index: 999 !important;'+
+    '}'+
+    'body#gWP1 #headerButtonsDiv > .hBtn {'+
+    '  background-color: rgba(0, 0, 0, 0.3) !important;'+
+    '  border: 1px solid #999 !important;'+
+    '  border-radius: 4px !important;'+
+    '  color: #666 !important;'+
+    '  height: 32px !important;'+
+    '  margin-right: 10px !important;'+
+    '  padding: 4px !important;'+
+    '  text-indent: 22px !important;'+
+    '}'+
+    'body#gWP1 #headerButtonsDiv > .hBtn:hover {'+
+    '  background-color: #000 !important;'+
+    '  border-color: #333 !important;'+
+    '  color: #FFF !important;'+
+    '}'+
     'body#gWP1 > div.L3eUgb > div.o3j99.LLD4me.yr19Zb.LS8OJ > div > img.lnXdpd,'+
     'body#gWP1 #hplogo,'+
     'body#gWP1 #hpcta,'+
@@ -456,6 +533,9 @@
     '  margin: 10px !important;'+
     '  position: absolute !important;'+
     '  top: 0 !important;'+
+    '}'+
+    'body#gWP1 #logo2 {'+
+    '  margin-top: 20px !important;'+
     '}'+
     'body#gWP1 #logo1Btn,'+
     'body#gWP1 #logo2Btn {'+
@@ -682,6 +762,7 @@
     'body#gWP1 #divSites:hover > #spanSites{'+
     '  color: #FFF !important;'+
     '}'+
+    'body#gWP1 #divSites:hover > #buttonSites,'+
     'body#gWP1 #buttonWhen:hover,'+
     'body#gWP1 #buttonSites:hover {'+
     '  border-color: #000 !important;'+
@@ -709,9 +790,6 @@
     '  display: inline-flex !important;'+
     '  position: absolute !important;'+
     '  top: 341px !important;'+
-    '}'+
-    'body#gWP1 .RNNXgb {'+
-    '  margin-top: 24px !important;'+
     '}'+
     'body#gWP1 .RNNXgb,'+
     'body#gWP1 #gSearch,'+

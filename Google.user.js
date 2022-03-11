@@ -502,7 +502,7 @@
     '  background-color: rgba(0, 0, 0, 0.3) !important;'+
     '  border: 1px solid #999 !important;'+
     '  border-radius: 4px !important;'+
-    '  color: #666 !important;'+
+    '  color: #CCC !important;'+
     '  height: 32px !important;'+
     '  margin-right: 10px !important;'+
     '  padding: 4px !important;'+
@@ -510,7 +510,7 @@
     '}'+
     'body#gWP1 #headerButtonsDiv > .hBtn:hover {'+
     '  background-color: #000 !important;'+
-    '  border-color: #333 !important;'+
+    '  border-color: #000 !important;'+
     '  color: #FFF !important;'+
     '}'+
     'body#gWP1 > div.L3eUgb > div.o3j99.LLD4me.yr19Zb.LS8OJ > div > img.lnXdpd,'+

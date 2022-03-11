@@ -15,7 +15,22 @@
 
   'use strict';
 
-  const openInterval = 20,
+  const // Display Header Buttons
+        headerBtnCalendar = true,
+        headerBtnChrome = true,
+        headerBtnEarth = true,
+        headerBtnMail = true,
+        headerBtnMaps = true,
+        headerBtnMSEdge = true,
+        headerBtnNews = true,
+        headerBtnPhotos = true,
+        headerBtnPlay = true,
+        headerBtnPodcasts = true,
+        headerBtnTranslate = true,
+        headerBtnYouTube = true,
+        headerBtnYouTubeTV = true,
+        // End Header Buttons
+        openInterval = 20,
         themerInterval = 30000,
         timerLong = 10000,
         timerShort = 1000,
@@ -216,8 +231,8 @@
       case 6: return w + space + bullet + space + m + slash + d + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
       case 7: return w + space + bullet + space + mm + slash + dd + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
       // Delete "customFormat + 210/customFormat + 211" text below and add return options with bullet, comma, hyphen, slash, space, star characters.
-      case 8: return customFormat + 210;
-      case 9: return customFormat + 220;
+      case 8: return customFormat + 234;
+      case 9: return customFormat + 235;
   } }
 
   function dateTimeDefault() {
@@ -385,19 +400,20 @@
   if (!GM_getValue('wallpaperStaticImage')) GM_setValue('wallpaperStaticImage', 0);
   if (!GM_getValue('wallpaperImage')) GM_setValue('wallpaperImage', 0);
 
-  divHeader.appendChild(btnCalendar);
-  divHeader.appendChild(btnChrome);
-  divHeader.appendChild(btnEarth);
-  divHeader.appendChild(btnMail);
-  divHeader.appendChild(btnMaps);
-  divHeader.appendChild(btnMSEdge);
-  divHeader.appendChild(btnNews);
-  divHeader.appendChild(btnPhotos);
-  divHeader.appendChild(btnPlay);
-  divHeader.appendChild(btnPodcasts);
-  divHeader.appendChild(btnTranslate);
-  divHeader.appendChild(btnYouTube);
-  divHeader.appendChild(btnYouTubeTV);
+  if (headerBtnCalendar) divHeader.appendChild(btnCalendar);
+  if (headerBtnChrome) divHeader.appendChild(btnChrome);
+  if (headerBtnEarth) divHeader.appendChild(btnEarth);
+  if (headerBtnMail) divHeader.appendChild(btnMail);
+  if (headerBtnMaps) divHeader.appendChild(btnMaps);
+  if (headerBtnMSEdge) divHeader.appendChild(btnMSEdge);
+  if (headerBtnNews) divHeader.appendChild(btnNews);
+  if (headerBtnPhotos) divHeader.appendChild(btnPhotos);
+  if (headerBtnPlay) divHeader.appendChild(btnPlay);
+  if (headerBtnPodcasts) divHeader.appendChild(btnPodcasts);
+  if (headerBtnTranslate) divHeader.appendChild(btnTranslate);
+  if (headerBtnYouTube) divHeader.appendChild(btnYouTube);
+  if (headerBtnYouTubeTV) divHeader.appendChild(btnYouTubeTV);
+
   divBtns.insertBefore(divHeader, divBtns.firstChild);
 
   initInterval = setInterval(() => {

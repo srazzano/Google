@@ -419,13 +419,7 @@
         if (headerBtnYouTubeTV) divHeader.appendChild(btnYouTubeTV);
         divBtns.insertBefore(divHeader, divBtns.firstChild);
         divHeader.style.display = 'block';
-        logo2.style.marginTop = '20px';
-        form.style.marginTop = '22px';
-      } else {
-        divHeader.style.display = 'none';
-        logo2.style.marginTop = '32px';
-        form.style.marginTop = '34px';
-      }
+      } else divHeader.style.display = 'none';
       logo1.appendChild(logo1Btn);
       logo2.appendChild(logo2Btn);
       body.appendChild(logo1);
@@ -551,14 +545,15 @@
     '  transition: all .5s ease-in-out !important;'+
     '  width: 512px !important;'+
     '}'+
-    'body#gWP1 #logo2 {'+
-    '  margin-top: 10px !important;'+
-    '}'+
     'body#gWP1 > #logo1 {'+
     '  left: 0 !important;'+
     '  margin: 10px !important;'+
     '  position: absolute !important;'+
     '  top: 0 !important;'+
+    '}'+
+    'body#gWP1 #logo2 {'+
+    '  position: absolute !important;'+
+    '  top: 74px !important;'+
     '}'+
     'body#gWP1 #logo1Btn,'+
     'body#gWP1 #logo2Btn {'+
@@ -795,6 +790,8 @@
     '  opacity: 1 !important;'+
     '}'+
     'body#gWP1 > div.L3eUgb form {'+
+    '  position: absolute !important;'+
+    '  top: 268px !important;'+
     '  width: 584px !important;'+
     '}'+
     'body#gWP1 > div.L3eUgb form .iblpc {'+

@@ -397,8 +397,8 @@
   if (!GM_getValue('imageSite')) GM_setValue('imageSite', githubSite);
   if (!GM_getValue('linksWhere')) GM_setValue('linksWhere', '_self');
   if (!GM_getValue('themeChanger')) GM_setValue('themeChanger', false);
-  if (!GM_getValue('wallpaperStaticImage')) GM_setValue('wallpaperStaticImage', 0);
   if (!GM_getValue('wallpaperImage')) GM_setValue('wallpaperImage', 0);
+  if (!GM_getValue('wallpaperStaticImage')) GM_setValue('wallpaperStaticImage', 0);
 
   initInterval = setInterval(() => {
     try {
@@ -420,9 +420,11 @@
         divBtns.insertBefore(divHeader, divBtns.firstChild);
         divHeader.style.display = 'block';
         logo2.style.marginTop = '20px';
+        form.style.marginTop = '22px';
       } else {
         divHeader.style.display = 'none';
         logo2.style.marginTop = '32px';
+        form.style.marginTop = '34px';
       }
       logo1.appendChild(logo1Btn);
       logo2.appendChild(logo2Btn);
@@ -548,6 +550,9 @@
     '  min-height: 164px !important;'+
     '  transition: all .5s ease-in-out !important;'+
     '  width: 512px !important;'+
+    '}'+
+    'body#gWP1 #logo2 {'+
+    '  margin-top: 10px !important;'+
     '}'+
     'body#gWP1 > #logo1 {'+
     '  left: 0 !important;'+
@@ -790,7 +795,6 @@
     '  opacity: 1 !important;'+
     '}'+
     'body#gWP1 > div.L3eUgb form {'+
-    '  margin-top: 12px !important;'+
     '  width: 584px !important;'+
     '}'+
     'body#gWP1 > div.L3eUgb form .iblpc {'+

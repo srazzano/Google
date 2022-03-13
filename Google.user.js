@@ -137,7 +137,6 @@
         upButton = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAUCAYAAABiS3YzAAAAsElEQVR42mNkoAFgHDV04Az9////fkZGRkeqGQo0sB1IVQBxB9DgSooNBRooCaSuArEgEL8HYm2gwc8pNXQlkApDEloFNDScbEOBBuoDqblAbIwkfBaIk4EGXyTX0DMwA4GGMAL5/2EGA7kmJBsK1O8BpLbDDEQShxnsCRTeQbShQH0g8bdALIhsIJrBoEgTBnmAWEPTgNRMbAaiGZwOVDKLWEP/4zOQkLphmPeHp6EA2JNHFW0nieAAAAAASUVORK5CYII=',
         body = $q('html[itemtype="http://schema.org/WebPage"] > body'),
         signIn = $q('html[itemtype="http://schema.org/WebPage"] a.gb_1.gb_2'),
-        divBtns = $q('.o3j99.LLD4me.yr19Zb.LS8OJ'),
         div0 = $q('html[itemtype="http://schema.org/WebPage"] div.L3eUgb > div.o3j99.LLD4me.LS8OJ'),
         div1 = $q('html[itemtype="http://schema.org/WebPage"] div.gb_Td.gb_Va.gb_Id'),
         div2 = $q('html[itemtype="http://schema.org/WebPage"] div.L3eUgb > div.o3j99.c93Gbe > div > div.KxwPGc.iTjxkf > div'),
@@ -417,7 +416,7 @@
         if (headerBtnTranslate) divHeader.appendChild(btnTranslate);
         if (headerBtnYouTube) divHeader.appendChild(btnYouTube);
         if (headerBtnYouTubeTV) divHeader.appendChild(btnYouTubeTV);
-        divBtns.insertBefore(divHeader, divBtns.firstChild);
+        div0.insertBefore(divHeader, div0.firstChild);
         divHeader.style.display = 'block';
       } else divHeader.style.display = 'none';
       logo1.appendChild(logo1Btn);

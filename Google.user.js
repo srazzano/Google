@@ -15,9 +15,7 @@
 
   'use strict';
 
-  const displayHeaderButtons = true,
-        // Display Header Button
-        headerBtnCalendar = true,
+  const headerBtnCalendar = true,
         headerBtnChrome = true,
         headerBtnEarth = true,
         headerBtnMail = true,
@@ -69,7 +67,6 @@
         imgYouTubeTV = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAbElEQVR42mNkAIL/DAyrgFQoA2lgNSMDQxgjmZoRhvwHO4B8gNuA/0DhwEAGhg0bKDAABEAGZGUxMDx/TqYBcJWMFLggM5OB4cULeocBkYDydAB2LSUpEZ8KmPcYwQiHFwaPAaTGBsxQig0AAAp6OVWm895eAAAAAElFTkSuQmCC',
         urlYouTubeTV = 'https://tv.youtube.com/library',
         btnYouTubeTV = $c('button', {id: 'btnYouTubeTV', className: 'hBtn', textContent: 'YouTube TV', title: urlYouTubeTV, style: 'background: url('+ imgYouTubeTV +') no-repeat 4px center', onclick: () => window.open(urlYouTubeTV, GM_getValue('linksWhere'))}),
-        // End Header Button
         openInterval = 20,
         themerInterval = 30000,
         timerLong = 10000,
@@ -87,6 +84,8 @@
         customFormatText = 'Add a custom format in script line ',
         dailyText = 'Daily',
         defaultWallpaperText = 'Static wallpaper image',
+        headerButtonsFalseText = 'Display Header Buttons: False',
+        headerButtonsTrueText = 'Display Header Buttons: True',
         hideShowText = bullet + ' Left-click to Hide/Show Date/Time',
         hourlyText = 'Hourly',
         linksCurrentText = 'Button Links in current tab: True',
@@ -149,6 +148,9 @@
         div5 = $c('div', {id: 'divLinks'}),
         li6 = $c('li', {role: 'none'}),
         div6 = $c('div', {id: 'divSites'}),
+        li7 = $c('li', {role: 'none'}),
+        div7 = $c('div', {id: 'divButtons'}),
+        li8 = $c('li', {className: 'mRoO9c', role: 'separator'}),
         form = $q('html[itemtype="http://schema.org/WebPage"] div.L3eUgb form'),
         pop = $q('html[itemtype="http://schema.org/WebPage"] ul#dEjpnf'),
         placeHolder = $q('html[itemtype="http://schema.org/WebPage"] .gLFyf.gsfi'),
@@ -172,7 +174,8 @@
         btnDown = $c('input', {id: 'buttonDown', type: 'image', src: downButton, onclick: e => wallpaperButtonChanger(e)}),
         spnSites = $c('button', {id: 'spanSites', title: buttonSitesTooltip, onclick: () => wallpaperSite()}),
         btnSites = $c('button', {id: 'buttonSites', title: buttonSitesTooltip, onclick: () => wallpaperSite()}),
-        btnSearchLinks = $c('button', {id: 'searchLinks', onclick: () => searchLinksWhere()});
+        btnSearchLinks = $c('button', {id: 'searchLinks', onclick: () => searchLinksWhere()}),
+        displayButtons = $c('button', {id: 'displayButtons', onclick: () => displayHdrButtons()});
 
   let clockInterval,
       initInterval,
@@ -230,8 +233,8 @@
       case 6: return w + space + bullet + space + m + slash + d + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
       case 7: return w + space + bullet + space + mm + slash + dd + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
       // Delete "customFormatText + 210/customFormatText + 211" text below and add return options with bullet, comma, hyphen, slash, space, star characters.
-      case 8: return customFormatText + 234;
-      case 9: return customFormatText + 235;
+      case 8: return customFormatText + 236;
+      case 9: return customFormatText + 237;
   } }
 
   function dateTimeDefault() {
@@ -276,6 +279,17 @@
     }
     dateTime.textContent = dateTimeFormat(GM_getValue('dateFormat'));
   }
+
+  function displayHdrButtons() {
+    let bool = GM_getValue('displayHeaderButtons') !== true ? true : false;
+    GM_setValue('displayHeaderButtons', bool);
+    if (bool) {
+      divHeader.style.display = 'block';
+      displayButtons.textContent = headerButtonsTrueText;
+    } else {
+      divHeader.style.display = 'none';
+      displayButtons.textContent = headerButtonsFalseText;
+  } }
 
   function repositionLogo() {
     let bool = GM_getValue('googleLogoLeft') !== true ? true : false;
@@ -392,6 +406,7 @@
   if (!GM_getValue('defaultAMPM')) GM_setValue('defaultAMPM', false);
   if (!GM_getValue('defaultDateTimeView')) GM_setValue('defaultDateTimeView', false);
   if (!GM_getValue('defaultSecondsView')) GM_setValue('defaultSecondsView', false);
+  if (!GM_getValue('displayHeaderButtons')) GM_setValue('displayHeaderButtons', false);
   if (!GM_getValue('googleLogoLeft')) GM_setValue('googleLogoLeft', false);
   if (!GM_getValue('imageSite')) GM_setValue('imageSite', githubSite);
   if (!GM_getValue('linksWhere')) GM_setValue('linksWhere', '_self');
@@ -399,89 +414,100 @@
   if (!GM_getValue('wallpaperImage')) GM_setValue('wallpaperImage', 0);
   if (!GM_getValue('wallpaperStaticImage')) GM_setValue('wallpaperStaticImage', 0);
 
+  if (headerBtnCalendar) divHeader.appendChild(btnCalendar);
+  if (headerBtnChrome) divHeader.appendChild(btnChrome);
+  if (headerBtnEarth) divHeader.appendChild(btnEarth);
+  if (headerBtnMail) divHeader.appendChild(btnMail);
+  if (headerBtnMaps) divHeader.appendChild(btnMaps);
+  if (headerBtnMSEdge) divHeader.appendChild(btnMSEdge);
+  if (headerBtnNews) divHeader.appendChild(btnNews);
+  if (headerBtnPhotos) divHeader.appendChild(btnPhotos);
+  if (headerBtnPlay) divHeader.appendChild(btnPlay);
+  if (headerBtnPodcasts) divHeader.appendChild(btnPodcasts);
+  if (headerBtnTranslate) divHeader.appendChild(btnTranslate);
+  if (headerBtnYouTube) divHeader.appendChild(btnYouTube);
+  if (headerBtnYouTubeTV) divHeader.appendChild(btnYouTubeTV);
+
+  logo1.appendChild(logo1Btn);
+  logo2.appendChild(logo2Btn);
+  body.appendChild(logo1);
+  body.id = 'gWP1';
+  if (GM_getValue('googleLogoLeft')) {
+    logo1.style.opacity = 1;
+    logo2.style.opacity = 0;
+  } else {
+    logo1.style.opacity = 0;
+    logo2.style.opacity = 1;
+  }
+  if (GM_getValue('defaultDateTimeView')) dateTimeDefault();
+  else {dateTime.hidden = true; clearInterval(clockInterval)}
+  dateTime.title = addRemoveText + ' (' + GM_getValue('dateFormat') + ')';
+  div0.insertBefore(divHeader, div0.firstChild);
+  div0.appendChild(div2);
+  div0.insertBefore(logo2, div0.firstChild.nextSibling);
+  div0.insertBefore(form, div0.lastChild);
+  dateTimeContainer.appendChild(btnClock);
+  dateTimeContainer.appendChild(dateTime);
+  div1.appendChild(dateTimeContainer);
+  div2.insertBefore(searchButton, div2.firstChild);
+  searchButton.id = 'gSearch';
+  placeHolder.placeholder = placeHolderText;
+  btnWhen.title = dailyHourlyTooltip;
+  GM_getValue('changeThemeHourly') ? btnWhen.innerHTML = hourlyText : btnWhen.innerHTML = dailyText;
+  if (GM_getValue('themeChanger')) {
+    btnThemer.innerHTML = changeWallpaperOnText;
+    btnWhen.style = 'opacity: 1; pointer-events: all';
+    ti3.src = themeOn;
+  } else {
+    btnThemer.innerHTML = changeWallpaperOffText;
+    btnWhen.style = 'opacity: .5; pointer-events: none';
+    ti3.src = themeOff;
+  }
+  if (GM_getValue('imageSite') === githubSite) btnSites.innerHTML = 'GitHub';
+  else btnSites.innerHTML = 'Sonco';
+  btnStatic.textContent = defaultWallpaperText;
+  btnStatic.title = defaultWallpaperTooltip;
+  inpStatic.value = GM_getValue('wallpaperStaticImage');
+  div3.appendChild(btnThemer);
+  div3.appendChild(btnWhen);
+  div3.appendChild(ti3);
+  li3.appendChild(div3);
+  div4.appendChild(btnStatic);
+  div4.appendChild(btnUp);
+  div4.appendChild(inpStatic);
+  div4.appendChild(btnDown);
+  li2.appendChild(div4);
+  div5.appendChild(btnSearchLinks);
+  li5.appendChild(div5);
+  spnSites.innerHTML = changeImageSiteText;
+  div6.appendChild(spnSites);
+  div6.appendChild(btnSites);
+  li6.appendChild(div6);
+  btnSearchLinks.textContent = GM_getValue('linksWhere') === '_self' ? linksCurrentText : linksNewText;
+  div7.appendChild(displayButtons);
+  li7.appendChild(div7);
+
+  if (GM_getValue('displayHeaderButtons')) {
+    divHeader.style.display = 'block';
+    displayButtons.textContent = headerButtonsTrueText;
+  } else {
+    divHeader.style.display = 'none';
+    displayButtons.textContent = headerButtonsFalseText;
+  }
+  pop.appendChild(li7);
+  pop.appendChild(li3);
+  pop.appendChild(li2);
+  pop.insertBefore(li5, pop.firstChild);
+  pop.insertBefore(btnPopClose, pop.firstChild);
+  pop.insertBefore(li7, pop.firstChild);
+  pop.insertBefore(li8, pop.childNodes[3]);
+  pop.appendChild(li6);
+  settingsButton.onclick = () => searchPopupLinks();
+  darkTheme.title = darkThemeTooltip;
+
   initInterval = setInterval(() => {
     try {
-      if (signIn) signIn.click();
-      if (displayHeaderButtons) {
-        if (headerBtnCalendar) divHeader.appendChild(btnCalendar);
-        if (headerBtnChrome) divHeader.appendChild(btnChrome);
-        if (headerBtnEarth) divHeader.appendChild(btnEarth);
-        if (headerBtnMail) divHeader.appendChild(btnMail);
-        if (headerBtnMaps) divHeader.appendChild(btnMaps);
-        if (headerBtnMSEdge) divHeader.appendChild(btnMSEdge);
-        if (headerBtnNews) divHeader.appendChild(btnNews);
-        if (headerBtnPhotos) divHeader.appendChild(btnPhotos);
-        if (headerBtnPlay) divHeader.appendChild(btnPlay);
-        if (headerBtnPodcasts) divHeader.appendChild(btnPodcasts);
-        if (headerBtnTranslate) divHeader.appendChild(btnTranslate);
-        if (headerBtnYouTube) divHeader.appendChild(btnYouTube);
-        if (headerBtnYouTubeTV) divHeader.appendChild(btnYouTubeTV);
-        div0.insertBefore(divHeader, div0.firstChild);
-        divHeader.style.display = 'block';
-      } else divHeader.style.display = 'none';
-      logo1.appendChild(logo1Btn);
-      logo2.appendChild(logo2Btn);
-      body.appendChild(logo1);
-      body.id = 'gWP1';
-      if (GM_getValue('googleLogoLeft')) {
-        logo1.style.opacity = 1;
-        logo2.style.opacity = 0;
-      } else {
-        logo1.style.opacity = 0;
-        logo2.style.opacity = 1;
-      }
-      if (GM_getValue('defaultDateTimeView')) dateTimeDefault();
-      else {dateTime.hidden = true; clearInterval(clockInterval)}
-      dateTime.title = addRemoveText + ' (' + GM_getValue('dateFormat') + ')';
-      div0.appendChild(div2);
-      div0.insertBefore(logo2, div0.firstChild.nextSibling);
-      div0.insertBefore(form, div0.lastChild);
-      dateTimeContainer.appendChild(btnClock);
-      dateTimeContainer.appendChild(dateTime);
-      div1.appendChild(dateTimeContainer);
-      div2.insertBefore(searchButton, div2.firstChild);
-      searchButton.id = 'gSearch';
-      placeHolder.placeholder = placeHolderText;
-      btnWhen.title = dailyHourlyTooltip;
-      GM_getValue('changeThemeHourly') ? btnWhen.innerHTML = hourlyText : btnWhen.innerHTML = dailyText;
-      if (GM_getValue('themeChanger')) {
-        btnThemer.innerHTML = changeWallpaperOnText;
-        btnWhen.style = 'opacity: 1; pointer-events: all';
-        ti3.src = themeOn;
-      } else {
-        btnThemer.innerHTML = changeWallpaperOffText;
-        btnWhen.style = 'opacity: .5; pointer-events: none';
-        ti3.src = themeOff;
-      }
-      if (GM_getValue('imageSite') === githubSite) btnSites.innerHTML = 'GitHub';
-      else btnSites.innerHTML = 'Sonco';
-      btnStatic.textContent = defaultWallpaperText;
-      btnStatic.title = defaultWallpaperTooltip;
-      inpStatic.value = GM_getValue('wallpaperStaticImage');
-      div3.appendChild(btnThemer);
-      div3.appendChild(btnWhen);
-      div3.appendChild(ti3);
-      li3.appendChild(div3);
-      div4.appendChild(btnStatic);
-      div4.appendChild(btnUp);
-      div4.appendChild(inpStatic);
-      div4.appendChild(btnDown);
-      li2.appendChild(div4);
-      div5.appendChild(btnSearchLinks);
-      li5.appendChild(div5);
-      spnSites.innerHTML = changeImageSiteText;
-      div6.appendChild(spnSites);
-      div6.appendChild(btnSites);
-      li6.appendChild(div6);
-      btnSearchLinks.textContent = GM_getValue('linksWhere') === '_self' ? linksCurrentText : linksNewText;
-      pop.appendChild(li3);
-      pop.appendChild(li2);
-      pop.insertBefore(li5, pop.firstChild);
-      pop.insertBefore(btnPopClose, pop.firstChild);
-      pop.appendChild(li6);
-      settingsButton.onclick = () => searchPopupLinks();
-      darkTheme.title = darkThemeTooltip;
-      if (dateTimeContainer) clearInterval(initInterval);
+      signIn ? signIn.click() : clearInterval(initInterval);
     } catch(ex) {}
   }, openInterval);
 
@@ -499,7 +525,7 @@
     'body#gWP1 #headerButtonsDiv > .hBtn {'+
     '  background-color: rgba(0, 0, 0, 0.3) !important;'+
     '  border: 1px solid transparent !important;'+
-    '  border-radius: 4px !important;'+
+    '  border-radius: 6px !important;'+
     '  color: #CCC !important;'+
     '  height: 32px !important;'+
     '  margin: 0 5px !important;'+
@@ -654,9 +680,13 @@
     '  border: 1px solid #000 !important;'+
     '}'+
     'body#gWP1 #dEjpnf {'+
+    '  bottom: auto !important;'+
+    '  border-radius: 8px !important;'+
     '  min-width: 250px !important;'+
     '  padding-bottom: 0 !important;'+
+    '  right: 93px !important;'+
     '  text-align: left !important;'+
+    '  top: -327px !important;'+
     '  z-index: 999 !important;'+
     '}'+
     'body#gWP1 #popClose {'+
@@ -665,7 +695,7 @@
     '  height: 24px !important;'+
     '  position: absolute !important;'+
     '  right: -13px !important;'+
-    '  top: -10px !important;'+
+    '  top: -14px !important;'+
     '  width: 24px !important;'+
     '}'+
     'body#gWP1 #popClose:hover {'+
@@ -695,6 +725,7 @@
     'body#gWP1 #divThemer:hover,'+
     'body#gWP1 #divNumber:hover,'+
     'body#gWP1 #divLinks:hover,'+
+    'body#gWP1 #divButtons:hover,'+
     'body#gWP1 #divSites:hover {'+
     '  background-color: #333 !important;'+
     '}'+
@@ -706,12 +737,15 @@
     '}'+
     'body#gWP1 #buttonStatic,'+
     'body#gWP1 #buttonThemer,'+
+    'body#gWP1 #displayButtons,'+
     'body#gWP1 #searchLinks,'+
     'body#gWP1 #divLinks,'+
+    'body#gWP1 #divButtons,'+
     'body#gWP1  #buttonSites{'+
     '  cursor: pointer !important;'+
     '}'+
     'body#gWP1 #buttonThemer,'+
+    'body#gWP1 #displayButtons,'+
     'body#gWP1 #searchLinks {'+
     '  color: #CCC !important;'+
     '  padding: 7px 0 7px 9px !important;'+

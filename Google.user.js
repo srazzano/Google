@@ -28,6 +28,7 @@
         headerBtnTranslate = true,
         headerBtnYouTube = true,
         headerBtnYouTubeTV = true,
+        divHeader = $c('div', {id: 'headerButtonsDiv'}),
         imgCalendar = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABT0lEQVR42mNkAAKp9Iv/GYgELMxMYJqZmZHh/mQdRkZSNMPAfwZGMM0IYpFjADJANyCMkIaHocYgahVOA57O0Fv17x8Dw7//IH8ygB37H6qCEcj5s5c1DK8BD6fqrTp+5w9DRP81hsNNOgxyIkwMJ+/+ZQjrvcoANJywAQ+m6K16/O4fg5IYE4N0xiWGvXU6DM5NV8CSRBkA8sLbL/8Z9EouM2yq0GYwVmBmuPrkL4NbC5EueDRNb9XDNwgXPJ6ux3D9KQkG3Jqou+rcg7/gMPAwUmWYncrJcPPZXwaXZiINeDJdbxUjJJ0w/PzDwMDOwsDw+y+Ez8pMRCzcmqyyCpLaGKDpDRWwH+IP+/+TGayGkf0vA6Ncs+3/X39/E52QLh3+uwqZj24AQQA0AM4W23uakVGx1eH/998/SDYApJkB5k2JBguiMxTIAJhmEAAA4quznkbNVyMAAAAASUVORK5CYII=',
         urlCalendar = 'https://calendar.google.com/calendar/u/0/r',
         btnCalendar = $c('button', {id: 'btnCalendar', className: 'hBtn', textContent: 'Calendar', title: urlCalendar, style: 'background: url('+ imgCalendar +') no-repeat 4px center', onclick: () => window.open(urlCalendar, GM_getValue('linksWhere'))}),
@@ -92,7 +93,7 @@
         linksNewText = 'Button Links in new tab: True',
         offText = 'Off',
         onText = 'On',
-        placeHolderText = '                                          Search Look-up',
+        placeHolderText = 'Search Look-up',
         activeWallpaperTooltip = 'Active wallpaper image',
         buttonSitesTooltip = 'Change between GitHub and Sonco host sites',
         changeImageSiteText = 'Wallpaper host site:',
@@ -157,7 +158,6 @@
         darkTheme = $q('html[itemtype="http://schema.org/WebPage"] .EzVRq.pENqnf'),
         searchButton = $q('html[itemtype="http://schema.org/WebPage"] div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.FPdoLc.lJ9FBc > center > input.gNO89b'),
         settingsButton = $q('html[itemtype="http://schema.org/WebPage"] #Mses6b'),
-        divHeader = $c('div', {id: 'headerButtonsDiv'}),
         logo1 = $c('span', {id: 'logo1'}),
         logo1Btn = $c('input', {id: 'logo1Btn', type: 'image', src: logoButton, title: logoCenterTooltip, onclick: () => repositionLogo()}),
         logo2 = $c('span', {id: 'logo2'}),
@@ -518,8 +518,8 @@
   GM_addStyle(''+
     'body#gWP1 #headerButtonsDiv {'+
     '  margin-bottom: -20px !important;'+
-    '  position: relative !important;'+
-    '  top: -45px !important;'+
+    '  position: absolute !important;'+
+    '  top: 14px !important;'+
     '  z-index: 999 !important;'+
     '}'+
     'body#gWP1 #headerButtonsDiv > .hBtn {'+
@@ -872,6 +872,12 @@
     'body#gWP1 .gLFyf.gsfi {'+
     '  color: #CCC !important;'+
     '  filter: brightness(2) !important;'+
+    '  text-align: center !important;'+
+    '  margin-left: -32px !important;'+
+    '}'+
+    'body#gWP1 .gLFyf.gsfi:focus-within {'+
+    '  text-align: left !important;'+
+    '  margin-left: 0 !important;'+
     '}'+
     'body#gWP1 .RNNXgb:hover,'+
     'body#gWP1 .RNNXgb:focus-within,'+

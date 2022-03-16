@@ -431,6 +431,7 @@
       if (headerBtnTranslate) divHeader.appendChild(btnTranslate);
       if (headerBtnYouTube) divHeader.appendChild(btnYouTube);
       if (headerBtnYouTubeTV) divHeader.appendChild(btnYouTubeTV);
+      wallpaper();
       logo1.appendChild(logo1Btn);
       logo2.appendChild(logo2Btn);
       body.appendChild(logo1);

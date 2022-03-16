@@ -414,99 +414,96 @@
   if (!GM_getValue('wallpaperImage')) GM_setValue('wallpaperImage', 0);
   if (!GM_getValue('wallpaperStaticImage')) GM_setValue('wallpaperStaticImage', 0);
 
-  if (headerBtnCalendar) divHeader.appendChild(btnCalendar);
-  if (headerBtnChrome) divHeader.appendChild(btnChrome);
-  if (headerBtnEarth) divHeader.appendChild(btnEarth);
-  if (headerBtnMail) divHeader.appendChild(btnMail);
-  if (headerBtnMaps) divHeader.appendChild(btnMaps);
-  if (headerBtnMSEdge) divHeader.appendChild(btnMSEdge);
-  if (headerBtnNews) divHeader.appendChild(btnNews);
-  if (headerBtnPhotos) divHeader.appendChild(btnPhotos);
-  if (headerBtnPlay) divHeader.appendChild(btnPlay);
-  if (headerBtnPodcasts) divHeader.appendChild(btnPodcasts);
-  if (headerBtnTranslate) divHeader.appendChild(btnTranslate);
-  if (headerBtnYouTube) divHeader.appendChild(btnYouTube);
-  if (headerBtnYouTubeTV) divHeader.appendChild(btnYouTubeTV);
-
-  logo1.appendChild(logo1Btn);
-  logo2.appendChild(logo2Btn);
-  body.appendChild(logo1);
-  body.id = 'gWP1';
-  if (GM_getValue('googleLogoLeft')) {
-    logo1.style.opacity = 1;
-    logo2.style.opacity = 0;
-  } else {
-    logo1.style.opacity = 0;
-    logo2.style.opacity = 1;
-  }
-  if (GM_getValue('defaultDateTimeView')) dateTimeDefault();
-  else {dateTime.hidden = true; clearInterval(clockInterval)}
-  dateTime.title = addRemoveText + ' (' + GM_getValue('dateFormat') + ')';
-  div1.insertBefore(divHeader, div1.firstChild);
-  div1.appendChild(div3);
-  div1.insertBefore(logo2, div1.firstChild.nextSibling);
-  div1.insertBefore(form, div1.lastChild);
-  dateTimeContainer.appendChild(btnClock);
-  dateTimeContainer.appendChild(dateTime);
-  div2.appendChild(dateTimeContainer);
-  div3.insertBefore(searchButton, div3.firstChild);
-  searchButton.id = 'gSearch';
-  placeHolder.placeholder = placeHolderText;
-  btnWhen.title = dailyHourlyTooltip;
-  GM_getValue('changeThemeHourly') ? btnWhen.innerHTML = hourlyText : btnWhen.innerHTML = dailyText;
-  if (GM_getValue('themeChanger')) {
-    btnThemer.innerHTML = changeWallpaperOnText;
-    btnWhen.style = 'opacity: 1; pointer-events: all';
-    themeImage.src = themeOn;
-  } else {
-    btnThemer.innerHTML = changeWallpaperOffText;
-    btnWhen.style = 'opacity: .5; pointer-events: none';
-    themeImage.src = themeOff;
-  }
-  if (GM_getValue('imageSite') === githubSite) btnSites.innerHTML = 'GitHub';
-  else btnSites.innerHTML = 'Sonco';
-  btnStatic.textContent = defaultWallpaperText;
-  btnStatic.title = defaultWallpaperTooltip;
-  inpStatic.value = GM_getValue('wallpaperStaticImage');
-  divThemer.appendChild(btnThemer);
-  divThemer.appendChild(btnWhen);
-  divThemer.appendChild(themeImage);
-  liThemer.appendChild(divThemer);
-  divNumber.appendChild(btnStatic);
-  divNumber.appendChild(btnUp);
-  divNumber.appendChild(inpStatic);
-  divNumber.appendChild(btnDown);
-  liNumber.appendChild(divNumber);
-  divLinks.appendChild(btnSearchLinks);
-  liLinks.appendChild(divLinks);
-  spnSites.innerHTML = changeImageSiteText;
-  divSites.appendChild(spnSites);
-  divSites.appendChild(btnSites);
-  liSites.appendChild(divSites);
-  btnSearchLinks.textContent = GM_getValue('linksWhere') === '_self' ? linksCurrentText : linksNewText;
-  divButtons.appendChild(displayButtons);
-  liButtons.appendChild(divButtons);
-
-  if (GM_getValue('displayHeaderButtons')) {
-    divHeader.style.display = 'block';
-    displayButtons.textContent = headerButtonsTrueText;
-  } else {
-    divHeader.style.display = 'none';
-    displayButtons.textContent = headerButtonsFalseText;
-  }
-  popup.appendChild(liButtons);
-  popup.appendChild(liThemer);
-  popup.appendChild(liNumber);
-  popup.insertBefore(liLinks, popup.firstChild);
-  popup.insertBefore(btnPopClose, popup.firstChild);
-  popup.insertBefore(liButtons, popup.firstChild);
-  popup.insertBefore(liSeparator, popup.childNodes[3]);
-  popup.appendChild(liSites);
-  settingsButton.onclick = () => searchPopupLinks();
-  darkTheme.title = darkThemeTooltip;
-
   initInterval = setInterval(() => {
     try {
+      if (headerBtnCalendar) divHeader.appendChild(btnCalendar);
+      if (headerBtnChrome) divHeader.appendChild(btnChrome);
+      if (headerBtnEarth) divHeader.appendChild(btnEarth);
+      if (headerBtnMail) divHeader.appendChild(btnMail);
+      if (headerBtnMaps) divHeader.appendChild(btnMaps);
+      if (headerBtnMSEdge) divHeader.appendChild(btnMSEdge);
+      if (headerBtnNews) divHeader.appendChild(btnNews);
+      if (headerBtnPhotos) divHeader.appendChild(btnPhotos);
+      if (headerBtnPlay) divHeader.appendChild(btnPlay);
+      if (headerBtnPodcasts) divHeader.appendChild(btnPodcasts);
+      if (headerBtnTranslate) divHeader.appendChild(btnTranslate);
+      if (headerBtnYouTube) divHeader.appendChild(btnYouTube);
+      if (headerBtnYouTubeTV) divHeader.appendChild(btnYouTubeTV);
+      logo1.appendChild(logo1Btn);
+      logo2.appendChild(logo2Btn);
+      body.appendChild(logo1);
+      body.id = 'gWP1';
+      if (GM_getValue('googleLogoLeft')) {
+        logo1.style.opacity = 1;
+        logo2.style.opacity = 0;
+      } else {
+        logo1.style.opacity = 0;
+        logo2.style.opacity = 1;
+      }
+      if (GM_getValue('defaultDateTimeView')) dateTimeDefault();
+      else {dateTime.hidden = true; clearInterval(clockInterval)}
+      dateTime.title = addRemoveText + ' (' + GM_getValue('dateFormat') + ')';
+      div1.insertBefore(divHeader, div1.firstChild);
+      div1.appendChild(div3);
+      div1.insertBefore(logo2, div1.firstChild.nextSibling);
+      div1.insertBefore(form, div1.lastChild);
+      dateTimeContainer.appendChild(btnClock);
+      dateTimeContainer.appendChild(dateTime);
+      div2.appendChild(dateTimeContainer);
+      div3.insertBefore(searchButton, div3.firstChild);
+      searchButton.id = 'gSearch';
+      placeHolder.placeholder = placeHolderText;
+      btnWhen.title = dailyHourlyTooltip;
+      GM_getValue('changeThemeHourly') ? btnWhen.innerHTML = hourlyText : btnWhen.innerHTML = dailyText;
+      if (GM_getValue('themeChanger')) {
+        btnThemer.innerHTML = changeWallpaperOnText;
+        btnWhen.style = 'opacity: 1; pointer-events: all';
+        themeImage.src = themeOn;
+      } else {
+        btnThemer.innerHTML = changeWallpaperOffText;
+        btnWhen.style = 'opacity: .5; pointer-events: none';
+        themeImage.src = themeOff;
+      }
+      if (GM_getValue('imageSite') === githubSite) btnSites.innerHTML = 'GitHub';
+      else btnSites.innerHTML = 'Sonco';
+      btnStatic.textContent = defaultWallpaperText;
+      btnStatic.title = defaultWallpaperTooltip;
+      inpStatic.value = GM_getValue('wallpaperStaticImage');
+      divThemer.appendChild(btnThemer);
+      divThemer.appendChild(btnWhen);
+      divThemer.appendChild(themeImage);
+      liThemer.appendChild(divThemer);
+      divNumber.appendChild(btnStatic);
+      divNumber.appendChild(btnUp);
+      divNumber.appendChild(inpStatic);
+      divNumber.appendChild(btnDown);
+      liNumber.appendChild(divNumber);
+      divLinks.appendChild(btnSearchLinks);
+      liLinks.appendChild(divLinks);
+      spnSites.innerHTML = changeImageSiteText;
+      divSites.appendChild(spnSites);
+      divSites.appendChild(btnSites);
+      liSites.appendChild(divSites);
+      btnSearchLinks.textContent = GM_getValue('linksWhere') === '_self' ? linksCurrentText : linksNewText;
+      divButtons.appendChild(displayButtons);
+      liButtons.appendChild(divButtons);
+      if (GM_getValue('displayHeaderButtons')) {
+        divHeader.style.display = 'block';
+        displayButtons.textContent = headerButtonsTrueText;
+      } else {
+        divHeader.style.display = 'none';
+        displayButtons.textContent = headerButtonsFalseText;
+      }
+      popup.appendChild(liButtons);
+      popup.appendChild(liThemer);
+      popup.appendChild(liNumber);
+      popup.insertBefore(liLinks, popup.firstChild);
+      popup.insertBefore(btnPopClose, popup.firstChild);
+      popup.insertBefore(liButtons, popup.firstChild);
+      popup.insertBefore(liSeparator, popup.childNodes[3]);
+      popup.appendChild(liSites);
+      settingsButton.onclick = () => searchPopupLinks();
+      darkTheme.title = darkThemeTooltip;
       signIn ? signIn.click() : clearInterval(initInterval);
     } catch(ex) {}
   }, openInterval);

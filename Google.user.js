@@ -414,7 +414,8 @@
   if (!GM_getValue('wallpaperImage')) GM_setValue('wallpaperImage', 0);
   if (!GM_getValue('wallpaperStaticImage')) GM_setValue('wallpaperStaticImage', 0);
 
-  initInterval = setInterval(() => {
+  function init() {
+    window.removeEventListener('load', () => init());
     try {
       if (signIn) signIn.click();
       if (headerBtnCalendar) divHeader.appendChild(btnCalendar);
@@ -507,11 +508,14 @@
       darkTheme.title = darkThemeTooltip;
       signIn ? signIn.click() : clearInterval(initInterval);
     } catch(ex) {}
-  }, openInterval);
+  }
 
   wallpaperTimer(GM_getValue('themeChanger'));
 
+  window.addEventListener('load', () => init());
   window.addEventListener('unload', () => whenClose());
+
+  initInterval = setInterval(() => {init()}, openInterval);
 
   GM_addStyle(''+
     '#gWP1 #headerButtonsDiv {'+

@@ -416,6 +416,7 @@
 
   initInterval = setInterval(() => {
     try {
+      if (signIn) signIn.click();
       if (headerBtnCalendar) divHeader.appendChild(btnCalendar);
       if (headerBtnChrome) divHeader.appendChild(btnChrome);
       if (headerBtnEarth) divHeader.appendChild(btnEarth);

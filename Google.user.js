@@ -140,6 +140,12 @@
         div1 = $q('html[itemtype="http://schema.org/WebPage"] .L3eUgb > .o3j99.LLD4me.LS8OJ'),
         div2 = $q('html[itemtype="http://schema.org/WebPage"] .gb_Td.gb_Va.gb_Id'),
         div3 = $q('html[itemtype="http://schema.org/WebPage"] .L3eUgb > .o3j99.c93Gbe > div > .KxwPGc.iTjxkf > div'),
+        form = $q('html[itemtype="http://schema.org/WebPage"] .L3eUgb form'),
+        popup = $q('html[itemtype="http://schema.org/WebPage"] #dEjpnf'),
+        placeHolder = $q('html[itemtype="http://schema.org/WebPage"] .gLFyf.gsfi'),
+        darkTheme = $q('html[itemtype="http://schema.org/WebPage"] .EzVRq.pENqnf'),
+        searchButton = $q('html[itemtype="http://schema.org/WebPage"] .L3eUgb > .o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > .A8SBwf > .FPdoLc.lJ9FBc > center > .gNO89b'),
+        settingsButton = $q('html[itemtype="http://schema.org/WebPage"] #Mses6b'),
         divButtons = $c('div', {id: 'divButtons'}),
         divLinks = $c('div', {id: 'divLinks'}),
         divNumber = $c('div', {id: 'divNumber'}),
@@ -152,12 +158,6 @@
         liThemer = $c('li', {role: 'none'}),
         liSeparator = $c('li', {className: 'mRoO9c', role: 'separator'}),
         themeImage = $c('img', {id: 'themeImage'}),
-        form = $q('html[itemtype="http://schema.org/WebPage"] .L3eUgb form'),
-        popup = $q('html[itemtype="http://schema.org/WebPage"] #dEjpnf'),
-        placeHolder = $q('html[itemtype="http://schema.org/WebPage"] .gLFyf.gsfi'),
-        darkTheme = $q('html[itemtype="http://schema.org/WebPage"] .EzVRq.pENqnf'),
-        searchButton = $q('html[itemtype="http://schema.org/WebPage"] .L3eUgb > .o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > .A8SBwf > .FPdoLc.lJ9FBc > center > .gNO89b'),
-        settingsButton = $q('html[itemtype="http://schema.org/WebPage"] #Mses6b'),
         logo1 = $c('span', {id: 'logo1'}),
         logo1Btn = $c('input', {id: 'logo1Btn', type: 'image', src: logoButton, title: logoCenterTooltip, onclick: () => repositionLogo()}),
         logo2 = $c('span', {id: 'logo2'}),
@@ -416,7 +416,7 @@
 
   function init() {
     window.removeEventListener('load', () => init());
-	wallpaper();
+    wallpaper();
     if (signIn) signIn.click();
     if (headerBtnCalendar) divHeader.appendChild(btnCalendar);
     if (headerBtnChrome) divHeader.appendChild(btnChrome);
@@ -517,6 +517,10 @@
   initInterval = setInterval(() => {init()}, openInterval);
 
   GM_addStyle(''+
+    '#gWP1 a.gb_1.gb_2 {'+
+    '  position: relative !important;'+
+    '  top: -4px !important;'+
+    '}'+
     '#gWP1 #headerButtonsDiv {'+
     '  margin-bottom: -20px !important;'+
     '  position: absolute !important;'+
@@ -695,8 +699,8 @@
     '  border-radius: 50% !important;'+
     '  height: 24px !important;'+
     '  position: absolute !important;'+
-    '  right: -13px !important;'+
-    '  top: -14px !important;'+
+    '  right: -12px !important;'+
+    '  top: -12px !important;'+
     '  width: 24px !important;'+
     '}'+
     '#gWP1 #popClose:hover {'+

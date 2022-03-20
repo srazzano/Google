@@ -519,6 +519,7 @@
   GM_addStyle(''+
     '#gWP1 a.gb_1.gb_2 {'+
     '  position: relative !important;'+
+    '  right: 170px !important;'+
     '  top: -4px !important;'+
     '}'+
     '#gWP1 #headerButtonsDiv {'+

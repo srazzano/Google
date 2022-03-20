@@ -785,6 +785,8 @@
     '  margin: 0 !important;'+
     '}'+
     '#gWP1 #inputStatic {'+
+    '  appearance: textfield !important;'+
+    '  -moz-appearance: textfield !important;'+
     '  border: 1px solid #666 !important;'+
     '  border-radius: 4px !important;'+
     '  color: #FFF !important;'+
@@ -806,8 +808,8 @@
     '#gWP1 #buttonSites {'+
     '  width: 64px !important;'+
     '}'+
-    '#gWP1 input[type=number]::-webkit-inner-spin-button,'+
-    '#gWP1 input[type=number]::-webkit-outer-spin-button {'+
+    '#gWP1 #inputStatic::-webkit-inner-spin-button,'+
+    '#gWP1 #inputStatic::-webkit-outer-spin-button {'+
     '  display: none !important;'+
     '}'+
     '#gWP1 #divThemer:hover > #buttonThemer,'+

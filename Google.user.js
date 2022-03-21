@@ -518,8 +518,11 @@
 
   GM_addStyle(''+
     '#gWP1 a.gb_1.gb_2 {'+
+    '  background: transparent !important;'+
+    '  border: none !important;'+
+    '  color: #FFF !important;'+
     '  position: relative !important;'+
-    '  right: 170px !important;'+
+    '  text-shadow: 1px 1px 2px #000 !important;'+
     '  top: -4px !important;'+
     '}'+
     '#gWP1 #headerButtonsDiv {'+

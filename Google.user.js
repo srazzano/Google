@@ -519,11 +519,17 @@
   GM_addStyle(''+
     '#gWP1 a.gb_1.gb_2 {'+
     '  background: transparent !important;'+
-    '  border: none !important;'+
-    '  color: #FFF !important;'+
+    '  border: 1px solid transparent !important;'+
+    '  border-radius: 8px !important;'+
+    '  color: #999 !important;'+
     '  position: relative !important;'+
     '  text-shadow: 1px 1px 2px #000 !important;'+
     '  top: -4px !important;'+
+    '}'+
+    '#gWP1 a.gb_1.gb_2:hover {'+
+    '  background: #222 !important;'+
+    '  border-color: #666 !important;'+
+    '  color: #FFF !important;'+
     '}'+
     '#gWP1 #headerButtonsDiv {'+
     '  margin-bottom: -20px !important;'+

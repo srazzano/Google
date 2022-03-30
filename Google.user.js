@@ -643,7 +643,7 @@
     '  background-color: rgba(0, 0, 0, .3) !important;'+
     '  border-radius: 12px !important;'+
     '  display: inline-flex !important;'+
-    '  padding: 4px 8px 0 0 !important;'+
+    '  padding: 4px 5px 0 0 !important;'+
     '}'+
     '#gWP1 .gb_La.gb_ed.gb_jg.gb_f.gb_xf {'+
     '  margin-top: -2px !important;'+
@@ -675,15 +675,15 @@
     '#gWP1 #dateTimeContainer > #dateTime {'+
     '  background-color: transparent !important;'+
     '  border: 1px solid transparent !important;'+
-    '  border-radius: 4px !important;'+
+    '  border-radius: 8px !important;'+
     '  box-shadow: none !important;'+
     '  color: #FFF !important;'+
     '  cursor: pointer !important;'+
     '  font: 16px monospace !important;'+
-    '  height: 24px !important;'+
+    '  height: 25px !important;'+
     '  margin-left: 8px !important;'+
     '  min-width: 100px !important;'+
-    '  padding: 5px 8px 6px 8px !important;'+
+    '  padding: 6px 8px !important;'+
     '  text-shadow: 1px 1px 2px #000 !important;'+
     '}'+
     '#gWP1 #gClock:hover + #dateTime {'+

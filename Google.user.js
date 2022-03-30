@@ -13,7 +13,7 @@
 
 (function() {
 
-  //'use strict';
+  'use strict';
 
   const headerBtnCalendar = true,
         headerBtnChrome = true,
@@ -193,7 +193,6 @@
   }
 
   function dateTimeFormat(int) {
-  try {
     if (!GM_getValue('defaultDateTimeView')) return;
     let date = new Date(),
         dt = date.getDate(),
@@ -236,43 +235,33 @@
       // Delete "customFormatText + 210/customFormatText + 211" text below and add return options with bullet, comma, hyphen, slash, space, star characters.
       case 8: return customFormatText + 236;
       case 9: return customFormatText + 237;
-    }
-  } catch (ex) {}
-  }
+  } }
 
   function dateTimeDefault() {
-  try {
     dateTime.hidden = false;
     dateTime.textContent = dateTimeFormat(GM_getValue('dateFormat'));
     dateTime.title = addRemoveText + ' (' + GM_getValue('dateFormat') + ')';
     dateTimeTimer();
-  } catch (ex) {}
   }
 
   function dateTimeTimer() {
-  try {
     clearInterval(clockInterval);
     if (!GM_getValue('defaultDateTimeView')) return;
     if (GM_getValue('defaultSecondsView')) clockInterval = setInterval(function() {dateTime.textContent = dateTimeFormat(GM_getValue('dateFormat'))}, timerShort);
     else clockInterval = setInterval(function() {dateTime.textContent = dateTimeFormat(GM_getValue('dateFormat'))}, timerLong);
-  } catch (ex) {}
   }
 
   function dateTimeToggle(e) {
     let bool;
-  try {
     if (!e.shiftKey && !e.ctrlKey && !e.altKey && e.button === 0) {
       bool = dateTime.hidden !== true ? true : false;
       dateTime.hidden = bool;
       GM_setValue('defaultDateTimeView', !bool);
       if (bool) clearInterval(clockInterval);
       else {dateTime.textContent = dateTimeFormat(GM_getValue('dateFormat')); dateTimeTimer()}
-    }
-  } catch (ex) {}
-  }
+  } }
 
   function dateTimeToggleSecondsAmPm(e) {
-  try {
     if (!e.button === 0) return;
     let bool1, bool2, int;
     e.preventDefault();
@@ -289,12 +278,10 @@
       dateTime.title = addRemoveText + ' (' + GM_getValue('dateFormat') + ')';
     }
     dateTime.textContent = dateTimeFormat(GM_getValue('dateFormat'));
-  } catch (ex) {}
   }
 
   function displayHdrButtons() {
     let bool = GM_getValue('displayHeaderButtons') !== true ? true : false;
-  try {
     GM_setValue('displayHeaderButtons', bool);
     if (bool) {
       divHeader.style.display = 'block';
@@ -302,13 +289,10 @@
     } else {
       divHeader.style.display = 'none';
       displayButtons.textContent = headerButtonsFalseText;
-    }
-  } catch (ex) {}
-  }
+  } }
 
   function repositionLogo() {
     let bool = GM_getValue('googleLogoLeft') !== true ? true : false;
-  try {
     GM_setValue('googleLogoLeft', bool);
     if (bool) {
       logo1.style.opacity = 1;
@@ -316,62 +300,55 @@
     } else {
       logo1.style.opacity = 0;
       logo2.style.opacity = 1;
-    }
-  } catch (ex) {}
-  }
+  } }
 
   function searchPopupLinks() {
     let links = $q('#gWP1 #dEjpnf > li > a', true);
-  try {
     for (let i = 0; i < links.length; i++) links[i].setAttribute('target', GM_getValue('linksWhere'));
-  } catch (ex) {}
   }
 
   function searchLinksWhere() {
     let bool = GM_getValue('linksWhere') !== '_blank' ? '_blank' : '_self';
-  try {
     GM_setValue('linksWhere', bool);
     bool === '_self' ? btnSearchLinks.textContent = linksCurrentText : btnSearchLinks.textContent = linksNewText;
     searchPopupLinks();
-  } catch (ex) {}
   }
 
   function wallpaper() {
     let date = new Date(),
         day = date.getDate(),
         hour = date.getHours();
-  try {
-    if (GM_getValue('themeChanger')) {
-      if (GM_getValue('changeThemeHourly')) {
-        hour === 0 ? hour = 24 : hour = hour;
-        GM_setValue('wallpaperImage', hour);
-        body.style.background = 'url('+ GM_getValue('imageSite') + hour +'.jpg) no-repeat center center / cover';
-        btnThemer.title = activeWallpaperTooltip + hour + '\n' + settingOffTooltip;
+    try {
+      if (GM_getValue('themeChanger')) {
+        if (GM_getValue('changeThemeHourly')) {
+          hour === 0 ? hour = 24 : hour = hour;
+          GM_setValue('wallpaperImage', hour);
+          body.style.background = 'url('+ GM_getValue('imageSite') + hour +'.jpg) no-repeat center center / cover';
+          btnThemer.title = activeWallpaperTooltip + hour + '\n' + settingOffTooltip;
+        } else {
+          day = daynum[day];
+          GM_setValue('wallpaperImage', day);
+          body.style.background = 'url('+ GM_getValue('imageSite') + day +'.jpg) no-repeat center center / cover';
+          btnThemer.title = activeWallpaperTooltip + day + '\n' + settingOffTooltip;
+        }
+        btnThemer.innerHTML = changeWallpaperOnText;
+        btnWhen.style = 'opacity: 1; pointer-events: all';
+        themeImage.src = themeOn;
+        divNumber.style = 'opacity: .5; pointer-events: none';
       } else {
-        day = daynum[day];
-        GM_setValue('wallpaperImage', day);
-        body.style.background = 'url('+ GM_getValue('imageSite') + day +'.jpg) no-repeat center center / cover';
-        btnThemer.title = activeWallpaperTooltip + day + '\n' + settingOffTooltip;
+        if (GM_getValue('wallpaperStaticImage') === 0) body.style.background = 'initial';
+        else body.style.background = 'url('+ GM_getValue('imageSite') + GM_getValue('wallpaperStaticImage') +'.jpg) no-repeat center center / cover';
+        btnThemer.innerHTML = changeWallpaperOffText;
+        btnThemer.title = activeWallpaperTooltip + GM_getValue('wallpaperStaticImage') + '\n' + settingOnTooltip;
+        btnWhen.style = 'opacity: .5; pointer-events: none';
+        themeImage.src = themeOff;
+        divNumber.style = 'opacity: 1; pointer-events: all';
       }
-      btnThemer.innerHTML = changeWallpaperOnText;
-      btnWhen.style = 'opacity: 1; pointer-events: all';
-      themeImage.src = themeOn;
-      divNumber.style = 'opacity: .5; pointer-events: none';
-    } else {
-      if (GM_getValue('wallpaperStaticImage') === 0) body.style.background = 'initial';
-      else body.style.background = 'url('+ GM_getValue('imageSite') + GM_getValue('wallpaperStaticImage') +'.jpg) no-repeat center center / cover';
-      btnThemer.innerHTML = changeWallpaperOffText;
-      btnThemer.title = activeWallpaperTooltip + GM_getValue('wallpaperStaticImage') + '\n' + settingOnTooltip;
-      btnWhen.style = 'opacity: .5; pointer-events: none';
-      themeImage.src = themeOff;
-      divNumber.style = 'opacity: 1; pointer-events: all';
-    }
-  } catch (ex) {}
+    } catch (ex) {}
   }
 
   function wallpaperButtonChanger(e) {
     let num = GM_getValue('wallpaperStaticImage');
-  try {
     switch (e.target.id) {
       case 'buttonStatic': case 'buttonUp':
         num > 34 ? num = 0 : num = parseInt(num + 1);
@@ -383,29 +360,23 @@
     inpStatic.value = num;
     GM_setValue('wallpaperStaticImage', parseInt(num));
     wallpaper();
-  } catch (ex) {}
   }
 
   function wallpaperDailyHourly() {
     let bool = GM_getValue('changeThemeHourly') !== true ? true : false;
-  try {
     GM_setValue('changeThemeHourly', bool);
     bool ? btnWhen.innerHTML = hourlyText : btnWhen.innerHTML = dailyText;
     wallpaper();
-  } catch (ex) {}
   }
 
   function wallpaperInputChanger(e) {
     let inp = e.target.value;
-  try {
     GM_setValue('wallpaperStaticImage', parseInt(inp));
     wallpaper();
-  } catch (ex) {}
   }
 
   function wallpaperSite() {
     let str = GM_getValue('imageSite');
-  try {
     if (str === githubSite) {
       GM_setValue('imageSite', soncoSite);
       btnSites.innerHTML = 'Sonco';
@@ -414,30 +385,23 @@
       btnSites.innerHTML = 'GitHub';
     }
     wallpaper();
-  } catch (ex) {}
   }
 
   function wallpaperThemer() {
     let bool = GM_getValue('themeChanger') !== true ? true : false;
-  try {
     GM_setValue('themeChanger', bool);
     wallpaperTimer(bool);
-  } catch (ex) {}
   }
 
   function wallpaperTimer(e) {
-  try {
     e ? wallpaperInterval = setInterval(() => wallpaper(), themerInterval) : clearInterval(wallpaperInterval);
     wallpaper();
-  } catch (ex) {}
   }
 
   function whenClose() {
-  try {
     clearInterval(wallpaperInterval);
     clearInterval(clockInterval);
     window.removeEventListener('unload', () => whenClose());
-  } catch (ex) {}
   }
 
   if (!GM_getValue('changeThemeHourly')) GM_setValue('changeThemeHourly', false);
@@ -455,9 +419,7 @@
 
   function init() {
     window.removeEventListener('load', () => init());
-  try {
     wallpaper();
-    //if (signIn) signIn.click();
     if (headerBtnCalendar) divHeader.appendChild(btnCalendar);
     if (headerBtnChrome) divHeader.appendChild(btnChrome);
     if (headerBtnEarth) divHeader.appendChild(btnEarth);
@@ -548,12 +510,10 @@
     darkTheme.title = darkThemeTooltip;
     if (signIn) signIn.click();
     else clearInterval(initInterval);
-  } catch (ex) {}
   }
 
   wallpaperTimer(GM_getValue('themeChanger'));
 
-  //window.addEventListener("DOMContentLoaded", () => init());
   window.addEventListener('load', () => init());
   window.addEventListener('unload', () => whenClose());
 

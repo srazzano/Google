@@ -934,7 +934,7 @@
     '#gWP1 #gb > div > div[style*="width: 328px;"] {'+
     '  height: calc(-140px + 100vh) !important;'+
     '}'+
-    '#gWP1 .gb_Td.gb_Va.gb_Id > div[style] {'+
+    '#gWP1 .gb_Wd.gb_Za.gb_Ld > div[style] {'+
     '  margin-top: 50px !important;'+
     '}'+
   '');

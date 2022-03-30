@@ -525,7 +525,7 @@
     '  border: 1px solid transparent !important;'+
     '  border-radius: 8px !important;'+
     '  color: #999 !important;'+
-    '  padding-top: 12px !important;'+
+    '  padding-top: 14px !important;'+
     '  position: relative !important;'+
     '  text-shadow: 1px 1px 2px #000 !important;'+
     '  top: -2px !important;'+

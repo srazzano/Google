@@ -419,7 +419,7 @@
 
   function init() {
     window.removeEventListener('load', () => init());
-    wallpaper();
+    if (signIn) signIn.click();
     if (headerBtnCalendar) divHeader.appendChild(btnCalendar);
     if (headerBtnChrome) divHeader.appendChild(btnChrome);
     if (headerBtnEarth) divHeader.appendChild(btnEarth);
@@ -508,8 +508,8 @@
     popup.appendChild(liSites);
     settingsButton.onclick = () => searchPopupLinks();
     darkTheme.title = darkThemeTooltip;
-    if (signIn) signIn.click();
-    else clearInterval(initInterval);
+    wallpaper();
+    if (!signIn) clearInterval(initInterval);
   }
 
   wallpaperTimer(GM_getValue('themeChanger'));
@@ -620,7 +620,7 @@
     '  margin-right: 4px !important;'+
     '  padding: 0 !important;'+
     '  position: relative !important;'+
-    '  top: -4px !important;'+
+    '  top: -3px !important;'+
     '  width: 40px !important;'+
     '}'+
     '#gWP1 #gbwa > div > a {'+
@@ -644,7 +644,7 @@
     '  background-color: rgba(0, 0, 0, .3) !important;'+
     '  border-radius: 12px !important;'+
     '  display: inline-flex !important;'+
-    '  padding: 4px 5px 0 0 !important;'+
+    '  padding: 4px 5px 1px 0 !important;'+
     '}'+
     '#gWP1 .gb_La.gb_ed.gb_jg.gb_f.gb_xf {'+
     '  margin-top: -2px !important;'+

@@ -419,8 +419,6 @@
 
   function init() {
     window.removeEventListener('load', () => init());
-    wallpaper();
-    if (signIn) signIn.click();
     if (headerBtnCalendar) divHeader.appendChild(btnCalendar);
     if (headerBtnChrome) divHeader.appendChild(btnChrome);
     if (headerBtnEarth) divHeader.appendChild(btnEarth);
@@ -509,7 +507,7 @@
     popup.appendChild(liSites);
     settingsButton.onclick = () => searchPopupLinks();
     darkTheme.title = darkThemeTooltip;
-    if (!signIn) clearInterval(initInterval);
+    wallpaper();
   }
 
   wallpaperTimer(GM_getValue('themeChanger'));
@@ -517,7 +515,7 @@
   window.addEventListener('load', () => init());
   window.addEventListener('unload', () => whenClose());
 
-  initInterval = setInterval(() => {init()}, openInterval);
+  initInterval = setInterval(() => signIn ? signIn.click() : clearInterval(initInterval), openInterval);
 
   GM_addStyle(''+
     '#gWP1 a.gb_1.gb_2 {'+

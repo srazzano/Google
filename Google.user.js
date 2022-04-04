@@ -419,6 +419,7 @@
 
   function init() {
     window.removeEventListener('load', () => init());
+    wallpaper();
     if (signIn) signIn.click();
     if (headerBtnCalendar) divHeader.appendChild(btnCalendar);
     if (headerBtnChrome) divHeader.appendChild(btnChrome);
@@ -508,7 +509,6 @@
     popup.appendChild(liSites);
     settingsButton.onclick = () => searchPopupLinks();
     darkTheme.title = darkThemeTooltip;
-    wallpaper();
     if (!signIn) clearInterval(initInterval);
   }
 

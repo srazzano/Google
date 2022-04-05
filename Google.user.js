@@ -404,19 +404,6 @@
     window.removeEventListener('unload', () => whenClose());
   }
 
-  if (!GM_getValue('changeThemeHourly')) GM_setValue('changeThemeHourly', false);
-  if (!GM_getValue('dateFormat')) GM_setValue('dateFormat', 1);
-  if (!GM_getValue('defaultAMPM')) GM_setValue('defaultAMPM', false);
-  if (!GM_getValue('defaultDateTimeView')) GM_setValue('defaultDateTimeView', false);
-  if (!GM_getValue('defaultSecondsView')) GM_setValue('defaultSecondsView', false);
-  if (!GM_getValue('displayHeaderButtons')) GM_setValue('displayHeaderButtons', false);
-  if (!GM_getValue('googleLogoLeft')) GM_setValue('googleLogoLeft', false);
-  if (!GM_getValue('imageSite')) GM_setValue('imageSite', githubSite);
-  if (!GM_getValue('linksWhere')) GM_setValue('linksWhere', '_self');
-  if (!GM_getValue('themeChanger')) GM_setValue('themeChanger', false);
-  if (!GM_getValue('wallpaperImage')) GM_setValue('wallpaperImage', 0);
-  if (!GM_getValue('wallpaperStaticImage')) GM_setValue('wallpaperStaticImage', 0);
-
   function init() {
     window.removeEventListener('load', () => init());
     if (headerBtnCalendar) divHeader.appendChild(btnCalendar);
@@ -510,28 +497,38 @@
     wallpaper();
   }
 
+  if (!GM_getValue('changeThemeHourly')) GM_setValue('changeThemeHourly', false);
+  if (!GM_getValue('dateFormat')) GM_setValue('dateFormat', 1);
+  if (!GM_getValue('defaultAMPM')) GM_setValue('defaultAMPM', false);
+  if (!GM_getValue('defaultDateTimeView')) GM_setValue('defaultDateTimeView', false);
+  if (!GM_getValue('defaultSecondsView')) GM_setValue('defaultSecondsView', false);
+  if (!GM_getValue('displayHeaderButtons')) GM_setValue('displayHeaderButtons', false);
+  if (!GM_getValue('googleLogoLeft')) GM_setValue('googleLogoLeft', false);
+  if (!GM_getValue('imageSite')) GM_setValue('imageSite', githubSite);
+  if (!GM_getValue('linksWhere')) GM_setValue('linksWhere', '_self');
+  if (!GM_getValue('themeChanger')) GM_setValue('themeChanger', false);
+  if (!GM_getValue('wallpaperImage')) GM_setValue('wallpaperImage', 0);
+  if (!GM_getValue('wallpaperStaticImage')) GM_setValue('wallpaperStaticImage', 0);
+
   wallpaperTimer(GM_getValue('themeChanger'));
 
   window.addEventListener('load', () => init());
   window.addEventListener('unload', () => whenClose());
 
-  initInterval = setInterval(() => signIn ? signIn.click() : clearInterval(initInterval), openInterval);
+  initInterval = setInterval(() => {
+    if (signIn) {
+      init();
+      signIn.click();
+    } else clearInterval(initInterval);
+  }, openInterval);
 
   GM_addStyle(''+
     '#gWP1 a.gb_1.gb_2 {'+
-    '  background: transparent !important;'+
-    '  border: 1px solid transparent !important;'+
     '  border-radius: 8px !important;'+
-    '  color: #999 !important;'+
+	'  color: #FFF !important;'+
+    '  height: 42px !important;'+
+    '  margin-top: -2px !important;'+
     '  padding-top: 13px !important;'+
-    '  position: relative !important;'+
-    '  text-shadow: 1px 1px 2px #000 !important;'+
-    '  top: -2px !important;'+
-    '}'+
-    '#gWP1 a.gb_1.gb_2:hover {'+
-    '  background: #222 !important;'+
-    '  border-color: #666 !important;'+
-    '  color: #FFF !important;'+
     '}'+
     '#gWP1 #headerButtonsDiv {'+
     '  margin-bottom: -20px !important;'+

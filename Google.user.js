@@ -611,12 +611,15 @@
     '  background-color: #181A1B !important;'+
     '  border: 1px solid #000 !important;'+
     '}'+
-    '#gWP1 #gbwa {'+
+    '#gWP1 .gb_z.gb_hd.gb_f.gb_Af {'+
+    '  border: 1px solid #333 !important;'+
+    '  border-radius: 50% !important;'+
+    '  height: 38px !important;'+
     '  margin-right: 4px !important;'+
     '  padding: 0 !important;'+
     '  position: relative !important;'+
     '  top: -3px !important;'+
-    '  width: 40px !important;'+
+    '  width: 38px !important;'+
     '}'+
     '#gWP1 #gbwa > div > a {'+
     '  background-color: transparent !important;'+
@@ -655,7 +658,7 @@
     '  padding: 0 !important;'+
     '}'+
     '#gWP1 .gb_hd {'+
-    '  margin: 3px 4px 0 6px !important;'+
+    '  margin: 3px 4px 0 8px !important;'+
     '  padding: 0 !important;'+
     '}'+
     '#gWP1 #dateTimeContainer {'+

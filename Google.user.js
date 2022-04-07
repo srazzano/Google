@@ -1,4 +1,3 @@
-
 // ==UserScript==
 // @name         Google w/Wallpaper
 // @namespace    srazzano
@@ -233,8 +232,8 @@
       case 6: return w + space + bullet + space + m + slash + d + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
       case 7: return w + space + bullet + space + mm + slash + dd + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
       // Delete "customFormatText + 210/customFormatText + 211" text below and add return options with bullet, comma, hyphen, slash, space, star characters.
-      case 8: return customFormatText + 236;
-      case 9: return customFormatText + 237;
+      case 8: return customFormatText + 235;
+      case 9: return customFormatText + 236;
   } }
 
   function dateTimeDefault() {

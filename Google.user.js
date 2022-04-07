@@ -572,6 +572,9 @@
     '  top: -13px !important;'+
     '  width: 25px !important;'+
     '}'+
+    '#gWP1 #gWallpaperPopup > #imgClose:hover {'+
+    '  background: #900 !important;'+
+    '}'+
     '#gWP1 #headerButtonsDiv {'+
     '  margin-bottom: -20px !important;'+
     '  position: absolute !important;'+

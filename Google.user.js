@@ -101,7 +101,6 @@
         changeWallpaperOnText = 'Change wallpaper: On',
         closePopupTooltip = 'Close Popup',
         dailyHourlyTooltip = 'Change wallpaper Daily/Hourly',
-        darkThemeTooltip = '#gb is set to transparent in script',
         defaultWallpaperTooltip = '1 - 35 and 0 for no wallpaper',
         logoCenterTooltip = 'Reposition logo to top-center',
         logoLeftTooltip = 'Reposition Logo to Top-Left',
@@ -142,7 +141,6 @@
         center = $q('html[itemtype="http://schema.org/WebPage"] .FPdoLc.lJ9FBc > center'),
         form = $q('html[itemtype="http://schema.org/WebPage"] .L3eUgb form'),
         placeHolder = $q('html[itemtype="http://schema.org/WebPage"] input[name="q"]'),
-        darkTheme = $q('html[itemtype="http://schema.org/WebPage"] .EzVRq.pENqnf'),
         searchButton = $q('html[itemtype="http://schema.org/WebPage"] input[name="btnK"]'),
         wallpaperBtn = $c('input', {id: 'gWallpaper', type: 'button', value: 'Wallpaper', onclick: e => wallpaperPopup(e)}),
         wallpaperPop = $c('div', {id: 'gWallpaperPopup', style: 'display: none;'}),
@@ -231,8 +229,8 @@
       case 6: return w + space + bullet + space + m + slash + d + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
       case 7: return w + space + bullet + space + mm + slash + dd + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
       // Delete "customFormatText + 210/customFormatText + 211" text below and add return options with bullet, comma, hyphen, slash, space, star characters.
-      case 8: return customFormatText + 235;
-      case 9: return customFormatText + 236;
+      case 8: return customFormatText + 232;
+      case 9: return customFormatText + 233;
   } }
 
   function dateTimeDefault() {
@@ -425,7 +423,6 @@
   }
 
   function init() {
-  //try {
     window.removeEventListener('load', () => init());
     if (headerBtnCalendar) divHeader.appendChild(btnCalendar);
     if (headerBtnChrome) divHeader.appendChild(btnChrome);
@@ -511,9 +508,7 @@
       divHeader.style.display = 'none';
       displayButtons.textContent = headerButtonsFalseText;
     }
-    darkTheme.title = darkThemeTooltip;
     wallpaper();
-  //} catch(ex) {}
   }
 
   if (!GM_getValue('changeThemeHourly')) GM_setValue('changeThemeHourly', false);
@@ -535,10 +530,7 @@
   window.addEventListener('unload', () => whenClose());
 
   initInterval = setInterval(() => {
-    if (signIn) {
-      //init();
-      signIn.click();
-    } else clearInterval(initInterval);
+    signIn ? signIn.click() : clearInterval(initInterval);
   }, openInterval);
 
   GM_addStyle(''+
@@ -774,6 +766,10 @@
     '}'+
     '#gWP1 #gWallpaperPopup > .popDiv:hover {'+
     '  background-color: #333 !important;'+
+    '  color: #FFF !important;'+
+    '}'+
+    '#gWP1 #gWallpaperPopup > .popDiv:hover > button {'+
+    '  color: #FFF !important;'+
     '}'+
     '#gWP1 #themeImage {'+
     '  left: 9px !important;'+

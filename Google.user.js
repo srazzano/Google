@@ -132,7 +132,7 @@
         themeOn = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACKElEQVR42pWSS2gTURSG/+nEpCE2qWkSQaK0iosRKUSNuinMQmoFKaKCmyKCEsSISzdWQcWNbhSjYhARdKELUapQFZVgu7CtWgR1ELH1EYtNbPNoXm0zif90UpBJlHrgzD1z/3u+OefOEWCwDz0QueyhH6D7K9tD9Gv0O2s6of55XjAkS9phaX2XDY0tgMmmC8UskByF8vpWVoMSolQBmOzkMirJZ+wwvWRYAOqsuljK81FP0GYokWNpvrQQMmkEhKR1HUE4fMDMZX7dA6heXRSjTI4B5kNAahjKm0eXCDhsBMSltlMuCA+R+j4IR1Mj1RW6WP6G1EQSjuUbGW+H0nfiFwHuaoC8z4XMXWDWATTsYNWVFgpsYeo+sCgFLN7FNm7UBISkte5guhDH2Gdg5SpW3OCc02amJjHCvWXcs9e7obyL12zBOT0txr3Nal30ExBLMmGpro2NAx525F0NRL+IJYtFdVddomZnjzZt2LopMVRWS8ix2kQG+GELw2cOwLoEyBXMxe6Lpp1P+nMPas5BxTy958Xx1lYVaQIEQYTVouLkFevA9Xv5I9RfaT/2XwB0bUHo5oXO4NuBHgwWw2h3BtC8G3sp3abP/nUS563Dj/beq77Hz54PY8TOFkoB+A+ijVK/8WxNgDZ25/Yjr3wFMhzIF+/x9Gdi7tY/LhSASCRSno9lWT7OJUyP/RegkqjFpxm7GE4sGEDr1hIrFWzj0kfPGg/9BuI3xhFLjykHAAAAAElFTkSuQmCC',
         imgClock = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAHJElEQVR42s2ZB1AUZxTH/wd3cCBgpAoiTURNNIKEqDNRMSQqxjKAJCoay4xRI1FHY6ImE3svsUvKaGLLJDYsY0nEhgENoqhYwEOpJ1UHDmkHXN633pK9xt0pYfxmvnm73367+7v3vve+t+9EeMm2bhwCSHxKfSj1ztTbUBepL6uoP6f+kPop6nvm7UPmy7xHZM5kgrInsZb6ZLqxsoOd9OogH9eh9tZiSCwsNOYqGxuhqK3Hn9nFpwoqa/oQsR0N76L+FcEqWhSQwCQkfqMeGe7rKgpwtOOAVKIXt4tUKr33Ca8z4MynlTj9uJhNPkJ9DIEqXxmQ4GJI7GVgXTt4waKu/MUFemHh8xok1rqjqFCGupoKqGiMeyjBW0kd4Obuj35WT9C+jRRQa5hgS+6WVrioQccT5P6XBiS4QzRh4OeBPo5SKwmnCUWtEkdKpCgtzISrX190ChnDyTZveGjcW11RiOJHyZD9cwBFWUlwdu+CSOdq2FtLOM3W1CmxIy37KVFeIMhRZgMS3A07iWX9tEDfIHqguKGhEZfzSpFeoULwyOXwDoyAiDehluTMq2X27LSjuB6/EG3ph8R4KGFpacH94Li0xymVygYxQfYyGZDBOUkl5ZN6eIeyX1uoqML++wXoOWQhug2YbhBqRFQ0Uq8mQS6Xc+M8pFDev7wTaadWIKZbB7S3t+Ugd9/JuVhWo2yrD1KkB+4Qac6LNBfCzjPKFDgrr8aQ2QmwbdteLxwvh0eO4gALCgqaxvRBMvOf/j4Mgz1s0MXJnhtXazJX29wiLbgYGtgyN8TfkWkus7QCCWUWGP71NYNQQg3ygEyDhuCES+DEmt4Ic2pEgLMD8yxsvJbB1uRMoeOIBHAslNTOCPQR2UjEeFJZjYOPFYj4Lt0kOG1AY3C8jF/WA9G+9py5meNsT8tmF635ECQEPEShJOpNl7ZgDrEpNQsj5qcYNavweFhElAagMTjWqsjcJ0mTs4M7cY5zr6ScxcrDvKlFaji2EMq/DPHnzn/Nt4RHzyiDDqEPjrWwwUNw7/YtDrBRHRObg+NlRmIc5LePYqJnA3e+PkXGLjCnUfCAO0l7096itcDi3O7MZ4hcdNdkOP5FH4aH4+6t/wBNgePlsRU9MTmgHeykVrwW4whwOg9YOyvYz0psaYk9eRbw7z/DaJzThqtVPkdE5GikpaZygA0NDU1zLbOygIAAKJVKg5B5t4/h0ZU4TPBqRD3duzn1UR0BWotYVkKvSuY8lyZuTH2ET1bmmgXH5OPcbMTGztQBZHDuoaF4cvEilL6+zWry6GJ/zAn2456/IUXGPLovA1xO5v2GmZd57rk6b7w/5Q+z4FhLTErC6Oho7pgH5OHkFy6g3s/PqJkTfxmHQdJczqPVZl7BAG9M7u4V1M7WGlfzy6Dqv0SveZuDY/JwfDxmxcY2ASIz0yw41piZrZKXo4+nE55V1WJXeu5NBqig9WfH0qetd0sRPvschRZ3s+BY0wAkc/Jw1R07cmNisdhobKxRFOH8jqH4orsLl57ROqxkgI18eNlA62/Mqjyz4LLzcpCfL0fqjVSsW7UaXWj8AXW25qo8PWGsae/Zx5Z2wdx3/LhzFm4YoIoA+QGMXVNgluY8BRCbZkzDrO1x6ErHGc1AyWQynTH+efFLOkPIowMYs1ZuMhyTOfm5nAYXkYMwzW0myNkEybfA4GAo6+vBW9PGtg1+37dHL9wLDQboAGqYeOzqfJPhmjRy5hRCp0xt0tzmbdvg5uZG2vWAq5OLURMLn3d8WVcdE2s4yUdzzjc5iSlwfCg5sHwxYr5djHkL5mPKpMmQSCQG7zH0vOqKIlz6YZiOk2iEGVHoMvgERZoFx7w1XvYAM6ZMx5XkvzmtMUBz4JgsSD8B6bWVOmFGI1AnKH0Q9tlBs+BYnOO3MdbYPszCijlwrCXtnYDBNnk6gVpnq2OebA6cKdo2NofJkyu66W517KJGskCpVucBsfCh3aQ14Zh5c5J/wkRvlWayoAbUTLcePkPUonutBsfamfUhlG45Gky3tBJWMToERaFrv2mtAidL/hnF6ccxyetFkquTsKohdVL+kQtSYOPQnlv0Xt7e/wscCy3ntgxoPuVXA+r9aIpe+kDDQ1sSjsmzG97Fx74Oxj+a1JC6n51PLRGx8DoH2dJwCVsH4gNnlWmfnUJT6/twHzTrL9jYu7WYWS/9OAxDPGzN+3AXQOotfbw9eD4C3pv6yg5xP2H9y5c+hJCseDS1l38IVI3gi0d3KlQIGrYEnj1GmAXH4tydM0vhQPv8ePq8fKXikdDc+spvh4ulKCvKhLNPH/j0iibZG9Z2rjpmLMu5hpybhzjp6NoZo9xqW678JoBstoB5qcYNJYVZqKtREJy6gCliBUx7OLv5IdSmWKOA2SBxQIY8Dy1SwBRAvr4lYC3Q17OIbgC2Vf6G+BdSB2wnAlUJKQAAAABJRU5ErkJggg==',
         logoButton = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAs0lEQVR42mNkoDFgHLWAKhY8mCi6CkiFYpEKU8h/vRpJXSgynygLYJpANNSSUGyWQOVXAdmMJFmAzUIsFoWBDAcxKLYAzaJV6OIELbBdcec/PoMPR6jA9WCzhGoWkO0DSoKHahaQAuhvAdD7uOIgDD0TUdMCuOGkpDJiLUBxOS0sIDt4CFkAz/5QALJgNakW4bIApQBDUwK3CFvpSYwFoehFMAP2TAWyJIxkH1AbjFpAEAAARmVuGUdYZKsAAAAASUVORK5CYII=',
-        popCloseBtn = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAdElEQVR42mNkoANgHLVk1JKBs+Tu3bv/lZWVGcmVJ2gJyAAkrgbQsJtIcupA6gaMj88iQpagGASzCJc4JcGFbqAXEG8j1gKiLMFhEdEWEG0J1CJPNB94AS3YTozewWMJzYOL5hFPlyRMl8xILTBqyagltAMA/rNOGn8Nwn0AAAAASUVORK5CYII=',
+        popCloseBtn = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAbElEQVR42mNkoANgHLVk1JKBs+Tu3bv/lZWVGcmVJ2gJyAAYG5tBhORJ8gk2g4i1gChLsBlIigVEW4JuESkWkGQJqUE0OH2CzQJSLCIpdQFBGNDQ1UCxUCB7FbEWDZ58QtMcTy0wasmoJbQDAGtLSRok0brUAAAAAElFTkSuQmCC',
         downButton = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAUCAYAAABiS3YzAAAAuklEQVR42mNkoAFgHDWUPob+BwJGICCkGZc6XIamAamZ+AwGGQik0oFKZhFrKEj8LRALYjMYauB7IBYGSv8nOkyB+jyA1HawIiSDoQaCgCdQeAfRYYpkwBkgZQwzGMnAs0CuCS59hAzVB1JzYQbDDATiZKChF8kyFGrwSiAVhiS0CmhgOD49xBgqCaSuArEgAyRytIGGPqfIUKjB7UCqAog7gAZWElJPdI4CGrwfaKAjMWqHeN4fOYYCALmCRxW5rmXrAAAAAElFTkSuQmCC',
         upButton = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAUCAYAAABiS3YzAAAAsElEQVR42mNkoAFgHDV04Az9////fkZGRkeqGQo0sB1IVQBxB9DgSooNBRooCaSuArEgEL8HYm2gwc8pNXQlkApDEloFNDScbEOBBuoDqblAbIwkfBaIk4EGXyTX0DMwA4GGMAL5/2EGA7kmJBsK1O8BpLbDDEQShxnsCRTeQbShQH0g8bdALIhsIJrBoEgTBnmAWEPTgNRMbAaiGZwOVDKLWEP/4zOQkLphmPeHp6EA2JNHFW0nieAAAAAASUVORK5CYII=',
         body = $q('html[itemtype="http://schema.org/WebPage"] > body'),
@@ -146,17 +146,16 @@
         searchButton = $q('html[itemtype="http://schema.org/WebPage"] input[name="btnK"]'),
         wallpaperBtn = $c('input', {id: 'gWallpaper', type: 'button', value: 'Wallpaper', onclick: e => wallpaperPopup(e)}),
         wallpaperPop = $c('div', {id: 'gWallpaperPopup', style: 'display: none;'}),
-        divButtons = $c('div', {id: 'divButtons'}),
-        divLinks = $c('div', {id: 'divLinks'}),
-        divNumber = $c('div', {id: 'divNumber'}),
-        divSites = $c('div', {id: 'divSites'}),
-        divThemer = $c('div', {id: 'divThemer'}),
+        divButtons = $c('div', {id: 'divButtons', className: 'popDiv'}),
+        divLinks = $c('div', {id: 'divLinkss', className: 'popDiv'}),
+        divNumber = $c('div', {id: 'divNumbers', className: 'popDiv'}),
+        divSites = $c('div', {id: 'divSites', className: 'popDiv'}),
+        divThemer = $c('div', {id: 'divThemer', className: 'popDiv'}),
+        spanLinks = $c('span', {id: 'spanLinks', className: 'popSpan'}),
+        spanNumber = $c('span', {id: 'spanNumber', className: 'popSpan'}),
+        spanSites = $c('span', {id: 'spanSites', className: 'popSpan'}),
+        spanThemer = $c('span', {id: 'spanThemer', className: 'popSpan'}),
         imgClose = $c('img', {id: 'imgClose', src: popCloseBtn, onclick: e => wallpaperPopup(e)}),
-        spanButtons = $c('span', {className: 'gSpan'}),
-        spanLinks = $c('span', {className: 'gSpan'}),
-        spanNumber = $c('span', {className: 'gSpan'}),
-        spanSites = $c('span', {className: 'gSpan'}),
-        spanThemer = $c('span', {className: 'gSpan'}),
         themeImage = $c('img', {id: 'themeImage'}),
         logo1 = $c('span', {id: 'logo1'}),
         logo1Btn = $c('input', {id: 'logo1Btn', type: 'image', src: logoButton, title: logoCenterTooltip, onclick: () => repositionLogo()}),
@@ -165,16 +164,16 @@
         dateTimeContainer = $c('div', {id: 'dateTimeContainer'}),
         btnClock = $c('button', {id: 'gClock', style: 'background: url('+ imgClock +') no-repeat center', title: hideShowText, onmousedown: e => dateTimeToggle(e)}),
         dateTime = $c('span', {id: 'dateTime', onmousedown: e => dateTimeToggleSecondsAmPm(e)}),
-        btnThemer = $c('button', {id: 'buttonThemer', onclick: () => wallpaperThemer()}),
-        btnWhen = $c('button', {id: 'buttonWhen', onclick: () => wallpaperDailyHourly()}),
+        btnThemer = $c('button', {id: 'buttonThemer', onclick: e => wallpaperThemer(e)}),
+        btnWhen = $c('button', {id: 'buttonWhen', onclick: e => wallpaperDailyHourly(e)}),
         btnStatic = $c('button', {id: 'buttonStatic', onclick: e => wallpaperButtonChanger(e)}),
         btnUp = $c('input', {id: 'buttonUp', type: 'image', src: upButton, onclick: e => wallpaperButtonChanger(e)}),
         inpStatic = $c('input', {id: 'inputStatic', type: 'number', min: 0, max: 35, oninput: e => wallpaperInputChanger(e)}),
         btnDown = $c('input', {id: 'buttonDown', type: 'image', src: downButton, onclick: e => wallpaperButtonChanger(e)}),
-        spnSites = $c('button', {id: 'spanSites', title: buttonSitesTooltip, onclick: () => wallpaperSite()}),
-        btnSites = $c('button', {id: 'buttonSites', title: buttonSitesTooltip, onclick: () => wallpaperSite()}),
-        btnSearchLinks = $c('button', {id: 'searchLinks', onclick: () => searchLinksWhere()}),
-        displayButtons = $c('button', {id: 'displayButtons', onclick: () => displayHdrButtons()});
+        spnSites = $c('button', {id: 'spanSites', title: buttonSitesTooltip, onclick: e => wallpaperSite(e)}),
+        btnSites = $c('button', {id: 'buttonSites', title: buttonSitesTooltip, onclick: e => wallpaperSite(e)}),
+        btnSearchLinks = $c('button', {id: 'searchLinks', onclick: e => searchLinksWhere(e)}),
+        displayButtons = $c('button', {id: 'displayButtons', onclick: e => displayHdrButtons(e)});
 
   let clockInterval,
       initInterval,
@@ -279,7 +278,7 @@
     dateTime.textContent = dateTimeFormat(GM_getValue('dateFormat'));
   }
 
-  function displayHdrButtons() {
+  function displayHdrButtons(e) {
     let bool = GM_getValue('displayHeaderButtons') !== true ? true : false;
     GM_setValue('displayHeaderButtons', bool);
     if (bool) {
@@ -288,7 +287,9 @@
     } else {
       divHeader.style.display = 'none';
       displayButtons.textContent = headerButtonsFalseText;
-  } }
+    }
+    e.preventDefault();
+  }
 
   function repositionLogo() {
     let bool = GM_getValue('googleLogoLeft') !== true ? true : false;
@@ -306,11 +307,12 @@
     for (let i = 0; i < links.length; i++) links[i].setAttribute('target', GM_getValue('linksWhere'));
   }
 
-  function searchLinksWhere() {
+  function searchLinksWhere(e) {
     let bool = GM_getValue('linksWhere') !== '_blank' ? '_blank' : '_self';
     GM_setValue('linksWhere', bool);
     bool === '_self' ? btnSearchLinks.textContent = linksCurrentText : btnSearchLinks.textContent = linksNewText;
     searchPopupLinks();
+    e.preventDefault();
   }
 
   function wallpaper() {
@@ -359,19 +361,22 @@
     inpStatic.value = num;
     GM_setValue('wallpaperStaticImage', parseInt(num));
     wallpaper();
+    e.preventDefault();
   }
 
-  function wallpaperDailyHourly() {
+  function wallpaperDailyHourly(e) {
     let bool = GM_getValue('changeThemeHourly') !== true ? true : false;
     GM_setValue('changeThemeHourly', bool);
     bool ? btnWhen.innerHTML = hourlyText : btnWhen.innerHTML = dailyText;
     wallpaper();
+    e.preventDefault();
   }
 
   function wallpaperInputChanger(e) {
     let inp = e.target.value;
     GM_setValue('wallpaperStaticImage', parseInt(inp));
     wallpaper();
+    e.preventDefault();
   }
 
   function wallpaperPopup(e) {
@@ -387,7 +392,7 @@
     }
   }
 
-  function wallpaperSite() {
+  function wallpaperSite(e) {
     let str = GM_getValue('imageSite');
     if (str === githubSite) {
       GM_setValue('imageSite', soncoSite);
@@ -397,12 +402,14 @@
       btnSites.innerHTML = 'GitHub';
     }
     wallpaper();
+    e.preventDefault();
   }
 
-  function wallpaperThemer() {
+  function wallpaperThemer(e) {
     let bool = GM_getValue('themeChanger') !== true ? true : false;
     GM_setValue('themeChanger', bool);
     wallpaperTimer(bool);
+    e.preventDefault();
   }
 
   function wallpaperTimer(e) {
@@ -434,7 +441,7 @@
     if (headerBtnYouTubeTV) divHeader.appendChild(btnYouTubeTV);
     logo1.appendChild(logo1Btn);
     logo2.appendChild(logo2Btn);
-    center.insertBefore(wallpaperBtn, center.childNodes[3]);
+    center.insertBefore(wallpaperBtn, center.childNodes[4]);
     body.appendChild(logo1);
     body.id = 'gWP1';
     if (GM_getValue('googleLogoLeft')) {
@@ -488,13 +495,12 @@
     spanSites.appendChild(divSites);
     btnSearchLinks.textContent = GM_getValue('linksWhere') === '_self' ? linksCurrentText : linksNewText;
     divButtons.appendChild(displayButtons);
-    spanButtons.appendChild(divButtons);
-    wallpaperPop.appendChild(spanButtons);
-    wallpaperPop.appendChild(spanThemer);
-    wallpaperPop.appendChild(spanNumber);
-    wallpaperPop.insertBefore(spanLinks, wallpaperPop.firstChild);
-    wallpaperPop.insertBefore(spanButtons, wallpaperPop.firstChild);
-    wallpaperPop.appendChild(spanSites);
+    wallpaperPop.appendChild(divButtons);
+    wallpaperPop.appendChild(divThemer);
+    wallpaperPop.appendChild(divNumber);
+    wallpaperPop.insertBefore(divLinks, wallpaperPop.firstChild);
+    wallpaperPop.insertBefore(divButtons, wallpaperPop.firstChild);
+    wallpaperPop.appendChild(divSites);
     wallpaperPop.appendChild(imgClose);
     center.appendChild(wallpaperPop);
     if (GM_getValue('displayHeaderButtons')) {
@@ -559,8 +565,8 @@
     '  text-align: left !important;'+
     '  width: 250px !important;'+
     '}'+
-    '#gWP1 #gWallpaperPopup > .gSpan > div {'+
-    '  padding: 2px  !important;'+
+    '#gWP1 #gWallpaperPopup > .popDiv {'+
+    '  padding: 2px !important;'+
     '}'+
     '#gWP1 #gWallpaperPopup > #imgClose {'+
     '  background: #222 !important;'+
@@ -765,11 +771,7 @@
     '#gWP1 #divSites {'+
     '  margin-top: 2px !important;'+
     '}'+
-    '#gWP1 #divThemer:hover,'+
-    '#gWP1 #divNumber:hover,'+
-    '#gWP1 #divLinks:hover,'+
-    '#gWP1 #divButtons:hover,'+
-    '#gWP1 #divSites:hover {'+
+    '#gWP1 #gWallpaperPopup > .popDiv:hover {'+
     '  background-color: #333 !important;'+
     '}'+
     '#gWP1 #themeImage {'+

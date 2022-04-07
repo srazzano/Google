@@ -1,3 +1,4 @@
+
 // ==UserScript==
 // @name         Google w/Wallpaper
 // @namespace    srazzano
@@ -132,31 +133,31 @@
         themeOn = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACKElEQVR42pWSS2gTURSG/+nEpCE2qWkSQaK0iosRKUSNuinMQmoFKaKCmyKCEsSISzdWQcWNbhSjYhARdKELUapQFZVgu7CtWgR1ELH1EYtNbPNoXm0zif90UpBJlHrgzD1z/3u+OefOEWCwDz0QueyhH6D7K9tD9Gv0O2s6of55XjAkS9phaX2XDY0tgMmmC8UskByF8vpWVoMSolQBmOzkMirJZ+wwvWRYAOqsuljK81FP0GYokWNpvrQQMmkEhKR1HUE4fMDMZX7dA6heXRSjTI4B5kNAahjKm0eXCDhsBMSltlMuCA+R+j4IR1Mj1RW6WP6G1EQSjuUbGW+H0nfiFwHuaoC8z4XMXWDWATTsYNWVFgpsYeo+sCgFLN7FNm7UBISkte5guhDH2Gdg5SpW3OCc02amJjHCvWXcs9e7obyL12zBOT0txr3Nal30ExBLMmGpro2NAx525F0NRL+IJYtFdVddomZnjzZt2LopMVRWS8ix2kQG+GELw2cOwLoEyBXMxe6Lpp1P+nMPas5BxTy958Xx1lYVaQIEQYTVouLkFevA9Xv5I9RfaT/2XwB0bUHo5oXO4NuBHgwWw2h3BtC8G3sp3abP/nUS563Dj/beq77Hz54PY8TOFkoB+A+ijVK/8WxNgDZ25/Yjr3wFMhzIF+/x9Gdi7tY/LhSASCRSno9lWT7OJUyP/RegkqjFpxm7GE4sGEDr1hIrFWzj0kfPGg/9BuI3xhFLjykHAAAAAElFTkSuQmCC',
         imgClock = 'data:image/png;base64,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',
         logoButton = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAs0lEQVR42mNkoDFgHLWAKhY8mCi6CkiFYpEKU8h/vRpJXSgynygLYJpANNSSUGyWQOVXAdmMJFmAzUIsFoWBDAcxKLYAzaJV6OIELbBdcec/PoMPR6jA9WCzhGoWkO0DSoKHahaQAuhvAdD7uOIgDD0TUdMCuOGkpDJiLUBxOS0sIDt4CFkAz/5QALJgNakW4bIApQBDUwK3CFvpSYwFoehFMAP2TAWyJIxkH1AbjFpAEAAARmVuGUdYZKsAAAAASUVORK5CYII=',
-        popCloseBtn = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAWElEQVR42mNkoDFgHLVg1ALaW3DgwIH/Dg4OjKTKEWUByAAYG90gfHIk+wDdIGINJ8oCdAORASHDibYAmyXEGD54LKBpENE0kumWTGmW0agBRi0YtYByAAD7EUAZR7FtMAAAAABJRU5ErkJggg==',
+        popCloseBtn = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAdElEQVR42mNkoANgHLVk1JKBs+Tu3bv/lZWVGcmVJ2gJyAAkrgbQsJtIcupA6gaMj88iQpagGASzCJc4JcGFbqAXEG8j1gKiLMFhEdEWEG0J1CJPNB94AS3YTozewWMJzYOL5hFPlyRMl8xILTBqyagltAMA/rNOGn8Nwn0AAAAASUVORK5CYII=',
         downButton = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAUCAYAAABiS3YzAAAAuklEQVR42mNkoAFgHDWUPob+BwJGICCkGZc6XIamAamZ+AwGGQik0oFKZhFrKEj8LRALYjMYauB7IBYGSv8nOkyB+jyA1HawIiSDoQaCgCdQeAfRYYpkwBkgZQwzGMnAs0CuCS59hAzVB1JzYQbDDATiZKChF8kyFGrwSiAVhiS0CmhgOD49xBgqCaSuArEgAyRytIGGPqfIUKjB7UCqAog7gAZWElJPdI4CGrwfaKAjMWqHeN4fOYYCALmCRxW5rmXrAAAAAElFTkSuQmCC',
         upButton = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAUCAYAAABiS3YzAAAAsElEQVR42mNkoAFgHDV04Az9////fkZGRkeqGQo0sB1IVQBxB9DgSooNBRooCaSuArEgEL8HYm2gwc8pNXQlkApDEloFNDScbEOBBuoDqblAbIwkfBaIk4EGXyTX0DMwA4GGMAL5/2EGA7kmJBsK1O8BpLbDDEQShxnsCRTeQbShQH0g8bdALIhsIJrBoEgTBnmAWEPTgNRMbAaiGZwOVDKLWEP/4zOQkLphmPeHp6EA2JNHFW0nieAAAAAASUVORK5CYII=',
         body = $q('html[itemtype="http://schema.org/WebPage"] > body'),
-        signIn = $q('html[itemtype="http://schema.org/WebPage"] a.gb_1.gb_2'),
-        div1 = $q('html[itemtype="http://schema.org/WebPage"] .L3eUgb > .o3j99.LLD4me.LS8OJ'),
+        signIn = $q('html[itemtype="http://schema.org/WebPage"] a.gb_1.gb_2.gb_9d.gb_9c'),
+        div1 = $q('html[itemtype="http://schema.org/WebPage"] .L3eUgb > .o3j99.LLD4me.yr19Zb.LS8OJ'),
         div2 = $q('html[itemtype="http://schema.org/WebPage"] .gb_Wd.gb_Za.gb_Ld > .gb_Se'),
-        div3 = $q('html[itemtype="http://schema.org/WebPage"] .L3eUgb > .o3j99.c93Gbe > div > .KxwPGc.iTjxkf > div'),
+        center = $q('html[itemtype="http://schema.org/WebPage"] .FPdoLc.lJ9FBc > center'),
         form = $q('html[itemtype="http://schema.org/WebPage"] .L3eUgb form'),
-        popup = $q('html[itemtype="http://schema.org/WebPage"] #dEjpnf'),
-        placeHolder = $q('html[itemtype="http://schema.org/WebPage"] .gLFyf.gsfi'),
+        placeHolder = $q('html[itemtype="http://schema.org/WebPage"] input[name="q"]'),
         darkTheme = $q('html[itemtype="http://schema.org/WebPage"] .EzVRq.pENqnf'),
-        searchButton = $q('html[itemtype="http://schema.org/WebPage"] .L3eUgb > .o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > .A8SBwf > .FPdoLc.lJ9FBc > center > .gNO89b'),
-        settingsButton = $q('html[itemtype="http://schema.org/WebPage"] #Mses6b'),
+        searchButton = $q('html[itemtype="http://schema.org/WebPage"] input[name="btnK"]'),
+        wallpaperBtn = $c('input', {id: 'gWallpaper', type: 'button', value: 'Wallpaper', onclick: e => wallpaperPopup(e)}),
+        wallpaperPop = $c('div', {id: 'gWallpaperPopup', style: 'display: none;'}),
         divButtons = $c('div', {id: 'divButtons'}),
         divLinks = $c('div', {id: 'divLinks'}),
         divNumber = $c('div', {id: 'divNumber'}),
         divSites = $c('div', {id: 'divSites'}),
         divThemer = $c('div', {id: 'divThemer'}),
-        liButtons = $c('li', {role: 'none'}),
-        liLinks = $c('li', {role: 'none'}),
-        liNumber = $c('li', {role: 'none'}),
-        liSites = $c('li', {role: 'none'}),
-        liThemer = $c('li', {role: 'none'}),
-        liSeparator = $c('li', {className: 'mRoO9c', role: 'separator'}),
+        imgClose = $c('img', {id: 'imgClose', src: popCloseBtn, onclick: e => wallpaperPopup(e)}),
+        spanButtons = $c('span', {className: 'gSpan'}),
+        spanLinks = $c('span', {className: 'gSpan'}),
+        spanNumber = $c('span', {className: 'gSpan'}),
+        spanSites = $c('span', {className: 'gSpan'}),
+        spanThemer = $c('span', {className: 'gSpan'}),
         themeImage = $c('img', {id: 'themeImage'}),
         logo1 = $c('span', {id: 'logo1'}),
         logo1Btn = $c('input', {id: 'logo1Btn', type: 'image', src: logoButton, title: logoCenterTooltip, onclick: () => repositionLogo()}),
@@ -165,7 +166,6 @@
         dateTimeContainer = $c('div', {id: 'dateTimeContainer'}),
         btnClock = $c('button', {id: 'gClock', style: 'background: url('+ imgClock +') no-repeat center', title: hideShowText, onmousedown: e => dateTimeToggle(e)}),
         dateTime = $c('span', {id: 'dateTime', onmousedown: e => dateTimeToggleSecondsAmPm(e)}),
-        btnPopClose = $c('button', {id: 'popClose', style: 'background: #000 url('+ popCloseBtn +') no-repeat center', title: closePopupTooltip, onclick: function() {popup.style.display = "none"}}),
         btnThemer = $c('button', {id: 'buttonThemer', onclick: () => wallpaperThemer()}),
         btnWhen = $c('button', {id: 'buttonWhen', onclick: () => wallpaperDailyHourly()}),
         btnStatic = $c('button', {id: 'buttonStatic', onclick: e => wallpaperButtonChanger(e)}),
@@ -375,6 +375,19 @@
     wallpaper();
   }
 
+  function wallpaperPopup(e) {
+    let pop = $q('#gWallpaperPopup');
+    switch (e.target.id) {
+      case 'gWallpaper':
+        if (pop.style.display === 'none') pop.style.display = 'block';
+        else pop.style.display = 'none';
+        break;
+      case 'imgClose':
+        pop.style.display = 'none';
+        break;
+    }
+  }
+
   function wallpaperSite() {
     let str = GM_getValue('imageSite');
     if (str === githubSite) {
@@ -405,6 +418,7 @@
   }
 
   function init() {
+  //try {
     window.removeEventListener('load', () => init());
     if (headerBtnCalendar) divHeader.appendChild(btnCalendar);
     if (headerBtnChrome) divHeader.appendChild(btnChrome);
@@ -421,6 +435,7 @@
     if (headerBtnYouTubeTV) divHeader.appendChild(btnYouTubeTV);
     logo1.appendChild(logo1Btn);
     logo2.appendChild(logo2Btn);
+    center.insertBefore(wallpaperBtn, center.childNodes[3]);
     body.appendChild(logo1);
     body.id = 'gWP1';
     if (GM_getValue('googleLogoLeft')) {
@@ -434,13 +449,11 @@
     else {dateTime.hidden = true; clearInterval(clockInterval)}
     dateTime.title = addRemoveText + ' (' + GM_getValue('dateFormat') + ')';
     div1.insertBefore(divHeader, div1.firstChild);
-    div1.appendChild(div3);
     div1.insertBefore(logo2, div1.firstChild.nextSibling);
     div1.insertBefore(form, div1.lastChild);
     dateTimeContainer.appendChild(btnClock);
     dateTimeContainer.appendChild(dateTime);
     div2.appendChild(dateTimeContainer);
-    div3.insertBefore(searchButton, div3.firstChild);
     searchButton.id = 'gSearch';
     placeHolder.placeholder = placeHolderText;
     btnWhen.title = dailyHourlyTooltip;
@@ -462,21 +475,29 @@
     divThemer.appendChild(btnThemer);
     divThemer.appendChild(btnWhen);
     divThemer.appendChild(themeImage);
-    liThemer.appendChild(divThemer);
+    spanThemer.appendChild(divThemer);
     divNumber.appendChild(btnStatic);
     divNumber.appendChild(btnUp);
     divNumber.appendChild(inpStatic);
     divNumber.appendChild(btnDown);
-    liNumber.appendChild(divNumber);
+    spanNumber.appendChild(divNumber);
     divLinks.appendChild(btnSearchLinks);
-    liLinks.appendChild(divLinks);
+    spanLinks.appendChild(divLinks);
     spnSites.innerHTML = changeImageSiteText;
     divSites.appendChild(spnSites);
     divSites.appendChild(btnSites);
-    liSites.appendChild(divSites);
+    spanSites.appendChild(divSites);
     btnSearchLinks.textContent = GM_getValue('linksWhere') === '_self' ? linksCurrentText : linksNewText;
     divButtons.appendChild(displayButtons);
-    liButtons.appendChild(divButtons);
+    spanButtons.appendChild(divButtons);
+    wallpaperPop.appendChild(spanButtons);
+    wallpaperPop.appendChild(spanThemer);
+    wallpaperPop.appendChild(spanNumber);
+    wallpaperPop.insertBefore(spanLinks, wallpaperPop.firstChild);
+    wallpaperPop.insertBefore(spanButtons, wallpaperPop.firstChild);
+    wallpaperPop.appendChild(spanSites);
+    wallpaperPop.appendChild(imgClose);
+    center.appendChild(wallpaperPop);
     if (GM_getValue('displayHeaderButtons')) {
       divHeader.style.display = 'block';
       displayButtons.textContent = headerButtonsTrueText;
@@ -484,17 +505,9 @@
       divHeader.style.display = 'none';
       displayButtons.textContent = headerButtonsFalseText;
     }
-    popup.appendChild(liButtons);
-    popup.appendChild(liThemer);
-    popup.appendChild(liNumber);
-    popup.insertBefore(liLinks, popup.firstChild);
-    popup.insertBefore(btnPopClose, popup.firstChild);
-    popup.insertBefore(liButtons, popup.firstChild);
-    popup.insertBefore(liSeparator, popup.childNodes[3]);
-    popup.appendChild(liSites);
-    settingsButton.onclick = () => searchPopupLinks();
     darkTheme.title = darkThemeTooltip;
     wallpaper();
+  //} catch(ex) {}
   }
 
   if (!GM_getValue('changeThemeHourly')) GM_setValue('changeThemeHourly', false);
@@ -517,18 +530,48 @@
 
   initInterval = setInterval(() => {
     if (signIn) {
-      init();
+      //init();
       signIn.click();
     } else clearInterval(initInterval);
   }, openInterval);
 
   GM_addStyle(''+
-    '#gWP1 a.gb_1.gb_2 {'+
+    '#gWP1 .o3j99.c93Gbe {'+
+    '  background: transparent !important;'+
+    '}'+
+    '#gWP1 .KxwPGc.iTjxkf {'+
+    '  float: right !important;'+
+    '  width: 100% !important;'+
+    '}'+
+    '#gWP1 .ayzqOc.pHiOh {'+
+    '  background-color: rgba(0, 0, 0, 0.3) !important;'+
     '  border-radius: 8px !important;'+
-	'  color: #FFF !important;'+
-    '  height: 42px !important;'+
-    '  margin-top: -2px !important;'+
-    '  padding-top: 13px !important;'+
+    '  color: #FFF !important;'+
+    '  text-decoration: none !important;'+
+    '}'+
+    '#gWP1 #gWallpaperPopup {'+
+    '  background: #222 !important;'+
+    '  border: 1px solid #666 !important;'+
+    '  border-radius: 6px !important;'+
+    '  bottom: 212px !important;'+
+    '  left: 0 !important;'+
+    '  padding: 0 !important;'+
+    '  position: relative !important;'+
+    '  text-align: left !important;'+
+    '  width: 250px !important;'+
+    '}'+
+    '#gWP1 #gWallpaperPopup > .gSpan > div {'+
+    '  padding: 2px  !important;'+
+    '}'+
+    '#gWP1 #gWallpaperPopup > #imgClose {'+
+    '  background: #222 !important;'+
+    '  border: 1px solid #666 !important;'+
+    '  border-radius: 50% !important;'+
+    '  height: 25px !important;'+
+    '  position: absolute !important;'+
+    '  right: -13px !important;'+
+    '  top: -13px !important;'+
+    '  width: 25px !important;'+
     '}'+
     '#gWP1 #headerButtonsDiv {'+
     '  margin-bottom: -20px !important;'+
@@ -701,16 +744,6 @@
     '  background-color: #181A1B !important;'+
     '  border: 1px solid #000 !important;'+
     '}'+
-    '#gWP1 #dEjpnf {'+
-    '  bottom: auto !important;'+
-    '  border-radius: 8px !important;'+
-    '  min-width: 250px !important;'+
-    '  padding-bottom: 0 !important;'+
-    '  right: 85px !important;'+
-    '  text-align: left !important;'+
-    '  top: -327px !important;'+
-    '  z-index: 999 !important;'+
-    '}'+
     '#gWP1 #popClose {'+
     '  border: 1px solid #333 !important;'+
     '  border-radius: 50% !important;'+
@@ -722,20 +755,6 @@
     '}'+
     '#gWP1 #popClose:hover {'+
     '  background-color: #C00 !important;'+
-    '}'+
-    '#gWP1 .tFYjZe {'+
-    '  padding: 0 !important;'+
-    '}'+
-    '#gWP1 #dEjpnf .EzVRq,'+
-    '#gWP1 #dEjpnf button.EzVRq {'+
-    '  color: #CCC !important;'+
-    '  padding: 7px 8px !important;'+
-    '  text-decoration: none !important;'+
-    '}'+
-    '#gWP1 #dEjpnf .EzVRq:hover,'+
-    '#gWP1 #dEjpnf button.EzVRq:hover {'+
-    '  background-color: #333 !important;'+
-    '  color: #FFF !important;'+
     '}'+
     '#gWP1 #divThemer {'+
     '  margin-top: -1px !important;'+
@@ -752,10 +771,10 @@
     '  background-color: #333 !important;'+
     '}'+
     '#gWP1 #themeImage {'+
-    '  float: right !important;'+
+    '  left: 9px !important;'+
     '  opacity: 0 !important;'+
     '  position: relative !important;'+
-    '  top: 8px !important;'+
+    '  top: 3px !important;'+
     '}'+
     '#gWP1 #buttonStatic,'+
     '#gWP1 #buttonThemer,'+
@@ -763,7 +782,7 @@
     '#gWP1 #searchLinks,'+
     '#gWP1 #divLinks,'+
     '#gWP1 #divButtons,'+
-    '#gWP1  #buttonSites{'+
+    '#gWP1 #buttonSites{'+
     '  cursor: pointer !important;'+
     '}'+
     '#gWP1 #buttonThemer,'+
@@ -868,29 +887,26 @@
     '  top: 341px !important;'+
     '}'+
     '#gWP1 .RNNXgb,'+
-    '#gWP1 #gSearch,'+
-    '#gWP1 #Mses6b {'+
+    '#gWP1 #gSearch {'+
     '  background: transparent !important;'+
     '  border: 1px solid transparent !important;'+
     '  box-shadow: none !important;'+
     '  text-shadow: 1px 1px 2px #000 !important;'+
     '}'+
-    '#gWP1 #gSearch,'+
-    '#gWP1 #Mses6b {'+
+    '#gWP1 #gSearch {'+
     '  border-radius: 8px !important;'+
     '  max-height: 36px !important;'+
-    '  padding: 9px 16px !important;'+
     '  text-decoration: none !important;'+
     '  text-shadow: 1px 1px 2px #000 !important;'+
     '}'+
-    '#gWP1 #gSearch,'+
-    '#gWP1 #Mses6b,'+
-    '#gWP1 #submit,'+
     '#gWP1 center > input {'+
+    '  background-color: rgba(0, 0, 0, 0.3) !important;'+
     '  border: 1px solid transparent !important;'+
+    '  border-radius: 4px !important;'+
     '  color: #AAA !important;'+
     '  cursor: pointer !important;'+
-    '  min-height: 32px  !important;'+
+    '  height: 32px  !important;'+
+    '  padding: 0 10px !important;'+
     '  width: auto !important;'+
     '}'+
     '#gWP1 .gLFyf.gsfi {'+
@@ -906,7 +922,6 @@
     '#gWP1 .RNNXgb:hover,'+
     '#gWP1 .RNNXgb:focus-within,'+
     '#gWP1 #gSearch:hover,'+
-    '#gWP1 #Mses6b:hover,'+
     '#gWP1 #submit:hover,'+
     '#gWP1 center > input:hover {'+
     '  background-color: rgba(0, 0, 0, .5) !important;'+

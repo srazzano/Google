@@ -155,7 +155,7 @@
         spanNumber = $c('span', {id: 'spanNumber', className: 'popSpan'}),
         spanSites = $c('span', {id: 'spanSites', className: 'popSpan'}),
         spanThemer = $c('span', {id: 'spanThemer', className: 'popSpan'}),
-        imgClose = $c('img', {id: 'imgClose', src: popCloseBtn, onclick: e => wallpaperPopup(e)}),
+        btnClose = $c('button', {id: 'btnClose', style: 'background: url('+ popCloseBtn +') no-repeat center', onclick: e => wallpaperPopup(e)}),
         themeImage = $c('img', {id: 'themeImage'}),
         logo1 = $c('span', {id: 'logo1'}),
         logo1Btn = $c('input', {id: 'logo1Btn', type: 'image', src: logoButton, title: logoCenterTooltip, onclick: () => repositionLogo()}),
@@ -386,10 +386,11 @@
         if (pop.style.display === 'none') pop.style.display = 'block';
         else pop.style.display = 'none';
         break;
-      case 'imgClose':
+      case 'btnClose':
         pop.style.display = 'none';
         break;
     }
+    e.preventDefault();
   }
 
   function wallpaperSite(e) {
@@ -501,7 +502,7 @@
     wallpaperPop.insertBefore(divLinks, wallpaperPop.firstChild);
     wallpaperPop.insertBefore(divButtons, wallpaperPop.firstChild);
     wallpaperPop.appendChild(divSites);
-    wallpaperPop.appendChild(imgClose);
+    wallpaperPop.appendChild(btnClose);
     center.appendChild(wallpaperPop);
     if (GM_getValue('displayHeaderButtons')) {
       divHeader.style.display = 'block';
@@ -568,8 +569,8 @@
     '#gWP1 #gWallpaperPopup > .popDiv {'+
     '  padding: 2px !important;'+
     '}'+
-    '#gWP1 #gWallpaperPopup > #imgClose {'+
-    '  background: #222 !important;'+
+    '#gWP1 #gWallpaperPopup > #btnClose {'+
+    '  background-color: #222 !important;'+
     '  border: 1px solid #666 !important;'+
     '  border-radius: 50% !important;'+
     '  height: 25px !important;'+
@@ -578,8 +579,8 @@
     '  top: -13px !important;'+
     '  width: 25px !important;'+
     '}'+
-    '#gWP1 #gWallpaperPopup > #imgClose:hover {'+
-    '  background: #900 !important;'+
+    '#gWP1 #gWallpaperPopup > #btnClose:hover {'+
+    '  background-color: #900 !important;'+
     '}'+
     '#gWP1 #headerButtonsDiv {'+
     '  margin-bottom: -20px !important;'+

@@ -93,6 +93,7 @@
         linksNewText = 'Button Links in new tab: True',
         offText = 'Off',
         onText = 'On',
+        optionsText = 'Options',
         placeHolderText = 'Search Look-up',
         activeWallpaperTooltip = 'Active wallpaper image',
         buttonSitesTooltip = 'Change between GitHub and Sonco host sites',
@@ -142,8 +143,8 @@
         form = $q('html[itemtype="http://schema.org/WebPage"] .L3eUgb form'),
         placeHolder = $q('html[itemtype="http://schema.org/WebPage"] input[name="q"]'),
         searchButton = $q('html[itemtype="http://schema.org/WebPage"] input[name="btnK"]'),
-        wallpaperBtn = $c('input', {id: 'gWallpaper', type: 'button', value: 'Wallpaper', onclick: e => wallpaperPopup(e)}),
-        wallpaperPop = $c('div', {id: 'gWallpaperPopup', style: 'display: none;'}),
+        optionsBtn = $c('input', {id: 'gOptions', type: 'button', value: optionsText, onclick: e => optionsPopup(e)}),
+        optionsPop = $c('div', {id: 'gOptionsPopup', style: 'display: none;'}),
         divButtons = $c('div', {id: 'divButtons', className: 'popDiv'}),
         divLinks = $c('div', {id: 'divLinkss', className: 'popDiv'}),
         divNumber = $c('div', {id: 'divNumbers', className: 'popDiv'}),
@@ -153,7 +154,7 @@
         spanNumber = $c('span', {id: 'spanNumber', className: 'popSpan'}),
         spanSites = $c('span', {id: 'spanSites', className: 'popSpan'}),
         spanThemer = $c('span', {id: 'spanThemer', className: 'popSpan'}),
-        btnClose = $c('button', {id: 'btnClose', style: 'background: url('+ popCloseBtn +') no-repeat center', onclick: e => wallpaperPopup(e)}),
+        btnClose = $c('button', {id: 'btnClose', style: 'background: url('+ popCloseBtn +') no-repeat center', onclick: e => optionsPopup(e)}),
         themeImage = $c('img', {id: 'themeImage'}),
         logo1 = $c('span', {id: 'logo1'}),
         logo1Btn = $c('input', {id: 'logo1Btn', type: 'image', src: logoButton, title: logoCenterTooltip, onclick: () => repositionLogo()}),
@@ -229,8 +230,8 @@
       case 6: return w + space + bullet + space + m + slash + d + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
       case 7: return w + space + bullet + space + mm + slash + dd + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
       // Delete "customFormatText + 210/customFormatText + 211" text below and add return options with bullet, comma, hyphen, slash, space, star characters.
-      case 8: return customFormatText + 232;
-      case 9: return customFormatText + 233;
+      case 8: return customFormatText + 233;
+      case 9: return customFormatText + 234;
   } }
 
   function dateTimeDefault() {
@@ -285,6 +286,20 @@
     } else {
       divHeader.style.display = 'none';
       displayButtons.textContent = headerButtonsFalseText;
+    }
+    e.preventDefault();
+  }
+
+  function optionsPopup(e) {
+    let pop = $q('#gOptionsPopup');
+    switch (e.target.id) {
+      case 'gOptions':
+        if (pop.style.display === 'none') pop.style.display = 'block';
+        else pop.style.display = 'none';
+        break;
+      case 'btnClose':
+        pop.style.display = 'none';
+        break;
     }
     e.preventDefault();
   }
@@ -377,20 +392,6 @@
     e.preventDefault();
   }
 
-  function wallpaperPopup(e) {
-    let pop = $q('#gWallpaperPopup');
-    switch (e.target.id) {
-      case 'gWallpaper':
-        if (pop.style.display === 'none') pop.style.display = 'block';
-        else pop.style.display = 'none';
-        break;
-      case 'btnClose':
-        pop.style.display = 'none';
-        break;
-    }
-    e.preventDefault();
-  }
-
   function wallpaperSite(e) {
     let str = GM_getValue('imageSite');
     if (str === githubSite) {
@@ -439,7 +440,7 @@
     if (headerBtnYouTubeTV) divHeader.appendChild(btnYouTubeTV);
     logo1.appendChild(logo1Btn);
     logo2.appendChild(logo2Btn);
-    center.insertBefore(wallpaperBtn, center.childNodes[4]);
+    center.insertBefore(optionsBtn, center.childNodes[4]);
     body.appendChild(logo1);
     body.id = 'gWP1';
     if (GM_getValue('googleLogoLeft')) {
@@ -493,14 +494,14 @@
     spanSites.appendChild(divSites);
     btnSearchLinks.textContent = GM_getValue('linksWhere') === '_self' ? linksCurrentText : linksNewText;
     divButtons.appendChild(displayButtons);
-    wallpaperPop.appendChild(divButtons);
-    wallpaperPop.appendChild(divThemer);
-    wallpaperPop.appendChild(divNumber);
-    wallpaperPop.insertBefore(divLinks, wallpaperPop.firstChild);
-    wallpaperPop.insertBefore(divButtons, wallpaperPop.firstChild);
-    wallpaperPop.appendChild(divSites);
-    wallpaperPop.appendChild(btnClose);
-    center.appendChild(wallpaperPop);
+    optionsPop.appendChild(divButtons);
+    optionsPop.appendChild(divThemer);
+    optionsPop.appendChild(divNumber);
+    optionsPop.insertBefore(divLinks, optionsPop.firstChild);
+    optionsPop.insertBefore(divButtons, optionsPop.firstChild);
+    optionsPop.appendChild(divSites);
+    optionsPop.appendChild(btnClose);
+    center.appendChild(optionsPop);
     if (GM_getValue('displayHeaderButtons')) {
       divHeader.style.display = 'block';
       displayButtons.textContent = headerButtonsTrueText;
@@ -547,7 +548,7 @@
     '  color: #FFF !important;'+
     '  text-decoration: none !important;'+
     '}'+
-    '#gWP1 #gWallpaperPopup {'+
+    '#gWP1 #gOptionsPopup {'+
     '  background: #222 !important;'+
     '  border: 1px solid #666 !important;'+
     '  border-radius: 6px !important;'+
@@ -558,10 +559,10 @@
     '  text-align: left !important;'+
     '  width: 250px !important;'+
     '}'+
-    '#gWP1 #gWallpaperPopup > .popDiv {'+
+    '#gWP1 #gOptionsPopup > .popDiv {'+
     '  padding: 2px !important;'+
     '}'+
-    '#gWP1 #gWallpaperPopup > #btnClose {'+
+    '#gWP1 #gOptionsPopup > #btnClose {'+
     '  background-color: #222 !important;'+
     '  border: 1px solid #666 !important;'+
     '  border-radius: 50% !important;'+
@@ -571,7 +572,7 @@
     '  top: -13px !important;'+
     '  width: 25px !important;'+
     '}'+
-    '#gWP1 #gWallpaperPopup > #btnClose:hover {'+
+    '#gWP1 #gOptionsPopup > #btnClose:hover {'+
     '  background-color: #900 !important;'+
     '}'+
     '#gWP1 #headerButtonsDiv {'+
@@ -764,11 +765,11 @@
     '#gWP1 #divSites {'+
     '  margin-top: 2px !important;'+
     '}'+
-    '#gWP1 #gWallpaperPopup > .popDiv:hover {'+
+    '#gWP1 #gOptionsPopup > .popDiv:hover {'+
     '  background-color: #333 !important;'+
     '  color: #FFF !important;'+
     '}'+
-    '#gWP1 #gWallpaperPopup > .popDiv:hover > button {'+
+    '#gWP1 #gOptionsPopup > .popDiv:hover > button {'+
     '  color: #FFF !important;'+
     '}'+
     '#gWP1 #themeImage {'+

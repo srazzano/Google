@@ -355,7 +355,8 @@
 
   function setHdrButtons(e) {
     center.appendChild(headerBtnsDiv);
-    headerBtnsDiv.style.display = 'flex';
+    if (headerBtnsDiv.style.display === 'flex') headerBtnsDiv.style.display = 'none';
+    else headerBtnsDiv.style.display = 'flex';
     e.preventDefault();
   }
 

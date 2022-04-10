@@ -15,20 +15,7 @@
 
   'use strict';
 
-  const headerBtnCalendar = true,
-        headerBtnChrome = true,
-        headerBtnEarth = true,
-        headerBtnMail = true,
-        headerBtnMaps = true,
-        headerBtnMSEdge = true,
-        headerBtnNews = true,
-        headerBtnPhotos = true,
-        headerBtnPlay = true,
-        headerBtnPodcasts = true,
-        headerBtnTranslate = true,
-        headerBtnYouTube = true,
-        headerBtnYouTubeTV = true,
-        divHeader = $c('div', {id: 'headerButtonsDiv'}),
+  const divHeader = $c('div', {id: 'headerButtonsDiv'}),
         imgCalendar = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABT0lEQVR42mNkAAKp9Iv/GYgELMxMYJqZmZHh/mQdRkZSNMPAfwZGMM0IYpFjADJANyCMkIaHocYgahVOA57O0Fv17x8Dw7//IH8ygB37H6qCEcj5s5c1DK8BD6fqrTp+5w9DRP81hsNNOgxyIkwMJ+/+ZQjrvcoANJywAQ+m6K16/O4fg5IYE4N0xiWGvXU6DM5NV8CSRBkA8sLbL/8Z9EouM2yq0GYwVmBmuPrkL4NbC5EueDRNb9XDNwgXPJ6ux3D9KQkG3Jqou+rcg7/gMPAwUmWYncrJcPPZXwaXZiINeDJdbxUjJJ0w/PzDwMDOwsDw+y+Ez8pMRCzcmqyyCpLaGKDpDRWwH+IP+/+TGayGkf0vA6Ncs+3/X39/E52QLh3+uwqZj24AQQA0AM4W23uakVGx1eH/998/SDYApJkB5k2JBguiMxTIAJhmEAAA4quznkbNVyMAAAAASUVORK5CYII=',
         urlCalendar = 'https://calendar.google.com/calendar/u/0/r',
         btnCalendar = $c('button', {id: 'btnCalendar', className: 'hBtn', textContent: 'Calendar', title: urlCalendar, style: 'background: url('+ imgCalendar +') no-repeat 4px center', onclick: () => window.open(urlCalendar, GM_getValue('linksWhere'))}),
@@ -82,11 +69,12 @@
         space = ' ',
         star = '★',
         addRemoveText = bullet + ' Left-click to Add/Remove :seconds\n' + bullet + ' Shift + Left-click to Add/Remove AM/PM\n' + bullet + ' Ctrl + Left-click to change Date format',
+        changeWallpaperOffText = 'Change wallpaper: Off',
+        changeWallpaperOnText = 'Change wallpaper: On',
         customFormatText = 'Add a custom format in script line ',
         dailyText = 'Daily',
         defaultWallpaperText = 'Static wallpaper image',
-        headerButtonsFalseText = 'Display Header Buttons: False',
-        headerButtonsTrueText = 'Display Header Buttons: True',
+        setHeaderButtonsText = 'Set Header Buttons',
         hideShowText = bullet + ' Left-click to Hide/Show Date/Time',
         hourlyText = 'Hourly',
         linksCurrentText = 'Button Links in current tab: True',
@@ -98,8 +86,6 @@
         activeWallpaperTooltip = 'Active wallpaper image',
         buttonSitesTooltip = 'Change between GitHub and Sonco host sites',
         changeImageSiteText = 'Wallpaper host site:',
-        changeWallpaperOffText = 'Change wallpaper: Off',
-        changeWallpaperOnText = 'Change wallpaper: On',
         closePopupTooltip = 'Close Popup',
         dailyHourlyTooltip = 'Change wallpaper Daily/Hourly',
         defaultWallpaperTooltip = '1 - 35 and 0 for no wallpaper',
@@ -172,7 +158,47 @@
         spnSites = $c('button', {id: 'spanSites', title: buttonSitesTooltip, onclick: e => wallpaperSite(e)}),
         btnSites = $c('button', {id: 'buttonSites', title: buttonSitesTooltip, onclick: e => wallpaperSite(e)}),
         btnSearchLinks = $c('button', {id: 'searchLinks', onclick: e => searchLinksWhere(e)}),
-        displayButtons = $c('button', {id: 'displayButtons', onclick: e => displayHdrButtons(e)});
+        displayButtons = $c('button', {id: 'displayButtons', textContent: setHeaderButtonsText, onclick: e => setHdrButtons(e)}),
+        headerBtnsDiv = $c('div', {id: 'headerBtnsDiv'}),
+        headerBtnCalendarLAB = $c('label'),
+        headerBtnCalendarCB = $c('input', {id: 'headerBtnCalendar', type: 'checkbox', checked: GM_getValue("headerBtnCalendar"), onclick: e => displayHdrButtons(e)}),
+        headerBtnCalendarSPN = $c('span', {textContent: 'Calendar'}),
+        headerBtnChromeLAB = $c('label'),
+        headerBtnChromeCB = $c('input', {id: 'headerBtnChrome', type: 'checkbox', checked: GM_getValue("headerBtnChrome"), onclick: e => displayHdrButtons(e)}),
+        headerBtnChromeSPN = $c('span', {textContent: 'Chrome Store'}),
+        headerBtnEarthLAB = $c('label'),
+        headerBtnEarthCB = $c('input', {id: 'headerBtnEarth', type: 'checkbox', checked: GM_getValue("headerBtnEarth"), onclick: e => displayHdrButtons(e)}),
+        headerBtnEarthSPN = $c('span', {textContent: 'Earth'}),
+        headerBtnMailLAB = $c('label'),
+        headerBtnMailCB = $c('input', {id: 'headerBtnMail', type: 'checkbox', checked: GM_getValue("headerBtnMail"), onclick: e => displayHdrButtons(e)}),
+        headerBtnMailSPN = $c('span', {textContent: 'GMail'}),
+        headerBtnMapsLAB = $c('label'),
+        headerBtnMapsCB = $c('input', {id: 'headerBtnMaps', type: 'checkbox', checked: GM_getValue("headerBtnMaps"), onclick: e => displayHdrButtons(e)}),
+        headerBtnMapsSPN = $c('span', {textContent: 'GMaps'}),
+        headerBtnMSEdgeLAB = $c('label'),
+        headerBtnMSEdgeCB = $c('input', {id: 'headerBtnMSEdge', type: 'checkbox', checked: GM_getValue("headerBtnMSEdge"), onclick: e => displayHdrButtons(e)}),
+        headerBtnMSEdgeSPN = $c('span', {textContent: 'MS Store'}),
+        headerBtnNewsLAB = $c('label'),
+        headerBtnNewsCB = $c('input', {id: 'headerBtnNews', type: 'checkbox', checked: GM_getValue("headerBtnNews"), onclick: e => displayHdrButtons(e)}),
+        headerBtnNewsSPN = $c('span', {textContent: 'News'}),
+        headerBtnPhotosLAB = $c('label'),
+        headerBtnPhotosCB = $c('input', {id: 'headerBtnPhotos', type: 'checkbox', checked: GM_getValue("headerBtnPhotos"), onclick: e => displayHdrButtons(e)}),
+        headerBtnPhotosSPN = $c('span', {textContent: 'Photos'}),
+        headerBtnPlayLAB = $c('label'),
+        headerBtnPlayCB = $c('input', {id: 'headerBtnPlay', type: 'checkbox', checked: GM_getValue("headerBtnPlay"), onclick: e => displayHdrButtons(e)}),
+        headerBtnPlaySPN = $c('span', {textContent: 'Play Store'}),
+        headerBtnPodcastsLAB = $c('label'),
+        headerBtnPodcastsCB = $c('input', {id: 'headerBtnPodcasts', type: 'checkbox', checked: GM_getValue("headerBtnPodcasts"), onclick: e => displayHdrButtons(e)}),
+        headerBtnPodcastsSPN = $c('span', {textContent: 'Podcasts'}),
+        headerBtnTranslateLAB = $c('label'),
+        headerBtnTranslateCB = $c('input', {id: 'headerBtnTranslate', type: 'checkbox', checked: GM_getValue("headerBtnTranslate"), onclick: e => displayHdrButtons(e)}),
+        headerBtnTranslateSPN = $c('span', {textContent: 'Translate'}),
+        headerBtnYouTubeLAB = $c('label'),
+        headerBtnYouTubeCB = $c('input', {id: 'headerBtnYouTube', type: 'checkbox', checked: GM_getValue("headerBtnYouTube"), onclick: e => displayHdrButtons(e)}),
+        headerBtnYouTubeSPN = $c('span', {textContent: 'YouTube'}),
+        headerBtnYouTubeTVLAB = $c('label'),
+        headerBtnYouTubeTVCB = $c('input', {id: 'headerBtnYouTubeTV', type: 'checkbox', checked: GM_getValue("headerBtnYouTubeTV"), onclick: e => displayHdrButtons(e)}),
+        headerBtnYouTubeTVSPN = $c('span', {textContent: 'YouTube TV'});
 
   let clockInterval,
       initInterval,
@@ -230,8 +256,8 @@
       case 6: return w + space + bullet + space + m + slash + d + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
       case 7: return w + space + bullet + space + mm + slash + dd + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
       // Delete "customFormatText + 210/customFormatText + 211" text below and add return options with bullet, comma, hyphen, slash, space, star characters.
-      case 8: return customFormatText + 233;
-      case 9: return customFormatText + 234;
+      case 8: return customFormatText + 259;
+      case 9: return customFormatText + 260;
   } }
 
   function dateTimeDefault() {
@@ -278,27 +304,26 @@
   }
 
   function displayHdrButtons(e) {
-    let bool = GM_getValue('displayHeaderButtons') !== true ? true : false;
-    GM_setValue('displayHeaderButtons', bool);
-    if (bool) {
-      divHeader.style.display = 'block';
-      displayButtons.textContent = headerButtonsTrueText;
-    } else {
-      divHeader.style.display = 'none';
-      displayButtons.textContent = headerButtonsFalseText;
-    }
-    e.preventDefault();
+    let cbbtn = e.target.id,
+        hdrbtn = cbbtn.replace(/^headerB/, 'b'),
+        bool = GM_getValue(e.target.id) !== true ? true : false;
+    GM_setValue(e.target.id, bool);
+    if (bool) viewHdrButtons();
+    else document.getElementById(hdrbtn).style.display = 'none';
   }
 
   function optionsPopup(e) {
-    let pop = $q('#gOptionsPopup');
+    let pop = $q('#gOptionsPopup'),
+        btnsPop = $q('#headerBtnsDiv');
     switch (e.target.id) {
       case 'gOptions':
         if (pop.style.display === 'none') pop.style.display = 'block';
         else pop.style.display = 'none';
+        if (btnsPop) btnsPop.style.display = 'none';
         break;
       case 'btnClose':
         pop.style.display = 'none';
+        btnsPop.style.display = 'none';
         break;
     }
     e.preventDefault();
@@ -326,6 +351,69 @@
     bool === '_self' ? btnSearchLinks.textContent = linksCurrentText : btnSearchLinks.textContent = linksNewText;
     searchPopupLinks();
     e.preventDefault();
+  }
+
+  function setHdrButtons(e) {
+    center.appendChild(headerBtnsDiv);
+    headerBtnsDiv.style.display = 'flex';
+    e.preventDefault();
+  }
+
+  function viewHdrButtons() {
+    try {
+      if (GM_getValue('headerBtnCalendar')) {
+        divHeader.appendChild(btnCalendar);
+        btnCalendar.style.display = 'block';
+      }
+      if (GM_getValue('headerBtnChrome')) {
+        divHeader.appendChild(btnChrome);
+        btnChrome.style.display = 'block';
+      }
+      if (GM_getValue('headerBtnEarth')) {
+        divHeader.appendChild(btnEarth);
+        btnEarth.style.display = 'block';
+      }
+      if (GM_getValue('headerBtnMail')) {
+        divHeader.appendChild(btnMail);
+        btnMail.style.display = 'block';
+      }
+      if (GM_getValue('headerBtnMaps')) {
+        divHeader.appendChild(btnMaps);
+        btnMaps.style.display = 'block';
+      }
+      if (GM_getValue('headerBtnMSEdge')) {
+        divHeader.appendChild(btnMSEdge);
+        btnMSEdge.style.display = 'block';
+      }
+      if (GM_getValue('headerBtnNews')) {
+        divHeader.appendChild(btnNews);
+        btnNews.style.display = 'block';
+      }
+      if (GM_getValue('headerBtnPhotos')) {
+        divHeader.appendChild(btnPhotos);
+        btnPhotos.style.display = 'block';
+      }
+      if (GM_getValue('headerBtnPlay')) {
+        divHeader.appendChild(btnPlay);
+        btnPlay.style.display = 'block';
+      }
+      if (GM_getValue('headerBtnPodcasts')) {
+        divHeader.appendChild(btnPodcasts);
+        btnPodcasts.style.display = 'block';
+      }
+      if (GM_getValue('headerBtnTranslate')) {
+        divHeader.appendChild(btnTranslate);
+        btnTranslate.style.display = 'block';
+      }
+      if (GM_getValue('headerBtnYouTube')) {
+        divHeader.appendChild(btnYouTube);
+        btnYouTube.style.display = 'block';
+      }
+      if (GM_getValue('headerBtnYouTubeTV')) {
+        divHeader.appendChild(btnYouTubeTV);
+        btnYouTubeTV.style.display = 'block';
+      }
+    } catch(ex) {}
   }
 
   function wallpaper() {
@@ -418,26 +506,14 @@
   }
 
   function whenClose() {
+    window.removeEventListener('unload', () => whenClose());
     clearInterval(wallpaperInterval);
     clearInterval(clockInterval);
-    window.removeEventListener('unload', () => whenClose());
   }
 
   function init() {
     window.removeEventListener('load', () => init());
-    if (headerBtnCalendar) divHeader.appendChild(btnCalendar);
-    if (headerBtnChrome) divHeader.appendChild(btnChrome);
-    if (headerBtnEarth) divHeader.appendChild(btnEarth);
-    if (headerBtnMail) divHeader.appendChild(btnMail);
-    if (headerBtnMaps) divHeader.appendChild(btnMaps);
-    if (headerBtnMSEdge) divHeader.appendChild(btnMSEdge);
-    if (headerBtnNews) divHeader.appendChild(btnNews);
-    if (headerBtnPhotos) divHeader.appendChild(btnPhotos);
-    if (headerBtnPlay) divHeader.appendChild(btnPlay);
-    if (headerBtnPodcasts) divHeader.appendChild(btnPodcasts);
-    if (headerBtnTranslate) divHeader.appendChild(btnTranslate);
-    if (headerBtnYouTube) divHeader.appendChild(btnYouTube);
-    if (headerBtnYouTubeTV) divHeader.appendChild(btnYouTubeTV);
+    viewHdrButtons();
     logo1.appendChild(logo1Btn);
     logo2.appendChild(logo2Btn);
     center.insertBefore(optionsBtn, center.childNodes[4]);
@@ -497,18 +573,50 @@
     optionsPop.appendChild(divButtons);
     optionsPop.appendChild(divThemer);
     optionsPop.appendChild(divNumber);
-    optionsPop.insertBefore(divLinks, optionsPop.firstChild);
     optionsPop.insertBefore(divButtons, optionsPop.firstChild);
+    optionsPop.insertBefore(divLinks, optionsPop.firstChild);
     optionsPop.appendChild(divSites);
     optionsPop.appendChild(btnClose);
     center.appendChild(optionsPop);
-    if (GM_getValue('displayHeaderButtons')) {
-      divHeader.style.display = 'block';
-      displayButtons.textContent = headerButtonsTrueText;
-    } else {
-      divHeader.style.display = 'none';
-      displayButtons.textContent = headerButtonsFalseText;
-    }
+    headerBtnCalendarLAB.appendChild(headerBtnCalendarCB);
+    headerBtnCalendarLAB.appendChild(headerBtnCalendarSPN);
+    headerBtnsDiv.appendChild(headerBtnCalendarLAB);
+    headerBtnChromeLAB.appendChild(headerBtnChromeCB);
+    headerBtnChromeLAB.appendChild(headerBtnChromeSPN);
+    headerBtnsDiv.appendChild(headerBtnChromeLAB);
+    headerBtnEarthLAB.appendChild(headerBtnEarthCB);
+    headerBtnEarthLAB.appendChild(headerBtnEarthSPN);
+    headerBtnsDiv.appendChild(headerBtnEarthLAB);
+    headerBtnMailLAB.appendChild(headerBtnMailCB);
+    headerBtnMailLAB.appendChild(headerBtnMailSPN);
+    headerBtnsDiv.appendChild(headerBtnMailLAB);
+    headerBtnMapsLAB.appendChild(headerBtnMapsCB);
+    headerBtnMapsLAB.appendChild(headerBtnMapsSPN);
+    headerBtnsDiv.appendChild(headerBtnMapsLAB);
+    headerBtnMSEdgeLAB.appendChild(headerBtnMSEdgeCB);
+    headerBtnMSEdgeLAB.appendChild(headerBtnMSEdgeSPN);
+    headerBtnsDiv.appendChild(headerBtnMSEdgeLAB);
+    headerBtnNewsLAB.appendChild(headerBtnNewsCB);
+    headerBtnNewsLAB.appendChild(headerBtnNewsSPN);
+    headerBtnsDiv.appendChild(headerBtnNewsLAB);
+    headerBtnPhotosLAB.appendChild(headerBtnPhotosCB);
+    headerBtnPhotosLAB.appendChild(headerBtnPhotosSPN);
+    headerBtnsDiv.appendChild(headerBtnPhotosLAB);
+    headerBtnPlayLAB.appendChild(headerBtnPlayCB);
+    headerBtnPlayLAB.appendChild(headerBtnPlaySPN);
+    headerBtnsDiv.appendChild(headerBtnPlayLAB);
+    headerBtnPodcastsLAB.appendChild(headerBtnPodcastsCB);
+    headerBtnPodcastsLAB.appendChild(headerBtnPodcastsSPN);
+    headerBtnsDiv.appendChild(headerBtnPodcastsLAB);
+    headerBtnTranslateLAB.appendChild(headerBtnTranslateCB);
+    headerBtnTranslateLAB.appendChild(headerBtnTranslateSPN);
+    headerBtnsDiv.appendChild(headerBtnTranslateLAB);
+    headerBtnYouTubeLAB.appendChild(headerBtnYouTubeCB);
+    headerBtnYouTubeLAB.appendChild(headerBtnYouTubeSPN);
+    headerBtnsDiv.appendChild(headerBtnYouTubeLAB);
+    headerBtnYouTubeTVLAB.appendChild(headerBtnYouTubeTVCB);
+    headerBtnYouTubeTVLAB.appendChild(headerBtnYouTubeTVSPN);
+    headerBtnsDiv.appendChild(headerBtnYouTubeTVLAB);
     wallpaper();
   }
 
@@ -517,8 +625,20 @@
   if (!GM_getValue('defaultAMPM')) GM_setValue('defaultAMPM', false);
   if (!GM_getValue('defaultDateTimeView')) GM_setValue('defaultDateTimeView', false);
   if (!GM_getValue('defaultSecondsView')) GM_setValue('defaultSecondsView', false);
-  if (!GM_getValue('displayHeaderButtons')) GM_setValue('displayHeaderButtons', false);
   if (!GM_getValue('googleLogoLeft')) GM_setValue('googleLogoLeft', false);
+  if (!GM_getValue('headerBtnCalendar')) GM_setValue('headerBtnCalendar', false);
+  if (!GM_getValue('headerBtnChrome')) GM_setValue('headerBtnChrome', false);
+  if (!GM_getValue('headerBtnEarth')) GM_setValue('headerBtnEarth', false);
+  if (!GM_getValue('headerBtnMail')) GM_setValue('headerBtnMail', false);
+  if (!GM_getValue('headerBtnMaps')) GM_setValue('headerBtnMaps', false);
+  if (!GM_getValue('headerBtnMSEdge')) GM_setValue('headerBtnMSEdge', false);
+  if (!GM_getValue('headerBtnNews')) GM_setValue('headerBtnNews', false);
+  if (!GM_getValue('headerBtnPhotos')) GM_setValue('headerBtnPhotos', false);
+  if (!GM_getValue('headerBtnPlay')) GM_setValue('headerBtnPlay', false);
+  if (!GM_getValue('headerBtnPodcasts')) GM_setValue('headerBtnPodcasts', false);
+  if (!GM_getValue('headerBtnTranslate')) GM_setValue('headerBtnTranslate', false);
+  if (!GM_getValue('headerBtnYouTube')) GM_setValue('headerBtnYouTube', false);
+  if (!GM_getValue('headerBtnYouTubeTV')) GM_setValue('headerBtnYouTubeTV', false);
   if (!GM_getValue('imageSite')) GM_setValue('imageSite', githubSite);
   if (!GM_getValue('linksWhere')) GM_setValue('linksWhere', '_self');
   if (!GM_getValue('themeChanger')) GM_setValue('themeChanger', false);
@@ -527,14 +647,32 @@
 
   wallpaperTimer(GM_getValue('themeChanger'));
 
-  window.addEventListener('load', () => init());
-  window.addEventListener('unload', () => whenClose());
-
   initInterval = setInterval(() => {
     signIn ? signIn.click() : clearInterval(initInterval);
   }, openInterval);
 
+  window.addEventListener('load', () => init());
+  window.addEventListener('unload', () => whenClose());
+
   GM_addStyle(''+
+    '#gWP1 #headerBtnsDiv {'+
+    '  background: #222 !important;'+
+    '  border: 1px solid #666 !important;'+
+    '  border-radius: 6px !important;'+
+    '  bottom: 368px !important;'+
+    '  flex-direction: column !important;'+
+    '  left: 187px !important;'+
+    '  padding: 0 !important;'+
+    '  position: relative !important;'+
+    '  text-align: left !important;'+
+    '  width: 120px !important;'+
+    '}'+
+    '#gWP1 #headerBtnsDiv > label {'+
+    '  padding: 3px 0 !important;'+
+    '}'+
+    '#gWP1 #headerBtnsDiv > label:hover {'+
+    '  background-color: #333 !important;'+
+    '}'+
     '#gWP1 .o3j99.c93Gbe {'+
     '  background: transparent !important;'+
     '}'+
@@ -576,6 +714,7 @@
     '  background-color: #900 !important;'+
     '}'+
     '#gWP1 #headerButtonsDiv {'+
+    '  display: inline-flex !important;'+
     '  margin-bottom: -20px !important;'+
     '  position: absolute !important;'+
     '  top: 14px !important;'+
@@ -784,8 +923,13 @@
     '#gWP1 #searchLinks,'+
     '#gWP1 #divLinks,'+
     '#gWP1 #divButtons,'+
-    '#gWP1 #buttonSites{'+
+    '#gWP1 #buttonSites {'+
     '  cursor: pointer !important;'+
+    '}'+
+    '#gWP1 #displayButtons,'+
+    '#gWP1 #searchLinks {'+
+    '  text-align: left !important;'+
+    '  width: 100% !important;'+
     '}'+
     '#gWP1 #buttonThemer,'+
     '#gWP1 #displayButtons,'+

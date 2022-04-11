@@ -64,7 +64,9 @@
         urlYouTubeTV = 'https://tv.youtube.com/library',
         btnYouTubeTV = $c('button', {id: 'btnYouTubeTV', className: 'hBtn', textContent: 'YouTube TV', title: urlYouTubeTV, style: 'background: url('+ imgYouTubeTV +') no-repeat 4px center', onclick: () => window.open(urlYouTubeTV, GM_getValue('linksWhere'))}),
         headerBtnsDiv = $c('div', {id: 'headerBtnsDiv'}),
+        headerBtnsCnt = $c('div', {id: 'headerBtnsCnt'}),
         btnClearAll = $c('button', {id: 'btnClearAll', textContent: 'Clear All', onclick: e => clearAll(e)}),
+        btnSelectAll = $c('button', {id: 'btnSelectAll', textContent: 'Select All', onclick: e => selectAll(e)}),
         headerBtnCalendarLAB = $c('label', {id: 'labelCalendar', className: 'label'}),
         headerBtnCalendarCB = $c('input', {id: 'headerBtnCalendar', className: 'input', type: 'checkbox', checked: GM_getValue("headerBtnCalendar"), onclick: e => displayHdrButtons(e)}),
         headerBtnCalendarSPN = $c('span', {id: 'spanCalendar', className: 'span', textContent: 'Calendar'}),
@@ -268,8 +270,8 @@
       case 6: return w + space + bullet + space + m + slash + d + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
       case 7: return w + space + bullet + space + mm + slash + dd + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
       // Delete "customFormatText + 210/customFormatText + 211" text below and add return options with bullet, comma, hyphen, slash, space, star characters.
-      case 8: return customFormatText + 271;
-      case 9: return customFormatText + 272;
+      case 8: return customFormatText + 273;
+      case 9: return customFormatText + 274;
   } }
 
   function dateTimeDefault() {
@@ -324,6 +326,119 @@
     else document.getElementById(hdrBtn).style.display = 'none';
   }
 
+  function init() {
+    window.removeEventListener('load', () => init());
+    viewHdrButtons();
+    logo1.appendChild(logo1Btn);
+    logo2.appendChild(logo2Btn);
+    center.insertBefore(optionsBtn, center.childNodes[4]);
+    body.appendChild(logo1);
+    body.id = 'gWP1';
+    if (GM_getValue('googleLogoLeft')) {
+      logo1.style.opacity = 1;
+      logo2.style.opacity = 0;
+    } else {
+      logo1.style.opacity = 0;
+      logo2.style.opacity = 1;
+    }
+    if (GM_getValue('defaultDateTimeView')) dateTimeDefault();
+    else {dateTime.hidden = true; clearInterval(clockInterval)}
+    dateTime.title = addRemoveText + ' (' + GM_getValue('dateFormat') + ')';
+    div1.insertBefore(divHeader, div1.firstChild);
+    div1.insertBefore(logo2, div1.firstChild.nextSibling);
+    div1.insertBefore(form, div1.lastChild);
+    dateTimeContainer.appendChild(btnClock);
+    dateTimeContainer.appendChild(dateTime);
+    div2.appendChild(dateTimeContainer);
+    searchButton.id = 'gSearch';
+    placeHolder.placeholder = placeHolderText;
+    btnWhen.title = dailyHourlyTooltip;
+    GM_getValue('changeThemeHourly') ? btnWhen.innerHTML = hourlyText : btnWhen.innerHTML = dailyText;
+    if (GM_getValue('themeChanger')) {
+      btnThemer.innerHTML = changeWallpaperOnText;
+      btnWhen.style = 'opacity: 1; pointer-events: all';
+      themeImage.src = themeOn;
+    } else {
+      btnThemer.innerHTML = changeWallpaperOffText;
+      btnWhen.style = 'opacity: .5; pointer-events: none';
+      themeImage.src = themeOff;
+    }
+    if (GM_getValue('imageSite') === githubSite) btnSites.innerHTML = 'GitHub';
+    else btnSites.innerHTML = 'Sonco';
+    btnStatic.textContent = defaultWallpaperText;
+    btnStatic.title = defaultWallpaperTooltip;
+    inpStatic.value = GM_getValue('wallpaperStaticImage');
+    divThemer.appendChild(btnThemer);
+    divThemer.appendChild(btnWhen);
+    divThemer.appendChild(themeImage);
+    spanThemer.appendChild(divThemer);
+    divNumber.appendChild(btnStatic);
+    divNumber.appendChild(btnUp);
+    divNumber.appendChild(inpStatic);
+    divNumber.appendChild(btnDown);
+    spanNumber.appendChild(divNumber);
+    divLinks.appendChild(btnSearchLinks);
+    spanLinks.appendChild(divLinks);
+    spnSites.innerHTML = changeImageSiteText;
+    divSites.appendChild(spnSites);
+    divSites.appendChild(btnSites);
+    spanSites.appendChild(divSites);
+    btnSearchLinks.textContent = GM_getValue('linksWhere') === '_self' ? linksCurrentText : linksNewText;
+    divButtons.appendChild(displayButtons);
+    optionsPop.appendChild(divButtons);
+    optionsPop.appendChild(divThemer);
+    optionsPop.appendChild(divNumber);
+    optionsPop.insertBefore(divButtons, optionsPop.firstChild);
+    optionsPop.insertBefore(divLinks, optionsPop.firstChild);
+    optionsPop.appendChild(divSites);
+    optionsPop.appendChild(btnClose);
+    center.appendChild(optionsPop);
+    headerBtnsCnt.appendChild(btnClearAll);
+    headerBtnsCnt.appendChild(btnSelectAll);
+    headerBtnsDiv.appendChild(headerBtnsCnt);
+    headerBtnCalendarLAB.appendChild(headerBtnCalendarCB);
+    headerBtnCalendarLAB.appendChild(headerBtnCalendarSPN);
+    headerBtnsDiv.appendChild(headerBtnCalendarLAB);
+    headerBtnChromeLAB.appendChild(headerBtnChromeCB);
+    headerBtnChromeLAB.appendChild(headerBtnChromeSPN);
+    headerBtnsDiv.appendChild(headerBtnChromeLAB);
+    headerBtnEarthLAB.appendChild(headerBtnEarthCB);
+    headerBtnEarthLAB.appendChild(headerBtnEarthSPN);
+    headerBtnsDiv.appendChild(headerBtnEarthLAB);
+    headerBtnMailLAB.appendChild(headerBtnMailCB);
+    headerBtnMailLAB.appendChild(headerBtnMailSPN);
+    headerBtnsDiv.appendChild(headerBtnMailLAB);
+    headerBtnMapsLAB.appendChild(headerBtnMapsCB);
+    headerBtnMapsLAB.appendChild(headerBtnMapsSPN);
+    headerBtnsDiv.appendChild(headerBtnMapsLAB);
+    headerBtnMSEdgeLAB.appendChild(headerBtnMSEdgeCB);
+    headerBtnMSEdgeLAB.appendChild(headerBtnMSEdgeSPN);
+    headerBtnsDiv.appendChild(headerBtnMSEdgeLAB);
+    headerBtnNewsLAB.appendChild(headerBtnNewsCB);
+    headerBtnNewsLAB.appendChild(headerBtnNewsSPN);
+    headerBtnsDiv.appendChild(headerBtnNewsLAB);
+    headerBtnPhotosLAB.appendChild(headerBtnPhotosCB);
+    headerBtnPhotosLAB.appendChild(headerBtnPhotosSPN);
+    headerBtnsDiv.appendChild(headerBtnPhotosLAB);
+    headerBtnPlayLAB.appendChild(headerBtnPlayCB);
+    headerBtnPlayLAB.appendChild(headerBtnPlaySPN);
+    headerBtnsDiv.appendChild(headerBtnPlayLAB);
+    headerBtnPodcastsLAB.appendChild(headerBtnPodcastsCB);
+    headerBtnPodcastsLAB.appendChild(headerBtnPodcastsSPN);
+    headerBtnsDiv.appendChild(headerBtnPodcastsLAB);
+    headerBtnTranslateLAB.appendChild(headerBtnTranslateCB);
+    headerBtnTranslateLAB.appendChild(headerBtnTranslateSPN);
+    headerBtnsDiv.appendChild(headerBtnTranslateLAB);
+    headerBtnYouTubeLAB.appendChild(headerBtnYouTubeCB);
+    headerBtnYouTubeLAB.appendChild(headerBtnYouTubeSPN);
+    headerBtnsDiv.appendChild(headerBtnYouTubeLAB);
+    headerBtnYouTubeTVLAB.appendChild(headerBtnYouTubeTVCB);
+    headerBtnYouTubeTVLAB.appendChild(headerBtnYouTubeTVSPN);
+    headerBtnsDiv.appendChild(headerBtnYouTubeTVLAB);
+    headerBtnsDiv.appendChild(btnClose2);
+    wallpaper();
+  }
+
   function optionsPopup(e) {
     let pop = $q('#gOptionsPopup'),
         btnsPop = $q('#headerBtnsDiv');
@@ -366,6 +481,16 @@
     bool === '_self' ? btnSearchLinks.textContent = linksCurrentText : btnSearchLinks.textContent = linksNewText;
     searchPopupLinks();
   }
+
+  function selectAll(e) {
+    let clr = $q('.input', true);
+    e.preventDefault();
+    for (let i = 0; i < clr.length; i++) {
+      clr[i].checked = true;
+      GM_setValue(clr[i].id, true);
+      let hdrBtn = clr[i].id.replace('headerB', 'b');
+      try { document.getElementById(hdrBtn).style.display = 'block'; } catch(ex) {}
+  } }
 
   function setHdrButtons(e) {
     e.preventDefault();
@@ -526,117 +651,6 @@
     clearInterval(clockInterval);
   }
 
-  function init() {
-    window.removeEventListener('load', () => init());
-    viewHdrButtons();
-    logo1.appendChild(logo1Btn);
-    logo2.appendChild(logo2Btn);
-    center.insertBefore(optionsBtn, center.childNodes[4]);
-    body.appendChild(logo1);
-    body.id = 'gWP1';
-    if (GM_getValue('googleLogoLeft')) {
-      logo1.style.opacity = 1;
-      logo2.style.opacity = 0;
-    } else {
-      logo1.style.opacity = 0;
-      logo2.style.opacity = 1;
-    }
-    if (GM_getValue('defaultDateTimeView')) dateTimeDefault();
-    else {dateTime.hidden = true; clearInterval(clockInterval)}
-    dateTime.title = addRemoveText + ' (' + GM_getValue('dateFormat') + ')';
-    div1.insertBefore(divHeader, div1.firstChild);
-    div1.insertBefore(logo2, div1.firstChild.nextSibling);
-    div1.insertBefore(form, div1.lastChild);
-    dateTimeContainer.appendChild(btnClock);
-    dateTimeContainer.appendChild(dateTime);
-    div2.appendChild(dateTimeContainer);
-    searchButton.id = 'gSearch';
-    placeHolder.placeholder = placeHolderText;
-    btnWhen.title = dailyHourlyTooltip;
-    GM_getValue('changeThemeHourly') ? btnWhen.innerHTML = hourlyText : btnWhen.innerHTML = dailyText;
-    if (GM_getValue('themeChanger')) {
-      btnThemer.innerHTML = changeWallpaperOnText;
-      btnWhen.style = 'opacity: 1; pointer-events: all';
-      themeImage.src = themeOn;
-    } else {
-      btnThemer.innerHTML = changeWallpaperOffText;
-      btnWhen.style = 'opacity: .5; pointer-events: none';
-      themeImage.src = themeOff;
-    }
-    if (GM_getValue('imageSite') === githubSite) btnSites.innerHTML = 'GitHub';
-    else btnSites.innerHTML = 'Sonco';
-    btnStatic.textContent = defaultWallpaperText;
-    btnStatic.title = defaultWallpaperTooltip;
-    inpStatic.value = GM_getValue('wallpaperStaticImage');
-    divThemer.appendChild(btnThemer);
-    divThemer.appendChild(btnWhen);
-    divThemer.appendChild(themeImage);
-    spanThemer.appendChild(divThemer);
-    divNumber.appendChild(btnStatic);
-    divNumber.appendChild(btnUp);
-    divNumber.appendChild(inpStatic);
-    divNumber.appendChild(btnDown);
-    spanNumber.appendChild(divNumber);
-    divLinks.appendChild(btnSearchLinks);
-    spanLinks.appendChild(divLinks);
-    spnSites.innerHTML = changeImageSiteText;
-    divSites.appendChild(spnSites);
-    divSites.appendChild(btnSites);
-    spanSites.appendChild(divSites);
-    btnSearchLinks.textContent = GM_getValue('linksWhere') === '_self' ? linksCurrentText : linksNewText;
-    divButtons.appendChild(displayButtons);
-    optionsPop.appendChild(divButtons);
-    optionsPop.appendChild(divThemer);
-    optionsPop.appendChild(divNumber);
-    optionsPop.insertBefore(divButtons, optionsPop.firstChild);
-    optionsPop.insertBefore(divLinks, optionsPop.firstChild);
-    optionsPop.appendChild(divSites);
-    optionsPop.appendChild(btnClose);
-    center.appendChild(optionsPop);
-    headerBtnsDiv.appendChild(btnClearAll);
-    headerBtnCalendarLAB.appendChild(headerBtnCalendarCB);
-    headerBtnCalendarLAB.appendChild(headerBtnCalendarSPN);
-    headerBtnsDiv.appendChild(headerBtnCalendarLAB);
-    headerBtnChromeLAB.appendChild(headerBtnChromeCB);
-    headerBtnChromeLAB.appendChild(headerBtnChromeSPN);
-    headerBtnsDiv.appendChild(headerBtnChromeLAB);
-    headerBtnEarthLAB.appendChild(headerBtnEarthCB);
-    headerBtnEarthLAB.appendChild(headerBtnEarthSPN);
-    headerBtnsDiv.appendChild(headerBtnEarthLAB);
-    headerBtnMailLAB.appendChild(headerBtnMailCB);
-    headerBtnMailLAB.appendChild(headerBtnMailSPN);
-    headerBtnsDiv.appendChild(headerBtnMailLAB);
-    headerBtnMapsLAB.appendChild(headerBtnMapsCB);
-    headerBtnMapsLAB.appendChild(headerBtnMapsSPN);
-    headerBtnsDiv.appendChild(headerBtnMapsLAB);
-    headerBtnMSEdgeLAB.appendChild(headerBtnMSEdgeCB);
-    headerBtnMSEdgeLAB.appendChild(headerBtnMSEdgeSPN);
-    headerBtnsDiv.appendChild(headerBtnMSEdgeLAB);
-    headerBtnNewsLAB.appendChild(headerBtnNewsCB);
-    headerBtnNewsLAB.appendChild(headerBtnNewsSPN);
-    headerBtnsDiv.appendChild(headerBtnNewsLAB);
-    headerBtnPhotosLAB.appendChild(headerBtnPhotosCB);
-    headerBtnPhotosLAB.appendChild(headerBtnPhotosSPN);
-    headerBtnsDiv.appendChild(headerBtnPhotosLAB);
-    headerBtnPlayLAB.appendChild(headerBtnPlayCB);
-    headerBtnPlayLAB.appendChild(headerBtnPlaySPN);
-    headerBtnsDiv.appendChild(headerBtnPlayLAB);
-    headerBtnPodcastsLAB.appendChild(headerBtnPodcastsCB);
-    headerBtnPodcastsLAB.appendChild(headerBtnPodcastsSPN);
-    headerBtnsDiv.appendChild(headerBtnPodcastsLAB);
-    headerBtnTranslateLAB.appendChild(headerBtnTranslateCB);
-    headerBtnTranslateLAB.appendChild(headerBtnTranslateSPN);
-    headerBtnsDiv.appendChild(headerBtnTranslateLAB);
-    headerBtnYouTubeLAB.appendChild(headerBtnYouTubeCB);
-    headerBtnYouTubeLAB.appendChild(headerBtnYouTubeSPN);
-    headerBtnsDiv.appendChild(headerBtnYouTubeLAB);
-    headerBtnYouTubeTVLAB.appendChild(headerBtnYouTubeTVCB);
-    headerBtnYouTubeTVLAB.appendChild(headerBtnYouTubeTVSPN);
-    headerBtnsDiv.appendChild(headerBtnYouTubeTVLAB);
-    headerBtnsDiv.appendChild(btnClose2);
-    wallpaper();
-  }
-
   if (!GM_getValue('changeThemeHourly')) GM_setValue('changeThemeHourly', false);
   if (!GM_getValue('dateFormat')) GM_setValue('dateFormat', 1);
   if (!GM_getValue('defaultAMPM')) GM_setValue('defaultAMPM', false);
@@ -748,12 +762,18 @@
     '  text-align: left !important;'+
     '  width: 134px !important;'+
     '}'+
-    '#gWP1 #headerBtnsDiv > #btnClearAll {'+
-    '  color: #CCC !important;'+
-    '  height: 32px !important;'+
-    '  padding-top: 4px !important;'+
+    '#gWP1 #headerBtnsDiv > #headerBtnsCnt {'+
+    '  padding: 10px 0px 6px 4px !important;'+
     '}'+
-    '#gWP1 #headerBtnsDiv > #btnClearAll:hover {'+
+    '#gWP1 #headerBtnsDiv #btnClearAll {'+
+    '  margin-right: 14px !important;'+
+    '}'+
+    '#gWP1 #headerBtnsDiv #btnClearAll,'+
+    '#gWP1 #headerBtnsDiv #btnSelectAll {'+
+    '  color: #CCC !important;'+
+    '}'+
+    '#gWP1 #headerBtnsDiv #btnClearAll:hover,'+
+    '#gWP1 #headerBtnsDiv #btnSelectAll:hover {'+
     '  background-color: #333 !important;'+
     '  color: #FFF !important;'+
     '}'+
@@ -776,43 +796,43 @@
     '  position: relative !important;'+
     '  top: 3px !important;'+
     '}'+
-    '#gWP1 #headerBtnsDiv > label:nth-child(1) > span:after {'+
+    '#gWP1 #headerBtnsDiv > #labelCalendar > span:after {'+
     '  content: url(' + imgCalendar + ')  !important;'+
     '}'+
-    '#gWP1 #headerBtnsDiv > label:nth-child(2) > span:after {'+
+    '#gWP1 #headerBtnsDiv > #labelChrome > span:after {'+
     '  content: url(' + imgChrome + ')  !important;'+
     '}'+
-    '#gWP1 #headerBtnsDiv > label:nth-child(3) > span:after {'+
+    '#gWP1 #headerBtnsDiv > #labelEarth > span:after {'+
     '  content: url(' + imgEarth + ')  !important;'+
     '}'+
-    '#gWP1 #headerBtnsDiv > label:nth-child(4) > span:after {'+
+    '#gWP1 #headerBtnsDiv > #labelMail > span:after {'+
     '  content: url(' + imgMail + ')  !important;'+
     '}'+
-    '#gWP1 #headerBtnsDiv > label:nth-child(5) > span:after {'+
+    '#gWP1 #headerBtnsDiv > #labelMaps > span:after {'+
     '  content: url(' + imgMaps + ')  !important;'+
     '}'+
-    '#gWP1 #headerBtnsDiv > label:nth-child(6) > span:after {'+
+    '#gWP1 #headerBtnsDiv > #labelMSEdge > span:after {'+
     '  content: url(' + imgMSEdge + ')  !important;'+
     '}'+
-    '#gWP1 #headerBtnsDiv > label:nth-child(7) > span:after {'+
+    '#gWP1 #headerBtnsDiv > #labelNews > span:after {'+
     '  content: url(' + imgNews + ')  !important;'+
     '}'+
-    '#gWP1 #headerBtnsDiv > label:nth-child(8) > span:after {'+
+    '#gWP1 #headerBtnsDiv > #labelPhotos > span:after {'+
     '  content: url(' + imgPhotos + ')  !important;'+
     '}'+
-    '#gWP1 #headerBtnsDiv > label:nth-child(9) > span:after {'+
+    '#gWP1 #headerBtnsDiv > #labelPlay > span:after {'+
     '  content: url(' + imgPlay + ')  !important;'+
     '}'+
-    '#gWP1 #headerBtnsDiv > label:nth-child(10) > span:after {'+
+    '#gWP1 #headerBtnsDiv > #labelPodcasts > span:after {'+
     '  content: url(' + imgPodcasts + ')  !important;'+
     '}'+
-    '#gWP1 #headerBtnsDiv > label:nth-child(11) > span:after {'+
+    '#gWP1 #headerBtnsDiv > #labelTranslate > span:after {'+
     '  content: url(' + imgTranslate + ')  !important;'+
     '}'+
-    '#gWP1 #headerBtnsDiv > label:nth-child(12) > span:after {'+
+    '#gWP1 #headerBtnsDiv > #labelYouTube > span:after {'+
     '  content: url(' + imgYouTube + ')  !important;'+
     '}'+
-    '#gWP1 #headerBtnsDiv > label:nth-child(13) > span:after {'+
+    '#gWP1 #headerBtnsDiv > #labelYouTubeTV > span:after {'+
     '  content: url(' + imgYouTubeTV + ')  !important;'+
     '}'+
     '#gWP1 > .L3eUgb > .o3j99.LLD4me.yr19Zb.LS8OJ > div > .lnXdpd,'+

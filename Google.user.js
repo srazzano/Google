@@ -65,8 +65,8 @@
         btnYouTubeTV = $c('button', {id: 'btnYouTubeTV', className: 'hBtn', textContent: 'YouTube TV', title: urlYouTubeTV, style: 'background: url('+ imgYouTubeTV +') no-repeat 4px center', onclick: () => window.open(urlYouTubeTV, GM_getValue('linksWhere'))}),
         headerBtnsDiv = $c('div', {id: 'headerBtnsDiv'}),
         headerBtnsCnt = $c('div', {id: 'headerBtnsCnt'}),
-        btnClearAll = $c('button', {id: 'btnClearAll', textContent: 'Clear All', onclick: e => clearAll(e)}),
-        btnSelectAll = $c('button', {id: 'btnSelectAll', textContent: 'Select All', onclick: e => selectAll(e)}),
+        btnClearAll = $c('button', {id: 'btnClearAll', textContent: 'Clear All', onclick: e => clearSelectAll(e)}),
+        btnSelectAll = $c('button', {id: 'btnSelectAll', textContent: 'Select All', onclick: e => clearSelectAll(e)}),
         headerBtnCalendarLAB = $c('label', {id: 'labelCalendar', className: 'label'}),
         headerBtnCalendarCB = $c('input', {id: 'headerBtnCalendar', className: 'input', type: 'checkbox', checked: GM_getValue("headerBtnCalendar"), onclick: e => displayHdrButtons(e)}),
         headerBtnCalendarSPN = $c('span', {id: 'spanCalendar', className: 'span', textContent: 'Calendar'}),
@@ -219,14 +219,27 @@
     return document.querySelector(el);
   }
 
-  function clearAll(e) {
+  function clearSelectAll(e) {
     let clr = $q('.input', true);
     e.preventDefault();
-    for (let i = 0; i < clr.length; i++) {
-      clr[i].checked = false;
-      GM_setValue(clr[i].id, false);
-      let hdrBtn = clr[i].id.replace('headerB', 'b');
-      try { document.getElementById(hdrBtn).style.display = 'none'; } catch(ex) {}
+    switch (e.target.id) {
+      case 'btnClearAll':
+        for (let i = 0; i < clr.length; i++) {
+          clr[i].checked = false;
+          GM_setValue(clr[i].id, false);
+          let hdrBtn = clr[i].id.replace('headerB', 'b');
+          try { document.getElementById(hdrBtn).style.display = 'none'; } catch(ex) {}
+        }
+        break;
+      case 'btnSelectAll':
+        for (let i = 0; i < clr.length; i++) {
+          clr[i].checked = true;
+          GM_setValue(clr[i].id, true);
+          let hdrBtn = clr[i].id.replace('headerB', 'b');
+          try { document.getElementById(hdrBtn).style.display = 'block'; } catch(ex) {}
+          viewHdrButtons();
+        }
+        break;
   } }
 
   function dateTimeFormat(int) {
@@ -270,8 +283,8 @@
       case 6: return w + space + bullet + space + m + slash + d + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
       case 7: return w + space + bullet + space + mm + slash + dd + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
       // Delete "customFormatText + 210/customFormatText + 211" text below and add return options with bullet, comma, hyphen, slash, space, star characters.
-      case 8: return customFormatText + 273;
-      case 9: return customFormatText + 274;
+      case 8: return customFormatText + 286;
+      case 9: return customFormatText + 287;
   } }
 
   function dateTimeDefault() {
@@ -481,16 +494,6 @@
     bool === '_self' ? btnSearchLinks.textContent = linksCurrentText : btnSearchLinks.textContent = linksNewText;
     searchPopupLinks();
   }
-
-  function selectAll(e) {
-    let clr = $q('.input', true);
-    e.preventDefault();
-    for (let i = 0; i < clr.length; i++) {
-      clr[i].checked = true;
-      GM_setValue(clr[i].id, true);
-      let hdrBtn = clr[i].id.replace('headerB', 'b');
-      try { document.getElementById(hdrBtn).style.display = 'block'; } catch(ex) {}
-  } }
 
   function setHdrButtons(e) {
     e.preventDefault();

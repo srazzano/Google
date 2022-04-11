@@ -15,7 +15,15 @@
 
   'use strict';
 
-  const divHeader = $c('div', {id: 'headerButtonsDiv'}),
+  const body = $q('html[itemtype="http://schema.org/WebPage"] > body'),
+        signIn = $q('html[itemtype="http://schema.org/WebPage"] a.gb_1.gb_2.gb_9d.gb_9c'),
+        div1 = $q('html[itemtype="http://schema.org/WebPage"] .L3eUgb > .o3j99.LLD4me.yr19Zb.LS8OJ'),
+        div2 = $q('html[itemtype="http://schema.org/WebPage"] .gb_Wd.gb_Za.gb_Ld > .gb_Se'),
+        center = $q('html[itemtype="http://schema.org/WebPage"] .FPdoLc.lJ9FBc > center'),
+        form = $q('html[itemtype="http://schema.org/WebPage"] .L3eUgb form'),
+        placeHolder = $q('html[itemtype="http://schema.org/WebPage"] input[name="q"]'),
+        searchButton = $q('html[itemtype="http://schema.org/WebPage"] input[name="btnK"]'),
+        divHeader = $c('div', {id: 'headerButtonsDiv'}),
         imgCalendar = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABT0lEQVR42mNkAAKp9Iv/GYgELMxMYJqZmZHh/mQdRkZSNMPAfwZGMM0IYpFjADJANyCMkIaHocYgahVOA57O0Fv17x8Dw7//IH8ygB37H6qCEcj5s5c1DK8BD6fqrTp+5w9DRP81hsNNOgxyIkwMJ+/+ZQjrvcoANJywAQ+m6K16/O4fg5IYE4N0xiWGvXU6DM5NV8CSRBkA8sLbL/8Z9EouM2yq0GYwVmBmuPrkL4NbC5EueDRNb9XDNwgXPJ6ux3D9KQkG3Jqou+rcg7/gMPAwUmWYncrJcPPZXwaXZiINeDJdbxUjJJ0w/PzDwMDOwsDw+y+Ez8pMRCzcmqyyCpLaGKDpDRWwH+IP+/+TGayGkf0vA6Ncs+3/X39/E52QLh3+uwqZj24AQQA0AM4W23uakVGx1eH/998/SDYApJkB5k2JBguiMxTIAJhmEAAA4quznkbNVyMAAAAASUVORK5CYII=',
         urlCalendar = 'https://calendar.google.com/calendar/u/0/r',
         btnCalendar = $c('button', {id: 'btnCalendar', className: 'hBtn', textContent: 'Calendar', title: urlCalendar, style: 'background: url('+ imgCalendar +') no-repeat 4px center', onclick: () => window.open(urlCalendar, GM_getValue('linksWhere'))}),
@@ -56,45 +64,46 @@
         urlYouTubeTV = 'https://tv.youtube.com/library',
         btnYouTubeTV = $c('button', {id: 'btnYouTubeTV', className: 'hBtn', textContent: 'YouTube TV', title: urlYouTubeTV, style: 'background: url('+ imgYouTubeTV +') no-repeat 4px center', onclick: () => window.open(urlYouTubeTV, GM_getValue('linksWhere'))}),
         headerBtnsDiv = $c('div', {id: 'headerBtnsDiv'}),
-        headerBtnCalendarLAB = $c('label'),
-        headerBtnCalendarCB = $c('input', {id: 'headerBtnCalendar', type: 'checkbox', checked: GM_getValue("headerBtnCalendar"), onclick: e => displayHdrButtons(e)}),
-        headerBtnCalendarSPN = $c('span', {textContent: 'Calendar'}),
-        headerBtnChromeLAB = $c('label'),
-        headerBtnChromeCB = $c('input', {id: 'headerBtnChrome', type: 'checkbox', checked: GM_getValue("headerBtnChrome"), onclick: e => displayHdrButtons(e)}),
-        headerBtnChromeSPN = $c('span', {textContent: 'Chrome Store'}),
-        headerBtnEarthLAB = $c('label'),
-        headerBtnEarthCB = $c('input', {id: 'headerBtnEarth', type: 'checkbox', checked: GM_getValue("headerBtnEarth"), onclick: e => displayHdrButtons(e)}),
-        headerBtnEarthSPN = $c('span', {textContent: 'Earth'}),
-        headerBtnMailLAB = $c('label'),
-        headerBtnMailCB = $c('input', {id: 'headerBtnMail', type: 'checkbox', checked: GM_getValue("headerBtnMail"), onclick: e => displayHdrButtons(e)}),
-        headerBtnMailSPN = $c('span', {textContent: 'GMail'}),
-        headerBtnMapsLAB = $c('label'),
-        headerBtnMapsCB = $c('input', {id: 'headerBtnMaps', type: 'checkbox', checked: GM_getValue("headerBtnMaps"), onclick: e => displayHdrButtons(e)}),
-        headerBtnMapsSPN = $c('span', {textContent: 'GMaps'}),
-        headerBtnMSEdgeLAB = $c('label'),
-        headerBtnMSEdgeCB = $c('input', {id: 'headerBtnMSEdge', type: 'checkbox', checked: GM_getValue("headerBtnMSEdge"), onclick: e => displayHdrButtons(e)}),
-        headerBtnMSEdgeSPN = $c('span', {textContent: 'MS Store'}),
-        headerBtnNewsLAB = $c('label'),
-        headerBtnNewsCB = $c('input', {id: 'headerBtnNews', type: 'checkbox', checked: GM_getValue("headerBtnNews"), onclick: e => displayHdrButtons(e)}),
-        headerBtnNewsSPN = $c('span', {textContent: 'News'}),
-        headerBtnPhotosLAB = $c('label'),
-        headerBtnPhotosCB = $c('input', {id: 'headerBtnPhotos', type: 'checkbox', checked: GM_getValue("headerBtnPhotos"), onclick: e => displayHdrButtons(e)}),
-        headerBtnPhotosSPN = $c('span', {textContent: 'Photos'}),
-        headerBtnPlayLAB = $c('label'),
-        headerBtnPlayCB = $c('input', {id: 'headerBtnPlay', type: 'checkbox', checked: GM_getValue("headerBtnPlay"), onclick: e => displayHdrButtons(e)}),
-        headerBtnPlaySPN = $c('span', {textContent: 'Play Store'}),
-        headerBtnPodcastsLAB = $c('label'),
-        headerBtnPodcastsCB = $c('input', {id: 'headerBtnPodcasts', type: 'checkbox', checked: GM_getValue("headerBtnPodcasts"), onclick: e => displayHdrButtons(e)}),
-        headerBtnPodcastsSPN = $c('span', {textContent: 'Podcasts'}),
-        headerBtnTranslateLAB = $c('label'),
-        headerBtnTranslateCB = $c('input', {id: 'headerBtnTranslate', type: 'checkbox', checked: GM_getValue("headerBtnTranslate"), onclick: e => displayHdrButtons(e)}),
-        headerBtnTranslateSPN = $c('span', {textContent: 'Translate'}),
-        headerBtnYouTubeLAB = $c('label'),
-        headerBtnYouTubeCB = $c('input', {id: 'headerBtnYouTube', type: 'checkbox', checked: GM_getValue("headerBtnYouTube"), onclick: e => displayHdrButtons(e)}),
-        headerBtnYouTubeSPN = $c('span', {textContent: 'YouTube'}),
-        headerBtnYouTubeTVLAB = $c('label'),
-        headerBtnYouTubeTVCB = $c('input', {id: 'headerBtnYouTubeTV', type: 'checkbox', checked: GM_getValue("headerBtnYouTubeTV"), onclick: e => displayHdrButtons(e)}),
-        headerBtnYouTubeTVSPN = $c('span', {textContent: 'YouTube TV'}),
+        btnClearAll = $c('button', {id: 'btnClearAll', textContent: 'Clear All', onclick: e => clearAll(e)}),
+        headerBtnCalendarLAB = $c('label', {id: 'labelCalendar', className: 'label'}),
+        headerBtnCalendarCB = $c('input', {id: 'headerBtnCalendar', className: 'input', type: 'checkbox', checked: GM_getValue("headerBtnCalendar"), onclick: e => displayHdrButtons(e)}),
+        headerBtnCalendarSPN = $c('span', {id: 'spanCalendar', className: 'span', textContent: 'Calendar'}),
+        headerBtnChromeLAB = $c('label', {id: 'labelChrome', className: 'label'}),
+        headerBtnChromeCB = $c('input', {id: 'headerBtnChrome', className: 'input', type: 'checkbox', checked: GM_getValue("headerBtnChrome"), onclick: e => displayHdrButtons(e)}),
+        headerBtnChromeSPN = $c('span', {id: 'spanChrome', className: 'span', textContent: 'Chrome Store'}),
+        headerBtnEarthLAB = $c('label', {id: 'labelEarth', className: 'label'}),
+        headerBtnEarthCB = $c('input', {id: 'headerBtnEarth', className: 'input', type: 'checkbox', checked: GM_getValue("headerBtnEarth"), onclick: e => displayHdrButtons(e)}),
+        headerBtnEarthSPN = $c('span', {id: 'spanEarth', className: 'span', textContent: 'Earth'}),
+        headerBtnMailLAB = $c('label', {id: 'labelMail', className: 'label'}),
+        headerBtnMailCB = $c('input', {id: 'headerBtnMail', className: 'input', type: 'checkbox', checked: GM_getValue("headerBtnMail"), onclick: e => displayHdrButtons(e)}),
+        headerBtnMailSPN = $c('span', {id: 'spanMail', className: 'span', textContent: 'GMail'}),
+        headerBtnMapsLAB = $c('label', {id: 'labelMaps', className: 'label'}),
+        headerBtnMapsCB = $c('input', {id: 'headerBtnMaps', className: 'input', type: 'checkbox', checked: GM_getValue("headerBtnMaps"), onclick: e => displayHdrButtons(e)}),
+        headerBtnMapsSPN = $c('span', {id: 'spanMaps', className: 'span', textContent: 'GMaps'}),
+        headerBtnMSEdgeLAB = $c('label', {id: 'labelMSEdge', className: 'label'}),
+        headerBtnMSEdgeCB = $c('input', {id: 'headerBtnMSEdge', className: 'input', type: 'checkbox', checked: GM_getValue("headerBtnMSEdge"), onclick: e => displayHdrButtons(e)}),
+        headerBtnMSEdgeSPN = $c('span', {id: 'spanMSEdge', className: 'span', textContent: 'MS Store'}),
+        headerBtnNewsLAB = $c('label', {id: 'labelNews', className: 'label'}),
+        headerBtnNewsCB = $c('input', {id: 'headerBtnNews', className: 'input', type: 'checkbox', checked: GM_getValue("headerBtnNews"), onclick: e => displayHdrButtons(e)}),
+        headerBtnNewsSPN = $c('span', {id: 'spanNews', className: 'span', textContent: 'News'}),
+        headerBtnPhotosLAB = $c('label', {id: 'labelPhotos', className: 'label'}),
+        headerBtnPhotosCB = $c('input', {id: 'headerBtnPhotos', className: 'input', type: 'checkbox', checked: GM_getValue("headerBtnPhotos"), onclick: e => displayHdrButtons(e)}),
+        headerBtnPhotosSPN = $c('span', {id: 'spanPhotos', className: 'span', textContent: 'Photos'}),
+        headerBtnPlayLAB = $c('label', {id: 'labelPlay', className: 'label'}),
+        headerBtnPlayCB = $c('input', {id: 'headerBtnPlay', className: 'input', type: 'checkbox', checked: GM_getValue("headerBtnPlay"), onclick: e => displayHdrButtons(e)}),
+        headerBtnPlaySPN = $c('span', {id: 'spanPlay', className: 'span', textContent: 'Play Store'}),
+        headerBtnPodcastsLAB = $c('label', {id: 'labelPodcasts', className: 'label'}),
+        headerBtnPodcastsCB = $c('input', {id: 'headerBtnPodcasts', className: 'input', type: 'checkbox', checked: GM_getValue("headerBtnPodcasts"), onclick: e => displayHdrButtons(e)}),
+        headerBtnPodcastsSPN = $c('span', {id: 'spanPodcasts', className: 'span', textContent: 'Podcasts'}),
+        headerBtnTranslateLAB = $c('label', {id: 'labelTranslate', className: 'label'}),
+        headerBtnTranslateCB = $c('input', {id: 'headerBtnTranslate', className: 'input', type: 'checkbox', checked: GM_getValue("headerBtnTranslate"), onclick: e => displayHdrButtons(e)}),
+        headerBtnTranslateSPN = $c('span', {id: 'spanTranslate', className: 'span', textContent: 'Translate'}),
+        headerBtnYouTubeLAB = $c('label', {id: 'labelYouTube', className: 'label'}),
+        headerBtnYouTubeCB = $c('input', {id: 'headerBtnYouTube', className: 'input', type: 'checkbox', checked: GM_getValue("headerBtnYouTube"), onclick: e => displayHdrButtons(e)}),
+        headerBtnYouTubeSPN = $c('span', {id: 'spanYouTube', className: 'span', textContent: 'YouTube'}),
+        headerBtnYouTubeTVLAB = $c('label', {id: 'labelYouTubeTV', className: 'label'}),
+        headerBtnYouTubeTVCB = $c('input', {id: 'headerBtnYouTubeTV', className: 'input', type: 'checkbox', checked: GM_getValue("headerBtnYouTubeTV"), onclick: e => displayHdrButtons(e)}),
+        headerBtnYouTubeTVSPN = $c('span', {id: 'spanYouTubeTV', className: 'span', textContent: 'YouTube TV'}),
         openInterval = 20,
         themerInterval = 30000,
         timerLong = 10000,
@@ -161,14 +170,6 @@
         popCloseBtn = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAbElEQVR42mNkoANgHLVk1JKBs+Tu3bv/lZWVGcmVJ2gJyAAYG5tBhORJ8gk2g4i1gChLsBlIigVEW4JuESkWkGQJqUE0OH2CzQJSLCIpdQFBGNDQ1UCxUCB7FbEWDZ58QtMcTy0wasmoJbQDAGtLSRok0brUAAAAAElFTkSuQmCC',
         downButton = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAUCAYAAABiS3YzAAAAuklEQVR42mNkoAFgHDWUPob+BwJGICCkGZc6XIamAamZ+AwGGQik0oFKZhFrKEj8LRALYjMYauB7IBYGSv8nOkyB+jyA1HawIiSDoQaCgCdQeAfRYYpkwBkgZQwzGMnAs0CuCS59hAzVB1JzYQbDDATiZKChF8kyFGrwSiAVhiS0CmhgOD49xBgqCaSuArEgAyRytIGGPqfIUKjB7UCqAog7gAZWElJPdI4CGrwfaKAjMWqHeN4fOYYCALmCRxW5rmXrAAAAAElFTkSuQmCC',
         upButton = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAUCAYAAABiS3YzAAAAsElEQVR42mNkoAFgHDV04Az9////fkZGRkeqGQo0sB1IVQBxB9DgSooNBRooCaSuArEgEL8HYm2gwc8pNXQlkApDEloFNDScbEOBBuoDqblAbIwkfBaIk4EGXyTX0DMwA4GGMAL5/2EGA7kmJBsK1O8BpLbDDEQShxnsCRTeQbShQH0g8bdALIhsIJrBoEgTBnmAWEPTgNRMbAaiGZwOVDKLWEP/4zOQkLphmPeHp6EA2JNHFW0nieAAAAAASUVORK5CYII=',
-        body = $q('html[itemtype="http://schema.org/WebPage"] > body'),
-        signIn = $q('html[itemtype="http://schema.org/WebPage"] a.gb_1.gb_2.gb_9d.gb_9c'),
-        div1 = $q('html[itemtype="http://schema.org/WebPage"] .L3eUgb > .o3j99.LLD4me.yr19Zb.LS8OJ'),
-        div2 = $q('html[itemtype="http://schema.org/WebPage"] .gb_Wd.gb_Za.gb_Ld > .gb_Se'),
-        center = $q('html[itemtype="http://schema.org/WebPage"] .FPdoLc.lJ9FBc > center'),
-        form = $q('html[itemtype="http://schema.org/WebPage"] .L3eUgb form'),
-        placeHolder = $q('html[itemtype="http://schema.org/WebPage"] input[name="q"]'),
-        searchButton = $q('html[itemtype="http://schema.org/WebPage"] input[name="btnK"]'),
         optionsBtn = $c('input', {id: 'gOptions', type: 'button', value: optionsText, onclick: e => optionsPopup(e)}),
         optionsPop = $c('div', {id: 'gOptionsPopup', style: 'display: none;'}),
         divButtons = $c('div', {id: 'divButtons', className: 'popDiv'}),
@@ -216,6 +217,16 @@
     return document.querySelector(el);
   }
 
+  function clearAll(e) {
+    let clr = $q('.input', true);
+    e.preventDefault();
+    for (let i = 0; i < clr.length; i++) {
+      clr[i].checked = false;
+      GM_setValue(clr[i].id, false);
+      let hdrBtn = clr[i].id.replace('headerB', 'b');
+      try { document.getElementById(hdrBtn).style.display = 'none'; } catch(ex) {}
+  } }
+
   function dateTimeFormat(int) {
     if (!GM_getValue('defaultDateTimeView')) return;
     let date = new Date(),
@@ -257,8 +268,8 @@
       case 6: return w + space + bullet + space + m + slash + d + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
       case 7: return w + space + bullet + space + mm + slash + dd + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
       // Delete "customFormatText + 210/customFormatText + 211" text below and add return options with bullet, comma, hyphen, slash, space, star characters.
-      case 8: return customFormatText + 260;
-      case 9: return customFormatText + 261;
+      case 8: return customFormatText + 271;
+      case 9: return customFormatText + 272;
   } }
 
   function dateTimeDefault() {
@@ -330,8 +341,7 @@
       case 'btnClose2':
         btnsPop.style.display = 'none';
         break;
-    }
-  }
+  } }
 
   function repositionLogo() {
     let bool = GM_getValue('googleLogoLeft') !== true ? true : false;
@@ -583,6 +593,7 @@
     optionsPop.appendChild(divSites);
     optionsPop.appendChild(btnClose);
     center.appendChild(optionsPop);
+    headerBtnsDiv.appendChild(btnClearAll);
     headerBtnCalendarLAB.appendChild(headerBtnCalendarCB);
     headerBtnCalendarLAB.appendChild(headerBtnCalendarSPN);
     headerBtnsDiv.appendChild(headerBtnCalendarLAB);
@@ -729,13 +740,22 @@
     '  background: #222 !important;'+
     '  border: 1px solid #666 !important;'+
     '  border-radius: 6px !important;'+
-    '  bottom: 473px !important;'+
+    '  bottom: 489px !important;'+
     '  flex-direction: column !important;'+
     '  left: -194px !important;'+
     '  padding: 0 !important;'+
     '  position: relative !important;'+
     '  text-align: left !important;'+
     '  width: 134px !important;'+
+    '}'+
+    '#gWP1 #headerBtnsDiv > #btnClearAll {'+
+    '  color: #CCC !important;'+
+    '  height: 32px !important;'+
+    '  padding-top: 4px !important;'+
+    '}'+
+    '#gWP1 #headerBtnsDiv > #btnClearAll:hover {'+
+    '  background-color: #333 !important;'+
+    '  color: #FFF !important;'+
     '}'+
     '#gWP1 #headerBtnsDiv > label {'+
     '  padding: 4px 0 !important;'+

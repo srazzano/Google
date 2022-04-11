@@ -181,6 +181,7 @@
         spanSites = $c('span', {id: 'spanSites', className: 'popSpan'}),
         spanThemer = $c('span', {id: 'spanThemer', className: 'popSpan'}),
         btnClose = $c('button', {id: 'btnClose', style: 'background: url('+ popCloseBtn +') no-repeat center', onclick: e => optionsPopup(e)}),
+        btnClose2 = $c('button', {id: 'btnClose2', style: 'background: url('+ popCloseBtn +') no-repeat center', onclick: e => optionsPopup(e)}),
         themeImage = $c('img', {id: 'themeImage'}),
         logo1 = $c('span', {id: 'logo1'}),
         logo1Btn = $c('input', {id: 'logo1Btn', type: 'image', src: logoButton, title: logoCenterTooltip, onclick: () => repositionLogo()}),
@@ -256,8 +257,8 @@
       case 6: return w + space + bullet + space + m + slash + d + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
       case 7: return w + space + bullet + space + mm + slash + dd + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
       // Delete "customFormatText + 210/customFormatText + 211" text below and add return options with bullet, comma, hyphen, slash, space, star characters.
-      case 8: return customFormatText + 259;
-      case 9: return customFormatText + 260;
+      case 8: return customFormatText + 260;
+      case 9: return customFormatText + 261;
   } }
 
   function dateTimeDefault() {
@@ -315,6 +316,7 @@
   function optionsPopup(e) {
     let pop = $q('#gOptionsPopup'),
         btnsPop = $q('#headerBtnsDiv');
+    e.preventDefault();
     switch (e.target.id) {
       case 'gOptions':
         if (pop.style.display === 'none') pop.style.display = 'block';
@@ -325,8 +327,10 @@
         pop.style.display = 'none';
         btnsPop.style.display = 'none';
         break;
+      case 'btnClose2':
+        btnsPop.style.display = 'none';
+        break;
     }
-    e.preventDefault();
   }
 
   function repositionLogo() {
@@ -347,17 +351,17 @@
 
   function searchLinksWhere(e) {
     let bool = GM_getValue('linksWhere') !== '_blank' ? '_blank' : '_self';
+    e.preventDefault();
     GM_setValue('linksWhere', bool);
     bool === '_self' ? btnSearchLinks.textContent = linksCurrentText : btnSearchLinks.textContent = linksNewText;
     searchPopupLinks();
-    e.preventDefault();
   }
 
   function setHdrButtons(e) {
+    e.preventDefault();
     center.appendChild(headerBtnsDiv);
     if (headerBtnsDiv.style.display === 'flex') headerBtnsDiv.style.display = 'none';
     else headerBtnsDiv.style.display = 'flex';
-    e.preventDefault();
   }
 
   function viewHdrButtons() {
@@ -452,6 +456,7 @@
 
   function wallpaperButtonChanger(e) {
     let num = GM_getValue('wallpaperStaticImage');
+    e.preventDefault();
     switch (e.target.id) {
       case 'buttonStatic': case 'buttonUp':
         num > 34 ? num = 0 : num = parseInt(num + 1);
@@ -463,26 +468,26 @@
     inpStatic.value = num;
     GM_setValue('wallpaperStaticImage', parseInt(num));
     wallpaper();
-    e.preventDefault();
   }
 
   function wallpaperDailyHourly(e) {
     let bool = GM_getValue('changeThemeHourly') !== true ? true : false;
+    e.preventDefault();
     GM_setValue('changeThemeHourly', bool);
     bool ? btnWhen.innerHTML = hourlyText : btnWhen.innerHTML = dailyText;
     wallpaper();
-    e.preventDefault();
   }
 
   function wallpaperInputChanger(e) {
     let inp = e.target.value;
+    e.preventDefault();
     GM_setValue('wallpaperStaticImage', parseInt(inp));
     wallpaper();
-    e.preventDefault();
   }
 
   function wallpaperSite(e) {
     let str = GM_getValue('imageSite');
+    e.preventDefault();
     if (str === githubSite) {
       GM_setValue('imageSite', soncoSite);
       btnSites.innerHTML = 'Sonco';
@@ -491,14 +496,13 @@
       btnSites.innerHTML = 'GitHub';
     }
     wallpaper();
-    e.preventDefault();
   }
 
   function wallpaperThemer(e) {
     let bool = GM_getValue('themeChanger') !== true ? true : false;
+    e.preventDefault();
     GM_setValue('themeChanger', bool);
     wallpaperTimer(bool);
-    e.preventDefault();
   }
 
   function wallpaperTimer(e) {
@@ -618,6 +622,7 @@
     headerBtnYouTubeTVLAB.appendChild(headerBtnYouTubeTVCB);
     headerBtnYouTubeTVLAB.appendChild(headerBtnYouTubeTVSPN);
     headerBtnsDiv.appendChild(headerBtnYouTubeTVLAB);
+    headerBtnsDiv.appendChild(btnClose2);
     wallpaper();
   }
 
@@ -656,24 +661,6 @@
   window.addEventListener('unload', () => whenClose());
 
   GM_addStyle(''+
-    '#gWP1 #headerBtnsDiv {'+
-    '  background: #222 !important;'+
-    '  border: 1px solid #666 !important;'+
-    '  border-radius: 6px !important;'+
-    '  bottom: 368px !important;'+
-    '  flex-direction: column !important;'+
-    '  left: 187px !important;'+
-    '  padding: 0 !important;'+
-    '  position: relative !important;'+
-    '  text-align: left !important;'+
-    '  width: 120px !important;'+
-    '}'+
-    '#gWP1 #headerBtnsDiv > label {'+
-    '  padding: 3px 0 !important;'+
-    '}'+
-    '#gWP1 #headerBtnsDiv > label:hover {'+
-    '  background-color: #333 !important;'+
-    '}'+
     '#gWP1 .o3j99.c93Gbe {'+
     '  background: transparent !important;'+
     '}'+
@@ -686,33 +673,6 @@
     '  border-radius: 8px !important;'+
     '  color: #FFF !important;'+
     '  text-decoration: none !important;'+
-    '}'+
-    '#gWP1 #gOptionsPopup {'+
-    '  background: #222 !important;'+
-    '  border: 1px solid #666 !important;'+
-    '  border-radius: 6px !important;'+
-    '  bottom: 212px !important;'+
-    '  left: 0 !important;'+
-    '  padding: 0 !important;'+
-    '  position: relative !important;'+
-    '  text-align: left !important;'+
-    '  width: 250px !important;'+
-    '}'+
-    '#gWP1 #gOptionsPopup > .popDiv {'+
-    '  padding: 2px !important;'+
-    '}'+
-    '#gWP1 #gOptionsPopup > #btnClose {'+
-    '  background-color: #222 !important;'+
-    '  border: 1px solid #666 !important;'+
-    '  border-radius: 50% !important;'+
-    '  height: 25px !important;'+
-    '  position: absolute !important;'+
-    '  right: -13px !important;'+
-    '  top: -13px !important;'+
-    '  width: 25px !important;'+
-    '}'+
-    '#gWP1 #gOptionsPopup > #btnClose:hover {'+
-    '  background-color: #900 !important;'+
     '}'+
     '#gWP1 #headerButtonsDiv {'+
     '  display: inline-flex !important;'+
@@ -735,6 +695,105 @@
     '  background-color: #000 !important;'+
     '  border-color: #000 !important;'+
     '  color: #FFF !important;'+
+    '}'+
+    '#gWP1 #gOptionsPopup {'+
+    '  background: #222 !important;'+
+    '  border: 1px solid #666 !important;'+
+    '  border-radius: 6px !important;'+
+    '  bottom: 212px !important;'+
+    '  left: 0 !important;'+
+    '  padding: 0 !important;'+
+    '  position: relative !important;'+
+    '  text-align: left !important;'+
+    '  width: 250px !important;'+
+    '}'+
+    '#gWP1 #gOptionsPopup > .popDiv {'+
+    '  padding: 2px !important;'+
+    '}'+
+    '#gWP1 #gOptionsPopup > #btnClose,'+
+    '#gWP1 #headerBtnsDiv > #btnClose2 {'+
+    '  background-color: #222 !important;'+
+    '  border: 1px solid #666 !important;'+
+    '  border-radius: 50% !important;'+
+    '  height: 25px !important;'+
+    '  position: absolute !important;'+
+    '  right: -13px !important;'+
+    '  top: -13px !important;'+
+    '  width: 25px !important;'+
+    '}'+
+    '#gWP1 #gOptionsPopup > #btnClose:hover,'+
+    '#gWP1 #headerBtnsDiv > #btnClose2:hover {'+
+    '  background-color: #900 !important;'+
+    '}'+
+    '#gWP1 #headerBtnsDiv {'+
+    '  background: #222 !important;'+
+    '  border: 1px solid #666 !important;'+
+    '  border-radius: 6px !important;'+
+    '  bottom: 473px !important;'+
+    '  flex-direction: column !important;'+
+    '  left: -194px !important;'+
+    '  padding: 0 !important;'+
+    '  position: relative !important;'+
+    '  text-align: left !important;'+
+    '  width: 134px !important;'+
+    '}'+
+    '#gWP1 #headerBtnsDiv > label {'+
+    '  padding: 4px 0 !important;'+
+    '}'+
+    '#gWP1 #headerBtnsDiv > label:hover {'+
+    '  background-color: #333 !important;'+
+    '}'+
+    '#gWP1 #headerBtnsDiv > label > span {'+
+    '  color: #CCC !important;'+
+    '  position: relative !important;'+
+    '  top: -1px !important;'+
+    '}'+
+    '#gWP1 #headerBtnsDiv > label:hover > span {'+
+    '  color: #FFF !important;'+
+    '}'+
+    '#gWP1 #headerBtnsDiv > label > span:after {'+
+    '  margin-left: 4px !important;'+
+    '  position: relative !important;'+
+    '  top: 3px !important;'+
+    '}'+
+    '#gWP1 #headerBtnsDiv > label:nth-child(1) > span:after {'+
+    '  content: url(' + imgCalendar + ')  !important;'+
+    '}'+
+    '#gWP1 #headerBtnsDiv > label:nth-child(2) > span:after {'+
+    '  content: url(' + imgChrome + ')  !important;'+
+    '}'+
+    '#gWP1 #headerBtnsDiv > label:nth-child(3) > span:after {'+
+    '  content: url(' + imgEarth + ')  !important;'+
+    '}'+
+    '#gWP1 #headerBtnsDiv > label:nth-child(4) > span:after {'+
+    '  content: url(' + imgMail + ')  !important;'+
+    '}'+
+    '#gWP1 #headerBtnsDiv > label:nth-child(5) > span:after {'+
+    '  content: url(' + imgMaps + ')  !important;'+
+    '}'+
+    '#gWP1 #headerBtnsDiv > label:nth-child(6) > span:after {'+
+    '  content: url(' + imgMSEdge + ')  !important;'+
+    '}'+
+    '#gWP1 #headerBtnsDiv > label:nth-child(7) > span:after {'+
+    '  content: url(' + imgNews + ')  !important;'+
+    '}'+
+    '#gWP1 #headerBtnsDiv > label:nth-child(8) > span:after {'+
+    '  content: url(' + imgPhotos + ')  !important;'+
+    '}'+
+    '#gWP1 #headerBtnsDiv > label:nth-child(9) > span:after {'+
+    '  content: url(' + imgPlay + ')  !important;'+
+    '}'+
+    '#gWP1 #headerBtnsDiv > label:nth-child(10) > span:after {'+
+    '  content: url(' + imgPodcasts + ')  !important;'+
+    '}'+
+    '#gWP1 #headerBtnsDiv > label:nth-child(11) > span:after {'+
+    '  content: url(' + imgTranslate + ')  !important;'+
+    '}'+
+    '#gWP1 #headerBtnsDiv > label:nth-child(12) > span:after {'+
+    '  content: url(' + imgYouTube + ')  !important;'+
+    '}'+
+    '#gWP1 #headerBtnsDiv > label:nth-child(13) > span:after {'+
+    '  content: url(' + imgYouTubeTV + ')  !important;'+
     '}'+
     '#gWP1 > .L3eUgb > .o3j99.LLD4me.yr19Zb.LS8OJ > div > .lnXdpd,'+
     '#gWP1 #hplogo,'+

@@ -696,6 +696,9 @@
   window.addEventListener('unload', () => whenClose());
 
   GM_addStyle(''+
+    '#gWP1 a.gb_1.gb_2.gb_9d.gb_9c {'+
+    '  color: #FFF !important;'+
+    '}'+
     '#gWP1 .o3j99.c93Gbe {'+
     '  background: transparent !important;'+
     '}'+

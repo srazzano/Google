@@ -21,9 +21,9 @@
         div2 = $q('html[itemtype="http://schema.org/WebPage"] .gb_Wd.gb_Za.gb_Ld > .gb_Se'),
         center = $q('html[itemtype="http://schema.org/WebPage"] .FPdoLc.lJ9FBc > center'),
         form = $q('html[itemtype="http://schema.org/WebPage"] .L3eUgb form'),
-        settingsBtn = $q('html[itemtype="http://schema.org/WebPage"] div.o3j99.c93Gbe > div.KxwPGc.SSwjIe > div.KxwPGc.iTjxkf > span'),
         placeHolder = $q('html[itemtype="http://schema.org/WebPage"] input[name="q"]'),
         searchButton = $q('html[itemtype="http://schema.org/WebPage"] input[name="btnK"]'),
+        settingsBtn = $q('html[itemtype="http://schema.org/WebPage"] div.o3j99.c93Gbe > div.KxwPGc.SSwjIe > div.KxwPGc.iTjxkf > span'),
         divHeader = $c('div', {id: 'headerButtonsDiv'}),
         imgCalendar = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABT0lEQVR42mNkAAKp9Iv/GYgELMxMYJqZmZHh/mQdRkZSNMPAfwZGMM0IYpFjADJANyCMkIaHocYgahVOA57O0Fv17x8Dw7//IH8ygB37H6qCEcj5s5c1DK8BD6fqrTp+5w9DRP81hsNNOgxyIkwMJ+/+ZQjrvcoANJywAQ+m6K16/O4fg5IYE4N0xiWGvXU6DM5NV8CSRBkA8sLbL/8Z9EouM2yq0GYwVmBmuPrkL4NbC5EueDRNb9XDNwgXPJ6ux3D9KQkG3Jqou+rcg7/gMPAwUmWYncrJcPPZXwaXZiINeDJdbxUjJJ0w/PzDwMDOwsDw+y+Ez8pMRCzcmqyyCpLaGKDpDRWwH+IP+/+TGayGkf0vA6Ncs+3/X39/E52QLh3+uwqZj24AQQA0AM4W23uakVGx1eH/998/SDYApJkB5k2JBguiMxTIAJhmEAAA4quznkbNVyMAAAAASUVORK5CYII=',
         urlCalendar = 'https://calendar.google.com/calendar/u/0/r',
@@ -226,22 +226,22 @@
   }
 
   function clearSelectAll(e) {
-    let clr = $q('.input', true);
+    let checkbox = $q('.input', true);
     e.preventDefault();
     switch (e.target.id) {
       case 'btnClearAll':
-        for (let i = 0; i < clr.length; i++) {
-          clr[i].checked = false;
-          GM_setValue(clr[i].id, false);
-          let hdrBtn = clr[i].id.replace('headerB', 'b');
+        for (let i = 0; i < checkbox.length; i++) {
+          checkbox[i].checked = false;
+          GM_setValue(checkbox[i].id, false);
+          let hdrBtn = checkbox[i].id.replace('headerB', 'b');
           try { document.getElementById(hdrBtn).style.display = 'none'; } catch(ex) {}
         }
         break;
       case 'btnSelectAll':
-        for (let i = 0; i < clr.length; i++) {
-          clr[i].checked = true;
-          GM_setValue(clr[i].id, true);
-          let hdrBtn = clr[i].id.replace('headerB', 'b');
+        for (let i = 0; i < checkbox.length; i++) {
+          checkbox[i].checked = true;
+          GM_setValue(checkbox[i].id, true);
+          let hdrBtn = checkbox[i].id.replace('headerB', 'b');
           try { document.getElementById(hdrBtn).style.display = 'block'; } catch(ex) {}
           viewHdrButtons();
         }
@@ -756,11 +756,11 @@
     '  border-radius: 6px !important;'+
     '  bottom: 489px !important;'+
     '  flex-direction: column !important;'+
-    '  left: -198px !important;'+
+    '  left: -212px !important;'+
     '  padding: 4px 4px 2px 4px !important;'+
     '  position: relative !important;'+
     '  text-align: left !important;'+
-    '  width: 134px !important;'+
+    '  width: 162px !important;'+
     '}'+
     '#gWP1 #headerBtnsDiv > #headerBtnsCnt {'+
     '  margin: auto !important;'+
@@ -771,11 +771,14 @@
     '}'+
     '#gWP1 #headerBtnsDiv #btnClearAll,'+
     '#gWP1 #headerBtnsDiv #btnSelectAll {'+
+    '  border: 1px solid transparent !important;'+
     '  color: #CCC !important;'+
+    '  padding: 4px 8px !important;'+
     '}'+
     '#gWP1 #headerBtnsDiv #btnClearAll:hover,'+
     '#gWP1 #headerBtnsDiv #btnSelectAll:hover {'+
-    '  background-color: #333 !important;'+
+    '  background-color: #000 !important;'+
+    '  border-color: #666 !important;'+
     '  color: #FFF !important;'+
     '  cursor: pointer !important;'+
     '}'+
@@ -788,6 +791,7 @@
     '}'+
     '#gWP1 #headerBtnsDiv > label > span {'+
     '  color: #CCC !important;'+
+    '  margin-left: 4px !important;'+
     '  position: relative !important;'+
     '  top: -1px !important;'+
     '}'+
@@ -795,7 +799,7 @@
     '  color: #FFF !important;'+
     '}'+
     '#gWP1 #headerBtnsDiv > label > span:after {'+
-    '  margin-left: 4px !important;'+
+    '  margin-left: 8px !important;'+
     '  position: relative !important;'+
     '  top: 3px !important;'+
     '}'+
@@ -1155,7 +1159,7 @@
     '  color: #AAA !important;'+
     '  cursor: pointer !important;'+
     '  height: 32px  !important;'+
-    '  padding: 0 10px !important;'+
+    '  padding: 0 15px !important;'+
     '  width: auto !important;'+
     '}'+
     '#gWP1 center > span {'+

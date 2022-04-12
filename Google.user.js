@@ -17,7 +17,7 @@
 
   const body = $q('html[itemtype="http://schema.org/WebPage"] > body'),
         signIn = $q('html[itemtype="http://schema.org/WebPage"] a.gb_1.gb_2.gb_9d.gb_9c'),
-        div1 = $q('html[itemtype="http://schema.org/WebPage"] .L3eUgb > .o3j99.LLD4me.yr19Zb.LS8OJ'),
+        div1 = $q('html[itemtype="http://schema.org/WebPage"] .o3j99.LLD4me.LS8OJ'),
         div2 = $q('html[itemtype="http://schema.org/WebPage"] .gb_Wd.gb_Za.gb_Ld > .gb_Se'),
         center = $q('html[itemtype="http://schema.org/WebPage"] .FPdoLc.lJ9FBc > center'),
         form = $q('html[itemtype="http://schema.org/WebPage"] .L3eUgb form'),
@@ -214,6 +214,11 @@
     return node;
   }
 
+  function $i(newNode, refNode) {
+    if (refNode.nextSibling) return refNode.parentNode.insertBefore(newNode, refNode.nextSibling);
+    return refNode.parentNode.appendChild(newNode);
+  }
+
   function $q(el, all) {
     if (all) return document.querySelectorAll(el);
     return document.querySelector(el);
@@ -283,8 +288,8 @@
       case 6: return w + space + bullet + space + m + slash + d + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
       case 7: return w + space + bullet + space + mm + slash + dd + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
       // Delete "customFormatText + 210/customFormatText + 211" text below and add return options with bullet, comma, hyphen, slash, space, star characters.
-      case 8: return customFormatText + 286;
-      case 9: return customFormatText + 287;
+      case 8: return customFormatText + 291;
+      case 9: return customFormatText + 292;
   } }
 
   function dateTimeDefault() {
@@ -759,17 +764,18 @@
     '  border-radius: 6px !important;'+
     '  bottom: 489px !important;'+
     '  flex-direction: column !important;'+
-    '  left: -194px !important;'+
-    '  padding: 0 !important;'+
+    '  left: -198px !important;'+
+    '  padding: 4px 4px 2px 4px !important;'+
     '  position: relative !important;'+
     '  text-align: left !important;'+
     '  width: 134px !important;'+
     '}'+
     '#gWP1 #headerBtnsDiv > #headerBtnsCnt {'+
-    '  padding: 10px 0px 6px 4px !important;'+
+    '  margin: auto !important;'+
+    '  padding: 8px 0 6px 0 !important;'+
     '}'+
     '#gWP1 #headerBtnsDiv #btnClearAll {'+
-    '  margin-right: 14px !important;'+
+    '  margin-right: 16px !important;'+
     '}'+
     '#gWP1 #headerBtnsDiv #btnClearAll,'+
     '#gWP1 #headerBtnsDiv #btnSelectAll {'+

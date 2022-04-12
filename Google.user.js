@@ -289,8 +289,8 @@
       case 6: return w + space + bullet + space + m + slash + d + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
       case 7: return w + space + bullet + space + mm + slash + dd + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
       // Delete "customFormatText + 210/customFormatText + 211" text below and add return options with bullet, comma, hyphen, slash, space, star characters.
-      case 8: return customFormatText + 291;
-      case 9: return customFormatText + 292;
+      case 8: return customFormatText + 292;
+      case 9: return customFormatText + 293;
   } }
 
   function dateTimeDefault() {
@@ -777,12 +777,14 @@
     '#gWP1 #headerBtnsDiv #btnSelectAll:hover {'+
     '  background-color: #333 !important;'+
     '  color: #FFF !important;'+
+    '  cursor: pointer !important;'+
     '}'+
     '#gWP1 #headerBtnsDiv > label {'+
     '  padding: 4px 0 !important;'+
     '}'+
     '#gWP1 #headerBtnsDiv > label:hover {'+
     '  background-color: #333 !important;'+
+    '  cursor: pointer !important;'+
     '}'+
     '#gWP1 #headerBtnsDiv > label > span {'+
     '  color: #CCC !important;'+

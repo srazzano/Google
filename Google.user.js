@@ -21,6 +21,7 @@
         div2 = $q('html[itemtype="http://schema.org/WebPage"] .gb_Wd.gb_Za.gb_Ld > .gb_Se'),
         center = $q('html[itemtype="http://schema.org/WebPage"] .FPdoLc.lJ9FBc > center'),
         form = $q('html[itemtype="http://schema.org/WebPage"] .L3eUgb form'),
+        settingsBtn = $q('html[itemtype="http://schema.org/WebPage"] div.o3j99.c93Gbe > div.KxwPGc.SSwjIe > div.KxwPGc.iTjxkf > span'),
         placeHolder = $q('html[itemtype="http://schema.org/WebPage"] input[name="q"]'),
         searchButton = $q('html[itemtype="http://schema.org/WebPage"] input[name="btnK"]'),
         divHeader = $c('div', {id: 'headerButtonsDiv'}),
@@ -344,119 +345,6 @@
     else document.getElementById(hdrBtn).style.display = 'none';
   }
 
-  function init() {
-    window.removeEventListener('load', () => init());
-    viewHdrButtons();
-    logo1.appendChild(logo1Btn);
-    logo2.appendChild(logo2Btn);
-    center.insertBefore(optionsBtn, center.childNodes[4]);
-    body.appendChild(logo1);
-    body.id = 'gWP1';
-    if (GM_getValue('googleLogoLeft')) {
-      logo1.style.opacity = 1;
-      logo2.style.opacity = 0;
-    } else {
-      logo1.style.opacity = 0;
-      logo2.style.opacity = 1;
-    }
-    if (GM_getValue('defaultDateTimeView')) dateTimeDefault();
-    else {dateTime.hidden = true; clearInterval(clockInterval)}
-    dateTime.title = addRemoveText + ' (' + GM_getValue('dateFormat') + ')';
-    div1.insertBefore(divHeader, div1.firstChild);
-    div1.insertBefore(logo2, div1.firstChild.nextSibling);
-    div1.insertBefore(form, div1.lastChild);
-    dateTimeContainer.appendChild(btnClock);
-    dateTimeContainer.appendChild(dateTime);
-    div2.appendChild(dateTimeContainer);
-    searchButton.id = 'gSearch';
-    placeHolder.placeholder = placeHolderText;
-    btnWhen.title = dailyHourlyTooltip;
-    GM_getValue('changeThemeHourly') ? btnWhen.innerHTML = hourlyText : btnWhen.innerHTML = dailyText;
-    if (GM_getValue('themeChanger')) {
-      btnThemer.innerHTML = changeWallpaperOnText;
-      btnWhen.style = 'opacity: 1; pointer-events: all';
-      themeImage.src = themeOn;
-    } else {
-      btnThemer.innerHTML = changeWallpaperOffText;
-      btnWhen.style = 'opacity: .5; pointer-events: none';
-      themeImage.src = themeOff;
-    }
-    if (GM_getValue('imageSite') === githubSite) btnSites.innerHTML = 'GitHub';
-    else btnSites.innerHTML = 'Sonco';
-    btnStatic.textContent = defaultWallpaperText;
-    btnStatic.title = defaultWallpaperTooltip;
-    inpStatic.value = GM_getValue('wallpaperStaticImage');
-    divThemer.appendChild(btnThemer);
-    divThemer.appendChild(btnWhen);
-    divThemer.appendChild(themeImage);
-    spanThemer.appendChild(divThemer);
-    divNumber.appendChild(btnStatic);
-    divNumber.appendChild(btnUp);
-    divNumber.appendChild(inpStatic);
-    divNumber.appendChild(btnDown);
-    spanNumber.appendChild(divNumber);
-    divLinks.appendChild(btnSearchLinks);
-    spanLinks.appendChild(divLinks);
-    spnSites.innerHTML = changeImageSiteText;
-    divSites.appendChild(spnSites);
-    divSites.appendChild(btnSites);
-    spanSites.appendChild(divSites);
-    btnSearchLinks.textContent = GM_getValue('linksWhere') === '_self' ? linksCurrentText : linksNewText;
-    divButtons.appendChild(displayButtons);
-    optionsPop.appendChild(divButtons);
-    optionsPop.appendChild(divThemer);
-    optionsPop.appendChild(divNumber);
-    optionsPop.insertBefore(divButtons, optionsPop.firstChild);
-    optionsPop.insertBefore(divLinks, optionsPop.firstChild);
-    optionsPop.appendChild(divSites);
-    optionsPop.appendChild(btnClose);
-    center.appendChild(optionsPop);
-    headerBtnsCnt.appendChild(btnClearAll);
-    headerBtnsCnt.appendChild(btnSelectAll);
-    headerBtnsDiv.appendChild(headerBtnsCnt);
-    headerBtnCalendarLAB.appendChild(headerBtnCalendarCB);
-    headerBtnCalendarLAB.appendChild(headerBtnCalendarSPN);
-    headerBtnsDiv.appendChild(headerBtnCalendarLAB);
-    headerBtnChromeLAB.appendChild(headerBtnChromeCB);
-    headerBtnChromeLAB.appendChild(headerBtnChromeSPN);
-    headerBtnsDiv.appendChild(headerBtnChromeLAB);
-    headerBtnEarthLAB.appendChild(headerBtnEarthCB);
-    headerBtnEarthLAB.appendChild(headerBtnEarthSPN);
-    headerBtnsDiv.appendChild(headerBtnEarthLAB);
-    headerBtnMailLAB.appendChild(headerBtnMailCB);
-    headerBtnMailLAB.appendChild(headerBtnMailSPN);
-    headerBtnsDiv.appendChild(headerBtnMailLAB);
-    headerBtnMapsLAB.appendChild(headerBtnMapsCB);
-    headerBtnMapsLAB.appendChild(headerBtnMapsSPN);
-    headerBtnsDiv.appendChild(headerBtnMapsLAB);
-    headerBtnMSEdgeLAB.appendChild(headerBtnMSEdgeCB);
-    headerBtnMSEdgeLAB.appendChild(headerBtnMSEdgeSPN);
-    headerBtnsDiv.appendChild(headerBtnMSEdgeLAB);
-    headerBtnNewsLAB.appendChild(headerBtnNewsCB);
-    headerBtnNewsLAB.appendChild(headerBtnNewsSPN);
-    headerBtnsDiv.appendChild(headerBtnNewsLAB);
-    headerBtnPhotosLAB.appendChild(headerBtnPhotosCB);
-    headerBtnPhotosLAB.appendChild(headerBtnPhotosSPN);
-    headerBtnsDiv.appendChild(headerBtnPhotosLAB);
-    headerBtnPlayLAB.appendChild(headerBtnPlayCB);
-    headerBtnPlayLAB.appendChild(headerBtnPlaySPN);
-    headerBtnsDiv.appendChild(headerBtnPlayLAB);
-    headerBtnPodcastsLAB.appendChild(headerBtnPodcastsCB);
-    headerBtnPodcastsLAB.appendChild(headerBtnPodcastsSPN);
-    headerBtnsDiv.appendChild(headerBtnPodcastsLAB);
-    headerBtnTranslateLAB.appendChild(headerBtnTranslateCB);
-    headerBtnTranslateLAB.appendChild(headerBtnTranslateSPN);
-    headerBtnsDiv.appendChild(headerBtnTranslateLAB);
-    headerBtnYouTubeLAB.appendChild(headerBtnYouTubeCB);
-    headerBtnYouTubeLAB.appendChild(headerBtnYouTubeSPN);
-    headerBtnsDiv.appendChild(headerBtnYouTubeLAB);
-    headerBtnYouTubeTVLAB.appendChild(headerBtnYouTubeTVCB);
-    headerBtnYouTubeTVLAB.appendChild(headerBtnYouTubeTVSPN);
-    headerBtnsDiv.appendChild(headerBtnYouTubeTVLAB);
-    headerBtnsDiv.appendChild(btnClose2);
-    wallpaper();
-  }
-
   function optionsPopup(e) {
     let pop = $q('#gOptionsPopup'),
         btnsPop = $q('#headerBtnsDiv');
@@ -659,6 +547,120 @@
     clearInterval(clockInterval);
   }
 
+  function init() {
+    window.removeEventListener('load', () => init());
+    viewHdrButtons();
+    logo1.appendChild(logo1Btn);
+    logo2.appendChild(logo2Btn);
+    center.insertBefore(optionsBtn, center.childNodes[4]);
+    body.appendChild(logo1);
+    body.id = 'gWP1';
+    if (GM_getValue('googleLogoLeft')) {
+      logo1.style.opacity = 1;
+      logo2.style.opacity = 0;
+    } else {
+      logo1.style.opacity = 0;
+      logo2.style.opacity = 1;
+    }
+    if (GM_getValue('defaultDateTimeView')) dateTimeDefault();
+    else {dateTime.hidden = true; clearInterval(clockInterval)}
+    dateTime.title = addRemoveText + ' (' + GM_getValue('dateFormat') + ')';
+    div1.insertBefore(divHeader, div1.firstChild);
+    div1.insertBefore(logo2, div1.firstChild.nextSibling);
+    div1.insertBefore(form, div1.lastChild);
+    dateTimeContainer.appendChild(btnClock);
+    dateTimeContainer.appendChild(dateTime);
+    div2.appendChild(dateTimeContainer);
+    searchButton.id = 'gSearch';
+    placeHolder.placeholder = placeHolderText;
+    btnWhen.title = dailyHourlyTooltip;
+    GM_getValue('changeThemeHourly') ? btnWhen.innerHTML = hourlyText : btnWhen.innerHTML = dailyText;
+    if (GM_getValue('themeChanger')) {
+      btnThemer.innerHTML = changeWallpaperOnText;
+      btnWhen.style = 'opacity: 1; pointer-events: all';
+      themeImage.src = themeOn;
+    } else {
+      btnThemer.innerHTML = changeWallpaperOffText;
+      btnWhen.style = 'opacity: .5; pointer-events: none';
+      themeImage.src = themeOff;
+    }
+    if (GM_getValue('imageSite') === githubSite) btnSites.innerHTML = 'GitHub';
+    else btnSites.innerHTML = 'Sonco';
+    btnStatic.textContent = defaultWallpaperText;
+    btnStatic.title = defaultWallpaperTooltip;
+    inpStatic.value = GM_getValue('wallpaperStaticImage');
+    divThemer.appendChild(btnThemer);
+    divThemer.appendChild(btnWhen);
+    divThemer.appendChild(themeImage);
+    spanThemer.appendChild(divThemer);
+    divNumber.appendChild(btnStatic);
+    divNumber.appendChild(btnUp);
+    divNumber.appendChild(inpStatic);
+    divNumber.appendChild(btnDown);
+    spanNumber.appendChild(divNumber);
+    divLinks.appendChild(btnSearchLinks);
+    spanLinks.appendChild(divLinks);
+    spnSites.innerHTML = changeImageSiteText;
+    divSites.appendChild(spnSites);
+    divSites.appendChild(btnSites);
+    spanSites.appendChild(divSites);
+    btnSearchLinks.textContent = GM_getValue('linksWhere') === '_self' ? linksCurrentText : linksNewText;
+    divButtons.appendChild(displayButtons);
+    optionsPop.appendChild(divButtons);
+    optionsPop.appendChild(divThemer);
+    optionsPop.appendChild(divNumber);
+    optionsPop.insertBefore(divButtons, optionsPop.firstChild);
+    optionsPop.insertBefore(divLinks, optionsPop.firstChild);
+    optionsPop.appendChild(divSites);
+    optionsPop.appendChild(btnClose);
+    center.appendChild(settingsBtn);
+    center.appendChild(optionsPop);
+    headerBtnsCnt.appendChild(btnClearAll);
+    headerBtnsCnt.appendChild(btnSelectAll);
+    headerBtnsDiv.appendChild(headerBtnsCnt);
+    headerBtnCalendarLAB.appendChild(headerBtnCalendarCB);
+    headerBtnCalendarLAB.appendChild(headerBtnCalendarSPN);
+    headerBtnsDiv.appendChild(headerBtnCalendarLAB);
+    headerBtnChromeLAB.appendChild(headerBtnChromeCB);
+    headerBtnChromeLAB.appendChild(headerBtnChromeSPN);
+    headerBtnsDiv.appendChild(headerBtnChromeLAB);
+    headerBtnEarthLAB.appendChild(headerBtnEarthCB);
+    headerBtnEarthLAB.appendChild(headerBtnEarthSPN);
+    headerBtnsDiv.appendChild(headerBtnEarthLAB);
+    headerBtnMailLAB.appendChild(headerBtnMailCB);
+    headerBtnMailLAB.appendChild(headerBtnMailSPN);
+    headerBtnsDiv.appendChild(headerBtnMailLAB);
+    headerBtnMapsLAB.appendChild(headerBtnMapsCB);
+    headerBtnMapsLAB.appendChild(headerBtnMapsSPN);
+    headerBtnsDiv.appendChild(headerBtnMapsLAB);
+    headerBtnMSEdgeLAB.appendChild(headerBtnMSEdgeCB);
+    headerBtnMSEdgeLAB.appendChild(headerBtnMSEdgeSPN);
+    headerBtnsDiv.appendChild(headerBtnMSEdgeLAB);
+    headerBtnNewsLAB.appendChild(headerBtnNewsCB);
+    headerBtnNewsLAB.appendChild(headerBtnNewsSPN);
+    headerBtnsDiv.appendChild(headerBtnNewsLAB);
+    headerBtnPhotosLAB.appendChild(headerBtnPhotosCB);
+    headerBtnPhotosLAB.appendChild(headerBtnPhotosSPN);
+    headerBtnsDiv.appendChild(headerBtnPhotosLAB);
+    headerBtnPlayLAB.appendChild(headerBtnPlayCB);
+    headerBtnPlayLAB.appendChild(headerBtnPlaySPN);
+    headerBtnsDiv.appendChild(headerBtnPlayLAB);
+    headerBtnPodcastsLAB.appendChild(headerBtnPodcastsCB);
+    headerBtnPodcastsLAB.appendChild(headerBtnPodcastsSPN);
+    headerBtnsDiv.appendChild(headerBtnPodcastsLAB);
+    headerBtnTranslateLAB.appendChild(headerBtnTranslateCB);
+    headerBtnTranslateLAB.appendChild(headerBtnTranslateSPN);
+    headerBtnsDiv.appendChild(headerBtnTranslateLAB);
+    headerBtnYouTubeLAB.appendChild(headerBtnYouTubeCB);
+    headerBtnYouTubeLAB.appendChild(headerBtnYouTubeSPN);
+    headerBtnsDiv.appendChild(headerBtnYouTubeLAB);
+    headerBtnYouTubeTVLAB.appendChild(headerBtnYouTubeTVCB);
+    headerBtnYouTubeTVLAB.appendChild(headerBtnYouTubeTVSPN);
+    headerBtnsDiv.appendChild(headerBtnYouTubeTVLAB);
+    headerBtnsDiv.appendChild(btnClose2);
+    wallpaper();
+  }
+
   if (!GM_getValue('changeThemeHourly')) GM_setValue('changeThemeHourly', false);
   if (!GM_getValue('dateFormat')) GM_setValue('dateFormat', 1);
   if (!GM_getValue('defaultAMPM')) GM_setValue('defaultAMPM', false);
@@ -696,16 +698,6 @@
   GM_addStyle(''+
     '#gWP1 .o3j99.c93Gbe {'+
     '  background: transparent !important;'+
-    '}'+
-    '#gWP1 .KxwPGc.iTjxkf {'+
-    '  float: right !important;'+
-    '  width: 100% !important;'+
-    '}'+
-    '#gWP1 .ayzqOc.pHiOh {'+
-    '  background-color: rgba(0, 0, 0, 0.3) !important;'+
-    '  border-radius: 8px !important;'+
-    '  color: #FFF !important;'+
-    '  text-decoration: none !important;'+
     '}'+
     '#gWP1 #headerButtonsDiv {'+
     '  display: inline-flex !important;'+
@@ -1163,6 +1155,24 @@
     '  height: 32px  !important;'+
     '  padding: 0 10px !important;'+
     '  width: auto !important;'+
+    '}'+
+    '#gWP1 center > span {'+
+    '  background-color: rgba(0, 0, 0, 0.3) !important;'+
+    '  border: 1px solid transparent !important;'+
+    '  border-radius: 4px !important;'+
+    '  color: #AAA !important;'+
+    '  padding: 7px 0 !important;'+
+    '  width: auto !important;'+
+    '}'+
+    '#gWP1 center > span:hover {'+
+    '  border: 1px solid #666 !important;'+
+    '}'+
+    '#gWP1 .ayzqOc.pHiOh {'+
+    '  color: #AAA !important;'+
+    '  text-decoration: none !important;'+
+    '}'+
+    '#gWP1 center > span:hover .ayzqOc.pHiOh {'+
+    '  color: #FFF !important;'+
     '}'+
     '#gWP1 .gLFyf.gsfi {'+
     '  color: #CCC !important;'+

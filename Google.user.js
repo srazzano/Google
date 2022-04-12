@@ -1161,6 +1161,7 @@
     '  border: 1px solid transparent !important;'+
     '  border-radius: 4px !important;'+
     '  color: #AAA !important;'+
+    '  margin-left: 5px !important;'+
     '  padding: 7px 0 !important;'+
     '  width: auto !important;'+
     '}'+

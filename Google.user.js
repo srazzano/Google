@@ -345,6 +345,120 @@
     else document.getElementById(hdrBtn).style.display = 'none';
   }
 
+  function init() {
+    window.removeEventListener('load', () => init());
+    viewHdrButtons();
+    logo1.appendChild(logo1Btn);
+    logo2.appendChild(logo2Btn);
+    center.insertBefore(optionsBtn, center.childNodes[4]);
+    body.appendChild(logo1);
+    body.id = 'gWP1';
+    if (GM_getValue('googleLogoLeft')) {
+      logo1.style.opacity = 1;
+      logo2.style.opacity = 0;
+    } else {
+      logo1.style.opacity = 0;
+      logo2.style.opacity = 1;
+    }
+    if (GM_getValue('defaultDateTimeView')) dateTimeDefault();
+    else {dateTime.hidden = true; clearInterval(clockInterval)}
+    dateTime.title = addRemoveText + ' (' + GM_getValue('dateFormat') + ')';
+    div1.insertBefore(divHeader, div1.firstChild);
+    div1.insertBefore(logo2, div1.firstChild.nextSibling);
+    div1.insertBefore(form, div1.lastChild);
+    dateTimeContainer.appendChild(btnClock);
+    dateTimeContainer.appendChild(dateTime);
+    div2.appendChild(dateTimeContainer);
+    searchButton.id = 'gSearch';
+    placeHolder.placeholder = placeHolderText;
+    btnWhen.title = dailyHourlyTooltip;
+    GM_getValue('changeThemeHourly') ? btnWhen.innerHTML = hourlyText : btnWhen.innerHTML = dailyText;
+    if (GM_getValue('themeChanger')) {
+      btnThemer.innerHTML = changeWallpaperOnText;
+      btnWhen.style = 'opacity: 1; pointer-events: all';
+      themeImage.src = themeOn;
+    } else {
+      btnThemer.innerHTML = changeWallpaperOffText;
+      btnWhen.style = 'opacity: .5; pointer-events: none';
+      themeImage.src = themeOff;
+    }
+    if (GM_getValue('imageSite') === githubSite) btnSites.innerHTML = 'GitHub';
+    else btnSites.innerHTML = 'Sonco';
+    btnStatic.textContent = defaultWallpaperText;
+    btnStatic.title = defaultWallpaperTooltip;
+    inpStatic.value = GM_getValue('wallpaperStaticImage');
+    divThemer.appendChild(btnThemer);
+    divThemer.appendChild(btnWhen);
+    divThemer.appendChild(themeImage);
+    spanThemer.appendChild(divThemer);
+    divNumber.appendChild(btnStatic);
+    divNumber.appendChild(btnUp);
+    divNumber.appendChild(inpStatic);
+    divNumber.appendChild(btnDown);
+    spanNumber.appendChild(divNumber);
+    divLinks.appendChild(btnSearchLinks);
+    spanLinks.appendChild(divLinks);
+    spnSites.innerHTML = changeImageSiteText;
+    divSites.appendChild(spnSites);
+    divSites.appendChild(btnSites);
+    spanSites.appendChild(divSites);
+    btnSearchLinks.textContent = GM_getValue('linksWhere') === '_self' ? linksCurrentText : linksNewText;
+    divButtons.appendChild(displayButtons);
+    optionsPop.appendChild(divButtons);
+    optionsPop.appendChild(divThemer);
+    optionsPop.appendChild(divNumber);
+    optionsPop.insertBefore(divButtons, optionsPop.firstChild);
+    optionsPop.insertBefore(divLinks, optionsPop.firstChild);
+    optionsPop.appendChild(divSites);
+    optionsPop.appendChild(btnClose);
+    center.appendChild(settingsBtn);
+    center.appendChild(optionsPop);
+    headerBtnsCnt.appendChild(btnClearAll);
+    headerBtnsCnt.appendChild(btnSelectAll);
+    headerBtnsDiv.appendChild(headerBtnsCnt);
+    headerBtnCalendarLAB.appendChild(headerBtnCalendarCB);
+    headerBtnCalendarLAB.appendChild(headerBtnCalendarSPN);
+    headerBtnsDiv.appendChild(headerBtnCalendarLAB);
+    headerBtnChromeLAB.appendChild(headerBtnChromeCB);
+    headerBtnChromeLAB.appendChild(headerBtnChromeSPN);
+    headerBtnsDiv.appendChild(headerBtnChromeLAB);
+    headerBtnEarthLAB.appendChild(headerBtnEarthCB);
+    headerBtnEarthLAB.appendChild(headerBtnEarthSPN);
+    headerBtnsDiv.appendChild(headerBtnEarthLAB);
+    headerBtnMailLAB.appendChild(headerBtnMailCB);
+    headerBtnMailLAB.appendChild(headerBtnMailSPN);
+    headerBtnsDiv.appendChild(headerBtnMailLAB);
+    headerBtnMapsLAB.appendChild(headerBtnMapsCB);
+    headerBtnMapsLAB.appendChild(headerBtnMapsSPN);
+    headerBtnsDiv.appendChild(headerBtnMapsLAB);
+    headerBtnMSEdgeLAB.appendChild(headerBtnMSEdgeCB);
+    headerBtnMSEdgeLAB.appendChild(headerBtnMSEdgeSPN);
+    headerBtnsDiv.appendChild(headerBtnMSEdgeLAB);
+    headerBtnNewsLAB.appendChild(headerBtnNewsCB);
+    headerBtnNewsLAB.appendChild(headerBtnNewsSPN);
+    headerBtnsDiv.appendChild(headerBtnNewsLAB);
+    headerBtnPhotosLAB.appendChild(headerBtnPhotosCB);
+    headerBtnPhotosLAB.appendChild(headerBtnPhotosSPN);
+    headerBtnsDiv.appendChild(headerBtnPhotosLAB);
+    headerBtnPlayLAB.appendChild(headerBtnPlayCB);
+    headerBtnPlayLAB.appendChild(headerBtnPlaySPN);
+    headerBtnsDiv.appendChild(headerBtnPlayLAB);
+    headerBtnPodcastsLAB.appendChild(headerBtnPodcastsCB);
+    headerBtnPodcastsLAB.appendChild(headerBtnPodcastsSPN);
+    headerBtnsDiv.appendChild(headerBtnPodcastsLAB);
+    headerBtnTranslateLAB.appendChild(headerBtnTranslateCB);
+    headerBtnTranslateLAB.appendChild(headerBtnTranslateSPN);
+    headerBtnsDiv.appendChild(headerBtnTranslateLAB);
+    headerBtnYouTubeLAB.appendChild(headerBtnYouTubeCB);
+    headerBtnYouTubeLAB.appendChild(headerBtnYouTubeSPN);
+    headerBtnsDiv.appendChild(headerBtnYouTubeLAB);
+    headerBtnYouTubeTVLAB.appendChild(headerBtnYouTubeTVCB);
+    headerBtnYouTubeTVLAB.appendChild(headerBtnYouTubeTVSPN);
+    headerBtnsDiv.appendChild(headerBtnYouTubeTVLAB);
+    headerBtnsDiv.appendChild(btnClose2);
+    wallpaper();
+  }
+
   function optionsPopup(e) {
     let pop = $q('#gOptionsPopup'),
         btnsPop = $q('#headerBtnsDiv');
@@ -547,120 +661,6 @@
     clearInterval(clockInterval);
   }
 
-  function init() {
-    window.removeEventListener('load', () => init());
-    viewHdrButtons();
-    logo1.appendChild(logo1Btn);
-    logo2.appendChild(logo2Btn);
-    center.insertBefore(optionsBtn, center.childNodes[4]);
-    body.appendChild(logo1);
-    body.id = 'gWP1';
-    if (GM_getValue('googleLogoLeft')) {
-      logo1.style.opacity = 1;
-      logo2.style.opacity = 0;
-    } else {
-      logo1.style.opacity = 0;
-      logo2.style.opacity = 1;
-    }
-    if (GM_getValue('defaultDateTimeView')) dateTimeDefault();
-    else {dateTime.hidden = true; clearInterval(clockInterval)}
-    dateTime.title = addRemoveText + ' (' + GM_getValue('dateFormat') + ')';
-    div1.insertBefore(divHeader, div1.firstChild);
-    div1.insertBefore(logo2, div1.firstChild.nextSibling);
-    div1.insertBefore(form, div1.lastChild);
-    dateTimeContainer.appendChild(btnClock);
-    dateTimeContainer.appendChild(dateTime);
-    div2.appendChild(dateTimeContainer);
-    searchButton.id = 'gSearch';
-    placeHolder.placeholder = placeHolderText;
-    btnWhen.title = dailyHourlyTooltip;
-    GM_getValue('changeThemeHourly') ? btnWhen.innerHTML = hourlyText : btnWhen.innerHTML = dailyText;
-    if (GM_getValue('themeChanger')) {
-      btnThemer.innerHTML = changeWallpaperOnText;
-      btnWhen.style = 'opacity: 1; pointer-events: all';
-      themeImage.src = themeOn;
-    } else {
-      btnThemer.innerHTML = changeWallpaperOffText;
-      btnWhen.style = 'opacity: .5; pointer-events: none';
-      themeImage.src = themeOff;
-    }
-    if (GM_getValue('imageSite') === githubSite) btnSites.innerHTML = 'GitHub';
-    else btnSites.innerHTML = 'Sonco';
-    btnStatic.textContent = defaultWallpaperText;
-    btnStatic.title = defaultWallpaperTooltip;
-    inpStatic.value = GM_getValue('wallpaperStaticImage');
-    divThemer.appendChild(btnThemer);
-    divThemer.appendChild(btnWhen);
-    divThemer.appendChild(themeImage);
-    spanThemer.appendChild(divThemer);
-    divNumber.appendChild(btnStatic);
-    divNumber.appendChild(btnUp);
-    divNumber.appendChild(inpStatic);
-    divNumber.appendChild(btnDown);
-    spanNumber.appendChild(divNumber);
-    divLinks.appendChild(btnSearchLinks);
-    spanLinks.appendChild(divLinks);
-    spnSites.innerHTML = changeImageSiteText;
-    divSites.appendChild(spnSites);
-    divSites.appendChild(btnSites);
-    spanSites.appendChild(divSites);
-    btnSearchLinks.textContent = GM_getValue('linksWhere') === '_self' ? linksCurrentText : linksNewText;
-    divButtons.appendChild(displayButtons);
-    optionsPop.appendChild(divButtons);
-    optionsPop.appendChild(divThemer);
-    optionsPop.appendChild(divNumber);
-    optionsPop.insertBefore(divButtons, optionsPop.firstChild);
-    optionsPop.insertBefore(divLinks, optionsPop.firstChild);
-    optionsPop.appendChild(divSites);
-    optionsPop.appendChild(btnClose);
-    center.appendChild(settingsBtn);
-    center.appendChild(optionsPop);
-    headerBtnsCnt.appendChild(btnClearAll);
-    headerBtnsCnt.appendChild(btnSelectAll);
-    headerBtnsDiv.appendChild(headerBtnsCnt);
-    headerBtnCalendarLAB.appendChild(headerBtnCalendarCB);
-    headerBtnCalendarLAB.appendChild(headerBtnCalendarSPN);
-    headerBtnsDiv.appendChild(headerBtnCalendarLAB);
-    headerBtnChromeLAB.appendChild(headerBtnChromeCB);
-    headerBtnChromeLAB.appendChild(headerBtnChromeSPN);
-    headerBtnsDiv.appendChild(headerBtnChromeLAB);
-    headerBtnEarthLAB.appendChild(headerBtnEarthCB);
-    headerBtnEarthLAB.appendChild(headerBtnEarthSPN);
-    headerBtnsDiv.appendChild(headerBtnEarthLAB);
-    headerBtnMailLAB.appendChild(headerBtnMailCB);
-    headerBtnMailLAB.appendChild(headerBtnMailSPN);
-    headerBtnsDiv.appendChild(headerBtnMailLAB);
-    headerBtnMapsLAB.appendChild(headerBtnMapsCB);
-    headerBtnMapsLAB.appendChild(headerBtnMapsSPN);
-    headerBtnsDiv.appendChild(headerBtnMapsLAB);
-    headerBtnMSEdgeLAB.appendChild(headerBtnMSEdgeCB);
-    headerBtnMSEdgeLAB.appendChild(headerBtnMSEdgeSPN);
-    headerBtnsDiv.appendChild(headerBtnMSEdgeLAB);
-    headerBtnNewsLAB.appendChild(headerBtnNewsCB);
-    headerBtnNewsLAB.appendChild(headerBtnNewsSPN);
-    headerBtnsDiv.appendChild(headerBtnNewsLAB);
-    headerBtnPhotosLAB.appendChild(headerBtnPhotosCB);
-    headerBtnPhotosLAB.appendChild(headerBtnPhotosSPN);
-    headerBtnsDiv.appendChild(headerBtnPhotosLAB);
-    headerBtnPlayLAB.appendChild(headerBtnPlayCB);
-    headerBtnPlayLAB.appendChild(headerBtnPlaySPN);
-    headerBtnsDiv.appendChild(headerBtnPlayLAB);
-    headerBtnPodcastsLAB.appendChild(headerBtnPodcastsCB);
-    headerBtnPodcastsLAB.appendChild(headerBtnPodcastsSPN);
-    headerBtnsDiv.appendChild(headerBtnPodcastsLAB);
-    headerBtnTranslateLAB.appendChild(headerBtnTranslateCB);
-    headerBtnTranslateLAB.appendChild(headerBtnTranslateSPN);
-    headerBtnsDiv.appendChild(headerBtnTranslateLAB);
-    headerBtnYouTubeLAB.appendChild(headerBtnYouTubeCB);
-    headerBtnYouTubeLAB.appendChild(headerBtnYouTubeSPN);
-    headerBtnsDiv.appendChild(headerBtnYouTubeLAB);
-    headerBtnYouTubeTVLAB.appendChild(headerBtnYouTubeTVCB);
-    headerBtnYouTubeTVLAB.appendChild(headerBtnYouTubeTVSPN);
-    headerBtnsDiv.appendChild(headerBtnYouTubeTVLAB);
-    headerBtnsDiv.appendChild(btnClose2);
-    wallpaper();
-  }
-
   if (!GM_getValue('changeThemeHourly')) GM_setValue('changeThemeHourly', false);
   if (!GM_getValue('dateFormat')) GM_setValue('dateFormat', 1);
   if (!GM_getValue('defaultAMPM')) GM_setValue('defaultAMPM', false);
@@ -715,11 +715,20 @@
     '#gWP1 #gb > div > .gb_0a.gb_E.gb_k.gb_1a.gb_la > .gb_Qf.gb_sb,'+
     '#gWP1 .gb_If.gb_qb,'+
     '#gWP1 .XDyW0e,'+
-    '#gWP1 .QlyBfb {'+
+    '#gWP1 .QlyBfb,'+
+    '#gWP1 .xtSCL,'+
+    '#gWP1 #inputStatic::-webkit-inner-spin-button,'+
+    '#gWP1 #inputStatic::-webkit-outer-spin-button,'+
+    '#lb > div > g-menu > g-menu-item:nth-child(7),'+
+    '#lb > div > g-menu > g-menu-item:nth-child(8) {'+
     '  display: none !important;'+
     '}'+
     '#gWP1 a.gb_1.gb_2.gb_9d.gb_9c {'+
     '  color: #FFF !important;'+
+    '}'+
+    '#gWP1 #gb,'+
+    '#gWP1 .o3j99.c93Gbe {'+
+    '  background: transparent !important;'+
     '}'+
     '#gWP1 > #logo1,'+
     '#gWP1 #logo2 {'+
@@ -756,10 +765,6 @@
     '  background-color: #181A1B !important;'+
     '  border: 1px solid #000 !important;'+
     '}'+
-    '#gWP1 #gb,'+
-    '#gWP1 .o3j99.c93Gbe {'+
-    '  background: transparent !important;'+
-    '}'+
     '#gWP1 #headerButtonsDiv {'+
     '  display: inline-flex !important;'+
     '  margin-bottom: -20px !important;'+
@@ -781,6 +786,12 @@
     '  background-color: #000 !important;'+
     '  border-color: #000 !important;'+
     '  color: #FFF !important;'+
+    '}'+
+    '#gWP1 .gb_Zd .gb_Se {'+
+    '  background-color: rgba(0, 0, 0, .3) !important;'+
+    '  border-radius: 12px !important;'+
+    '  display: inline-flex !important;'+
+    '  padding: 4px 5px 1px 0 !important;'+
     '}'+
     '#gWP1 .gb_z.gb_hd.gb_f.gb_Af {'+
     '  border: 1px solid #333 !important;'+
@@ -808,12 +819,6 @@
     '#gWP1 #gbwa > div > a:hover > svg {'+
     '  background-color: #181A1B !important;'+
     '  color: #FFF !important;'+
-    '}'+
-    '#gWP1 .gb_Zd .gb_Se {'+
-    '  background-color: rgba(0, 0, 0, .3) !important;'+
-    '  border-radius: 12px !important;'+
-    '  display: inline-flex !important;'+
-    '  padding: 4px 5px 1px 0 !important;'+
     '}'+
     '#gWP1 .gb_La.gb_ed.gb_jg.gb_f.gb_xf {'+
     '  margin-top: -2px !important;'+
@@ -890,19 +895,6 @@
     '  text-align: left !important;'+
     '  margin-left: 0 !important;'+
     '}'+
-    '#gWP1 .RNNXgb:hover,'+
-    '#gWP1 .RNNXgb:focus-within,'+
-    '#gWP1 #gSearch:hover,'+
-    '#gWP1 #submit:hover,'+
-    '#gWP1 center > input:hover {'+
-    '  background-color: rgba(0, 0, 0, .5) !important;'+
-    '  border-color: #777 !important;'+
-    '  color: #FFF !important;'+
-    '}'+
-    '#gWP1 .RNNXgb:hover .iblpc,'+
-    '#gWP1 .RNNXgb:focus-within .iblpc {'+
-    '  opacity: 1 !important;'+
-    '}'+
     '#gWP1 .A8SBwf {'+
     '  padding: 0 !important;'+
     '}'+
@@ -924,30 +916,41 @@
     '  text-decoration: none !important;'+
     '  text-shadow: 1px 1px 2px #000 !important;'+
     '}'+
-    '#gWP1 center > input {'+
-    '  background-color: rgba(0, 0, 0, 0.3) !important;'+
-    '  border: 1px solid transparent !important;'+
-    '  border-radius: 4px !important;'+
-    '  color: #AAA !important;'+
-    '  cursor: pointer !important;'+
-    '  height: 32px  !important;'+
-    '  padding: 0 15px !important;'+
-    '  width: auto !important;'+
+    '#gWP1 .RNNXgb:hover,'+
+    '#gWP1 .RNNXgb:focus-within,'+
+    '#gWP1 #gSearch:hover,'+
+    '#gWP1 #submit:hover,'+
+    '#gWP1 center > input:hover {'+
+    '  background-color: rgba(0, 0, 0, .5) !important;'+
+    '  border-color: #777 !important;'+
+    '  color: #FFF !important;'+
     '}'+
+    '#gWP1 .RNNXgb:hover .iblpc,'+
+    '#gWP1 .RNNXgb:focus-within .iblpc {'+
+    '  opacity: 1 !important;'+
+    '}'+
+    '#gWP1 center > input,'+
     '#gWP1 center > span {'+
     '  background-color: rgba(0, 0, 0, 0.3) !important;'+
     '  border: 1px solid transparent !important;'+
     '  border-radius: 4px !important;'+
     '  color: #AAA !important;'+
+    '  cursor: pointer !important;'+
+    '  width: auto !important;'+
+    '}'+
+    '#gWP1 center > input {'+
+    '  height: 32px  !important;'+
+    '  padding: 0 15px !important;'+
+    '}'+
+    '#gWP1 center > span {'+
     '  margin-left: 5px !important;'+
     '  padding: 7px 0 !important;'+
-    '  width: auto !important;'+
     '}'+
     '#gWP1 center > span:hover {'+
     '  border: 1px solid #666 !important;'+
     '}'+
     '#gWP1 #gOptionsPopup {'+
-    '  background: #222 !important;'+
+    '  background-color: rgb(24, 26, 27) !important;'+
     '  border: 1px solid #666 !important;'+
     '  border-radius: 6px !important;'+
     '  bottom: 212px !important;'+
@@ -962,7 +965,7 @@
     '}'+
     '#gWP1 #gOptionsPopup > #btnClose,'+
     '#gWP1 #headerBtnsDiv > #btnClose2 {'+
-    '  background-color: #222 !important;'+
+    '  background-color: rgb(24, 26, 27) !important;'+
     '  border: 1px solid #666 !important;'+
     '  border-radius: 50% !important;'+
     '  height: 25px !important;'+
@@ -1048,11 +1051,6 @@
     '  top: 5px !important;'+
     '  width: 21px !important;'+
     '}'+
-    '#gWP1 #buttonStatic:hover + #buttonUp,'+
-    '#gWP1 #buttonUp:hover,'+
-    '#gWP1 #buttonDown:hover {'+
-    '  opacity: 1 !important;'+
-    '}'+
     'body#gWP1 #buttonUp {'+
     '  margin: 0 !important;'+
     '}'+
@@ -1068,8 +1066,11 @@
     '  text-align: center !important;'+
     '  width: 28px !important;'+
     '}'+
+    '#gWP1 #buttonUp:hover,'+
+    '#gWP1 #buttonDown:hover,'+
     '#gWP1 #divNumber:hover > #inputStatic,'+
     '#gWP1 #inputStatic:hover,'+
+    '#gWP1 #buttonStatic:hover + #buttonUp,'+
     '#gWP1 #inputStatic:focus-within {'+
     '  opacity: 1 !important;'+
     '}'+
@@ -1079,10 +1080,6 @@
     '}'+
     '#gWP1 #buttonSites {'+
     '  width: 64px !important;'+
-    '}'+
-    '#gWP1 #inputStatic::-webkit-inner-spin-button,'+
-    '#gWP1 #inputStatic::-webkit-outer-spin-button {'+
-    '  display: none !important;'+
     '}'+
     '#gWP1 #divThemer:hover > #buttonThemer,'+
     '#gWP1 #divThemer:hover > #buttonWhen,'+
@@ -1103,7 +1100,7 @@
     '  opacity: 1 !important;'+
     '}'+
     '#gWP1 #headerBtnsDiv {'+
-    '  background: #222 !important;'+
+    '  background-color: rgb(24, 26, 27) !important;'+
     '  border: 1px solid #666 !important;'+
     '  border-radius: 6px !important;'+
     '  bottom: 489px !important;'+
@@ -1204,9 +1201,6 @@
     '  background-color: rgba(0, 0, 0, .5) !important;'+
     '  border: 1px solid #CCC !important;'+
     '}'+
-    '#gWP1 .xtSCL {'+
-    '  display: none !important;'+
-    '}'+
     '#gWP1 .lJ9FBc {'+
     '  height: 50px !important;'+
     '}'+
@@ -1225,6 +1219,17 @@
     '}'+
     '#gWP1 .EwsJzb.sAKBe.B8Kd8d {'+
     '  border: 1px solid #666 !important;'+
+    '}'+
+    '#gWP1 .cF4V5c.gLSAk.rShyOb {'+
+    '  padding: 0 8px 8px 8px !important;'+
+    '}'+
+    '.cF4V5c g-menu-item a,'+
+    '.cF4V5c g-menu-item span {'+
+    '  padding: 4px !important;'+
+    '}'+
+    '.cF4V5c g-menu-item span {'+
+    '  position: relative !important;'+
+    '  top: 4px !important;'+
     '}'+
   '');
 

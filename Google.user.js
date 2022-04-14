@@ -1221,15 +1221,21 @@
     '  border: 1px solid #666 !important;'+
     '}'+
     '#gWP1 .cF4V5c.gLSAk.rShyOb {'+
-    '  padding: 0 8px 8px 8px !important;'+
+    '  padding: 0 !important;'+
     '}'+
     '.cF4V5c g-menu-item a,'+
     '.cF4V5c g-menu-item span {'+
-    '  padding: 4px !important;'+
+    '  color: #CCC !important;'+
+    '  padding: 6px 10px 5px 10px !important;'+
     '}'+
     '.cF4V5c g-menu-item span {'+
-    '  position: relative !important;'+
-    '  top: 4px !important;'+
+    '  display: flex !important;'+
+    '  padding-bottom: 3px !important;'+
+    '}'+
+    '.cF4V5c g-menu-item a:hover,'+
+    '.cF4V5c g-menu-item span:hover {'+
+    '  background: #333 !important;'+
+    '  color: #FFF !important;'+
     '}'+
   '');
 

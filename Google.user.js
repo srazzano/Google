@@ -185,8 +185,8 @@
         optionsPop = $c('div', {id: 'gOptionsPopup', style: 'display: none;'}),
         btnClose = $c('button', {id: 'btnClose', style: 'background: url('+ popCloseBtn +') no-repeat center', onclick: e => optionsPopup(e)}),
         btnClose2 = $c('button', {id: 'btnClose2', style: 'background: url('+ popCloseBtn +') no-repeat center', onclick: e => optionsPopup(e)}),
-        divButtons = $c('div', {id: 'divButtons', className: 'popDiv'}),
         divLinks = $c('div', {id: 'divLinkss', className: 'popDiv'}),
+        divButtons = $c('div', {id: 'divButtons', className: 'popDiv'}),
         divNumber = $c('div', {id: 'divNumbers', className: 'popDiv'}),
         divSites = $c('div', {id: 'divSites', className: 'popDiv'}),
         divThemer = $c('div', {id: 'divThemer', className: 'popDiv'}),
@@ -236,7 +236,7 @@
           checkbox[i].checked = false;
           GM_setValue(checkbox[i].id, false);
           let hdrBtn = checkbox[i].id.replace('headerB', 'b');
-          try { document.getElementById(hdrBtn).style.display = 'none'; } catch (ex) {}
+          try { document.getElementById(hdrBtn).style.display = 'none' } catch (ex) {}
         }
         break;
       case 'btnSelectAll':
@@ -244,7 +244,7 @@
           checkbox[i].checked = true;
           GM_setValue(checkbox[i].id, true);
           let hdrBtn = checkbox[i].id.replace('headerB', 'b');
-          try { document.getElementById(hdrBtn).style.display = 'block'; } catch (ex) {}
+          try { document.getElementById(hdrBtn).style.display = 'block' } catch (ex) {}
           viewHdrButtons();
         }
         break;
@@ -272,10 +272,10 @@
         yy = yr - 2000,
         yyyy = yr,
         hr12, hr24, ampm;
-    if (hr > 12) {hr12 = hr - 12; hr24 = hr}
-    else {hr12 = hr; hr24 = hr}
-    if (hr < 10) {hr12 = hr; hr24 = '0' + hr}
-    if (hr === 0) {hr12 = 12; hr24 = '00'}
+    if (hr > 12) { hr12 = hr - 12; hr24 = hr }
+    else { hr12 = hr; hr24 = hr }
+    if (hr < 10) { hr12 = hr; hr24 = '0' + hr }
+    if (hr === 0) { hr12 = 12; hr24 = '00' }
     min < 10 ? min = ':0' + min : min = ':' + min;
     if (GM_getValue('defaultSecondsView')) sec < 10 ? sec = ':0' + sec : sec = ':' + sec;
     else sec = '';
@@ -316,7 +316,7 @@
       dateTime.hidden = bool;
       GM_setValue('defaultDateTimeView', !bool);
       if (bool) clearInterval(clockInterval);
-      else {dateTime.textContent = dateTimeFormat(GM_getValue('dateFormat')); dateTimeTimer()}
+      else { dateTime.textContent = dateTimeFormat(GM_getValue('dateFormat')); dateTimeTimer() }
   } }
 
   function dateTimeToggleSecondsAmPm(e) {
@@ -363,7 +363,7 @@
       logo2.style.opacity = 1;
     }
     if (GM_getValue('defaultDateTimeView')) dateTimeDefault();
-    else {dateTime.hidden = true; clearInterval(clockInterval)}
+    else { dateTime.hidden = true; clearInterval(clockInterval) }
     dateTime.title = addRemoveText + ' (' + GM_getValue('dateFormat') + ')';
     div1.insertBefore(divHeader, div1.firstChild);
     div1.insertBefore(logo2, div1.firstChild.nextSibling);
@@ -961,7 +961,7 @@
     '  padding: 0 !important;'+
     '  position: relative !important;'+
     '  text-align: left !important;'+
-    '  width: 250px !important;'+
+    '  width: 251px !important;'+
     '}'+
     '#gWP1 #gOptionsPopup > .popDiv {'+
     '  padding: 2px !important;'+
@@ -1008,10 +1008,11 @@
     '  color: #FFF !important;'+
     '}'+
     '#gWP1 #themeImage {'+
-    '  left: 9px !important;'+
+    '  float: right !important;'+
+    '  margin-right: 8px !important;'+
     '  opacity: 0 !important;'+
     '  position: relative !important;'+
-    '  top: 3px !important;'+
+    '  top: 8px !important;'+
     '}'+
     '#gWP1 #buttonStatic,'+
     '#gWP1 #buttonThemer,'+
@@ -1050,7 +1051,7 @@
     '}'+
     '#gWP1 #buttonStatic {'+
     '  color: #CCC !important;'+
-    '  margin: 0 !important;'+
+    '  margin: 0 2px 0 0 !important;'+
     '  padding: 7px 7px 7px 8px !important;'+
     '}'+
     '#gWP1 #buttonUp,'+

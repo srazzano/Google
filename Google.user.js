@@ -87,15 +87,15 @@
         imgEarth = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACnUlEQVR42m1TTUgUYRh+vvn5ZnZnd2ZnTVk3icTWRPuFIDDtqJUQrKc6ei2CQPDSpUsZgtClLh2kLkkHhWghIToURnVTCDaFWq0Uf3c3dded3Z3p+2bX0a1eZmDm5Xuf53mf93sJ/op7L7easzv26PJmsTe9VfbznBkUc41hecrQhME7V4PfD54nB3+Gnmcnfq4V+3rOBWlzhILKlXzZdvA7ncf4dB6RsDw5ct3o/wfg5lh6riVKY8GAH44DCAJj1oDGcOUQYbk2M48Xn4uYWbTnHw2YrR4AZ46EpXiAFcNxHzc4kCwBx6OAWKVqNXYxnCgkBEIsroTwnr+kCsmu02HKekfAJzDpxC12Qdjrp0AsUqGTmJQWvYBbT3esjqNKGxl69sNZyIRQKAleAZUIuk+qjJ14SihT0t5UAaWije10Dm9mMyDxkV+OLYZqJsFBVErQ2aFCYSBONdfRVAHi36US8OTVMsiV4VVHolotQNUH3S+g64TqgYpCBYQbzBMPxtdALt9fcQRZw042B0kSoWgKa5V4RWeOUTYJyc3smcuBOEniAwPoufvNSW+KKBZKIOyUrMiob6qrKnFcts52H3RNqFFnl4G3H1MgF268niiUjXgRDV4L9YfDkFXZM4QDn40piJiSp2xmJonk14VJcn5gvDkQPZVcW6X0oIma7oNRr7uzc6pJrkYUCIplB+WtRWt7abbNbZaroIFD8fV0yJs/D5/uh9mge83be/IzSVjb65PTjy/1e1f54u33cyL1xVY29kfKwQhjpKydgKG5ntBSCmUrP//uYff+Vd4LrkQ1j/RtrmTprm0yNqnqWgmqmEFdxLB204sJzvzfbeTBPZF8oVHFiPZSf527zlZuI1fILk2V8pnBT2PXatb5D06f/8vKDSZRAAAAAElFTkSuQmCC',
         urlEarth = 'https://earth.google.com/web/@0,-6.8073,0a,22251752.77375655d,35y,0h,0t,0r',
         btnEarth = $c('button', {id: 'btnEarth', className: 'hBtn', textContent: 'Earth', title: urlEarth, style: 'background: url('+ imgEarth +') no-repeat 4px center', onclick: () => window.open(urlEarth, GM_getValue('linksWhere'))}),
-        imgMail = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABMElEQVR42mN85Wz6nwEIfjEw9MvsPV3EQAT4vYelD0gVgtiMMANA4DMjY9gU3Ygt/PyffjY0NPxD0sMYGrqKSVv7Gnu1TYs3kL8KLoFsAMyQQ9GZm7m5uX+Hhob+a2xsZGRgsGeSlPzMlqQchKIZqwEwQxbbJG9lYHj+B8T/ws3N2m5Y6YWuGWyAU+uX/yv2OWL1K8gguYpzDNg0goDlG3+IASAOLkMEK88z4NIMdwFMEJsh2AyAacYwAARm73cK4/3/fxUOA8KAmlEDEd2AfdU8jHddzEJhhiAZEMbq8me1yYrg/wQNANEwQ6AGgDWDGEQZAIx/5tWrV/8FGQKKBZBmmBixLmAEpkRGLS0txmvXrv2vr6//z8jI+J9oF4Do////g2mYRhgYQgbgAugGAAAzKLYhKvyRPwAAAABJRU5ErkJggg==',
-        urlMail = 'https://mail.google.com/mail/ca/u/0/#inbox',
-        btnMail = $c('button', {id: 'btnMail', className: 'hBtn', textContent: 'GMail', title: urlMail, style: 'background: url('+ imgMail +') no-repeat 4px center', onclick: () => window.open(urlMail, GM_getValue('linksWhere'))}),
-        imgMaps = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACEElEQVR42o2Ty2sTURTGv9kIJZGx4kJUrGhQFELQcSPJygekKYg7l/VNjIsgqAVbF+6s4J/gwrbRYqfRjbErH+hK4zLgwpY4o41CxReMZcjM9d5zcm9GV71w577O9zvfPZexsMa2dOKIEN0IQghAxMg0Xllq31qLePH4YaUCYsEAmkvI09eWtedBmaHgw7g3cphcy8AX7kfK2vz2k4DO4HoCqCBr9/0yhb8ZvoUw7uLQwnUDiKXoOYkFmivf8f7XH4LuSw/gwGCaAZnaBfG2NImDjTE05aja/idXjaNnEmCp7Cs/GCDne+0UHNkJsEsClNBpXCPxu9JtAqjsdI0owsu6xy70FTakaa26tbN2Xmjh/9nVgZdfxlJ1lbIlC6iGzIIs4o6Zc0JXmyVIiDu0241ieJdDsq8zqxegZxyaOdsHiB4gIVa9FdxBEATYePMKA+RzquwE2D59RmiRhviFL0b8e9McPM+j/YGxCgE+VCdQLBYZsG3qtHGgml/omAuNuPOYLcckVpAwDGGPV/H1xiTy+TwDtiYAnwp92yNuHdrabDmi83a7jaB2F+tOjsJxHAZsmTpFcZ8Ly8ZFSYp1MQgnPw8vMqTVaiGVSiGXyzFg871R0TG2pXi+boToibWTuQr/TL7vI5vNMkAsHhP9zI/+EZriJoBuhZ3Ytq0BR+ls2H1sRMlXSV5D79cvRQbwF5scUJszafjwAAAAAElFTkSuQmCC',
-        urlMaps = 'https://www.google.com/maps/@36.1489458,-115.0874625,15z?hl=en&authuser=0',
-        btnMaps = $c('button', {id: 'btnMaps', className: 'hBtn', textContent: 'GMaps', title: urlMaps, style: 'background: url('+ imgMaps +') no-repeat 4px center', onclick: () => window.open(urlMaps, GM_getValue('linksWhere'))}),
-        imgMSEdge = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAKklEQVR42mN876/4nwEP6M96hE+agXHUgGFhAPOSd3gN+CEkNmrA8DcAAKkTP3nVsyb/AAAAAElFTkSuQmCC',
-        urlMSEdge = 'https://www.microsoft.com',
-        btnMSEdge = $c('button', {id: 'btnMSEdge', className: 'hBtn', textContent: 'MS Store', title: urlMSEdge, style: 'background: url('+ imgMSEdge +') no-repeat 4px center', onclick: () => window.open(urlMSEdge, GM_getValue('linksWhere'))}),
+        imgGMail = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABMElEQVR42mN85Wz6nwEIfjEw9MvsPV3EQAT4vYelD0gVgtiMMANA4DMjY9gU3Ygt/PyffjY0NPxD0sMYGrqKSVv7Gnu1TYs3kL8KLoFsAMyQQ9GZm7m5uX+Hhob+a2xsZGRgsGeSlPzMlqQchKIZqwEwQxbbJG9lYHj+B8T/ws3N2m5Y6YWuGWyAU+uX/yv2OWL1K8gguYpzDNg0goDlG3+IASAOLkMEK88z4NIMdwFMEJsh2AyAacYwAARm73cK4/3/fxUOA8KAmlEDEd2AfdU8jHddzEJhhiAZEMbq8me1yYrg/wQNANEwQ6AGgDWDGEQZAIx/5tWrV/8FGQKKBZBmmBixLmAEpkRGLS0txmvXrv2vr6//z8jI+J9oF4Do////g2mYRhgYQgbgAugGAAAzKLYhKvyRPwAAAABJRU5ErkJggg==',
+        urlGMail = 'https://mail.google.com/mail/ca/u/0/#inbox',
+        btnGMail = $c('button', {id: 'btnGMail', className: 'hBtn', textContent: 'GMail', title: urlGMail, style: 'background: url('+ imgGMail +') no-repeat 4px center', onclick: () => window.open(urlGMail, GM_getValue('linksWhere'))}),
+        imgGMaps = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACEElEQVR42o2Ty2sTURTGv9kIJZGx4kJUrGhQFELQcSPJygekKYg7l/VNjIsgqAVbF+6s4J/gwrbRYqfRjbErH+hK4zLgwpY4o41CxReMZcjM9d5zcm9GV71w577O9zvfPZexsMa2dOKIEN0IQghAxMg0Xllq31qLePH4YaUCYsEAmkvI09eWtedBmaHgw7g3cphcy8AX7kfK2vz2k4DO4HoCqCBr9/0yhb8ZvoUw7uLQwnUDiKXoOYkFmivf8f7XH4LuSw/gwGCaAZnaBfG2NImDjTE05aja/idXjaNnEmCp7Cs/GCDne+0UHNkJsEsClNBpXCPxu9JtAqjsdI0owsu6xy70FTakaa26tbN2Xmjh/9nVgZdfxlJ1lbIlC6iGzIIs4o6Zc0JXmyVIiDu0241ieJdDsq8zqxegZxyaOdsHiB4gIVa9FdxBEATYePMKA+RzquwE2D59RmiRhviFL0b8e9McPM+j/YGxCgE+VCdQLBYZsG3qtHGgml/omAuNuPOYLcckVpAwDGGPV/H1xiTy+TwDtiYAnwp92yNuHdrabDmi83a7jaB2F+tOjsJxHAZsmTpFcZ8Ly8ZFSYp1MQgnPw8vMqTVaiGVSiGXyzFg871R0TG2pXi+boToibWTuQr/TL7vI5vNMkAsHhP9zI/+EZriJoBuhZ3Ytq0BR+ls2H1sRMlXSV5D79cvRQbwF5scUJszafjwAAAAAElFTkSuQmCC',
+        urlGMaps = 'https://www.google.com/maps/@36.1489458,-115.0874625,15z?hl=en&authuser=0',
+        btnGMaps = $c('button', {id: 'btnGMaps', className: 'hBtn', textContent: 'GMaps', title: urlGMaps, style: 'background: url('+ imgGMaps +') no-repeat 4px center', onclick: () => window.open(urlGMaps, GM_getValue('linksWhere'))}),
+        imgMSStore = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAsElEQVR42mOsMBb8byLKzoAN3P/8m2G7AieDkqEgVvnfv/4yMNaZCv4vMcCu4NCz7wx9AswM3tnKWOV/fP0zagBVDHCR5/mvKcCGXcHffwwHgDEsq8GDVf7rJ6ABDFpW/xlUjbEqYHjzhMHy4yYGax1mrNJHrwDTAUN07X+G4CLsBlw+xFByPZShO4sDq/THr/9HDaCOAe6J/xn0HLAb8OwOg+XFNobicOzZ/cHzfwwAzvuWLL3cL2EAAAAASUVORK5CYII=',
+        urlMSStore = 'https://www.microsoft.com',
+        btnMSStore = $c('button', {id: 'btnMSStore', className: 'hBtn', textContent: 'MS Store', title: urlMSStore, style: 'background: url('+ imgMSStore +') no-repeat 4px center', onclick: () => window.open(urlMSStore, GM_getValue('linksWhere'))}),
         imgNews = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAClElEQVR42o2SW0gUURjH/2cua2tby0CieYtatQyMLiBEFFmEBBFImClWREHh0lsERWJaKUFZSaAvgtFLYIH2EBUmJqwrJkpQCEUZ3toEV8fLuDPOzOnMzrTsZg8dOHO+c+b8f9/lfARxI/9GKcUWCSYoKAUINbGOqJCpAJ0SmOyQ+xLG6L2X5I+GxAN8DyopSfOAY8JUKKiSfuCoZwylU4X4rK1nABMILSJ09fm/AbmNFdSXxeNZej/cUCESHWCi6eEUtE9sRUu2GzOygtC1F6sBl8p89L4fSBY0tqPOZB5Z2GaEIPw4D1gBZJFH6+QsGgaGo1rS2eijRTsN3P3+BOGV1CjMyt8CUMe2IjfmRVDD2lNsWA7hysfrmDENkMG2dLojR8SFoQAWDCkGcBgx21qtIlq2R5PR1FeBoDwPUlWWSR9e5nB+qA8Lug3gWHCGIyZOolEQ++gsmrWqDaifnLb/y++yqP9TEEumhOICAWf3iwh+NdD0VsPFQy4c3M5HwRqr6elmBS5FxqNAOTJe95IooLs5m7aqAWzblIJzB0Q0dChITuIw8pOFm2QiSbC9G6wXwksEbpZC7fuTKOgK2IA9u3w090wPbpeno2NQYx5FpHkJRqZMLEYo9uUJsaeeCJu49fQXTr0pQVlggMSe8Vj9BK0sSsFGL4eWrmUc3y2C5zm0f9DhFp1CsvwXVbYuzKGzJoMk9EFx3Th1eyTUlIjwJgssXBPV7SpOFLqwN8euwQp7Rn/bMqDM4dXNzETAkdpxKrglCBwgsPu6YU+e2bxzy2QRqNa5MovuuqzVAH6NFN/ZTkPF9YRzpkdm0fM34HD1KAN4EwFxwvgG0yMyeu9sTgRk+/Ip4V34n0ENDWPfRqLa3wYbMFCh4PdOAAAAAElFTkSuQmCC',
         urlNews = 'https://news.google.com/topstories?hl',
         btnNews = $c('button', {id: 'btnNews', className: 'hBtn', textContent: 'News', title: urlNews, style: 'background: url('+ imgNews +') no-repeat 4px center', onclick: () => window.open(urlNews, GM_getValue('linksWhere'))}),
@@ -130,15 +130,15 @@
         headerBtnEarthLAB = $c('label', {id: 'labelEarth', className: 'label'}),
         headerBtnEarthCB = $c('input', {id: 'headerBtnEarth', className: 'input', type: 'checkbox', checked: GM_getValue("headerBtnEarth"), onclick: e => displayHdrButtons(e)}),
         headerBtnEarthSPN = $c('span', {id: 'spanEarth', className: 'span', textContent: 'Earth'}),
-        headerBtnMailLAB = $c('label', {id: 'labelMail', className: 'label'}),
-        headerBtnMailCB = $c('input', {id: 'headerBtnMail', className: 'input', type: 'checkbox', checked: GM_getValue("headerBtnMail"), onclick: e => displayHdrButtons(e)}),
-        headerBtnMailSPN = $c('span', {id: 'spanMail', className: 'span', textContent: 'GMail'}),
-        headerBtnMapsLAB = $c('label', {id: 'labelMaps', className: 'label'}),
-        headerBtnMapsCB = $c('input', {id: 'headerBtnMaps', className: 'input', type: 'checkbox', checked: GM_getValue("headerBtnMaps"), onclick: e => displayHdrButtons(e)}),
-        headerBtnMapsSPN = $c('span', {id: 'spanMaps', className: 'span', textContent: 'GMaps'}),
-        headerBtnMSEdgeLAB = $c('label', {id: 'labelMSEdge', className: 'label'}),
-        headerBtnMSEdgeCB = $c('input', {id: 'headerBtnMSEdge', className: 'input', type: 'checkbox', checked: GM_getValue("headerBtnMSEdge"), onclick: e => displayHdrButtons(e)}),
-        headerBtnMSEdgeSPN = $c('span', {id: 'spanMSEdge', className: 'span', textContent: 'MS Store'}),
+        headerBtnGMailLAB = $c('label', {id: 'labelGMail', className: 'label'}),
+        headerBtnGMailCB = $c('input', {id: 'headerBtnGMail', className: 'input', type: 'checkbox', checked: GM_getValue("headerBtnGMail"), onclick: e => displayHdrButtons(e)}),
+        headerBtnGMailSPN = $c('span', {id: 'spanGMail', className: 'span', textContent: 'GMail'}),
+        headerBtnGMapsLAB = $c('label', {id: 'labelGMaps', className: 'label'}),
+        headerBtnGMapsCB = $c('input', {id: 'headerBtnGMaps', className: 'input', type: 'checkbox', checked: GM_getValue("headerBtnGMaps"), onclick: e => displayHdrButtons(e)}),
+        headerBtnGMapsSPN = $c('span', {id: 'spanGMaps', className: 'span', textContent: 'GMaps'}),
+        headerBtnMSStoreLAB = $c('label', {id: 'labelMSStore', className: 'label'}),
+        headerBtnMSStoreCB = $c('input', {id: 'headerBtnMSStore', className: 'input', type: 'checkbox', checked: GM_getValue("headerBtnMSStore"), onclick: e => displayHdrButtons(e)}),
+        headerBtnMSStoreSPN = $c('span', {id: 'spanMSStore', className: 'span', textContent: 'MS Store'}),
         headerBtnNewsLAB = $c('label', {id: 'labelNews', className: 'label'}),
         headerBtnNewsCB = $c('input', {id: 'headerBtnNews', className: 'input', type: 'checkbox', checked: GM_getValue("headerBtnNews"), onclick: e => displayHdrButtons(e)}),
         headerBtnNewsSPN = $c('span', {id: 'spanNews', className: 'span', textContent: 'News'}),
@@ -227,6 +227,63 @@
     return document.querySelector(el);
   }
 
+  function alignHdrButtons() {
+    try {
+      if (GM_getValue('headerBtnCalendar')) {
+        divHeader.appendChild(btnCalendar);
+        btnCalendar.style.display = 'block';
+      }
+      if (GM_getValue('headerBtnChrome')) {
+        divHeader.appendChild(btnChrome);
+        btnChrome.style.display = 'block';
+      }
+      if (GM_getValue('headerBtnEarth')) {
+        divHeader.appendChild(btnEarth);
+        btnEarth.style.display = 'block';
+      }
+      if (GM_getValue('headerBtnGMail')) {
+        divHeader.appendChild(btnGMail);
+        btnGMail.style.display = 'block';
+      }
+      if (GM_getValue('headerBtnGMaps')) {
+        divHeader.appendChild(btnGMaps);
+        btnGMaps.style.display = 'block';
+      }
+      if (GM_getValue('headerBtnMSStore')) {
+        divHeader.appendChild(btnMSStore);
+        btnMSStore.style.display = 'block';
+      }
+      if (GM_getValue('headerBtnNews')) {
+        divHeader.appendChild(btnNews);
+        btnNews.style.display = 'block';
+      }
+      if (GM_getValue('headerBtnPhotos')) {
+        divHeader.appendChild(btnPhotos);
+        btnPhotos.style.display = 'block';
+      }
+      if (GM_getValue('headerBtnPlay')) {
+        divHeader.appendChild(btnPlay);
+        btnPlay.style.display = 'block';
+      }
+      if (GM_getValue('headerBtnPodcasts')) {
+        divHeader.appendChild(btnPodcasts);
+        btnPodcasts.style.display = 'block';
+      }
+      if (GM_getValue('headerBtnTranslate')) {
+        divHeader.appendChild(btnTranslate);
+        btnTranslate.style.display = 'block';
+      }
+      if (GM_getValue('headerBtnYouTube')) {
+        divHeader.appendChild(btnYouTube);
+        btnYouTube.style.display = 'block';
+      }
+      if (GM_getValue('headerBtnYouTubeTV')) {
+        divHeader.appendChild(btnYouTubeTV);
+        btnYouTubeTV.style.display = 'block';
+      }
+    } catch (ex) {}
+  }
+
   function clearSelectAll(e) {
     let checkbox = $q('.input', true);
     e.preventDefault();
@@ -245,9 +302,8 @@
           GM_setValue(checkbox[i].id, true);
           let hdrBtn = checkbox[i].id.replace('headerB', 'b');
           try { document.getElementById(hdrBtn).style.display = 'block' } catch (ex) {}
-          viewHdrButtons();
+          alignHdrButtons();
         }
-        break;
   } }
 
   function dateTimeFormat(int) {
@@ -291,8 +347,8 @@
       case 6: return w + space + bullet + space + m + slash + d + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
       case 7: return w + space + bullet + space + mm + slash + dd + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
       // Delete "customFormatText + 210/customFormatText + 211" text below and add return options with bullet, comma, hyphen, slash, space, star characters.
-      case 8: return customFormatText + 294;
-      case 9: return customFormatText + 295;
+      case 8: return customFormatText + 350;
+      case 9: return customFormatText + 351;
   } }
 
   function dateTimeDefault() {
@@ -343,13 +399,13 @@
         hdrBtn = cbBtn.replace('headerB', 'b'),
         bool = GM_getValue(e.target.id) !== true ? true : false;
     GM_setValue(e.target.id, bool);
-    if (bool) viewHdrButtons();
+    if (bool) alignHdrButtons();
     else document.getElementById(hdrBtn).style.display = 'none';
   }
 
   function init() {
     window.removeEventListener('load', () => init());
-    viewHdrButtons();
+    alignHdrButtons();
     logo1.appendChild(logo1Btn);
     logo2.appendChild(logo2Btn);
     center.insertBefore(optionsBtn, center.childNodes[4]);
@@ -428,15 +484,15 @@
     headerBtnEarthLAB.appendChild(headerBtnEarthCB);
     headerBtnEarthLAB.appendChild(headerBtnEarthSPN);
     headerBtnsDiv.appendChild(headerBtnEarthLAB);
-    headerBtnMailLAB.appendChild(headerBtnMailCB);
-    headerBtnMailLAB.appendChild(headerBtnMailSPN);
-    headerBtnsDiv.appendChild(headerBtnMailLAB);
-    headerBtnMapsLAB.appendChild(headerBtnMapsCB);
-    headerBtnMapsLAB.appendChild(headerBtnMapsSPN);
-    headerBtnsDiv.appendChild(headerBtnMapsLAB);
-    headerBtnMSEdgeLAB.appendChild(headerBtnMSEdgeCB);
-    headerBtnMSEdgeLAB.appendChild(headerBtnMSEdgeSPN);
-    headerBtnsDiv.appendChild(headerBtnMSEdgeLAB);
+    headerBtnGMailLAB.appendChild(headerBtnGMailCB);
+    headerBtnGMailLAB.appendChild(headerBtnGMailSPN);
+    headerBtnsDiv.appendChild(headerBtnGMailLAB);
+    headerBtnGMapsLAB.appendChild(headerBtnGMapsCB);
+    headerBtnGMapsLAB.appendChild(headerBtnGMapsSPN);
+    headerBtnsDiv.appendChild(headerBtnGMapsLAB);
+    headerBtnMSStoreLAB.appendChild(headerBtnMSStoreCB);
+    headerBtnMSStoreLAB.appendChild(headerBtnMSStoreSPN);
+    headerBtnsDiv.appendChild(headerBtnMSStoreLAB);
     headerBtnNewsLAB.appendChild(headerBtnNewsCB);
     headerBtnNewsLAB.appendChild(headerBtnNewsSPN);
     headerBtnsDiv.appendChild(headerBtnNewsLAB);
@@ -478,7 +534,6 @@
         break;
       case 'btnClose2':
         btnsPop.style.display = 'none';
-        break;
   } }
 
   function repositionLogo() {
@@ -510,63 +565,6 @@
     center.appendChild(headerBtnsDiv);
     if (headerBtnsDiv.style.display === 'flex') headerBtnsDiv.style.display = 'none';
     else headerBtnsDiv.style.display = 'flex';
-  }
-
-  function viewHdrButtons() {
-    try {
-      if (GM_getValue('headerBtnCalendar')) {
-        divHeader.appendChild(btnCalendar);
-        btnCalendar.style.display = 'block';
-      }
-      if (GM_getValue('headerBtnChrome')) {
-        divHeader.appendChild(btnChrome);
-        btnChrome.style.display = 'block';
-      }
-      if (GM_getValue('headerBtnEarth')) {
-        divHeader.appendChild(btnEarth);
-        btnEarth.style.display = 'block';
-      }
-      if (GM_getValue('headerBtnMail')) {
-        divHeader.appendChild(btnMail);
-        btnMail.style.display = 'block';
-      }
-      if (GM_getValue('headerBtnMaps')) {
-        divHeader.appendChild(btnMaps);
-        btnMaps.style.display = 'block';
-      }
-      if (GM_getValue('headerBtnMSEdge')) {
-        divHeader.appendChild(btnMSEdge);
-        btnMSEdge.style.display = 'block';
-      }
-      if (GM_getValue('headerBtnNews')) {
-        divHeader.appendChild(btnNews);
-        btnNews.style.display = 'block';
-      }
-      if (GM_getValue('headerBtnPhotos')) {
-        divHeader.appendChild(btnPhotos);
-        btnPhotos.style.display = 'block';
-      }
-      if (GM_getValue('headerBtnPlay')) {
-        divHeader.appendChild(btnPlay);
-        btnPlay.style.display = 'block';
-      }
-      if (GM_getValue('headerBtnPodcasts')) {
-        divHeader.appendChild(btnPodcasts);
-        btnPodcasts.style.display = 'block';
-      }
-      if (GM_getValue('headerBtnTranslate')) {
-        divHeader.appendChild(btnTranslate);
-        btnTranslate.style.display = 'block';
-      }
-      if (GM_getValue('headerBtnYouTube')) {
-        divHeader.appendChild(btnYouTube);
-        btnYouTube.style.display = 'block';
-      }
-      if (GM_getValue('headerBtnYouTubeTV')) {
-        divHeader.appendChild(btnYouTubeTV);
-        btnYouTubeTV.style.display = 'block';
-      }
-    } catch (ex) {}
   }
 
   function wallpaper() {
@@ -611,7 +609,6 @@
         break;
       case 'buttonDown':
         num < 1 ? num = 35 : num = parseInt(num - 1);
-        break;
     }
     inpStatic.value = num;
     GM_setValue('wallpaperStaticImage', parseInt(num));
@@ -673,9 +670,9 @@
   if (!GM_getValue('headerBtnCalendar')) GM_setValue('headerBtnCalendar', false);
   if (!GM_getValue('headerBtnChrome')) GM_setValue('headerBtnChrome', false);
   if (!GM_getValue('headerBtnEarth')) GM_setValue('headerBtnEarth', false);
-  if (!GM_getValue('headerBtnMail')) GM_setValue('headerBtnMail', false);
-  if (!GM_getValue('headerBtnMaps')) GM_setValue('headerBtnMaps', false);
-  if (!GM_getValue('headerBtnMSEdge')) GM_setValue('headerBtnMSEdge', false);
+  if (!GM_getValue('headerBtnGMail')) GM_setValue('headerBtnGMail', false);
+  if (!GM_getValue('headerBtnGMaps')) GM_setValue('headerBtnGMaps', false);
+  if (!GM_getValue('headerBtnMSStore')) GM_setValue('headerBtnMSStore', false);
   if (!GM_getValue('headerBtnNews')) GM_setValue('headerBtnNews', false);
   if (!GM_getValue('headerBtnPhotos')) GM_setValue('headerBtnPhotos', false);
   if (!GM_getValue('headerBtnPlay')) GM_setValue('headerBtnPlay', false);
@@ -1171,14 +1168,14 @@
     '#gWP1 #headerBtnsDiv > #labelEarth > span:after {'+
     '  content: url(' + imgEarth + ')  !important;'+
     '}'+
-    '#gWP1 #headerBtnsDiv > #labelMail > span:after {'+
-    '  content: url(' + imgMail + ')  !important;'+
+    '#gWP1 #headerBtnsDiv > #labelGMail > span:after {'+
+    '  content: url(' + imgGMail + ')  !important;'+
     '}'+
-    '#gWP1 #headerBtnsDiv > #labelMaps > span:after {'+
-    '  content: url(' + imgMaps + ')  !important;'+
+    '#gWP1 #headerBtnsDiv > #labelGMaps > span:after {'+
+    '  content: url(' + imgGMaps + ')  !important;'+
     '}'+
-    '#gWP1 #headerBtnsDiv > #labelMSEdge > span:after {'+
-    '  content: url(' + imgMSEdge + ')  !important;'+
+    '#gWP1 #headerBtnsDiv > #labelMSStore > span:after {'+
+    '  content: url(' + imgMSStore + ')  !important;'+
     '}'+
     '#gWP1 #headerBtnsDiv > #labelNews > span:after {'+
     '  content: url(' + imgNews + ')  !important;'+

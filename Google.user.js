@@ -102,9 +102,9 @@
         imgPhotos = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAA5ElEQVR42mNkIABeOZv+B1JhYntPr8Ymz0ikASCwGmhIGCUGYDUExYCvO1hDgRQIr+b2+L0a3YB/QMyE5h1GJM2roJrhtgENCUM24D9EA4orGHFohoGwr90Gq2Ccb//+M3AxMaK6AOrsVQzYwWqgASiuwggDoAH/GfAAoAFgjVDNGFGJNRZMVgTDAjOU7+5CvLHEiEUzSngADViNI3zAYcSIphkjPIAGhOEIo9X7qnkwDMCIjTMRaxmdWr9gRDFIM4YXsLkAZACIBhoCT2RAzZgJCZcrYAYQHYjohpBlALJ3CBkAAL5FbdsK51LmAAAAAElFTkSuQmCC',
         urlPhotos = 'https://photos.google.com/?pageId=none',
         btnPhotos = $c('button', {id: 'btnPhotos', className: 'hBtn', textContent: 'Photos', title: urlPhotos, style: 'background: url('+ imgPhotos +') no-repeat 4px center', onclick: () => window.open(urlPhotos, GM_getValue('linksWhere'))}),
-        imgPlay = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABzklEQVR42pWTvUscQRjGn3dm78RwfqGYcLn6hGskVSCFjYVcc1Zu/oH0VtqEI4VNCsWQnGgsJNi5JxY2KuJ3DisRAzGQFLGJFhaxSCKsuzO+M3uai1nFG5hi3o/fPM87uyTWfw2g+bPXnFrAWWvg4tFYGXUssgDAo2wR0tcIk4QwM051ATRJj1QI6ipCSUCTMLl7qbEA1cAAzSefA7khKCSqaaZB3wmKFKSkpy/4wBDyQyD3kiHiuiiHhzjEaSwoUtAkWAHBQrgfvHV6Dmg5+Kf468k+sk826X9Ai/SgNUjVQAJjZ5iVOKwlwLPz31g9moFu4LiE2/gU5b+AdgaYJlUDsXaYkiti8WgFvedf7I3a4XjSdNoRuRGgwygwAI4HpgrXSuY/DCH/vBQ11QIce4wAupMBJln1f6Wk/P41+j59ZHcEerEHp+vnFeCGhTQ/Y1C9oQrpPv6OrVeDNpZwlBkR5OgaGnsQM8THkQViC5pBs9NjyO9UICQ/Jg/DESFCJdzWvdVbnjETWTAzmHzzFv2VbSSEguQthIptjAVMld6hsLFlEw+Sfpkb3ft9yhnypkoT6Fuu4EL7yH5bqu9nKvzY9cZHSmhr+nOn3Lh1CbI13UN9EkzxAAAAAElFTkSuQmCC',
-        urlPlay = 'https://play.google.com/store/apps',
-        btnPlay = $c('button', {id: 'btnPlay', className: 'hBtn', textContent: 'Play Store', title: urlPlay, style: 'background: url('+ imgPlay +') no-repeat 4px center', onclick: () => window.open(urlPlay, GM_getValue('linksWhere'))}),
+        imgPlayStore = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABzklEQVR42pWTvUscQRjGn3dm78RwfqGYcLn6hGskVSCFjYVcc1Zu/oH0VtqEI4VNCsWQnGgsJNi5JxY2KuJ3DisRAzGQFLGJFhaxSCKsuzO+M3uai1nFG5hi3o/fPM87uyTWfw2g+bPXnFrAWWvg4tFYGXUssgDAo2wR0tcIk4QwM051ATRJj1QI6ipCSUCTMLl7qbEA1cAAzSefA7khKCSqaaZB3wmKFKSkpy/4wBDyQyD3kiHiuiiHhzjEaSwoUtAkWAHBQrgfvHV6Dmg5+Kf468k+sk826X9Ai/SgNUjVQAJjZ5iVOKwlwLPz31g9moFu4LiE2/gU5b+AdgaYJlUDsXaYkiti8WgFvedf7I3a4XjSdNoRuRGgwygwAI4HpgrXSuY/DCH/vBQ11QIce4wAupMBJln1f6Wk/P41+j59ZHcEerEHp+vnFeCGhTQ/Y1C9oQrpPv6OrVeDNpZwlBkR5OgaGnsQM8THkQViC5pBs9NjyO9UICQ/Jg/DESFCJdzWvdVbnjETWTAzmHzzFv2VbSSEguQthIptjAVMld6hsLFlEw+Sfpkb3ft9yhnypkoT6Fuu4EL7yH5bqu9nKvzY9cZHSmhr+nOn3Lh1CbI13UN9EkzxAAAAAElFTkSuQmCC',
+        urlPlayStore = 'https://play.google.com/store/apps',
+        btnPlayStore = $c('button', {id: 'btnPlayStore', className: 'hBtn', textContent: 'Play Store', title: urlPlayStore, style: 'background: url('+ imgPlayStore +') no-repeat 4px center', onclick: () => window.open(urlPlayStore, GM_getValue('linksWhere'))}),
         imgPodcasts = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAdElEQVR42mNkwAN+72H5D6JZXf4w4lLDOPgMeOVs+l9s72msGkxWBP8/E7GWEacBIM0gGmYAugtABoBoZEOoY4BT65f/+6p5GAkZgAxgehhBDJAAMQYguwCmj3IDkJ1DKBrRDQB7YXDEAtUSEqEwwAYG3gAAuNudhTC8LbkAAAAASUVORK5CYII=',
         urlPodcasts = 'https://podcasts.google.com/',
         btnPodcasts = $c('button', {id: 'btnPodcasts', className: 'hBtn', textContent: 'Podcasts', title: urlPodcasts, style: 'background: url('+ imgPodcasts +') no-repeat 4px center', onclick: () => window.open(urlPodcasts, GM_getValue('linksWhere'))}),
@@ -145,9 +145,9 @@
         headerBtnPhotosLAB = $c('label', {id: 'labelPhotos', className: 'label'}),
         headerBtnPhotosCB = $c('input', {id: 'headerBtnPhotos', className: 'input', type: 'checkbox', checked: GM_getValue("headerBtnPhotos"), onclick: e => displayHdrButtons(e)}),
         headerBtnPhotosSPN = $c('span', {id: 'spanPhotos', className: 'span', textContent: 'Photos'}),
-        headerBtnPlayLAB = $c('label', {id: 'labelPlay', className: 'label'}),
-        headerBtnPlayCB = $c('input', {id: 'headerBtnPlay', className: 'input', type: 'checkbox', checked: GM_getValue("headerBtnPlay"), onclick: e => displayHdrButtons(e)}),
-        headerBtnPlaySPN = $c('span', {id: 'spanPlay', className: 'span', textContent: 'Play Store'}),
+        headerBtnPlayStoreLAB = $c('label', {id: 'labelPlayStore', className: 'label'}),
+        headerBtnPlayStoreCB = $c('input', {id: 'headerBtnPlayStore', className: 'input', type: 'checkbox', checked: GM_getValue("headerBtnPlayStore"), onclick: e => displayHdrButtons(e)}),
+        headerBtnPlayStoreSPN = $c('span', {id: 'spanPlayStore', className: 'span', textContent: 'Play Store'}),
         headerBtnPodcastsLAB = $c('label', {id: 'labelPodcasts', className: 'label'}),
         headerBtnPodcastsCB = $c('input', {id: 'headerBtnPodcasts', className: 'input', type: 'checkbox', checked: GM_getValue("headerBtnPodcasts"), onclick: e => displayHdrButtons(e)}),
         headerBtnPodcastsSPN = $c('span', {id: 'spanPodcasts', className: 'span', textContent: 'Podcasts'}),
@@ -261,9 +261,9 @@
         divHeader.appendChild(btnPhotos);
         btnPhotos.style.display = 'block';
       }
-      if (GM_getValue('headerBtnPlay')) {
-        divHeader.appendChild(btnPlay);
-        btnPlay.style.display = 'block';
+      if (GM_getValue('headerBtnPlayStore')) {
+        divHeader.appendChild(btnPlayStore);
+        btnPlayStore.style.display = 'block';
       }
       if (GM_getValue('headerBtnPodcasts')) {
         divHeader.appendChild(btnPodcasts);
@@ -499,9 +499,9 @@
     headerBtnPhotosLAB.appendChild(headerBtnPhotosCB);
     headerBtnPhotosLAB.appendChild(headerBtnPhotosSPN);
     headerBtnsDiv.appendChild(headerBtnPhotosLAB);
-    headerBtnPlayLAB.appendChild(headerBtnPlayCB);
-    headerBtnPlayLAB.appendChild(headerBtnPlaySPN);
-    headerBtnsDiv.appendChild(headerBtnPlayLAB);
+    headerBtnPlayStoreLAB.appendChild(headerBtnPlayStoreCB);
+    headerBtnPlayStoreLAB.appendChild(headerBtnPlayStoreSPN);
+    headerBtnsDiv.appendChild(headerBtnPlayStoreLAB);
     headerBtnPodcastsLAB.appendChild(headerBtnPodcastsCB);
     headerBtnPodcastsLAB.appendChild(headerBtnPodcastsSPN);
     headerBtnsDiv.appendChild(headerBtnPodcastsLAB);
@@ -675,7 +675,7 @@
   if (!GM_getValue('headerBtnMSStore')) GM_setValue('headerBtnMSStore', false);
   if (!GM_getValue('headerBtnNews')) GM_setValue('headerBtnNews', false);
   if (!GM_getValue('headerBtnPhotos')) GM_setValue('headerBtnPhotos', false);
-  if (!GM_getValue('headerBtnPlay')) GM_setValue('headerBtnPlay', false);
+  if (!GM_getValue('headerBtnPlayStore')) GM_setValue('headerBtnPlayStore', false);
   if (!GM_getValue('headerBtnPodcasts')) GM_setValue('headerBtnPodcasts', false);
   if (!GM_getValue('headerBtnTranslate')) GM_setValue('headerBtnTranslate', false);
   if (!GM_getValue('headerBtnYouTube')) GM_setValue('headerBtnYouTube', false);
@@ -1183,8 +1183,8 @@
     '#gWP1 #headerBtnsDiv > #labelPhotos > span:after {'+
     '  content: url(' + imgPhotos + ')  !important;'+
     '}'+
-    '#gWP1 #headerBtnsDiv > #labelPlay > span:after {'+
-    '  content: url(' + imgPlay + ')  !important;'+
+    '#gWP1 #headerBtnsDiv > #labelPlayStore > span:after {'+
+    '  content: url(' + imgPlayStore + ')  !important;'+
     '}'+
     '#gWP1 #headerBtnsDiv > #labelPodcasts > span:after {'+
     '  content: url(' + imgPodcasts + ')  !important;'+

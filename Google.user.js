@@ -1005,10 +1005,11 @@
     '  color: #FFF !important;'+
     '}'+
     '#gWP1 #themeImage {'+
-    '  margin-left: 12px !important;'+
+    '  float: right !important;'+
+    '  margin-right: 10px !important;'+
     '  opacity: 0 !important;'+
     '  position: relative !important;'+
-    '  top: 3px !important;'+
+    '  top: 8px !important;'+
     '}'+
     '#gWP1 #buttonStatic,'+
     '#gWP1 #buttonThemer,'+

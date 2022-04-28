@@ -185,7 +185,7 @@
         optionsPop = $c('div', {id: 'gOptionsPopup', style: 'display: none;'}),
         btnClose = $c('button', {id: 'btnClose', style: 'background: url('+ popCloseBtn +') no-repeat center', onclick: e => optionsPopup(e)}),
         btnClose2 = $c('button', {id: 'btnClose2', style: 'background: url('+ popCloseBtn +') no-repeat center', onclick: e => optionsPopup(e)}),
-        divLinks = $c('div', {id: 'divLinkss', className: 'popDiv'}),
+        divLinks = $c('div', {id: 'divLinks', className: 'popDiv'}),
         divButtons = $c('div', {id: 'divButtons', className: 'popDiv'}),
         divNumber = $c('div', {id: 'divNumbers', className: 'popDiv'}),
         divSites = $c('div', {id: 'divSites', className: 'popDiv'}),
@@ -780,7 +780,7 @@
     '  z-index: 999 !important;'+
     '}'+
     '#gWP1 #headerButtonsDiv > .hBtn {'+
-    '  background-color: rgba(0, 0, 0, 0.3) !important;'+
+    '  background-color: rgba(0, 0, 0, 0.1) !important;'+
     '  border: 1px solid transparent !important;'+
     '  border-radius: 6px !important;'+
     '  color: #CCC !important;'+
@@ -790,12 +790,12 @@
     '  text-indent: 22px !important;'+
     '}'+
     '#gWP1 #headerButtonsDiv > .hBtn:hover {'+
-    '  background-color: #000 !important;'+
+    '  background-color: rgb(24, 26, 27) !important;'+
     '  border-color: #000 !important;'+
     '  color: #FFF !important;'+
     '}'+
     '#gWP1 .gb_Zd .gb_Se {'+
-    '  background-color: rgba(0, 0, 0, .3) !important;'+
+    '  background-color: rgba(0, 0, 0, .1) !important;'+
     '  border-radius: 12px !important;'+
     '  display: inline-flex !important;'+
     '  padding: 4px 5px 1px 0 !important;'+
@@ -938,7 +938,7 @@
     '}'+
     '#gWP1 center > input,'+
     '#gWP1 center > span {'+
-    '  background-color: rgba(0, 0, 0, 0.3) !important;'+
+    '  background-color: rgba(0, 0, 0, 0.1) !important;'+
     '  border: 1px solid transparent !important;'+
     '  border-radius: 4px !important;'+
     '  color: #AAA !important;'+
@@ -997,11 +997,15 @@
     '#gWP1 #popClose:hover {'+
     '  background-color: #C00 !important;'+
     '}'+
+    '#gWP1 #divLinks {'+
+    '  border-radius: 6px 6px 0 0 !important;'+
+    '}'+
     '#gWP1 #divThemer {'+
     '  margin-top: -1px !important;'+
     '  padding-right: 8px !important;'+
     '}'+
     '#gWP1 #divSites {'+
+    '  border-radius: 0 0 6px 6px !important;'+
     '  margin-top: 2px !important;'+
     '}'+
     '#gWP1 #gOptionsPopup > .popDiv:hover {'+
@@ -1216,6 +1220,10 @@
     '}'+
     '#gWP1 center > span:hover .ayzqOc.pHiOh {'+
     '  color: #FFF !important;'+
+    '}'+
+    '#gWP1 center > input:hover,'+
+    '#gWP1 center > span:hover {'+
+    '  background-color: rgb(24, 26, 27) !important;'+
     '}'+
     '#gWP1 .aajZCb {'+
     '  background-color: rgba(0, 0, 0, .5) !important;'+

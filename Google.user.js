@@ -1132,7 +1132,7 @@
     '  padding: 4px 4px 2px 4px !important;'+
     '  position: absolute !important;'+
     '  text-align: left !important;'+
-    '  width: 162px !important;'+
+    '  width: 164px !important;'+
     '  z-index: 999 !important;'+
     '}'+
     '#gWP1 #headerBtnsDiv > #headerBtnsCnt {'+

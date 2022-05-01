@@ -556,8 +556,8 @@
       headerBtnsDiv.style.display = 'none';
     } else {
       headerBtnsDiv.style.display = 'flex';
-      if (GM_getValue('googleLogoLeft')) headerBtnsDiv.style.top = '-94px';
-      else headerBtnsDiv.style.top = '-200px';
+      if (GM_getValue('googleLogoLeft')) headerBtnsDiv.style.top = '-382px';
+      else headerBtnsDiv.style.top = '-482px';
   } }
 
   function setLogo() {
@@ -571,8 +571,8 @@
         logo2.style.opacity = 1;
         form.style.top = '268px';
       }
-      if (logo1.style.opacity === 1) $q('#headerBtnsDiv').style.top = '-200px';
-      else $q('#headerBtnsDiv').style.top = '-94px';
+      if (logo1.style.opacity === 1) $q('#headerBtnsDiv').style.top = '-382px';
+      else $q('#headerBtnsDiv').style.top = '-482px';
     } catch(ex) {}
   }
 
@@ -960,7 +960,7 @@
     '  background-color: rgb(24, 26, 27) !important;'+
     '  border: 1px solid #666 !important;'+
     '  border-radius: 6px !important;'+
-    '  bottom: 212px !important;'+
+    '  bottom: 213px !important;'+
     '  left: 0 !important;'+
     '  padding: 0 !important;'+
     '  position: relative !important;'+
@@ -1128,9 +1128,9 @@
     '  border-radius: 6px !important;'+
     '  bottom: auto !important;'+
     '  flex-direction: column !important;'+
-    '  left: 448px !important;'+
+    '  left: 243px !important;'+
     '  padding: 4px 4px 2px 4px !important;'+
-    '  position: absolute !important;'+
+    '  position: relative !important;'+
     '  text-align: left !important;'+
     '  width: 164px !important;'+
     '  z-index: 999 !important;'+

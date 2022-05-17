@@ -66,6 +66,7 @@
         upButton = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAUCAYAAABiS3YzAAAAsElEQVR42mNkoAFgHDV04Az9////fkZGRkeqGQo0sB1IVQBxB9DgSooNBRooCaSuArEgEL8HYm2gwc8pNXQlkApDEloFNDScbEOBBuoDqblAbIwkfBaIk4EGXyTX0DMwA4GGMAL5/2EGA7kmJBsK1O8BpLbDDEQShxnsCRTeQbShQH0g8bdALIhsIJrBoEgTBnmAWEPTgNRMbAaiGZwOVDKLWEP/4zOQkLphmPeHp6EA2JNHFW0nieAAAAAASUVORK5CYII=',
         body = $q('html[itemtype="http://schema.org/WebPage"] > body'),
         signIn = $q('html[itemtype="http://schema.org/WebPage"] a.gb_1.gb_2.gb_9d.gb_9c'),
+        dismiss = $q('html[itemtype="http://schema.org/WebPage"] .QlyBfb > button'),
         div1 = $q('html[itemtype="http://schema.org/WebPage"] .o3j99.LLD4me.LS8OJ'),
         div2 = $q('html[itemtype="http://schema.org/WebPage"] .gb_Wd.gb_Za.gb_Ld > .gb_Se'),
         center = $q('html[itemtype="http://schema.org/WebPage"] .FPdoLc.lJ9FBc > center'),
@@ -185,7 +186,7 @@
         optionsPop = $c('div', {id: 'gOptionsPopup', style: 'display: none;'}),
         btnClose = $c('button', {id: 'btnClose', style: 'background: url('+ popCloseBtn +') no-repeat center', onclick: e => optionsPopup(e)}),
         btnClose2 = $c('button', {id: 'btnClose2', style: 'background: url('+ popCloseBtn +') no-repeat center', onclick: e => optionsPopup(e)}),
-        divLinks = $c('div', {id: 'divLinks', className: 'popDiv'}),
+        divLinks = $c('div', {id: 'divLinkss', className: 'popDiv'}),
         divButtons = $c('div', {id: 'divButtons', className: 'popDiv'}),
         divNumber = $c('div', {id: 'divNumbers', className: 'popDiv'}),
         divSites = $c('div', {id: 'divSites', className: 'popDiv'}),
@@ -556,8 +557,8 @@
       headerBtnsDiv.style.display = 'none';
     } else {
       headerBtnsDiv.style.display = 'flex';
-      if (GM_getValue('googleLogoLeft')) headerBtnsDiv.style.top = '-382px';
-      else headerBtnsDiv.style.top = '-482px';
+      if (GM_getValue('googleLogoLeft')) headerBtnsDiv.style.top = '-94px';
+      else headerBtnsDiv.style.top = '-200px';
   } }
 
   function setLogo() {
@@ -571,8 +572,8 @@
         logo2.style.opacity = 1;
         form.style.top = '268px';
       }
-      if (logo1.style.opacity === 1) $q('#headerBtnsDiv').style.top = '-382px';
-      else $q('#headerBtnsDiv').style.top = '-482px';
+      if (logo1.style.opacity === 1) $q('#headerBtnsDiv').style.top = '-200px';
+      else $q('#headerBtnsDiv').style.top = '-94px';
     } catch(ex) {}
   }
 
@@ -697,7 +698,11 @@
 
   wallpaperTimer(GM_getValue('themeChanger'));
 
-  initInterval = setInterval(() => signIn ? signIn.click() : clearInterval(initInterval), openInterval);
+  initInterval = setInterval(() => {
+    if (signIn) signIn.click();
+    if (dismiss) dismiss.click();
+    else clearInterval(initInterval);
+  }, openInterval);
 
   window.addEventListener('load', () => init());
   window.addEventListener('unload', () => whenClose());
@@ -780,7 +785,7 @@
     '  z-index: 999 !important;'+
     '}'+
     '#gWP1 #headerButtonsDiv > .hBtn {'+
-    '  background-color: rgba(0, 0, 0, 0.1) !important;'+
+    '  background-color: rgba(0, 0, 0, 0.3) !important;'+
     '  border: 1px solid transparent !important;'+
     '  border-radius: 6px !important;'+
     '  color: #CCC !important;'+
@@ -790,12 +795,12 @@
     '  text-indent: 22px !important;'+
     '}'+
     '#gWP1 #headerButtonsDiv > .hBtn:hover {'+
-    '  background-color: rgb(24, 26, 27) !important;'+
+    '  background-color: #000 !important;'+
     '  border-color: #000 !important;'+
     '  color: #FFF !important;'+
     '}'+
     '#gWP1 .gb_Zd .gb_Se {'+
-    '  background-color: rgba(0, 0, 0, .1) !important;'+
+    '  background-color: rgba(0, 0, 0, .3) !important;'+
     '  border-radius: 12px !important;'+
     '  display: inline-flex !important;'+
     '  padding: 4px 5px 1px 0 !important;'+
@@ -938,7 +943,7 @@
     '}'+
     '#gWP1 center > input,'+
     '#gWP1 center > span {'+
-    '  background-color: rgba(0, 0, 0, 0.1) !important;'+
+    '  background-color: rgba(0, 0, 0, 0.3) !important;'+
     '  border: 1px solid transparent !important;'+
     '  border-radius: 4px !important;'+
     '  color: #AAA !important;'+
@@ -960,7 +965,7 @@
     '  background-color: rgb(24, 26, 27) !important;'+
     '  border: 1px solid #666 !important;'+
     '  border-radius: 6px !important;'+
-    '  bottom: 213px !important;'+
+    '  bottom: 212px !important;'+
     '  left: 0 !important;'+
     '  padding: 0 !important;'+
     '  position: relative !important;'+
@@ -997,15 +1002,11 @@
     '#gWP1 #popClose:hover {'+
     '  background-color: #C00 !important;'+
     '}'+
-    '#gWP1 #divLinks {'+
-    '  border-radius: 6px 6px 0 0 !important;'+
-    '}'+
     '#gWP1 #divThemer {'+
     '  margin-top: -1px !important;'+
     '  padding-right: 8px !important;'+
     '}'+
     '#gWP1 #divSites {'+
-    '  border-radius: 0 0 6px 6px !important;'+
     '  margin-top: 2px !important;'+
     '}'+
     '#gWP1 #gOptionsPopup > .popDiv:hover {'+
@@ -1128,9 +1129,9 @@
     '  border-radius: 6px !important;'+
     '  bottom: auto !important;'+
     '  flex-direction: column !important;'+
-    '  left: 243px !important;'+
+    '  left: 448px !important;'+
     '  padding: 4px 4px 2px 4px !important;'+
-    '  position: relative !important;'+
+    '  position: absolute !important;'+
     '  text-align: left !important;'+
     '  width: 164px !important;'+
     '  z-index: 999 !important;'+
@@ -1220,10 +1221,6 @@
     '}'+
     '#gWP1 center > span:hover .ayzqOc.pHiOh {'+
     '  color: #FFF !important;'+
-    '}'+
-    '#gWP1 center > input:hover,'+
-    '#gWP1 center > span:hover {'+
-    '  background-color: rgb(24, 26, 27) !important;'+
     '}'+
     '#gWP1 .aajZCb {'+
     '  background-color: rgba(0, 0, 0, .5) !important;'+

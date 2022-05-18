@@ -815,6 +815,12 @@
     '  top: -3px !important;'+
     '  width: 38px !important;'+
     '}'+
+    '#gWP1 .gb_Ba {'+
+    '  height: 40px !important;'+
+    '  margin-top: -4px !important;'+
+    '  right: 6px !important;'+
+    '  width: 40px !important;'+
+    '}'+
     '#gWP1 #gbwa > div > a {'+
     '  background-color: transparent !important;'+
     '  border: 1px solid #999 !important;'+

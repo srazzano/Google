@@ -65,10 +65,10 @@
         themeOn = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAQCAYAAAAiYZ4HAAACFUlEQVR42n2RS2gTURSG/+nEpCE2qWkSQaK0iosRKUSNuinMQmoFKaKCmyKCEsSISzdWQcWNbhSrYhARdKELUapQFZVgu7CtWgR1kGLrIxabtObRvNpmEv+bmfhY1ANn7rnn/N+9P3MlmPGhFzKXPcwDzKDZHmZeY95Z0wldNCRTrIihsr7LgcYWwOIw5KUckBqH9vpWThxCSJModnMzrqhnnLC8ZFkE6uwGUC7wU09wM7TosQw3LQLoUdZ1hOEKAHOXeboP0P0GIMcojgPWQ0B6BNqbR5cEkFDaTnkgPUT62xBcTY00usIAKl+Rnk7BtXwj6+3Q+k9MGYC6z4PsXWDeBTTsoAvTUpGWZu4Di9LA4l20dWPKsLTWG84UE5j4BKxcRQcN7qp+buYnxthbxp6z3gvtXaJqyT07Kyf8zXpdbBSIpyhYalwwMQn46NC/Goh9lss2m+6t/tazR5s2bN2UHK7oZeR5ezILfHdEELCGYF8C5IvWUvdFy84nA/kHEv6Er++8PNnaqiNDQJJk2G06Tl6xD16/VzjC+Svxo/8G0LUFPTcvdIbfDvZiqBRBuzuE5t3Yy9Ft5vzvl65FRxDtfVcDj589H8GYk5bKIQQPoo2jgZrmH0A867n9KGhfgCwf/MV7PP2RxGH2Py4EIBqNVmq1qqrHuUSY8f8CplDUp1l7WE4vCDC6hdC8YRuXfmauNvwFQhfAY9K6W7gAAAAASUVORK5CYII=',
         upButton = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAUCAYAAABiS3YzAAAAsElEQVR42mNkoAFgHDV04Az9////fkZGRkeqGQo0sB1IVQBxB9DgSooNBRooCaSuArEgEL8HYm2gwc8pNXQlkApDEloFNDScbEOBBuoDqblAbIwkfBaIk4EGXyTX0DMwA4GGMAL5/2EGA7kmJBsK1O8BpLbDDEQShxnsCRTeQbShQH0g8bdALIhsIJrBoEgTBnmAWEPTgNRMbAaiGZwOVDKLWEP/4zOQkLphmPeHp6EA2JNHFW0nieAAAAAASUVORK5CYII=',
         body = $q('html[itemtype="http://schema.org/WebPage"] > body'),
-        signIn = $q('html[itemtype="http://schema.org/WebPage"] a.gb_1.gb_2.gb_9d.gb_9c'),
-        dismiss = $q('html[itemtype="http://schema.org/WebPage"] .QlyBfb > button'),
+        signIn = $q('html[itemtype="http://schema.org/WebPage"] .gb_Qe > a'),
+        dismiss = $q('html .QlyBfb > button'),
         div1 = $q('html[itemtype="http://schema.org/WebPage"] .o3j99.LLD4me.LS8OJ'),
-        div2 = $q('html[itemtype="http://schema.org/WebPage"] .gb_Wd.gb_Za.gb_Ld > .gb_Se'),
+        div2 = $q('html[itemtype="http://schema.org/WebPage"] .gb_Ud.gb_Wa.gb_Jd'),
         center = $q('html[itemtype="http://schema.org/WebPage"] .FPdoLc.lJ9FBc > center'),
         form = $q('html[itemtype="http://schema.org/WebPage"] .L3eUgb form'),
         placeHolder = $q('html[itemtype="http://schema.org/WebPage"] input[name="q"]'),
@@ -699,8 +699,8 @@
   wallpaperTimer(GM_getValue('themeChanger'));
 
   initInterval = setInterval(() => {
-    if (signIn) signIn.click();
     if (dismiss) dismiss.click();
+    else if (signIn) signIn.click();
     else clearInterval(initInterval);
   }, openInterval);
 
@@ -817,7 +817,7 @@
     '}'+
     '#gWP1 #gbwa > div > a {'+
     '  background-color: transparent !important;'+
-    '  border: 1px solid transparent !important;'+
+    '  border: 1px solid #999 !important;'+
     '  border-radius: 50% !important;'+
     '  box-shadow: none !important;'+
     '}'+

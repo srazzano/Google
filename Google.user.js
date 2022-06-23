@@ -432,11 +432,13 @@
     '  color: #FFF !important;'+
     '  cursor: pointer !important;'+
     '  font: 16px monospace !important;'+
-    '  height: 25px !important;'+
+    '  height: 16px !important;'+
     '  margin-left: 2px !important;'+
     '  min-width: 100px !important;'+
-    '  padding: 6px 8px !important;'+
+    '  padding: 2px 8px 10px 8px !important;'+
+    '  position: relative !important;'+
     '  text-shadow: 1px 1px 2px #000 !important;'+
+    '  top: 4px !important;'+
     '}'+
     '#gWP1 #gClock:hover + #dateTime {'+
     '  background: #900 !important;'+

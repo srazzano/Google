@@ -295,7 +295,7 @@
   } }
 
   function searchPopupLinks() {
-    let links = $q('#gWP1 #dEjpnf > li > a', true);
+    let links = $q('#gWP1 a', true);
     for (let i = 0; i < links.length; i++) links[i].setAttribute('target', GM_getValue('linksWhere'));
   }
 
@@ -303,7 +303,7 @@
     let bool = GM_getValue('linksWhere') !== '_blank' ? '_blank' : '_self';
     e.preventDefault();
     GM_setValue('linksWhere', bool);
-    bool === '_self' ? btnSearchLinks.textContent = linksCurrentText : btnSearchLinks.textContent = linksNewText;
+    bool == '_self' ? btnSearchLinks.textContent = linksCurrentText : btnSearchLinks.textContent = linksNewText;
     searchPopupLinks();
   }
 

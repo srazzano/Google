@@ -177,8 +177,8 @@
       case 6: return w + space + bullet + space + m + slash + d + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
       case 7: return w + space + bullet + space + mm + slash + dd + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
       // Delete "customFormatText + 210/customFormatText + 211" text below and add return options with bullet, comma, hyphen, slash, space, star characters.
-      case 8: return customFormatText + 350;
-      case 9: return customFormatText + 351;
+      case 8: return customFormatText + 180;
+      case 9: return customFormatText + 181;
   } }
 
   function dateTimeDefault() {
@@ -294,17 +294,17 @@
         break;
   } }
 
-  function searchPopupLinks() {
-    let links = $q('#gWP1 a', true);
-    for (let i = 0; i < links.length; i++) links[i].setAttribute('target', GM_getValue('linksWhere'));
-  }
-
   function searchLinksWhere(e) {
     let bool = GM_getValue('linksWhere') !== '_blank' ? '_blank' : '_self';
     e.preventDefault();
     GM_setValue('linksWhere', bool);
     bool == '_self' ? btnSearchLinks.textContent = linksCurrentText : btnSearchLinks.textContent = linksNewText;
     searchPopupLinks();
+  }
+
+  function searchPopupLinks() {
+    let links = $q('#gWP1 a', true);
+    for (let i = 0; i < links.length; i++) links[i].setAttribute('target', GM_getValue('linksWhere'));
   }
 
   function wallpaper() {
@@ -418,13 +418,13 @@
 
   wallpaperTimer(GM_getValue('themeChanger'));
 
+  window.addEventListener('load', () => init());
+  window.addEventListener('unload', () => whenClose());
+
   initInterval = setInterval(() => {
     if (signIn) signIn.click();
     else { init(); clearInterval(initInterval) }
   }, openInterval);
-
-  window.addEventListener('load', () => init());
-  window.addEventListener('unload', () => whenClose());
 
   GM_addStyle(''+
     '#gWP1 #divWallpaper {'+
@@ -750,34 +750,26 @@
     '}'+
     '#gWP1 #themeImage {'+
     '  float: right !important;'+
-    '  margin-right: 10px !important;'+
+    '  margin-right: 8px !important;'+
     '  opacity: 0 !important;'+
     '  position: relative !important;'+
     '  top: 8px !important;'+
     '}'+
     '#gWP1 #buttonStatic,'+
     '#gWP1 #buttonThemer,'+
-    '#gWP1 #displayButtons,'+
     '#gWP1 #searchLinks,'+
     '#gWP1 #divLinks,'+
     '#gWP1 #buttonSites {'+
     '  cursor: pointer !important;'+
     '}'+
-    '#gWP1 #displayButtons,'+
     '#gWP1 #searchLinks {'+
     '  text-align: left !important;'+
     '  width: 100% !important;'+
     '}'+
     '#gWP1 #buttonThemer,'+
-    '#gWP1 #displayButtons,'+
     '#gWP1 #searchLinks {'+
     '  color: #CCC !important;'+
     '  padding: 7px 0 7px 9px !important;'+
-    '}'+
-    '#gWP1 #menuArrow {'+
-    '  float: right !important;'+
-    '  margin: 2px 12px 0 0 !important;'+
-    '  opacity: .6 !important;'+
     '}'+
     '#gWP1 #buttonWhen,'+
     '#gWP1 #buttonSites {'+

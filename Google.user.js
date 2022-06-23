@@ -269,6 +269,10 @@
 
   function wallpaperInputChanger(e) {
     let inp = e.target.value;
+    if (inp > 35) {
+      inp = 35;
+      $q('#inputThemer').value = inp;
+    }
     GM_setValue('wallpaperImage', parseInt(inp));
     wallpaper(inp);
   }
@@ -414,6 +418,9 @@
     '  padding: 0 !important;'+
     '  position: relative !important;'+
     '}'+
+    '#gWP1 .gb_Vd {'+
+    '  padding: 0 8px 0 4px !important;'+
+    '}'+
     '#gWP1 #dateTimeContainer {'+
     '  display: inline-flex !important;'+
     '}'+
@@ -549,8 +556,8 @@
     '}'+
     '#gWP1 .o3j99.c93Gbe a,'+
     '#gWP1 .o3j99.c93Gbe .ayzqOc.pHiOh {'+
-    '  color: #AAA !important;'+
-    '  text-shadow: 1px 1px 2px #000 !important;'+
+    '  color: #CCC !important;'+
+    '  text-shadow: 1px 1px 1px #000 !important;'+
     '}'+
     '#gWP1 .o3j99.c93Gbe a:hover,'+
     '#gWP1 .o3j99.c93Gbe .ayzqOc.pHiOh:hover {'+

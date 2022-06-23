@@ -87,7 +87,9 @@
         MonthNo = '01,02,03,04,05,06,07,08,09,10,11,12',
         monthno = MonthNo.split(','),
         MonthNum = '1,2,3,4,5,6,7,8,9,10,11,12',
-        monthnum = MonthNum.split(',');
+        monthnum = MonthNum.split(','),
+        center = $q('div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.FPdoLc.lJ9FBc > center'),
+        settingsBtn = $q('div.L3eUgb > div.o3j99.c93Gbe > div.KxwPGc.SSwjIe > div.KxwPGc.iTjxkf > span');
 
   let clockInterval,
       initInterval;
@@ -149,8 +151,8 @@
       case 6: return w + space + bullet + space + m + slash + d + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
       case 7: return w + space + bullet + space + mm + slash + dd + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
       // Delete "customFormatText + 210/customFormatText + 211" text below and add return options with bullet, comma, hyphen, slash, space, star characters.
-      case 8: return customFormatText + 152;
-      case 9: return customFormatText + 153;
+      case 8: return customFormatText + 154;
+      case 9: return customFormatText + 155;
   } }
 
   function dateTimeDefault() {
@@ -211,14 +213,15 @@
     divSites.appendChild(spnSites);
     divSites.appendChild(btnSites);
     divThemer.appendChild(btnThemer);
-    divThemer.appendChild(inpThemer);
     divThemer.appendChild(btnUp);
+    divThemer.appendChild(inpThemer);
     divThemer.appendChild(btnDown);
     wallpaperDiv.appendChild(divLinks);
     wallpaperDiv.appendChild(divSites);
     wallpaperDiv.appendChild(divThemer);
     divLinksWallpaper.appendChild(wallpaperDiv);
     div2.insertBefore(divLinksWallpaper, div2.firstChild);
+    center.insertBefore(settingsBtn, center.childNodes[2]);
     if (GM_getValue('imageSite') === githubSite) btnSites.innerHTML = 'GitHub';
     else btnSites.innerHTML = 'Sonco';
     let links = $q('#gWP1 a', true);
@@ -321,7 +324,7 @@
     '}'+
     '#gWP1 .gb_Vd.gb_Xa.gb_Kd {'+
     '  background: rgba(0, 0, 0, .3) !important;'+
-    '  border-radius: 24px !important;'+
+    '  border-radius: 10px !important;'+
     '  padding-left: 0 !important;'+
     '}'+
     '#gWP1 .o3j99.n1xJcf.Ne6nSd > a {'+
@@ -386,7 +389,10 @@
     '  border: none !important;'+
     '  opacity: .8 !important;'+
     '  text-align: center !important;'+
-    '  width: 28px !important;'+
+    '  width: 22px !important;'+
+    '}'+
+    '#gWP1 #buttonUp {'+
+    '  margin-left: 6px !important;'+
     '}'+
     '#gWP1 #buttonUp,'+
     '#gWP1 #buttonDown {'+
@@ -402,6 +408,9 @@
     '#gWP1 #inputThemer:focus-within,'+
     '#gWP1 #buttonUp:hover,'+
     '#gWP1 #buttonDown:hover {'+
+    '  opacity: 1 !important;'+
+    '}'+
+    '#gWP1 #buttonThemer:hover + #buttonUp {'+
     '  opacity: 1 !important;'+
     '}'+
     '#gWP1 #inputThemer::-webkit-inner-spin-button,'+
@@ -552,22 +561,20 @@
     '  border: none !important;'+
     '}'+
     '#gWP1 .o3j99.c93Gbe {'+
-    '  background: transparent !important;'+
-    '}'+
-    '#gWP1 .o3j99.c93Gbe a,'+
-    '#gWP1 .o3j99.c93Gbe .ayzqOc.pHiOh {'+
-    '  color: #CCC !important;'+
-    '  text-shadow: 1px 1px 1px #000 !important;'+
-    '}'+
-    '#gWP1 .o3j99.c93Gbe a:hover,'+
-    '#gWP1 .o3j99.c93Gbe .ayzqOc.pHiOh:hover {'+
-    '  color: #FFF !important;'+
+    '  display: none !important;'+
     '}'+
     '#gWP1 .KxwPGc.SSwjIe > div {'+
     '  background: rgba(0, 0, 0, .3) !important;'+
     '  border-radius: 10px !important;'+
     '  min-width: 32px !important;'+
     '  padding: 0 4px !important;'+
+    '}'+
+    '#gWP1 .ayzqOc.pHiOh {'+
+    '  color: #AAA !important;'+
+    '  text-decoration: none !important;'+
+    '}'+
+    '#gWP1 .ayzqOc.pHiOh:hover {'+
+    '  color: #FFF !important;'+
     '}'+
     '#gWP1 #gb > div > div[style*="width: 328px;"] {'+
     '  height: calc(-140px + 100vh) !important;'+

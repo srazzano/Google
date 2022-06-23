@@ -318,7 +318,7 @@
     '#gWP1 .gb_Vd.gb_Xa.gb_Kd {'+
     '  background: rgba(0, 0, 0, .3) !important;'+
     '  border-radius: 24px !important;'+
-    '  padding-left: 14px !important;'+
+    '  padding-left: 0 !important;'+
     '}'+
     '#gWP1 .o3j99.n1xJcf.Ne6nSd > a {'+
     '  background: rgba(0, 0, 0, .3) !important;'+
@@ -534,11 +534,19 @@
     '  border: 1px solid #666 !important;'+
     '}'+
     '#gWP1 #gbqfbb,'+
-    '#gWP1 .XDyW0e {'+
+    '#gWP1 .XDyW0e,'+
+    '#gWP1 .cF4V5c g-menu-item:nth-child(8) {'+
     '  display: none !important;'+
+    '}'+
+    '#gWP1 .ErsxPb.dPaec {'+
+    '  border: none !important;'+
     '}'+
     '#gWP1 .o3j99.c93Gbe {'+
     '  background: transparent !important;'+
+    '}'+
+    '#gWP1 .o3j99.c93Gbe a:hover,'+
+    '#gWP1 .o3j99.c93Gbe .ayzqOc.pHiOh:hover {'+
+    '  color: #FFF !important;'+
     '}'+
     '#gWP1 .KxwPGc.SSwjIe > div {'+
     '  background: rgba(0, 0, 0, .3) !important;'+

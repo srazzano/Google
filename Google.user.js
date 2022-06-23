@@ -17,6 +17,9 @@
   'use strict';
 
   const openInterval = 20,
+        timerLong = 10000,
+        timerShort = 1000,
+        dateTimeFormatCount = 9,
         placeHolderText = 'Search Look-up',
         githubSite = 'https://raw.githubusercontent.com/srazzano/Images/master/image',
         soncoSite = 'https://sonco.synthasite.com/resources/image',
@@ -26,7 +29,7 @@
         changeWallpaperTooltip = 'Change Wallpaper',
         btnDownTooltip = 'Down One',
         btnUpTooltip = 'Up One',
-        inputTooltip = '0 - 35',
+        inputTooltip = 'Manually insert 0 - 35',
         changeImageSiteText = 'Image Host Site:',
         linksCurrentText = 'Links in current tab:\u2002True',
         linksNewText = 'Links in new tab:\u2002True',
@@ -37,7 +40,9 @@
         signIn = $q('html[itemtype="http://schema.org/WebPage"] .gb_1.gb_2.gb_8d.gb_8c'),
         dismiss = $q('html .QlyBfb > button'),
         div1 = $q('html[itemtype="http://schema.org/WebPage"] .gb_Vd.gb_Xa.gb_Kd'),
+        div2 = $q('html[itemtype="http://schema.org/WebPage"] .k1zIA.rSk4se'),
         placeHolder = $q('html[itemtype="http://schema.org/WebPage"] input[name="q"]'),
+        divLinksWallpaper = $c('div', {id: 'divLinksWallpaper'}),
         divLinks = $c('div', {id: 'divLinks', title: divLinksTooltip}),
         spanLinks = $c('span', {id: 'spanLinks'}),
         btnLinks = $c('button', {id: 'btnLinks', onclick: e => searchLinksWhere(e)}),
@@ -49,11 +54,7 @@
         btnThemer = $c('button', {id: 'buttonThemer', innerHTML: wallpaperImageText, title: changeWallpaperTooltip, onclick: e => wallpaperButtonChanger(e)}),
         btnUp = $c('input', {id: 'buttonUp', type: 'image', src: upButton, title: btnUpTooltip, onclick: e => wallpaperButtonChanger(e)}),
         inpThemer = $c('input', {id: 'inputThemer', type: 'number', min: 0, max: 35, value: GM_getValue('wallpaperImage'), title: inputTooltip, oninput: e => wallpaperInputChanger(e)}),
-        btnDown = $c('input', {id: 'buttonDown', type: 'image', src: downButton, title: btnDownTooltip, onclick: e => wallpaperButtonChanger(e)});
-
-  const timerLong = 10000,
-        timerShort = 1000,
-        dateTimeFormatCount = 9,
+        btnDown = $c('input', {id: 'buttonDown', type: 'image', src: downButton, title: btnDownTooltip, onclick: e => wallpaperButtonChanger(e)}),
         am = 'AM',
         pm = 'PM',
         bullet = '•',
@@ -148,8 +149,8 @@
       case 6: return w + space + bullet + space + m + slash + d + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
       case 7: return w + space + bullet + space + mm + slash + dd + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
       // Delete "customFormatText + 210/customFormatText + 211" text below and add return options with bullet, comma, hyphen, slash, space, star characters.
-      case 8: return customFormatText + 151;
-      case 9: return customFormatText + 152;
+      case 8: return customFormatText + 152;
+      case 9: return customFormatText + 153;
   } }
 
   function dateTimeDefault() {
@@ -199,6 +200,10 @@
     window.removeEventListener('load', () => init());
     body.id = 'gWP1';
     placeHolder.placeholder = placeHolderText;
+    dateTime.title = addRemoveText + ' (' + GM_getValue('dateFormat') + ')';
+    dateTimeContainer.appendChild(btnClock);
+    dateTimeContainer.appendChild(dateTime);
+    div1.appendChild(dateTimeContainer);
     spnSites.innerHTML = changeImageSiteText;
     spanLinks.appendChild(btnLinks);
     divLinks.appendChild(spanLinks);
@@ -209,20 +214,17 @@
     divThemer.appendChild(inpThemer);
     divThemer.appendChild(btnUp);
     divThemer.appendChild(btnDown);
+    wallpaperDiv.appendChild(divLinks);
     wallpaperDiv.appendChild(divSites);
     wallpaperDiv.appendChild(divThemer);
-    div1.insertBefore(wallpaperDiv, div1.firstChild);
-    div1.insertBefore(divLinks, div1.firstChild);
+    divLinksWallpaper.appendChild(wallpaperDiv);
+    div2.insertBefore(divLinksWallpaper, div2.firstChild);
     if (GM_getValue('imageSite') === githubSite) btnSites.innerHTML = 'GitHub';
     else btnSites.innerHTML = 'Sonco';
     let links = $q('#gWP1 a', true);
     for (let i = 0; i < links.length; i++) links[i].setAttribute('target', GM_getValue('linksWhere'));
     if (GM_getValue('defaultDateTimeView')) dateTimeDefault();
     else { dateTime.hidden = true; clearInterval(clockInterval) }
-    dateTime.title = addRemoveText + ' (' + GM_getValue('dateFormat') + ')';
-    dateTimeContainer.appendChild(btnClock);
-    dateTimeContainer.appendChild(dateTime);
-    div1.appendChild(dateTimeContainer);
     wallpaper(GM_getValue('wallpaperImage'));
   }
 
@@ -242,15 +244,11 @@
   function wallpaper(e) {
     if (e === 0) {
       GM_addStyle(''+
-        'body#gWP1 {'+
-        '  background: initial !important;'+
-        '}'+
+        'body#gWP1 { background: initial !important; }'+
       '');
     } else {
       GM_addStyle(''+
-        'body#gWP1 {'+
-        '  background:  url('+ GM_getValue('imageSite') + e +'.jpg) no-repeat center center fixed !important;'+
-        '}'+
+        'body#gWP1 { background:  url('+ GM_getValue('imageSite') + e +'.jpg) no-repeat center center fixed !important; }'+
       '');
   } }
 
@@ -329,8 +327,16 @@
     '  position: relative !important;'+
     '  z-index: 2 !important;'+
     '}'+
+    '#gWP1 #divLinksWallpaper {'+
+    '  background: rgba(0, 0, 0, .3) !important;'+
+    '  border-radius: 10px !important;'+
+    '  padding: 7px 12px 7px 14px !important;'+
+    '  position: relative !important;'+
+    '  top: -58px !important;'+
+    '  z-index: 999 !important;'+
+    '}'+
     '#gWP1 #divLinks {'+
-    '  margin: -2px 36px 0 0 !important;'+
+    '  margin: 7px 36px 0 0 !important;'+
     '}'+
     '#gWP1 #divLinks button {'+
     '  color: #AAA !important;'+
@@ -361,7 +367,6 @@
     '}'+
     '#gWP1 #themerDiv {'+
     '  color: #FFF !important;'+
-    '  margin-right: 16px !important;'+
     '}'+
     '#gWP1 #buttonThemer,'+
     '#gWP1 #inputThemer {'+
@@ -374,6 +379,7 @@
     '  opacity: .7 !important;'+
     '}'+
     '#gWP1 #inputThemer {'+
+    '  border: none !important;'+
     '  opacity: .8 !important;'+
     '  text-align: center !important;'+
     '  width: 28px !important;'+
@@ -451,9 +457,13 @@
     '#gWP1 .o3j99.LLD4me.yr19Zb.LS8OJ {'+
     '  margin-top: -90px !important;'+
     '}'+
+    '#gWP1 .k1zIA.rSk4se {'+
+    '  margin: auto !important;'+
+    '  text-align: center !important;'+
+    '}'+
     '#gWP1 .lnXdpd {'+
     '  background: url('+ googleImage +') no-repeat center !important;'+
-    '  margin-top: -80px !important;'+
+    '  margin-top: -20px !important;'+
     '  min-height: 164px !important;'+
     '  padding-left: 512px !important;'+
     '  width: 0 !important;'+
@@ -527,6 +537,12 @@
     '}'+
     '#gWP1 .o3j99.c93Gbe {'+
     '  background: transparent !important;'+
+    '}'+
+    '#gWP1 .KxwPGc.SSwjIe > div {'+
+    '  background: rgba(0, 0, 0, .3) !important;'+
+    '  border-radius: 10px !important;'+
+    '  min-width: 32px !important;'+
+    '  padding: 0 4px !important;'+
     '}'+
     '#gWP1 #gb > div > div[style*="width: 328px;"] {'+
     '  height: calc(-140px + 100vh) !important;'+

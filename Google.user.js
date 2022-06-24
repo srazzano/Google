@@ -275,6 +275,7 @@
     optionsPop.appendChild(btnClose);
     center.appendChild(settingsBtn);
     center.appendChild(optionsPop);
+    searchPopupLinks();
     wallpaper();
   }
 
@@ -482,11 +483,10 @@
     '#gWP1 #inputThemer {'+
     '  background: none !important;'+
     '  border: none !important;'+
-    '  color: #FFF !important;'+
+    '  color: #AAA !important;'+
     '}'+
     '#gWP1 #buttonThemer {'+
     '  cursor: pointer !important;'+
-    '  color: #AAA !important;'+
     '}'+
     '#gWP1 #inputThemer {'+
     '  border: none !important;'+
@@ -590,7 +590,7 @@
     '  width: 0 !important;'+
     '}'+
     '#gWP1 .gLFyf.gsfi {'+
-    '  color: #CCC !important;'+
+    '  color: #AAA !important;'+
     '  filter: brightness(2) !important;'+
     '  text-align: center !important;'+
     '  margin-left: -37px !important;'+
@@ -768,7 +768,7 @@
     '}'+
     '#gWP1 #buttonThemer,'+
     '#gWP1 #searchLinks {'+
-    '  color: #CCC !important;'+
+    '  color: #AAA !important;'+
     '  padding: 7px 0 7px 9px !important;'+
     '}'+
     '#gWP1 #buttonWhen,'+
@@ -779,7 +779,7 @@
     '  padding: 4px 8px !important;'+
     '}'+
     '#gWP1 #buttonStatic {'+
-    '  color: #CCC !important;'+
+    '  color: #AAA !important;'+
     '  margin: 0 2px 0 0 !important;'+
     '  padding: 7px 7px 7px 8px !important;'+
     '}'+
@@ -812,7 +812,11 @@
     '#gWP1 #inputStatic:hover,'+
     '#gWP1 #buttonStatic:hover + #buttonUp,'+
     '#gWP1 #inputStatic:focus-within {'+
+    '  color: #FFF !important;'+
     '  opacity: 1 !important;'+
+    '}'+
+    '#gWP1 #inputStatic:focus-within {'+
+    '  border: 1px solid #999 !important;'+
     '}'+
     '#gWP1 #divSites > #buttonSites {'+
     '  color: #AAA !important;'+

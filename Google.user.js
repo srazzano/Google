@@ -226,8 +226,8 @@
 
   function init() {
     window.removeEventListener('load', () => init());
-    center.insertBefore(optionsBtn, center.childNodes[4]);
     body.id = 'gWP1';
+    center.insertBefore(optionsBtn, center.childNodes[4]);
     if (GM_getValue('defaultDateTimeView')) dateTimeDefault();
     else { dateTime.hidden = true; clearInterval(clockInterval) }
     dateTime.title = addRemoveText + ' (' + GM_getValue('dateFormat') + ')';
@@ -801,7 +801,7 @@
     '  border: 1px solid #666 !important;'+
     '  border-radius: 4px !important;'+
     '  color: #AAA !important;'+
-    '  height: 18px !important;'+
+    '  height: 22px !important;'+
     '  margin: 0 4px !important;'+
     '  text-align: center !important;'+
     '  width: 28px !important;'+
@@ -815,6 +815,7 @@
     '  color: #FFF !important;'+
     '  opacity: 1 !important;'+
     '}'+
+    '#gWP1 #inputStatic:hover,'+
     '#gWP1 #inputStatic:focus-within {'+
     '  border: 1px solid #999 !important;'+
     '}'+

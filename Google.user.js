@@ -773,7 +773,6 @@
     '}'+
     '#gWP1 #buttonWhen,'+
     '#gWP1 #buttonSites {'+
-    '  border: 1px solid #CCC !important;'+
     '  border-radius: 4px !important;'+
     '  margin: 0 8px !important;'+
     '  padding: 4px 8px !important;'+
@@ -796,9 +795,9 @@
     '  margin: 0 !important;'+
     '}'+
     '#gWP1 #inputStatic {'+
-    '  appearance: textfield !important;'+
     '  -moz-appearance: textfield !important;'+
-    '  border: 1px solid #666 !important;'+
+    '  appearance: textfield !important;'+
+    '  background: transparent !important;'+
     '  border-radius: 4px !important;'+
     '  color: #AAA !important;'+
     '  height: 22px !important;'+
@@ -815,10 +814,6 @@
     '  color: #FFF !important;'+
     '  opacity: 1 !important;'+
     '}'+
-    '#gWP1 #inputStatic:hover,'+
-    '#gWP1 #inputStatic:focus-within {'+
-    '  border: 1px solid #999 !important;'+
-    '}'+
     '#gWP1 #divSites > #buttonSites {'+
     '  color: #AAA !important;'+
     '  width: 64px !important;'+
@@ -830,19 +825,27 @@
     '#gWP1 #divThemer:hover > #buttonThemer,'+
     '#gWP1 #divThemer:hover > #buttonWhen,'+
     '#gWP1 #divNumber:hover > #buttonStatic,'+
-    '#gWP! #inputStatic:hover,'+
     '#gWP1 #divLinks:hover > #searchLinks,'+
     '#gWP1 #divSites:hover > #spanSites {'+
-    '  color: #FFF !important;'+
-    '}'+
-    '#gWP1 #inputStatic:hover {'+
-    '  background-color: #000 !important;'+
     '  color: #FFF !important;'+
     '}'+
     '#gWP1 #buttonWhen:hover,'+
     '#gWP1 #divSites > #buttonSites:hover {'+
     '  background: #000 !important;'+
-    '  border-color: #666 !important;'+
+    '  border-color: #999 !important;'+
+    '  color: #FFF !important;'+
+    '}'+
+    '#gWP1 #buttonWhen,'+
+    '#gWP1 #inputStatic,'+
+    '#gWP1 #buttonSites {'+
+    '  border: 1px solid #666 !important;'+
+    '}'+
+    '#gWP1 #buttonWhen:hover,'+
+    '#gWP1 #inputStatic:hover,'+
+    '#gWP1 #inputStatic:focus-within,'+
+    '#gWP1 #buttonSites:hover {'+
+    '  background: #000 !important;'+
+    '  border-color: #999 !important;'+
     '  color: #FFF !important;'+
     '}'+
     '#gWP1 #divThemer:hover > #themeImage {'+
@@ -857,6 +860,14 @@
     '#gWP1 .om7nvf {'+
     '  margin-top: -30px !important;'+
     '  padding: 0 !important;'+
+    '}'+
+    '#gWP1 .o3j99.n1xJcf.Ne6nSd a,'+
+    '#gWP1 .o3j99.n1xJcf.Ne6nSd svg {'+
+    '  color: #CCC !important;'+
+    '}'+
+    '#gWP1 .o3j99.n1xJcf.Ne6nSd a:hover,'+
+    '#gWP1 .o3j99.n1xJcf.Ne6nSd svg:hover {'+
+    '  color: #FFF !important;'+
     '}'+
   '');
 

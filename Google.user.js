@@ -42,7 +42,7 @@
         linksNewText = 'Links in new tab: True',
         offText = 'Off',
         onText = 'On',
-        optionsText = 'Options',
+        wallpaperText = 'Wallpaper',
         placeHolderText = 'Search Look-up',
         activeWallpaperTooltip = 'Active wallpaper image ',
         buttonSitesTooltip = 'Change between GitHub and Sonco host sites',
@@ -65,17 +65,6 @@
         themeOff = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAQCAYAAAAiYZ4HAAAB+0lEQVR42n2RO4haURCGx/UVEV/LGkFRRFCTIhaa2AWsIoJVQAIWqdKIkMbW2GxlZSMIIbUk2ixGkCCCYJqwQayS2Ij4QqPiA1+oN+7M4V4hkOzAcObO+b95nCsC3orFohiPV+hv0J/x6Vv0D+ifgsEgRwkRL358Op1+OBwOkMvlIBaLAb9BKpVCv98n5zD3BKGfIhRfchw3dbvdMJlMAOMzcDgcwGq1QrfbhV6vt5FIJGYC0nq9PooOzWYTFAoFcxJvNhsW63Q6yOVyfa/Xe0PAGKtcLZdLVkmtVjPRfr+H9XoN2+0WXC4X1Go1MJvNkzPQ6XTYKBaLhc1ORvO3223weDxQLpfBbrczII2LRmezGaxWK9ZBqVTC8XgEytFOBoMBSqXSL7/fX2FL4+V4t9tdkABPBpCQjLqpVCqQyWQ7jE3sWVOp1FObzXY7n89hsViwhemJaUyNRkMFjvl8/mU2m/0sEn6c0Wh8GI/HR3jCcDgEk8nEulUqlW+FQuEtSr4PBoM/Z4AsFAqlY7FYtF6v04vAaDSCRCLxGq8+ovhw/tOCBQKBFwh8aTQa4HQ6odVqQTKZfI7ir4LmLwDHeZDJZLa0C5lWq4VIJPIIgeY/AbJqtXoSYp/P9w6LvEfg970ACfn4OhwOXyEw/S+AFich3yGAHWoIrIXLO3xOAOqKMeATAAAAAElFTkSuQmCC',
         themeOn = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAQCAYAAAAiYZ4HAAACFUlEQVR42n2RS2gTURSG/+nEpCE2qWkSQaK0iosRKUSNuinMQmoFKaKCmyKCEsSISzdWQcWNbhSrYhARdKELUapQFZVgu7CtWgR1kGLrIxabtObRvNpmEv+bmfhY1ANn7rnn/N+9P3MlmPGhFzKXPcwDzKDZHmZeY95Z0wldNCRTrIihsr7LgcYWwOIw5KUckBqH9vpWThxCSJModnMzrqhnnLC8ZFkE6uwGUC7wU09wM7TosQw3LQLoUdZ1hOEKAHOXeboP0P0GIMcojgPWQ0B6BNqbR5cEkFDaTnkgPUT62xBcTY00usIAKl+Rnk7BtXwj6+3Q+k9MGYC6z4PsXWDeBTTsoAvTUpGWZu4Di9LA4l20dWPKsLTWG84UE5j4BKxcRQcN7qp+buYnxthbxp6z3gvtXaJqyT07Kyf8zXpdbBSIpyhYalwwMQn46NC/Goh9lss2m+6t/tazR5s2bN2UHK7oZeR5ezILfHdEELCGYF8C5IvWUvdFy84nA/kHEv6Er++8PNnaqiNDQJJk2G06Tl6xD16/VzjC+Svxo/8G0LUFPTcvdIbfDvZiqBRBuzuE5t3Yy9Ft5vzvl65FRxDtfVcDj589H8GYk5bKIQQPoo2jgZrmH0A867n9KGhfgCwf/MV7PP2RxGH2Py4EIBqNVmq1qqrHuUSY8f8CplDUp1l7WE4vCDC6hdC8YRuXfmauNvwFQhfAY9K6W7gAAAAASUVORK5CYII=',
         upButton = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAUCAYAAABiS3YzAAAAsElEQVR42mNkoAFgHDV04Az9////fkZGRkeqGQo0sB1IVQBxB9DgSooNBRooCaSuArEgEL8HYm2gwc8pNXQlkApDEloFNDScbEOBBuoDqblAbIwkfBaIk4EGXyTX0DMwA4GGMAL5/2EGA7kmJBsK1O8BpLbDDEQShxnsCRTeQbShQH0g8bdALIhsIJrBoEgTBnmAWEPTgNRMbAaiGZwOVDKLWEP/4zOQkLphmPeHp6EA2JNHFW0nieAAAAAASUVORK5CYII=',
-        body = $q('html[itemtype="http://schema.org/WebPage"] > body'),
-        signIn = $q('html[itemtype="http://schema.org/WebPage"] a.gb_1.gb_2.gb_8d.gb_8c'),
-        div1 = $q('html[itemtype="http://schema.org/WebPage"] .gb_Vd.gb_Xa.gb_Kd'),
-        div2 = $q('html[itemtype="http://schema.org/WebPage"] .k1zIA.rSk4se'),
-        center = $q('html[itemtype="http://schema.org/WebPage"] .FPdoLc.lJ9FBc > center'),
-        placeHolder = $q('html[itemtype="http://schema.org/WebPage"] input[name="q"]'),
-        searchButton = $q('html[itemtype="http://schema.org/WebPage"] input[name="btnK"]'),
-        settingsBtn = $q('html[itemtype="http://schema.org/WebPage"] div.o3j99.c93Gbe > div.KxwPGc.SSwjIe > div.KxwPGc.iTjxkf > span'),
-        dateTimeContainer = $c('div', {id: 'dateTimeContainer'}),
-        btnClock = $c('button', {id: 'gClock', style: 'background: url('+ imgClock +') no-repeat center', title: hideShowText, onmousedown: e => dateTimeToggle(e)}),
-        dateTime = $c('span', {id: 'dateTime', onmousedown: e => dateTimeToggleSecondsAmPm(e)}),
         DayNameAbbr = 'Sun.,Mon.,Tue.,Wed.,Thu.,Fri.,Sat.',
         daynameabbr = DayNameAbbr.split(','),
         DayName = 'Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday',
@@ -94,7 +83,11 @@
         monthno = MonthNo.split(','),
         MonthNum = '1,2,3,4,5,6,7,8,9,10,11,12',
         monthnum = MonthNum.split(','),
-        optionsBtn = $c('input', {id: 'gOptions', type: 'button', value: optionsText, onclick: e => optionsPopup(e)}),
+        logo1 = $c('span', {id: 'logo1'}),
+        dateTimeContainer = $c('div', {id: 'dateTimeContainer'}),
+        btnClock = $c('button', {id: 'gClock', style: 'background: url('+ imgClock +') no-repeat center', title: hideShowText, onmousedown: e => dateTimeToggle(e)}),
+        dateTime = $c('span', {id: 'dateTime', onmousedown: e => dateTimeToggleSecondsAmPm(e)}),
+        optionsBtn = $c('input', {id: 'gOptions', type: 'button', value: wallpaperText, onclick: e => optionsPopup(e)}),
         optionsPop = $c('div', {id: 'gOptionsPopup', style: 'display: none;'}),
         btnClose = $c('button', {id: 'btnClose', style: 'background: url('+ popCloseBtn +') no-repeat center', onclick: e => optionsPopup(e)}),
         divLinks = $c('div', {id: 'divLinks', className: 'popDiv'}),
@@ -114,7 +107,15 @@
         btnDown = $c('input', {id: 'buttonDown', type: 'image', src: downButton, onclick: e => wallpaperButtonChanger(e)}),
         spnSites = $c('button', {id: 'spanSites', title: buttonSitesTooltip, onclick: e => wallpaperSite(e)}),
         btnSites = $c('button', {id: 'buttonSites', title: buttonSitesTooltip, onclick: e => wallpaperSite(e)}),
-        btnSearchLinks = $c('button', {id: 'searchLinks', onclick: e => searchLinksWhere(e)});
+        btnSearchLinks = $c('button', {id: 'searchLinks', onclick: e => searchLinksWhere(e)}),
+        body = $q('html[itemtype="http://schema.org/WebPage"] > body'),
+        signIn = $q('html[itemtype="http://schema.org/WebPage"] a.gb_1.gb_2.gb_8d.gb_8c'),
+        div1 = $q('html[itemtype="http://schema.org/WebPage"] .gb_Vd.gb_Xa.gb_Kd'),
+        div2 = $q('html[itemtype="http://schema.org/WebPage"] .k1zIA.rSk4se'),
+        center = $q('html[itemtype="http://schema.org/WebPage"] .FPdoLc.lJ9FBc > center'),
+        placeHolder = $q('html[itemtype="http://schema.org/WebPage"] input[name="q"]'),
+        searchButton = $q('html[itemtype="http://schema.org/WebPage"] input[name="btnK"]'),
+        settingsBtn = $q('html[itemtype="http://schema.org/WebPage"] div.o3j99.c93Gbe > div.KxwPGc.SSwjIe > div.KxwPGc.iTjxkf > span');
 
   let clockInterval,
       initInterval,
@@ -176,7 +177,7 @@
       case 5: return w + space + bullet + space + mm + hyphen + dd + hyphen + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03-01-2021 • 12:34 AM
       case 6: return w + space + bullet + space + m + slash + d + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
       case 7: return w + space + bullet + space + mm + slash + dd + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
-      // Delete "customFormatText + 210/customFormatText + 211" text below and add return options with bullet, comma, hyphen, slash, space, star characters.
+      // Delete "customFormatText + 180/customFormatText + 181" text below and add return options with bullet, comma, hyphen, slash, space, star characters.
       case 8: return customFormatText + 180;
       case 9: return customFormatText + 181;
   } }
@@ -227,6 +228,7 @@
   function init() {
     window.removeEventListener('load', () => init());
     body.id = 'gWP1';
+    body.appendChild(logo1);
     center.insertBefore(optionsBtn, center.childNodes[4]);
     if (GM_getValue('defaultDateTimeView')) dateTimeDefault();
     else { dateTime.hidden = true; clearInterval(clockInterval) }
@@ -402,8 +404,9 @@
 
   function whenClose() {
     window.removeEventListener('unload', () => whenClose());
-    clearInterval(wallpaperInterval);
     clearInterval(clockInterval);
+    clearInterval(initInterval);
+    clearInterval(wallpaperInterval);
   }
 
   if (!GM_getValue('changeThemeHourly')) GM_setValue('changeThemeHourly', false);
@@ -428,6 +431,23 @@
   }, openInterval);
 
   GM_addStyle(''+
+    '#gWP1 .o3j99.LLD4me.LS8OJ,'+
+    '#gWP1 .o3j99.n1xJcf.Ne6nSd > a {'+
+    '  display: none !important;'+
+    '}'+
+    '#gWP1 > #logo1 {'+
+    '  background: url('+ googleImage +') no-repeat !important;'+
+    '  border: none !important;'+
+    '  height: 164px !important;'+
+    '  left: 8px !important;'+
+    '  position: absolute !important;'+
+    '  top: 8px !important;'+
+    '  width: 512px !important;'+
+    '}'+
+    '#gWP1 .om7nvf {'+
+    '  margin-top: 150px !important;'+
+    '  padding: 0 !important;'+
+    '}'+
     '#gWP1 #divWallpaper {'+
     '  display: inline-flex !important;'+
     '  position: relative !important;'+
@@ -437,13 +457,6 @@
     '  background: rgba(0, 0, 0, .3) !important;'+
     '  border-radius: 10px !important;'+
     '  padding-left: 0 !important;'+
-    '}'+
-    '#gWP1 .o3j99.n1xJcf.Ne6nSd > a {'+
-    '  background: rgba(0, 0, 0, .3) !important;'+
-    '  border-radius: 10px !important;'+
-    '  padding: 7px 14px !important;'+
-    '  position: relative !important;'+
-    '  z-index: 2 !important;'+
     '}'+
     '#gWP1 #divLinksWallpaper {'+
     '  background: rgba(0, 0, 0, .3) !important;'+
@@ -459,68 +472,6 @@
     '#gWP1 #divLinks:hover button {'+
     '  color: #FFF !important;'+
     '  cursor: pointer !important;'+
-    '}'+
-    '#gWP1 #spanSites,'+
-    '#gWP1 #buttonSites {'+
-    '  background: transparent !important;'+
-    '  border: none !important;'+
-    '  color: #AAA !important;'+
-    '}'+
-    '#gWP1 #buttonSites {'+
-    '  margin: 0 15px 0 4px !important;'+
-    '  padding: 0 !important;'+
-    '  width: 48px !important;'+
-    '}'+
-    '#gWP1 #spanSites:hover,'+
-    '#gWP1 #buttonSites:hover {'+
-    '  cursor: pointer !important;'+
-    '  color: #FFF !important;'+
-    '}'+
-    '#gWP1 #themerDiv {'+
-    '  color: #FFF !important;'+
-    '}'+
-    '#gWP1 #buttonThemer,'+
-    '#gWP1 #inputThemer {'+
-    '  background: none !important;'+
-    '  border: none !important;'+
-    '  color: #AAA !important;'+
-    '}'+
-    '#gWP1 #buttonThemer {'+
-    '  cursor: pointer !important;'+
-    '}'+
-    '#gWP1 #inputThemer {'+
-    '  border: none !important;'+
-    '  opacity: .8 !important;'+
-    '  text-align: center !important;'+
-    '  width: 22px !important;'+
-    '}'+
-    '#gWP1 #buttonUp {'+
-    '  margin-left: 6px !important;'+
-    '}'+
-    '#gWP1 #buttonUp,'+
-    '#gWP1 #buttonDown {'+
-    '  background: transparent !important;'+
-    '  color: #FFF !important;'+
-    '  opacity: .7 !important;'+
-    '  cursor: pointer !important;'+
-    '  position: relative !important;'+
-    '  top: 6px !important;'+
-    '}'+
-    '#gWP1 #buttonThemer:hover,'+
-    '#gWP1 #inputThemer:hover,'+
-    '#gWP1 #inputThemer:focus-within,'+
-    '#gWP1 #buttonUp:hover,'+
-    '#gWP1 #buttonDown:hover {'+
-    '  color: #FFF !important;'+
-    '}'+
-    '#gWP1 #buttonThemer:hover + #buttonUp {'+
-    '  color: #FFF !important;'+
-    '}'+
-    '#gWP1 #inputThemer::-webkit-inner-spin-button,'+
-    '#gWP1 #inputThemer::-webkit-outer-spin-button,'+
-    '#gWP1 #inputThemer::-webkit-inner-spin-button,'+
-    '#gWP1 #inputThemer::-webkit-outer-spin-button {'+
-    '  display: none !important;'+
     '}'+
     '#gWP1 .gb_A:hover > .gb_Ue {'+
     '  color: #FFF !important;'+
@@ -581,13 +532,6 @@
     '#gWP1 .k1zIA.rSk4se {'+
     '  margin: auto !important;'+
     '  text-align: center !important;'+
-    '}'+
-    '#gWP1 .lnXdpd {'+
-    '  background: url('+ googleImage +') no-repeat center !important;'+
-    '  margin-top: -30px !important;'+
-    '  min-height: 164px !important;'+
-    '  padding-left: 512px !important;'+
-    '  width: 0 !important;'+
     '}'+
     '#gWP1 .gLFyf.gsfi {'+
     '  color: #AAA !important;'+
@@ -685,9 +629,6 @@
     '#gWP1 #gb > div > div[style*="width: 328px;"] {'+
     '  height: calc(-140px + 100vh) !important;'+
     '}'+
-    '#gWP1 .gb_Wd.gb_Za.gb_Ld > div[style] {'+
-    '  margin-top: 50px !important;'+
-    '}'+
     '#gWP1 .xtSCL {'+
     '  margin: 0 !important;'+
     '}'+
@@ -747,6 +688,68 @@
     '}'+
     '#gWP1 #gOptionsPopup > .popDiv:hover > button {'+
     '  color: #FFF !important;'+
+    '}'+
+    '#gWP1 #spanSites,'+
+    '#gWP1 #buttonSites {'+
+    '  background: transparent !important;'+
+    '  border: none !important;'+
+    '  color: #AAA !important;'+
+    '}'+
+    '#gWP1 #buttonSites {'+
+    '  margin: 0 15px 0 4px !important;'+
+    '  padding: 0 !important;'+
+    '  width: 48px !important;'+
+    '}'+
+    '#gWP1 #spanSites:hover,'+
+    '#gWP1 #buttonSites:hover {'+
+    '  cursor: pointer !important;'+
+    '  color: #FFF !important;'+
+    '}'+
+    '#gWP1 #themerDiv {'+
+    '  color: #FFF !important;'+
+    '}'+
+    '#gWP1 #buttonThemer,'+
+    '#gWP1 #inputThemer {'+
+    '  background: none !important;'+
+    '  border: none !important;'+
+    '  color: #AAA !important;'+
+    '}'+
+    '#gWP1 #buttonThemer {'+
+    '  cursor: pointer !important;'+
+    '}'+
+    '#gWP1 #inputThemer {'+
+    '  border: none !important;'+
+    '  opacity: .8 !important;'+
+    '  text-align: center !important;'+
+    '  width: 22px !important;'+
+    '}'+
+    '#gWP1 #buttonUp {'+
+    '  margin-left: 6px !important;'+
+    '}'+
+    '#gWP1 #buttonUp,'+
+    '#gWP1 #buttonDown {'+
+    '  background: transparent !important;'+
+    '  color: #FFF !important;'+
+    '  opacity: .7 !important;'+
+    '  cursor: pointer !important;'+
+    '  position: relative !important;'+
+    '  top: 6px !important;'+
+    '}'+
+    '#gWP1 #buttonThemer:hover,'+
+    '#gWP1 #inputThemer:hover,'+
+    '#gWP1 #inputThemer:focus-within,'+
+    '#gWP1 #buttonUp:hover,'+
+    '#gWP1 #buttonDown:hover {'+
+    '  color: #FFF !important;'+
+    '}'+
+    '#gWP1 #buttonThemer:hover + #buttonUp {'+
+    '  color: #FFF !important;'+
+    '}'+
+    '#gWP1 #inputThemer::-webkit-inner-spin-button,'+
+    '#gWP1 #inputThemer::-webkit-outer-spin-button,'+
+    '#gWP1 #inputThemer::-webkit-inner-spin-button,'+
+    '#gWP1 #inputThemer::-webkit-outer-spin-button {'+
+    '  display: none !important;'+
     '}'+
     '#gWP1 #themeImage {'+
     '  float: right !important;'+
@@ -856,10 +859,6 @@
     '#gWP1 #inputStatic::-webkit-inner-spin-button,'+
     '#gWP1 #inputStatic::-webkit-outer-spin-button {'+
     '  display: none !important;'+
-    '}'+
-    '#gWP1 .om7nvf {'+
-    '  margin-top: -30px !important;'+
-    '  padding: 0 !important;'+
     '}'+
     '#gWP1 .o3j99.n1xJcf.Ne6nSd a,'+
     '#gWP1 .o3j99.n1xJcf.Ne6nSd svg {'+

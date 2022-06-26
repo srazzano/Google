@@ -83,13 +83,13 @@
         monthno = MonthNo.split(','),
         MonthNum = '1,2,3,4,5,6,7,8,9,10,11,12',
         monthnum = MonthNum.split(','),
-        logo1 = $c('span', {id: 'logo1'}),
+        logoGoogle = $c('span', {id: 'logoGoogle'}),
         dateTimeContainer = $c('div', {id: 'dateTimeContainer'}),
         btnClock = $c('button', {id: 'gClock', style: 'background: url('+ imgClock +') no-repeat center', title: hideShowText, onmousedown: e => dateTimeToggle(e)}),
         dateTime = $c('span', {id: 'dateTime', onmousedown: e => dateTimeToggleSecondsAmPm(e)}),
-        optionsBtn = $c('input', {id: 'gOptions', type: 'button', value: wallpaperText, onclick: e => optionsPopup(e)}),
-        optionsPop = $c('div', {id: 'gOptionsPopup', style: 'display: none;'}),
-        btnClose = $c('button', {id: 'btnClose', style: 'background: url('+ popCloseBtn +') no-repeat center', onclick: e => optionsPopup(e)}),
+        wallpaperBtn = $c('input', {id: 'gWallpaper', type: 'button', value: wallpaperText, onclick: e => wallpaperPopup(e)}),
+        wallpaperPop = $c('div', {id: 'gWallpaperPopup', style: 'display: none;'}),
+        btnClose = $c('button', {id: 'btnClose', style: 'background: url('+ popCloseBtn +') no-repeat center', onclick: e => wallpaperPopup(e)}),
         divLinks = $c('div', {id: 'divLinks', className: 'popDiv'}),
         divNumber = $c('div', {id: 'divNumbers', className: 'popDiv'}),
         divSites = $c('div', {id: 'divSites', className: 'popDiv'}),
@@ -111,7 +111,6 @@
         body = $q('html[itemtype="http://schema.org/WebPage"] > body'),
         signIn = $q('html[itemtype="http://schema.org/WebPage"] a.gb_1.gb_2.gb_8d.gb_8c'),
         div1 = $q('html[itemtype="http://schema.org/WebPage"] .gb_Vd.gb_Xa.gb_Kd'),
-        div2 = $q('html[itemtype="http://schema.org/WebPage"] .k1zIA.rSk4se'),
         center = $q('html[itemtype="http://schema.org/WebPage"] .FPdoLc.lJ9FBc > center'),
         placeHolder = $q('html[itemtype="http://schema.org/WebPage"] input[name="q"]'),
         searchButton = $q('html[itemtype="http://schema.org/WebPage"] input[name="btnK"]'),
@@ -228,8 +227,8 @@
   function init() {
     window.removeEventListener('load', () => init());
     body.id = 'gWP1';
-    body.appendChild(logo1);
-    center.insertBefore(optionsBtn, center.childNodes[4]);
+    body.appendChild(logoGoogle);
+    center.insertBefore(wallpaperBtn, center.childNodes[4]);
     if (GM_getValue('defaultDateTimeView')) dateTimeDefault();
     else { dateTime.hidden = true; clearInterval(clockInterval) }
     dateTime.title = addRemoveText + ' (' + GM_getValue('dateFormat') + ')';
@@ -270,32 +269,16 @@
     divSites.appendChild(btnSites);
     spanSites.appendChild(divSites);
     btnSearchLinks.textContent = GM_getValue('linksWhere') === '_self' ? linksCurrentText : linksNewText;
-    optionsPop.appendChild(divThemer);
-    optionsPop.appendChild(divNumber);
-    optionsPop.insertBefore(divLinks, optionsPop.firstChild);
-    optionsPop.appendChild(divSites);
-    optionsPop.appendChild(btnClose);
+    wallpaperPop.appendChild(divThemer);
+    wallpaperPop.appendChild(divNumber);
+    wallpaperPop.insertBefore(divLinks, wallpaperPop.firstChild);
+    wallpaperPop.appendChild(divSites);
+    wallpaperPop.appendChild(btnClose);
     center.appendChild(settingsBtn);
-    center.appendChild(optionsPop);
+    center.appendChild(wallpaperPop);
     searchPopupLinks();
     wallpaper();
   }
-
-  function optionsPopup(e) {
-    let pop = $q('#gOptionsPopup'),
-        btnsPop = $q('#headerBtnsDiv');
-    e.preventDefault();
-    switch (e.target.id) {
-      case 'gOptions':
-        if (pop.style.display === 'none') pop.style.display = 'block';
-        else pop.style.display = 'none';
-        if (btnsPop) btnsPop.style.display = 'none';
-        break;
-      case 'btnClose':
-        pop.style.display = 'none';
-        btnsPop.style.display = 'none';
-        break;
-  } }
 
   function searchLinksWhere(e) {
     let bool = GM_getValue('linksWhere') !== '_blank' ? '_blank' : '_self';
@@ -377,6 +360,22 @@
     wallpaper();
   }
 
+  function wallpaperPopup(e) {
+    let pop = $q('#gWallpaperPopup'),
+        btnsPop = $q('#headerBtnsDiv');
+    e.preventDefault();
+    switch (e.target.id) {
+      case 'gWallpaper':
+        if (pop.style.display === 'none') pop.style.display = 'block';
+        else pop.style.display = 'none';
+        if (btnsPop) btnsPop.style.display = 'none';
+        break;
+      case 'btnClose':
+        pop.style.display = 'none';
+        btnsPop.style.display = 'none';
+        break;
+  } }
+
   function wallpaperSite(e) {
     let str = GM_getValue('imageSite');
     e.preventDefault();
@@ -435,7 +434,7 @@
     '#gWP1 .o3j99.n1xJcf.Ne6nSd > a {'+
     '  display: none !important;'+
     '}'+
-    '#gWP1 > #logo1 {'+
+    '#gWP1 > #logoGoogle {'+
     '  background: url('+ googleImage +') no-repeat !important;'+
     '  border: none !important;'+
     '  height: 164px !important;'+
@@ -632,7 +631,7 @@
     '#gWP1 .xtSCL {'+
     '  margin: 0 !important;'+
     '}'+
-    '#gWP1 #gOptionsPopup {'+
+    '#gWP1 #gWallpaperPopup {'+
     '  background-color: rgb(24, 26, 27) !important;'+
     '  border: 1px solid #666 !important;'+
     '  border-radius: 6px !important;'+
@@ -643,10 +642,10 @@
     '  text-align: left !important;'+
     '  width: 250px !important;'+
     '}'+
-    '#gWP1 #gOptionsPopup > .popDiv {'+
+    '#gWP1 #gWallpaperPopup > .popDiv {'+
     '  padding: 2px !important;'+
     '}'+
-    '#gWP1 #gOptionsPopup > #btnClose {'+
+    '#gWP1 #gWallpaperPopup > #btnClose {'+
     '  background-color: rgb(24, 26, 27) !important;'+
     '  border: 1px solid #666 !important;'+
     '  border-radius: 50% !important;'+
@@ -656,7 +655,7 @@
     '  top: -13px !important;'+
     '  width: 25px !important;'+
     '}'+
-    '#gWP1 #gOptionsPopup > #btnClose:hover {'+
+    '#gWP1 #gWallpaperPopup > #btnClose:hover {'+
     '  background-color: #900 !important;'+
     '}'+
     '#gWP1 #popClose {'+
@@ -682,11 +681,11 @@
     '  border-radius: 0 0 6px 6px !important;'+
     '  margin-top: 2px !important;'+
     '}'+
-    '#gWP1 #gOptionsPopup > .popDiv:hover {'+
+    '#gWP1 #gWallpaperPopup > .popDiv:hover {'+
     '  background-color: #333 !important;'+
     '  color: #FFF !important;'+
     '}'+
-    '#gWP1 #gOptionsPopup > .popDiv:hover > button {'+
+    '#gWP1 #gWallpaperPopup > .popDiv:hover > button {'+
     '  color: #FFF !important;'+
     '}'+
     '#gWP1 #spanSites,'+

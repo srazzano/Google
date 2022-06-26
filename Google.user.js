@@ -431,9 +431,19 @@
   }, openInterval);
 
   GM_addStyle(''+
-    '#gWP1 .o3j99.LLD4me.LS8OJ,'+
-    '#gWP1 .o3j99.n1xJcf.Ne6nSd > a {'+
+    '#gWP1 .o3j99.LLD4me.LS8OJ {'+
     '  display: none !important;'+
+    '}'+
+    '#gWP1 .o3j99.n1xJcf.Ne6nSd > .MV3Tnb {'+
+    '  background: rgba(0, 0, 0, .3) !important;'+
+    '  border-radius: 6px !important;'+
+    '  margin: 0 !important;'+
+    '  padding: 8px 16px !important;'+
+    '  position: absolute !important;'+
+    '  bottom: 10px !important;'+
+    '}'+
+    '#gWP1 .o3j99.n1xJcf.Ne6nSd > .MV3Tnb:last-of-type {'+
+    '  left: 80px !important;'+
     '}'+
     '#gWP1 > #logoGoogle {'+
     '  background: url('+ googleImage +') no-repeat !important;'+
@@ -445,8 +455,10 @@
     '  width: 512px !important;'+
     '}'+
     '#gWP1 .om7nvf {'+
-    '  margin-top: 150px !important;'+
     '  padding: 0 !important;'+
+    '}'+
+    '#gWP1 form {'+
+    '  margin-top: 100px !important;'+
     '}'+
     '#gWP1 #divWallpaper {'+
     '  display: inline-flex !important;'+

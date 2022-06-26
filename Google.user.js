@@ -40,6 +40,7 @@
         hourlyText = 'Hourly',
         linksCurrentText = 'Links in current tab: True',
         linksNewText = 'Links in new tab: True',
+        linksTooltip = 'Links in current tab or new tab',
         offText = 'Off',
         onText = 'On',
         wallpaperText = 'Wallpaper',
@@ -90,7 +91,7 @@
         wallpaperBtn = $c('input', {id: 'gWallpaper', type: 'button', value: wallpaperText, onclick: e => wallpaperPopup(e)}),
         wallpaperPop = $c('div', {id: 'gWallpaperPopup', style: 'display: none;'}),
         btnClose = $c('button', {id: 'btnClose', style: 'background: url('+ popCloseBtn +') no-repeat center', onclick: e => wallpaperPopup(e)}),
-        divLinks = $c('div', {id: 'divLinks', className: 'popDiv'}),
+        divLinks = $c('div', {id: 'divLinks', className: 'popDiv', title: linksTooltip}),
         divNumber = $c('div', {id: 'divNumbers', className: 'popDiv'}),
         divSites = $c('div', {id: 'divSites', className: 'popDiv'}),
         divThemer = $c('div', {id: 'divThemer', className: 'popDiv'}),
@@ -177,8 +178,8 @@
       case 6: return w + space + bullet + space + m + slash + d + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
       case 7: return w + space + bullet + space + mm + slash + dd + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
       // Delete "customFormatText + 180/customFormatText + 181" text below and add return options with bullet, comma, hyphen, slash, space, star characters.
-      case 8: return customFormatText + 180;
-      case 9: return customFormatText + 181;
+      case 8: return customFormatText + 181;
+      case 9: return customFormatText + 182;
   } }
 
   function dateTimeDefault() {

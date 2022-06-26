@@ -40,7 +40,7 @@
         hourlyText = 'Hourly',
         linksCurrentText = 'Links in current tab: True',
         linksNewText = 'Links in new tab: True',
-        linksTooltip = 'Links in current tab or new tab',
+        linksTooltip = 'Links in current tab or Links in new tab',
         offText = 'Off',
         onText = 'On',
         wallpaperText = 'Wallpaper',

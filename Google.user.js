@@ -112,6 +112,8 @@
         body = $q('html[itemtype="http://schema.org/WebPage"] > body'),
         signIn = $q('html[itemtype="http://schema.org/WebPage"] a.gb_1.gb_2.gb_8d.gb_8c'),
         div1 = $q('html[itemtype="http://schema.org/WebPage"] .gb_Vd.gb_Xa.gb_Kd'),
+        about = $q('html[itemtype="http://schema.org/WebPage"] .MV3Tnb:first-of-type'),
+        store = $q('html[itemtype="http://schema.org/WebPage"] .MV3Tnb:last-of-type'),
         center = $q('html[itemtype="http://schema.org/WebPage"] .FPdoLc.lJ9FBc > center'),
         placeHolder = $q('html[itemtype="http://schema.org/WebPage"] input[name="q"]'),
         searchButton = $q('html[itemtype="http://schema.org/WebPage"] input[name="btnK"]'),
@@ -178,8 +180,8 @@
       case 6: return w + space + bullet + space + m + slash + d + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 3/1/2021 • 12:34 AM
       case 7: return w + space + bullet + space + mm + slash + dd + slash + yyyy + space + bullet + space + hr12 + min + sec + space + ampm; // Sun. • 03/01/2021 • 12:34 AM
       // Delete "customFormatText + 180/customFormatText + 181" text below and add return options with bullet, comma, hyphen, slash, space, star characters.
-      case 8: return customFormatText + 181;
-      case 9: return customFormatText + 182;
+      case 8: return customFormatText + 183;
+      case 9: return customFormatText + 184;
   } }
 
   function dateTimeDefault() {
@@ -229,6 +231,8 @@
     window.removeEventListener('load', () => init());
     body.id = 'gWP1';
     body.appendChild(logoGoogle);
+    div1.insertBefore(store, div1.firstChild);
+    div1.insertBefore(about, div1.firstChild);
     center.insertBefore(wallpaperBtn, center.childNodes[4]);
     if (GM_getValue('defaultDateTimeView')) dateTimeDefault();
     else { dateTime.hidden = true; clearInterval(clockInterval) }
@@ -435,16 +439,9 @@
     '#gWP1 .vcVZ7d {'+
     '  display: none !important;'+
     '}'+
-    '#gWP1 .o3j99.n1xJcf.Ne6nSd > .MV3Tnb {'+
-    '  background: rgba(0, 0, 0, .3) !important;'+
-    '  border-radius: 6px !important;'+
-    '  margin: 0 !important;'+
-    '  padding: 8px 16px !important;'+
-    '  position: absolute !important;'+
-    '  bottom: 10px !important;'+
-    '}'+
-    '#gWP1 .o3j99.n1xJcf.Ne6nSd > .MV3Tnb:last-of-type {'+
-    '  left: 80px !important;'+
+    '#gWP1 .MV3Tnb {'+
+    '  margin: -1px 0 0 8px !important;'+
+    '  padding: 4px !important;'+
     '}'+
     '#gWP1 > #logoGoogle {'+
     '  background: url('+ googleImage +') no-repeat !important;'+

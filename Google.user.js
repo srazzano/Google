@@ -431,7 +431,8 @@
   }, openInterval);
 
   GM_addStyle(''+
-    '#gWP1 .o3j99.LLD4me.LS8OJ {'+
+    '#gWP1 .o3j99.LLD4me.LS8OJ,'+
+    '#gWP1 .vcVZ7d {'+
     '  display: none !important;'+
     '}'+
     '#gWP1 .o3j99.n1xJcf.Ne6nSd > .MV3Tnb {'+
@@ -636,7 +637,8 @@
     '  color: #FFF !important;'+
     '}'+
     '#gWP1 .EwsJzb.sAKBe.B8Kd8d {'+
-    '  margin: 6px 0 0 140px !important;'+
+    '  border: 1px solid #666 !important;'+
+    '  margin: 5px 0 0 79px !important;'+
     '}'+
     '#gWP1 #gb > div > div[style*="width: 328px;"] {'+
     '  height: calc(-140px + 100vh) !important;'+
@@ -649,7 +651,7 @@
     '  border: 1px solid #666 !important;'+
     '  border-radius: 6px !important;'+
     '  bottom: 180px !important;'+
-    '  left: 0 !important;'+
+    '  left: -56px !important;'+
     '  padding: 0 !important;'+
     '  position: relative !important;'+
     '  text-align: left !important;'+

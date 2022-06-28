@@ -491,11 +491,16 @@
     '}'+
     '#gWP1 .gb_Ma.gb_gd.gb_lg.gb_f.gb_zf {'+
     '  left: -4px !important;'+
+    '  margin-right: 8px !important;'+
     '  padding: 0 !important;'+
     '  position: relative !important;'+
     '}'+
     '#gWP1 .gb_Vd {'+
     '  padding: 0 8px 0 4px !important;'+
+    '}'+
+    '#gWP1 #gbwa {'+
+    '  margin: 0 4px 0 -11px !important;'+
+    '  padding: 0 !important;'+
     '}'+
     '#gWP1 #dateTimeContainer {'+
     '  display: inline-flex !important;'+

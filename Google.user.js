@@ -443,6 +443,9 @@
     '  margin: -1px 0 0 8px !important;'+
     '  padding: 4px !important;'+
     '}'+
+    '#gWP1 .MV3Tnb:last-of-type {'+
+    '  margin-right: -3px !important;'+
+    '}'+
     '#gWP1 > #logoGoogle {'+
     '  background: url('+ googleImage +') no-repeat !important;'+
     '  border: none !important;'+

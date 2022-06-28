@@ -491,7 +491,7 @@
     '}'+
     '#gWP1 .gb_Ma.gb_gd.gb_lg.gb_f.gb_zf {'+
     '  left: -4px !important;'+
-    '  margin-right: 8px !important;'+
+    '  margin-right: 6px !important;'+
     '  padding: 0 !important;'+
     '  position: relative !important;'+
     '}'+

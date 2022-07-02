@@ -285,6 +285,13 @@
     wallpaper();
   }
 
+  function onClose() {
+    window.removeEventListener('unload', () => onClose());
+    clearInterval(clockInterval);
+    clearInterval(initInterval);
+    clearInterval(wallpaperInterval);
+  }
+
   function searchLinksWhere(e) {
     let bool = GM_getValue('linksWhere') !== '_blank' ? '_blank' : '_self';
     e.preventDefault();
@@ -406,13 +413,6 @@
     wallpaper();
   }
 
-  function whenClose() {
-    window.removeEventListener('unload', () => whenClose());
-    clearInterval(clockInterval);
-    clearInterval(initInterval);
-    clearInterval(wallpaperInterval);
-  }
-
   if (!GM_getValue('changeThemeHourly')) GM_setValue('changeThemeHourly', false);
   if (!GM_getValue('dateFormat')) GM_setValue('dateFormat', 1);
   if (!GM_getValue('defaultAMPM')) GM_setValue('defaultAMPM', false);
@@ -427,7 +427,7 @@
   wallpaperTimer(GM_getValue('themeChanger'));
 
   window.addEventListener('load', () => init());
-  window.addEventListener('unload', () => whenClose());
+  window.addEventListener('unload', () => onClose());
 
   initInterval = setInterval(() => {
     if (signIn) signIn.click();

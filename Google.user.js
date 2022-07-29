@@ -435,6 +435,9 @@
   }, openInterval);
 
   GM_addStyle(''+
+    '#gWP1 #gb {'+
+    '  background: transparent !important;'+
+    '}'+
     '#gWP1 .o3j99.LLD4me.LS8OJ,'+
     '#gWP1 .vcVZ7d {'+
     '  display: none !important;'+
@@ -645,8 +648,12 @@
     '  border: 1px solid #666 !important;'+
     '  margin: 5px 0 0 79px !important;'+
     '}'+
-    '#gWP1 #gb > div > div[style*="width: 328px;"] {'+
+    '#gWP1 #gb > div > div[style*="width: 328px; z-index: 991;"] {'+
     '  height: calc(-140px + 100vh) !important;'+
+    '  margin-top: 49px !important;'+
+    '}'+
+    '#gWP1 #gb > div > div[style*="width: 372px; z-index: 991;"] {'+
+    '  margin-top: 49px !important;'+
     '}'+
     '#gWP1 .xtSCL {'+
     '  margin: 0 !important;'+

@@ -111,7 +111,8 @@
         btnSearchLinks = $c('button', {id: 'searchLinks', onclick: e => searchLinksWhere(e)}),
         body = $q('html[itemtype="http://schema.org/WebPage"] > body'),
         signIn = $q('html[itemtype="http://schema.org/WebPage"] a.gb_1.gb_2.gb_8d.gb_8c'),
-        div1 = $q('html[itemtype="http://schema.org/WebPage"] .gb_Vd.gb_Xa.gb_Kd'),
+        //div1 = $q('html[itemtype="http://schema.org/WebPage"] .gb_Vd.gb_Xa.gb_Kd'),
+        div1 = $q('html[itemtype="http://schema.org/WebPage"] .gb_Wd.gb_Za.gb_Ld'),
         about = $q('html[itemtype="http://schema.org/WebPage"] .MV3Tnb:first-of-type'),
         store = $q('html[itemtype="http://schema.org/WebPage"] .MV3Tnb:last-of-type'),
         center = $q('html[itemtype="http://schema.org/WebPage"] .FPdoLc.lJ9FBc > center'),
@@ -431,7 +432,8 @@
 
   initInterval = setInterval(() => {
     if (signIn) signIn.click();
-    else { init(); clearInterval(initInterval) }
+   else { init(); clearInterval(initInterval) }
+    init(); clearInterval(initInterval)
   }, openInterval);
 
   GM_addStyle(''+
@@ -599,6 +601,18 @@
     '#gWP1 .RNNXgb:hover .iblpc,'+
     '#gWP1 .RNNXgb:focus-within .iblpc {'+
     '  opacity: 1 !important;'+
+    '}'+
+    '#gWP1 .RNNXgb .Gdd5U {'+
+    '  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAASCAYAAABb0P4QAAAAi0lEQVR42mNkwAP+AwE2cUYgwKWHkVTDCBnKiGTAKiAVykAeWA00PwxuICHXEAtArmZEchncFlIBihkw1+ELaCINhZhDdwOB0pFAKhrKXQpUtpxsA6GGLUMTjsJmKLEGbgFS3mjCW4FKfQaNgdT1MtUjhRRAewMZqJP1GBgpLGXQwWpYaUMNQ8E+BAAjRJs1dJgpYAAAAABJRU5ErkJggg==) !important;'+
+    '  display: none !important;'+
+    '  height: 18px !important;'+
+    '  filter: opacity(.6) !important;'+
+    '  padding-left: 20px !important;'+
+    '  width: 0 !important;'+
+    '}'+
+    '#gWP1 .RNNXgb:hover .Gdd5U,'+
+    '#gWP1 .RNNXgb:focus-within .Gdd5U {'+
+    '  display: block !important;'+
     '}'+
     '#gWP1 center > input,'+
     '#gWP1 center > span {'+
